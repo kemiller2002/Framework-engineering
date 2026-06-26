@@ -17,7 +17,9 @@ Future frameworks should also follow this lifecycle.
 
 - [Constitutional Reviews](docs/constitutional-reviews/constitutional-review-001.md)
 - [Evidence Ledger](docs/evidence-ledger.md)
+- [Deferred Insights](docs/deferred-insights.md)
 - [Artifact Maturity](docs/artifact-maturity.md)
+- [Adversarial Reference Cases](docs/adversarial-reference-cases/README.md)
 
 ---
 
@@ -50,6 +52,13 @@ Every framework maintains a Reference Suite.
 Reference Cases are rerun whenever significant framework changes are proposed.
 
 Reference Cases function as regression tests for the framework.
+
+Validation modes:
+
+- Reference Cases: test whether a framework works across domains.
+- Longitudinal Reference Cases: test whether a framework evolves responsibly as evidence changes.
+- Adversarial Reference Cases: test where a framework fails, overreaches, or fails safely.
+- Constitutional Reviews: test whether the methodology complies with its own governing principles.
 
 ---
 
