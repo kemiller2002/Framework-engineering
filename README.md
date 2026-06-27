@@ -15,10 +15,14 @@ Future frameworks should also follow this lifecycle.
 
 ## Documentation
 
+- [Constitution](CONSTITUTION.md)
+- [Research Charter](RESEARCH_CHARTER.md)
 - [Constitutional Reviews](docs/constitutional-reviews/constitutional-review-001.md)
 - [Evidence Ledger](docs/evidence-ledger.md)
 - [Deferred Insights](docs/deferred-insights.md)
 - [Artifact Maturity](docs/artifact-maturity.md)
+- [Evaluation Principles](docs/evaluation-principles.md)
+- [Framework Canonical Model Standard](docs/framework-canonical-model-standard.md)
 - [Adversarial Reference Cases](docs/adversarial-reference-cases/README.md)
 
 ---
@@ -108,6 +112,22 @@ No concept is immune from removal.
 The framework serves reality.
 
 Reality does not serve the framework.
+
+---
+
+## Appropriate Precision
+
+Framework Engineering avoids false precision.
+
+Numbers are used when they represent meaningful measurements.
+
+For qualitative judgments, Framework Engineering prefers evidence profiles, categorical assessments, and explicit rationale over single aggregate scores.
+
+---
+
+## Canonical Model Standard
+
+Framework Engineering requires frameworks to separate grammar, canonical information model, serializations, generated representations, and tools.
 
 ---
 
