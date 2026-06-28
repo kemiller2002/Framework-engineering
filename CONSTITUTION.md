@@ -81,3 +81,26 @@ Frameworks shall define their meaning independently from programming languages, 
 Tools, serializations, and renderers may support a framework, but they shall not define it.
 
 A framework should remain usable without specialized software unless the framework's purpose explicitly requires software.
+
+## Knowledge Promotion
+
+### Purpose
+
+Framework Engineering distinguishes between accepted knowledge, active research, and applications. The discipline advances by promoting ideas through evidence rather than by assertion.
+
+### Principle
+
+Ideas begin as observations or hypotheses. They become part of the Foundation only after accumulating sufficient evidence, surviving meaningful challenge, and demonstrating usefulness through replication or repeated validation. Until then, they remain research artifacts and should be treated as provisional.
+
+Applications, including frameworks developed using Framework Engineering, consume and inform the Foundation but do not, by themselves, establish foundational knowledge.
+
+The Foundation is intentionally conservative; research is intentionally exploratory.
+
+### Implications
+
+- Separate established principles from active research.
+- Clearly identify the status of research artifacts.
+- Promote ideas based on accumulated evidence rather than novelty, authority, or popularity.
+- Encourage competing hypotheses and adversarial evaluation.
+- Preserve historical records of superseded and failed hypotheses when they contribute to understanding.
+- Maintain a clear distinction between foundational principles, ongoing research, and practical applications.

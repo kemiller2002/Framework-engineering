@@ -65,6 +65,12 @@ Framework Engineering separates meaning from implementation.
 
 Frameworks should define canonical information models before committing to serializations or tools.
 
+### Independent Validation Before Release
+
+Frameworks are not validated by creator success alone.
+
+A framework approaches validation only when independent practitioners can apply it consistently, understand its limits, and produce comparable results.
+
 ## Scope
 
 Framework Engineering studies the lifecycle of analytical frameworks, including:

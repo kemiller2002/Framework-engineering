@@ -1,0 +1,65 @@
+type: object
+required:
+  - ecp
+  - target
+  - purpose
+properties:
+  ecp:
+    type: object
+    required:
+      - id
+      - title
+      - repository
+      - category
+      - priority
+    properties:
+      id:
+        type: string
+      title:
+        type: string
+      repository:
+        type: string
+      category:
+        type: string
+      priority:
+        type: string
+  target:
+    type: object
+    required:
+      - working_directory
+      - stop_if_not_repo
+    properties:
+      working_directory:
+        type: string
+      stop_if_not_repo:
+        type: boolean
+  purpose:
+    type: string
+  do_not_modify:
+    type: array
+    items:
+      type: string
+  create:
+    type: array
+    items:
+      type: string
+  update:
+    type: array
+    items:
+      type: string
+  content:
+    type: array
+    items:
+      type: object
+      required:
+        - file
+        - instructions
+      properties:
+        file:
+          type: string
+        instructions:
+          type: string
+  rules:
+    type: array
+    items:
+      type: string

@@ -1,0 +1,11 @@
+artifact_id,artifact_name,identity,capabilities,primary_domain,lifecycle,measurement_standard,status,current_kacs,notes
+swot,SWOT,,,,,FEMS-1,draft,,
+five_whys,Five Whys,,,,,FEMS-1,draft,,
+decision_matrix,Decision Matrix,,,,,FEMS-1,draft,,
+kepner_tregoe,Kepner-Tregoe,,,,,FEMS-1,draft,,
+ooda_loop,OODA Loop,,,,,FEMS-1,draft,,
+cynefin,Cynefin,,,,,FEMS-1,draft,,
+blue_ocean_strategy,Blue Ocean Strategy,,,,,FEMS-1,draft,,
+balanced_scorecard,Balanced Scorecard,,,,,FEMS-1,draft,,
+okrs,OKRs,,,,,FEMS-1,draft,,
+hoshin_kanri,Hoshin Kanri,,,,,FEMS-1,draft,,

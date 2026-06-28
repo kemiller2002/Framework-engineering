@@ -1,0 +1,44 @@
+ecp:
+  id: ECP-FE-000014
+  title: Engineering Change Package Generator
+  repository: framework-engineering
+  category: Tooling
+  priority: High
+
+target:
+  working_directory: Framework Engineering repository.
+  stop_if_not_repo: true
+
+purpose: >
+  Create a lightweight ECP prompt generator so large Codex prompts can be
+  authored as structured YAML and rendered consistently.
+
+do_not_modify:
+  - EDF repo
+  - Clarity repo
+  - Framework Templates repo
+  - Execution repo
+
+create:
+  - tools/ecp-generator/README.md
+  - tools/ecp-generator/ecp-schema.yaml
+  - tools/ecp-generator/example-ecp.yaml
+  - tools/ecp-generator/generate-ecp.js
+  - tools/ecp-generator/package.json
+
+update: []
+
+content:
+  - file: tools/ecp-generator/generate-ecp.js
+    instructions: >
+      Read a YAML file path from the CLI, validate required fields, and
+      render a Codex-ready prompt to stdout.
+  - file: tools/ecp-generator/README.md
+    instructions: >
+      Document installation, usage, expected YAML structure, and example
+      command output flow.
+
+rules:
+  - evidence-first
+  - no false precision
+  - no unrelated files

@@ -17,12 +17,35 @@ Future frameworks should also follow this lifecycle.
 
 - [Constitution](CONSTITUTION.md)
 - [Research Charter](RESEARCH_CHARTER.md)
+- [Foundation](foundation/README.md)
+- [Research](research/README.md)
+- [Applications](applications/README.md)
+- [Current State](CURRENT_STATE.md)
+- [FEMS-1](foundation/research-methodology/FEMS-1.md)
+- [Identity-Capability Model](research/reference/identity-capability-model.md)
+- [Reference Corpus](research/corpus/README.md)
+- [Reference Corpus Statistics](research/corpus/statistics.md)
+- [Batch Findings Template](research/corpus/batch-findings-template.md)
+- [Capability Vocabulary](research/reference/capabilities.md)
+- [Lifecycle Values](research/reference/lifecycle-values.md)
 - [Constitutional Reviews](docs/constitutional-reviews/constitutional-review-001.md)
 - [Evidence Ledger](docs/evidence-ledger.md)
 - [Deferred Insights](docs/deferred-insights.md)
 - [Artifact Maturity](docs/artifact-maturity.md)
+- [Knowledge Artifact Taxonomy](docs/knowledge-artifacts/README.md)
+- [Artifact Taxonomy](docs/knowledge-artifacts/artifact-taxonomy.md)
+- [Framework Definition](docs/knowledge-artifacts/framework-definition.md)
+- [Comparison Matrix](docs/knowledge-artifacts/comparison-matrix.md)
+- [KACS](docs/knowledge-artifacts/kacs.md)
+- [Operational Definitions](docs/knowledge-artifacts/operational-definitions.md)
+- [Artifact Decision Tree](docs/knowledge-artifacts/artifact-decision-tree.md)
+- [Blind Review Protocol](docs/knowledge-artifacts/blind-review-protocol.md)
+- [Multidimensional Classification](docs/knowledge-artifacts/multidimensional-classification.md)
+- [Framework Engineering Cube](docs/knowledge-artifacts/framework-engineering-cube.md)
 - [Evaluation Principles](docs/evaluation-principles.md)
 - [Framework Canonical Model Standard](docs/framework-canonical-model-standard.md)
+- [Framework Validation Standard](docs/framework-validation-standard.md)
+- [Release Readiness](docs/release-readiness.md)
 - [Adversarial Reference Cases](docs/adversarial-reference-cases/README.md)
 
 ---
@@ -128,6 +151,32 @@ For qualitative judgments, Framework Engineering prefers evidence profiles, cate
 ## Canonical Model Standard
 
 Framework Engineering requires frameworks to separate grammar, canonical information model, serializations, generated representations, and tools.
+
+---
+
+## Framework Validation Standard
+
+The Framework Validation Standard defines the release-readiness pipeline for frameworks governed by Framework Engineering.
+
+It evaluates:
+
+- concept support
+- architecture stability
+- adversarial robustness
+- comparative differentiation
+- independent reproducibility
+- usability
+- constitutional compliance
+
+---
+
+## Foundation, Research, and Applications
+
+Framework Engineering separates what is currently accepted from what is actively being tested.
+
+- Foundation: conservative accepted knowledge and governing principles.
+- Research: hypotheses, experiments, evidence, corpora, failed hypotheses.
+- Applications: frameworks and tools that consume or test Framework Engineering.
 
 ---
 

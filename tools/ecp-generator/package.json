@@ -1,0 +1,16 @@
+{
+  "name": "ecp-generator",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Lightweight YAML-to-prompt generator for Engineering Change Packages",
+  "main": "generate-ecp.js",
+  "bin": {
+    "generate-ecp": "./generate-ecp.js"
+  },
+  "scripts": {
+    "generate-example": "node generate-ecp.js example-ecp.yaml"
+  },
+  "dependencies": {
+    "yaml": "^2.5.1"
+  }
+}
