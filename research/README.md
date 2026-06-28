@@ -14,3 +14,9 @@ Research artifacts should clearly state status:
 - Foundation Candidate
 - Superseded
 - Failed
+
+Experiments:
+
+- [FE-011A LLM Blind Pilot](experiments/FE-011A-llm-blind-pilot/README.md)
+- [FE-012A Blind Primitive Reasoning Extraction](experiments/FE-012A-blind-primitive-extraction/README.md)
+- [FE-012B Primitive Grammar Synthesis Experiment](experiments/FE-012B-primitive-synthesis/README.md)

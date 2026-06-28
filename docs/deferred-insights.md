@@ -234,6 +234,19 @@ Accepted as research process.
 
 ### DI-FE-016
 
+Title: LLM Blind Pilot Before Human Study
+
+Observation:
+Before recruiting human participants, an LLM blind pilot can expose flaws in scenarios, prompts, rubrics, and redesign packets.
+
+Potential Implication:
+Human studies should be deferred until the experimental instrument survives low-cost pilot testing.
+
+Status:
+Accepted as research process.
+
+### DI-FE-017
+
 Title: Characterize First, Classify Second
 
 Observation:
@@ -244,3 +257,16 @@ Framework Engineering may need a standard characterization sheet, blind review p
 
 Status:
 Under development.
+
+### DI-FE-018
+
+Title: General Reasoning Grammar
+
+Observation:
+FE-011A redesign outputs repeatedly improved reasoning by separating observations, interpretations, uncertainty, verification, and reassessment.
+
+Potential Implication:
+Clarity and EDF may be reference implementations of a broader reasoning grammar rather than isolated frameworks.
+
+Status:
+Under Investigation.

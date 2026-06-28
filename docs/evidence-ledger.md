@@ -29,6 +29,9 @@ Purpose: Track claims about Framework Engineering and the current state of evide
 | Separating identity from capabilities improves knowledge artifact classification. | FE-008 Pilot Batch 001; FE-008 Pilot Batch 002 | Needs larger reviewer comparison | Medium | Provisionally Supported |
 | Identity and Capability are independent dimensions. | FE-008 Pilot | None so far | Medium | Provisionally Supported |
 | Artifact-first corpus structure improves traceability over CSV-only corpus structure. | Reference Corpus architecture discussion | Needs use during Batch 001 | Medium | Under Investigation |
+| Framework Engineering redesigns may improve task output quality compared with original frameworks. | FE-010 redesign exercise; FE-011A pilot kit | Not yet tested with blinded outputs | Low | Under Investigation |
+| A finite primitive reasoning vocabulary may underlie diverse knowledge artifacts. | FE-012 experiment design observation; FE-011A reasoning-layer pattern | Not yet tested through blind extraction | Low | Under Investigation |
+| A frozen primitive reasoning vocabulary may be expressive enough to synthesize coherent procedural frameworks for novel problems. | FE-012B internal synthesis run; FE-012A internal extraction run | Coordination-heavy cases created missing primitive pressure around synchronization, scheduling, and sequencing | Low | Provisionally Supported |
 
 ## Notes
 

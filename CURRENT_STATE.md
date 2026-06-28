@@ -54,6 +54,12 @@ Artifacts:
 - Primitive Cognitive Operations reduction
 - Predictive framework analysis
 - Artifact boundary classification
+- FE-011A LLM Blind Pilot
+  Purpose: Test whether Framework Engineering redesigns improve task outputs before human validation.
+- FE-012A Blind Primitive Reasoning Extraction
+  Purpose: Test whether primitive reasoning operations emerge independently from diverse knowledge artifacts.
+- FE-012B Primitive Grammar Synthesis Experiment
+  Purpose: Test whether the frozen primitive vocabulary can synthesize coherent procedural frameworks for novel problems.
 
 ## Open Questions
 

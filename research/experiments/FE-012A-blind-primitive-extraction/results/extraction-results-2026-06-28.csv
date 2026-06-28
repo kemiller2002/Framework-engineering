@@ -1,0 +1,113 @@
+artifact_id,blinded_artifact_id,extractor_id,date,raw_step,raw_verb_phrase,inferred_operation,normalized_primitive,new_primitive_candidate,confidence,rationale,ambiguity_notes
+SWOT,BA-001,EX-01,2026-06-28,Frame focal situation,define the situation boundary,problem framing,Bound,,high,The artifact assumes a focal situation before categorization,Boundary often implicit rather than explicit
+SWOT,BA-001,EX-01,2026-06-28,Identify relevant factors,identify internal and external factors,information acquisition,Observe,,high,Factors must be surfaced before sorting,Some versions blur identification and categorization
+SWOT,BA-001,EX-01,2026-06-28,Sort factors,sort factors into four quadrants,categorical organization,Classify,,high,Core step is categorical placement,None
+SWOT,BA-001,EX-01,2026-06-28,Judge significance,assess strategic importance,criteria judgment,Evaluate,,medium,Practical use usually requires judging salience,Evaluation is often informal
+Five Whys,BA-002,EX-01,2026-06-28,State problem,state the problem,problem framing,Bound,,high,The artifact begins by fixing the focal issue,None
+Five Whys,BA-002,EX-01,2026-06-28,Note incident facts,observe the event and symptoms,information acquisition,Observe,,medium,Most uses rely on a shared problem observation,Observation may be thin in practice
+Five Whys,BA-002,EX-01,2026-06-28,Ask why,explain why the problem occurred,causal reasoning,Explain,,high,The primary reasoning move is causal explanation,None
+Five Whys,BA-002,EX-01,2026-06-28,Continue why chain,explain the prior cause further,causal reasoning,Explain,,high,The artifact recursively extends explanation,None
+Five Whys,BA-002,EX-01,2026-06-28,Stop at plausible cause,confirm plausible root cause,claim testing,Verify,,medium,The method usually stops when a cause seems sufficient,Stopping rule is often subjective
+OODA Loop,BA-003,EX-01,2026-06-28,Observe signals,observe the environment,information acquisition,Observe,,high,Observation is explicit in the artifact,None
+OODA Loop,BA-003,EX-01,2026-06-28,Orient context,orient to the situation,context interpretation,Interpret,,high,Orient is meaning assignment under conditions,None
+OODA Loop,BA-003,EX-01,2026-06-28,Choose response,decide what to do,commitment,Decide,,high,Decision is explicit,None
+OODA Loop,BA-003,EX-01,2026-06-28,Take action,act on the decision,intervention,Act,,high,Action is explicit,None
+OODA Loop,BA-003,EX-01,2026-06-28,Loop on change,reorient when conditions shift,judgment reopening,Reassess,,high,The cycle assumes revision under new evidence,None
+Scientific Method,BA-004,EX-01,2026-06-28,Notice phenomenon,observe a phenomenon,information acquisition,Observe,,high,Observation is the usual starting point,None
+Scientific Method,BA-004,EX-01,2026-06-28,Propose explanation,form a hypothesis,option generation,Generate,,high,Hypothesis formation produces a candidate explanation,None
+Scientific Method,BA-004,EX-01,2026-06-28,Test hypothesis,test the hypothesis,claim testing,Verify,,high,Verification is central,None
+Scientific Method,BA-004,EX-01,2026-06-28,Read results,interpret results,meaning assignment,Interpret,,high,Results must be interpreted,None
+Scientific Method,BA-004,EX-01,2026-06-28,Revise hypothesis,revise the hypothesis,judgment reopening,Reassess,,high,The artifact explicitly allows update,None
+FMEA,BA-005,EX-01,2026-06-28,Define scope,define the system or process boundary,problem framing,Bound,,high,FMEA requires a bounded system,None
+FMEA,BA-005,EX-01,2026-06-28,Identify failure modes,identify possible failures,option generation,Generate,,high,Potential failures are enumerated as candidates,Could also be treated as Observe when failure list is preexisting
+FMEA,BA-005,EX-01,2026-06-28,Analyze effects and causes,explain effects and causes,causal reasoning,Explain,,high,The artifact links failures to causes/effects,None
+FMEA,BA-005,EX-01,2026-06-28,Assess risk,assess severity occurrence and detection,criteria judgment,Evaluate,,high,Risk scoring is evaluative,None
+FMEA,BA-005,EX-01,2026-06-28,Rank response needs,prioritize failure modes,ordering by importance,,Prioritize,medium,Ranking is not identical to generic evaluation,Could be forced into Evaluate but ordering function seems distinct
+FMEA,BA-005,EX-01,2026-06-28,Implement controls,implement corrective actions,intervention,Act,,high,Response changes the system,None
+Design Thinking,BA-006,EX-01,2026-06-28,Empathize,observe users and context,information acquisition,Observe,,high,Empathy phase acquires information,None
+Design Thinking,BA-006,EX-01,2026-06-28,Define problem,define the problem framing,problem framing,Bound,,high,Problem definition is explicit,None
+Design Thinking,BA-006,EX-01,2026-06-28,Ideate,generate ideas,option generation,Generate,,high,Ideation is explicit,None
+Design Thinking,BA-006,EX-01,2026-06-28,Prototype,build a prototype,intervention,Act,,medium,Prototype changes an artifact to probe a solution,Prototype can also be seen as Verify support
+Design Thinking,BA-006,EX-01,2026-06-28,Test,test with users,claim testing,Verify,,high,Testing checks whether a candidate solution holds,None
+Design Thinking,BA-006,EX-01,2026-06-28,Iterate,revise the solution,judgment reopening,Reassess,,high,Iteration reopens prior judgments,None
+Scrum,BA-007,EX-01,2026-06-28,Set sprint aim,define a sprint goal,problem framing,Bound,,medium,Sprint goal bounds the work,Boundary is time-boxed and partial
+Scrum,BA-007,EX-01,2026-06-28,Order backlog,prioritize backlog items,ordering by importance,,Prioritize,medium,Ordering backlog feels distinct from generic evaluation,Could also be Evaluate plus Decide
+Scrum,BA-007,EX-01,2026-06-28,Select sprint work,select work for the sprint,commitment,Decide,,high,Selection commits to a bounded set,None
+Scrum,BA-007,EX-01,2026-06-28,Build increment,implement the work,intervention,Act,,high,Execution changes the product,None
+Scrum,BA-007,EX-01,2026-06-28,Inspect and adapt,review outcomes and adapt,lesson extraction,Reflect,,medium,Retrospective logic is reflective,Review can bleed into Verify
+Scrum,BA-007,EX-01,2026-06-28,Adjust next cycle,update backlog or process,judgment reopening,Reassess,,medium,Artifact includes iterative adjustment,None
+Bloom's Taxonomy,BA-008,EX-01,2026-06-28,Group learning objectives,categorize learning tasks,categorical organization,Classify,,high,The artifact is mainly a hierarchy of categories,None
+Bloom's Taxonomy,BA-008,EX-01,2026-06-28,Distinguish levels,judge increasing cognitive complexity,criteria judgment,Evaluate,,medium,Levels imply comparative difficulty,Could be Compare but explicit comparison is weak
+Bloom's Taxonomy,BA-008,EX-01,2026-06-28,Choose target level,select desired level,commitment,Decide,,low,This use is common but not inherent to the artifact,Artifact is more representational than procedural
+Cynefin,BA-009,EX-01,2026-06-28,Observe context,observe the situation,information acquisition,Observe,,high,Entry point is sensing the context,None
+Cynefin,BA-009,EX-01,2026-06-28,Place domain,classify the context,categorical organization,Classify,,high,Domain placement is central,None
+Cynefin,BA-009,EX-01,2026-06-28,Read implications,interpret domain implications,meaning assignment,Interpret,,high,Each domain changes what the situation means,None
+Cynefin,BA-009,EX-01,2026-06-28,Choose response,decide how to respond,commitment,Decide,,high,Response pattern follows classification,None
+Cynefin,BA-009,EX-01,2026-06-28,Adapt if domain shifts,reassess as context changes,judgment reopening,Reassess,,medium,Reclassification is part of practical use,Iteration is less explicit than in OODA
+Business Model Canvas,BA-010,EX-01,2026-06-28,Set venture frame,define venture boundary,problem framing,Bound,,medium,Using the canvas assumes a focal organization,Boundary often implicit
+Business Model Canvas,BA-010,EX-01,2026-06-28,Map components,map the major model components,categorical organization,Classify,,high,The artifact organizes elements into fixed fields,None
+Business Model Canvas,BA-010,EX-01,2026-06-28,Propose model choices,generate hypotheses about the model,option generation,Generate,,medium,Many uses treat boxes as design hypotheses,Artifact can also be static description
+Business Model Canvas,BA-010,EX-01,2026-06-28,Check fit,assess coherence and viability,criteria judgment,Evaluate,,medium,Practitioners usually evaluate fit across elements,Evaluation is not always formalized
+Business Model Canvas,BA-010,EX-01,2026-06-28,Share the model,communicate the model,transmission,Communicate,,medium,Canvas is often a communication surface,Communication may be secondary to representation
+Medical differential diagnosis,BA-011,EX-01,2026-06-28,Collect findings,observe symptoms signs and tests,information acquisition,Observe,,high,Diagnosis begins with observed findings,None
+Medical differential diagnosis,BA-011,EX-01,2026-06-28,Frame case,define the presenting problem,problem framing,Bound,,medium,Case framing bounds the search,None
+Medical differential diagnosis,BA-011,EX-01,2026-06-28,Propose explanations,generate candidate diagnoses,option generation,Generate,,high,The differential is a candidate set,None
+Medical differential diagnosis,BA-011,EX-01,2026-06-28,Relate findings,explain findings with candidates,causal reasoning,Explain,,high,Reasoning links findings to causes,None
+Medical differential diagnosis,BA-011,EX-01,2026-06-28,Rank likelihood,assess relative likelihoods,criteria judgment,Evaluate,,high,Likelihood judgment is evaluative,Could include Compare but Evaluate is sufficient
+Medical differential diagnosis,BA-011,EX-01,2026-06-28,Choose next step,select test or treatment path,commitment,Decide,,high,Decision follows differential,None
+Medical differential diagnosis,BA-011,EX-01,2026-06-28,Confirm or refute,test leading hypotheses,claim testing,Verify,,high,Testing is central,None
+Medical differential diagnosis,BA-011,EX-01,2026-06-28,Update differential,reopen diagnosis under new evidence,judgment reopening,Reassess,,high,Differential diagnosis is iterative,None
+Incident Command System,BA-012,EX-01,2026-06-28,Set incident objectives,define incident objectives,problem framing,Bound,,high,Incident objectives bound action,None
+Incident Command System,BA-012,EX-01,2026-06-28,Assess situation,observe incident status,information acquisition,Observe,,high,Operational assessment acquires information,None
+Incident Command System,BA-012,EX-01,2026-06-28,Assign structure,classify roles and resources,organizational structuring,Classify,,medium,ICS organizes roles and assets,Could also be Act because structure is imposed
+Incident Command System,BA-012,EX-01,2026-06-28,Transmit plan,communicate command structure and objectives,transmission,Communicate,,high,Communication is explicit,None
+Incident Command System,BA-012,EX-01,2026-06-28,Select tactics,decide tactics,commitment,Decide,,medium,Tactics selection is central but distributed,Some versions place tactics outside ICS itself
+Incident Command System,BA-012,EX-01,2026-06-28,Direct operations,execute the response,intervention,Act,,high,The system organizes action,None
+Incident Command System,BA-012,EX-01,2026-06-28,Adjust plan,update structure or objectives,judgment reopening,Reassess,,medium,Incidents evolve,None
+PDCA,BA-013,EX-01,2026-06-28,Define improvement target,define objective,problem framing,Bound,,high,Planning starts with bounded objective,None
+PDCA,BA-013,EX-01,2026-06-28,Plan change,generate a change plan,option generation,Generate,,high,Plan step develops a candidate intervention,None
+PDCA,BA-013,EX-01,2026-06-28,Do change,implement the change,intervention,Act,,high,Execution is explicit,None
+PDCA,BA-013,EX-01,2026-06-28,Check results,check the outcome,claim testing,Verify,,high,Check step tests outcomes,None
+PDCA,BA-013,EX-01,2026-06-28,Study learning,review lessons,lesson extraction,Reflect,,medium,PDCA often includes learning from results,Some renderings fold learning into Check
+PDCA,BA-013,EX-01,2026-06-28,Adjust standard,reopen and adjust the process,judgment reopening,Reassess,,medium,Act on learning in next cycle,None
+Root Cause Analysis,BA-014,EX-01,2026-06-28,Frame incident,define the problem,problem framing,Bound,,high,Problem definition anchors the analysis,None
+Root Cause Analysis,BA-014,EX-01,2026-06-28,Gather evidence,collect observations and facts,information acquisition,Observe,,high,RCA depends on collected evidence,None
+Root Cause Analysis,BA-014,EX-01,2026-06-28,Identify causal chain,explain causal links,causal reasoning,Explain,,high,Causal explanation is central,None
+Root Cause Analysis,BA-014,EX-01,2026-06-28,Test candidate cause,confirm likely cause,claim testing,Verify,,medium,Good RCA tests causal sufficiency,Many real RCAs stop too early
+Root Cause Analysis,BA-014,EX-01,2026-06-28,Choose correction,decide corrective action,commitment,Decide,,medium,Corrective action follows causal view,Decision may be outside strict analysis
+Root Cause Analysis,BA-014,EX-01,2026-06-28,Implement and review,act and review effects,intervention,Act,,medium,RCA often closes with action,Review step could also be Reflect
+Decision Matrix,BA-015,EX-01,2026-06-28,Define decision,define decision and criteria,problem framing,Bound,,high,The matrix starts with a framed choice,None
+Decision Matrix,BA-015,EX-01,2026-06-28,List options,generate options,option generation,Generate,,high,Alternatives are enumerated,None
+Decision Matrix,BA-015,EX-01,2026-06-28,Contrast options,compare options against criteria,relative contrast,,Compare,high,The reasoning move is side by side comparison,Could be forced into Evaluate but comparative structure seems distinct
+Decision Matrix,BA-015,EX-01,2026-06-28,Judge fit,assess weighted fit,criteria judgment,Evaluate,,high,Scores or weights judge fit,None
+Decision Matrix,BA-015,EX-01,2026-06-28,Select option,choose preferred option,commitment,Decide,,high,Decision is explicit,None
+Decision Matrix,BA-015,EX-01,2026-06-28,Explain choice,communicate rationale,transmission,Communicate,,medium,Chosen option usually must be explained,Communication may be optional
+Theory of Change,BA-016,EX-01,2026-06-28,Set outcome,define desired long term outcome,problem framing,Bound,,high,The artifact begins with a target state,None
+Theory of Change,BA-016,EX-01,2026-06-28,Identify preconditions,explain causal pathway,causal reasoning,Explain,,high,Links between steps are explanatory,None
+Theory of Change,BA-016,EX-01,2026-06-28,Map pathway,organize intermediate outcomes,categorical organization,Classify,,medium,The pathway is structured into stages,Could also be Interpret
+Theory of Change,BA-016,EX-01,2026-06-28,State assumptions,interpret what must hold,meaning assignment,Interpret,,medium,Assumptions assign meaning to uncertain links,Could also be Explain
+Theory of Change,BA-016,EX-01,2026-06-28,Choose indicators,define what to test,claim testing,Verify,,medium,Indicators operationalize later verification,This is preparatory rather than actual testing
+Theory of Change,BA-016,EX-01,2026-06-28,Share model,communicate the pathway,transmission,Communicate,,medium,Theory of change is often communicative,None
+After Action Review,BA-017,EX-01,2026-06-28,Describe event,observe what happened versus what was expected,information acquisition,Observe,,high,The review starts with event description,None
+After Action Review,BA-017,EX-01,2026-06-28,Explain differences,explain why differences occurred,causal reasoning,Explain,,high,Reasoning centers on why outcomes differed,None
+After Action Review,BA-017,EX-01,2026-06-28,Extract lessons,identify lessons learned,lesson extraction,Reflect,,high,Reflection is explicit,None
+After Action Review,BA-017,EX-01,2026-06-28,Choose changes,decide what to change,commitment,Decide,,medium,Practical reviews select adjustments,Decision may be deferred
+After Action Review,BA-017,EX-01,2026-06-28,Share lessons,communicate findings,transmission,Communicate,,medium,Lessons are usually shared,None
+STRIDE,BA-018,EX-01,2026-06-28,Define system,define system elements and boundaries,problem framing,Bound,,high,Threat modeling begins with scope,None
+STRIDE,BA-018,EX-01,2026-06-28,Inspect components,review components and flows,information acquisition,Observe,,medium,Data flow review gathers relevant information,Observation and classification are intertwined
+STRIDE,BA-018,EX-01,2026-06-28,Sort threat types,classify threats by category,categorical organization,Classify,,high,The artifact is category based,None
+STRIDE,BA-018,EX-01,2026-06-28,Read applicability,interpret which threats fit where,meaning assignment,Interpret,,medium,Analyst must connect category to component,None
+STRIDE,BA-018,EX-01,2026-06-28,Judge severity,assess impact or likelihood,criteria judgment,Evaluate,,medium,Risk view is often layered on top,None
+STRIDE,BA-018,EX-01,2026-06-28,Select mitigation,choose mitigations,commitment,Decide,,medium,Mitigation choice often follows threat view,Action may be outside the core mnemonic
+Kolb Learning Cycle,BA-019,EX-01,2026-06-28,Have experience,act in the world,intervention,Act,,medium,Concrete experience often comes through doing,Experience can also be passive
+Kolb Learning Cycle,BA-019,EX-01,2026-06-28,Notice experience,observe the experience,information acquisition,Observe,,medium,Observation follows experience,None
+Kolb Learning Cycle,BA-019,EX-01,2026-06-28,Reflect,review the experience,lesson extraction,Reflect,,high,Reflection is explicit,None
+Kolb Learning Cycle,BA-019,EX-01,2026-06-28,Form concept,interpret and abstract the lesson,meaning assignment,Interpret,,medium,Abstract conceptualization assigns meaning,Could be Generate for new concept creation
+Kolb Learning Cycle,BA-019,EX-01,2026-06-28,Experiment again,reassess through new experimentation,judgment reopening,Reassess,,medium,Active experimentation reopens prior understanding,Also contains Act
+Hoshin Kanri,BA-020,EX-01,2026-06-28,Set breakthrough objectives,define strategic objectives,problem framing,Bound,,high,The method starts with long range aims,None
+Hoshin Kanri,BA-020,EX-01,2026-06-28,Develop initiatives,generate annual priorities and means,option generation,Generate,,medium,Priorities and means are produced,None
+Hoshin Kanri,BA-020,EX-01,2026-06-28,Rank strategic work,prioritize initiatives,ordering by importance,,Prioritize,medium,The artifact depends on ordering limited effort,Could be Evaluate plus Decide
+Hoshin Kanri,BA-020,EX-01,2026-06-28,Align through catchball,communicate and refine commitments,transmission,Communicate,,medium,Catchball is communicative alignment,None
+Hoshin Kanri,BA-020,EX-01,2026-06-28,Deploy work,execute initiatives,intervention,Act,,high,Deployment changes the organization,None
+Hoshin Kanri,BA-020,EX-01,2026-06-28,Review progress,check progress against goals,claim testing,Verify,,medium,Review tests performance,None
+Hoshin Kanri,BA-020,EX-01,2026-06-28,Adjust strategy,revisit objectives and means,judgment reopening,Reassess,,medium,The method is iterative,None
