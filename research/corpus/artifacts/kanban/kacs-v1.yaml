@@ -1,0 +1,60 @@
+artifact:
+  id: kanban
+  name: Kanban
+  common_aliases:
+    []
+  domain: "workflow management"
+  lifecycle: established
+
+review:
+  analyst: codex_initial
+  date: 2026-06-27
+  measurement_standard: FEMS-1
+  status: draft
+  reviewer: ''
+  review_notes: ''
+
+identity:
+  value: process
+  evidence:
+    - "Dominant purpose appears to be process rather than an adjacent artifact type."
+    - "Common usage in workflow management emphasizes flow control via visible work states."
+  alternatives_considered:
+    - methodology
+    - framework
+  confidence: medium
+  notes: "Flow control via visible work states."
+
+capabilities:
+  values:
+    - Execution
+    - Monitoring
+    - Optimization
+    - Coordination
+  evidence:
+    - "Capabilities reflect repeated functions the artifact can perform in practice."
+    - "Selections remain provisional and tied to current corpus evidence."
+  confidence: medium
+  notes: "Capability set is provisional and may narrow or expand after blind review."
+
+composition:
+  framework_grammar:
+    primary: flow_management
+    supporting:
+      []
+  primitive_composition:
+    - Observe
+    - Act
+    - Evaluate
+  evidence:
+    - "Composition recorded only where reasoning structure appears materially present."
+  confidence: medium
+  notes: "Leave composition sparse when reasoning structure is not primary."
+
+domain:
+  primary: "workflow management"
+  secondary:
+    - delivery
+    - operations
+
+classification_notes: "Draft FE-008 characterization created during initial corpus build."

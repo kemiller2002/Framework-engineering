@@ -1,0 +1,59 @@
+artifact:
+  id: polarity_management
+  name: "Polarity Management"
+  common_aliases:
+    []
+  domain: "organizational decision making"
+  lifecycle: established
+
+review:
+  analyst: codex_initial
+  date: 2026-06-27
+  measurement_standard: FEMS-1
+  status: draft
+  reviewer: ''
+  review_notes: ''
+
+identity:
+  value: framework
+  evidence:
+    - "Dominant purpose appears to be framework rather than an adjacent artifact type."
+    - "Common usage in organizational decision making emphasizes framework for managing persistent tensions."
+  alternatives_considered:
+    - methodology
+    - model
+  confidence: medium
+  notes: "Framework for managing persistent tensions."
+
+capabilities:
+  values:
+    - "Decision Support"
+    - Assessment
+    - Communication
+    - Alignment
+  evidence:
+    - "Capabilities reflect repeated functions the artifact can perform in practice."
+    - "Selections remain provisional and tied to current corpus evidence."
+  confidence: medium
+  notes: "Capability set is provisional and may narrow or expand after blind review."
+
+composition:
+  framework_grammar:
+    primary: polarity_mapping
+    supporting:
+      []
+  primitive_composition:
+    - Classify
+    - Evaluate
+    - Reflect
+  evidence:
+    - "Composition recorded only where reasoning structure appears materially present."
+  confidence: medium
+  notes: "Leave composition sparse when reasoning structure is not primary."
+
+domain:
+  primary: "organizational decision making"
+  secondary:
+    - change
+
+classification_notes: "Draft FE-008 characterization created during initial corpus build."

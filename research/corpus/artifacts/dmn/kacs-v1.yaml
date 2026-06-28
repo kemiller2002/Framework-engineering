@@ -1,0 +1,57 @@
+artifact:
+  id: dmn
+  name: DMN
+  common_aliases:
+    []
+  domain: "decision modeling"
+  lifecycle: established
+
+review:
+  analyst: codex_initial
+  date: 2026-06-27
+  measurement_standard: FEMS-1
+  status: draft
+  reviewer: ''
+  review_notes: ''
+
+identity:
+  value: notation
+  evidence:
+    - "Dominant purpose appears to be notation rather than an adjacent artifact type."
+    - "Common usage in decision modeling emphasizes decision notation."
+  alternatives_considered:
+    - model
+    - tool
+  confidence: medium
+  notes: "Decision notation."
+
+capabilities:
+  values:
+    - Representation
+    - Modeling
+    - "Decision Support"
+    - Documentation
+  evidence:
+    - "Capabilities reflect repeated functions the artifact can perform in practice."
+    - "Selections remain provisional and tied to current corpus evidence."
+  confidence: medium
+  notes: "Capability set is provisional and may narrow or expand after blind review."
+
+composition:
+  framework_grammar:
+    primary: ''
+    supporting:
+      []
+  primitive_composition:
+    []
+  evidence:
+    - "Reasoning structure is not primary in the current characterization."
+  confidence: unknown
+  notes: "Leave composition sparse when reasoning structure is not primary."
+
+domain:
+  primary: "decision modeling"
+  secondary:
+    - "process automation"
+
+classification_notes: "Draft FE-008 characterization created during initial corpus build."

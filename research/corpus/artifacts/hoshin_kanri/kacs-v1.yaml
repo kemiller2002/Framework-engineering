@@ -1,0 +1,61 @@
+artifact:
+  id: hoshin_kanri
+  name: "Hoshin Kanri"
+  common_aliases:
+    []
+  domain: "strategy deployment"
+  lifecycle: established
+
+review:
+  analyst: codex_initial
+  date: 2026-06-27
+  measurement_standard: FEMS-1
+  status: draft
+  reviewer: ''
+  review_notes: ''
+
+identity:
+  value: methodology
+  evidence:
+    - "Dominant purpose appears to be methodology rather than an adjacent artifact type."
+    - "Common usage in strategy deployment emphasizes methodology for cascading strategic intent."
+  alternatives_considered:
+    - framework
+    - process
+  confidence: medium
+  notes: "Methodology for cascading strategic intent."
+
+capabilities:
+  values:
+    - Planning
+    - Alignment
+    - Coordination
+    - Evaluation
+  evidence:
+    - "Capabilities reflect repeated functions the artifact can perform in practice."
+    - "Selections remain provisional and tied to current corpus evidence."
+  confidence: medium
+  notes: "Capability set is provisional and may narrow or expand after blind review."
+
+composition:
+  framework_grammar:
+    primary: planning_alignment
+    supporting:
+      []
+  primitive_composition:
+    - Generate
+    - Act
+    - Evaluate
+    - Reflect
+  evidence:
+    - "Composition recorded only where reasoning structure appears materially present."
+  confidence: medium
+  notes: "Leave composition sparse when reasoning structure is not primary."
+
+domain:
+  primary: "strategy deployment"
+  secondary:
+    - alignment
+    - operations
+
+classification_notes: "Draft FE-008 characterization created during initial corpus build."

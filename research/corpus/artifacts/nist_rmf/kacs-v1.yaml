@@ -1,0 +1,57 @@
+artifact:
+  id: nist_rmf
+  name: "NIST RMF"
+  common_aliases:
+    []
+  domain: "risk governance"
+  lifecycle: established
+
+review:
+  analyst: codex_initial
+  date: 2026-06-27
+  measurement_standard: FEMS-1
+  status: draft
+  reviewer: ''
+  review_notes: ''
+
+identity:
+  value: standard
+  evidence:
+    - "Dominant purpose appears to be standard rather than an adjacent artifact type."
+    - "Common usage in risk governance emphasizes risk management framework used as standard guidance."
+  alternatives_considered:
+    - framework
+    - reference_architecture
+  confidence: medium
+  notes: "Risk management framework used as standard guidance."
+
+capabilities:
+  values:
+    - Governance
+    - "Risk Analysis"
+    - Compliance
+    - Documentation
+  evidence:
+    - "Capabilities reflect repeated functions the artifact can perform in practice."
+    - "Selections remain provisional and tied to current corpus evidence."
+  confidence: medium
+  notes: "Capability set is provisional and may narrow or expand after blind review."
+
+composition:
+  framework_grammar:
+    primary: ''
+    supporting:
+      []
+  primitive_composition:
+    []
+  evidence:
+    - "Reasoning structure is not primary in the current characterization."
+  confidence: unknown
+  notes: "Leave composition sparse when reasoning structure is not primary."
+
+domain:
+  primary: "risk governance"
+  secondary:
+    - security
+
+classification_notes: "Draft FE-008 characterization created during initial corpus build."

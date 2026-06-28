@@ -1,11 +1,101 @@
 artifact_id,artifact_name,identity,capabilities,primary_domain,lifecycle,measurement_standard,status,current_kacs,notes
-swot,SWOT,,,,,FEMS-1,draft,,
-five_whys,Five Whys,,,,,FEMS-1,draft,,
-decision_matrix,Decision Matrix,,,,,FEMS-1,draft,,
-kepner_tregoe,Kepner-Tregoe,,,,,FEMS-1,draft,,
-ooda_loop,OODA Loop,,,,,FEMS-1,draft,,
-cynefin,Cynefin,,,,,FEMS-1,draft,,
-blue_ocean_strategy,Blue Ocean Strategy,,,,,FEMS-1,draft,,
-balanced_scorecard,Balanced Scorecard,,,,,FEMS-1,draft,,
-okrs,OKRs,,,,,FEMS-1,draft,,
-hoshin_kanri,Hoshin Kanri,,,,,FEMS-1,draft,,
+swot,SWOT,framework,Assessment; Reasoning; Communication; Classification,strategy,established,FEMS-1,draft,research/corpus/artifacts/swot/kacs-v1.yaml,Assessment-oriented current-state framing.
+five_whys,Five Whys,framework,Diagnosis; Reasoning; Evaluation,root cause analysis,established,FEMS-1,draft,research/corpus/artifacts/five_whys/kacs-v1.yaml,Simple causal questioning structure.
+decision_matrix,Decision Matrix,framework,Decision Support; Assessment; Reasoning; Documentation,decision making,established,FEMS-1,draft,research/corpus/artifacts/decision_matrix/kacs-v1.yaml,Criteria-to-option comparison structure.
+kepner_tregoe,Kepner-Tregoe,methodology,Decision Support; Diagnosis; Planning; Evaluation,decision analysis,established,FEMS-1,draft,research/corpus/artifacts/kepner_tregoe/kacs-v1.yaml,Methodology with strong reasoning components.
+ooda_loop,OODA Loop,framework,Decision Support; Execution; Monitoring; Prediction,strategy,established,FEMS-1,draft,research/corpus/artifacts/ooda_loop/kacs-v1.yaml,Adaptive reasoning cycle.
+cynefin,Cynefin,framework,Assessment; Decision Support; Classification; Reasoning,sensemaking,established,FEMS-1,draft,research/corpus/artifacts/cynefin/kacs-v1.yaml,Context typing before response selection.
+blue_ocean_strategy,Blue Ocean Strategy,framework,Innovation; Planning; Assessment; Decision Support,strategy,established,FEMS-1,draft,research/corpus/artifacts/blue_ocean_strategy/kacs-v1.yaml,Strategy framework centered on uncontested space.
+balanced_scorecard,Balanced Scorecard,framework,Measurement; Alignment; Assessment; Governance,strategy execution,established,FEMS-1,draft,research/corpus/artifacts/balanced_scorecard/kacs-v1.yaml,Links strategy dimensions to measures.
+okrs,OKRs,framework,Planning; Alignment; Measurement; Communication,planning,established,FEMS-1,draft,research/corpus/artifacts/okrs/kacs-v1.yaml,Objective-result alignment grammar.
+hoshin_kanri,Hoshin Kanri,methodology,Planning; Alignment; Coordination; Evaluation,strategy deployment,established,FEMS-1,draft,research/corpus/artifacts/hoshin_kanri/kacs-v1.yaml,Methodology for cascading strategic intent.
+scrum,Scrum,methodology,Execution; Coordination; Planning; Alignment,software delivery,established,FEMS-1,draft,research/corpus/artifacts/scrum/kacs-v1.yaml,Cadence-based delivery methodology.
+kanban,Kanban,process,Execution; Monitoring; Optimization; Coordination,workflow management,established,FEMS-1,draft,research/corpus/artifacts/kanban/kacs-v1.yaml,Flow control via visible work states.
+xp,XP,methodology,Execution; Learning; Coordination; Measurement,software delivery,established,FEMS-1,draft,research/corpus/artifacts/xp/kacs-v1.yaml,Practice-heavy software methodology.
+prince2,PRINCE2,methodology,Governance; Planning; Documentation; Coordination,project management,established,FEMS-1,draft,research/corpus/artifacts/prince2/kacs-v1.yaml,Structured project methodology.
+pmbok,PMBOK,standard,Documentation; Planning; Governance; Communication,project management,established,FEMS-1,draft,research/corpus/artifacts/pmbok/kacs-v1.yaml,Body of knowledge and standard-like reference.
+itil,ITIL,methodology,Execution; Governance; Documentation; Coordination,service management,established,FEMS-1,draft,research/corpus/artifacts/itil/kacs-v1.yaml,Service management methodology.
+six_sigma,Six Sigma,methodology,Measurement; Optimization; Evaluation; Execution,process improvement,established,FEMS-1,draft,research/corpus/artifacts/six_sigma/kacs-v1.yaml,Improvement methodology with strong measurement orientation.
+lean,Lean,methodology,Optimization; Execution; Assessment; Learning,operations improvement,established,FEMS-1,draft,research/corpus/artifacts/lean/kacs-v1.yaml,Improvement methodology focused on waste reduction.
+safe,SAFe,framework,Alignment; Planning; Governance; Coordination,scaled delivery,established,FEMS-1,draft,research/corpus/artifacts/safe/kacs-v1.yaml,Framework identity with delivery governance capabilities.
+devops,DevOps,methodology,Execution; Coordination; Monitoring; Alignment,software operations,established,FEMS-1,draft,research/corpus/artifacts/devops/kacs-v1.yaml,Methodology blending delivery and operations.
+osi_model,OSI Model,model,Modeling; Communication; Documentation,networking,established,FEMS-1,draft,research/corpus/artifacts/osi_model/kacs-v1.yaml,Layered conceptual model.
+tcp_ip_model,TCP/IP Model,model,Modeling; Communication; Documentation,networking,established,FEMS-1,draft,research/corpus/artifacts/tcp_ip_model/kacs-v1.yaml,Protocol stack reference model.
+swiss_cheese_model,Swiss Cheese Model,model,Risk Analysis; Diagnosis; Communication,risk analysis,established,FEMS-1,draft,research/corpus/artifacts/swiss_cheese_model/kacs-v1.yaml,Hazard and defense representation model.
+shannon_weaver_model,Shannon-Weaver Model,model,Modeling; Communication; Representation,communication,historical,FEMS-1,draft,research/corpus/artifacts/shannon_weaver_model/kacs-v1.yaml,Foundational communication model.
+kano_model,Kano Model,model,Assessment; Classification; Decision Support,product management,established,FEMS-1,draft,research/corpus/artifacts/kano_model/kacs-v1.yaml,Preference and feature-satisfaction model.
+gartner_hype_cycle,Gartner Hype Cycle,model,Prediction; Assessment; Communication,technology assessment,established,FEMS-1,draft,research/corpus/artifacts/gartner_hype_cycle/kacs-v1.yaml,Maturity and expectation model.
+diffusion_of_innovations,Diffusion of Innovations,model,Prediction; Classification; Communication,change adoption,established,FEMS-1,draft,research/corpus/artifacts/diffusion_of_innovations/kacs-v1.yaml,Adoption model.
+technology_readiness_levels,Technology Readiness Levels,maturity_model,Measurement; Assessment; Governance,technology maturity,established,FEMS-1,draft,research/corpus/artifacts/technology_readiness_levels/kacs-v1.yaml,Stage-based maturity model.
+spiral_model,Spiral Model,model,Planning; Risk Analysis; Execution,software development,historical,FEMS-1,draft,research/corpus/artifacts/spiral_model/kacs-v1.yaml,Lifecycle model with iterative risk loops.
+logic_model,Logic Model,model,Evaluation; Planning; Communication,program evaluation,established,FEMS-1,draft,research/corpus/artifacts/logic_model/kacs-v1.yaml,Inputs-to-outcomes model.
+iso_9001,ISO 9001,standard,Compliance; Governance; Documentation; Evaluation,quality management,established,FEMS-1,draft,research/corpus/artifacts/iso_9001/kacs-v1.yaml,Conformance standard.
+iso_27001,ISO 27001,standard,Compliance; Governance; Risk Analysis; Documentation,information security,established,FEMS-1,draft,research/corpus/artifacts/iso_27001/kacs-v1.yaml,Security management standard.
+iso_31000,ISO 31000,standard,Risk Analysis; Governance; Documentation; Assessment,risk management,established,FEMS-1,draft,research/corpus/artifacts/iso_31000/kacs-v1.yaml,Risk-management guidance standard.
+pci_dss,PCI DSS,standard,Compliance; Documentation; Governance; Measurement,payment security,established,FEMS-1,draft,research/corpus/artifacts/pci_dss/kacs-v1.yaml,Security compliance standard.
+nist_rmf,NIST RMF,standard,Governance; Risk Analysis; Compliance; Documentation,risk governance,established,FEMS-1,draft,research/corpus/artifacts/nist_rmf/kacs-v1.yaml,Risk management framework used as standard guidance.
+nist_csf,NIST CSF,standard,Assessment; Governance; Compliance; Communication,cybersecurity governance,established,FEMS-1,draft,research/corpus/artifacts/nist_csf/kacs-v1.yaml,Cybersecurity control framework used as standard guidance.
+soc2_tsc,SOC 2 Trust Services Criteria,standard,Compliance; Documentation; Evaluation; Governance,service assurance,established,FEMS-1,draft,research/corpus/artifacts/soc2_tsc/kacs-v1.yaml,Audit criteria set.
+owasp_asvs,OWASP ASVS,standard,Compliance; Assessment; Documentation; Measurement,application security,established,FEMS-1,draft,research/corpus/artifacts/owasp_asvs/kacs-v1.yaml,Verification standard.
+cis_controls,CIS Controls,standard,Compliance; Governance; Assessment; Optimization,cybersecurity,established,FEMS-1,draft,research/corpus/artifacts/cis_controls/kacs-v1.yaml,Control standard and prioritization guidance.
+cobit,COBIT,standard,Governance; Compliance; Documentation; Assessment,IT governance,established,FEMS-1,draft,research/corpus/artifacts/cobit/kacs-v1.yaml,IT governance framework treated here as standard/governance corpus case.
+uml,UML,notation,Representation; Modeling; Communication; Visualization,software modeling,established,FEMS-1,draft,research/corpus/artifacts/uml/kacs-v1.yaml,Modeling notation.
+bpmn,BPMN,notation,Representation; Modeling; Communication; Documentation,process modeling,established,FEMS-1,draft,research/corpus/artifacts/bpmn/kacs-v1.yaml,Process notation.
+sysml,SysML,notation,Representation; Modeling; Communication; Visualization,systems engineering,established,FEMS-1,draft,research/corpus/artifacts/sysml/kacs-v1.yaml,Systems modeling notation.
+archimate,ArchiMate,notation,Representation; Modeling; Communication; Documentation,enterprise architecture,established,FEMS-1,draft,research/corpus/artifacts/archimate/kacs-v1.yaml,Enterprise architecture modeling notation.
+mermaid,Mermaid,notation,Representation; Visualization; Communication; Documentation,documentation,emerging,FEMS-1,draft,research/corpus/artifacts/mermaid/kacs-v1.yaml,Text-to-diagram notation.
+er_diagram,ER Diagram,notation,Representation; Modeling; Communication,data modeling,established,FEMS-1,draft,research/corpus/artifacts/er_diagram/kacs-v1.yaml,Data-model notation.
+flowchart,Flowchart,notation,Representation; Visualization; Communication,process representation,established,FEMS-1,draft,research/corpus/artifacts/flowchart/kacs-v1.yaml,General process notation.
+dmn,DMN,notation,Representation; Modeling; Decision Support; Documentation,decision modeling,established,FEMS-1,draft,research/corpus/artifacts/dmn/kacs-v1.yaml,Decision notation.
+petri_nets,Petri Nets,notation,Representation; Modeling; Simulation; Evaluation,system modeling,established,FEMS-1,draft,research/corpus/artifacts/petri_nets/kacs-v1.yaml,Formal modeling notation.
+idef0,IDEF0,notation,Representation; Modeling; Documentation,functional modeling,historical,FEMS-1,draft,research/corpus/artifacts/idef0/kacs-v1.yaml,Function-modeling notation.
+mvc,MVC,pattern,Modeling; Communication; Extensibility,software architecture,established,FEMS-1,draft,research/corpus/artifacts/mvc/kacs-v1.yaml,Architectural pattern.
+observer_pattern,Observer Pattern,pattern,Coordination; Communication; Extensibility,software design,established,FEMS-1,draft,research/corpus/artifacts/observer_pattern/kacs-v1.yaml,Behavioral pattern.
+strategy_pattern,Strategy Pattern,pattern,Extensibility; Optimization; Execution,software design,established,FEMS-1,draft,research/corpus/artifacts/strategy_pattern/kacs-v1.yaml,Behavioral substitution pattern.
+repository_pattern,Repository Pattern,pattern,Extensibility; Documentation; Communication,software architecture,established,FEMS-1,draft,research/corpus/artifacts/repository_pattern/kacs-v1.yaml,Data access pattern.
+cqrs,CQRS,pattern,Optimization; Modeling; Extensibility,software architecture,established,FEMS-1,draft,research/corpus/artifacts/cqrs/kacs-v1.yaml,Architectural pattern for read/write separation.
+event_sourcing,Event Sourcing,pattern,Traceability; Modeling; Documentation,software architecture,emerging,FEMS-1,draft,research/corpus/artifacts/event_sourcing/kacs-v1.yaml,Persistence pattern based on event logs.
+circuit_breaker,Circuit Breaker,pattern,Monitoring; Risk Analysis; Optimization,distributed systems,established,FEMS-1,draft,research/corpus/artifacts/circuit_breaker/kacs-v1.yaml,Resilience pattern.
+saga_pattern,Saga Pattern,pattern,Coordination; Traceability; Execution,distributed systems,established,FEMS-1,draft,research/corpus/artifacts/saga_pattern/kacs-v1.yaml,Distributed transaction pattern.
+pipes_and_filters,Pipes and Filters,pattern,Execution; Extensibility; Modeling,software architecture,established,FEMS-1,draft,research/corpus/artifacts/pipes_and_filters/kacs-v1.yaml,Pipeline pattern.
+dependency_injection,Dependency Injection,pattern,Extensibility; Coordination; Documentation,software design,established,FEMS-1,draft,research/corpus/artifacts/dependency_injection/kacs-v1.yaml,Construction and substitution pattern.
+zachman_framework,Zachman Framework,taxonomy,Classification; Modeling; Documentation,enterprise architecture,established,FEMS-1,draft,research/corpus/artifacts/zachman_framework/kacs-v1.yaml,Classification matrix more than framework identity.
+mitre_attack,MITRE ATT&CK,knowledge_base,Classification; Modeling; Diagnosis; Communication,threat intelligence,established,FEMS-1,draft,research/corpus/artifacts/mitre_attack/kacs-v1.yaml,Knowledge base with ontology-like traits.
+snomed_ct,SNOMED CT,ontology,Classification; Representation; Documentation,clinical terminology,established,FEMS-1,draft,research/corpus/artifacts/snomed_ct/kacs-v1.yaml,Clinical ontology.
+icd_10,ICD-10,taxonomy,Classification; Documentation; Communication,medical classification,established,FEMS-1,draft,research/corpus/artifacts/icd_10/kacs-v1.yaml,Diagnostic classification taxonomy.
+linnaean_taxonomy,Linnaean Taxonomy,taxonomy,Classification; Documentation,biology,historical,FEMS-1,draft,research/corpus/artifacts/linnaean_taxonomy/kacs-v1.yaml,Foundational taxonomy.
+business_motivation_model,Business Motivation Model,ontology,Modeling; Communication; Alignment,enterprise planning,established,FEMS-1,draft,research/corpus/artifacts/business_motivation_model/kacs-v1.yaml,Semantic model for business intent.
+togaf,TOGAF,reference_architecture,Governance; Planning; Documentation; Modeling,enterprise architecture,established,FEMS-1,draft,research/corpus/artifacts/togaf/kacs-v1.yaml,Reference-architecture oriented body of guidance.
+posix,POSIX,standard,Compliance; Documentation; Communication,operating systems,established,FEMS-1,draft,research/corpus/artifacts/posix/kacs-v1.yaml,Interoperability standard.
+linux_filesystem_hierarchy,Linux Filesystem Hierarchy,standard,Documentation; Compliance; Classification,operating systems,established,FEMS-1,draft,research/corpus/artifacts/linux_filesystem_hierarchy/kacs-v1.yaml,Filesystem layout standard.
+aws_well_architected_framework,AWS Well-Architected Framework,framework,Assessment; Governance; Planning; Risk Analysis,cloud architecture,established,FEMS-1,draft,research/corpus/artifacts/aws_well_architected_framework/kacs-v1.yaml,Framework identity with domain-specific assessment lenses.
+stride,STRIDE,framework,Risk Analysis; Classification; Diagnosis,threat modeling,established,FEMS-1,draft,research/corpus/artifacts/stride/kacs-v1.yaml,Threat classification framework.
+dread,DREAD,framework,Risk Analysis; Assessment; Decision Support,risk scoring,historical,FEMS-1,draft,research/corpus/artifacts/dread/kacs-v1.yaml,Historical risk assessment framework.
+pasta,PASTA,methodology,Risk Analysis; Diagnosis; Planning; Assessment,threat modeling,established,FEMS-1,draft,research/corpus/artifacts/pasta/kacs-v1.yaml,Threat modeling methodology.
+linddun,LINDDUN,framework,Risk Analysis; Classification; Diagnosis,privacy threat modeling,established,FEMS-1,draft,research/corpus/artifacts/linddun/kacs-v1.yaml,Privacy threat taxonomy/framework.
+fair_risk,FAIR Risk,framework,Risk Analysis; Measurement; Decision Support,risk analysis,established,FEMS-1,draft,research/corpus/artifacts/fair_risk/kacs-v1.yaml,Risk analysis framework.
+zero_trust,Zero Trust,reference_architecture,Governance; Risk Analysis; Planning; Assessment,security architecture,emerging,FEMS-1,draft,research/corpus/artifacts/zero_trust/kacs-v1.yaml,Architectural stance and guidance model.
+fmea,FMEA,framework,Risk Analysis; Diagnosis; Assessment; Documentation,reliability engineering,established,FEMS-1,draft,research/corpus/artifacts/fmea/kacs-v1.yaml,Structured failure analysis framework.
+fault_tree_analysis,Fault Tree Analysis,methodology,Diagnosis; Risk Analysis; Modeling,reliability engineering,established,FEMS-1,draft,research/corpus/artifacts/fault_tree_analysis/kacs-v1.yaml,Methodology centered on causal decomposition.
+bow_tie_analysis,Bow-Tie Analysis,framework,Risk Analysis; Diagnosis; Communication,risk analysis,established,FEMS-1,draft,research/corpus/artifacts/bow_tie_analysis/kacs-v1.yaml,Barrier-centered risk framework.
+stamp,STAMP,framework,Diagnosis; Risk Analysis; Modeling; Evaluation,systems safety,established,FEMS-1,draft,research/corpus/artifacts/stamp/kacs-v1.yaml,Systems-theoretic accident model and framework.
+design_thinking,Design Thinking,methodology,Innovation; Assessment; Planning; Learning,design,established,FEMS-1,draft,research/corpus/artifacts/design_thinking/kacs-v1.yaml,Discovery methodology.
+double_diamond,Double Diamond,process,Planning; Innovation; Communication,design,established,FEMS-1,draft,research/corpus/artifacts/double_diamond/kacs-v1.yaml,Process model of divergence/convergence.
+lean_startup,Lean Startup,methodology,Prediction; Learning; Innovation; Measurement,product discovery,established,FEMS-1,draft,research/corpus/artifacts/lean_startup/kacs-v1.yaml,Experiment-driven methodology.
+jobs_to_be_done,Jobs To Be Done,framework,Assessment; Reasoning; Innovation; Communication,product strategy,established,FEMS-1,draft,research/corpus/artifacts/jobs_to_be_done/kacs-v1.yaml,Reasoning framework for customer progress.
+value_proposition_canvas,Value Proposition Canvas,framework,Assessment; Innovation; Communication; Alignment,product strategy,established,FEMS-1,draft,research/corpus/artifacts/value_proposition_canvas/kacs-v1.yaml,Fit-mapping framework.
+business_model_canvas,Business Model Canvas,framework,Modeling; Communication; Planning; Assessment,business modeling,established,FEMS-1,draft,research/corpus/artifacts/business_model_canvas/kacs-v1.yaml,Business structure framework.
+opportunity_solution_tree,Opportunity Solution Tree,framework,Planning; Innovation; Communication; Traceability,product discovery,emerging,FEMS-1,draft,research/corpus/artifacts/opportunity_solution_tree/kacs-v1.yaml,Opportunity-to-solution mapping framework.
+impact_mapping,Impact Mapping,framework,Planning; Alignment; Communication; Assessment,product planning,established,FEMS-1,draft,research/corpus/artifacts/impact_mapping/kacs-v1.yaml,Goal-to-impact planning framework.
+user_story_mapping,User Story Mapping,framework,Planning; Communication; Classification; Alignment,product planning,established,FEMS-1,draft,research/corpus/artifacts/user_story_mapping/kacs-v1.yaml,Narrative planning framework.
+design_sprint,Design Sprint,methodology,Innovation; Execution; Learning; Coordination,product discovery,established,FEMS-1,draft,research/corpus/artifacts/design_sprint/kacs-v1.yaml,Time-boxed discovery methodology.
+blooms_taxonomy,Bloom’s Taxonomy,taxonomy,Classification; Learning; Assessment,education,established,FEMS-1,draft,research/corpus/artifacts/blooms_taxonomy/kacs-v1.yaml,Learning objective taxonomy.
+kolb_learning_cycle,Kolb Learning Cycle,model,Learning; Communication; Evaluation,learning theory,established,FEMS-1,draft,research/corpus/artifacts/kolb_learning_cycle/kacs-v1.yaml,Experiential learning model.
+kirkpatrick_model,Kirkpatrick Model,model,Evaluation; Measurement; Learning,training evaluation,established,FEMS-1,draft,research/corpus/artifacts/kirkpatrick_model/kacs-v1.yaml,Training evaluation model.
+cipp_evaluation,CIPP Evaluation,framework,Evaluation; Assessment; Communication; Planning,program evaluation,established,FEMS-1,draft,research/corpus/artifacts/cipp_evaluation/kacs-v1.yaml,Evaluation framework.
+appreciative_inquiry,Appreciative Inquiry,methodology,Learning; Communication; Innovation; Coordination,organizational change,established,FEMS-1,draft,research/corpus/artifacts/appreciative_inquiry/kacs-v1.yaml,Change methodology based on strengths inquiry.
+theory_u,Theory U,methodology,Learning; Innovation; Coordination; Communication,leadership change,emerging,FEMS-1,draft,research/corpus/artifacts/theory_u/kacs-v1.yaml,Change methodology.
+polarity_management,Polarity Management,framework,Decision Support; Assessment; Communication; Alignment,organizational decision making,established,FEMS-1,draft,research/corpus/artifacts/polarity_management/kacs-v1.yaml,Framework for managing persistent tensions.
+mckinsey_7s,McKinsey 7S,framework,Assessment; Alignment; Communication; Modeling,organization design,established,FEMS-1,draft,research/corpus/artifacts/mckinsey_7s/kacs-v1.yaml,Alignment framework.
+adkar,ADKAR,model,Planning; Learning; Assessment,change management,established,FEMS-1,draft,research/corpus/artifacts/adkar/kacs-v1.yaml,Stage-based change model.
+kotter_8_step_change_model,Kotter 8-Step Change Model,methodology,Planning; Execution; Coordination; Communication,change management,established,FEMS-1,draft,research/corpus/artifacts/kotter_8_step_change_model/kacs-v1.yaml,Sequential change methodology.

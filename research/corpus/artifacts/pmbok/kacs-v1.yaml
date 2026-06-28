@@ -1,0 +1,57 @@
+artifact:
+  id: pmbok
+  name: PMBOK
+  common_aliases:
+    []
+  domain: "project management"
+  lifecycle: established
+
+review:
+  analyst: codex_initial
+  date: 2026-06-27
+  measurement_standard: FEMS-1
+  status: draft
+  reviewer: ''
+  review_notes: ''
+
+identity:
+  value: standard
+  evidence:
+    - "Dominant purpose appears to be standard rather than an adjacent artifact type."
+    - "Common usage in project management emphasizes body of knowledge and standard-like reference."
+  alternatives_considered:
+    - framework
+    - reference_architecture
+  confidence: medium
+  notes: "Body of knowledge and standard-like reference."
+
+capabilities:
+  values:
+    - Documentation
+    - Planning
+    - Governance
+    - Communication
+  evidence:
+    - "Capabilities reflect repeated functions the artifact can perform in practice."
+    - "Selections remain provisional and tied to current corpus evidence."
+  confidence: medium
+  notes: "Capability set is provisional and may narrow or expand after blind review."
+
+composition:
+  framework_grammar:
+    primary: ''
+    supporting:
+      []
+  primitive_composition:
+    []
+  evidence:
+    - "Reasoning structure is not primary in the current characterization."
+  confidence: unknown
+  notes: "Leave composition sparse when reasoning structure is not primary."
+
+domain:
+  primary: "project management"
+  secondary:
+    - governance
+
+classification_notes: "Draft FE-008 characterization created during initial corpus build."

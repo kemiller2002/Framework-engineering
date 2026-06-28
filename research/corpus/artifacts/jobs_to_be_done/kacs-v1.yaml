@@ -1,0 +1,59 @@
+artifact:
+  id: jobs_to_be_done
+  name: "Jobs To Be Done"
+  common_aliases:
+    []
+  domain: "product strategy"
+  lifecycle: established
+
+review:
+  analyst: codex_initial
+  date: 2026-06-27
+  measurement_standard: FEMS-1
+  status: draft
+  reviewer: ''
+  review_notes: ''
+
+identity:
+  value: framework
+  evidence:
+    - "Dominant purpose appears to be framework rather than an adjacent artifact type."
+    - "Common usage in product strategy emphasizes reasoning framework for customer progress."
+  alternatives_considered:
+    - methodology
+    - model
+  confidence: medium
+  notes: "Reasoning framework for customer progress."
+
+capabilities:
+  values:
+    - Assessment
+    - Reasoning
+    - Innovation
+    - Communication
+  evidence:
+    - "Capabilities reflect repeated functions the artifact can perform in practice."
+    - "Selections remain provisional and tied to current corpus evidence."
+  confidence: medium
+  notes: "Capability set is provisional and may narrow or expand after blind review."
+
+composition:
+  framework_grammar:
+    primary: user_progress_analysis
+    supporting:
+      []
+  primitive_composition:
+    - Observe
+    - Explain
+    - Generate
+  evidence:
+    - "Composition recorded only where reasoning structure appears materially present."
+  confidence: medium
+  notes: "Leave composition sparse when reasoning structure is not primary."
+
+domain:
+  primary: "product strategy"
+  secondary:
+    - research
+
+classification_notes: "Draft FE-008 characterization created during initial corpus build."

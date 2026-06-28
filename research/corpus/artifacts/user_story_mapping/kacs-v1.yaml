@@ -1,0 +1,58 @@
+artifact:
+  id: user_story_mapping
+  name: "User Story Mapping"
+  common_aliases:
+    []
+  domain: "product planning"
+  lifecycle: established
+
+review:
+  analyst: codex_initial
+  date: 2026-06-27
+  measurement_standard: FEMS-1
+  status: draft
+  reviewer: ''
+  review_notes: ''
+
+identity:
+  value: framework
+  evidence:
+    - "Dominant purpose appears to be framework rather than an adjacent artifact type."
+    - "Common usage in product planning emphasizes narrative planning framework."
+  alternatives_considered:
+    - methodology
+    - model
+  confidence: medium
+  notes: "Narrative planning framework."
+
+capabilities:
+  values:
+    - Planning
+    - Communication
+    - Classification
+    - Alignment
+  evidence:
+    - "Capabilities reflect repeated functions the artifact can perform in practice."
+    - "Selections remain provisional and tied to current corpus evidence."
+  confidence: medium
+  notes: "Capability set is provisional and may narrow or expand after blind review."
+
+composition:
+  framework_grammar:
+    primary: story_structure
+    supporting:
+      []
+  primitive_composition:
+    - Classify
+    - Generate
+  evidence:
+    - "Composition recorded only where reasoning structure appears materially present."
+  confidence: medium
+  notes: "Leave composition sparse when reasoning structure is not primary."
+
+domain:
+  primary: "product planning"
+  secondary:
+    - delivery
+
+classification_notes: "Draft FE-008 characterization created during initial corpus build."

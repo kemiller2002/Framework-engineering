@@ -1,0 +1,59 @@
+artifact:
+  id: six_sigma
+  name: "Six Sigma"
+  common_aliases:
+    []
+  domain: "process improvement"
+  lifecycle: established
+
+review:
+  analyst: codex_initial
+  date: 2026-06-27
+  measurement_standard: FEMS-1
+  status: draft
+  reviewer: ''
+  review_notes: ''
+
+identity:
+  value: methodology
+  evidence:
+    - "Dominant purpose appears to be methodology rather than an adjacent artifact type."
+    - "Common usage in process improvement emphasizes improvement methodology with strong measurement orientation."
+  alternatives_considered:
+    - framework
+    - process
+  confidence: medium
+  notes: "Improvement methodology with strong measurement orientation."
+
+capabilities:
+  values:
+    - Measurement
+    - Optimization
+    - Evaluation
+    - Execution
+  evidence:
+    - "Capabilities reflect repeated functions the artifact can perform in practice."
+    - "Selections remain provisional and tied to current corpus evidence."
+  confidence: medium
+  notes: "Capability set is provisional and may narrow or expand after blind review."
+
+composition:
+  framework_grammar:
+    primary: improvement_cycle
+    supporting:
+      []
+  primitive_composition:
+    - Evaluate
+    - Act
+    - Reflect
+  evidence:
+    - "Composition recorded only where reasoning structure appears materially present."
+  confidence: medium
+  notes: "Leave composition sparse when reasoning structure is not primary."
+
+domain:
+  primary: "process improvement"
+  secondary:
+    - quality
+
+classification_notes: "Draft FE-008 characterization created during initial corpus build."
