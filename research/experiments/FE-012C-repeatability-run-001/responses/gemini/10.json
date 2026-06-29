@@ -1,0 +1,21 @@
+{
+  "packet_id": "FE-012C-P010",
+  "blinded_artifact_id": "BA-010",
+  "recognized_artifact": "SWOT Analysis",
+  "primitive_sequence": ["Bound", "Observe", "Classify", "Evaluate"],
+  "transitions": [
+    { "from": "Bound", "to": "Observe" },
+    { "from": "Observe", "to": "Classify" },
+    { "from": "Classify", "to": "Evaluate" }
+  ],
+  "entry_primitive": "Bound",
+  "exit_primitive": "Evaluate",
+  "loops": [],
+  "branches": [],
+  "dominant_primitive": "Classify",
+  "candidate_missing_primitives": [],
+  "ambiguities": [
+    "Defining the focal situation is mapped to Bound as it establishes the operational boundaries of the analysis, though it could also be interpreted as a framing action."
+  ],
+  "notes": "The procedural content maps cleanly to a standard SWOT analysis workflow: bounding the scope, scanning the internal/external environment, categorizing into standard quadrants, and prioritizing the critical items."
+}

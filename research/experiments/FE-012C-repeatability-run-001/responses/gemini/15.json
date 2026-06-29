@@ -1,0 +1,23 @@
+{
+  "packet_id": "FE-012C-P015",
+  "blinded_artifact_id": "BA-015",
+  "recognized_artifact": "OODA Loop (Observe, Orient, Decide, Act)",
+  "primitive_sequence": ["Observe", "Interpret", "Decide", "Act", "Reassess"],
+  "transitions": [
+    { "from": "Observe", "to": "Interpret" },
+    { "from": "Interpret", "to": "Decide" },
+    { "from": "Decide", "to": "Act" },
+    { "from": "Act", "to": "Reassess" },
+    { "from": "Reassess", "to": "Observe" }
+  ],
+  "entry_primitive": "Observe",
+  "exit_primitive": "Act",
+  "loops": [["Observe", "Interpret", "Decide", "Act", "Reassess"]],
+  "branches": [],
+  "dominant_primitive": "Observe",
+  "candidate_missing_primitives": [],
+  "ambiguities": [
+    "The text maps 'Orient' to 'Interpret', which is a reasonable primitive substitution, and introduces 'Reassess' to explicitly capture the loop trigger ('Reassess and repeat when conditions change')."
+  ],
+  "notes": "The procedural content describes John Boyd's OODA Loop, with 'Orient' replaced by 'Interpret', and an explicit 'Reassess' step at the end to close the feedback loop back to the initial 'Observe' primitive."
+}

@@ -1,0 +1,58 @@
+{
+  "packet_id": "FE-012C-P004",
+  "blinded_artifact_id": "BA-004",
+  "recognized_artifact": "Incident Command System (ICS) — standard emergency/disaster management organizational framework",
+  "primitive_sequence": [
+    "Bound",
+    "Observe",
+    "Allocate",
+    "Communicate",
+    "Decide",
+    "Coordinate",
+    "Reassess"
+  ],
+  "transitions": [
+    { "from": "Bound", "to": "Observe" },
+    { "from": "Observe", "to": "Allocate" },
+    { "from": "Allocate", "to": "Communicate" },
+    { "from": "Communicate", "to": "Decide" },
+    { "from": "Decide", "to": "Coordinate" },
+    { "from": "Coordinate", "to": "Reassess" },
+    { "from": "Reassess", "to": "Observe" },
+    { "from": "Reassess", "to": "Allocate" }
+  ],
+  "entry_primitive": "Bound",
+  "exit_primitive": "Reassess",
+  "loops": [
+    {
+      "cycle": [
+        "Reassess",
+        "Observe",
+        "Allocate",
+        "Communicate",
+        "Decide",
+        "Coordinate",
+        "Reassess"
+      ],
+      "trigger": "changing conditions"
+    }
+  ],
+  "branches": [
+    {
+      "from": "Reassess",
+      "options": ["Observe", "Allocate"],
+      "condition": "whether the change is situational (re-observe) or structural (re-allocate roles)"
+    }
+  ],
+  "dominant_primitive": "Coordinate",
+  "candidate_missing_primitives": [
+    "Delegate (assigning authority downward through a chain, distinct from Allocate which assigns resources/tasks)",
+    "Escalate (passing a decision or resource request upward through a hierarchy)"
+  ],
+  "ambiguities": [
+    "'Organize roles and responsibilities' maps loosely to 'Allocate' but could also be read as a one-time 'Bound' activity rather than a recurring step",
+    "'Tactical priorities' decision could map to either 'Prioritize' or 'Decide'; chose 'Decide' since the text frames it as a single determination rather than an ongoing ranking process",
+    "No explicit 'Verify' or 'Evaluate' primitive appears in the source text, despite being central to most real ICS implementations (e.g., after-action review) — likely a gap in this particular blinded excerpt rather than the framework itself"
+  ],
+  "notes": "Sequence reflects a single command cycle (plan → communicate → decide → coordinate → reassess) with reassessment feeding back into either re-observation of conditions or re-allocation of roles, depending on whether the trigger is environmental or organizational. The lack of an explicit Verify/Evaluate primitive in the source text is notable since real ICS practice includes structured evaluation (e.g., after-action review)."
+}

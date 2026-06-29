@@ -1,0 +1,71 @@
+{
+  "packet_id": "FE-012C-P012",
+  "blinded_artifact_id": "BA-012",
+  "recognized_artifact": "Hoshin Kanri (Policy Deployment / Strategy Deployment)",
+  "primitive_sequence": [
+    "Bound",
+    "Generate",
+    "Prioritize",
+    "Communicate",
+    "Decide",
+    "Act",
+    "Verify",
+    "Reassess"
+  ],
+  "transitions": [
+    { "from": "Bound", "to": "Generate" },
+    { "from": "Generate", "to": "Prioritize" },
+    { "from": "Prioritize", "to": "Communicate" },
+    { "from": "Communicate", "to": "Decide" },
+    { "from": "Decide", "to": "Act" },
+    { "from": "Act", "to": "Verify" },
+    { "from": "Verify", "to": "Reassess" },
+    { "from": "Reassess", "to": "Bound" },
+    { "from": "Reassess", "to": "Prioritize" }
+  ],
+  "entry_primitive": "Bound",
+  "exit_primitive": "Reassess",
+  "loops": [
+    [
+      "Reassess",
+      "Bound",
+      "Generate",
+      "Prioritize",
+      "Communicate",
+      "Decide",
+      "Act",
+      "Verify",
+      "Reassess"
+    ],
+    [
+      "Reassess",
+      "Prioritize",
+      "Communicate",
+      "Decide",
+      "Act",
+      "Verify",
+      "Reassess"
+    ]
+  ],
+  "branches": [
+    {
+      "at": "Reassess",
+      "condition": "Major direction change required",
+      "branch_to": "Bound"
+    },
+    {
+      "at": "Reassess",
+      "condition": "Objectives intact, execution adjustment only",
+      "branch_to": "Prioritize"
+    }
+  ],
+  "dominant_primitive": "Coordinate",
+  "candidate_missing_primitives": [
+    "Align — the catchball negotiation process (bidirectional commitment-building across organizational levels) is not fully captured by Communicate alone; a dedicated alignment or negotiate primitive would better represent this interaction"
+  ],
+  "ambiguities": [
+    "Communicate covers both top-down deployment and bottom-up catchball feedback, which are structurally distinct interactions; a single primitive may underspecify this bidirectionality",
+    "Verify conflates progress tracking (periodic review cadence) with breakthrough review (president's diagnosis); these may warrant separate primitive instances or a sub-classification"
+  ],
+  "notes": "The artifact is a well-known Japanese strategic planning and execution methodology. The core loop is annual with nested quarterly and monthly review sub-cycles. The Reassess node is the methodologically critical junction — it can return flow to Bound (full objective reset) or Prioritize (tactical recalibration), making it both an exit and a branch point. Coordinate is marked dominant because cross-level alignment is the defining structural feature distinguishing this artifact from simpler planning frameworks."
+}

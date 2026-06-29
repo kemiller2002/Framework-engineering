@@ -1,0 +1,39 @@
+{
+  "packet_id": "FE-012C-P011",
+  "blinded_artifact_id": "BA-011",
+  "recognized_artifact": "Scrum sprint cycle",
+  "primitive_sequence": [
+    "Bound",
+    "Prioritize",
+    "Decide",
+    "Act",
+    "Reflect",
+    "Reassess"
+  ],
+  "transitions": [
+    { "from": "Bound", "to": "Prioritize" },
+    { "from": "Prioritize", "to": "Decide" },
+    { "from": "Decide", "to": "Act" },
+    { "from": "Act", "to": "Reflect" },
+    { "from": "Reflect", "to": "Reassess" },
+    { "from": "Reassess", "to": "Bound" }
+  ],
+  "entry_primitive": "Bound",
+  "exit_primitive": "Reassess",
+  "loops": [
+    {
+      "loop": ["Bound", "Prioritize", "Decide", "Act", "Reflect", "Reassess"],
+      "description": "Sprint cycle repeats each iteration"
+    }
+  ],
+  "branches": [],
+  "dominant_primitive": "Act",
+  "candidate_missing_primitives": [
+    "Verify — usable increment implies acceptance/done criteria check, not represented in allowed list by a delivery-validation primitive"
+  ],
+  "ambiguities": [
+    "'Usable increment' implies a verification or acceptance step between Act and Reflect; no primitive cleanly maps to this without Verify",
+    "Reassess feeds back to Bound but the artifact does not specify whether backlog re-ordering (Prioritize) occurs before or after re-bounding the next cycle goal"
+  ],
+  "notes": "The procedural content maps cleanly to a single repeating loop with no branches. The cycle is goal-bound, backlog-ordered, commitment-decided, execution-acted, outcome-reflected, and next-cycle-reassessed. Verify is absent from allowed_primitives but is implied by 'usable increment'."
+}

@@ -21,6 +21,13 @@ Experiments:
 - [FE-012A Blind Primitive Reasoning Extraction](experiments/FE-012A-blind-primitive-extraction/README.md)
 - [FE-012B Primitive Grammar Synthesis Experiment](experiments/FE-012B-primitive-synthesis/README.md)
 - [FE-012C Manual Multi-Model Replication Kit](experiments/FE-012C-manual-replication/README.md)
+- [FE-012C Repeatability Run 001](experiments/FE-012C-repeatability-run-001/README.md)
+
+FE-012C reporting:
+- Generated reports are written under `research/experiments/FE-012C-manual-replication/reports/`.
+
+FE-012C repeatability:
+- Repeatability runs reuse the locked packet instrument and must not expose prior outputs to participating models.
 
 Validation:
 

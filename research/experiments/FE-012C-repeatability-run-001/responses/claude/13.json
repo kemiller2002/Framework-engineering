@@ -1,0 +1,41 @@
+{
+  "packet_id": "FE-012C-P013",
+  "blinded_artifact_id": "BA-013",
+  "recognized_artifact": "Business Model Canvas (Osterwalder)",
+  "primitive_sequence": [
+    "Bound",
+    "Classify",
+    "Observe",
+    "Interpret",
+    "Generate",
+    "Evaluate",
+    "Communicate"
+  ],
+  "transitions": [
+    { "from": "Bound", "to": "Classify" },
+    { "from": "Classify", "to": "Observe" },
+    { "from": "Observe", "to": "Interpret" },
+    { "from": "Interpret", "to": "Generate" },
+    { "from": "Generate", "to": "Evaluate" },
+    { "from": "Evaluate", "to": "Communicate" },
+    { "from": "Evaluate", "to": "Interpret" }
+  ],
+  "entry_primitive": "Bound",
+  "exit_primitive": "Communicate",
+  "loops": [["Evaluate", "Interpret", "Generate", "Evaluate"]],
+  "branches": [
+    {
+      "at": "Evaluate",
+      "condition": "coherence or viability insufficient",
+      "true_path": ["Interpret", "Generate", "Evaluate"],
+      "false_path": ["Communicate"]
+    }
+  ],
+  "dominant_primitive": "Classify",
+  "candidate_missing_primitives": ["Prioritize"],
+  "ambiguities": [
+    "Blinded content does not specify whether segment-level Prioritize is implied within Classify or is a distinct step when multiple customer segments or revenue streams are present.",
+    "Evaluate is described as assessing both coherence and viability simultaneously; it is unclear whether these warrant separate primitive instances or sub-steps."
+  ],
+  "notes": "The artifact maps cleanly onto a structured classification-first workflow. Bound scopes the focal organization or offering. Classify partitions the nine canonical blocks (or equivalent value-creation/delivery/sustainability elements). Observe surfaces current-state data per block. Interpret derives relational meaning across blocks. Generate produces hypotheses about fit and model logic. Evaluate tests coherence (internal consistency) and viability (external sustainability). A remediation loop returns to Interpret if evaluation fails. Communicate externalizes the resulting model. Prioritize is a candidate missing primitive for ranking competing hypotheses or segment importance but is not explicitly required by the blinded procedural content."
+}

@@ -1,0 +1,20 @@
+{
+  "packet_id": "FE-012C-P005",
+  "blinded_artifact_id": "BA-005",
+  "recognized_artifact": "Bloom's Taxonomy / Revised Bloom's Taxonomy",
+  "primitive_sequence": ["Classify", "Compare", "Evaluate"],
+  "transitions": [
+    { "from": "Classify", "to": "Compare" },
+    { "from": "Compare", "to": "Evaluate" }
+  ],
+  "entry_primitive": "Classify",
+  "exit_primitive": "Evaluate",
+  "loops": [],
+  "branches": [],
+  "dominant_primitive": "Classify",
+  "candidate_missing_primitives": [],
+  "ambiguities": [
+    "The phrase 'select or evaluate' suggests a branch or dual exit path, but the core procedural flow moves from organizing/distinguishing to final selection/evaluation."
+  ],
+  "notes": "The procedural content maps closely to organizing information ('Classify'), distinguishing between forms ('Compare'), and selecting/evaluating challenge levels ('Evaluate')."
+}

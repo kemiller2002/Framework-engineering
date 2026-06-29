@@ -1,0 +1,90 @@
+{
+  "packet_id": "FE-012C-P006",
+  "blinded_artifact_id": "BA-006",
+  "recognized_artifact": "Differential diagnosis clinical reasoning process",
+  "primitive_sequence": [
+    "Observe",
+    "Bound",
+    "Generate",
+    "Explain",
+    "Evaluate",
+    "Prioritize",
+    "Decide",
+    "Act",
+    "Verify",
+    "Reassess"
+  ],
+  "transitions": [
+    { "from": "Observe", "to": "Bound" },
+    { "from": "Bound", "to": "Generate" },
+    { "from": "Generate", "to": "Explain" },
+    { "from": "Explain", "to": "Evaluate" },
+    { "from": "Evaluate", "to": "Prioritize" },
+    { "from": "Prioritize", "to": "Decide" },
+    { "from": "Decide", "to": "Act" },
+    { "from": "Act", "to": "Verify" },
+    { "from": "Verify", "to": "Reassess" },
+    { "from": "Reassess", "to": "Observe" },
+    { "from": "Reassess", "to": "Decide" }
+  ],
+  "entry_primitive": "Observe",
+  "exit_primitive": "Verify",
+  "loops": [
+    {
+      "description": "Conflict loop: new findings trigger re-entry into observation and reassessment",
+      "path": ["Verify", "Reassess", "Observe", "Bound", "Generate"]
+    },
+    {
+      "description": "Tight reassessment loop: conflicting findings redirect decision without full regeneration",
+      "path": ["Reassess", "Decide", "Act", "Verify"]
+    }
+  ],
+  "branches": [
+    {
+      "at": "Verify",
+      "condition": "Findings confirm leading explanation",
+      "target": "exit"
+    },
+    {
+      "at": "Verify",
+      "condition": "New findings conflict with current view",
+      "target": "Reassess"
+    },
+    {
+      "at": "Reassess",
+      "condition": "Conflict is minor; working hypothesis survives",
+      "target": "Decide"
+    },
+    {
+      "at": "Reassess",
+      "condition": "Conflict invalidates hypothesis; requires new candidates",
+      "target": "Observe"
+    }
+  ],
+  "dominant_primitive": "Evaluate",
+  "candidate_missing_primitives": [
+    {
+      "label": "Rank",
+      "rationale": "Prioritize covers ordering but the step of assigning relative plausibility weights to candidates feels distinct from selection; a dedicated Rank primitive might better capture likelihood ordering before Decide"
+    },
+    {
+      "label": "Integrate",
+      "rationale": "Combining multiple findings into a unified clinical picture is implied between Observe and Bound but has no explicit primitive"
+    }
+  ],
+  "ambiguities": [
+    {
+      "location": "Evaluate → Prioritize boundary",
+      "description": "It is unclear whether plausibility evaluation and priority ordering are a single cognitive step or two; the blinded content treats them as separable but the allowed primitives do not clarify their relationship"
+    },
+    {
+      "location": "Decide → Act",
+      "description": "Decide selects the next test or action; Act executes it. In some readings these collapse into one step, particularly when the decision is immediate and automatic"
+    },
+    {
+      "location": "Reassess re-entry point",
+      "description": "The blinded content specifies reassessment triggers when new findings conflict, but does not specify whether reassessment always re-enters at Observe or may short-circuit to Generate or Decide depending on conflict severity"
+    }
+  ],
+  "notes": "The artifact is a canonical iterative clinical reasoning loop. The process is fundamentally recursive: each verification either terminates the loop or re-seeds it. Evaluate is dominant because plausibility judgment governs both the candidate set and the branching logic throughout. No primitives from the allowed list appear spurious; Allocate, Coordinate, Schedule, Sequence, Synchronize, Communicate, Classify, Compare, and Reflect have no clear anchoring in the blinded procedural content as written, though Classify is a plausible near-miss for the implicit step of categorizing candidate explanations by type before Explain."
+}

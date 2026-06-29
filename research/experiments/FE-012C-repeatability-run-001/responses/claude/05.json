@@ -1,0 +1,24 @@
+{
+  "packet_id": "FE-012C-P005",
+  "blinded_artifact_id": "BA-005",
+  "recognized_artifact": "Bloom's Taxonomy (cognitive domain) - hierarchy of educational/cognitive task levels",
+  "primitive_sequence": ["Observe", "Classify", "Compare", "Evaluate"],
+  "transitions": [
+    { "from": "Observe", "to": "Classify" },
+    { "from": "Classify", "to": "Compare" },
+    { "from": "Compare", "to": "Evaluate" }
+  ],
+  "entry_primitive": "Observe",
+  "exit_primitive": "Evaluate",
+  "loops": [],
+  "branches": [],
+  "dominant_primitive": "Classify",
+  "candidate_missing_primitives": ["Rank", "Stratify"],
+  "ambiguities": [
+    "The source content describes a taxonomy/classification structure, not a procedural workflow. Forcing it into primitive_sequence/transitions/loops/branches fields imposes sequential and control-flow semantics that don't map cleanly onto a static hierarchy of categories.",
+    "'Classify' covers placing activities into levels, but the source also implies a ranked/ordinal relationship between levels (simpler vs. more complex), which the allowed primitive list doesn't distinguish from simple nominal Classify.",
+    "'Select or evaluate the intended level of challenge' could map to either Decide (selecting a level) or Evaluate (judging appropriateness) - both are plausible, so Evaluate was chosen as the closer fit but this is a judgment call.",
+    "No primitive in the allowed list captures 'ordering levels by complexity' (a ranking/stratifying operation) as distinct from categorical Classify - flagged in candidate_missing_primitives."
+  ],
+  "notes": "This artifact is fundamentally a classification taxonomy (categories ordered by complexity), not a control-flow process. The JSON schema's procedural fields (transitions, loops, branches) are largely inapplicable and left empty/minimal to avoid inventing false structure."
+}

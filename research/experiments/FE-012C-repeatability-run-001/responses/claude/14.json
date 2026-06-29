@@ -1,0 +1,47 @@
+{
+  "packet_id": "FE-012C-P014",
+  "blinded_artifact_id": "BA-014",
+  "recognized_artifact": "Zachman Framework for Enterprise Architecture",
+  "primitive_sequence": [
+    "Bound",
+    "Classify",
+    "Observe",
+    "Interpret",
+    "Reflect",
+    "Communicate"
+  ],
+  "transitions": [
+    { "from": "Bound", "to": "Classify" },
+    { "from": "Classify", "to": "Observe" },
+    { "from": "Observe", "to": "Interpret" },
+    { "from": "Interpret", "to": "Reflect" },
+    { "from": "Reflect", "to": "Communicate" }
+  ],
+  "entry_primitive": "Bound",
+  "exit_primitive": "Communicate",
+  "loops": [
+    {
+      "description": "Iterative gap detection: Observe descriptive elements present or missing across cells, then Reflect and re-Classify until grid is fully accounted for",
+      "primitives": ["Observe", "Classify", "Reflect"]
+    }
+  ],
+  "branches": [
+    {
+      "condition": "Descriptive element recognized as present",
+      "path": ["Classify", "Interpret"]
+    },
+    {
+      "condition": "Descriptive element absent from a cell",
+      "path": ["Observe", "Reflect", "Communicate"]
+    }
+  ],
+  "dominant_primitive": "Classify",
+  "candidate_missing_primitives": ["Evaluate", "Compare", "Prioritize"],
+  "ambiguities": [
+    "The procedural content implies gap analysis (presence/absence detection) but does not specify whether missing cells should be Evaluated for criticality or merely recorded — Evaluate and Prioritize may be latent.",
+    "Compare is plausibly needed when reconciling descriptions across viewpoints (rows) or question types (columns), but the blinded content does not make cross-cell comparison explicit.",
+    "Coordinate and Sequence could apply if the framework is used to drive implementation ordering across perspectives, but that use is not stated in the blinded procedural content.",
+    "Decide is ambiguous: the framework is descriptive, not prescriptive, so whether a Decide primitive occurs depends on how the output is consumed."
+  ],
+  "notes": "The artifact is a two-dimensional classification matrix (perspectives × interrogatives). The dominant cognitive operation is Classify — assigning descriptive artifacts to cells. Bound scopes the system of interest before classification begins. Observe surfaces what descriptions exist. Interpret draws meaning from populated cells. Reflect handles gap recognition. Communicate is the terminal act of reporting the structured result. The framework is ontological rather than procedural, which suppresses action-oriented primitives (Act, Decide, Schedule, Allocate) and makes Evaluate/Compare latent rather than explicit."
+}

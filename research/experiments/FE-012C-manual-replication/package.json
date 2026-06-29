@@ -1,0 +1,6 @@
+{
+  "type": "module",
+  "scripts": {
+    "report": "node scripts/generate-report.js"
+  }
+}

@@ -1,0 +1,34 @@
+{
+  "packet_id": "FE-012C-P002",
+  "blinded_artifact_id": "BA-002",
+  "recognized_artifact": "Decision matrix / weighted decision matrix (e.g. Pugh matrix style tool)",
+  "primitive_sequence": [
+    "Bound",
+    "Classify",
+    "Observe",
+    "Compare",
+    "Evaluate",
+    "Decide",
+    "Communicate"
+  ],
+  "transitions": [
+    { "from": "Bound", "to": "Classify" },
+    { "from": "Classify", "to": "Observe" },
+    { "from": "Observe", "to": "Compare" },
+    { "from": "Compare", "to": "Evaluate" },
+    { "from": "Evaluate", "to": "Decide" },
+    { "from": "Decide", "to": "Communicate" }
+  ],
+  "entry_primitive": "Bound",
+  "exit_primitive": "Communicate",
+  "loops": [],
+  "branches": [],
+  "dominant_primitive": "Compare",
+  "candidate_missing_primitives": [],
+  "ambiguities": [
+    "'List the available alternatives' could map to Observe (alternatives pre-exist and are surfaced) or Generate (alternatives are produced as part of the exercise); text leans Observe but does not rule out Generate.",
+    "No explicit Reassess or iteration step appears in the procedural text, despite this being common in practice when criteria are re-weighted after initial comparison; this may reflect a genuine scope limitation of the artifact rather than a missing primitive in the vocabulary.",
+    "'Criteria that matter' (selecting relevant dimensions) and 'Bound' (scoping the choice itself) are described together in one sentence; whether the artifact treats these as one step or two is not specified in the blinded text."
+  ],
+  "notes": "Procedural content describes a single linear pass with no feedback loop or revisitation of earlier primitives. Compare and Evaluate are sequential but distinct: Compare is alternative-vs-criteria mapping, Evaluate is the relative-fit judgment built on that mapping. Decide and Communicate are treated as separate primitives since recording rationale is an externalization step distinct from the choice act."
+}

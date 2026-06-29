@@ -1,0 +1,22 @@
+{
+  "packet_id": "FE-012C-P008",
+  "blinded_artifact_id": "BA-008",
+  "recognized_artifact": "Fault Tree Analysis (FTA)",
+  "primitive_sequence": ["Bound", "Generate", "Explain", "Classify", "Verify"],
+  "transitions": [
+    { "from": "Bound", "to": "Generate" },
+    { "from": "Generate", "to": "Explain" },
+    { "from": "Explain", "to": "Classify" },
+    { "from": "Classify", "to": "Verify" }
+  ],
+  "entry_primitive": "Bound",
+  "exit_primitive": "Verify",
+  "loops": [],
+  "branches": [],
+  "dominant_primitive": "Generate",
+  "candidate_missing_primitives": [],
+  "ambiguities": [
+    "The step 'Define an undesired top event' is mapped to 'Bound' as it establishes the scope/boundary of the analysis, though 'Decide' or 'Communicate' could be minor alternatives depending on context."
+  ],
+  "notes": "The procedural content describes the core steps of constructing a Fault Tree Analysis: scoping the top event, brainstorming causes, determining logic gates, and verifying against observations."
+}

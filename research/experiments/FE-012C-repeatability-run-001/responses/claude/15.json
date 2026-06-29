@@ -1,0 +1,28 @@
+{
+  "packet_id": "FE-012C-P015",
+  "blinded_artifact_id": "BA-015",
+  "recognized_artifact": "OODA Loop (Observe, Orient, Decide, Act) — Boyd's decision cycle",
+  "primitive_sequence": ["Observe", "Interpret", "Decide", "Act", "Reassess"],
+  "transitions": [
+    { "from": "Observe", "to": "Interpret" },
+    { "from": "Interpret", "to": "Decide" },
+    { "from": "Decide", "to": "Act" },
+    { "from": "Act", "to": "Reassess" },
+    { "from": "Reassess", "to": "Observe" }
+  ],
+  "entry_primitive": "Observe",
+  "exit_primitive": "Reassess",
+  "loops": [
+    {
+      "cycle": ["Observe", "Interpret", "Decide", "Act", "Reassess"],
+      "condition": "conditions change"
+    }
+  ],
+  "branches": [],
+  "dominant_primitive": "Reassess",
+  "candidate_missing_primitives": ["Orient"],
+  "ambiguities": [
+    "'Orient' in the source artifact is a distinct primitive combining contextual framing, mental model update, and cultural/experiential filtering — not fully captured by 'Interpret' alone. 'Interpret' covers semantic parsing but may underrepresent the synthesis and implicit model-updating role of Orient."
+  ],
+  "notes": "The blinded content maps cleanly to a 5-primitive cycle. The recognized artifact (OODA) has a canonical 4-phase structure; 'Orient' is the most structurally significant phase and has no direct primitive equivalent. 'Interpret' is the closest available primitive but is narrower in scope. 'Reassess' serves as the loop-back trigger, filling the role of continuous adaptation."
+}

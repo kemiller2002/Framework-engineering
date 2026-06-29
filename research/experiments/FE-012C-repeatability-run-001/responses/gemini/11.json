@@ -1,0 +1,28 @@
+{
+  "packet_id": "FE-012C-P011",
+  "blinded_artifact_id": "BA-011",
+  "recognized_artifact": "Scrum/Agile Sprint Cycle",
+  "primitive_sequence": [
+    "Bound",
+    "Prioritize",
+    "Decide",
+    "Act",
+    "Reflect",
+    "Reassess"
+  ],
+  "transitions": [
+    { "from": "Bound", "to": "Prioritize" },
+    { "from": "Prioritize", "to": "Decide" },
+    { "from": "Decide", "to": "Act" },
+    { "from": "Act", "to": "Reflect" },
+    { "from": "Reflect", "to": "Reassess" }
+  ],
+  "entry_primitive": "Bound",
+  "exit_primitive": "Reassess",
+  "loops": [],
+  "branches": [],
+  "dominant_primitive": "Act",
+  "candidate_missing_primitives": [],
+  "ambiguities": [],
+  "notes": "The phrase 'Define a short-cycle goal' maps to 'Bound' as it sets the boundaries and scope for the cycle. 'Prioritize available work' maps directly to 'Prioritize'. 'Decide what will be taken into the current cycle' maps directly to 'Decide'. 'Act to produce a usable increment' maps to 'Act'. 'Reflect on the cycle outcome and reassess the next cycle' maps directly to 'Reflect' and 'Reassess'."
+}

@@ -1,0 +1,59 @@
+{
+  "packet_id": "FE-012C-P008",
+  "blinded_artifact_id": "BA-008",
+  "recognized_artifact": "Fault Tree Analysis (FTA)",
+  "primitive_sequence": ["Define", "Generate", "Explain", "Classify", "Verify"],
+  "transitions": [
+    { "from": "Define", "to": "Generate" },
+    { "from": "Generate", "to": "Explain" },
+    { "from": "Explain", "to": "Classify" },
+    { "from": "Classify", "to": "Verify" }
+  ],
+  "entry_primitive": "Generate",
+  "exit_primitive": "Verify",
+  "loops": [
+    {
+      "trigger": "Verify fails to account for observed failure conditions",
+      "returns_to": "Generate",
+      "note": "Additional contributing events may need to be generated if verification reveals gaps"
+    }
+  ],
+  "branches": [
+    {
+      "at": "Classify",
+      "condition": "Logical relationship type",
+      "options": ["AND gate", "OR gate", "Inhibit gate"],
+      "note": "Branch type determines how lower-level events combine to produce the parent event"
+    },
+    {
+      "at": "Verify",
+      "condition": "Structure completeness",
+      "options": ["Sufficient — exit", "Insufficient — loop back to Generate"]
+    }
+  ],
+  "dominant_primitive": "Classify",
+  "candidate_missing_primitives": [
+    {
+      "gap": "Assigning probability or frequency values to basic events",
+      "suggested_label": "Quantify",
+      "note": "FTA commonly includes quantitative analysis; no existing primitive covers numerical assignment"
+    },
+    {
+      "gap": "Identifying minimal cut sets from the tree structure",
+      "suggested_label": "Decompose",
+      "note": "Minimal cut set extraction is a structural reduction step distinct from Classify or Explain"
+    }
+  ],
+  "ambiguities": [
+    {
+      "location": "entry_primitive",
+      "issue": "'Define' is used in the procedural content ('Define an undesired top event') but is absent from the allowed_primitives list; mapped to nearest available primitive — none matched cleanly, so 'Generate' was selected as entry since top-event scoping can be treated as a constrained generation step",
+      "preferred_resolution": "Add 'Define' as a primitive or clarify whether 'Observe' covers scope-setting"
+    },
+    {
+      "location": "Explain",
+      "issue": "The step 'Explain how lower-level events combine' overlaps functionally with both 'Classify' (logical gates) and 'Interpret' (causal meaning); boundary between these two primitives is unclear in this context"
+    }
+  ],
+  "notes": "The blinded artifact is a standard fault tree analysis procedure. The dominant cognitive operation is Classify, because the logical gate assignments (AND/OR) are what give the tree its deductive structure. Verify closes the loop against observed failure conditions, making it the terminal quality gate. Two primitives appear missing from the allowed list for full FTA coverage: one for quantification and one for minimal cut set extraction."
+}

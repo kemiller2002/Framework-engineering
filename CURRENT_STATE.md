@@ -62,7 +62,9 @@ Artifacts:
 - FE-012B Primitive Grammar Synthesis Experiment
   Purpose: Test whether the frozen primitive vocabulary can synthesize coherent procedural frameworks for novel problems.
 - FE-012C Manual Multi-Model Replication Kit
-  Purpose: Support transparent manual multi-model replication of primitive grammar extraction without APIs or automation.
+  Purpose: Support transparent manual multi-model replication of primitive grammar extraction without APIs or automation, with reproducible reporting from stored response JSON.
+- FE-012C Repeatability Run 001
+  Purpose: Re-run the FE-012C packet instrument in fresh model conversations to test whether the same instrument produces similar results across time without modifying prior results.
 
 ## Open Questions
 
@@ -74,7 +76,7 @@ Artifacts:
 
 ## Next Milestone
 
-Run FE-008 Knowledge Artifact Boundary Study pilot.
+Execute FE-012C Repeatability Run 001 without exposing prior outputs to the participating models.
 
 ## Current Theory Status
 

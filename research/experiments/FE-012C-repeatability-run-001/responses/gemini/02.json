@@ -1,0 +1,33 @@
+{
+  "packet_id": "FE-012C-P002",
+  "blinded_artifact_id": "BA-002",
+  "recognized_artifact": "Rational Decision Making Process",
+  "primitive_sequence": [
+    "Bound",
+    "Classify",
+    "Generate",
+    "Compare",
+    "Evaluate",
+    "Decide",
+    "Act"
+  ],
+  "transitions": [
+    { "from": "Bound", "to": "Classify" },
+    { "from": "Classify", "to": "Generate" },
+    { "from": "Generate", "to": "Compare" },
+    { "from": "Compare", "to": "Evaluate" },
+    { "from": "Evaluate", "to": "Decide" },
+    { "from": "Decide", "to": "Act" }
+  ],
+  "entry_primitive": "Bound",
+  "exit_primitive": "Act",
+  "loops": [],
+  "branches": [],
+  "dominant_primitive": "Compare",
+  "candidate_missing_primitives": [],
+  "ambiguities": [
+    "The phrase 'Define a choice... and the criteria that matter' maps to bounding the problem space and classifying the criteria, though it could also be interpreted as a single compound step.",
+    "The instruction to 'record the rationale' maps to the 'Act' primitive as the physical execution of documentation, but it could alternatively be viewed as part of the 'Decide' primitive output phase."
+  ],
+  "notes": "The mapping corresponds to: Define choice/criteria (Bound, Classify); List alternatives (Generate); Compare alternatives (Compare); Evaluate relative fit (Evaluate); Choose preferred alternative (Decide); Record rationale (Act)."
+}

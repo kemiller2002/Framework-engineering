@@ -1,0 +1,30 @@
+{
+  "packet_id": "FE-012C-P013",
+  "blinded_artifact_id": "BA-013",
+  "recognized_artifact": "Business Model Canvas / Business Model Generation framework",
+  "primitive_sequence": [
+    "Bound",
+    "Classify",
+    "Generate",
+    "Evaluate",
+    "Communicate"
+  ],
+  "transitions": [
+    { "from": "Bound", "to": "Classify" },
+    { "from": "Classify", "to": "Generate" },
+    { "from": "Generate", "to": "Evaluate" },
+    { "from": "Evaluate", "to": "Communicate" }
+  ],
+  "entry_primitive": "Bound",
+  "exit_primitive": "Communicate",
+  "loops": [],
+  "branches": [],
+  "dominant_primitive": "Classify",
+  "candidate_missing_primitives": [],
+  "ambiguities": [
+    {
+      "description": "The phrase 'Define the focal organization or offering' maps most closely to establishing scope or boundaries, interpreted here as 'Bound', though it could alternatively imply an initial 'Observe' or 'Classify' step depending on context."
+    }
+  ],
+  "notes": "The primitive 'Bound' was applied to the initial definition phase to scope the focal entity before classification. All other steps directly map to the explicitly allowed primitives."
+}

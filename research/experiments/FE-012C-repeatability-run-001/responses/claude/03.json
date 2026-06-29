@@ -1,0 +1,59 @@
+{
+  "packet_id": "FE-012C-P003",
+  "blinded_artifact_id": "BA-003",
+  "recognized_artifact": "Cynefin framework (Snowden sense-making model)",
+  "primitive_sequence": [
+    "Observe",
+    "Classify",
+    "Interpret",
+    "Decide",
+    "Act",
+    "Reassess"
+  ],
+  "transitions": [
+    { "from": "Observe", "to": "Classify" },
+    { "from": "Classify", "to": "Interpret" },
+    { "from": "Interpret", "to": "Decide" },
+    { "from": "Decide", "to": "Act" },
+    { "from": "Act", "to": "Reassess" },
+    { "from": "Reassess", "to": "Observe" },
+    { "from": "Reassess", "to": "Classify" }
+  ],
+  "entry_primitive": "Observe",
+  "exit_primitive": "Reassess",
+  "loops": [
+    {
+      "description": "Reassess returns to Observe when condition shifts, restarting the full cycle",
+      "members": [
+        "Observe",
+        "Classify",
+        "Interpret",
+        "Decide",
+        "Act",
+        "Reassess"
+      ]
+    },
+    {
+      "description": "Reassess returns directly to Classify when only the placement is judged stale, not the underlying observation",
+      "members": ["Classify", "Interpret", "Decide", "Act", "Reassess"]
+    }
+  ],
+  "branches": [
+    {
+      "description": "Outcome of Reassess branches conditionally: if condition type shifts, loop to Observe; if initial placement no longer fits but situation is stable, loop to Classify; otherwise exit or continue downstream",
+      "condition": "condition shift vs. placement mismatch vs. neither"
+    }
+  ],
+  "dominant_primitive": "Classify",
+  "candidate_missing_primitives": [
+    "Monitor (continuous low-grade observation distinct from a discrete Observe step, implied by 'if the condition shifts')",
+    "Diagnose (the blinded text implies a more specific 'what changed' check than generic Reassess provides)"
+  ],
+  "ambiguities": [
+    "Whether 'Reassess' is itself a primitive action or a compound of Observe+Classify re-run",
+    "Whether 'Decide how to respond' implicitly includes an Act step, or Act is left implicit/out of scope of the blinded text",
+    "Whether condition-type placement is a one-time Classify or could involve iterative Compare/Evaluate against multiple candidate types before settling",
+    "No explicit Verify, Communicate, or Coordinate primitives appear in the blinded text, though the real-world artifact this resembles often involves multi-party coordination"
+  ],
+  "notes": "Blinded text describes a four-stage core loop (Observe→Classify→Interpret→Decide)"
+}

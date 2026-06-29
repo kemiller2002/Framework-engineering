@@ -66,3 +66,15 @@ Do not mix GPT, Claude, and Gemini outputs in the same folder.
 ## Notes
 
 This kit supports model-based replication, not human validation.
+
+## Report Generation
+
+Run report generation from this experiment directory with:
+
+```bash
+npm run report
+```
+
+Reports are generated in `reports/`.
+
+Generated reports reflect the current response files and should not be hand-edited except for clearly marked commentary files.

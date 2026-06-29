@@ -1,0 +1,22 @@
+{
+  "packet_id": "FE-012C-P010",
+  "blinded_artifact_id": "BA-010",
+  "recognized_artifact": "SWOT Analysis",
+  "primitive_sequence": ["Bound", "Observe", "Classify", "Evaluate"],
+  "transitions": [
+    { "from": "Bound", "to": "Observe" },
+    { "from": "Observe", "to": "Classify" },
+    { "from": "Classify", "to": "Evaluate" }
+  ],
+  "entry_primitive": "Bound",
+  "exit_primitive": "Evaluate",
+  "loops": [],
+  "branches": [],
+  "dominant_primitive": "Classify",
+  "candidate_missing_primitives": [],
+  "ambiguities": [
+    "The procedural description says 'evaluate which grouped factors matter most' but does not specify criteria for that evaluation — it is unclear whether this implies Prioritize or remains within Evaluate.",
+    "'Contrasting groups' implies a structural pairing (internal/external, positive/negative) that is not captured by Classify alone; no primitive explicitly encodes relational contrast between categories."
+  ],
+  "notes": "The artifact defines a four-quadrant classification frame. Bound scopes the focal situation; Observe surfaces internal and external factors; Classify partitions them into the fixed contrasting groups (the four quadrants); Evaluate ranks or weights the grouped factors for situational relevance. Prioritize was considered as the exit primitive but Evaluate better matches the procedural language used. No loops or branches are present in the base procedure."
+}

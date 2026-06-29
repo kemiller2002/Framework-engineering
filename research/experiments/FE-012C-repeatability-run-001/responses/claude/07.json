@@ -1,0 +1,67 @@
+{
+  "packet_id": "FE-012C-P007",
+  "blinded_artifact_id": "BA-007",
+  "recognized_artifact": "Root Cause Analysis (RCA) process",
+  "primitive_sequence": [
+    "Classify",
+    "Observe",
+    "Explain",
+    "Verify",
+    "Decide",
+    "Act",
+    "Reassess"
+  ],
+  "transitions": [
+    { "from": "Classify", "to": "Observe" },
+    { "from": "Observe", "to": "Explain" },
+    { "from": "Explain", "to": "Verify" },
+    { "from": "Verify", "to": "Decide" },
+    { "from": "Decide", "to": "Act" },
+    { "from": "Act", "to": "Reassess" },
+    { "from": "Reassess", "to": "Observe" }
+  ],
+  "entry_primitive": "Classify",
+  "exit_primitive": "Reassess",
+  "loops": [
+    {
+      "trigger": "Corrective action does not hold",
+      "path": [
+        "Reassess",
+        "Observe",
+        "Explain",
+        "Verify",
+        "Decide",
+        "Act",
+        "Reassess"
+      ]
+    }
+  ],
+  "branches": [
+    {
+      "at": "Verify",
+      "condition": "Proposed cause is insufficient",
+      "path": ["Observe", "Explain"]
+    },
+    {
+      "at": "Reassess",
+      "condition": "Result holds",
+      "path": ["exit"]
+    },
+    {
+      "at": "Reassess",
+      "condition": "Result does not hold",
+      "path": ["Observe"]
+    }
+  ],
+  "dominant_primitive": "Explain",
+  "candidate_missing_primitives": [
+    "Bound — scoping the problem boundary and timeline is implicit but no primitive captures constraint-setting",
+    "Prioritize — selecting among multiple candidate causes before Verify is implied but not listed in the procedural steps"
+  ],
+  "ambiguities": [
+    "Gather relevant evidence maps cleanly to Observe, but could also partially engage Classify if evidence must be categorized before use",
+    "Define the problem could map to Classify (categorizing failure type) or to Bound (scoping scope/impact) — Bound is absent from allowed primitives",
+    "Verify step is directionally clear but its failure branch (return to Observe vs return to Explain) is unspecified in the procedural text"
+  ],
+  "notes": "The artifact is a standard RCA loop. The core causal reasoning step (Explain) is dominant because the entire procedure is organized around producing and validating a causal chain. The loop is conditional on Reassess outcome. Two primitives feel structurally absent: Bound (problem scoping) and Prioritize (cause candidate ranking). Neither is in the allowed list, recorded as candidates."
+}

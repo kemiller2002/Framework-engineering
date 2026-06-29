@@ -1,0 +1,34 @@
+{
+  "packet_id": "FE-012C-P004",
+  "blinded_artifact_id": "BA-004",
+  "recognized_artifact": "Incident Command System (ICS) / Incident Action Plan (IAP) operational cycle",
+  "primitive_sequence": [
+    "Bound",
+    "Observe",
+    "Coordinate",
+    "Communicate",
+    "Prioritize",
+    "Coordinate",
+    "Reassess"
+  ],
+  "transitions": [
+    { "from": "Bound", "to": "Observe" },
+    { "from": "Observe", "to": "Coordinate" },
+    { "from": "Coordinate", "to": "Communicate" },
+    { "from": "Communicate", "to": "Prioritize" },
+    { "from": "Prioritize", "to": "Coordinate" },
+    { "from": "Coordinate", "to": "Reassess" }
+  ],
+  "entry_primitive": "Bound",
+  "exit_primitive": "Reassess",
+  "loops": [],
+  "branches": [],
+  "dominant_primitive": "Coordinate",
+  "candidate_missing_primitives": ["Organize", "Plan"],
+  "ambiguities": [
+    "The phrase 'Define objectives' maps closest to Bound, but could imply a missing Plan primitive.",
+    "The phrase 'Organize roles and responsibilities' was mapped to Coordinate as Organize is not in the allowed vocabulary.",
+    "The phrase 'Coordinate action' explicitly maps to Coordinate, creating a sequence with two distinct instances of Coordinate."
+  ],
+  "notes": "The procedural content maps effectively to emergency management workflows. Because 'Organize' was excluded from the allowed primitives list, its actions were classified under Coordinate to maintain semantic intent."
+}

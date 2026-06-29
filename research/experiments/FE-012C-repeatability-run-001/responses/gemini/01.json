@@ -1,0 +1,78 @@
+{
+  "packet_id": "FE-012C-P001",
+  "blinded_artifact_id": "BA-001",
+  "recognized_artifact": "Differential Diagnosis / Scientific Method / Diagnostic Reasoning",
+  "primitive_sequence": [
+    "Bound",
+    "Generate",
+    "Observe",
+    "Evaluate",
+    "Reassess",
+    "Decide"
+  ],
+  "transitions": [
+    {
+      "from": "Bound",
+      "to": "Generate"
+    },
+    {
+      "from": "Generate",
+      "to": "Observe"
+    },
+    {
+      "from": "Observe",
+      "to": "Evaluate"
+    },
+    {
+      "from": "Evaluate",
+      "to": "Reassess"
+    },
+    {
+      "from": "Reassess",
+      "to": "Observe"
+    },
+    {
+      "from": "Reassess",
+      "to": "Generate"
+    },
+    {
+      "from": "Evaluate",
+      "to": "Decide"
+    }
+  ],
+  "entry_primitive": "Bound",
+  "exit_primitive": "Decide",
+  "loops": [
+    {
+      "loop_sequence": ["Observe", "Evaluate", "Reassess"],
+      "exit_condition": "Confidence is sufficient or additional investigation is no longer justified"
+    },
+    {
+      "loop_sequence": ["Generate", "Observe", "Evaluate", "Reassess"],
+      "exit_condition": "Confidence is sufficient or additional investigation is no longer justified"
+    }
+  ],
+  "branches": [
+    {
+      "condition": "Confidence is insufficient",
+      "then": "Reassess"
+    },
+    {
+      "condition": "One explanation is sufficiently supported or investigation is unjustified",
+      "then": "Decide"
+    }
+  ],
+  "dominant_primitive": "Evaluate",
+  "reasoning_shape": "Cyclic",
+  "candidate_missing_primitives": [],
+  "ambiguities": [
+    "The loop back condition handles both gathering more information (Observe) and developing alternative explanations (Generate), which branches out from the Reassess step depending on what is insufficient."
+  ],
+  "confidence": {
+    "primitive_sequence": "High",
+    "transitions": "High",
+    "loops": "High",
+    "overall": "High"
+  },
+  "notes": "The text describes a classic diagnostic loop or iterative hypothesis-testing framework. 'An unresolved situation or unanswered question' maps to Bound. 'Possible explanations are proposed' maps to Generate. 'Information is intentionally gathered' maps to Observe. 'Examined to determine how well each explanation accounts' maps to Evaluate. 'When confidence is insufficient' triggers a cycle mapped via Reassess back to Observe/Generate. The final resolution maps to Decide."
+}

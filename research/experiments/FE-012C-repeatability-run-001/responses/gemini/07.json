@@ -1,0 +1,34 @@
+{
+  "packet_id": "FE-012C-P007",
+  "blinded_artifact_id": "BA-007",
+  "recognized_artifact": "Root cause analysis and corrective action process (resembles standard 8D or CAPA failure analysis workflows)",
+  "primitive_sequence": [
+    "Bound",
+    "Observe",
+    "Explain",
+    "Verify",
+    "Decide",
+    "Act",
+    "Reassess"
+  ],
+  "transitions": [
+    { "from": "Bound", "to": "Observe" },
+    { "from": "Observe", "to": "Explain" },
+    { "from": "Explain", "to": "Verify" },
+    { "from": "Verify", "to": "Decide" },
+    { "from": "Decide", "to": "Act" },
+    { "from": "Act", "to": "Reassess" },
+    { "from": "Reassess", "to": "Act" }
+  ],
+  "entry_primitive": "Bound",
+  "exit_primitive": "Reassess",
+  "loops": [["Act", "Reassess"]],
+  "branches": [],
+  "dominant_primitive": "Explain",
+  "candidate_missing_primitives": [],
+  "ambiguities": [
+    "The phrase 'Gather relevant evidence' maps closely to 'Observe' but could also imply 'Verify' if targeted specifically, though interpreted here as initial observation.",
+    "The phrase 'Define the problem' maps to 'Bound' as it establishes the scope of the issue."
+  ],
+  "notes": "The process describes a sequential diagnostic and remediation loop. The conditional statement 'reassess if the result does not hold' creates a feedback loop between Act and Reassess."
+}

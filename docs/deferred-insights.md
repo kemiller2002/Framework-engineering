@@ -309,3 +309,16 @@ Framework Engineering should attack its current claims through competing explana
 
 Status:
 Accepted as research process.
+
+### DI-FE-022
+
+Title: Primitive Grammar Agreement
+
+Observation:
+FE-012C produced strong agreement across GPT-5, Claude, and Gemini on entry primitive, reasoning shape, transition structure, and dominant primitive for many packets.
+
+Potential Implication:
+Primitive grammar extraction may be more reproducible than expected under a shared packet instrument, but improved blinding and human validation are still required.
+
+Status:
+Under Investigation.
