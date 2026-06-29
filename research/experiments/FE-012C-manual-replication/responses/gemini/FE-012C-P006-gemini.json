@@ -1,0 +1,73 @@
+{
+  "packet_id": "FE-012C-P006",
+  "blinded_artifact_id": "BA-006",
+  "recognized_artifact": "Differential Diagnosis",
+  "primitive_sequence": [
+    "Observe",
+    "Bound",
+    "Generate",
+    "Explain",
+    "Evaluate",
+    "Decide",
+    "Verify",
+    "Reassess"
+  ],
+  "transitions": [
+    {
+      "from": "Observe",
+      "to": "Bound"
+    },
+    {
+      "from": "Bound",
+      "to": "Generate"
+    },
+    {
+      "from": "Generate",
+      "to": "Explain"
+    },
+    {
+      "from": "Explain",
+      "to": "Evaluate"
+    },
+    {
+      "from": "Evaluate",
+      "to": "Decide"
+    },
+    {
+      "from": "Decide",
+      "to": "Verify"
+    },
+    {
+      "from": "Verify",
+      "to": "Reassess"
+    },
+    {
+      "from": "Reassess",
+      "to": "Observe"
+    }
+  ],
+  "entry_primitive": "Observe",
+  "exit_primitive": "Reassess",
+  "loops": [
+    {
+      "loop_nodes": [
+        "Observe",
+        "Bound",
+        "Generate",
+        "Explain",
+        "Evaluate",
+        "Decide",
+        "Verify",
+        "Reassess"
+      ],
+      "condition": "new findings conflict with the current view"
+    }
+  ],
+  "branches": [],
+  "dominant_primitive": "Evaluate",
+  "candidate_missing_primitives": [],
+  "ambiguities": [
+    "'Evaluate relative plausibility' overlaps with Compare but is mapped to Evaluate. 'Decide next test' transitions to testing/Verify."
+  ],
+  "notes": "Corresponds to the medical or engineering Differential Diagnosis process."
+}

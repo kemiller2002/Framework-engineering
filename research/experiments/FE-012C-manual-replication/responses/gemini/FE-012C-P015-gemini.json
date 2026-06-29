@@ -1,0 +1,53 @@
+{
+  "packet_id": "FE-012C-P015",
+  "blinded_artifact_id": "BA-015",
+  "recognized_artifact": "OODA Loop",
+  "primitive_sequence": [
+    "Observe",
+    "Interpret",
+    "Decide",
+    "Act",
+    "Reassess"
+  ],
+  "transitions": [
+    {
+      "from": "Observe",
+      "to": "Interpret"
+    },
+    {
+      "from": "Interpret",
+      "to": "Decide"
+    },
+    {
+      "from": "Decide",
+      "to": "Act"
+    },
+    {
+      "from": "Act",
+      "to": "Reassess"
+    },
+    {
+      "from": "Reassess",
+      "to": "Observe"
+    }
+  ],
+  "entry_primitive": "Observe",
+  "exit_primitive": "Reassess",
+  "loops": [
+    {
+      "loop_nodes": [
+        "Observe",
+        "Interpret",
+        "Decide",
+        "Act",
+        "Reassess"
+      ],
+      "condition": "conditions change"
+    }
+  ],
+  "branches": [],
+  "dominant_primitive": "Decide",
+  "candidate_missing_primitives": [],
+  "ambiguities": [],
+  "notes": "Corresponds to the OODA Loop framework (Observe, Orient/Interpret, Decide, Act)."
+}

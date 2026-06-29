@@ -1,0 +1,56 @@
+{
+  "packet_id": "FE-012C-P007",
+  "blinded_artifact_id": "BA-007",
+  "recognized_artifact": "Root Cause Analysis",
+  "primitive_sequence": [
+    "Bound",
+    "Observe",
+    "Explain",
+    "Verify",
+    "Decide",
+    "Act",
+    "Reassess"
+  ],
+  "transitions": [
+    {
+      "from": "Bound",
+      "to": "Observe"
+    },
+    {
+      "from": "Observe",
+      "to": "Explain"
+    },
+    {
+      "from": "Explain",
+      "to": "Verify"
+    },
+    {
+      "from": "Verify",
+      "to": "Decide"
+    },
+    {
+      "from": "Decide",
+      "to": "Act"
+    },
+    {
+      "from": "Act",
+      "to": "Reassess"
+    },
+    {
+      "from": "Reassess",
+      "to": "Observe"
+    }
+  ],
+  "entry_primitive": "Bound",
+  "exit_primitive": "Reassess",
+  "loops": [
+    "Observe -> Explain -> Verify -> Decide -> Act -> Reassess -> Observe"
+  ],
+  "branches": [],
+  "dominant_primitive": "Explain",
+  "candidate_missing_primitives": [],
+  "ambiguities": [
+    "The packet states a singular proposed cause, so Generate was omitted, but some uses of the process could generate multiple candidate causes before explanation."
+  ],
+  "notes": "The causal explanation and sufficiency check are the center of the extraction, followed by corrective action and conditional reopening."
+}

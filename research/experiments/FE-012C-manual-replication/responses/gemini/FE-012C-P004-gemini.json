@@ -1,0 +1,70 @@
+{
+  "packet_id": "FE-012C-P004",
+  "blinded_artifact_id": "BA-004",
+  "recognized_artifact": "Incident Command System",
+  "primitive_sequence": [
+    "Bound",
+    "Observe",
+    "Allocate",
+    "Communicate",
+    "Prioritize",
+    "Coordinate",
+    "Reassess"
+  ],
+  "transitions": [
+    {
+      "from": "Bound",
+      "to": "Observe"
+    },
+    {
+      "from": "Observe",
+      "to": "Allocate"
+    },
+    {
+      "from": "Allocate",
+      "to": "Communicate"
+    },
+    {
+      "from": "Communicate",
+      "to": "Prioritize"
+    },
+    {
+      "from": "Prioritize",
+      "to": "Coordinate"
+    },
+    {
+      "from": "Coordinate",
+      "to": "Reassess"
+    },
+    {
+      "from": "Reassess",
+      "to": "Observe"
+    },
+    {
+      "from": "Reassess",
+      "to": "Allocate"
+    }
+  ],
+  "entry_primitive": "Bound",
+  "exit_primitive": "Reassess",
+  "loops": [
+    {
+      "loop_nodes": [
+        "Observe",
+        "Allocate",
+        "Communicate",
+        "Prioritize",
+        "Coordinate",
+        "Reassess"
+      ],
+      "condition": "conditions change"
+    }
+  ],
+  "branches": [],
+  "dominant_primitive": "Coordinate",
+  "candidate_missing_primitives": [],
+  "ambiguities": [
+    "'Organize roles and responsibilities' maps closely to Allocate (assigning assets/roles) but has strong overlap with Coordinate. 'Decide tactical priorities' is mapped to Prioritize."
+  ],
+  "notes": "Corresponds to the Incident Command System (ICS) operational cycle."
+}

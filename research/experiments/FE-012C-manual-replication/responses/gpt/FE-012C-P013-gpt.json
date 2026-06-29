@@ -1,0 +1,40 @@
+{
+  "packet_id": "FE-012C-P013",
+  "blinded_artifact_id": "BA-013",
+  "recognized_artifact": "Business Model Canvas",
+  "primitive_sequence": [
+    "Bound",
+    "Classify",
+    "Generate",
+    "Evaluate",
+    "Communicate"
+  ],
+  "transitions": [
+    {
+      "from": "Bound",
+      "to": "Classify"
+    },
+    {
+      "from": "Classify",
+      "to": "Generate"
+    },
+    {
+      "from": "Generate",
+      "to": "Evaluate"
+    },
+    {
+      "from": "Evaluate",
+      "to": "Communicate"
+    }
+  ],
+  "entry_primitive": "Bound",
+  "exit_primitive": "Communicate",
+  "loops": [],
+  "branches": [],
+  "dominant_primitive": "Classify",
+  "candidate_missing_primitives": [],
+  "ambiguities": [
+    "Generating hypotheses about how elements fit together could also be represented as Explain, but Generate was used because the step emphasizes producing candidate models of fit."
+  ],
+  "notes": "The process frames an offering, organizes major value elements, tests coherence, and communicates the resulting model."
+}

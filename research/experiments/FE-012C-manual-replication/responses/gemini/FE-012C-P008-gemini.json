@@ -1,0 +1,40 @@
+{
+  "packet_id": "FE-012C-P008",
+  "blinded_artifact_id": "BA-008",
+  "recognized_artifact": "Fault Tree Analysis",
+  "primitive_sequence": [
+    "Bound",
+    "Generate",
+    "Explain",
+    "Classify",
+    "Verify"
+  ],
+  "transitions": [
+    {
+      "from": "Bound",
+      "to": "Generate"
+    },
+    {
+      "from": "Generate",
+      "to": "Explain"
+    },
+    {
+      "from": "Explain",
+      "to": "Classify"
+    },
+    {
+      "from": "Classify",
+      "to": "Verify"
+    }
+  ],
+  "entry_primitive": "Bound",
+  "exit_primitive": "Verify",
+  "loops": [],
+  "branches": [],
+  "dominant_primitive": "Explain",
+  "candidate_missing_primitives": [],
+  "ambiguities": [
+    "'Classify branches by logical relationship' refers to logical OR/AND categorizations of fault transitions."
+  ],
+  "notes": "Corresponds to Fault Tree Analysis (FTA)."
+}

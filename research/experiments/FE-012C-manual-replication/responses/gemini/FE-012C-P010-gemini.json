@@ -1,0 +1,35 @@
+{
+  "packet_id": "FE-012C-P010",
+  "blinded_artifact_id": "BA-010",
+  "recognized_artifact": "SWOT Analysis",
+  "primitive_sequence": [
+    "Bound",
+    "Observe",
+    "Classify",
+    "Evaluate"
+  ],
+  "transitions": [
+    {
+      "from": "Bound",
+      "to": "Observe"
+    },
+    {
+      "from": "Observe",
+      "to": "Classify"
+    },
+    {
+      "from": "Classify",
+      "to": "Evaluate"
+    }
+  ],
+  "entry_primitive": "Bound",
+  "exit_primitive": "Evaluate",
+  "loops": [],
+  "branches": [],
+  "dominant_primitive": "Classify",
+  "candidate_missing_primitives": [],
+  "ambiguities": [
+    "Determining which factors 'matter most' has elements of prioritization, but is mapped to Evaluate as it is a judgment of significance."
+  ],
+  "notes": "Corresponds to SWOT Analysis."
+}

@@ -1,0 +1,35 @@
+{
+  "packet_id": "FE-012C-P005",
+  "blinded_artifact_id": "BA-005",
+  "recognized_artifact": "Bloom's Taxonomy",
+  "primitive_sequence": [
+    "Classify",
+    "Compare",
+    "Evaluate",
+    "Decide"
+  ],
+  "transitions": [
+    {
+      "from": "Classify",
+      "to": "Compare"
+    },
+    {
+      "from": "Compare",
+      "to": "Evaluate"
+    },
+    {
+      "from": "Evaluate",
+      "to": "Decide"
+    }
+  ],
+  "entry_primitive": "Classify",
+  "exit_primitive": "Decide",
+  "loops": [],
+  "branches": [],
+  "dominant_primitive": "Classify",
+  "candidate_missing_primitives": [],
+  "ambiguities": [
+    "The final use of the distinctions could be evaluation only or a selection step; Decide was included because the packet says to select the intended level of challenge."
+  ],
+  "notes": "The process is primarily classificatory, with relative complexity distinctions used to guide level selection."
+}

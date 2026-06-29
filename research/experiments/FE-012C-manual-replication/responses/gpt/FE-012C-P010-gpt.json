@@ -1,0 +1,36 @@
+{
+  "packet_id": "FE-012C-P010",
+  "blinded_artifact_id": "BA-010",
+  "recognized_artifact": "SWOT Analysis",
+  "primitive_sequence": [
+    "Bound",
+    "Observe",
+    "Classify",
+    "Evaluate"
+  ],
+  "transitions": [
+    {
+      "from": "Bound",
+      "to": "Observe"
+    },
+    {
+      "from": "Observe",
+      "to": "Classify"
+    },
+    {
+      "from": "Classify",
+      "to": "Evaluate"
+    }
+  ],
+  "entry_primitive": "Bound",
+  "exit_primitive": "Evaluate",
+  "loops": [],
+  "branches": [],
+  "dominant_primitive": "Classify",
+  "candidate_missing_primitives": [],
+  "ambiguities": [
+    "The fixed contrasting groups are not named in the packet, but they function as a predefined classification scheme.",
+    "Determining which grouped factors matter most could also be represented as Prioritize; Evaluate was used because the packet emphasizes assessment rather than explicit selection."
+  ],
+  "notes": "The extraction is dominated by assigning factors into a fixed internal-external contrast structure and assessing their relevance."
+}

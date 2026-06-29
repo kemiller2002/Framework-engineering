@@ -1,0 +1,51 @@
+{
+  "packet_id": "FE-012C-P011",
+  "blinded_artifact_id": "BA-011",
+  "recognized_artifact": "Scrum",
+  "primitive_sequence": [
+    "Bound",
+    "Prioritize",
+    "Decide",
+    "Act",
+    "Reflect",
+    "Reassess"
+  ],
+  "transitions": [
+    {
+      "from": "Bound",
+      "to": "Prioritize"
+    },
+    {
+      "from": "Prioritize",
+      "to": "Decide"
+    },
+    {
+      "from": "Decide",
+      "to": "Act"
+    },
+    {
+      "from": "Act",
+      "to": "Reflect"
+    },
+    {
+      "from": "Reflect",
+      "to": "Reassess"
+    },
+    {
+      "from": "Reassess",
+      "to": "Prioritize"
+    }
+  ],
+  "entry_primitive": "Bound",
+  "exit_primitive": "Reassess",
+  "loops": [
+    "Prioritize -> Decide -> Act -> Reflect -> Reassess -> Prioritize"
+  ],
+  "branches": [],
+  "dominant_primitive": "Act",
+  "candidate_missing_primitives": [],
+  "ambiguities": [
+    "The packet describes a short-cycle goal and available work but does not explicitly state whether goal definition repeats every cycle or only initializes the loop."
+  ],
+  "notes": "The core structure is an iterative delivery cycle with explicit reflection and next-cycle adjustment."
+}

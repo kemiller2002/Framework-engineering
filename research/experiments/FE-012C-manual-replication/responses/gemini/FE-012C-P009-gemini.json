@@ -1,0 +1,50 @@
+{
+  "packet_id": "FE-012C-P009",
+  "blinded_artifact_id": "BA-009",
+  "recognized_artifact": "STRIDE Threat Modeling",
+  "primitive_sequence": [
+    "Bound",
+    "Observe",
+    "Classify",
+    "Interpret",
+    "Evaluate",
+    "Prioritize",
+    "Decide"
+  ],
+  "transitions": [
+    {
+      "from": "Bound",
+      "to": "Observe"
+    },
+    {
+      "from": "Observe",
+      "to": "Classify"
+    },
+    {
+      "from": "Classify",
+      "to": "Interpret"
+    },
+    {
+      "from": "Interpret",
+      "to": "Evaluate"
+    },
+    {
+      "from": "Evaluate",
+      "to": "Prioritize"
+    },
+    {
+      "from": "Prioritize",
+      "to": "Decide"
+    }
+  ],
+  "entry_primitive": "Bound",
+  "exit_primitive": "Decide",
+  "loops": [],
+  "branches": [],
+  "dominant_primitive": "Classify",
+  "candidate_missing_primitives": [],
+  "ambiguities": [
+    "'Decide which mitigations deserve attention first' merges prioritization ranking and decision commitment."
+  ],
+  "notes": "Corresponds to STRIDE threat modeling."
+}

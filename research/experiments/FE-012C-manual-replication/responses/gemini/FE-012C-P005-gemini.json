@@ -1,0 +1,53 @@
+{
+  "packet_id": "FE-012C-P005",
+  "blinded_artifact_id": "BA-005",
+  "recognized_artifact": "Bloom's Taxonomy",
+  "primitive_sequence": [
+    "Classify",
+    "Compare",
+    "Evaluate",
+    "Decide"
+  ],
+  "transitions": [
+    {
+      "from": "Classify",
+      "to": "Compare"
+    },
+    {
+      "from": "Compare",
+      "to": "Evaluate"
+    },
+    {
+      "from": "Compare",
+      "to": "Decide"
+    },
+    {
+      "from": "Evaluate",
+      "to": "Decide"
+    }
+  ],
+  "entry_primitive": "Classify",
+  "exit_primitive": "Decide",
+  "loops": [],
+  "branches": [
+    {
+      "branch_condition": "intent of use",
+      "branches": [
+        {
+          "target": "Evaluate",
+          "condition": "evaluate the level of challenge"
+        },
+        {
+          "target": "Decide",
+          "condition": "select the level of challenge"
+        }
+      ]
+    }
+  ],
+  "dominant_primitive": "Classify",
+  "candidate_missing_primitives": [],
+  "ambiguities": [
+    "The phrase 'select or evaluate' suggests branching logic or parallel options where a user either evaluates or decides/selects."
+  ],
+  "notes": "Corresponds to Bloom's Taxonomy of educational objectives."
+}

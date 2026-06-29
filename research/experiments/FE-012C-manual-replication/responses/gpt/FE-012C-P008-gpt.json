@@ -1,0 +1,42 @@
+{
+  "packet_id": "FE-012C-P008",
+  "blinded_artifact_id": "BA-008",
+  "recognized_artifact": "Fault Tree Analysis",
+  "primitive_sequence": [
+    "Bound",
+    "Generate",
+    "Explain",
+    "Classify",
+    "Verify"
+  ],
+  "transitions": [
+    {
+      "from": "Bound",
+      "to": "Generate"
+    },
+    {
+      "from": "Generate",
+      "to": "Explain"
+    },
+    {
+      "from": "Explain",
+      "to": "Classify"
+    },
+    {
+      "from": "Classify",
+      "to": "Verify"
+    }
+  ],
+  "entry_primitive": "Bound",
+  "exit_primitive": "Verify",
+  "loops": [],
+  "branches": [
+    "Generated contributing events form multiple lower-level branches that combine into the top event according to the classified logical relationships."
+  ],
+  "dominant_primitive": "Explain",
+  "candidate_missing_primitives": [],
+  "ambiguities": [
+    "Classifying branches by logical relationship captures the packet text, but the schema has no primitive dedicated to formal logical composition."
+  ],
+  "notes": "The process is hierarchical and branch-structured around explaining how contributing events combine to yield the top event."
+}

@@ -1,0 +1,62 @@
+{
+  "packet_id": "FE-012C-P006",
+  "blinded_artifact_id": "BA-006",
+  "recognized_artifact": "Differential Diagnosis",
+  "primitive_sequence": [
+    "Observe",
+    "Bound",
+    "Generate",
+    "Explain",
+    "Evaluate",
+    "Decide",
+    "Verify",
+    "Reassess"
+  ],
+  "transitions": [
+    {
+      "from": "Observe",
+      "to": "Bound"
+    },
+    {
+      "from": "Bound",
+      "to": "Generate"
+    },
+    {
+      "from": "Generate",
+      "to": "Explain"
+    },
+    {
+      "from": "Explain",
+      "to": "Evaluate"
+    },
+    {
+      "from": "Evaluate",
+      "to": "Decide"
+    },
+    {
+      "from": "Decide",
+      "to": "Verify"
+    },
+    {
+      "from": "Verify",
+      "to": "Reassess"
+    },
+    {
+      "from": "Reassess",
+      "to": "Observe"
+    }
+  ],
+  "entry_primitive": "Observe",
+  "exit_primitive": "Reassess",
+  "loops": [
+    "Observe -> Bound -> Generate -> Explain -> Evaluate -> Decide -> Verify -> Reassess -> Observe"
+  ],
+  "branches": [],
+  "dominant_primitive": "Evaluate",
+  "candidate_missing_primitives": [],
+  "ambiguities": [
+    "The step 'decide the next test or action' blends commitment with intervention planning; only Decide is encoded because the test or action is not yet performed.",
+    "Verification may either confirm the leading explanation or trigger renewed candidate generation, but the exact return point is not specified."
+  ],
+  "notes": "The process combines evidence gathering, multiple candidate explanations, comparative plausibility assessment, and recursive reopening when findings conflict."
+}

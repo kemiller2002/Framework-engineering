@@ -1,0 +1,56 @@
+{
+  "packet_id": "FE-012C-P012",
+  "blinded_artifact_id": "BA-012",
+  "recognized_artifact": "Hoshin Kanri",
+  "primitive_sequence": [
+    "Bound",
+    "Generate",
+    "Prioritize",
+    "Communicate",
+    "Act",
+    "Verify",
+    "Reassess"
+  ],
+  "transitions": [
+    {
+      "from": "Bound",
+      "to": "Generate"
+    },
+    {
+      "from": "Generate",
+      "to": "Prioritize"
+    },
+    {
+      "from": "Prioritize",
+      "to": "Communicate"
+    },
+    {
+      "from": "Communicate",
+      "to": "Act"
+    },
+    {
+      "from": "Act",
+      "to": "Verify"
+    },
+    {
+      "from": "Verify",
+      "to": "Reassess"
+    },
+    {
+      "from": "Reassess",
+      "to": "Prioritize"
+    }
+  ],
+  "entry_primitive": "Bound",
+  "exit_primitive": "Reassess",
+  "loops": [
+    "Prioritize -> Communicate -> Act -> Verify -> Reassess -> Prioritize"
+  ],
+  "branches": [],
+  "dominant_primitive": "Prioritize",
+  "candidate_missing_primitives": [],
+  "ambiguities": [
+    "Refining commitments across levels could also be encoded as Coordinate, but Communicate was used because the packet emphasizes discussion and refinement."
+  ],
+  "notes": "The extraction captures long-range objective setting, initiative selection, cross-level refinement, execution, and feedback-driven course correction."
+}

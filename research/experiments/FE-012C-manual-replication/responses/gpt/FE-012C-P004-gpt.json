@@ -1,0 +1,56 @@
+{
+  "packet_id": "FE-012C-P004",
+  "blinded_artifact_id": "BA-004",
+  "recognized_artifact": "Incident Command System",
+  "primitive_sequence": [
+    "Bound",
+    "Observe",
+    "Allocate",
+    "Communicate",
+    "Prioritize",
+    "Coordinate",
+    "Reassess"
+  ],
+  "transitions": [
+    {
+      "from": "Bound",
+      "to": "Observe"
+    },
+    {
+      "from": "Observe",
+      "to": "Allocate"
+    },
+    {
+      "from": "Allocate",
+      "to": "Communicate"
+    },
+    {
+      "from": "Communicate",
+      "to": "Prioritize"
+    },
+    {
+      "from": "Prioritize",
+      "to": "Coordinate"
+    },
+    {
+      "from": "Coordinate",
+      "to": "Reassess"
+    },
+    {
+      "from": "Reassess",
+      "to": "Allocate"
+    }
+  ],
+  "entry_primitive": "Bound",
+  "exit_primitive": "Reassess",
+  "loops": [
+    "Allocate -> Communicate -> Prioritize -> Coordinate -> Reassess -> Allocate"
+  ],
+  "branches": [],
+  "dominant_primitive": "Coordinate",
+  "candidate_missing_primitives": [],
+  "ambiguities": [
+    "Organizing roles and responsibilities could be read as Coordinate as well as Allocate; Allocate was used because the step assigns responsibilities."
+  ],
+  "notes": "The structure emphasizes assignment, communication, and coordination under changing live conditions."
+}

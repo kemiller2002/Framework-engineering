@@ -1,0 +1,77 @@
+{
+  "packet_id": "FE-012C-P012",
+  "blinded_artifact_id": "BA-012",
+  "recognized_artifact": "Hoshin Kanri",
+  "primitive_sequence": [
+    "Bound",
+    "Generate",
+    "Prioritize",
+    "Communicate",
+    "Coordinate",
+    "Act",
+    "Verify",
+    "Reassess"
+  ],
+  "transitions": [
+    {
+      "from": "Bound",
+      "to": "Generate"
+    },
+    {
+      "from": "Generate",
+      "to": "Prioritize"
+    },
+    {
+      "from": "Prioritize",
+      "to": "Communicate"
+    },
+    {
+      "from": "Communicate",
+      "to": "Coordinate"
+    },
+    {
+      "from": "Coordinate",
+      "to": "Act"
+    },
+    {
+      "from": "Act",
+      "to": "Verify"
+    },
+    {
+      "from": "Verify",
+      "to": "Reassess"
+    },
+    {
+      "from": "Reassess",
+      "to": "Bound"
+    },
+    {
+      "from": "Reassess",
+      "to": "Prioritize"
+    }
+  ],
+  "entry_primitive": "Bound",
+  "exit_primitive": "Reassess",
+  "loops": [
+    {
+      "loop_nodes": [
+        "Bound",
+        "Generate",
+        "Prioritize",
+        "Communicate",
+        "Coordinate",
+        "Act",
+        "Verify",
+        "Reassess"
+      ],
+      "condition": "results or conditions change"
+    }
+  ],
+  "branches": [],
+  "dominant_primitive": "Coordinate",
+  "candidate_missing_primitives": [],
+  "ambiguities": [
+    "Refining commitments across organization levels is mapped to Coordinate to reflect the alignment of multiple actors, which follows Communicate."
+  ],
+  "notes": "Corresponds to the Hoshin Kanri strategic planning methodology."
+}

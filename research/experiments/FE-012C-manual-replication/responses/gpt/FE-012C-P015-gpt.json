@@ -1,0 +1,46 @@
+{
+  "packet_id": "FE-012C-P015",
+  "blinded_artifact_id": "BA-015",
+  "recognized_artifact": "OODA Loop",
+  "primitive_sequence": [
+    "Observe",
+    "Interpret",
+    "Decide",
+    "Act",
+    "Reassess"
+  ],
+  "transitions": [
+    {
+      "from": "Observe",
+      "to": "Interpret"
+    },
+    {
+      "from": "Interpret",
+      "to": "Decide"
+    },
+    {
+      "from": "Decide",
+      "to": "Act"
+    },
+    {
+      "from": "Act",
+      "to": "Reassess"
+    },
+    {
+      "from": "Reassess",
+      "to": "Observe"
+    }
+  ],
+  "entry_primitive": "Observe",
+  "exit_primitive": "Reassess",
+  "loops": [
+    "Observe -> Interpret -> Decide -> Act -> Reassess -> Observe"
+  ],
+  "branches": [],
+  "dominant_primitive": "Act",
+  "candidate_missing_primitives": [],
+  "ambiguities": [
+    "The packet's interpretive step could also support Explain, but Interpret was used because the text emphasizes sense-making rather than causal modeling."
+  ],
+  "notes": "The process is a compact recurring action cycle driven by changing conditions."
+}

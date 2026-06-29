@@ -1,0 +1,70 @@
+{
+  "packet_id": "FE-012C-P007",
+  "blinded_artifact_id": "BA-007",
+  "recognized_artifact": "Root Cause Analysis",
+  "primitive_sequence": [
+    "Bound",
+    "Observe",
+    "Explain",
+    "Verify",
+    "Decide",
+    "Act",
+    "Reassess"
+  ],
+  "transitions": [
+    {
+      "from": "Bound",
+      "to": "Observe"
+    },
+    {
+      "from": "Observe",
+      "to": "Explain"
+    },
+    {
+      "from": "Explain",
+      "to": "Verify"
+    },
+    {
+      "from": "Verify",
+      "to": "Decide"
+    },
+    {
+      "from": "Decide",
+      "to": "Act"
+    },
+    {
+      "from": "Act",
+      "to": "Reassess"
+    },
+    {
+      "from": "Reassess",
+      "to": "Observe"
+    },
+    {
+      "from": "Reassess",
+      "to": "Explain"
+    }
+  ],
+  "entry_primitive": "Bound",
+  "exit_primitive": "Reassess",
+  "loops": [
+    {
+      "loop_nodes": [
+        "Observe",
+        "Explain",
+        "Verify",
+        "Decide",
+        "Act",
+        "Reassess"
+      ],
+      "condition": "result does not hold"
+    }
+  ],
+  "branches": [],
+  "dominant_primitive": "Explain",
+  "candidate_missing_primitives": [],
+  "ambiguities": [
+    "If the correction does not hold, reassessment loops back to earlier observation or causal explanation phases."
+  ],
+  "notes": "Corresponds to Root Cause Analysis and corrective action loops."
+}

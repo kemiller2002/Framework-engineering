@@ -1,0 +1,46 @@
+{
+  "packet_id": "FE-012C-P002",
+  "blinded_artifact_id": "BA-002",
+  "recognized_artifact": "Decision Matrix",
+  "primitive_sequence": [
+    "Bound",
+    "Generate",
+    "Compare",
+    "Evaluate",
+    "Decide",
+    "Communicate"
+  ],
+  "transitions": [
+    {
+      "from": "Bound",
+      "to": "Generate"
+    },
+    {
+      "from": "Generate",
+      "to": "Compare"
+    },
+    {
+      "from": "Compare",
+      "to": "Evaluate"
+    },
+    {
+      "from": "Evaluate",
+      "to": "Decide"
+    },
+    {
+      "from": "Decide",
+      "to": "Communicate"
+    }
+  ],
+  "entry_primitive": "Bound",
+  "exit_primitive": "Communicate",
+  "loops": [],
+  "branches": [],
+  "dominant_primitive": "Compare",
+  "candidate_missing_primitives": [],
+  "ambiguities": [
+    "Listing available alternatives could be treated as Observe instead of Generate if the alternatives are assumed to preexist.",
+    "Recording the rationale is represented as Communicate because the schema does not provide a documentation-specific primitive."
+  ],
+  "notes": "The process is primarily comparative and evaluative, ending with a selected alternative and an explicit rationale."
+}

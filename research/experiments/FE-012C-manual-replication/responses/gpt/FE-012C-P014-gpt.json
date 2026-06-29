@@ -1,0 +1,30 @@
+{
+  "packet_id": "FE-012C-P014",
+  "blinded_artifact_id": "BA-014",
+  "recognized_artifact": "Zachman Framework",
+  "primitive_sequence": [
+    "Bound",
+    "Classify",
+    "Interpret"
+  ],
+  "transitions": [
+    {
+      "from": "Bound",
+      "to": "Classify"
+    },
+    {
+      "from": "Classify",
+      "to": "Interpret"
+    }
+  ],
+  "entry_primitive": "Bound",
+  "exit_primitive": "Interpret",
+  "loops": [],
+  "branches": [],
+  "dominant_primitive": "Classify",
+  "candidate_missing_primitives": [],
+  "ambiguities": [
+    "The packet refers to multiple viewpoints and question types in a structured grid, but it does not specify whether filling the grid is an observational step or strictly a classificatory one."
+  ],
+  "notes": "The extraction is driven by a predefined multidimensional classification structure used to assess descriptive coverage and gaps."
+}

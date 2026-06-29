@@ -1,0 +1,55 @@
+{
+  "packet_id": "FE-012C-P003",
+  "blinded_artifact_id": "BA-003",
+  "recognized_artifact": "Cynefin Framework",
+  "primitive_sequence": [
+    "Observe",
+    "Classify",
+    "Interpret",
+    "Decide",
+    "Reassess"
+  ],
+  "transitions": [
+    {
+      "from": "Observe",
+      "to": "Classify"
+    },
+    {
+      "from": "Classify",
+      "to": "Interpret"
+    },
+    {
+      "from": "Interpret",
+      "to": "Decide"
+    },
+    {
+      "from": "Decide",
+      "to": "Reassess"
+    },
+    {
+      "from": "Reassess",
+      "to": "Observe"
+    }
+  ],
+  "entry_primitive": "Observe",
+  "exit_primitive": "Reassess",
+  "loops": [
+    {
+      "loop_nodes": [
+        "Observe",
+        "Classify",
+        "Interpret",
+        "Decide",
+        "Reassess"
+      ],
+      "condition": "condition shifts or initial placement no longer fits"
+    }
+  ],
+  "branches": [],
+  "dominant_primitive": "Classify",
+  "candidate_missing_primitives": [],
+  "ambiguities": [
+    "Reassessment creates a dynamic feedback loop that goes back to the initial observation and classification."
+  ],
+  "notes": "Corresponds to the Cynefin Framework."
+}

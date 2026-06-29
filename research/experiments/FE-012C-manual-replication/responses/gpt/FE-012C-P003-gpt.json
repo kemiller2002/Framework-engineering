@@ -1,0 +1,46 @@
+{
+  "packet_id": "FE-012C-P003",
+  "blinded_artifact_id": "BA-003",
+  "recognized_artifact": "Cynefin Framework",
+  "primitive_sequence": [
+    "Observe",
+    "Classify",
+    "Interpret",
+    "Decide",
+    "Reassess"
+  ],
+  "transitions": [
+    {
+      "from": "Observe",
+      "to": "Classify"
+    },
+    {
+      "from": "Classify",
+      "to": "Interpret"
+    },
+    {
+      "from": "Interpret",
+      "to": "Decide"
+    },
+    {
+      "from": "Decide",
+      "to": "Reassess"
+    },
+    {
+      "from": "Reassess",
+      "to": "Observe"
+    }
+  ],
+  "entry_primitive": "Observe",
+  "exit_primitive": "Reassess",
+  "loops": [
+    "Observe -> Classify -> Interpret -> Decide -> Reassess -> Observe"
+  ],
+  "branches": [],
+  "dominant_primitive": "Classify",
+  "candidate_missing_primitives": [],
+  "ambiguities": [
+    "The placement into condition types could imply multiple downstream response paths, but those paths are not specified in the packet."
+  ],
+  "notes": "The extraction centers on situational classification followed by a conditional revisit when the classification no longer fits."
+}
