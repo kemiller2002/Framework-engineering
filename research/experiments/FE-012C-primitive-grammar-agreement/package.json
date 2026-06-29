@@ -1,0 +1,16 @@
+{
+  "name": "fe-012c-primitive-grammar-agreement",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "extract": "node scripts/run-extraction.js",
+    "matrix": "node scripts/build-transition-matrix.js",
+    "compare": "node scripts/compare-extractors.js"
+  },
+  "dependencies": {
+    "@anthropic-ai/sdk": "^0.54.0",
+    "@google/generative-ai": "^0.21.0",
+    "dotenv": "^16.6.1",
+    "openai": "^5.10.2"
+  }
+}

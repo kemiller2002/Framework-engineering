@@ -296,3 +296,16 @@ Framework Engineering may mature first as a characterization and redesign method
 
 Status:
 Under Investigation.
+
+### DI-FE-021
+
+Title: Validation Before Expansion
+
+Observation:
+Theory integration and traceability work make the research program coherent enough to justify adversarial validation, but not strong enough to justify broader theoretical expansion.
+
+Potential Implication:
+Framework Engineering should attack its current claims through competing explanations and replication before creating larger theory structures.
+
+Status:
+Accepted as research process.

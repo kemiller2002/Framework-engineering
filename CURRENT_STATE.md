@@ -61,6 +61,8 @@ Artifacts:
   Purpose: Test whether primitive reasoning operations emerge independently from diverse knowledge artifacts.
 - FE-012B Primitive Grammar Synthesis Experiment
   Purpose: Test whether the frozen primitive vocabulary can synthesize coherent procedural frameworks for novel problems.
+- FE-012C Manual Multi-Model Replication Kit
+  Purpose: Support transparent manual multi-model replication of primitive grammar extraction without APIs or automation.
 
 ## Open Questions
 
@@ -77,3 +79,11 @@ Run FE-008 Knowledge Artifact Boundary Study pilot.
 ## Current Theory Status
 
 Framework Engineering currently has provisional evidence as a characterization and improvement methodology, not yet as a full engineering discipline.
+
+## Current Phase
+
+Validation Program
+
+## Current Goal
+
+Attempt to disprove or simplify the Theory of Framework Engineering before expanding it.

@@ -1,0 +1,27 @@
+[
+  {
+    "artifact_id": "scientific_method",
+    "blinded_title": "Artifact A",
+    "retained_procedural_content": "Begin with an observed phenomenon or question. Form a candidate explanatory hypothesis. Test the hypothesis against evidence. Interpret the result. Revise the hypothesis or continue investigation when the result does not hold."
+  },
+  {
+    "artifact_id": "decision_matrix",
+    "blinded_title": "Artifact B",
+    "retained_procedural_content": "Define a choice to be made and the criteria that matter. List the available options. Compare each option against the criteria. Evaluate relative fit. Choose the preferred option and record the rationale."
+  },
+  {
+    "artifact_id": "cynefin",
+    "blinded_title": "Artifact C",
+    "retained_procedural_content": "Observe the situation. Classify the context into one of several condition types. Interpret what that condition implies about response. Decide how to respond. Reassess if the situation shifts or the initial classification fails."
+  },
+  {
+    "artifact_id": "incident_command_system",
+    "blinded_title": "Artifact D",
+    "retained_procedural_content": "Define objectives for a live incident. Observe the current situation. Organize roles and responsibilities. Communicate the structure and plan. Decide tactical priorities. Coordinate and act. Reassess structure and assignments as the incident changes."
+  },
+  {
+    "artifact_id": "bloom_taxonomy",
+    "blinded_title": "Artifact E",
+    "retained_procedural_content": "Organize learning activities into levels of cognitive demand. Distinguish between simpler and more complex forms of performance. Use those distinctions to select or evaluate the intended level of challenge."
+  }
+]

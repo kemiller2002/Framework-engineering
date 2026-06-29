@@ -34,3 +34,9 @@ Specify what kinds of future evidence would weaken the current theory integratio
 A single mixed result does not automatically falsify the theory.
 
 The theory is weak enough and early enough that falsification should focus on repeated failure patterns rather than one-off anomalies.
+
+Theory evolution is expected.
+
+Failure of one hypothesis does not invalidate unrelated hypotheses.
+
+Falsification should weaken only the claims directly supported by conflicting evidence.

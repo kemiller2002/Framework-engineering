@@ -1,8 +1,12 @@
-# Emergent Design Laws v0.1
+# Emergent Design Heuristics (Provisional)
 
 Status: Provisional research synthesis
 
 These are not constitutional principles.
+
+They are evidence-supported heuristics rather than accepted engineering laws.
+
+Promotion to law requires independent replication.
 
 They are evidence-grounded design tendencies emerging from FE-008, FE-011A, FE-012A, and FE-012B.
 

@@ -4,6 +4,12 @@
 
 This document integrates the current research evidence from FE-008, FE-011A, FE-012A, and FE-012B into a provisional theory statement.
 
+This document is explanatory rather than foundational.
+
+Its purpose is to explain current experimental observations and generate testable predictions.
+
+If future evidence conflicts with this theory, the theory should be revised rather than the evidence reinterpreted.
+
 It does not promote Framework Engineering to Foundation.
 
 It does not claim proof.
@@ -18,6 +24,14 @@ It does not claim proof.
   Internal blind primitive extraction and reconstruction experiment.
 - FE-012B:
   Internal primitive synthesis experiment for novel problems.
+
+Supporting traceability documents:
+
+- [theory-traceability-matrix-v0.1.md](/Users/kevinmiller/dev/Framework-engineering/research/theory/theory-traceability-matrix-v0.1.md)
+- [evidence-to-theory-map.md](/Users/kevinmiller/dev/Framework-engineering/research/theory/evidence-to-theory-map.md)
+- [competing-explanations.md](/Users/kevinmiller/dev/Framework-engineering/research/theory/competing-explanations.md)
+- [confidence-assessment.md](/Users/kevinmiller/dev/Framework-engineering/research/theory/confidence-assessment.md)
+- [future-predictions.md](/Users/kevinmiller/dev/Framework-engineering/research/theory/future-predictions.md)
 
 ## Core Definitions
 
