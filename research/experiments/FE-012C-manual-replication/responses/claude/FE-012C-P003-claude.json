@@ -1,0 +1,28 @@
+{
+  "packet_id": "FE-012C-P003",
+  "blinded_artifact_id": "BA-003",
+  "recognized_artifact": "Cynefin Framework",
+  "primitive_sequence": ["Observe", "Classify", "Interpret", "Decide", "Reassess"],
+  "transitions": [
+    {"from": "Observe", "to": "Classify"},
+    {"from": "Classify", "to": "Interpret"},
+    {"from": "Interpret", "to": "Decide"},
+    {"from": "Decide", "to": "Reassess"},
+    {"from": "Reassess", "to": "Observe"}
+  ],
+  "entry_primitive": "Observe",
+  "exit_primitive": "Reassess",
+  "loops": [
+    "Reassess → Observe → Classify → Interpret → Decide → Reassess (when condition shifts or initial placement no longer fits)"
+  ],
+  "branches": [
+    "At Reassess: if condition is stable → process terminates; if condition shifts → return to Observe"
+  ],
+  "dominant_primitive": "Classify",
+  "candidate_missing_primitives": [],
+  "ambiguities": [
+    "The exit condition is not defined; the process may loop indefinitely or terminate implicitly when conditions stabilize",
+    "Reassess is described conditionally — it is unclear whether Reassess always occurs or only when a shift is detected"
+  ],
+  "notes": "Recognized as the Cynefin Framework. The core operation is classifying the situation into a domain type, which determines the response logic. The loop is conditional on condition change."
+}

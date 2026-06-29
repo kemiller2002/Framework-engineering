@@ -1,0 +1,30 @@
+{
+  "packet_id": "FE-012C-P012",
+  "blinded_artifact_id": "BA-012",
+  "recognized_artifact": "Hoshin Kanri (Policy Deployment)",
+  "primitive_sequence": ["Bound", "Generate", "Prioritize", "Communicate", "Act", "Verify", "Reassess"],
+  "transitions": [
+    {"from": "Bound", "to": "Generate"},
+    {"from": "Generate", "to": "Prioritize"},
+    {"from": "Prioritize", "to": "Communicate"},
+    {"from": "Communicate", "to": "Act"},
+    {"from": "Act", "to": "Verify"},
+    {"from": "Verify", "to": "Reassess"},
+    {"from": "Reassess", "to": "Bound"}
+  ],
+  "entry_primitive": "Bound",
+  "exit_primitive": "Reassess",
+  "loops": [
+    "Reassess → Bound → Generate → Prioritize → Communicate → Act → Verify → Reassess (annual or periodic planning cycle)"
+  ],
+  "branches": [
+    "At Reassess: if results or conditions change → return to Bound; otherwise continue on current trajectory"
+  ],
+  "dominant_primitive": "Communicate",
+  "candidate_missing_primitives": [],
+  "ambiguities": [
+    "Communicate in this context represents a multi-directional negotiation process (catchball) that is more iterative than a single transfer step; the primitive may underrepresent the bidirectional nature of commitment-setting",
+    "The loop-back target from Reassess is ambiguous: major condition changes may return to Bound while minor adjustments may return to Generate or Prioritize"
+  ],
+  "notes": "Recognized as Hoshin Kanri. Communicate is the operationally distinctive step, representing the catchball alignment process across organizational levels. The cycle has both annual and sub-annual cadences, which the described sequence collapses into a single loop."
+}

@@ -1,0 +1,31 @@
+{
+  "packet_id": "FE-012C-P006",
+  "blinded_artifact_id": "BA-006",
+  "recognized_artifact": "Differential Diagnosis",
+  "primitive_sequence": ["Observe", "Bound", "Generate", "Explain", "Evaluate", "Decide", "Verify", "Reassess"],
+  "transitions": [
+    {"from": "Observe", "to": "Bound"},
+    {"from": "Bound", "to": "Generate"},
+    {"from": "Generate", "to": "Explain"},
+    {"from": "Explain", "to": "Evaluate"},
+    {"from": "Evaluate", "to": "Decide"},
+    {"from": "Decide", "to": "Verify"},
+    {"from": "Verify", "to": "Reassess"},
+    {"from": "Reassess", "to": "Observe"}
+  ],
+  "entry_primitive": "Observe",
+  "exit_primitive": "Verify",
+  "loops": [
+    "Reassess → Observe → Bound → Generate → Explain → Evaluate → Decide → Verify → Reassess (when new findings conflict with the current leading explanation)"
+  ],
+  "branches": [
+    "At Verify: if explanation holds → process terminates; if new findings conflict → Reassess"
+  ],
+  "dominant_primitive": "Generate",
+  "candidate_missing_primitives": [],
+  "ambiguities": [
+    "The order of Observe and Bound is ambiguous; problem definition could precede or follow initial information gathering depending on the case presentation",
+    "Reassess may loop back to different points depending on the nature of the conflict: new findings may require additional observations, new candidate explanations, or revised problem framing"
+  ],
+  "notes": "Recognized as Differential Diagnosis. The process closely parallels the Scientific Method but adds an explicit Explain step and operates within a bounded case definition. Verify functions as a termination gate that also triggers the reassessment loop."
+}

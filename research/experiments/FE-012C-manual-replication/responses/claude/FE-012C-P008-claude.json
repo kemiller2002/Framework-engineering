@@ -1,0 +1,24 @@
+{
+  "packet_id": "FE-012C-P008",
+  "blinded_artifact_id": "BA-008",
+  "recognized_artifact": "Fault Tree Analysis (FTA)",
+  "primitive_sequence": ["Bound", "Generate", "Explain", "Classify", "Verify"],
+  "transitions": [
+    {"from": "Bound", "to": "Generate"},
+    {"from": "Generate", "to": "Explain"},
+    {"from": "Explain", "to": "Classify"},
+    {"from": "Classify", "to": "Verify"}
+  ],
+  "entry_primitive": "Bound",
+  "exit_primitive": "Verify",
+  "loops": [],
+  "branches": [],
+  "dominant_primitive": "Explain",
+  "candidate_missing_primitives": [],
+  "ambiguities": [
+    "The process produces a hierarchical structure (tree) but the described procedural steps are sequential; the structural output shape differs from the procedural shape",
+    "Classify in this context refers to classifying logical relationships between events (AND/OR gates) rather than classifying types of events — this may be a distinct usage of the primitive not fully covered by the definition",
+    "No explicit loop is described, but constructing a fault tree inherently involves recursive decomposition; the described steps may collapse multiple iterations into a single linear sequence"
+  ],
+  "notes": "Recognized as Fault Tree Analysis. The described process is sequential, but the artifact produced is hierarchical. Explain represents the deductive construction of causal combinations. Classify here specifically encodes logical gate types, which is a narrower use of the primitive than its general definition."
+}

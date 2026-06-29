@@ -1,0 +1,27 @@
+{
+  "packet_id": "FE-012C-P011",
+  "blinded_artifact_id": "BA-011",
+  "recognized_artifact": "Scrum (sprint cycle)",
+  "primitive_sequence": ["Bound", "Prioritize", "Decide", "Act", "Reflect", "Reassess"],
+  "transitions": [
+    {"from": "Bound", "to": "Prioritize"},
+    {"from": "Prioritize", "to": "Decide"},
+    {"from": "Decide", "to": "Act"},
+    {"from": "Act", "to": "Reflect"},
+    {"from": "Reflect", "to": "Reassess"},
+    {"from": "Reassess", "to": "Bound"}
+  ],
+  "entry_primitive": "Bound",
+  "exit_primitive": "Reassess",
+  "loops": [
+    "Reassess → Bound → Prioritize → Decide → Act → Reflect → Reassess (each iteration constitutes a new time-boxed cycle)"
+  ],
+  "branches": [],
+  "dominant_primitive": "Act",
+  "candidate_missing_primitives": [],
+  "ambiguities": [
+    "Reflect and Reassess are presented as sequential but may be aspects of a single retrospective operation in practice",
+    "Prioritize may encompass backlog refinement activities in addition to ordering, which could warrant additional primitives"
+  ],
+  "notes": "Recognized as Scrum. The process is a tight repeating cycle bounded by a time-boxed goal. The key structural feature is Reassess feeding explicitly back into Bound for the next cycle. Act produces a usable increment, making output a defining property of each cycle."
+}

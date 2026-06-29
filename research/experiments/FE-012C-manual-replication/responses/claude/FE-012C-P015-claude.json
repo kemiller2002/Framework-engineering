@@ -1,0 +1,26 @@
+{
+  "packet_id": "FE-012C-P015",
+  "blinded_artifact_id": "BA-015",
+  "recognized_artifact": "OODA Loop (Observe-Orient-Decide-Act)",
+  "primitive_sequence": ["Observe", "Interpret", "Decide", "Act", "Reassess"],
+  "transitions": [
+    {"from": "Observe", "to": "Interpret"},
+    {"from": "Interpret", "to": "Decide"},
+    {"from": "Decide", "to": "Act"},
+    {"from": "Act", "to": "Reassess"},
+    {"from": "Reassess", "to": "Observe"}
+  ],
+  "entry_primitive": "Observe",
+  "exit_primitive": "Reassess",
+  "loops": [
+    "Reassess → Observe → Interpret → Decide → Act → Reassess (continuous loop when conditions change)"
+  ],
+  "branches": [],
+  "dominant_primitive": "Observe",
+  "candidate_missing_primitives": [],
+  "ambiguities": [
+    "The original framework's Orient step encompasses more than Interpret alone — it involves updating mental models, incorporating cultural filters, and synthesizing prior experience; Interpret captures part of this but may underrepresent its scope",
+    "Reassess is introduced as a distinct step; in the original loop, iteration is implicit and continuous rather than conditional on a reassessment decision"
+  ],
+  "notes": "Recognized as the OODA Loop. The process is a pure cycle with no defined termination condition. Interpret maps approximately to Orient in the source framework. The loop is designed for speed of cycling — faster iteration relative to an adversary or changing environment is the mechanism of advantage."
+}

@@ -1,0 +1,30 @@
+{
+  "packet_id": "FE-012C-P007",
+  "blinded_artifact_id": "BA-007",
+  "recognized_artifact": "Root Cause Analysis (RCA)",
+  "primitive_sequence": ["Bound", "Observe", "Explain", "Verify", "Decide", "Act", "Reassess"],
+  "transitions": [
+    {"from": "Bound", "to": "Observe"},
+    {"from": "Observe", "to": "Explain"},
+    {"from": "Explain", "to": "Verify"},
+    {"from": "Verify", "to": "Decide"},
+    {"from": "Decide", "to": "Act"},
+    {"from": "Act", "to": "Reassess"},
+    {"from": "Reassess", "to": "Observe"}
+  ],
+  "entry_primitive": "Bound",
+  "exit_primitive": "Act",
+  "loops": [
+    "Reassess → Observe → Explain → Verify → Decide → Act → Reassess (if the corrective action does not hold)"
+  ],
+  "branches": [
+    "At Reassess: if correction holds → process terminates; if result does not hold → return to Observe"
+  ],
+  "dominant_primitive": "Explain",
+  "candidate_missing_primitives": [],
+  "ambiguities": [
+    "Verify precedes Decide in the described sequence, which is atypical; in some RCA approaches verification of the corrective action occurs after acting, not before deciding",
+    "Reassess loop target is not specified; it may return to Bound, Observe, or Explain depending on the nature of the failure"
+  ],
+  "notes": "Recognized as Root Cause Analysis. The process is primarily linear with a conditional loop triggered by ineffective corrective action. Explain (causal chain construction) is the methodologically central operation distinguishing RCA from simpler problem-solving approaches."
+}

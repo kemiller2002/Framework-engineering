@@ -1,0 +1,23 @@
+{
+  "packet_id": "FE-012C-P002",
+  "blinded_artifact_id": "BA-002",
+  "recognized_artifact": "Decision Matrix (weighted scoring model / evaluation matrix)",
+  "primitive_sequence": ["Bound", "Generate", "Compare", "Evaluate", "Decide", "Communicate"],
+  "transitions": [
+    {"from": "Bound", "to": "Generate"},
+    {"from": "Generate", "to": "Compare"},
+    {"from": "Compare", "to": "Evaluate"},
+    {"from": "Evaluate", "to": "Decide"},
+    {"from": "Decide", "to": "Communicate"}
+  ],
+  "entry_primitive": "Bound",
+  "exit_primitive": "Communicate",
+  "loops": [],
+  "branches": [],
+  "dominant_primitive": "Compare",
+  "candidate_missing_primitives": [],
+  "ambiguities": [
+    "The instruction to 'record the rationale' at the end could map to Communicate or could be considered part of Decide; the boundary between these two primitives is unclear in this context"
+  ],
+  "notes": "Recognized as a Decision Matrix or weighted evaluation matrix. The structure is strictly linear with no loops or branches. Compare and Evaluate are closely coupled; they may represent a single compound operation in some interpretations."
+}

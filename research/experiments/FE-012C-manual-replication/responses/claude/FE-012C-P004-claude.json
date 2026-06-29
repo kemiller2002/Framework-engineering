@@ -1,0 +1,28 @@
+{
+  "packet_id": "FE-012C-P004",
+  "blinded_artifact_id": "BA-004",
+  "recognized_artifact": "Incident Command System (ICS)",
+  "primitive_sequence": ["Bound", "Observe", "Allocate", "Communicate", "Prioritize", "Coordinate", "Reassess"],
+  "transitions": [
+    {"from": "Bound", "to": "Observe"},
+    {"from": "Observe", "to": "Allocate"},
+    {"from": "Allocate", "to": "Communicate"},
+    {"from": "Communicate", "to": "Prioritize"},
+    {"from": "Prioritize", "to": "Coordinate"},
+    {"from": "Coordinate", "to": "Reassess"},
+    {"from": "Reassess", "to": "Observe"}
+  ],
+  "entry_primitive": "Bound",
+  "exit_primitive": "Reassess",
+  "loops": [
+    "Reassess → Observe → Allocate → Communicate → Prioritize → Coordinate → Reassess (as conditions change during the incident)"
+  ],
+  "branches": [],
+  "dominant_primitive": "Coordinate",
+  "candidate_missing_primitives": [],
+  "ambiguities": [
+    "The transition from Reassess is not fully specified; reassessment may return to Observe, Bound, or Allocate depending on what aspect of the situation changed",
+    "'Decide tactical priorities' in the source text maps ambiguously to Prioritize alone or Prioritize followed by Decide"
+  ],
+  "notes": "Recognized as the Incident Command System. The process is adaptive and cyclic, designed for live disruptions where conditions change continuously. Allocate is a key structural step that organizes span of control and role assignment."
+}

@@ -1,0 +1,23 @@
+{
+  "packet_id": "FE-012C-P013",
+  "blinded_artifact_id": "BA-013",
+  "recognized_artifact": "Business Model Canvas",
+  "primitive_sequence": ["Bound", "Classify", "Generate", "Evaluate", "Communicate"],
+  "transitions": [
+    {"from": "Bound", "to": "Classify"},
+    {"from": "Classify", "to": "Generate"},
+    {"from": "Generate", "to": "Evaluate"},
+    {"from": "Evaluate", "to": "Communicate"}
+  ],
+  "entry_primitive": "Bound",
+  "exit_primitive": "Communicate",
+  "loops": [],
+  "branches": [],
+  "dominant_primitive": "Classify",
+  "candidate_missing_primitives": [],
+  "ambiguities": [
+    "The described process is linear, but the artifact is typically used iteratively; the absence of a Reassess or loop primitive may not reflect actual usage patterns",
+    "Generate and Evaluate may be interleaved rather than strictly sequential — hypotheses about how building blocks relate are often formed and tested simultaneously during canvas population"
+  ],
+  "notes": "Recognized as the Business Model Canvas. The Classify step represents populating a fixed set of building blocks. Generate represents forming hypotheses about how the blocks relate to create a coherent model. The process as described terminates at Communicate with no specified revision loop."
+}

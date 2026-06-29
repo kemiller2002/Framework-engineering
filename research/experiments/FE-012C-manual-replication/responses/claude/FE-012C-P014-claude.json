@@ -1,0 +1,22 @@
+{
+  "packet_id": "FE-012C-P014",
+  "blinded_artifact_id": "BA-014",
+  "recognized_artifact": "Zachman Framework",
+  "primitive_sequence": ["Bound", "Classify", "Interpret"],
+  "transitions": [
+    {"from": "Bound", "to": "Classify"},
+    {"from": "Classify", "to": "Interpret"}
+  ],
+  "entry_primitive": "Bound",
+  "exit_primitive": "Interpret",
+  "loops": [],
+  "branches": [],
+  "dominant_primitive": "Classify",
+  "candidate_missing_primitives": [],
+  "ambiguities": [
+    "The described process is extremely compact for a framework of this complexity; the Classify step likely contains substantial sub-operations not captured in the description",
+    "The framework is a static reference matrix rather than a dynamic procedure; mapping it to a procedural primitive sequence may impose more sequential structure than the artifact contains",
+    "Interpret is described as identifying what is present or missing, which may also involve Evaluate (assessing completeness) — the boundary between these two primitives is not clearly resolved by the description"
+  ],
+  "notes": "Recognized as the Zachman Framework. The described process reduces to three steps: scope the system, populate the classification grid across perspectives and question types, then interpret gaps. The framework is primarily a taxonomy rather than a procedural reasoning chain, which limits the richness of primitive extraction."
+}
