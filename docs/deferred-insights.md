@@ -270,3 +270,29 @@ Clarity and EDF may be reference implementations of a broader reasoning grammar 
 
 Status:
 Under Investigation.
+
+### DI-FE-019
+
+Title: Reasoning Grammar and Coordination Grammar May Diverge
+
+Observation:
+FE-012A and FE-012B together suggest that reasoning-heavy artifacts compress more cleanly into the current primitive vocabulary than coordination-heavy problems.
+
+Potential Implication:
+Framework Engineering may need separate but related grammars for procedural reasoning and execution or coordination.
+
+Status:
+Under Investigation.
+
+### DI-FE-020
+
+Title: Framework Engineering Is Stronger At Characterization Than Generation
+
+Observation:
+Current evidence is stronger for characterizing artifacts and improving traceability than for generating distinctive new frameworks.
+
+Potential Implication:
+Framework Engineering may mature first as a characterization and redesign methodology before it matures as a full engineering discipline.
+
+Status:
+Under Investigation.

@@ -20,3 +20,10 @@ Experiments:
 - [FE-011A LLM Blind Pilot](experiments/FE-011A-llm-blind-pilot/README.md)
 - [FE-012A Blind Primitive Reasoning Extraction](experiments/FE-012A-blind-primitive-extraction/README.md)
 - [FE-012B Primitive Grammar Synthesis Experiment](experiments/FE-012B-primitive-synthesis/README.md)
+
+Theory:
+
+- [Theory of Framework Engineering v0.1](theory/theory-of-framework-engineering-v0.1.md)
+- [Emergent Design Laws v0.1](theory/emergent-design-laws-v0.1.md)
+- [Grammar Hypotheses v0.1](theory/grammar-hypotheses-v0.1.md)
+- [Falsification Criteria](theory/falsification-criteria.md)

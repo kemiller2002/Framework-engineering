@@ -46,6 +46,7 @@ Artifacts:
 - FE-007 Knowledge Artifact Taxonomy
 - FE-008 Knowledge Artifact Boundary Study
 - FE-008A Identity-Capability Principle
+- Theory of Framework Engineering v0.1
 
 ## Active Experiments
 
@@ -72,3 +73,7 @@ Artifacts:
 ## Next Milestone
 
 Run FE-008 Knowledge Artifact Boundary Study pilot.
+
+## Current Theory Status
+
+Framework Engineering currently has provisional evidence as a characterization and improvement methodology, not yet as a full engineering discipline.

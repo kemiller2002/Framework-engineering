@@ -28,9 +28,10 @@ Purpose: Track claims about Framework Engineering and the current state of evide
 | Separating Foundation, Research, and Applications improves epistemic clarity. | Repository architecture review; Knowledge Promotion discussion | Needs contributor usability testing | Medium | Provisionally Supported |
 | Separating identity from capabilities improves knowledge artifact classification. | FE-008 Pilot Batch 001; FE-008 Pilot Batch 002 | Needs larger reviewer comparison | Medium | Provisionally Supported |
 | Identity and Capability are independent dimensions. | FE-008 Pilot | None so far | Medium | Provisionally Supported |
+| Framework Engineering currently has evidence as a characterization and improvement methodology, not yet as a full engineering discipline. | FE-008 identity-capability work; FE-011A redesign pilot; FE-012A reconstruction run; FE-012B synthesis run | No independent validation across the full theory stack yet | Low | Provisionally Supported |
 | Artifact-first corpus structure improves traceability over CSV-only corpus structure. | Reference Corpus architecture discussion | Needs use during Batch 001 | Medium | Under Investigation |
 | Framework Engineering redesigns may improve task output quality compared with original frameworks. | FE-010 redesign exercise; FE-011A pilot kit | Not yet tested with blinded outputs | Low | Under Investigation |
-| A finite primitive reasoning vocabulary may underlie diverse knowledge artifacts. | FE-012 experiment design observation; FE-011A reasoning-layer pattern | Not yet tested through blind extraction | Low | Under Investigation |
+| A finite primitive reasoning vocabulary may underlie diverse knowledge artifacts. | FE-012A internal extraction run; FE-011A reasoning-layer pattern | No independent extractor convergence yet | Low | Provisionally Supported |
 | A frozen primitive reasoning vocabulary may be expressive enough to synthesize coherent procedural frameworks for novel problems. | FE-012B internal synthesis run; FE-012A internal extraction run | Coordination-heavy cases created missing primitive pressure around synchronization, scheduling, and sequencing | Low | Provisionally Supported |
 
 ## Notes
