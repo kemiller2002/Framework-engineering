@@ -1,0 +1,52 @@
+{
+  "ecr_id": "",
+  "packet_id": "",
+  "recognized_artifact": "",
+  "structural_layer": {
+    "entry_condition": "",
+    "exit_condition": "",
+    "required_steps": [],
+    "optional_steps": [],
+    "loops": [],
+    "branches": [],
+    "termination_conditions": [],
+    "control_flow_shape": ""
+  },
+  "primitive_layer": {
+    "primitive_sequence": [],
+    "transitions": [],
+    "dominant_primitive": "",
+    "candidate_missing_primitives": []
+  },
+  "constraint_layer": {
+    "invariants": [],
+    "preconditions": [],
+    "postconditions": [],
+    "stopping_criteria": [],
+    "validity_conditions": []
+  },
+  "representation_layer": {
+    "procedural_ast": {},
+    "natural_language_summary": "",
+    "canonical_summary": "",
+    "ambiguity_notes": []
+  },
+  "reliability_layer": {
+    "recognized_artifact": "",
+    "schema_compliance_notes": [],
+    "output_quality_notes": []
+  },
+  "product_layer": {
+    "clarity_relevance": "",
+    "edf_relevance": "",
+    "product_action_candidate": "",
+    "research_only_finding": ""
+  },
+  "confidence": {
+    "structural": "",
+    "constraint": "",
+    "representation": "",
+    "overall": ""
+  },
+  "notes": ""
+}

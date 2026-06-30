@@ -322,3 +322,29 @@ Primitive grammar extraction may be more reproducible than expected under a shar
 
 Status:
 Under Investigation.
+
+### DI-FE-023
+
+Title: Procedural Frameworks as Language Artifacts
+
+Observation:
+FE-012C suggests that procedural frameworks may be better compared through grammar, control flow, constraints, and canonical structure than through literal primitive sequences.
+
+Potential Implication:
+Frameworks may be analyzable as natural-language procedural programs with AST-like structures.
+
+Status:
+Under Investigation.
+
+### DI-FE-024
+
+Title: Research Operating System
+
+Observation:
+One-off experiments make it harder to update confidence coherently across related hypotheses and measurement layers.
+
+Potential Implication:
+Framework Engineering research may need bundled Evidence Collection Runs, a hypothesis registry, kill conditions, and a common measurement schema to accumulate evidence without inflating theory.
+
+Status:
+Under Investigation.

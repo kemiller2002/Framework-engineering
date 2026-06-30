@@ -67,6 +67,30 @@ Artifacts:
   Purpose: Re-run the FE-012C packet instrument in fresh model conversations to test whether the same instrument produces similar results across time without modifying prior results.
 - FE-012C Dataset Comparison Report
   Purpose: Compare the original FE-012C manual replication dataset against repeatability run 001 to identify stability, drift, and model-specific elaboration patterns without claiming theory validation.
+- FE-013 Procedural Language Hypothesis
+  Purpose: Test whether procedural frameworks exhibit compiler-like structural properties recoverable from natural-language descriptions as procedural ASTs and constraints.
+
+## Research Operating System
+
+- Hypothesis Registry
+- Evidence Collection Run format
+- Confidence update process
+- Kill condition guide
+- Multi-layer measurement schema
+- Clarity and EDF relevance tracking
+- Research dashboard template
+- Decision log
+
+## Active Evidence Runs
+
+- ECR-000001 Multi-Layer Procedural Representation
+  Purpose: Collect primitive, AST, constraint, control-flow, reliability, and product relevance data from the same artifact packet in one bundled evidence pass.
+
+Active Run:
+FE-013 Manual Run
+
+Purpose:
+Collect GPT-5, Claude, and Gemini procedural AST outputs for FE-013 using manual console execution.
 
 ## Open Questions
 
@@ -78,7 +102,7 @@ Artifacts:
 
 ## Next Milestone
 
-Review FE-012C dataset comparison outputs and identify whether observed drift is backbone drift, elaboration drift, or schema / storage noise.
+Prepare ECR-000001 for execution and use the operating-system scaffold to track confidence updates and kill conditions across multiple hypotheses.
 
 ## Current Theory Status
 

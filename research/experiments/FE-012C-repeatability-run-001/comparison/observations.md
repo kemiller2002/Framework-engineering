@@ -26,3 +26,9 @@ Interpretation constraints:
 - Stable agreement is measurement evidence, not theory validation.
 - Drift may reflect packet ambiguity, vocabulary pressure, or provider-specific elaboration behavior.
 - Repeatability conclusions should be grounded in the generated comparison outputs rather than ad hoc inspection.
+
+Capability Role Review Initiated
+
+Observation:
+
+"The literal and first semantic comparators may be operating below the correct abstraction level. Manual review will determine whether capability-role comparison better represents procedural reasoning agreement."

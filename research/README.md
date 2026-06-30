@@ -15,6 +15,12 @@ Research artifacts should clearly state status:
 - Superseded
 - Failed
 
+Operating system:
+
+- [Research Operating System](operating-system/README.md)
+- [Hypothesis Registry](operating-system/hypothesis-registry.md)
+- [Research Operating Manual](operating-system/research-operating-manual.md)
+
 Experiments:
 
 - [FE-011A LLM Blind Pilot](experiments/FE-011A-llm-blind-pilot/README.md)
@@ -22,6 +28,14 @@ Experiments:
 - [FE-012B Primitive Grammar Synthesis Experiment](experiments/FE-012B-primitive-synthesis/README.md)
 - [FE-012C Manual Multi-Model Replication Kit](experiments/FE-012C-manual-replication/README.md)
 - [FE-012C Repeatability Run 001](experiments/FE-012C-repeatability-run-001/README.md)
+- [FE-013 Procedural Language Hypothesis](experiments/FE-013-procedural-language-hypothesis/README.md)
+
+Evidence runs:
+
+- [ECR-000001 Multi-Layer Procedural Representation](evidence-runs/ECR-000001-multi-layer-procedural-representation/README.md)
+
+FE-013 manual execution:
+- Use `run-instructions.md` and `operator-checklist.md` in `research/experiments/FE-013-procedural-language-hypothesis/` for manual console execution across GPT-5, Claude, and Gemini.
 
 FE-012C reporting:
 - Generated reports are written under `research/experiments/FE-012C-manual-replication/reports/`.

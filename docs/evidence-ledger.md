@@ -35,6 +35,8 @@ Purpose: Track claims about Framework Engineering and the current state of evide
 | Framework Engineering redesigns may improve task output quality compared with original frameworks. | FE-010 redesign exercise; FE-011A pilot kit | Not yet tested with blinded outputs | Low | Under Investigation |
 | A finite primitive reasoning vocabulary may underlie diverse knowledge artifacts. | FE-012A internal extraction run; FE-011A reasoning-layer pattern | No independent extractor convergence yet | Low | Provisionally Supported |
 | A frozen primitive reasoning vocabulary may be expressive enough to synthesize coherent procedural frameworks for novel problems. | FE-012B internal synthesis run; FE-012A internal extraction run | Coordination-heavy cases created missing primitive pressure around synchronization, scheduling, and sequencing | Low | Provisionally Supported |
+| Procedural frameworks may exhibit language-like structures recoverable as procedural ASTs | FE-012C revealed stable reasoning-shape agreement and primitive grammar convergence | FE-013 not yet run; programming-language analogy may bias analysis | Low | Under Investigation |
+| A research operating system organized around hypotheses and bundled evidence runs may improve evidence collection efficiency without increasing theory inflation | Need ECR-000001 and follow-on runs | Operating overhead may exceed benefit; multi-hypothesis runs may blur interpretation | Low | Under Investigation |
 
 ## Notes
 

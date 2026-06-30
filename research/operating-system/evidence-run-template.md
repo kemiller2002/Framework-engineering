@@ -1,0 +1,23 @@
+# Evidence Run Template
+
+- ECR ID
+- Title
+- Date
+- Purpose
+- Research questions
+- Hypotheses tested
+- Predictions
+- Artifact set
+- Models
+- Prompt version
+- Packet version
+- Measurement layers
+- Response schema
+- Data storage
+- Analysis plan
+- Kill conditions tested
+- Interpretation rules
+- Results
+- Confidence updates
+- Product relevance
+- Follow-up actions
