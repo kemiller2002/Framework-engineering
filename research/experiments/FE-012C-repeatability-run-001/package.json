@@ -1,0 +1,7 @@
+{
+  "type": "module",
+  "scripts": {
+    "compare": "node scripts/compare-datasets.js",
+    "semantic-compare": "node scripts/semantic-compare.js"
+  }
+}

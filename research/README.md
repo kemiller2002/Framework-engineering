@@ -28,6 +28,7 @@ FE-012C reporting:
 
 FE-012C repeatability:
 - Repeatability runs reuse the locked packet instrument and must not expose prior outputs to participating models.
+- Dataset comparison outputs for repeatability run 001 are generated under `research/experiments/FE-012C-repeatability-run-001/comparison/generated/`.
 
 Validation:
 

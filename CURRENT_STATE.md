@@ -65,6 +65,8 @@ Artifacts:
   Purpose: Support transparent manual multi-model replication of primitive grammar extraction without APIs or automation, with reproducible reporting from stored response JSON.
 - FE-012C Repeatability Run 001
   Purpose: Re-run the FE-012C packet instrument in fresh model conversations to test whether the same instrument produces similar results across time without modifying prior results.
+- FE-012C Dataset Comparison Report
+  Purpose: Compare the original FE-012C manual replication dataset against repeatability run 001 to identify stability, drift, and model-specific elaboration patterns without claiming theory validation.
 
 ## Open Questions
 
@@ -76,7 +78,7 @@ Artifacts:
 
 ## Next Milestone
 
-Execute FE-012C Repeatability Run 001 without exposing prior outputs to the participating models.
+Review FE-012C dataset comparison outputs and identify whether observed drift is backbone drift, elaboration drift, or schema / storage noise.
 
 ## Current Theory Status
 
