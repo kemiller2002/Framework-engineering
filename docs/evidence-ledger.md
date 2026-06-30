@@ -37,6 +37,7 @@ Purpose: Track claims about Framework Engineering and the current state of evide
 | A frozen primitive reasoning vocabulary may be expressive enough to synthesize coherent procedural frameworks for novel problems. | FE-012B internal synthesis run; FE-012A internal extraction run | Coordination-heavy cases created missing primitive pressure around synchronization, scheduling, and sequencing | Low | Provisionally Supported |
 | Procedural frameworks may exhibit language-like structures recoverable as procedural ASTs | FE-012C revealed stable reasoning-shape agreement and primitive grammar convergence | FE-013 not yet run; programming-language analogy may bias analysis | Low | Under Investigation |
 | A research operating system organized around hypotheses and bundled evidence runs may improve evidence collection efficiency without increasing theory inflation | Need ECR-000001 and follow-on runs | Operating overhead may exceed benefit; multi-hypothesis runs may blur interpretation | Low | Under Investigation |
+| Hypothesis dependency tracking may reduce research drift and accelerate multi-hypothesis evidence runs | FE-012C revealed comparator and abstraction drift; research operating system introduced hypothesis tracking | Dependency model not yet tested in live evidence runs | Low | Under Investigation |
 
 ## Notes
 

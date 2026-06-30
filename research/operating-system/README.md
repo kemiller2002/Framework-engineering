@@ -8,6 +8,14 @@ The goal is to organize the program around hypotheses and evidence rather than i
 
 ## Contents
 
+- `research-constitution.md`
+- `research-dependency-graph.md`
+- `dependency-graph-data.json`
+- `hypothesis-lifecycle.md`
+- `abstraction-governance.md`
+- `research-cadence.md`
+- `evidence-run-checklist.md`
+- `hypothesis-review-board.md`
 - `research-operating-manual.md`
 - `hypothesis-registry.md`
 - `evidence-run-template.md`

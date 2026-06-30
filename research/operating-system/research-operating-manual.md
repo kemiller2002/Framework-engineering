@@ -25,3 +25,11 @@ This manual defines how Framework Engineering research collects evidence, update
 8. Research informs product design only after repeated support.
 9. Failed hypotheses should be retired, not reworded indefinitely.
 10. Kill conditions must be respected.
+
+## Required Operating References
+
+- `research-constitution.md`
+- `research-dependency-graph.md`
+- `abstraction-governance.md`
+- `evidence-run-checklist.md`
+- `hypothesis-lifecycle.md`

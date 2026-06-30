@@ -348,3 +348,29 @@ Framework Engineering research may need bundled Evidence Collection Runs, a hypo
 
 Status:
 Under Investigation.
+
+### DI-FE-025
+
+Title: Research Dependency Graph
+
+Observation:
+As hypotheses accumulate, downstream claims can appear stronger than their upstream dependencies justify.
+
+Potential Implication:
+Framework Engineering may need explicit dependency tracking so weakened instrument, convergence, or bias assumptions automatically trigger review of downstream claims.
+
+Status:
+Under Investigation.
+
+### DI-FE-026
+
+Title: Clarity as Belief Management
+
+Observation:
+Research practice revealed a recurring pattern: hypotheses behave like managed beliefs with evidence, confidence, assumptions, competing explanations, kill conditions, and next experiments.
+
+Potential Implication:
+Clarity may be best understood as a belief-management system rather than a note-taking, decision-support, or generic knowledge-management tool.
+
+Status:
+Accepted as product architecture hypothesis.

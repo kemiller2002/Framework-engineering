@@ -86,6 +86,9 @@ Artifacts:
 - ECR-000001 Multi-Layer Procedural Representation
   Purpose: Collect primitive, AST, constraint, control-flow, reliability, and product relevance data from the same artifact packet in one bundled evidence pass.
 
+Product Architecture Note:
+Clarity is currently modeled as a belief-management system that converts uncertainty into decisions. EDF is modeled as the execution layer that receives commitments from decisions.
+
 Active Run:
 FE-013 Manual Run
 
@@ -110,8 +113,8 @@ Framework Engineering currently has provisional evidence as a characterization a
 
 ## Current Phase
 
-Validation Program
+Research Operating System Stabilization
 
 ## Current Goal
 
-Attempt to disprove or simplify the Theory of Framework Engineering before expanding it.
+Freeze research rules, hypothesis dependency graph, and evidence-run governance before further expansion.
