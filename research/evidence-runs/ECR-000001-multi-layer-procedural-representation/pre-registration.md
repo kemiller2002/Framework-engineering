@@ -2,27 +2,20 @@
 
 ## Purpose
 
-Collect a single multi-layer evidence pass that tests structural, primitive, constraint, reliability, and product relevance hypotheses together.
+Run instrument calibration before broader hypothesis testing.
 
 ## Hypotheses Tested
 
-- H001 Procedural Invariance
-- H002 Representation Independence
 - H003 Multi-Model Convergence
-- H005 Procedural Grammar
-- H006 Control Flow
-- H007 Constraint Preservation
-- H008 Procedural AST Recovery
-- H009 Clarity Relevance
-- H010 EDF Relevance
-- H011 Reasoning/Execution Separation
 - H012 Vocabulary Bias
 - H013 Recognition Bias
 - H015 Measurement Instrument Reliability
 
-## Predictions
+All remaining hypotheses are exploratory only.
 
-- Procedural artifacts will produce richer multi-layer structure than static artifacts.
-- Constraint and AST layers will explain some drift that literal primitive comparison cannot.
-- Recognition and prompt bias will remain live risks rather than solved problems.
-- Product relevance may be recordable, but should not be treated as validation evidence.
+## Calibration Expectations
+
+- Scientific Method should show richer iterative reasoning than Bloom.
+- Scrum should differ from Scientific Method in execution-oriented ways.
+- Models should return valid JSON if the schema is usable.
+- Ambiguities should be recorded explicitly rather than being hidden by invented structure.

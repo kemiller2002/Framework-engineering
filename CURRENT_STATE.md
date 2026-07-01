@@ -105,7 +105,7 @@ Collect GPT-5, Claude, and Gemini procedural AST outputs for FE-013 using manual
 
 ## Next Milestone
 
-Prepare ECR-000001 for execution and use the operating-system scaffold to track confidence updates and kill conditions across multiple hypotheses.
+Run ECR-000001 as an instrument calibration pass before using the operating-system scaffold for broader hypothesis testing.
 
 ## Current Theory Status
 
@@ -113,8 +113,8 @@ Framework Engineering currently has provisional evidence as a characterization a
 
 ## Current Phase
 
-Research Operating System Stabilization
+Instrument Calibration
 
 ## Current Goal
 
-Freeze research rules, hypothesis dependency graph, and evidence-run governance before further expansion.
+Prepare ECR-000001 as an observation-only multi-layer instrument for bundled hypothesis analysis.

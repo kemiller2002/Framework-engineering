@@ -2,7 +2,7 @@
 
 ## Goal
 
-Collect a common measurement set from the same artifact packet so multiple hypotheses can be tested in one run.
+Collect a calibration pass from three artifacts so the measurement instrument can be reviewed before broader hypothesis testing.
 
 ## Required Recording
 
@@ -20,3 +20,22 @@ Collect a common measurement set from the same artifact packet so multiple hypot
 - Record observations separately from interpretations.
 - Record product relevance separately from research evidence.
 - Record whether any kill conditions were implicated.
+
+## Observation-Only Rule
+
+Models are collecting observations only.
+
+Do not ask models:
+
+- whether a hypothesis is strengthened
+- whether a hypothesis is weakened
+- whether Framework Engineering is supported
+- whether Clarity or EDF is validated
+
+Models may provide:
+
+- procedural structure
+- constraints
+- ambiguity
+- confidence
+- limited product relevance observations

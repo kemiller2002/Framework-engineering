@@ -1,10 +1,10 @@
 {
-  "ecr_id": "",
   "packet_id": "",
+  "blinded_artifact_id": "",
   "recognized_artifact": "",
   "structural_layer": {
-    "entry_condition": "",
-    "exit_condition": "",
+    "entry_conditions": [],
+    "exit_conditions": [],
     "required_steps": [],
     "optional_steps": [],
     "loops": [],
@@ -29,23 +29,19 @@
     "procedural_ast": {},
     "natural_language_summary": "",
     "canonical_summary": "",
-    "ambiguity_notes": []
+    "ambiguities": []
   },
-  "reliability_layer": {
-    "recognized_artifact": "",
-    "schema_compliance_notes": [],
-    "output_quality_notes": []
-  },
-  "product_layer": {
-    "clarity_relevance": "",
-    "edf_relevance": "",
-    "product_action_candidate": "",
-    "research_only_finding": ""
+  "product_relevance_layer": {
+    "clarity_relevance_observations": [],
+    "edf_relevance_observations": [],
+    "research_only_observations": []
   },
   "confidence": {
-    "structural": "",
-    "constraint": "",
-    "representation": "",
+    "structural_layer": "",
+    "primitive_layer": "",
+    "constraint_layer": "",
+    "representation_layer": "",
+    "product_relevance_layer": "",
     "overall": ""
   },
   "notes": ""
