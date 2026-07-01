@@ -13,6 +13,10 @@ Collect a calibration pass from three artifacts so the measurement instrument ca
 - storage location
 - any parsing or execution issues
 
+Use packet version `ECR-000001-v1.1` for `P002` and `P003`.
+
+`P001` was collected before this refinement and should be marked as `v1.0` unless rerun.
+
 ## Execution Rules
 
 - Record predictions before execution.

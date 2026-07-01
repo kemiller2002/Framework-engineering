@@ -1,0 +1,742 @@
+{
+  "summary": {
+    "ontology_version": "0.1",
+    "test_case_count": 20,
+    "expected_passes": 8,
+    "false_positive_candidates": 1,
+    "false_negative_candidates": 2,
+    "ontology_gaps": 9,
+    "needs_human_review": 0,
+    "recommendation": "needs_revision"
+  },
+  "results": [
+    {
+      "case_id": "NV-001",
+      "phrase_a": {
+        "raw_phrase": "Stop investigation.",
+        "matched_concepts": [
+          {
+            "raw_text": "Stop investigation.",
+            "matched_concept": "TERMINATION_OR_CLOSURE",
+            "matched_label": "Termination or closure condition",
+            "pattern_triggered": "stop",
+            "match_confidence": "High",
+            "match_type": "exact_pattern"
+          }
+        ],
+        "concepts": [
+          "TERMINATION_OR_CLOSURE"
+        ],
+        "unresolved": false
+      },
+      "phrase_b": {
+        "raw_phrase": "Accept hypothesis.",
+        "matched_concepts": [
+          {
+            "raw_text": "Accept hypothesis.",
+            "matched_concept": "HYPOTHESIS_GENERATION",
+            "matched_label": "Candidate explanation or option generation",
+            "pattern_triggered": "hypothesis",
+            "match_confidence": "High",
+            "match_type": "exact_pattern"
+          }
+        ],
+        "concepts": [
+          "HYPOTHESIS_GENERATION"
+        ],
+        "unresolved": false
+      },
+      "expected_relationship": "related_but_distinct",
+      "rationale": "Stopping inquiry does not necessarily mean committing to a supported conclusion.",
+      "actual_shared_concepts": [],
+      "result": "expected_pass",
+      "flag": null,
+      "notes": "Distinct pair did not collapse into a shared concept."
+    },
+    {
+      "case_id": "NV-002",
+      "phrase_a": {
+        "raw_phrase": "Generate alternatives.",
+        "matched_concepts": [
+          {
+            "raw_text": "Generate alternatives.",
+            "matched_concept": "HYPOTHESIS_GENERATION",
+            "matched_label": "Candidate explanation or option generation",
+            "pattern_triggered": "alternative",
+            "match_confidence": "High",
+            "match_type": "exact_pattern"
+          }
+        ],
+        "concepts": [
+          "HYPOTHESIS_GENERATION"
+        ],
+        "unresolved": false
+      },
+      "phrase_b": {
+        "raw_phrase": "Prioritize alternatives.",
+        "matched_concepts": [
+          {
+            "raw_text": "Prioritize alternatives.",
+            "matched_concept": "HYPOTHESIS_GENERATION",
+            "matched_label": "Candidate explanation or option generation",
+            "pattern_triggered": "alternative",
+            "match_confidence": "High",
+            "match_type": "exact_pattern"
+          }
+        ],
+        "concepts": [
+          "HYPOTHESIS_GENERATION"
+        ],
+        "unresolved": false
+      },
+      "expected_relationship": "related_but_distinct",
+      "rationale": "Creating options differs from ordering options.",
+      "actual_shared_concepts": [
+        "HYPOTHESIS_GENERATION"
+      ],
+      "result": "false_positive_candidate",
+      "flag": "false_positive_candidate",
+      "notes": "Distinct pair shares one or more concepts and may be over-merged."
+    },
+    {
+      "case_id": "NV-003",
+      "phrase_a": {
+        "raw_phrase": "Gather evidence.",
+        "matched_concepts": [],
+        "concepts": [],
+        "unresolved": true
+      },
+      "phrase_b": {
+        "raw_phrase": "Evaluate evidence.",
+        "matched_concepts": [
+          {
+            "raw_text": "Evaluate evidence.",
+            "matched_concept": "EVIDENCE_EVALUATION",
+            "matched_label": "Evidence or option evaluated",
+            "pattern_triggered": "evaluate",
+            "match_confidence": "High",
+            "match_type": "exact_pattern"
+          }
+        ],
+        "concepts": [
+          "EVIDENCE_EVALUATION"
+        ],
+        "unresolved": false
+      },
+      "expected_relationship": "related_but_distinct",
+      "rationale": "Acquiring information differs from judging it.",
+      "actual_shared_concepts": [],
+      "result": "ontology_gap",
+      "flag": "ontology_gap",
+      "notes": "At least one phrase remained unresolved; safe non-collapse but ontology coverage is incomplete."
+    },
+    {
+      "case_id": "NV-004",
+      "phrase_a": {
+        "raw_phrase": "Compare competing explanations.",
+        "matched_concepts": [
+          {
+            "raw_text": "Compare competing explanations.",
+            "matched_concept": "COMPARISON",
+            "matched_label": "Alternatives compared or distinguished",
+            "pattern_triggered": "competing explanations",
+            "match_confidence": "High",
+            "match_type": "exact_pattern"
+          },
+          {
+            "raw_text": "Compare competing explanations.",
+            "matched_concept": "COMPARISON",
+            "matched_label": "Alternatives compared or distinguished",
+            "pattern_triggered": "compare",
+            "match_confidence": "High",
+            "match_type": "exact_pattern"
+          }
+        ],
+        "concepts": [
+          "COMPARISON"
+        ],
+        "unresolved": false
+      },
+      "phrase_b": {
+        "raw_phrase": "Verify a conclusion.",
+        "matched_concepts": [],
+        "concepts": [],
+        "unresolved": true
+      },
+      "expected_relationship": "related_but_distinct",
+      "rationale": "Comparison distinguishes alternatives; verification tests support.",
+      "actual_shared_concepts": [],
+      "result": "ontology_gap",
+      "flag": "ontology_gap",
+      "notes": "At least one phrase remained unresolved; safe non-collapse but ontology coverage is incomplete."
+    },
+    {
+      "case_id": "NV-005",
+      "phrase_a": {
+        "raw_phrase": "Identify the problem.",
+        "matched_concepts": [],
+        "concepts": [],
+        "unresolved": true
+      },
+      "phrase_b": {
+        "raw_phrase": "Solve the problem.",
+        "matched_concepts": [],
+        "concepts": [],
+        "unresolved": true
+      },
+      "expected_relationship": "related_but_distinct",
+      "rationale": "Problem identification is an entry condition; solution is downstream.",
+      "actual_shared_concepts": [],
+      "result": "ontology_gap",
+      "flag": "ontology_gap",
+      "notes": "At least one phrase remained unresolved; safe non-collapse but ontology coverage is incomplete."
+    },
+    {
+      "case_id": "NV-006",
+      "phrase_a": {
+        "raw_phrase": "Reassess because confidence is insufficient.",
+        "matched_concepts": [
+          {
+            "raw_text": "Reassess because confidence is insufficient.",
+            "matched_concept": "EVIDENCE_EVALUATION",
+            "matched_label": "Evidence or option evaluated",
+            "pattern_triggered": "assess",
+            "match_confidence": "High",
+            "match_type": "exact_pattern"
+          },
+          {
+            "raw_text": "Reassess because confidence is insufficient.",
+            "matched_concept": "CONFIDENCE_THRESHOLD",
+            "matched_label": "Confidence or sufficiency threshold",
+            "pattern_triggered": "confidence is insufficient",
+            "match_confidence": "High",
+            "match_type": "exact_pattern"
+          },
+          {
+            "raw_text": "Reassess because confidence is insufficient.",
+            "matched_concept": "REASSESSMENT_LOOP",
+            "matched_label": "Reassessment or continuation loop",
+            "pattern_triggered": "reassess",
+            "match_confidence": "High",
+            "match_type": "exact_pattern"
+          }
+        ],
+        "concepts": [
+          "EVIDENCE_EVALUATION",
+          "CONFIDENCE_THRESHOLD",
+          "REASSESSMENT_LOOP"
+        ],
+        "unresolved": false
+      },
+      "phrase_b": {
+        "raw_phrase": "Reflect after completion.",
+        "matched_concepts": [],
+        "concepts": [],
+        "unresolved": true
+      },
+      "expected_relationship": "related_but_distinct",
+      "rationale": "Reassessment reopens reasoning; reflection extracts learning.",
+      "actual_shared_concepts": [],
+      "result": "ontology_gap",
+      "flag": "ontology_gap",
+      "notes": "At least one phrase remained unresolved; safe non-collapse but ontology coverage is incomplete."
+    },
+    {
+      "case_id": "NV-007",
+      "phrase_a": {
+        "raw_phrase": "Coordinate team activity.",
+        "matched_concepts": [
+          {
+            "raw_text": "Coordinate team activity.",
+            "matched_concept": "COORDINATION",
+            "matched_label": "Coordination or alignment",
+            "pattern_triggered": "coordinate",
+            "match_confidence": "High",
+            "match_type": "exact_pattern"
+          },
+          {
+            "raw_text": "Coordinate team activity.",
+            "matched_concept": "COORDINATION",
+            "matched_label": "Coordination or alignment",
+            "pattern_triggered": "team",
+            "match_confidence": "High",
+            "match_type": "exact_pattern"
+          }
+        ],
+        "concepts": [
+          "COORDINATION"
+        ],
+        "unresolved": false
+      },
+      "phrase_b": {
+        "raw_phrase": "Communicate findings.",
+        "matched_concepts": [],
+        "concepts": [],
+        "unresolved": true
+      },
+      "expected_relationship": "related_but_distinct",
+      "rationale": "Coordination aligns action; communication transfers information.",
+      "actual_shared_concepts": [],
+      "result": "ontology_gap",
+      "flag": "ontology_gap",
+      "notes": "At least one phrase remained unresolved; safe non-collapse but ontology coverage is incomplete."
+    },
+    {
+      "case_id": "NV-008",
+      "phrase_a": {
+        "raw_phrase": "Classify into levels.",
+        "matched_concepts": [
+          {
+            "raw_text": "Classify into levels.",
+            "matched_concept": "HIERARCHICAL_CLASSIFICATION",
+            "matched_label": "Hierarchical classification",
+            "pattern_triggered": "level",
+            "match_confidence": "High",
+            "match_type": "exact_pattern"
+          }
+        ],
+        "concepts": [
+          "HIERARCHICAL_CLASSIFICATION"
+        ],
+        "unresolved": false
+      },
+      "phrase_b": {
+        "raw_phrase": "Move through procedural steps.",
+        "matched_concepts": [],
+        "concepts": [],
+        "unresolved": true
+      },
+      "expected_relationship": "related_but_distinct",
+      "rationale": "Hierarchy is not necessarily procedure.",
+      "actual_shared_concepts": [],
+      "result": "ontology_gap",
+      "flag": "ontology_gap",
+      "notes": "At least one phrase remained unresolved; safe non-collapse but ontology coverage is incomplete."
+    },
+    {
+      "case_id": "NV-009",
+      "phrase_a": {
+        "raw_phrase": "Evidence is sufficient.",
+        "matched_concepts": [],
+        "concepts": [],
+        "unresolved": true
+      },
+      "phrase_b": {
+        "raw_phrase": "Further inquiry is not justified.",
+        "matched_concepts": [],
+        "concepts": [],
+        "unresolved": true
+      },
+      "expected_relationship": "related_but_distinct",
+      "rationale": "Evidence-based closure and pragmatic stopping are different.",
+      "actual_shared_concepts": [],
+      "result": "ontology_gap",
+      "flag": "ontology_gap",
+      "notes": "At least one phrase remained unresolved; safe non-collapse but ontology coverage is incomplete."
+    },
+    {
+      "case_id": "NV-010",
+      "phrase_a": {
+        "raw_phrase": "Perform work.",
+        "matched_concepts": [
+          {
+            "raw_text": "Perform work.",
+            "matched_concept": "EXECUTION_CYCLE",
+            "matched_label": "Execution or action cycle",
+            "pattern_triggered": "perform work",
+            "match_confidence": "High",
+            "match_type": "synonym"
+          }
+        ],
+        "concepts": [
+          "EXECUTION_CYCLE"
+        ],
+        "unresolved": false
+      },
+      "phrase_b": {
+        "raw_phrase": "Validate outcome.",
+        "matched_concepts": [],
+        "concepts": [],
+        "unresolved": true
+      },
+      "expected_relationship": "related_but_distinct",
+      "rationale": "Execution differs from verification.",
+      "actual_shared_concepts": [],
+      "result": "ontology_gap",
+      "flag": "ontology_gap",
+      "notes": "At least one phrase remained unresolved; safe non-collapse but ontology coverage is incomplete."
+    },
+    {
+      "case_id": "NV-011",
+      "phrase_a": {
+        "raw_phrase": "Unresolved question identified.",
+        "matched_concepts": [
+          {
+            "raw_text": "Unresolved question identified.",
+            "matched_concept": "ENTRY_PROBLEM_IDENTIFICATION",
+            "matched_label": "Problem or question identified",
+            "pattern_triggered": "question identified",
+            "match_confidence": "High",
+            "match_type": "exact_pattern"
+          }
+        ],
+        "concepts": [
+          "ENTRY_PROBLEM_IDENTIFICATION"
+        ],
+        "unresolved": false
+      },
+      "phrase_b": {
+        "raw_phrase": "Initial uncertainty recognized.",
+        "matched_concepts": [
+          {
+            "raw_text": "Initial uncertainty recognized.",
+            "matched_concept": "ENTRY_PROBLEM_IDENTIFICATION",
+            "matched_label": "Problem or question identified",
+            "pattern_triggered": "initial uncertainty",
+            "match_confidence": "High",
+            "match_type": "exact_pattern"
+          }
+        ],
+        "concepts": [
+          "ENTRY_PROBLEM_IDENTIFICATION"
+        ],
+        "unresolved": false
+      },
+      "expected_relationship": "equivalent",
+      "rationale": "Both indicate problem/question entry.",
+      "actual_shared_concepts": [
+        "ENTRY_PROBLEM_IDENTIFICATION"
+      ],
+      "result": "expected_pass",
+      "flag": null,
+      "notes": "Equivalent pair shares at least one concept."
+    },
+    {
+      "case_id": "NV-012",
+      "phrase_a": {
+        "raw_phrase": "Candidate explanation proposed.",
+        "matched_concepts": [
+          {
+            "raw_text": "Candidate explanation proposed.",
+            "matched_concept": "HYPOTHESIS_GENERATION",
+            "matched_label": "Candidate explanation or option generation",
+            "pattern_triggered": "candidate explanation",
+            "match_confidence": "High",
+            "match_type": "exact_pattern"
+          }
+        ],
+        "concepts": [
+          "HYPOTHESIS_GENERATION"
+        ],
+        "unresolved": false
+      },
+      "phrase_b": {
+        "raw_phrase": "Possible hypothesis generated.",
+        "matched_concepts": [
+          {
+            "raw_text": "Possible hypothesis generated.",
+            "matched_concept": "HYPOTHESIS_GENERATION",
+            "matched_label": "Candidate explanation or option generation",
+            "pattern_triggered": "hypothesis",
+            "match_confidence": "High",
+            "match_type": "exact_pattern"
+          }
+        ],
+        "concepts": [
+          "HYPOTHESIS_GENERATION"
+        ],
+        "unresolved": false
+      },
+      "expected_relationship": "equivalent",
+      "rationale": "Both indicate generation of explanatory candidates.",
+      "actual_shared_concepts": [
+        "HYPOTHESIS_GENERATION"
+      ],
+      "result": "expected_pass",
+      "flag": null,
+      "notes": "Equivalent pair shares at least one concept."
+    },
+    {
+      "case_id": "NV-013",
+      "phrase_a": {
+        "raw_phrase": "Additional evidence is gathered.",
+        "matched_concepts": [
+          {
+            "raw_text": "Additional evidence is gathered.",
+            "matched_concept": "INFORMATION_GATHERING",
+            "matched_label": "Information or evidence gathered",
+            "pattern_triggered": "evidence gathered",
+            "match_confidence": "Moderate",
+            "match_type": "procedural_equivalent"
+          }
+        ],
+        "concepts": [
+          "INFORMATION_GATHERING"
+        ],
+        "unresolved": false
+      },
+      "phrase_b": {
+        "raw_phrase": "More information is collected.",
+        "matched_concepts": [],
+        "concepts": [],
+        "unresolved": true
+      },
+      "expected_relationship": "equivalent",
+      "rationale": "Both indicate information acquisition.",
+      "actual_shared_concepts": [],
+      "result": "false_negative_candidate",
+      "flag": "false_negative_candidate",
+      "notes": "Equivalent pair failed to share a concept."
+    },
+    {
+      "case_id": "NV-014",
+      "phrase_a": {
+        "raw_phrase": "The process repeats when confidence is insufficient.",
+        "matched_concepts": [
+          {
+            "raw_text": "The process repeats when confidence is insufficient.",
+            "matched_concept": "CONFIDENCE_THRESHOLD",
+            "matched_label": "Confidence or sufficiency threshold",
+            "pattern_triggered": "confidence is insufficient",
+            "match_confidence": "High",
+            "match_type": "exact_pattern"
+          }
+        ],
+        "concepts": [
+          "CONFIDENCE_THRESHOLD"
+        ],
+        "unresolved": false
+      },
+      "phrase_b": {
+        "raw_phrase": "The cycle continues until support is adequate.",
+        "matched_concepts": [
+          {
+            "raw_text": "The cycle continues until support is adequate.",
+            "matched_concept": "CONFIDENCE_THRESHOLD",
+            "matched_label": "Confidence or sufficiency threshold",
+            "pattern_triggered": "adequate support",
+            "match_confidence": "Moderate",
+            "match_type": "procedural_equivalent"
+          },
+          {
+            "raw_text": "The cycle continues until support is adequate.",
+            "matched_concept": "REASSESSMENT_LOOP",
+            "matched_label": "Reassessment or continuation loop",
+            "pattern_triggered": "cycle continues",
+            "match_confidence": "High",
+            "match_type": "exact_pattern"
+          }
+        ],
+        "concepts": [
+          "CONFIDENCE_THRESHOLD",
+          "REASSESSMENT_LOOP"
+        ],
+        "unresolved": false
+      },
+      "expected_relationship": "equivalent",
+      "rationale": "Both indicate reassessment/continuation loop.",
+      "actual_shared_concepts": [
+        "CONFIDENCE_THRESHOLD"
+      ],
+      "result": "expected_pass",
+      "flag": null,
+      "notes": "Equivalent pair shares at least one concept."
+    },
+    {
+      "case_id": "NV-015",
+      "phrase_a": {
+        "raw_phrase": "Tasks are assigned to team members.",
+        "matched_concepts": [
+          {
+            "raw_text": "Tasks are assigned to team members.",
+            "matched_concept": "COORDINATION",
+            "matched_label": "Coordination or alignment",
+            "pattern_triggered": "assign",
+            "match_confidence": "High",
+            "match_type": "exact_pattern"
+          },
+          {
+            "raw_text": "Tasks are assigned to team members.",
+            "matched_concept": "COORDINATION",
+            "matched_label": "Coordination or alignment",
+            "pattern_triggered": "team",
+            "match_confidence": "High",
+            "match_type": "exact_pattern"
+          }
+        ],
+        "concepts": [
+          "COORDINATION"
+        ],
+        "unresolved": false
+      },
+      "phrase_b": {
+        "raw_phrase": "Responsibilities are allocated.",
+        "matched_concepts": [
+          {
+            "raw_text": "Responsibilities are allocated.",
+            "matched_concept": "COORDINATION",
+            "matched_label": "Coordination or alignment",
+            "pattern_triggered": "allocate",
+            "match_confidence": "High",
+            "match_type": "exact_pattern"
+          }
+        ],
+        "concepts": [
+          "COORDINATION"
+        ],
+        "unresolved": false
+      },
+      "expected_relationship": "equivalent",
+      "rationale": "Both indicate allocation of responsibilities.",
+      "actual_shared_concepts": [
+        "COORDINATION"
+      ],
+      "result": "expected_pass",
+      "flag": null,
+      "notes": "Equivalent pair shares at least one concept."
+    },
+    {
+      "case_id": "NV-016",
+      "phrase_a": {
+        "raw_phrase": "Work is delivered as an increment.",
+        "matched_concepts": [
+          {
+            "raw_text": "Work is delivered as an increment.",
+            "matched_concept": "EXECUTION_CYCLE",
+            "matched_label": "Execution or action cycle",
+            "pattern_triggered": "deliver",
+            "match_confidence": "High",
+            "match_type": "exact_pattern"
+          },
+          {
+            "raw_text": "Work is delivered as an increment.",
+            "matched_concept": "EXECUTION_CYCLE",
+            "matched_label": "Execution or action cycle",
+            "pattern_triggered": "increment",
+            "match_confidence": "High",
+            "match_type": "exact_pattern"
+          }
+        ],
+        "concepts": [
+          "EXECUTION_CYCLE"
+        ],
+        "unresolved": false
+      },
+      "phrase_b": {
+        "raw_phrase": "A usable result is produced.",
+        "matched_concepts": [],
+        "concepts": [],
+        "unresolved": true
+      },
+      "expected_relationship": "equivalent",
+      "rationale": "Both indicate execution output.",
+      "actual_shared_concepts": [],
+      "result": "false_negative_candidate",
+      "flag": "false_negative_candidate",
+      "notes": "Equivalent pair failed to share a concept."
+    },
+    {
+      "case_id": "NV-017",
+      "phrase_a": {
+        "raw_phrase": "Items are grouped by type.",
+        "matched_concepts": [],
+        "concepts": [],
+        "unresolved": true
+      },
+      "phrase_b": {
+        "raw_phrase": "Items are ranked by importance.",
+        "matched_concepts": [],
+        "concepts": [],
+        "unresolved": true
+      },
+      "expected_relationship": "related_but_distinct",
+      "rationale": "Classification differs from prioritization.",
+      "actual_shared_concepts": [],
+      "result": "ontology_gap",
+      "flag": "ontology_gap",
+      "notes": "At least one phrase remained unresolved; safe non-collapse but ontology coverage is incomplete."
+    },
+    {
+      "case_id": "NV-018",
+      "phrase_a": {
+        "raw_phrase": "A loop continues until confidence is sufficient.",
+        "matched_concepts": [],
+        "concepts": [],
+        "unresolved": true
+      },
+      "phrase_b": {
+        "raw_phrase": "A loop continues forever.",
+        "matched_concepts": [],
+        "concepts": [],
+        "unresolved": true
+      },
+      "expected_relationship": "opposite",
+      "rationale": "One has a termination condition; the other does not.",
+      "actual_shared_concepts": [],
+      "result": "expected_pass",
+      "flag": null,
+      "notes": "Pair remained separate."
+    },
+    {
+      "case_id": "NV-019",
+      "phrase_a": {
+        "raw_phrase": "A decision is made.",
+        "matched_concepts": [],
+        "concepts": [],
+        "unresolved": true
+      },
+      "phrase_b": {
+        "raw_phrase": "A decision is deferred.",
+        "matched_concepts": [],
+        "concepts": [],
+        "unresolved": true
+      },
+      "expected_relationship": "opposite",
+      "rationale": "Commitment and deferral are not equivalent.",
+      "actual_shared_concepts": [],
+      "result": "expected_pass",
+      "flag": null,
+      "notes": "Pair remained separate."
+    },
+    {
+      "case_id": "NV-020",
+      "phrase_a": {
+        "raw_phrase": "The team aligns on next steps.",
+        "matched_concepts": [
+          {
+            "raw_text": "The team aligns on next steps.",
+            "matched_concept": "COORDINATION",
+            "matched_label": "Coordination or alignment",
+            "pattern_triggered": "align",
+            "match_confidence": "High",
+            "match_type": "exact_pattern"
+          },
+          {
+            "raw_text": "The team aligns on next steps.",
+            "matched_concept": "COORDINATION",
+            "matched_label": "Coordination or alignment",
+            "pattern_triggered": "team",
+            "match_confidence": "High",
+            "match_type": "exact_pattern"
+          }
+        ],
+        "concepts": [
+          "COORDINATION"
+        ],
+        "unresolved": false
+      },
+      "phrase_b": {
+        "raw_phrase": "The artifact is classified into categories.",
+        "matched_concepts": [],
+        "concepts": [],
+        "unresolved": true
+      },
+      "expected_relationship": "unrelated",
+      "rationale": "Coordination and classification are different procedural functions.",
+      "actual_shared_concepts": [],
+      "result": "expected_pass",
+      "flag": null,
+      "notes": "Pair remained separate."
+    }
+  ]
+}

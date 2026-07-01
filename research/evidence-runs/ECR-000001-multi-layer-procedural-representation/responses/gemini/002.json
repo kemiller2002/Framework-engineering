@@ -1,0 +1,197 @@
+{
+  "packet_id": "ECR-000001-P002",
+  "blinded_artifact_id": "BA-ECR-002",
+  "recognized_artifact": "Scrum Sprint / Agile Iteration Cycle",
+  "structural_layer": {
+    "entry_conditions": [
+      {
+        "value": "Availability of work items to prioritize.",
+        "support_level": "strongly_implied",
+        "source_text": "Prioritize available work.",
+        "ambiguity": "It is ambiguous whether a pool of work must already exist or if defining the near-term working target creates it."
+      }
+    ],
+    "exit_conditions": [
+      {
+        "value": "Production of an immediately usable result and completion of reflection.",
+        "support_level": "strongly_implied",
+        "source_text": "Carry out the work to produce an immediately usable result.\nReflect on the cycle outcome and reassess the next cycle.",
+        "ambiguity": "Ambiguous whether 'reassess the next cycle' marks the exit condition of the current cycle or the entry condition of the next."
+      }
+    ],
+    "required_steps": [
+      {
+        "value": "Define a near-term working target.",
+        "support_level": "explicit",
+        "source_text": "Define a near-term working target.",
+        "ambiguity": "none"
+      },
+      {
+        "value": "Prioritize available work.",
+        "support_level": "explicit",
+        "source_text": "Prioritize available work.",
+        "ambiguity": "none"
+      },
+      {
+        "value": "Commit to what will be taken into the current work cycle.",
+        "support_level": "explicit",
+        "source_text": "Commit to what will be taken into the current work cycle.",
+        "ambiguity": "none"
+      },
+      {
+        "value": "Carry out the work to produce an immediately usable result.",
+        "support_level": "explicit",
+        "source_text": "Carry out the work to produce an immediately usable result.",
+        "ambiguity": "none"
+      },
+      {
+        "value": "Reflect on the cycle outcome and reassess the next cycle.",
+        "support_level": "explicit",
+        "source_text": "Reflect on the cycle outcome and reassess the next cycle.",
+        "ambiguity": "none"
+      }
+    ],
+    "optional_steps": [],
+    "loops": [
+      {
+        "value": "The cycle repeats sequentially as indicated by 'reassess the next cycle'.",
+        "support_level": "strongly_implied",
+        "source_text": "Reflect on the cycle outcome and reassess the next cycle.",
+        "ambiguity": "The text implies a loop across cycles, but it is ambiguous whether the loop returns to step 1 (Define target) or step 2 (Prioritize available work) for the next iteration."
+      }
+    ],
+    "branches": [],
+    "termination_conditions": [],
+    "control_flow_shape": "Linear sequence with an implied trailing loop back to the initiation phase for a subsequent cycle."
+  },
+  "primitive_layer": {
+    "primitive_sequence": [
+      "Define Target",
+      "Prioritize Work",
+      "Commit to Cycle",
+      "Execute Work",
+      "Reflect and Reassess"
+    ],
+    "transitions": [
+      "Define Target -> Prioritize Work",
+      "Prioritize Work -> Commit to Cycle",
+      "Commit to Cycle -> Execute Work",
+      "Execute Work -> Reflect and Reassess",
+      "Reflect and Reassess -> Next Cycle (Loop)"
+    ],
+    "dominant_primitive": "Execute Work / Step-based Iteration",
+    "candidate_missing_primitives": [
+      "Review/Demonstration step before reflection",
+      "Backlog refinement prior to definition"
+    ]
+  },
+  "constraint_layer": {
+    "invariants": [
+      {
+        "value": "The work must target an immediately usable result.",
+        "support_level": "explicit",
+        "source_text": "Carry out the work to produce an immediately usable result.",
+        "ambiguity": "none"
+      }
+    ],
+    "preconditions": [
+      {
+        "value": "Work must be available prior to prioritization.",
+        "support_level": "explicit",
+        "source_text": "Prioritize available work.",
+        "ambiguity": "none"
+      }
+    ],
+    "postconditions": [
+      {
+        "value": "An immediately usable result is produced.",
+        "support_level": "explicit",
+        "source_text": "Carry out the work to produce an immediately usable result.",
+        "ambiguity": "none"
+      }
+    ],
+    "stopping_criteria": [
+      {
+        "value": "Completion of execution and completion of reflection/reassessment.",
+        "support_level": "strongly_implied",
+        "source_text": "Reflect on the cycle outcome and reassess the next cycle.",
+        "ambiguity": "none"
+      }
+    ],
+    "validity_conditions": []
+  },
+  "representation_layer": {
+    "procedural_ast": {
+      "type": "Program",
+      "body": [
+        {
+          "type": "Step",
+          "id": "1",
+          "description": "Define a near-term working target."
+        },
+        {
+          "type": "Step",
+          "id": "2",
+          "description": "Prioritize available work."
+        },
+        {
+          "type": "Step",
+          "id": "3",
+          "description": "Commit to what will be taken into the current work cycle."
+        },
+        {
+          "type": "Step",
+          "id": "4",
+          "description": "Carry out the work to produce an immediately usable result."
+        },
+        {
+          "type": "Loop",
+          "type_meta": "Iterative Cycle Continuation",
+          "body": [
+            {
+              "type": "Step",
+              "id": "5",
+              "description": "Reflect on the cycle outcome and reassess the next cycle."
+            }
+          ]
+        }
+      ]
+    },
+    "natural_language_summary": "The procedure details a cyclical workflow consisting of five discrete chronological steps: establishing a near-term objective, prioritizing current work options, committing specific items to the cycle, executing the tasks to achieve a usable output, and concluding with a retrospective assessment to prepare for the subsequent cycle.",
+    "canonical_summary": "1. Define target. 2. Prioritize work. 3. Commit to cycle. 4. Execute work. 5. Reflect and reassess.",
+    "ambiguities": [
+      {
+        "location": "Transition between Step 5 and Step 1/2 of the next cycle.",
+        "description": "Unclear exactly where the loop point lands for the subsequent cycle.",
+        "plausible_interpretations": [
+          "Loop returns to Step 1 to redefine a new near-term working target.",
+          "Loop returns to Step 2 assuming the overarching target remains stable and only work items change."
+        ],
+        "effect_on_extraction": "Prevents drawing a strict, definitive structural control-flow loop back-edge to a single step."
+      },
+      {
+        "location": "Step 4 (Usable result)",
+        "description": "The exact scope and definition of 'immediately usable' is left abstract.",
+        "plausible_interpretations": [
+          "Production-ready deployment.",
+          "Internal functional prototype ready for evaluation."
+        ],
+        "effect_on_extraction": "Limits the ability to declare objective automated exit verification criteria."
+      }
+    ]
+  },
+  "product_relevance_layer": {
+    "clarity_relevance_observations": [],
+    "edf_relevance_observations": [],
+    "research_only_observations": []
+  },
+  "confidence": {
+    "structural_layer": "high",
+    "primitive_layer": "high",
+    "constraint_layer": "high",
+    "representation_layer": "high",
+    "product_relevance_layer": "high",
+    "overall": "high"
+  },
+  "notes": "The model preserved the requested ambiguities regarding cycle boundary transitions and strictly avoided appending non-stated standard agile mechanisms (like standups or product demos) to maintain structural fidelity."
+}

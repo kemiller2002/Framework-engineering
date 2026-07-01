@@ -20,3 +20,5 @@ Validate the instrument before using it for broader hypothesis testing.
 ## Core Design Rule
 
 Packets collect raw procedural observations only.
+
+After P001, the instrument was refined to distinguish explicit, strongly implied, and inferred observations and to discourage premature normalization.

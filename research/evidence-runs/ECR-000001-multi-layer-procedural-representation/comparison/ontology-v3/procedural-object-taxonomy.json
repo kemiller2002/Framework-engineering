@@ -1,0 +1,98 @@
+{
+  "problem": {
+    "patterns": ["problem", "issue", "trouble", "challenge"],
+    "description": "A problem or issue to be addressed."
+  },
+  "question": {
+    "patterns": ["question", "query", "unclear question"],
+    "description": "A question under consideration."
+  },
+  "uncertainty": {
+    "patterns": ["uncertainty", "unknown", "unresolved", "ambiguity"],
+    "description": "Uncertainty or unresolved state."
+  },
+  "hypothesis": {
+    "patterns": ["hypothesis", "candidate hypothesis"],
+    "description": "A candidate hypothesis."
+  },
+  "explanation": {
+    "patterns": ["explanation", "cause", "causal account"],
+    "description": "An explanation or causal account."
+  },
+  "alternative": {
+    "patterns": ["alternative", "alternatives"],
+    "description": "Alternatives under comparison."
+  },
+  "option": {
+    "patterns": ["option", "options", "choice set"],
+    "description": "Decision or design options."
+  },
+  "evidence": {
+    "patterns": ["evidence", "support", "supporting evidence"],
+    "description": "Evidence supporting or weakening a claim."
+  },
+  "information": {
+    "patterns": ["information", "input", "facts"],
+    "description": "Information used in reasoning."
+  },
+  "data": {
+    "patterns": ["data", "dataset", "measurement"],
+    "description": "Data or measurement values."
+  },
+  "observation": {
+    "patterns": ["observation", "observations", "finding"],
+    "description": "Observed events or conditions."
+  },
+  "criteria": {
+    "patterns": ["criteria", "standard", "benchmark"],
+    "description": "Evaluation criteria or standards."
+  },
+  "conclusion": {
+    "patterns": ["conclusion", "working conclusion", "final conclusion"],
+    "description": "A conclusion reached from reasoning."
+  },
+  "decision": {
+    "patterns": ["decision", "commitment", "selection"],
+    "description": "A decision or commitment."
+  },
+  "work": {
+    "patterns": ["work", "tasks", "task", "activity"],
+    "description": "Work to be performed."
+  },
+  "outcome": {
+    "patterns": ["outcome", "result", "increment", "deliverable", "usable result"],
+    "description": "An outcome or produced result."
+  },
+  "task": {
+    "patterns": ["task", "tasks", "assignment"],
+    "description": "A task or assignment."
+  },
+  "responsibility": {
+    "patterns": ["responsibility", "responsibilities", "owner"],
+    "description": "Responsibilities assigned to actors."
+  },
+  "resource": {
+    "patterns": ["resource", "resources", "capacity"],
+    "description": "Resources used or assigned."
+  },
+  "team": {
+    "patterns": ["team", "members", "actors", "group"],
+    "description": "A team or set of actors."
+  },
+  "category": {
+    "patterns": ["category", "categories", "type", "types"],
+    "description": "Categories or grouped types."
+  },
+  "level": {
+    "patterns": ["level", "levels", "hierarchy", "ordered levels"],
+    "description": "Hierarchy levels or ordered levels."
+  },
+  "artifact": {
+    "patterns": ["artifact", "document", "model"],
+    "description": "An artifact or document."
+  },
+  "process": {
+    "patterns": ["process", "procedure", "cycle", "inquiry"],
+    "description": "The overall process or procedure."
+  }
+}

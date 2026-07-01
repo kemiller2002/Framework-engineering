@@ -1,0 +1,10 @@
+{
+  "sequence": { "patterns": ["before", "after", "then", "ordered"], "description": "Sequential movement through steps." },
+  "branch": { "patterns": ["or", "either", "branch", "alternative path"], "description": "Branching among alternatives." },
+  "loop": { "patterns": ["repeat", "loop", "iterate"], "description": "Looping repetition." },
+  "termination": { "patterns": ["stop", "terminate", "end", "no longer justified"], "description": "Termination or exit." },
+  "continuation": { "patterns": ["continue", "continues", "reassess", "revisit"], "description": "Continuation or reopening." },
+  "parallel_coordination": { "patterns": ["coordinate", "synchronize", "align together"], "description": "Parallel coordination across actors." },
+  "none": { "patterns": [], "description": "No control-flow indicator." },
+  "unclear": { "patterns": [], "description": "Control flow cannot be safely determined." }
+}

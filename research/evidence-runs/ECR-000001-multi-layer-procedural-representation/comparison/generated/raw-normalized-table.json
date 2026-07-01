@@ -1,0 +1,2425 @@
+[
+  {
+    "provider": "gpt",
+    "packet_id": "ECR-000001-P001",
+    "packet_label": "Scientific Method",
+    "source_path": "responses/gpt/001.json",
+    "source_kind": "legacy_fallback",
+    "status": "malformed",
+    "strict_json": false,
+    "normalized_parse_used": false,
+    "valid_json": false,
+    "schema_completeness": "incomplete",
+    "missing_fields": [
+      "packet_id",
+      "blinded_artifact_id",
+      "recognized_artifact",
+      "structural_layer.entry_conditions",
+      "structural_layer.exit_conditions",
+      "structural_layer.required_steps",
+      "structural_layer.optional_steps",
+      "structural_layer.loops",
+      "structural_layer.branches",
+      "structural_layer.termination_conditions",
+      "structural_layer.control_flow_shape",
+      "primitive_layer.primitive_sequence",
+      "primitive_layer.transitions",
+      "primitive_layer.dominant_primitive",
+      "primitive_layer.candidate_missing_primitives",
+      "constraint_layer.invariants",
+      "constraint_layer.preconditions",
+      "constraint_layer.postconditions",
+      "constraint_layer.stopping_criteria",
+      "constraint_layer.validity_conditions",
+      "representation_layer.procedural_ast",
+      "representation_layer.natural_language_summary",
+      "representation_layer.canonical_summary",
+      "representation_layer.ambiguities",
+      "product_relevance_layer.clarity_relevance_observations",
+      "product_relevance_layer.edf_relevance_observations",
+      "product_relevance_layer.research_only_observations",
+      "confidence.structural_layer",
+      "confidence.primitive_layer",
+      "confidence.constraint_layer",
+      "confidence.representation_layer",
+      "confidence.product_relevance_layer",
+      "confidence.overall",
+      "notes"
+    ],
+    "recognition_present": false,
+    "recognized_artifact": "",
+    "ambiguity_count": 0,
+    "confidence_values": {},
+    "promotional_product_warnings": [],
+    "normalized": null
+  },
+  {
+    "provider": "gpt",
+    "packet_id": "ECR-000001-P002",
+    "packet_label": "Scrum Workflow",
+    "source_path": "responses/gpt/002.json",
+    "source_kind": "legacy_fallback",
+    "status": "ok",
+    "strict_json": false,
+    "normalized_parse_used": true,
+    "valid_json": true,
+    "schema_completeness": "complete",
+    "missing_fields": [],
+    "recognition_present": false,
+    "recognized_artifact": "",
+    "ambiguity_count": 3,
+    "confidence_values": {
+      "structural_layer": "high",
+      "primitive_layer": "high",
+      "constraint_layer": "medium",
+      "representation_layer": "high",
+      "product_relevance_layer": "high",
+      "overall": "high"
+    },
+    "promotional_product_warnings": [],
+    "normalized": {
+      "provider": "gpt",
+      "packetId": "ECR-000001-P002",
+      "packetLabel": "Scrum Workflow",
+      "recognizedArtifact": "",
+      "structural": {
+        "controlFlowShape": "Linear sequence with a strongly implied iterative feedback loop.",
+        "entryConditions": [
+          {
+            "value": "A new work cycle is ready to begin.",
+            "support_level": "strongly_implied",
+            "source_text": "Define a near-term working target.",
+            "ambiguity": "The existence of a work cycle is implied rather than explicitly stated."
+          }
+        ],
+        "exitConditions": [
+          {
+            "value": "The current work cycle has been reflected upon and the next cycle has been reassessed.",
+            "support_level": "explicit",
+            "source_text": "Reflect on the cycle outcome and reassess the next cycle.",
+            "ambiguity": "It is unclear whether reassessment immediately initiates another cycle or simply concludes the current one."
+          }
+        ],
+        "requiredSteps": [
+          {
+            "value": "Define a near-term working target.",
+            "support_level": "explicit",
+            "source_text": "Define a near-term working target.",
+            "ambiguity": ""
+          },
+          {
+            "value": "Prioritize available work.",
+            "support_level": "explicit",
+            "source_text": "Prioritize available work.",
+            "ambiguity": "The prioritization method is unspecified."
+          },
+          {
+            "value": "Commit to what will be taken into the current work cycle.",
+            "support_level": "explicit",
+            "source_text": "Commit to what will be taken into the current work cycle.",
+            "ambiguity": "Commitment may refer to selecting work items, making an explicit commitment, or both."
+          },
+          {
+            "value": "Carry out the work to produce an immediately usable result.",
+            "support_level": "explicit",
+            "source_text": "Carry out the work to produce an immediately usable result.",
+            "ambiguity": "The nature of the result is unspecified."
+          },
+          {
+            "value": "Reflect on the cycle outcome and reassess the next cycle.",
+            "support_level": "explicit",
+            "source_text": "Reflect on the cycle outcome and reassess the next cycle.",
+            "ambiguity": "Reflection and reassessment may be sequential or combined."
+          }
+        ],
+        "optionalSteps": [],
+        "loops": [
+          {
+            "value": "Repeat the cycle after reassessing the next cycle.",
+            "support_level": "strongly_implied",
+            "source_text": "Reflect on the cycle outcome and reassess the next cycle.",
+            "ambiguity": "The text implies iteration but does not explicitly state repetition."
+          }
+        ],
+        "branches": [
+          {
+            "value": "The packet does not specify decision branches beyond selecting work for the current cycle.",
+            "support_level": "inferred",
+            "source_text": "Prioritize available work. Commit to what will be taken into the current work cycle.",
+            "ambiguity": "Selection may involve alternative prioritization outcomes, but no branching logic is defined."
+          }
+        ],
+        "terminationConditions": [
+          {
+            "value": "End after completing reflection and reassessment for the current cycle.",
+            "support_level": "inferred",
+            "source_text": "Reflect on the cycle outcome and reassess the next cycle.",
+            "ambiguity": "The process may instead continue indefinitely through repeated cycles."
+          }
+        ]
+      },
+      "primitive": {
+        "sequence": [
+          {
+            "value": "Define target"
+          },
+          {
+            "value": "Prioritize work"
+          },
+          {
+            "value": "Commit selection"
+          },
+          {
+            "value": "Execute work"
+          },
+          {
+            "value": "Reflect and reassess"
+          }
+        ],
+        "transitions": [
+          {
+            "value": "Target definition leads to prioritization."
+          },
+          {
+            "value": "Prioritization leads to commitment."
+          },
+          {
+            "value": "Commitment leads to execution."
+          },
+          {
+            "value": "Execution leads to reflection and reassessment."
+          },
+          {
+            "value": "Reassessment may transition to a new target definition."
+          }
+        ],
+        "dominantPrimitive": "Execute work",
+        "candidateMissingPrimitives": [
+          {
+            "value": "Explicit cycle initiation"
+          },
+          {
+            "value": "Explicit completion confirmation"
+          }
+        ]
+      },
+      "constraint": {
+        "invariants": [
+          {
+            "value": "Work performed within the cycle is committed before execution.",
+            "support_level": "strongly_implied",
+            "source_text": "Commit to what will be taken into the current work cycle. Carry out the work…",
+            "ambiguity": "The form of commitment is unspecified."
+          },
+          {
+            "value": "Execution aims to produce an immediately usable result.",
+            "support_level": "explicit",
+            "source_text": "Carry out the work to produce an immediately usable result.",
+            "ambiguity": ""
+          }
+        ],
+        "preconditions": [
+          {
+            "value": "Available work exists to prioritize.",
+            "support_level": "strongly_implied",
+            "source_text": "Prioritize available work.",
+            "ambiguity": "The existence of available work is implied."
+          }
+        ],
+        "postconditions": [
+          {
+            "value": "An immediately usable result has been produced.",
+            "support_level": "explicit",
+            "source_text": "Carry out the work to produce an immediately usable result.",
+            "ambiguity": ""
+          },
+          {
+            "value": "The outcome has been reflected upon and the next cycle reassessed.",
+            "support_level": "explicit",
+            "source_text": "Reflect on the cycle outcome and reassess the next cycle.",
+            "ambiguity": ""
+          }
+        ],
+        "stoppingCriteria": [
+          {
+            "value": "Completion of the current cycle after reflection and reassessment.",
+            "support_level": "inferred",
+            "source_text": "Reflect on the cycle outcome and reassess the next cycle.",
+            "ambiguity": "The procedure may instead continue into another iteration."
+          }
+        ],
+        "validityConditions": [
+          {
+            "value": "The committed work is executed within the current work cycle.",
+            "support_level": "strongly_implied",
+            "source_text": "Commit to what will be taken into the current work cycle. Carry out the work…",
+            "ambiguity": ""
+          },
+          {
+            "value": "The execution yields an immediately usable result.",
+            "support_level": "explicit",
+            "source_text": "Carry out the work to produce an immediately usable result.",
+            "ambiguity": ""
+          }
+        ]
+      },
+      "representation": {
+        "proceduralAstPresent": true,
+        "proceduralAst": {
+          "type": "sequence",
+          "steps": [
+            {
+              "action": "define_target"
+            },
+            {
+              "action": "prioritize_work"
+            },
+            {
+              "action": "commit_current_cycle_scope"
+            },
+            {
+              "action": "execute_work",
+              "output": "immediately_usable_result"
+            },
+            {
+              "action": "reflect_and_reassess",
+              "next": "possible_repeat"
+            }
+          ]
+        },
+        "naturalLanguageSummary": "The procedure defines a near-term target, prioritizes available work, commits a subset for the current work cycle, performs that work to obtain an immediately usable result, then reflects on the outcome and reassesses the next cycle.",
+        "canonicalSummary": "Define → Prioritize → Commit → Execute → Reflect/Reassess → Possible repeat.",
+        "ambiguities": [
+          {
+            "location": "Loop behavior",
+            "description": "Whether reassessment automatically begins another cycle is not explicitly stated.",
+            "plausible_interpretations": [
+              "The procedure repeats indefinitely.",
+              "The packet describes only one cycle and stops after reassessment."
+            ],
+            "effect_on_extraction": "Loop recorded as strongly implied rather than explicit."
+          },
+          {
+            "location": "Commit step",
+            "description": "The nature of commitment is unspecified.",
+            "plausible_interpretations": [
+              "Selection of work items.",
+              "Formal commitment to execute selected work.",
+              "Both selection and explicit commitment."
+            ],
+            "effect_on_extraction": "Represented without assuming additional mechanics."
+          },
+          {
+            "location": "Reflection step",
+            "description": "Relationship between reflection and reassessment is unspecified.",
+            "plausible_interpretations": [
+              "Reflection followed by reassessment.",
+              "A combined reflective reassessment activity."
+            ],
+            "effect_on_extraction": "Represented as a combined step with noted ambiguity."
+          }
+        ]
+      },
+      "product": {
+        "clarity": [
+          {
+            "value": "The ordered sequence is explicit and supports procedural extraction.",
+            "support_level": "explicit",
+            "source_text": "Entire procedural content.",
+            "ambiguity": "Iteration remains implicit."
+          }
+        ],
+        "edf": [],
+        "researchOnly": [
+          {
+            "value": "The packet explicitly instructs preservation of ambiguity and evidence support levels during extraction.",
+            "support_level": "explicit",
+            "source_text": "Prefer reporting multiple plausible interpretations… Record uncertainty explicitly.",
+            "ambiguity": ""
+          }
+        ]
+      },
+      "confidence": {
+        "structural_layer": "high",
+        "primitive_layer": "high",
+        "constraint_layer": "medium",
+        "representation_layer": "high",
+        "product_relevance_layer": "high",
+        "overall": "high"
+      },
+      "notes": "Extraction is limited to the supplied packet. Ambiguities are preserved where the packet does not uniquely determine procedural structure."
+    }
+  },
+  {
+    "provider": "gpt",
+    "packet_id": "ECR-000001-P003",
+    "packet_label": "Bloom Taxonomy",
+    "source_path": "responses/gpt/003.json",
+    "source_kind": "legacy_fallback",
+    "status": "ok",
+    "strict_json": false,
+    "normalized_parse_used": true,
+    "valid_json": true,
+    "schema_completeness": "complete",
+    "missing_fields": [],
+    "recognition_present": false,
+    "recognized_artifact": "",
+    "ambiguity_count": 2,
+    "confidence_values": {
+      "structural_layer": "high",
+      "primitive_layer": "high",
+      "constraint_layer": "medium",
+      "representation_layer": "high",
+      "product_relevance_layer": "medium",
+      "overall": "high"
+    },
+    "promotional_product_warnings": [],
+    "normalized": {
+      "provider": "gpt",
+      "packetId": "ECR-000001-P003",
+      "packetLabel": "Bloom Taxonomy",
+      "recognizedArtifact": "",
+      "structural": {
+        "controlFlowShape": "Linear procedure with a final branch allowing application to choosing, evaluating, or both.",
+        "entryConditions": [
+          {
+            "value": "A set of kinds of work or performance is available for consideration.",
+            "support_level": "strongly_implied",
+            "source_text": "Arrange kinds of work by level of cognitive challenge.",
+            "ambiguity": "The source does not explicitly state the input form or completeness of the set."
+          }
+        ],
+        "exitConditions": [
+          {
+            "value": "Distinctions among levels of cognitive challenge have been established and are available for selecting or evaluating an intended challenge level.",
+            "support_level": "strongly_implied",
+            "source_text": "Use those distinctions when choosing or evaluating the intended level of challenge.",
+            "ambiguity": "It is not explicit whether both choosing and evaluating must occur or whether either is sufficient."
+          }
+        ],
+        "requiredSteps": [
+          {
+            "value": "Arrange kinds of work by level of cognitive challenge.",
+            "support_level": "explicit",
+            "source_text": "Arrange kinds of work by level of cognitive challenge.",
+            "ambiguity": ""
+          },
+          {
+            "value": "Differentiate simpler forms of performance from more demanding ones.",
+            "support_level": "explicit",
+            "source_text": "Differentiate simpler forms of performance from more demanding ones.",
+            "ambiguity": "This may be a distinct step or a decomposition of the arranging activity."
+          },
+          {
+            "value": "Use the resulting distinctions when choosing or evaluating the intended level of challenge.",
+            "support_level": "explicit",
+            "source_text": "Use those distinctions when choosing or evaluating the intended level of challenge.",
+            "ambiguity": "The procedure may require choosing, evaluating, or both depending on context."
+          }
+        ],
+        "optionalSteps": [],
+        "loops": [],
+        "branches": [
+          {
+            "value": "Apply the distinctions for choosing an intended level of challenge or for evaluating an intended level of challenge.",
+            "support_level": "explicit",
+            "source_text": "Use those distinctions when choosing or evaluating the intended level of challenge.",
+            "ambiguity": "The conjunction 'or' permits multiple plausible control flows: either activity alone or both in sequence."
+          }
+        ],
+        "terminationConditions": [
+          {
+            "value": "The distinctions have been applied to the intended level-of-challenge decision or assessment.",
+            "support_level": "inferred",
+            "source_text": "Use those distinctions when choosing or evaluating the intended level of challenge.",
+            "ambiguity": "The stopping point is implied rather than explicitly stated."
+          }
+        ]
+      },
+      "primitive": {
+        "sequence": [
+          {
+            "value": "Arrange work types by cognitive challenge."
+          },
+          {
+            "value": "Differentiate simpler from more demanding performance."
+          },
+          {
+            "value": "Apply the distinctions during selection or evaluation of challenge level."
+          }
+        ],
+        "transitions": [
+          {
+            "value": "Arrangement supports differentiation."
+          },
+          {
+            "value": "Differentiation provides distinctions used in subsequent application."
+          }
+        ],
+        "dominantPrimitive": "Classification by cognitive challenge followed by application of the resulting distinctions.",
+        "candidateMissingPrimitives": [
+          {
+            "value": "Define or identify the kinds of work to be arranged."
+          }
+        ]
+      },
+      "constraint": {
+        "invariants": [
+          {
+            "value": "Distinctions are based on level of cognitive challenge and on simpler versus more demanding performance.",
+            "support_level": "explicit",
+            "source_text": "Arrange kinds of work by level of cognitive challenge. Differentiate simpler forms of performance from more demanding ones.",
+            "ambiguity": ""
+          }
+        ],
+        "preconditions": [
+          {
+            "value": "Kinds of work are available for comparison.",
+            "support_level": "strongly_implied",
+            "source_text": "Arrange kinds of work…",
+            "ambiguity": "The source does not explicitly state acquisition of the work types."
+          }
+        ],
+        "postconditions": [
+          {
+            "value": "Distinctions are available for use in choosing or evaluating challenge level.",
+            "support_level": "strongly_implied",
+            "source_text": "Use those distinctions when choosing or evaluating the intended level of challenge.",
+            "ambiguity": ""
+          }
+        ],
+        "stoppingCriteria": [
+          {
+            "value": "The distinctions have been used for the intended selection or evaluation activity.",
+            "support_level": "inferred",
+            "source_text": "Use those distinctions…",
+            "ambiguity": "No explicit completion criterion is provided."
+          }
+        ],
+        "validityConditions": [
+          {
+            "value": "The arrangement and distinctions remain aligned with relative cognitive challenge.",
+            "support_level": "strongly_implied",
+            "source_text": "Arrange kinds of work by level of cognitive challenge.",
+            "ambiguity": "No validation procedure is specified."
+          }
+        ]
+      },
+      "representation": {
+        "proceduralAstPresent": true,
+        "proceduralAst": {
+          "type": "sequence",
+          "steps": [
+            {
+              "action": "arrange",
+              "object": "kinds of work",
+              "criterion": "level of cognitive challenge"
+            },
+            {
+              "action": "differentiate",
+              "object": "forms of performance",
+              "comparison": [
+                "simpler",
+                "more demanding"
+              ]
+            },
+            {
+              "action": "apply_distinctions",
+              "targets": [
+                "choose intended level of challenge",
+                "evaluate intended level of challenge"
+              ]
+            }
+          ]
+        },
+        "naturalLanguageSummary": "Arrange work according to cognitive challenge, distinguish simpler from more demanding performance, and use those distinctions when selecting or assessing the intended challenge level.",
+        "canonicalSummary": "Classify by cognitive challenge, differentiate performance levels, then apply the distinctions during challenge-level decisions.",
+        "ambiguities": [
+          {
+            "location": "Relationship between arranging and differentiating",
+            "description": "The text does not specify whether these are independent sequential steps or whether differentiation is the mechanism of arrangement.",
+            "plausible_interpretations": [
+              "Separate sequential operations",
+              "Differentiation is part of the arranging process"
+            ],
+            "effect_on_extraction": "Both interpretations are preserved without collapsing them."
+          },
+          {
+            "location": "Final application",
+            "description": "The wording permits choosing, evaluating, or potentially both.",
+            "plausible_interpretations": [
+              "Choose only",
+              "Evaluate only",
+              "Choose and evaluate"
+            ],
+            "effect_on_extraction": "Represented as a branch rather than a single mandatory path."
+          }
+        ]
+      },
+      "product": {
+        "clarity": [
+          {
+            "value": "The procedure depends on distinctions among cognitive challenge levels being understandable enough to apply.",
+            "support_level": "strongly_implied",
+            "source_text": "Use those distinctions…",
+            "ambiguity": ""
+          }
+        ],
+        "edf": [],
+        "researchOnly": [
+          {
+            "value": "The packet emphasizes procedural extraction while preserving ambiguity rather than normalizing to a single decomposition.",
+            "support_level": "explicit",
+            "source_text": "Prefer reporting multiple plausible interpretations over collapsing them into a single interpretation when the packet supports more than one reading.",
+            "ambiguity": "This observation concerns extraction instructions rather than the blinded procedural content."
+          }
+        ]
+      },
+      "confidence": {
+        "structural_layer": "high",
+        "primitive_layer": "high",
+        "constraint_layer": "medium",
+        "representation_layer": "high",
+        "product_relevance_layer": "medium",
+        "overall": "high"
+      },
+      "notes": "Extraction is limited to the supplied procedural content. Ambiguities regarding decomposition and application path are preserved rather than resolved."
+    }
+  },
+  {
+    "provider": "claude",
+    "packet_id": "ECR-000001-P001",
+    "packet_label": "Scientific Method",
+    "source_path": "responses/claude/001.json",
+    "source_kind": "legacy_fallback",
+    "status": "ok",
+    "strict_json": true,
+    "normalized_parse_used": false,
+    "valid_json": true,
+    "schema_completeness": "complete",
+    "missing_fields": [],
+    "recognition_present": true,
+    "recognized_artifact": "Diagnostic reasoning cycle / hypothetico-deductive inquiry loop",
+    "ambiguity_count": 4,
+    "confidence_values": {
+      "structural_layer": "high — control flow is explicitly described with clear entry, loop, branch, and exit semantics; main uncertainty is in branch topology",
+      "primitive_layer": "medium-high — dominant primitives are clear; transitions at reformulate back-edge and branch exclusivity are genuinely ambiguous",
+      "constraint_layer": "high — invariants and stopping criteria are explicit; threshold values are deliberately unspecified in the source",
+      "representation_layer": "medium — AST and summary are well-grounded but four non-trivial ambiguities remain unresolved and are preserved rather than collapsed",
+      "product_relevance_layer": "low-medium — observations are inferred; packet provides no product context",
+      "overall": "medium-high — structural and constraint extraction is reliable; ambiguities are explicitly preserved per v1.1 instructions rather than resolved"
+    },
+    "promotional_product_warnings": [],
+    "normalized": {
+      "provider": "claude",
+      "packetId": "ECR-000001-P001",
+      "packetLabel": "Scientific Method",
+      "recognizedArtifact": "Diagnostic reasoning cycle / hypothetico-deductive inquiry loop",
+      "structural": {
+        "controlFlowShape": "Iterative conditional loop with branching on confidence assessment; enter on unresolved situation, iterate through candidate generation / targeted information gathering / fit evaluation, branch on insufficient confidence to gather-more or reformulate or both, exit on resolution or abandonment.",
+        "entryConditions": [
+          {
+            "value": "A situation exists that is unresolved and requires explanation",
+            "support_level": "explicit",
+            "source_text": "A line of inquiry begins when a situation remains unresolved and the actor must determine what best explains it.",
+            "ambiguity": "The nature of 'unresolved' is not specified — could mean factually ambiguous, causally unclear, or practically undetermined. Multiple readings are plausible."
+          }
+        ],
+        "exitConditions": [
+          {
+            "value": "One explanation is supported strongly enough by available information",
+            "support_level": "explicit",
+            "source_text": "The cycle continues until one explanation is supported strongly enough by what is known",
+            "ambiguity": "Threshold for 'strongly enough' is not defined; subjective or context-dependent."
+          },
+          {
+            "value": "Further investigation is no longer justified",
+            "support_level": "explicit",
+            "source_text": "or until further investigation is no longer justified",
+            "ambiguity": "Reason for non-justification is unspecified — could be resource exhaustion, diminishing returns, external constraint, or irreversibility. These are procedurally distinct but the packet does not distinguish them."
+          }
+        ],
+        "requiredSteps": [
+          {
+            "value": "Generate a set of competing candidate explanations without prematurely settling on one",
+            "support_level": "explicit",
+            "source_text": "Several possible explanations are put forward without treating any one of them as settled.",
+            "ambiguity": "Whether this step requires a minimum number of candidates or can proceed with two is not specified."
+          },
+          {
+            "value": "Gather additional information targeted at discriminating between competing explanations",
+            "support_level": "explicit",
+            "source_text": "Additional information is gathered specifically to help separate the competing explanations.",
+            "ambiguity": "The mechanism or method of gathering is not described; could be observation, querying, experimentation, or other means."
+          },
+          {
+            "value": "Evaluate gathered information against each candidate explanation",
+            "support_level": "explicit",
+            "source_text": "That information is then checked against each explanation to see which one fits the observations best.",
+            "ambiguity": "Whether 'checked against each' means exhaustive pairwise comparison or a best-fit heuristic scan is ambiguous."
+          },
+          {
+            "value": "Assess whether confidence is sufficient to resolve the inquiry",
+            "support_level": "strongly_implied",
+            "source_text": "If confidence remains insufficient, the actor may gather more information or reformulate the explanation set.",
+            "ambiguity": "This assessment step is implied by the conditional branch but not stated as a discrete step."
+          }
+        ],
+        "optionalSteps": [
+          {
+            "value": "Reformulate the set of candidate explanations",
+            "support_level": "explicit",
+            "source_text": "the actor may gather more information or reformulate the explanation set",
+            "ambiguity": "Whether reformulation replaces the prior set, augments it, or prunes it is not specified. These are procedurally distinct operations."
+          },
+          {
+            "value": "Gather additional information in a subsequent iteration",
+            "support_level": "explicit",
+            "source_text": "the actor may gather more information or reformulate the explanation set",
+            "ambiguity": "This is listed alongside reformulation as an 'or' branch — it is unclear whether both may occur simultaneously in one iteration or are mutually exclusive choices."
+          }
+        ],
+        "loops": [
+          {
+            "value": "The generate-gather-evaluate cycle repeats while confidence is insufficient and investigation remains justified",
+            "support_level": "explicit",
+            "source_text": "The cycle continues until one explanation is supported strongly enough by what is known, or until further investigation is no longer justified.",
+            "ambiguity": "The packet does not specify whether each loop iteration must regenerate all steps or may skip steps. It is also ambiguous whether the loop is strictly sequential or allows partial revisiting."
+          }
+        ],
+        "branches": [
+          {
+            "value": "On insufficient confidence: branch to (a) gather more information, or (b) reformulate explanations, or (c) both",
+            "support_level": "explicit",
+            "source_text": "the actor may gather more information or reformulate the explanation set",
+            "ambiguity": "The 'or' is inclusive or exclusive is unresolved. Three interpretations are plausible: exclusive choice, inclusive choice, or sequenced sub-options."
+          },
+          {
+            "value": "On sufficient confidence or unjustified further investigation: exit the loop",
+            "support_level": "explicit",
+            "source_text": "The cycle continues until one explanation is supported strongly enough by what is known, or until further investigation is no longer justified.",
+            "ambiguity": "These are two distinct exit triggers with potentially different procedural meanings (resolved vs. abandoned); the packet does not distinguish the resulting states."
+          }
+        ],
+        "terminationConditions": [
+          {
+            "value": "Sufficient evidential support for one explanation",
+            "support_level": "explicit",
+            "source_text": "until one explanation is supported strongly enough by what is known",
+            "ambiguity": "Threshold is unspecified and potentially actor-relative."
+          },
+          {
+            "value": "Investigation no longer justified",
+            "support_level": "explicit",
+            "source_text": "until further investigation is no longer justified",
+            "ambiguity": "Justification criterion is unspecified."
+          }
+        ]
+      },
+      "primitive": {
+        "sequence": [
+          {
+            "value": "DETECT(unresolved situation)"
+          },
+          {
+            "value": "GENERATE(candidate explanations, plurality, unsettled)"
+          },
+          {
+            "value": "GATHER(targeted information, discriminatory purpose)"
+          },
+          {
+            "value": "EVALUATE(information fit against each candidate)"
+          },
+          {
+            "value": "ASSESS(confidence level)"
+          },
+          {
+            "value": "BRANCH: if insufficient → GATHER_MORE | REFORMULATE | BOTH"
+          },
+          {
+            "value": "LOOP back to GATHER or GENERATE"
+          },
+          {
+            "value": "EXIT on sufficient confidence or unjustified continuation"
+          }
+        ],
+        "transitions": [
+          {
+            "value": "DETECT → GENERATE"
+          },
+          {
+            "value": "GENERATE → GATHER"
+          },
+          {
+            "value": "GATHER → EVALUATE"
+          },
+          {
+            "value": "EVALUATE → ASSESS"
+          },
+          {
+            "value": "ASSESS(sufficient) → EXIT"
+          },
+          {
+            "value": "ASSESS(insufficient, justified) → GATHER_MORE or REFORMULATE"
+          },
+          {
+            "value": "GATHER_MORE → EVALUATE"
+          },
+          {
+            "value": "REFORMULATE → GENERATE (or GATHER, ambiguous)"
+          },
+          {
+            "value": "ASSESS(insufficient, unjustified) → EXIT"
+          }
+        ],
+        "dominantPrimitive": "EVALUATE (iterative fit-checking of evidence against candidates is the core discriminating operation)",
+        "candidateMissingPrimitives": [
+          {
+            "value": "RANK or SCORE candidates (implied by 'fits best' but not stated as a discrete primitive)"
+          },
+          {
+            "value": "PRUNE candidates (elimination of ruled-out explanations is plausible but not stated)"
+          },
+          {
+            "value": "RECORD or LOG state across iterations (not mentioned; may or may not be present)"
+          }
+        ]
+      },
+      "constraint": {
+        "invariants": [
+          {
+            "value": "Multiple candidate explanations must be maintained simultaneously; none may be pre-selected as settled during active inquiry",
+            "support_level": "explicit",
+            "source_text": "Several possible explanations are put forward without treating any one of them as settled.",
+            "ambiguity": "Whether this constraint applies only at the start or throughout each loop iteration is not stated."
+          },
+          {
+            "value": "Information gathering must be targeted at separating competing explanations, not general",
+            "support_level": "explicit",
+            "source_text": "Additional information is gathered specifically to help separate the competing explanations.",
+            "ambiguity": "Whether incidentally gathered non-discriminatory information may also be used is not addressed."
+          }
+        ],
+        "preconditions": [
+          {
+            "value": "Situation must be unresolved at loop entry",
+            "support_level": "explicit",
+            "source_text": "A line of inquiry begins when a situation remains unresolved",
+            "ambiguity": "None significant."
+          },
+          {
+            "value": "At least one (and implicitly more than one) candidate explanation must be available to begin gathering",
+            "support_level": "strongly_implied",
+            "source_text": "Several possible explanations are put forward",
+            "ambiguity": "Whether the procedure can proceed with a single candidate is not addressed; 'several' implies plurality."
+          }
+        ],
+        "postconditions": [
+          {
+            "value": "On resolved exit: one explanation is selected as sufficiently supported",
+            "support_level": "explicit",
+            "source_text": "until one explanation is supported strongly enough by what is known",
+            "ambiguity": "Whether competing explanations are explicitly rejected or merely deprioritized is not stated."
+          },
+          {
+            "value": "On abandoned exit: inquiry terminates without necessarily identifying a best explanation",
+            "support_level": "strongly_implied",
+            "source_text": "until further investigation is no longer justified",
+            "ambiguity": "The state of the explanation set at abandonment is not described."
+          }
+        ],
+        "stoppingCriteria": [
+          {
+            "value": "Confidence in one explanation exceeds threshold",
+            "support_level": "explicit",
+            "source_text": "one explanation is supported strongly enough by what is known",
+            "ambiguity": "Threshold is actor-defined or context-dependent; not formalized."
+          },
+          {
+            "value": "Further investigation unjustified",
+            "support_level": "explicit",
+            "source_text": "further investigation is no longer justified",
+            "ambiguity": "Basis for justification not specified."
+          }
+        ],
+        "validityConditions": [
+          {
+            "value": "The procedure requires that information gathered be checked against all current candidate explanations, not a subset",
+            "support_level": "explicit",
+            "source_text": "checked against each explanation",
+            "ambiguity": "Whether 'each' means exhaustive or representative coverage is ambiguous."
+          }
+        ]
+      },
+      "representation": {
+        "proceduralAstPresent": true,
+        "proceduralAst": {
+          "type": "procedure",
+          "name": "iterative_explanatory_inquiry",
+          "entry": {
+            "type": "condition",
+            "predicate": "situation_unresolved"
+          },
+          "body": {
+            "type": "sequence",
+            "steps": [
+              {
+                "type": "action",
+                "name": "generate_candidate_explanations",
+                "constraint": "plurality_unsettled"
+              },
+              {
+                "type": "loop",
+                "condition": "NOT (confidence_sufficient OR investigation_unjustified)",
+                "body": {
+                  "type": "sequence",
+                  "steps": [
+                    {
+                      "type": "action",
+                      "name": "gather_targeted_information",
+                      "purpose": "discriminate_between_candidates"
+                    },
+                    {
+                      "type": "action",
+                      "name": "evaluate_information_fit",
+                      "scope": "each_candidate"
+                    },
+                    {
+                      "type": "action",
+                      "name": "assess_confidence"
+                    },
+                    {
+                      "type": "branch",
+                      "condition": "confidence_insufficient",
+                      "options": [
+                        {
+                          "type": "action",
+                          "name": "gather_more_information"
+                        },
+                        {
+                          "type": "action",
+                          "name": "reformulate_explanation_set"
+                        }
+                      ],
+                      "ambiguity": "exclusive_or_inclusive_or_sequenced"
+                    }
+                  ]
+                }
+              }
+            ]
+          },
+          "exit": {
+            "type": "branch",
+            "conditions": [
+              {
+                "predicate": "confidence_sufficient",
+                "outcome": "one_explanation_selected"
+              },
+              {
+                "predicate": "investigation_unjustified",
+                "outcome": "inquiry_abandoned"
+              }
+            ]
+          }
+        },
+        "naturalLanguageSummary": "The procedure describes an iterative inquiry that begins when a situation cannot be explained by what is already known. The actor first generates multiple candidate explanations without committing to any. Information is then gathered with the specific aim of distinguishing between them. That information is evaluated against each candidate. If confidence in any single explanation is still insufficient, the actor may gather more information, generate new or revised explanations, or both, and repeat. The loop continues until one explanation is adequately supported or further inquiry is no longer warranted.",
+        "canonicalSummary": "Iterative hypothetico-deductive inquiry loop: enter on unresolved situation, generate plural unsettled candidates, repeatedly gather discriminatory evidence and evaluate fit against all candidates, branch on insufficient confidence to regather or reformulate, exit on sufficient support for one explanation or unjustified continuation.",
+        "ambiguities": [
+          {
+            "location": "optional branch: 'gather more information or reformulate'",
+            "description": "The logical relationship between the two options is unspecified.",
+            "plausible_interpretations": [
+              "Exclusive or: actor chooses one",
+              "Inclusive or: actor may do both in one iteration",
+              "Sequenced: reformulation triggers new gathering in the same iteration"
+            ],
+            "effect_on_extraction": "Affects whether REFORMULATE and GATHER_MORE are sibling branches or a nested sub-loop; changes the loop topology."
+          },
+          {
+            "location": "exit condition: 'investigation no longer justified'",
+            "description": "Basis for justification is unspecified.",
+            "plausible_interpretations": [
+              "Resource or cost constraint",
+              "Diminishing returns on evidence",
+              "External termination imposed by context",
+              "Logical impossibility of further discrimination"
+            ],
+            "effect_on_extraction": "Does not change control flow shape but affects what postcondition is recorded and whether the exit is treated as resolution or abandonment."
+          },
+          {
+            "location": "reformulate step: destination after reformulation",
+            "description": "After reformulating the explanation set, the next step is not stated.",
+            "plausible_interpretations": [
+              "Return to gathering (implies candidates are updated, information gathering continues)",
+              "Return to full loop start (re-evaluate prior evidence against new candidates)",
+              "Both equally plausible"
+            ],
+            "effect_on_extraction": "Changes loop back-edge target; meaningfully different procedural semantics."
+          },
+          {
+            "location": "evaluate step: 'fits the observations best'",
+            "description": "Whether 'best' implies an explicit ranking, scoring, or threshold comparison is not stated.",
+            "plausible_interpretations": [
+              "Ordinal ranking of all candidates",
+              "Binary pass/fail against a threshold",
+              "Comparative pairwise elimination"
+            ],
+            "effect_on_extraction": "Affects what primitive underlies the EVALUATE step."
+          }
+        ]
+      },
+      "product": {
+        "clarity": [
+          {
+            "value": "The procedure's emphasis on maintaining multiple unsettled candidates before committing mirrors best practice in structured analytical frameworks where premature closure is a documented failure mode.",
+            "support_level": "inferred",
+            "source_text": "Several possible explanations are put forward without treating any one of them as settled.",
+            "ambiguity": "Relevance to any specific product is inferred; not supported by packet content."
+          },
+          {
+            "value": "The iterative gather-evaluate cycle with a confidence-based exit is well-suited to representation as a stateful workflow with explicit state tracking of candidate support levels.",
+            "support_level": "inferred",
+            "source_text": "The cycle continues until one explanation is supported strongly enough by what is known",
+            "ambiguity": "Implementation inference only."
+          }
+        ],
+        "edf": [
+          {
+            "value": "The procedure is a strong candidate for encoding as a reusable reasoning primitive in an evaluation or decision framework, given its well-defined loop structure and dual exit conditions.",
+            "support_level": "inferred",
+            "source_text": "The cycle continues until one explanation is supported strongly enough by what is known, or until further investigation is no longer justified.",
+            "ambiguity": "Inferred; no explicit EDF reference in packet."
+          }
+        ],
+        "researchOnly": [
+          {
+            "value": "The refinement note (v1.1) indicates the prior calibration run (P001) showed model tendency to collapse ambiguous procedural alternatives into a single reading — this packet is explicitly designed to test preservation of ambiguity under extraction.",
+            "support_level": "explicit",
+            "source_text": "P001 calibration showed models may collapse plausible procedural alternatives; v1.1 asks models to preserve ambiguity and mark evidence support level.",
+            "ambiguity": "None — this is a meta-observation about the calibration study itself."
+          }
+        ]
+      },
+      "confidence": {
+        "structural_layer": "high — control flow is explicitly described with clear entry, loop, branch, and exit semantics; main uncertainty is in branch topology",
+        "primitive_layer": "medium-high — dominant primitives are clear; transitions at reformulate back-edge and branch exclusivity are genuinely ambiguous",
+        "constraint_layer": "high — invariants and stopping criteria are explicit; threshold values are deliberately unspecified in the source",
+        "representation_layer": "medium — AST and summary are well-grounded but four non-trivial ambiguities remain unresolved and are preserved rather than collapsed",
+        "product_relevance_layer": "low-medium — observations are inferred; packet provides no product context",
+        "overall": "medium-high — structural and constraint extraction is reliable; ambiguities are explicitly preserved per v1.1 instructions rather than resolved"
+      },
+      "notes": "Per v1.1 refinement instructions, ambiguities have been preserved as explicit alternatives rather than collapsed. Four ambiguities materially affect the procedural representation: (1) branch topology of the gather-more/reformulate option, (2) back-edge destination after reformulation, (3) semantics of 'fits best' in the evaluation step, and (4) basis for the unjustified-continuation exit. The recognized artifact (hypothetico-deductive inquiry / diagnostic reasoning cycle) is recorded but has not been used to introduce structure beyond what the packet explicitly or strongly implies."
+    }
+  },
+  {
+    "provider": "claude",
+    "packet_id": "ECR-000001-P002",
+    "packet_label": "Scrum Workflow",
+    "source_path": "responses/claude/002.json",
+    "source_kind": "legacy_fallback",
+    "status": "ok",
+    "strict_json": true,
+    "normalized_parse_used": false,
+    "valid_json": true,
+    "schema_completeness": "complete",
+    "missing_fields": [],
+    "recognition_present": true,
+    "recognized_artifact": "Scrum Sprint / iterative time-boxed development cycle (e.g., Scrum, Kanban sprint, or similar agile iteration)",
+    "ambiguity_count": 4,
+    "confidence_values": {
+      "structural_layer": "high — all five steps are explicit; loop is strongly implied; branches and termination are absent or unspecified",
+      "primitive_layer": "high for sequence identification; moderate for transition semantics and loop boundary placement",
+      "constraint_layer": "moderate — preconditions and postconditions are derivable; stopping criteria and validity edge cases are underspecified",
+      "representation_layer": "high for summary and AST structure; moderate for ambiguity resolution",
+      "product_relevance_layer": "low — product context (Clarity, EDF) is not described in the packet; observations are speculative",
+      "overall": "moderate-high — the procedural content is clear and fully explicit; uncertainty is concentrated in loop termination, step boundaries, and product relevance"
+    },
+    "promotional_product_warnings": [],
+    "normalized": {
+      "provider": "claude",
+      "packetId": "ECR-000001-P002",
+      "packetLabel": "Scrum Workflow",
+      "recognizedArtifact": "Scrum Sprint / iterative time-boxed development cycle (e.g., Scrum, Kanban sprint, or similar agile iteration)",
+      "structural": {
+        "controlFlowShape": "Linear sequence within each cycle, with a closing reflective step that strongly implies a loop back to the first step. Overall shape: iterative loop (plan → prioritize → commit → execute → reflect → repeat).",
+        "entryConditions": [
+          {
+            "value": "A near-term working target must be defined before the cycle begins",
+            "support_level": "explicit",
+            "source_text": "Define a near-term working target.",
+            "ambiguity": "The scope or granularity of 'near-term' is unspecified; could range from hours to weeks"
+          },
+          {
+            "value": "Available work must exist and be prioritized prior to commitment",
+            "support_level": "strongly_implied",
+            "source_text": "Prioritize available work.",
+            "ambiguity": "Whether prioritization is a precondition to the cycle or the first step within it is ambiguous"
+          }
+        ],
+        "exitConditions": [
+          {
+            "value": "The cycle produces an immediately usable result",
+            "support_level": "explicit",
+            "source_text": "Carry out the work to produce an immediately usable result.",
+            "ambiguity": "'Immediately usable' is undefined; could mean shippable, demonstrable, or merely functional"
+          },
+          {
+            "value": "Reflection on the cycle outcome is completed",
+            "support_level": "explicit",
+            "source_text": "Reflect on the cycle outcome and reassess the next cycle.",
+            "ambiguity": "Whether reflection is an exit condition or a transition step into the next cycle is unclear"
+          }
+        ],
+        "requiredSteps": [
+          {
+            "value": "Define a near-term working target",
+            "support_level": "explicit",
+            "source_text": "Define a near-term working target.",
+            "ambiguity": "None"
+          },
+          {
+            "value": "Prioritize available work",
+            "support_level": "explicit",
+            "source_text": "Prioritize available work.",
+            "ambiguity": "Prioritization method or criteria are not specified"
+          },
+          {
+            "value": "Commit to work to be taken into the current cycle",
+            "support_level": "explicit",
+            "source_text": "Commit to what will be taken into the current work cycle.",
+            "ambiguity": "Whether 'commit' implies a formal agreement or informal selection is unspecified"
+          },
+          {
+            "value": "Execute the work to produce an immediately usable result",
+            "support_level": "explicit",
+            "source_text": "Carry out the work to produce an immediately usable result.",
+            "ambiguity": "The nature of the work and the definition of 'usable' are unspecified"
+          },
+          {
+            "value": "Reflect on the cycle outcome and reassess the next cycle",
+            "support_level": "explicit",
+            "source_text": "Reflect on the cycle outcome and reassess the next cycle.",
+            "ambiguity": "Whether 'reassess' feeds back into target definition or prioritization is ambiguous"
+          }
+        ],
+        "optionalSteps": [],
+        "loops": [
+          {
+            "value": "The full five-step sequence repeats; each cycle ends with reassessment that initiates the next cycle",
+            "support_level": "strongly_implied",
+            "source_text": "Reflect on the cycle outcome and reassess the next cycle.",
+            "ambiguity": "The packet does not explicitly state the loop repeats indefinitely; it could describe a single cycle"
+          }
+        ],
+        "branches": [
+          {
+            "value": "Reassessment may alter the target or priority ordering for the next cycle",
+            "support_level": "inferred",
+            "source_text": "Reflect on the cycle outcome and reassess the next cycle.",
+            "ambiguity": "The packet does not specify what outcomes of reassessment are possible or how they affect subsequent steps"
+          }
+        ],
+        "terminationConditions": [
+          {
+            "value": "No explicit termination condition is stated; the loop could be indefinite or externally terminated",
+            "support_level": "inferred",
+            "source_text": "",
+            "ambiguity": "The packet describes a repeating cycle with no stated end; termination may be implicit in context not provided"
+          }
+        ]
+      },
+      "primitive": {
+        "sequence": [
+          {
+            "value": "DEFINE (target)"
+          },
+          {
+            "value": "PRIORITIZE (available work)"
+          },
+          {
+            "value": "SELECT / COMMIT (work items for current cycle)"
+          },
+          {
+            "value": "EXECUTE (work)"
+          },
+          {
+            "value": "EVALUATE (outcome)"
+          },
+          {
+            "value": "REASSESS (next cycle)"
+          }
+        ],
+        "transitions": [
+          {
+            "value": "DEFINE → PRIORITIZE: target scopes the prioritization"
+          },
+          {
+            "value": "PRIORITIZE → SELECT/COMMIT: ordered work enables commitment decision"
+          },
+          {
+            "value": "SELECT/COMMIT → EXECUTE: committed scope gates execution"
+          },
+          {
+            "value": "EXECUTE → EVALUATE: completion triggers reflection"
+          },
+          {
+            "value": "EVALUATE → REASSESS: reflection informs next-cycle planning"
+          },
+          {
+            "value": "REASSESS → DEFINE (loop): reassessment initiates the next cycle"
+          }
+        ],
+        "dominantPrimitive": "EXECUTE (the carrying-out step is the primary value-producing primitive)",
+        "candidateMissingPrimitives": [
+          {
+            "value": "REVIEW / DEMO (sharing the usable result with stakeholders — not mentioned but commonly associated)"
+          },
+          {
+            "value": "RETROSPECT (team-level process reflection distinct from outcome reflection — not distinguishable from packet alone)"
+          }
+        ]
+      },
+      "constraint": {
+        "invariants": [
+          {
+            "value": "Each cycle must produce an immediately usable result",
+            "support_level": "explicit",
+            "source_text": "Carry out the work to produce an immediately usable result.",
+            "ambiguity": "'Immediately usable' is not defined; its invariance across all cycles is inferred"
+          },
+          {
+            "value": "Work committed must come from the prioritized pool of available work",
+            "support_level": "strongly_implied",
+            "source_text": "Prioritize available work. Commit to what will be taken into the current work cycle.",
+            "ambiguity": "Whether ad-hoc additions to the committed set are prohibited is not stated"
+          }
+        ],
+        "preconditions": [
+          {
+            "value": "Available work must exist before prioritization can occur",
+            "support_level": "strongly_implied",
+            "source_text": "Prioritize available work.",
+            "ambiguity": "The source or composition of available work is not described"
+          }
+        ],
+        "postconditions": [
+          {
+            "value": "An immediately usable result exists at cycle end",
+            "support_level": "explicit",
+            "source_text": "Carry out the work to produce an immediately usable result.",
+            "ambiguity": "What constitutes 'usable' is undefined"
+          },
+          {
+            "value": "The next cycle has been reassessed before the current cycle closes",
+            "support_level": "explicit",
+            "source_text": "Reflect on the cycle outcome and reassess the next cycle.",
+            "ambiguity": "The depth or formality of reassessment is unspecified"
+          }
+        ],
+        "stoppingCriteria": [
+          {
+            "value": "No explicit stopping criterion present in the packet",
+            "support_level": "inferred",
+            "source_text": "",
+            "ambiguity": "Termination may be externally imposed or implied by context outside this packet"
+          }
+        ],
+        "validityConditions": [
+          {
+            "value": "A cycle is valid only if it produces an immediately usable result",
+            "support_level": "explicit",
+            "source_text": "Carry out the work to produce an immediately usable result.",
+            "ambiguity": "Whether a cycle with a partial result is considered valid is not addressed"
+          }
+        ]
+      },
+      "representation": {
+        "proceduralAstPresent": true,
+        "proceduralAst": {
+          "type": "loop",
+          "body": {
+            "type": "sequence",
+            "steps": [
+              {
+                "type": "action",
+                "label": "DEFINE",
+                "object": "near-term working target"
+              },
+              {
+                "type": "action",
+                "label": "PRIORITIZE",
+                "object": "available work"
+              },
+              {
+                "type": "action",
+                "label": "COMMIT",
+                "object": "work for current cycle"
+              },
+              {
+                "type": "action",
+                "label": "EXECUTE",
+                "object": "committed work",
+                "postcondition": "immediately usable result"
+              },
+              {
+                "type": "action",
+                "label": "REFLECT",
+                "object": "cycle outcome"
+              },
+              {
+                "type": "action",
+                "label": "REASSESS",
+                "object": "next cycle"
+              }
+            ]
+          },
+          "termination": "unspecified"
+        },
+        "naturalLanguageSummary": "A repeating work cycle in which a near-term target is first defined, available work is prioritized, a subset of that work is committed to the current cycle, the work is executed until an immediately usable result is produced, and the cycle closes with reflection on the outcome and reassessment of the next cycle. The reassessment step feeds back into the start of the next cycle, creating an iterative loop of indefinite length.",
+        "canonicalSummary": "DEFINE target → PRIORITIZE work → COMMIT scope → EXECUTE to usable result → REFLECT and REASSESS → repeat",
+        "ambiguities": [
+          {
+            "location": "Step 1 / Step 2 boundary",
+            "description": "Whether 'Define a near-term working target' and 'Prioritize available work' are strictly sequential or partially concurrent is not specified",
+            "plausible_interpretations": [
+              "Target definition scopes and precedes prioritization",
+              "Prioritization and target definition are co-determined in a single planning activity"
+            ],
+            "effect_on_extraction": "Minor; sequence ordering of first two primitives may vary"
+          },
+          {
+            "location": "Loop termination",
+            "description": "The packet contains no explicit termination condition for the outer loop",
+            "plausible_interpretations": [
+              "The cycle repeats indefinitely until externally stopped",
+              "The cycle has an implied termination tied to a larger goal not described in this packet"
+            ],
+            "effect_on_extraction": "Stopping criteria field cannot be populated from packet content alone"
+          },
+          {
+            "location": "Reflect / Reassess step",
+            "description": "'Reflect on the cycle outcome' and 'reassess the next cycle' may be one activity or two distinct activities",
+            "plausible_interpretations": [
+              "A single retrospective activity combining outcome review and next-cycle planning",
+              "Two separate activities: a backward-looking retrospective and a forward-looking planning update"
+            ],
+            "effect_on_extraction": "Affects whether the final step maps to one primitive or two"
+          },
+          {
+            "location": "Exit condition / loop transition",
+            "description": "Whether reflection and reassessment are the final step of the current cycle or the first step of the next is ambiguous",
+            "plausible_interpretations": [
+              "Reflect/reassess closes the current cycle",
+              "Reflect/reassess opens the next cycle"
+            ],
+            "effect_on_extraction": "Affects placement of these primitives relative to the loop boundary"
+          }
+        ]
+      },
+      "product": {
+        "clarity": [
+          {
+            "value": "The procedure is compact and communicable; each step maps to a single clear imperative, which supports clarity in tooling that must surface or guide iterative work",
+            "support_level": "inferred",
+            "source_text": "Define a near-term working target. Prioritize available work. Commit to what will be taken into the current work cycle. Carry out the work to produce an immediately usable result. Reflect on the cycle outcome and reassess the next cycle.",
+            "ambiguity": "Relevance to a specific 'Clarity' product is not inferable from the packet alone"
+          }
+        ],
+        "edf": [
+          {
+            "value": "The commitment step introduces a formal scope gate between prioritization and execution, which is structurally relevant to any execution-decision framework that models staged commitment",
+            "support_level": "inferred",
+            "source_text": "Commit to what will be taken into the current work cycle.",
+            "ambiguity": "EDF interpretation is speculative without additional product context"
+          }
+        ],
+        "researchOnly": [
+          {
+            "value": "The procedure's five-step form with embedded loop is a minimal iterative cycle; its compactness makes it a useful calibration artifact for procedural extraction studies testing loop detection and primitive sequencing",
+            "support_level": "inferred",
+            "source_text": "",
+            "ambiguity": "Research relevance is assessed from the study context, not the packet content"
+          }
+        ]
+      },
+      "confidence": {
+        "structural_layer": "high — all five steps are explicit; loop is strongly implied; branches and termination are absent or unspecified",
+        "primitive_layer": "high for sequence identification; moderate for transition semantics and loop boundary placement",
+        "constraint_layer": "moderate — preconditions and postconditions are derivable; stopping criteria and validity edge cases are underspecified",
+        "representation_layer": "high for summary and AST structure; moderate for ambiguity resolution",
+        "product_relevance_layer": "low — product context (Clarity, EDF) is not described in the packet; observations are speculative",
+        "overall": "moderate-high — the procedural content is clear and fully explicit; uncertainty is concentrated in loop termination, step boundaries, and product relevance"
+      },
+      "notes": "The blinded procedural content maps cleanly onto a five-step iterative work cycle. The recognized artifact is noted in the recognized_artifact field only. No steps have been added based on recognition; the optional_steps array is empty because the packet supports no optional steps. The candidate_missing_primitives in the primitive layer record commonly associated steps (demo, retrospect) that are absent from the packet and have not been introduced into the extraction."
+    }
+  },
+  {
+    "provider": "claude",
+    "packet_id": "ECR-000001-P003",
+    "packet_label": "Bloom Taxonomy",
+    "source_path": "responses/claude/003.json",
+    "source_kind": "legacy_fallback",
+    "status": "ok",
+    "strict_json": true,
+    "normalized_parse_used": false,
+    "valid_json": true,
+    "schema_completeness": "complete",
+    "missing_fields": [],
+    "recognition_present": true,
+    "recognized_artifact": "Bloom's Taxonomy (or a functionally equivalent cognitive demand classification framework)",
+    "ambiguity_count": 3,
+    "confidence_values": {
+      "structural_layer": "high — procedural steps are short but unambiguous in sequence",
+      "primitive_layer": "medium — dominant primitive is clear; missing primitives (DEFINE, VERIFY) are plausible but inferred",
+      "constraint_layer": "medium — invariants and postconditions are derivable; stopping criteria require inference",
+      "representation_layer": "medium — AST is faithful to packet but terminal branch ambiguity limits precision",
+      "product_relevance_layer": "low — no product context is provided; all observations are inferred",
+      "overall": "medium"
+    },
+    "promotional_product_warnings": [
+      "research_only contains validation-like wording: The procedure's reliance on an unstated taxonomy introduces a significant degree of interpretive freedom that may require empirical validation of level assignments."
+    ],
+    "normalized": {
+      "provider": "claude",
+      "packetId": "ECR-000001-P003",
+      "packetLabel": "Bloom Taxonomy",
+      "recognizedArtifact": "Bloom's Taxonomy (or a functionally equivalent cognitive demand classification framework)",
+      "structural": {
+        "controlFlowShape": "Linear with a terminal branch: (1) establish levels → (2) classify items → (3a) select items for target level OR (3b) evaluate items against target level.",
+        "entryConditions": [
+          {
+            "value": "A set of tasks, objectives, or performance items exists and requires ordering or evaluation by cognitive demand.",
+            "support_level": "strongly_implied",
+            "source_text": "Arrange kinds of work by level of cognitive challenge.",
+            "ambiguity": "The nature of the input items is unspecified. Could be learning objectives, assessment items, job tasks, rubric criteria, or other performative units."
+          }
+        ],
+        "exitConditions": [
+          {
+            "value": "Items are arranged or labeled according to their assigned cognitive level.",
+            "support_level": "strongly_implied",
+            "source_text": "Arrange kinds of work by level of cognitive challenge. Use those distinctions when choosing or evaluating the intended level of challenge.",
+            "ambiguity": "Whether the output is a ranked ordering, a categorized grouping, or an annotated list is not specified."
+          }
+        ],
+        "requiredSteps": [
+          {
+            "value": "Establish or apply a taxonomy of cognitive levels that distinguishes simpler from more demanding performance.",
+            "support_level": "explicit",
+            "source_text": "Differentiate simpler forms of performance from more demanding ones.",
+            "ambiguity": "Whether the taxonomy is pre-defined (imported) or constructed during the procedure is not stated."
+          },
+          {
+            "value": "Assign each item or kind of work to a cognitive level within the taxonomy.",
+            "support_level": "strongly_implied",
+            "source_text": "Arrange kinds of work by level of cognitive challenge.",
+            "ambiguity": "Assignment could be strict (one level per item) or fuzzy (ranges or overlapping levels)."
+          },
+          {
+            "value": "Apply the level distinctions to select or evaluate items for an intended challenge target.",
+            "support_level": "explicit",
+            "source_text": "Use those distinctions when choosing or evaluating the intended level of challenge.",
+            "ambiguity": "Whether this is a selection step (choosing new items) or an evaluation step (auditing existing items) or both is ambiguous."
+          }
+        ],
+        "optionalSteps": [
+          {
+            "value": "Revise or re-classify items whose assigned level is disputed or borderline.",
+            "support_level": "inferred",
+            "source_text": "Differentiate simpler forms of performance from more demanding ones.",
+            "ambiguity": "Revision is a plausible procedural step but is not mentioned."
+          }
+        ],
+        "loops": [
+          {
+            "value": "Iterative re-evaluation of items may occur if initial classification is contested or if the intended challenge target changes.",
+            "support_level": "inferred",
+            "source_text": "Use those distinctions when choosing or evaluating the intended level of challenge.",
+            "ambiguity": "No explicit loop is described; iteration is inferred from evaluation language."
+          }
+        ],
+        "branches": [
+          {
+            "value": "Branch A: Use taxonomy to choose new items targeting a desired cognitive level. Branch B: Use taxonomy to audit existing items against a desired cognitive level.",
+            "support_level": "strongly_implied",
+            "source_text": "Use those distinctions when choosing or evaluating the intended level of challenge.",
+            "ambiguity": "'Choosing' and 'evaluating' may be alternative uses or sequential steps. The packet does not resolve this."
+          }
+        ],
+        "terminationConditions": [
+          {
+            "value": "All items have been assigned a cognitive level and the intended challenge target has been chosen or evaluated.",
+            "support_level": "strongly_implied",
+            "source_text": "Use those distinctions when choosing or evaluating the intended level of challenge.",
+            "ambiguity": "No explicit termination signal is given."
+          }
+        ]
+      },
+      "primitive": {
+        "sequence": [
+          {
+            "value": "CLASSIFY: assign cognitive level to each item"
+          },
+          {
+            "value": "ORDER: arrange items by level"
+          },
+          {
+            "value": "BRANCH: choose (select new items) or evaluate (audit existing items)"
+          },
+          {
+            "value": "APPLY: use level distinctions to act on the chosen branch"
+          }
+        ],
+        "transitions": [
+          {
+            "value": "CLASSIFY → ORDER: classification precedes arrangement"
+          },
+          {
+            "value": "ORDER → BRANCH: arrangement enables level-targeted action"
+          },
+          {
+            "value": "BRANCH → APPLY: branch selection gates the application step"
+          }
+        ],
+        "dominantPrimitive": "CLASSIFY",
+        "candidateMissingPrimitives": [
+          {
+            "value": "DEFINE: define or import the cognitive level taxonomy (precedes CLASSIFY but not stated)"
+          },
+          {
+            "value": "VERIFY: confirm classification accuracy or inter-rater agreement (not mentioned)"
+          }
+        ]
+      },
+      "constraint": {
+        "invariants": [
+          {
+            "value": "The taxonomy must distinguish at least two levels: simpler and more demanding.",
+            "support_level": "explicit",
+            "source_text": "Differentiate simpler forms of performance from more demanding ones.",
+            "ambiguity": "The number of levels above two is unconstrained by the packet."
+          },
+          {
+            "value": "Level distinctions must be consistent across classification and selection/evaluation steps.",
+            "support_level": "strongly_implied",
+            "source_text": "Use those distinctions when choosing or evaluating the intended level of challenge.",
+            "ambiguity": "Consistency is implied by 'those distinctions' referring back to the same differentiation."
+          }
+        ],
+        "preconditions": [
+          {
+            "value": "A set of items representing 'kinds of work' must exist prior to arrangement.",
+            "support_level": "strongly_implied",
+            "source_text": "Arrange kinds of work by level of cognitive challenge.",
+            "ambiguity": "What constitutes a 'kind of work' is not defined."
+          }
+        ],
+        "postconditions": [
+          {
+            "value": "Items are arranged by cognitive level.",
+            "support_level": "explicit",
+            "source_text": "Arrange kinds of work by level of cognitive challenge.",
+            "ambiguity": "Whether arrangement produces a strict ordering or a grouped categorization is unspecified."
+          },
+          {
+            "value": "A challenge target has been chosen or an existing set has been evaluated against one.",
+            "support_level": "explicit",
+            "source_text": "Use those distinctions when choosing or evaluating the intended level of challenge.",
+            "ambiguity": "Both choosing and evaluating may be postconditions, or only one applies depending on branch taken."
+          }
+        ],
+        "stoppingCriteria": [
+          {
+            "value": "All relevant items classified and the target challenge level acted upon.",
+            "support_level": "strongly_implied",
+            "source_text": "Use those distinctions when choosing or evaluating the intended level of challenge.",
+            "ambiguity": "No explicit stopping signal; inferred from completion of stated steps."
+          }
+        ],
+        "validityConditions": [
+          {
+            "value": "The taxonomy used must produce a meaningful gradient from simpler to more demanding.",
+            "support_level": "strongly_implied",
+            "source_text": "Differentiate simpler forms of performance from more demanding ones.",
+            "ambiguity": "Validity criteria for the taxonomy itself are not specified."
+          }
+        ]
+      },
+      "representation": {
+        "proceduralAstPresent": true,
+        "proceduralAst": {
+          "type": "SEQUENCE",
+          "children": [
+            {
+              "type": "STEP",
+              "label": "Establish cognitive level taxonomy",
+              "support_level": "strongly_implied"
+            },
+            {
+              "type": "STEP",
+              "label": "Classify items by cognitive level",
+              "support_level": "explicit"
+            },
+            {
+              "type": "STEP",
+              "label": "Arrange items in level order",
+              "support_level": "explicit"
+            },
+            {
+              "type": "BRANCH",
+              "label": "Apply level distinctions",
+              "branches": [
+                {
+                  "label": "Choose items targeting desired level",
+                  "support_level": "explicit"
+                },
+                {
+                  "label": "Evaluate existing items against desired level",
+                  "support_level": "explicit"
+                }
+              ]
+            }
+          ]
+        },
+        "naturalLanguageSummary": "The procedure involves classifying items representing kinds of work according to a cognitive demand taxonomy that distinguishes simpler from more demanding performance. Items are then arranged by level. The resulting level distinctions are applied either to select new items at a desired challenge level or to evaluate whether existing items meet an intended challenge target.",
+        "canonicalSummary": "Cognitive classification and level-based selection or audit of performative items using a demand taxonomy.",
+        "ambiguities": [
+          {
+            "location": "Entry: nature of input items",
+            "description": "'Kinds of work' is unspecified. Could be learning objectives, tasks, assessment items, rubric criteria, or other units.",
+            "plausible_interpretations": [
+              "Educational learning objectives",
+              "Assessment or test items",
+              "Job or task descriptions",
+              "Rubric performance criteria"
+            ],
+            "effect_on_extraction": "Does not alter the core procedural shape but affects domain applicability."
+          },
+          {
+            "location": "Terminal branch: 'choosing or evaluating'",
+            "description": "The packet uses both 'choosing' and 'evaluating' without clarifying whether these are alternatives or sequential.",
+            "plausible_interpretations": [
+              "They are mutually exclusive branches (design mode vs. audit mode)",
+              "They are sequential (choose then evaluate)",
+              "They are synonymous in this context"
+            ],
+            "effect_on_extraction": "Affects whether the procedure terminates at one action or requires both."
+          },
+          {
+            "location": "Taxonomy definition",
+            "description": "The taxonomy is referenced but not defined. Number of levels, labels, and granularity are all unspecified.",
+            "plausible_interpretations": [
+              "A recognized multi-level cognitive taxonomy is imported (e.g., six levels)",
+              "A bespoke two-level simpler/demanding binary is used",
+              "A continuum rather than discrete levels is used"
+            ],
+            "effect_on_extraction": "Does not change procedural steps but affects classification granularity."
+          }
+        ]
+      },
+      "product": {
+        "clarity": [
+          {
+            "value": "This procedure could inform how clarity products sequence or tier instructional or evaluative content by cognitive demand.",
+            "support_level": "inferred",
+            "source_text": "Arrange kinds of work by level of cognitive challenge.",
+            "ambiguity": "No explicit product context is given."
+          }
+        ],
+        "edf": [
+          {
+            "value": "A cognitive demand taxonomy could serve as a structural layer in an evaluation or differentiation framework, providing a principled basis for level assignment.",
+            "support_level": "inferred",
+            "source_text": "Differentiate simpler forms of performance from more demanding ones.",
+            "ambiguity": "EDF context is not stated in the packet."
+          }
+        ],
+        "researchOnly": [
+          {
+            "value": "The procedure's reliance on an unstated taxonomy introduces a significant degree of interpretive freedom that may require empirical validation of level assignments.",
+            "support_level": "inferred",
+            "source_text": "Differentiate simpler forms of performance from more demanding ones.",
+            "ambiguity": "Research implications are inferred, not stated."
+          }
+        ]
+      },
+      "confidence": {
+        "structural_layer": "high — procedural steps are short but unambiguous in sequence",
+        "primitive_layer": "medium — dominant primitive is clear; missing primitives (DEFINE, VERIFY) are plausible but inferred",
+        "constraint_layer": "medium — invariants and postconditions are derivable; stopping criteria require inference",
+        "representation_layer": "medium — AST is faithful to packet but terminal branch ambiguity limits precision",
+        "product_relevance_layer": "low — no product context is provided; all observations are inferred",
+        "overall": "medium"
+      },
+      "notes": "The packet is short and procedurally sparse. The three sentences map cleanly to classify, arrange, and apply steps. The primary structural ambiguity is whether the terminal action (choosing vs. evaluating) represents two branches or one compound action. This has been preserved as an explicit ambiguity rather than collapsed. The recognized artifact (a cognitive taxonomy framework) has been recorded but not used to supply additional procedural structure beyond what the packet supports."
+    }
+  },
+  {
+    "provider": "gemini",
+    "packet_id": "ECR-000001-P001",
+    "packet_label": "Scientific Method",
+    "source_path": "responses/gemini/001.json",
+    "source_kind": "legacy_fallback",
+    "status": "ok",
+    "strict_json": true,
+    "normalized_parse_used": false,
+    "valid_json": true,
+    "schema_completeness": "complete",
+    "missing_fields": [],
+    "recognition_present": true,
+    "recognized_artifact": "Inference to the Best Explanation / Abductive Reasoning / Scientific Method Loop",
+    "ambiguity_count": 2,
+    "confidence_values": {
+      "structural_layer": "high",
+      "primitive_layer": "high",
+      "constraint_layer": "high",
+      "representation_layer": "high",
+      "product_relevance_layer": "medium",
+      "overall": "high"
+    },
+    "promotional_product_warnings": [],
+    "normalized": {
+      "provider": "gemini",
+      "packetId": "ECR-000001-P001",
+      "packetLabel": "Scientific Method",
+      "recognizedArtifact": "Inference to the Best Explanation / Abductive Reasoning / Scientific Method Loop",
+      "structural": {
+        "controlFlowShape": "Sequential step execution leading to an iterative loop with a binary branching condition based on confidence, terminating via two alternative exit gates.",
+        "entryConditions": [
+          {
+            "value": "A situation remains unresolved and the actor must determine what best explains it.",
+            "support_level": "explicit",
+            "source_text": "A line of inquiry begins when a situation remains unresolved and the actor must determine what best explains it.",
+            "ambiguity": "None. Directly states the initiating trigger."
+          }
+        ],
+        "exitConditions": [
+          {
+            "value": "One explanation is supported strongly enough by what is known.",
+            "support_level": "explicit",
+            "source_text": "The cycle continues until one explanation is supported strongly enough by what is known",
+            "ambiguity": "Ambiguity exists regarding whether 'supported strongly enough' matches an objective benchmark or subjective actor confidence."
+          },
+          {
+            "value": "Further investigation is no longer justified.",
+            "support_level": "explicit",
+            "source_text": "or until further investigation is no longer justified.",
+            "ambiguity": "The criteria for justification are unspecified, leaving it open to interpretation whether this is based on resource constraints, futility, or external factors."
+          }
+        ],
+        "requiredSteps": [
+          {
+            "value": "Put forward several possible explanations without treating any one as settled.",
+            "support_level": "explicit",
+            "source_text": "Several possible explanations are put forward without treating any one of them as settled.",
+            "ambiguity": "None."
+          },
+          {
+            "value": "Gather additional information specifically to help separate the competing explanations.",
+            "support_level": "explicit",
+            "source_text": "Additional information is gathered specifically to help separate the competing explanations.",
+            "ambiguity": "None."
+          },
+          {
+            "value": "Check the gathered information against each explanation to evaluate the best fit.",
+            "support_level": "explicit",
+            "source_text": "That information is then checked against each explanation to see which one fits the observations best.",
+            "ambiguity": "None."
+          }
+        ],
+        "optionalSteps": [
+          {
+            "value": "Gather more information (during loop if confidence is insufficient).",
+            "support_level": "explicit",
+            "source_text": "If confidence remains insufficient, the actor may gather more information",
+            "ambiguity": "Ambiguous if this acts as a replacement or supplement to reformulating the explanations."
+          },
+          {
+            "value": "Reformulate the explanation set (during loop if confidence is insufficient).",
+            "support_level": "explicit",
+            "source_text": "or reformulate the explanation set.",
+            "ambiguity": "Ambiguous if this means adding new explanations, modifying existing ones, or discarding non-fitting ones."
+          }
+        ],
+        "loops": [
+          {
+            "value": "Cycle of gathering more info/reformulating explanation set and re-checking fit when confidence is insufficient.",
+            "support_level": "explicit",
+            "source_text": "If confidence remains insufficient, the actor may gather more information or reformulate the explanation set. The cycle continues until...",
+            "ambiguity": "Plausible alternative structures: 1) The loop routes all the way back to evaluating original steps with new data. 2) The loop is an inner routine specifically mutating the explanation set or data pool before re-checking fit."
+          }
+        ],
+        "branches": [
+          {
+            "value": "Branch between gathering more information OR reformulating the explanation set.",
+            "support_level": "explicit",
+            "source_text": "the actor may gather more information or reformulate the explanation set.",
+            "ambiguity": "It is ambiguous whether these are mutually exclusive options or if both can occur simultaneously, given the use of 'or'."
+          },
+          {
+            "value": "Branch between termination via finding a sufficient explanation OR via investigation no longer being justified.",
+            "support_level": "explicit",
+            "source_text": "until one explanation is supported strongly enough by what is known, or until further investigation is no longer justified.",
+            "ambiguity": "None."
+          }
+        ],
+        "terminationConditions": [
+          {
+            "value": "One explanation achieves sufficient empirical or evidentiary support.",
+            "support_level": "explicit",
+            "source_text": "until one explanation is supported strongly enough by what is known",
+            "ambiguity": "None."
+          },
+          {
+            "value": "Further investigation loses justification.",
+            "support_level": "explicit",
+            "source_text": "or until further investigation is no longer justified.",
+            "ambiguity": "None."
+          }
+        ]
+      },
+      "primitive": {
+        "sequence": [
+          {
+            "value": "Detect unresolved situation"
+          },
+          {
+            "value": "Generate multiple explanations"
+          },
+          {
+            "value": "Gather targeted data"
+          },
+          {
+            "value": "Evaluate data fit against explanations"
+          },
+          {
+            "value": "Assess confidence level"
+          },
+          {
+            "value": "Conditional action: Gather more data AND/OR modify explanation set"
+          },
+          {
+            "value": "Evaluate loop exit conditions"
+          }
+        ],
+        "transitions": [
+          {
+            "value": "Situation detection -> Explanation generation"
+          },
+          {
+            "value": "Explanation generation -> Targeted data gathering"
+          },
+          {
+            "value": "Targeted data gathering -> Evaluation of fit"
+          },
+          {
+            "value": "Evaluation of fit -> Confidence assessment"
+          },
+          {
+            "value": "Confidence assessment (Insufficient) -> Data gathering/Reformulation branch -> Evaluation of fit"
+          },
+          {
+            "value": "Confidence assessment (Sufficient / Unjustified) -> Termination"
+          }
+        ],
+        "dominantPrimitive": "Evaluation / Comparison (checking information against explanations to see which fits best)",
+        "candidateMissingPrimitives": [
+          {
+            "value": "Discarding falsified explanations"
+          },
+          {
+            "value": "Defining the initial baseline observations"
+          }
+        ]
+      },
+      "constraint": {
+        "invariants": [
+          {
+            "value": "No single explanation is treated as settled prior to evaluation.",
+            "support_level": "explicit",
+            "source_text": "without treating any one of them as settled.",
+            "ambiguity": "None."
+          }
+        ],
+        "preconditions": [
+          {
+            "value": "An unresolved situation exists.",
+            "support_level": "explicit",
+            "source_text": "when a situation remains unresolved",
+            "ambiguity": "None."
+          },
+          {
+            "value": "The actor has a requirement or motivation to explain the situation.",
+            "support_level": "explicit",
+            "source_text": "and the actor must determine what best explains it.",
+            "ambiguity": "None."
+          }
+        ],
+        "postconditions": [
+          {
+            "value": "An explanation is strongly supported by known information OR further investigation is deemed unjustified.",
+            "support_level": "explicit",
+            "source_text": "until one explanation is supported strongly enough by what is known, or until further investigation is no longer justified.",
+            "ambiguity": "The postcondition contains an 'OR' split, meaning the final state may be resolution or abandonment."
+          }
+        ],
+        "stoppingCriteria": [
+          {
+            "value": "Confidence/Support threshold met for a single explanation.",
+            "support_level": "explicit",
+            "source_text": "until one explanation is supported strongly enough by what is known",
+            "ambiguity": "None."
+          },
+          {
+            "value": "Justification threshold dropped below baseline.",
+            "support_level": "explicit",
+            "source_text": "or until further investigation is no longer justified.",
+            "ambiguity": "None."
+          }
+        ],
+        "validityConditions": [
+          {
+            "value": "Gathered information must be capable of separating the competing explanations.",
+            "support_level": "strongly_implied",
+            "source_text": "Additional information is gathered specifically to help separate the competing explanations.",
+            "ambiguity": "If the information gathered fails to provide discriminatory weight, the step's functional intent is invalidated."
+          }
+        ]
+      },
+      "representation": {
+        "proceduralAstPresent": true,
+        "proceduralAst": {
+          "type": "Procedure",
+          "name": "Line_of_Inquiry",
+          "body": [
+            {
+              "type": "InitialStep",
+              "action": "Generate explanation set without treating any as settled"
+            },
+            {
+              "type": "InitialStep",
+              "action": "Gather discriminative information"
+            },
+            {
+              "type": "InitialStep",
+              "action": "Check information against explanations for best fit"
+            },
+            {
+              "type": "WhileLoop",
+              "condition": "Confidence is insufficient AND further investigation is justified",
+              "body": [
+                {
+                  "type": "ExclusiveOrBranch",
+                  "option_A": {
+                    "type": "Action",
+                    "action": "Gather more information"
+                  },
+                  "option_B": {
+                    "type": "Action",
+                    "action": "Reformulate explanation set"
+                  },
+                  "ambiguity_note": "Text states 'or', which leaves it ambiguous if it is a strict XOR or an inclusive OR allowing both actions."
+                },
+                {
+                  "type": "Action",
+                  "action": "Check updated information against updated explanation set"
+                }
+              ]
+            }
+          ]
+        },
+        "naturalLanguageSummary": "The procedure describes an investigative cycle that triggers when a situation is unresolved. The actor proposes multiple neutral explanations and gathers targeted information to evaluate which explanation fits best. If the evaluation does not produce sufficient confidence, the actor loops back to either gather more information or adjust the pool of explanations. This process repeats iteratively until an explanation is satisfactorily supported or continuing becomes unjustified.",
+        "canonicalSummary": "INITIATE when unresolved situation requires explanation. FORMULATE explanation pool neutrally. GATHER differentiating data. EVALUATE fit. WHILE confidence is insufficient AND investigation is justified, DO: EITHER gather more data OR reformulate explanation pool, THEN re-evaluate. TERMINATE when target confidence is met OR justification expires.",
+        "ambiguities": [
+          {
+            "location": "Optional loop choices ('gather more information or reformulate')",
+            "description": "The use of 'or' creates ambiguity on execution constraints.",
+            "plausible_interpretations": [
+              "The actor chooses exactly one of the two paths per loop execution.",
+              "The actor may perform both actions within the same loop cycle."
+            ],
+            "effect_on_extraction": "Affects the branching structure configuration in the structural AST representation."
+          },
+          {
+            "location": "Loop continuation condition vs exit condition logic",
+            "description": "The text jumps from 'If confidence remains insufficient... the cycle continues until...'",
+            "plausible_interpretations": [
+              "The step of checking fit happens implicitly inside the cycle right after gathering/reformulating.",
+              "The cycle only consists of gathering/reformulating, and the checking step exists outside the loop, implying a jump back up to an earlier sequence step."
+            ],
+            "effect_on_extraction": "Alters the scope boundaries of the loop construct."
+          }
+        ]
+      },
+      "product": {
+        "clarity": [
+          {
+            "value": "The text maintains a high degree of operational abstraction, making it universally applicable to investigative domains.",
+            "support_level": "inferred",
+            "source_text": "A line of inquiry begins when a situation remains unresolved",
+            "ambiguity": "Extrapolated from the deliberate omission of specific domain terms."
+          }
+        ],
+        "edf": [
+          {
+            "value": "Preserving the precise exit criteria pairs is critical for downstream logic mappings.",
+            "support_level": "strongly_implied",
+            "source_text": "until one explanation is supported strongly enough by what is known, or until further investigation is no longer justified.",
+            "ambiguity": "Collapsing these into a single 'Done' flag loses the semantic distinction between success and abandonment."
+          }
+        ],
+        "researchOnly": [
+          {
+            "value": "This procedural profile serves as a textbook baseline for testing an agent's capability to handle multi-path looping structures without forcing normalization.",
+            "support_level": "inferred",
+            "source_text": "The cycle continues until...",
+            "ambiguity": "Relies entirely on the evaluation meta-context of ECR-000001."
+          }
+        ]
+      },
+      "confidence": {
+        "structural_layer": "high",
+        "primitive_layer": "high",
+        "constraint_layer": "high",
+        "representation_layer": "high",
+        "product_relevance_layer": "medium",
+        "overall": "high"
+      },
+      "notes": "The extraction strictly honors v1.1 guidelines by documenting structural ambiguities regarding the 'or' branch and the exact boundaries of the loop mechanism instead of forcing a singular clean representation."
+    }
+  },
+  {
+    "provider": "gemini",
+    "packet_id": "ECR-000001-P002",
+    "packet_label": "Scrum Workflow",
+    "source_path": "responses/gemini/002.json",
+    "source_kind": "legacy_fallback",
+    "status": "ok",
+    "strict_json": true,
+    "normalized_parse_used": false,
+    "valid_json": true,
+    "schema_completeness": "complete",
+    "missing_fields": [],
+    "recognition_present": true,
+    "recognized_artifact": "Scrum Sprint / Agile Iteration Cycle",
+    "ambiguity_count": 2,
+    "confidence_values": {
+      "structural_layer": "high",
+      "primitive_layer": "high",
+      "constraint_layer": "high",
+      "representation_layer": "high",
+      "product_relevance_layer": "high",
+      "overall": "high"
+    },
+    "promotional_product_warnings": [],
+    "normalized": {
+      "provider": "gemini",
+      "packetId": "ECR-000001-P002",
+      "packetLabel": "Scrum Workflow",
+      "recognizedArtifact": "Scrum Sprint / Agile Iteration Cycle",
+      "structural": {
+        "controlFlowShape": "Linear sequence with an implied trailing loop back to the initiation phase for a subsequent cycle.",
+        "entryConditions": [
+          {
+            "value": "Availability of work items to prioritize.",
+            "support_level": "strongly_implied",
+            "source_text": "Prioritize available work.",
+            "ambiguity": "It is ambiguous whether a pool of work must already exist or if defining the near-term working target creates it."
+          }
+        ],
+        "exitConditions": [
+          {
+            "value": "Production of an immediately usable result and completion of reflection.",
+            "support_level": "strongly_implied",
+            "source_text": "Carry out the work to produce an immediately usable result.\nReflect on the cycle outcome and reassess the next cycle.",
+            "ambiguity": "Ambiguous whether 'reassess the next cycle' marks the exit condition of the current cycle or the entry condition of the next."
+          }
+        ],
+        "requiredSteps": [
+          {
+            "value": "Define a near-term working target.",
+            "support_level": "explicit",
+            "source_text": "Define a near-term working target.",
+            "ambiguity": "none"
+          },
+          {
+            "value": "Prioritize available work.",
+            "support_level": "explicit",
+            "source_text": "Prioritize available work.",
+            "ambiguity": "none"
+          },
+          {
+            "value": "Commit to what will be taken into the current work cycle.",
+            "support_level": "explicit",
+            "source_text": "Commit to what will be taken into the current work cycle.",
+            "ambiguity": "none"
+          },
+          {
+            "value": "Carry out the work to produce an immediately usable result.",
+            "support_level": "explicit",
+            "source_text": "Carry out the work to produce an immediately usable result.",
+            "ambiguity": "none"
+          },
+          {
+            "value": "Reflect on the cycle outcome and reassess the next cycle.",
+            "support_level": "explicit",
+            "source_text": "Reflect on the cycle outcome and reassess the next cycle.",
+            "ambiguity": "none"
+          }
+        ],
+        "optionalSteps": [],
+        "loops": [
+          {
+            "value": "The cycle repeats sequentially as indicated by 'reassess the next cycle'.",
+            "support_level": "strongly_implied",
+            "source_text": "Reflect on the cycle outcome and reassess the next cycle.",
+            "ambiguity": "The text implies a loop across cycles, but it is ambiguous whether the loop returns to step 1 (Define target) or step 2 (Prioritize available work) for the next iteration."
+          }
+        ],
+        "branches": [],
+        "terminationConditions": []
+      },
+      "primitive": {
+        "sequence": [
+          {
+            "value": "Define Target"
+          },
+          {
+            "value": "Prioritize Work"
+          },
+          {
+            "value": "Commit to Cycle"
+          },
+          {
+            "value": "Execute Work"
+          },
+          {
+            "value": "Reflect and Reassess"
+          }
+        ],
+        "transitions": [
+          {
+            "value": "Define Target -> Prioritize Work"
+          },
+          {
+            "value": "Prioritize Work -> Commit to Cycle"
+          },
+          {
+            "value": "Commit to Cycle -> Execute Work"
+          },
+          {
+            "value": "Execute Work -> Reflect and Reassess"
+          },
+          {
+            "value": "Reflect and Reassess -> Next Cycle (Loop)"
+          }
+        ],
+        "dominantPrimitive": "Execute Work / Step-based Iteration",
+        "candidateMissingPrimitives": [
+          {
+            "value": "Review/Demonstration step before reflection"
+          },
+          {
+            "value": "Backlog refinement prior to definition"
+          }
+        ]
+      },
+      "constraint": {
+        "invariants": [
+          {
+            "value": "The work must target an immediately usable result.",
+            "support_level": "explicit",
+            "source_text": "Carry out the work to produce an immediately usable result.",
+            "ambiguity": "none"
+          }
+        ],
+        "preconditions": [
+          {
+            "value": "Work must be available prior to prioritization.",
+            "support_level": "explicit",
+            "source_text": "Prioritize available work.",
+            "ambiguity": "none"
+          }
+        ],
+        "postconditions": [
+          {
+            "value": "An immediately usable result is produced.",
+            "support_level": "explicit",
+            "source_text": "Carry out the work to produce an immediately usable result.",
+            "ambiguity": "none"
+          }
+        ],
+        "stoppingCriteria": [
+          {
+            "value": "Completion of execution and completion of reflection/reassessment.",
+            "support_level": "strongly_implied",
+            "source_text": "Reflect on the cycle outcome and reassess the next cycle.",
+            "ambiguity": "none"
+          }
+        ],
+        "validityConditions": []
+      },
+      "representation": {
+        "proceduralAstPresent": true,
+        "proceduralAst": {
+          "type": "Program",
+          "body": [
+            {
+              "type": "Step",
+              "id": "1",
+              "description": "Define a near-term working target."
+            },
+            {
+              "type": "Step",
+              "id": "2",
+              "description": "Prioritize available work."
+            },
+            {
+              "type": "Step",
+              "id": "3",
+              "description": "Commit to what will be taken into the current work cycle."
+            },
+            {
+              "type": "Step",
+              "id": "4",
+              "description": "Carry out the work to produce an immediately usable result."
+            },
+            {
+              "type": "Loop",
+              "type_meta": "Iterative Cycle Continuation",
+              "body": [
+                {
+                  "type": "Step",
+                  "id": "5",
+                  "description": "Reflect on the cycle outcome and reassess the next cycle."
+                }
+              ]
+            }
+          ]
+        },
+        "naturalLanguageSummary": "The procedure details a cyclical workflow consisting of five discrete chronological steps: establishing a near-term objective, prioritizing current work options, committing specific items to the cycle, executing the tasks to achieve a usable output, and concluding with a retrospective assessment to prepare for the subsequent cycle.",
+        "canonicalSummary": "1. Define target. 2. Prioritize work. 3. Commit to cycle. 4. Execute work. 5. Reflect and reassess.",
+        "ambiguities": [
+          {
+            "location": "Transition between Step 5 and Step 1/2 of the next cycle.",
+            "description": "Unclear exactly where the loop point lands for the subsequent cycle.",
+            "plausible_interpretations": [
+              "Loop returns to Step 1 to redefine a new near-term working target.",
+              "Loop returns to Step 2 assuming the overarching target remains stable and only work items change."
+            ],
+            "effect_on_extraction": "Prevents drawing a strict, definitive structural control-flow loop back-edge to a single step."
+          },
+          {
+            "location": "Step 4 (Usable result)",
+            "description": "The exact scope and definition of 'immediately usable' is left abstract.",
+            "plausible_interpretations": [
+              "Production-ready deployment.",
+              "Internal functional prototype ready for evaluation."
+            ],
+            "effect_on_extraction": "Limits the ability to declare objective automated exit verification criteria."
+          }
+        ]
+      },
+      "product": {
+        "clarity": [],
+        "edf": [],
+        "researchOnly": []
+      },
+      "confidence": {
+        "structural_layer": "high",
+        "primitive_layer": "high",
+        "constraint_layer": "high",
+        "representation_layer": "high",
+        "product_relevance_layer": "high",
+        "overall": "high"
+      },
+      "notes": "The model preserved the requested ambiguities regarding cycle boundary transitions and strictly avoided appending non-stated standard agile mechanisms (like standups or product demos) to maintain structural fidelity."
+    }
+  },
+  {
+    "provider": "gemini",
+    "packet_id": "ECR-000001-P003",
+    "packet_label": "Bloom Taxonomy",
+    "source_path": "responses/gemini/003.json",
+    "source_kind": "legacy_fallback",
+    "status": "ok",
+    "strict_json": true,
+    "normalized_parse_used": false,
+    "valid_json": true,
+    "schema_completeness": "complete",
+    "missing_fields": [],
+    "recognition_present": true,
+    "recognized_artifact": "Bloom's Taxonomy / Webb's Depth of Knowledge (DOK)",
+    "ambiguity_count": 1,
+    "confidence_values": {
+      "structural_layer": "high",
+      "primitive_layer": "high",
+      "constraint_layer": "high",
+      "representation_layer": "high",
+      "product_relevance_layer": "medium",
+      "overall": "high"
+    },
+    "promotional_product_warnings": [],
+    "normalized": {
+      "provider": "gemini",
+      "packetId": "ECR-000001-P003",
+      "packetLabel": "Bloom Taxonomy",
+      "recognizedArtifact": "Bloom's Taxonomy / Webb's Depth of Knowledge (DOK)",
+      "structural": {
+        "controlFlowShape": "linear_with_terminal_branch",
+        "entryConditions": [
+          {
+            "value": "Presence of diverse kinds of work requiring classification",
+            "support_level": "strongly_implied",
+            "source_text": "Arrange kinds of work by level of cognitive challenge.",
+            "ambiguity": "It is ambiguous whether the work items must pre-exist or if they are evaluated dynamically."
+          }
+        ],
+        "exitConditions": [
+          {
+            "value": "An intended level of challenge has been selected or evaluated using cognitive distinctions.",
+            "support_level": "strongly_implied",
+            "source_text": "Use those distinctions when choosing or evaluating the intended level of challenge.",
+            "ambiguity": "The text implies a conclusion after choice/evaluation, but explicit end states are not defined."
+          }
+        ],
+        "requiredSteps": [
+          {
+            "value": "Arrange kinds of work by level of cognitive challenge.",
+            "support_level": "explicit",
+            "source_text": "Arrange kinds of work by level of cognitive challenge.",
+            "ambiguity": "Does 'arrange' mean organizing an existing static list, or establishing a framework/scale for future arrangement?"
+          },
+          {
+            "value": "Differentiate simpler forms of performance from more demanding ones.",
+            "support_level": "explicit",
+            "source_text": "Differentiate simpler forms of performance from more demanding ones.",
+            "ambiguity": "It is unclear if this step is a mechanism for the arrangement in step 1, or a separate parallel action."
+          },
+          {
+            "value": "Use those distinctions when choosing or evaluating the intended level of challenge.",
+            "support_level": "explicit",
+            "source_text": "Use those distinctions when choosing or evaluating the intended level of challenge.",
+            "ambiguity": "'Choosing' and 'evaluating' are presented as two options, creating an execution branch."
+          }
+        ],
+        "optionalSteps": [],
+        "loops": [],
+        "branches": [
+          {
+            "value": "Choose the intended level of challenge OR evaluate the intended level of challenge.",
+            "support_level": "explicit",
+            "source_text": "choosing or evaluating the intended level of challenge.",
+            "ambiguity": "The text does not clarify whether choosing and evaluating are mutually exclusive branches, sequential steps, or situational alternatives."
+          }
+        ],
+        "terminationConditions": []
+      },
+      "primitive": {
+        "sequence": [
+          {
+            "value": "ARRANGE"
+          },
+          {
+            "value": "DIFFERENTIATE"
+          },
+          {
+            "value": "USE"
+          }
+        ],
+        "transitions": [
+          {
+            "value": "ARRANGE -> DIFFERENTIATE"
+          },
+          {
+            "value": "DIFFERENTIATE -> USE"
+          }
+        ],
+        "dominantPrimitive": "CLASSIFY",
+        "candidateMissingPrimitives": [
+          {
+            "value": "DEFINE_CRITERIA"
+          }
+        ]
+      },
+      "constraint": {
+        "invariants": [],
+        "preconditions": [
+          {
+            "value": "Distinct kinds of work and forms of performance must exist to be evaluated.",
+            "support_level": "strongly_implied",
+            "source_text": "Arrange kinds of work by level of cognitive challenge. Differentiate simpler forms of performance from more demanding ones.",
+            "ambiguity": ""
+          }
+        ],
+        "postconditions": [
+          {
+            "value": "The intended level of challenge is either chosen or evaluated.",
+            "support_level": "explicit",
+            "source_text": "choosing or evaluating the intended level of challenge.",
+            "ambiguity": ""
+          }
+        ],
+        "stoppingCriteria": [],
+        "validityConditions": []
+      },
+      "representation": {
+        "proceduralAstPresent": true,
+        "proceduralAst": {
+          "type": "Program",
+          "body": [
+            {
+              "type": "ExpressionStatement",
+              "expression": "Arrange(kinds_of_work, cognitive_challenge)"
+            },
+            {
+              "type": "ExpressionStatement",
+              "expression": "Differentiate(simpler_performance, demanding_performance)"
+            },
+            {
+              "type": "IfStatement",
+              "condition": "mode == 'choosing'",
+              "consequent": "Choose(intended_level, distinctions)",
+              "alternate": "Evaluate(intended_level, distinctions)"
+            }
+          ]
+        },
+        "naturalLanguageSummary": "The procedure requires arranging work by cognitive challenge levels and distinguishing simple from demanding performances. These created distinctions are then utilized to either choose or evaluate an intended level of challenge.",
+        "canonicalSummary": "1. Arrange work by cognitive challenge. 2. Differentiate performance demands. 3. Use distinctions to choose or evaluate challenge levels.",
+        "ambiguities": [
+          {
+            "location": "Step 3 (choosing or evaluating)",
+            "description": "The disjunction 'choosing or evaluating' creates two different functional outcomes.",
+            "plausible_interpretations": [
+              "The user performs a selection task (choosing).",
+              "The user performs an assessment task (evaluating).",
+              "The user performs both tasks sequentially."
+            ],
+            "effect_on_extraction": "Prevents mapping to a single deterministic exit condition."
+          }
+        ]
+      },
+      "product": {
+        "clarity": [],
+        "edf": [],
+        "researchOnly": [
+          {
+            "value": "Content matches foundational concepts of educational taxonomy design.",
+            "support_level": "inferred",
+            "source_text": "Arrange kinds of work by level of cognitive challenge.",
+            "ambiguity": ""
+          }
+        ]
+      },
+      "confidence": {
+        "structural_layer": "high",
+        "primitive_layer": "high",
+        "constraint_layer": "high",
+        "representation_layer": "high",
+        "product_relevance_layer": "medium",
+        "overall": "high"
+      },
+      "notes": "The provided text contains a high level of implicit ambiguity regarding whether 'choosing' and 'evaluating' are exclusive actions or part of a unified feedback loop. In accordance with instrument version 1.1 instructions, these options have been preserved as a branch rather than collapsed."
+    }
+  }
+]

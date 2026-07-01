@@ -1,0 +1,279 @@
+{
+  "packet_id": "ECR-000001-P002",
+  "blinded_artifact_id": "BA-ECR-002",
+  "recognized_artifact": "Scrum Sprint / iterative time-boxed development cycle (e.g., Scrum, Kanban sprint, or similar agile iteration)",
+  "structural_layer": {
+    "entry_conditions": [
+      {
+        "value": "A near-term working target must be defined before the cycle begins",
+        "support_level": "explicit",
+        "source_text": "Define a near-term working target.",
+        "ambiguity": "The scope or granularity of 'near-term' is unspecified; could range from hours to weeks"
+      },
+      {
+        "value": "Available work must exist and be prioritized prior to commitment",
+        "support_level": "strongly_implied",
+        "source_text": "Prioritize available work.",
+        "ambiguity": "Whether prioritization is a precondition to the cycle or the first step within it is ambiguous"
+      }
+    ],
+    "exit_conditions": [
+      {
+        "value": "The cycle produces an immediately usable result",
+        "support_level": "explicit",
+        "source_text": "Carry out the work to produce an immediately usable result.",
+        "ambiguity": "'Immediately usable' is undefined; could mean shippable, demonstrable, or merely functional"
+      },
+      {
+        "value": "Reflection on the cycle outcome is completed",
+        "support_level": "explicit",
+        "source_text": "Reflect on the cycle outcome and reassess the next cycle.",
+        "ambiguity": "Whether reflection is an exit condition or a transition step into the next cycle is unclear"
+      }
+    ],
+    "required_steps": [
+      {
+        "value": "Define a near-term working target",
+        "support_level": "explicit",
+        "source_text": "Define a near-term working target.",
+        "ambiguity": "None"
+      },
+      {
+        "value": "Prioritize available work",
+        "support_level": "explicit",
+        "source_text": "Prioritize available work.",
+        "ambiguity": "Prioritization method or criteria are not specified"
+      },
+      {
+        "value": "Commit to work to be taken into the current cycle",
+        "support_level": "explicit",
+        "source_text": "Commit to what will be taken into the current work cycle.",
+        "ambiguity": "Whether 'commit' implies a formal agreement or informal selection is unspecified"
+      },
+      {
+        "value": "Execute the work to produce an immediately usable result",
+        "support_level": "explicit",
+        "source_text": "Carry out the work to produce an immediately usable result.",
+        "ambiguity": "The nature of the work and the definition of 'usable' are unspecified"
+      },
+      {
+        "value": "Reflect on the cycle outcome and reassess the next cycle",
+        "support_level": "explicit",
+        "source_text": "Reflect on the cycle outcome and reassess the next cycle.",
+        "ambiguity": "Whether 'reassess' feeds back into target definition or prioritization is ambiguous"
+      }
+    ],
+    "optional_steps": [],
+    "loops": [
+      {
+        "value": "The full five-step sequence repeats; each cycle ends with reassessment that initiates the next cycle",
+        "support_level": "strongly_implied",
+        "source_text": "Reflect on the cycle outcome and reassess the next cycle.",
+        "ambiguity": "The packet does not explicitly state the loop repeats indefinitely; it could describe a single cycle"
+      }
+    ],
+    "branches": [
+      {
+        "value": "Reassessment may alter the target or priority ordering for the next cycle",
+        "support_level": "inferred",
+        "source_text": "Reflect on the cycle outcome and reassess the next cycle.",
+        "ambiguity": "The packet does not specify what outcomes of reassessment are possible or how they affect subsequent steps"
+      }
+    ],
+    "termination_conditions": [
+      {
+        "value": "No explicit termination condition is stated; the loop could be indefinite or externally terminated",
+        "support_level": "inferred",
+        "source_text": "",
+        "ambiguity": "The packet describes a repeating cycle with no stated end; termination may be implicit in context not provided"
+      }
+    ],
+    "control_flow_shape": "Linear sequence within each cycle, with a closing reflective step that strongly implies a loop back to the first step. Overall shape: iterative loop (plan → prioritize → commit → execute → reflect → repeat)."
+  },
+  "primitive_layer": {
+    "primitive_sequence": [
+      "DEFINE (target)",
+      "PRIORITIZE (available work)",
+      "SELECT / COMMIT (work items for current cycle)",
+      "EXECUTE (work)",
+      "EVALUATE (outcome)",
+      "REASSESS (next cycle)"
+    ],
+    "transitions": [
+      "DEFINE → PRIORITIZE: target scopes the prioritization",
+      "PRIORITIZE → SELECT/COMMIT: ordered work enables commitment decision",
+      "SELECT/COMMIT → EXECUTE: committed scope gates execution",
+      "EXECUTE → EVALUATE: completion triggers reflection",
+      "EVALUATE → REASSESS: reflection informs next-cycle planning",
+      "REASSESS → DEFINE (loop): reassessment initiates the next cycle"
+    ],
+    "dominant_primitive": "EXECUTE (the carrying-out step is the primary value-producing primitive)",
+    "candidate_missing_primitives": [
+      "REVIEW / DEMO (sharing the usable result with stakeholders — not mentioned but commonly associated)",
+      "RETROSPECT (team-level process reflection distinct from outcome reflection — not distinguishable from packet alone)"
+    ]
+  },
+  "constraint_layer": {
+    "invariants": [
+      {
+        "value": "Each cycle must produce an immediately usable result",
+        "support_level": "explicit",
+        "source_text": "Carry out the work to produce an immediately usable result.",
+        "ambiguity": "'Immediately usable' is not defined; its invariance across all cycles is inferred"
+      },
+      {
+        "value": "Work committed must come from the prioritized pool of available work",
+        "support_level": "strongly_implied",
+        "source_text": "Prioritize available work. Commit to what will be taken into the current work cycle.",
+        "ambiguity": "Whether ad-hoc additions to the committed set are prohibited is not stated"
+      }
+    ],
+    "preconditions": [
+      {
+        "value": "Available work must exist before prioritization can occur",
+        "support_level": "strongly_implied",
+        "source_text": "Prioritize available work.",
+        "ambiguity": "The source or composition of available work is not described"
+      }
+    ],
+    "postconditions": [
+      {
+        "value": "An immediately usable result exists at cycle end",
+        "support_level": "explicit",
+        "source_text": "Carry out the work to produce an immediately usable result.",
+        "ambiguity": "What constitutes 'usable' is undefined"
+      },
+      {
+        "value": "The next cycle has been reassessed before the current cycle closes",
+        "support_level": "explicit",
+        "source_text": "Reflect on the cycle outcome and reassess the next cycle.",
+        "ambiguity": "The depth or formality of reassessment is unspecified"
+      }
+    ],
+    "stopping_criteria": [
+      {
+        "value": "No explicit stopping criterion present in the packet",
+        "support_level": "inferred",
+        "source_text": "",
+        "ambiguity": "Termination may be externally imposed or implied by context outside this packet"
+      }
+    ],
+    "validity_conditions": [
+      {
+        "value": "A cycle is valid only if it produces an immediately usable result",
+        "support_level": "explicit",
+        "source_text": "Carry out the work to produce an immediately usable result.",
+        "ambiguity": "Whether a cycle with a partial result is considered valid is not addressed"
+      }
+    ]
+  },
+  "representation_layer": {
+    "procedural_ast": {
+      "type": "loop",
+      "body": {
+        "type": "sequence",
+        "steps": [
+          {
+            "type": "action",
+            "label": "DEFINE",
+            "object": "near-term working target"
+          },
+          {
+            "type": "action",
+            "label": "PRIORITIZE",
+            "object": "available work"
+          },
+          {
+            "type": "action",
+            "label": "COMMIT",
+            "object": "work for current cycle"
+          },
+          {
+            "type": "action",
+            "label": "EXECUTE",
+            "object": "committed work",
+            "postcondition": "immediately usable result"
+          },
+          { "type": "action", "label": "REFLECT", "object": "cycle outcome" },
+          { "type": "action", "label": "REASSESS", "object": "next cycle" }
+        ]
+      },
+      "termination": "unspecified"
+    },
+    "natural_language_summary": "A repeating work cycle in which a near-term target is first defined, available work is prioritized, a subset of that work is committed to the current cycle, the work is executed until an immediately usable result is produced, and the cycle closes with reflection on the outcome and reassessment of the next cycle. The reassessment step feeds back into the start of the next cycle, creating an iterative loop of indefinite length.",
+    "canonical_summary": "DEFINE target → PRIORITIZE work → COMMIT scope → EXECUTE to usable result → REFLECT and REASSESS → repeat",
+    "ambiguities": [
+      {
+        "location": "Step 1 / Step 2 boundary",
+        "description": "Whether 'Define a near-term working target' and 'Prioritize available work' are strictly sequential or partially concurrent is not specified",
+        "plausible_interpretations": [
+          "Target definition scopes and precedes prioritization",
+          "Prioritization and target definition are co-determined in a single planning activity"
+        ],
+        "effect_on_extraction": "Minor; sequence ordering of first two primitives may vary"
+      },
+      {
+        "location": "Loop termination",
+        "description": "The packet contains no explicit termination condition for the outer loop",
+        "plausible_interpretations": [
+          "The cycle repeats indefinitely until externally stopped",
+          "The cycle has an implied termination tied to a larger goal not described in this packet"
+        ],
+        "effect_on_extraction": "Stopping criteria field cannot be populated from packet content alone"
+      },
+      {
+        "location": "Reflect / Reassess step",
+        "description": "'Reflect on the cycle outcome' and 'reassess the next cycle' may be one activity or two distinct activities",
+        "plausible_interpretations": [
+          "A single retrospective activity combining outcome review and next-cycle planning",
+          "Two separate activities: a backward-looking retrospective and a forward-looking planning update"
+        ],
+        "effect_on_extraction": "Affects whether the final step maps to one primitive or two"
+      },
+      {
+        "location": "Exit condition / loop transition",
+        "description": "Whether reflection and reassessment are the final step of the current cycle or the first step of the next is ambiguous",
+        "plausible_interpretations": [
+          "Reflect/reassess closes the current cycle",
+          "Reflect/reassess opens the next cycle"
+        ],
+        "effect_on_extraction": "Affects placement of these primitives relative to the loop boundary"
+      }
+    ]
+  },
+  "product_relevance_layer": {
+    "clarity_relevance_observations": [
+      {
+        "value": "The procedure is compact and communicable; each step maps to a single clear imperative, which supports clarity in tooling that must surface or guide iterative work",
+        "support_level": "inferred",
+        "source_text": "Define a near-term working target. Prioritize available work. Commit to what will be taken into the current work cycle. Carry out the work to produce an immediately usable result. Reflect on the cycle outcome and reassess the next cycle.",
+        "ambiguity": "Relevance to a specific 'Clarity' product is not inferable from the packet alone"
+      }
+    ],
+    "edf_relevance_observations": [
+      {
+        "value": "The commitment step introduces a formal scope gate between prioritization and execution, which is structurally relevant to any execution-decision framework that models staged commitment",
+        "support_level": "inferred",
+        "source_text": "Commit to what will be taken into the current work cycle.",
+        "ambiguity": "EDF interpretation is speculative without additional product context"
+      }
+    ],
+    "research_only_observations": [
+      {
+        "value": "The procedure's five-step form with embedded loop is a minimal iterative cycle; its compactness makes it a useful calibration artifact for procedural extraction studies testing loop detection and primitive sequencing",
+        "support_level": "inferred",
+        "source_text": "",
+        "ambiguity": "Research relevance is assessed from the study context, not the packet content"
+      }
+    ]
+  },
+  "confidence": {
+    "structural_layer": "high — all five steps are explicit; loop is strongly implied; branches and termination are absent or unspecified",
+    "primitive_layer": "high for sequence identification; moderate for transition semantics and loop boundary placement",
+    "constraint_layer": "moderate — preconditions and postconditions are derivable; stopping criteria and validity edge cases are underspecified",
+    "representation_layer": "high for summary and AST structure; moderate for ambiguity resolution",
+    "product_relevance_layer": "low — product context (Clarity, EDF) is not described in the packet; observations are speculative",
+    "overall": "moderate-high — the procedural content is clear and fully explicit; uncertainty is concentrated in loop termination, step boundaries, and product relevance"
+  },
+  "notes": "The blinded procedural content maps cleanly onto a five-step iterative work cycle. The recognized artifact is noted in the recognized_artifact field only. No steps have been added based on recognition; the optional_steps array is empty because the packet supports no optional steps. The candidate_missing_primitives in the primitive layer record commonly associated steps (demo, retrospect) that are absent from the packet and have not been introduced into the extraction."
+}

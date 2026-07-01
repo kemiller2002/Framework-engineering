@@ -1,0 +1,142 @@
+[
+  {
+    "case_id": "NV-001",
+    "phrase_a": "Stop investigation.",
+    "phrase_b": "Accept hypothesis.",
+    "expected_relationship": "related_but_distinct",
+    "rationale": "Stopping inquiry does not necessarily mean committing to a supported conclusion."
+  },
+  {
+    "case_id": "NV-002",
+    "phrase_a": "Generate alternatives.",
+    "phrase_b": "Prioritize alternatives.",
+    "expected_relationship": "related_but_distinct",
+    "rationale": "Creating options differs from ordering options."
+  },
+  {
+    "case_id": "NV-003",
+    "phrase_a": "Gather evidence.",
+    "phrase_b": "Evaluate evidence.",
+    "expected_relationship": "related_but_distinct",
+    "rationale": "Acquiring information differs from judging it."
+  },
+  {
+    "case_id": "NV-004",
+    "phrase_a": "Compare competing explanations.",
+    "phrase_b": "Verify a conclusion.",
+    "expected_relationship": "related_but_distinct",
+    "rationale": "Comparison distinguishes alternatives; verification tests support."
+  },
+  {
+    "case_id": "NV-005",
+    "phrase_a": "Identify the problem.",
+    "phrase_b": "Solve the problem.",
+    "expected_relationship": "related_but_distinct",
+    "rationale": "Problem identification is an entry condition; solution is downstream."
+  },
+  {
+    "case_id": "NV-006",
+    "phrase_a": "Reassess because confidence is insufficient.",
+    "phrase_b": "Reflect after completion.",
+    "expected_relationship": "related_but_distinct",
+    "rationale": "Reassessment reopens reasoning; reflection extracts learning."
+  },
+  {
+    "case_id": "NV-007",
+    "phrase_a": "Coordinate team activity.",
+    "phrase_b": "Communicate findings.",
+    "expected_relationship": "related_but_distinct",
+    "rationale": "Coordination aligns action; communication transfers information."
+  },
+  {
+    "case_id": "NV-008",
+    "phrase_a": "Classify into levels.",
+    "phrase_b": "Move through procedural steps.",
+    "expected_relationship": "related_but_distinct",
+    "rationale": "Hierarchy is not necessarily procedure."
+  },
+  {
+    "case_id": "NV-009",
+    "phrase_a": "Evidence is sufficient.",
+    "phrase_b": "Further inquiry is not justified.",
+    "expected_relationship": "related_but_distinct",
+    "rationale": "Evidence-based closure and pragmatic stopping are different."
+  },
+  {
+    "case_id": "NV-010",
+    "phrase_a": "Perform work.",
+    "phrase_b": "Validate outcome.",
+    "expected_relationship": "related_but_distinct",
+    "rationale": "Execution differs from verification."
+  },
+  {
+    "case_id": "NV-011",
+    "phrase_a": "Unresolved question identified.",
+    "phrase_b": "Initial uncertainty recognized.",
+    "expected_relationship": "equivalent",
+    "rationale": "Both indicate problem/question entry."
+  },
+  {
+    "case_id": "NV-012",
+    "phrase_a": "Candidate explanation proposed.",
+    "phrase_b": "Possible hypothesis generated.",
+    "expected_relationship": "equivalent",
+    "rationale": "Both indicate generation of explanatory candidates."
+  },
+  {
+    "case_id": "NV-013",
+    "phrase_a": "Additional evidence is gathered.",
+    "phrase_b": "More information is collected.",
+    "expected_relationship": "equivalent",
+    "rationale": "Both indicate information acquisition."
+  },
+  {
+    "case_id": "NV-014",
+    "phrase_a": "The process repeats when confidence is insufficient.",
+    "phrase_b": "The cycle continues until support is adequate.",
+    "expected_relationship": "equivalent",
+    "rationale": "Both indicate reassessment/continuation loop."
+  },
+  {
+    "case_id": "NV-015",
+    "phrase_a": "Tasks are assigned to team members.",
+    "phrase_b": "Responsibilities are allocated.",
+    "expected_relationship": "equivalent",
+    "rationale": "Both indicate allocation of responsibilities."
+  },
+  {
+    "case_id": "NV-016",
+    "phrase_a": "Work is delivered as an increment.",
+    "phrase_b": "A usable result is produced.",
+    "expected_relationship": "equivalent",
+    "rationale": "Both indicate execution output."
+  },
+  {
+    "case_id": "NV-017",
+    "phrase_a": "Items are grouped by type.",
+    "phrase_b": "Items are ranked by importance.",
+    "expected_relationship": "related_but_distinct",
+    "rationale": "Classification differs from prioritization."
+  },
+  {
+    "case_id": "NV-018",
+    "phrase_a": "A loop continues until confidence is sufficient.",
+    "phrase_b": "A loop continues forever.",
+    "expected_relationship": "opposite",
+    "rationale": "One has a termination condition; the other does not."
+  },
+  {
+    "case_id": "NV-019",
+    "phrase_a": "A decision is made.",
+    "phrase_b": "A decision is deferred.",
+    "expected_relationship": "opposite",
+    "rationale": "Commitment and deferral are not equivalent."
+  },
+  {
+    "case_id": "NV-020",
+    "phrase_a": "The team aligns on next steps.",
+    "phrase_b": "The artifact is classified into categories.",
+    "expected_relationship": "unrelated",
+    "rationale": "Coordination and classification are different procedural functions."
+  }
+]

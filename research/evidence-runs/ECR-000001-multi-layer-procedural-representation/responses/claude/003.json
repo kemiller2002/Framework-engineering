@@ -1,0 +1,254 @@
+{
+  "packet_id": "ECR-000001-P003",
+  "blinded_artifact_id": "BA-ECR-003",
+  "recognized_artifact": "Bloom's Taxonomy (or a functionally equivalent cognitive demand classification framework)",
+  "structural_layer": {
+    "entry_conditions": [
+      {
+        "value": "A set of tasks, objectives, or performance items exists and requires ordering or evaluation by cognitive demand.",
+        "support_level": "strongly_implied",
+        "source_text": "Arrange kinds of work by level of cognitive challenge.",
+        "ambiguity": "The nature of the input items is unspecified. Could be learning objectives, assessment items, job tasks, rubric criteria, or other performative units."
+      }
+    ],
+    "exit_conditions": [
+      {
+        "value": "Items are arranged or labeled according to their assigned cognitive level.",
+        "support_level": "strongly_implied",
+        "source_text": "Arrange kinds of work by level of cognitive challenge. Use those distinctions when choosing or evaluating the intended level of challenge.",
+        "ambiguity": "Whether the output is a ranked ordering, a categorized grouping, or an annotated list is not specified."
+      }
+    ],
+    "required_steps": [
+      {
+        "value": "Establish or apply a taxonomy of cognitive levels that distinguishes simpler from more demanding performance.",
+        "support_level": "explicit",
+        "source_text": "Differentiate simpler forms of performance from more demanding ones.",
+        "ambiguity": "Whether the taxonomy is pre-defined (imported) or constructed during the procedure is not stated."
+      },
+      {
+        "value": "Assign each item or kind of work to a cognitive level within the taxonomy.",
+        "support_level": "strongly_implied",
+        "source_text": "Arrange kinds of work by level of cognitive challenge.",
+        "ambiguity": "Assignment could be strict (one level per item) or fuzzy (ranges or overlapping levels)."
+      },
+      {
+        "value": "Apply the level distinctions to select or evaluate items for an intended challenge target.",
+        "support_level": "explicit",
+        "source_text": "Use those distinctions when choosing or evaluating the intended level of challenge.",
+        "ambiguity": "Whether this is a selection step (choosing new items) or an evaluation step (auditing existing items) or both is ambiguous."
+      }
+    ],
+    "optional_steps": [
+      {
+        "value": "Revise or re-classify items whose assigned level is disputed or borderline.",
+        "support_level": "inferred",
+        "source_text": "Differentiate simpler forms of performance from more demanding ones.",
+        "ambiguity": "Revision is a plausible procedural step but is not mentioned."
+      }
+    ],
+    "loops": [
+      {
+        "value": "Iterative re-evaluation of items may occur if initial classification is contested or if the intended challenge target changes.",
+        "support_level": "inferred",
+        "source_text": "Use those distinctions when choosing or evaluating the intended level of challenge.",
+        "ambiguity": "No explicit loop is described; iteration is inferred from evaluation language."
+      }
+    ],
+    "branches": [
+      {
+        "value": "Branch A: Use taxonomy to choose new items targeting a desired cognitive level. Branch B: Use taxonomy to audit existing items against a desired cognitive level.",
+        "support_level": "strongly_implied",
+        "source_text": "Use those distinctions when choosing or evaluating the intended level of challenge.",
+        "ambiguity": "'Choosing' and 'evaluating' may be alternative uses or sequential steps. The packet does not resolve this."
+      }
+    ],
+    "termination_conditions": [
+      {
+        "value": "All items have been assigned a cognitive level and the intended challenge target has been chosen or evaluated.",
+        "support_level": "strongly_implied",
+        "source_text": "Use those distinctions when choosing or evaluating the intended level of challenge.",
+        "ambiguity": "No explicit termination signal is given."
+      }
+    ],
+    "control_flow_shape": "Linear with a terminal branch: (1) establish levels → (2) classify items → (3a) select items for target level OR (3b) evaluate items against target level."
+  },
+  "primitive_layer": {
+    "primitive_sequence": [
+      "CLASSIFY: assign cognitive level to each item",
+      "ORDER: arrange items by level",
+      "BRANCH: choose (select new items) or evaluate (audit existing items)",
+      "APPLY: use level distinctions to act on the chosen branch"
+    ],
+    "transitions": [
+      "CLASSIFY → ORDER: classification precedes arrangement",
+      "ORDER → BRANCH: arrangement enables level-targeted action",
+      "BRANCH → APPLY: branch selection gates the application step"
+    ],
+    "dominant_primitive": "CLASSIFY",
+    "candidate_missing_primitives": [
+      "DEFINE: define or import the cognitive level taxonomy (precedes CLASSIFY but not stated)",
+      "VERIFY: confirm classification accuracy or inter-rater agreement (not mentioned)"
+    ]
+  },
+  "constraint_layer": {
+    "invariants": [
+      {
+        "value": "The taxonomy must distinguish at least two levels: simpler and more demanding.",
+        "support_level": "explicit",
+        "source_text": "Differentiate simpler forms of performance from more demanding ones.",
+        "ambiguity": "The number of levels above two is unconstrained by the packet."
+      },
+      {
+        "value": "Level distinctions must be consistent across classification and selection/evaluation steps.",
+        "support_level": "strongly_implied",
+        "source_text": "Use those distinctions when choosing or evaluating the intended level of challenge.",
+        "ambiguity": "Consistency is implied by 'those distinctions' referring back to the same differentiation."
+      }
+    ],
+    "preconditions": [
+      {
+        "value": "A set of items representing 'kinds of work' must exist prior to arrangement.",
+        "support_level": "strongly_implied",
+        "source_text": "Arrange kinds of work by level of cognitive challenge.",
+        "ambiguity": "What constitutes a 'kind of work' is not defined."
+      }
+    ],
+    "postconditions": [
+      {
+        "value": "Items are arranged by cognitive level.",
+        "support_level": "explicit",
+        "source_text": "Arrange kinds of work by level of cognitive challenge.",
+        "ambiguity": "Whether arrangement produces a strict ordering or a grouped categorization is unspecified."
+      },
+      {
+        "value": "A challenge target has been chosen or an existing set has been evaluated against one.",
+        "support_level": "explicit",
+        "source_text": "Use those distinctions when choosing or evaluating the intended level of challenge.",
+        "ambiguity": "Both choosing and evaluating may be postconditions, or only one applies depending on branch taken."
+      }
+    ],
+    "stopping_criteria": [
+      {
+        "value": "All relevant items classified and the target challenge level acted upon.",
+        "support_level": "strongly_implied",
+        "source_text": "Use those distinctions when choosing or evaluating the intended level of challenge.",
+        "ambiguity": "No explicit stopping signal; inferred from completion of stated steps."
+      }
+    ],
+    "validity_conditions": [
+      {
+        "value": "The taxonomy used must produce a meaningful gradient from simpler to more demanding.",
+        "support_level": "strongly_implied",
+        "source_text": "Differentiate simpler forms of performance from more demanding ones.",
+        "ambiguity": "Validity criteria for the taxonomy itself are not specified."
+      }
+    ]
+  },
+  "representation_layer": {
+    "procedural_ast": {
+      "type": "SEQUENCE",
+      "children": [
+        {
+          "type": "STEP",
+          "label": "Establish cognitive level taxonomy",
+          "support_level": "strongly_implied"
+        },
+        {
+          "type": "STEP",
+          "label": "Classify items by cognitive level",
+          "support_level": "explicit"
+        },
+        {
+          "type": "STEP",
+          "label": "Arrange items in level order",
+          "support_level": "explicit"
+        },
+        {
+          "type": "BRANCH",
+          "label": "Apply level distinctions",
+          "branches": [
+            {
+              "label": "Choose items targeting desired level",
+              "support_level": "explicit"
+            },
+            {
+              "label": "Evaluate existing items against desired level",
+              "support_level": "explicit"
+            }
+          ]
+        }
+      ]
+    },
+    "natural_language_summary": "The procedure involves classifying items representing kinds of work according to a cognitive demand taxonomy that distinguishes simpler from more demanding performance. Items are then arranged by level. The resulting level distinctions are applied either to select new items at a desired challenge level or to evaluate whether existing items meet an intended challenge target.",
+    "canonical_summary": "Cognitive classification and level-based selection or audit of performative items using a demand taxonomy.",
+    "ambiguities": [
+      {
+        "location": "Entry: nature of input items",
+        "description": "'Kinds of work' is unspecified. Could be learning objectives, tasks, assessment items, rubric criteria, or other units.",
+        "plausible_interpretations": [
+          "Educational learning objectives",
+          "Assessment or test items",
+          "Job or task descriptions",
+          "Rubric performance criteria"
+        ],
+        "effect_on_extraction": "Does not alter the core procedural shape but affects domain applicability."
+      },
+      {
+        "location": "Terminal branch: 'choosing or evaluating'",
+        "description": "The packet uses both 'choosing' and 'evaluating' without clarifying whether these are alternatives or sequential.",
+        "plausible_interpretations": [
+          "They are mutually exclusive branches (design mode vs. audit mode)",
+          "They are sequential (choose then evaluate)",
+          "They are synonymous in this context"
+        ],
+        "effect_on_extraction": "Affects whether the procedure terminates at one action or requires both."
+      },
+      {
+        "location": "Taxonomy definition",
+        "description": "The taxonomy is referenced but not defined. Number of levels, labels, and granularity are all unspecified.",
+        "plausible_interpretations": [
+          "A recognized multi-level cognitive taxonomy is imported (e.g., six levels)",
+          "A bespoke two-level simpler/demanding binary is used",
+          "A continuum rather than discrete levels is used"
+        ],
+        "effect_on_extraction": "Does not change procedural steps but affects classification granularity."
+      }
+    ]
+  },
+  "product_relevance_layer": {
+    "clarity_relevance_observations": [
+      {
+        "value": "This procedure could inform how clarity products sequence or tier instructional or evaluative content by cognitive demand.",
+        "support_level": "inferred",
+        "source_text": "Arrange kinds of work by level of cognitive challenge.",
+        "ambiguity": "No explicit product context is given."
+      }
+    ],
+    "edf_relevance_observations": [
+      {
+        "value": "A cognitive demand taxonomy could serve as a structural layer in an evaluation or differentiation framework, providing a principled basis for level assignment.",
+        "support_level": "inferred",
+        "source_text": "Differentiate simpler forms of performance from more demanding ones.",
+        "ambiguity": "EDF context is not stated in the packet."
+      }
+    ],
+    "research_only_observations": [
+      {
+        "value": "The procedure's reliance on an unstated taxonomy introduces a significant degree of interpretive freedom that may require empirical validation of level assignments.",
+        "support_level": "inferred",
+        "source_text": "Differentiate simpler forms of performance from more demanding ones.",
+        "ambiguity": "Research implications are inferred, not stated."
+      }
+    ]
+  },
+  "confidence": {
+    "structural_layer": "high — procedural steps are short but unambiguous in sequence",
+    "primitive_layer": "medium — dominant primitive is clear; missing primitives (DEFINE, VERIFY) are plausible but inferred",
+    "constraint_layer": "medium — invariants and postconditions are derivable; stopping criteria require inference",
+    "representation_layer": "medium — AST is faithful to packet but terminal branch ambiguity limits precision",
+    "product_relevance_layer": "low — no product context is provided; all observations are inferred",
+    "overall": "medium"
+  },
+  "notes": "The packet is short and procedurally sparse. The three sentences map cleanly to classify, arrange, and apply steps. The primary structural ambiguity is whether the terminal action (choosing vs. evaluating) represents two branches or one compound action. This has been preserved as an explicit ambiguity rather than collapsed. The recognized artifact (a cognitive taxonomy framework) has been recorded but not used to supply additional procedural structure beyond what the packet supports."
+}

@@ -1,0 +1,107 @@
+{
+  "identify": {
+    "label": "Identify",
+    "patterns": ["identify", "recognized", "detected", "noticed", "found"],
+    "description": "Recognize the existence of a question, problem, need, or condition."
+  },
+  "bound": {
+    "label": "Bound",
+    "patterns": ["scope", "limit", "objective", "goal", "define the problem"],
+    "description": "Establish scope, objective, or limits."
+  },
+  "generate": {
+    "label": "Generate",
+    "patterns": ["generate", "propose", "create", "develop", "form", "candidate", "possible"],
+    "description": "Produce candidate explanations, options, or alternatives."
+  },
+  "observe": {
+    "label": "Observe",
+    "patterns": ["gather", "collect", "measure", "observe", "acquire", "obtain", "information", "evidence", "data"],
+    "description": "Acquire information or evidence."
+  },
+  "classify": {
+    "label": "Classify",
+    "patterns": ["classify", "categorize", "group", "organize by type", "taxonomy"],
+    "description": "Organize items into groups, categories, or levels."
+  },
+  "interpret": {
+    "label": "Interpret",
+    "patterns": ["interpret", "meaning", "context", "make sense", "understand"],
+    "description": "Assign meaning or context."
+  },
+  "explain": {
+    "label": "Explain",
+    "patterns": ["explain", "cause", "causal", "why", "root cause"],
+    "description": "Develop or refine causal understanding."
+  },
+  "evaluate": {
+    "label": "Evaluate",
+    "patterns": ["evaluate", "assess", "judge", "examine", "determine how well", "criteria"],
+    "description": "Assess evidence, options, or fit against criteria."
+  },
+  "compare": {
+    "label": "Compare",
+    "patterns": ["compare", "contrast", "distinguish", "differentiate", "weigh"],
+    "description": "Directly contrast alternatives or explanations."
+  },
+  "prioritize": {
+    "label": "Prioritize",
+    "patterns": ["prioritize", "rank", "order by importance", "most important", "sequence by value"],
+    "description": "Order by importance, value, or priority."
+  },
+  "decide": {
+    "label": "Decide",
+    "patterns": ["decide", "choose", "select", "commit", "conclude", "working conclusion"],
+    "description": "Commit to a conclusion or selected option."
+  },
+  "act": {
+    "label": "Act",
+    "patterns": ["act", "execute", "perform", "implement", "deliver", "intervene", "produce"],
+    "description": "Perform an action or intervention."
+  },
+  "verify": {
+    "label": "Verify",
+    "patterns": ["verify", "validate", "confirm", "test support", "check outcome"],
+    "description": "Determine whether a conclusion or action is supported."
+  },
+  "reflect": {
+    "label": "Reflect",
+    "patterns": ["reflect", "review", "retrospective", "learn", "lessons"],
+    "description": "Review process or outcome for learning."
+  },
+  "reassess": {
+    "label": "Reassess",
+    "patterns": ["reassess", "reopen", "revisit", "revise", "adjust", "iterate", "repeat", "continue"],
+    "description": "Reopen earlier reasoning because of new evidence or uncertainty."
+  },
+  "communicate": {
+    "label": "Communicate",
+    "patterns": ["communicate", "report", "share", "transfer", "inform", "present"],
+    "description": "Transfer information, reasoning, or decisions."
+  },
+  "allocate": {
+    "label": "Allocate",
+    "patterns": ["allocate", "assign", "responsibility", "resource", "tasked"],
+    "description": "Assign resources, tasks, or responsibilities."
+  },
+  "coordinate": {
+    "label": "Coordinate",
+    "patterns": ["coordinate", "align", "synchronize", "team activity", "collaborate"],
+    "description": "Align activities among actors or systems."
+  },
+  "schedule": {
+    "label": "Schedule",
+    "patterns": ["schedule", "timebox", "cadence", "deadline", "calendar"],
+    "description": "Determine temporal placement of activities."
+  },
+  "sequence": {
+    "label": "Sequence",
+    "patterns": ["sequence", "step order", "ordered steps", "before", "after"],
+    "description": "Arrange steps into an intended order."
+  },
+  "terminate": {
+    "label": "Terminate",
+    "patterns": ["terminate", "stop", "halt", "no longer justified", "abandon", "end inquiry"],
+    "description": "Stop a process without necessarily committing to a positive conclusion."
+  }
+}

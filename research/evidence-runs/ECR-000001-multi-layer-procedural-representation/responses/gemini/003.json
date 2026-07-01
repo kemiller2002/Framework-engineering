@@ -1,0 +1,149 @@
+{
+  "packet_id": "ECR-000001-P003",
+  "blinded_artifact_id": "BA-ECR-003",
+  "recognized_artifact": "Bloom's Taxonomy / Webb's Depth of Knowledge (DOK)",
+  "structural_layer": {
+    "entry_conditions": [
+      {
+        "value": "Presence of diverse kinds of work requiring classification",
+        "support_level": "strongly_implied",
+        "source_text": "Arrange kinds of work by level of cognitive challenge.",
+        "ambiguity": "It is ambiguous whether the work items must pre-exist or if they are evaluated dynamically."
+      }
+    ],
+    "exit_conditions": [
+      {
+        "value": "An intended level of challenge has been selected or evaluated using cognitive distinctions.",
+        "support_level": "strongly_implied",
+        "source_text": "Use those distinctions when choosing or evaluating the intended level of challenge.",
+        "ambiguity": "The text implies a conclusion after choice/evaluation, but explicit end states are not defined."
+      }
+    ],
+    "required_steps": [
+      {
+        "value": "Arrange kinds of work by level of cognitive challenge.",
+        "support_level": "explicit",
+        "source_text": "Arrange kinds of work by level of cognitive challenge.",
+        "ambiguity": "Does 'arrange' mean organizing an existing static list, or establishing a framework/scale for future arrangement?"
+      },
+      {
+        "value": "Differentiate simpler forms of performance from more demanding ones.",
+        "support_level": "explicit",
+        "source_text": "Differentiate simpler forms of performance from more demanding ones.",
+        "ambiguity": "It is unclear if this step is a mechanism for the arrangement in step 1, or a separate parallel action."
+      },
+      {
+        "value": "Use those distinctions when choosing or evaluating the intended level of challenge.",
+        "support_level": "explicit",
+        "source_text": "Use those distinctions when choosing or evaluating the intended level of challenge.",
+        "ambiguity": "'Choosing' and 'evaluating' are presented as two options, creating an execution branch."
+      }
+    ],
+    "optional_steps": [],
+    "loops": [],
+    "branches": [
+      {
+        "value": "Choose the intended level of challenge OR evaluate the intended level of challenge.",
+        "support_level": "explicit",
+        "source_text": "choosing or evaluating the intended level of challenge.",
+        "ambiguity": "The text does not clarify whether choosing and evaluating are mutually exclusive branches, sequential steps, or situational alternatives."
+      }
+    ],
+    "termination_conditions": [],
+    "control_flow_shape": "linear_with_terminal_branch"
+  },
+  "primitive_layer": {
+    "primitive_sequence": ["ARRANGE", "DIFFERENTIATE", "USE"],
+    "transitions": [
+      {
+        "from": "ARRANGE",
+        "to": "DIFFERENTIATE",
+        "type": "sequential"
+      },
+      {
+        "from": "DIFFERENTIATE",
+        "to": "USE",
+        "type": "sequential"
+      }
+    ],
+    "dominant_primitive": "CLASSIFY",
+    "candidate_missing_primitives": ["DEFINE_CRITERIA"]
+  },
+  "constraint_layer": {
+    "invariants": [],
+    "preconditions": [
+      {
+        "value": "Distinct kinds of work and forms of performance must exist to be evaluated.",
+        "support_level": "strongly_implied",
+        "source_text": "Arrange kinds of work by level of cognitive challenge. Differentiate simpler forms of performance from more demanding ones.",
+        "ambiguity": ""
+      }
+    ],
+    "postconditions": [
+      {
+        "value": "The intended level of challenge is either chosen or evaluated.",
+        "support_level": "explicit",
+        "source_text": "choosing or evaluating the intended level of challenge.",
+        "ambiguity": ""
+      }
+    ],
+    "stopping_criteria": [],
+    "validity_conditions": []
+  },
+  "representation_layer": {
+    "procedural_ast": {
+      "type": "Program",
+      "body": [
+        {
+          "type": "ExpressionStatement",
+          "expression": "Arrange(kinds_of_work, cognitive_challenge)"
+        },
+        {
+          "type": "ExpressionStatement",
+          "expression": "Differentiate(simpler_performance, demanding_performance)"
+        },
+        {
+          "type": "IfStatement",
+          "condition": "mode == 'choosing'",
+          "consequent": "Choose(intended_level, distinctions)",
+          "alternate": "Evaluate(intended_level, distinctions)"
+        }
+      ]
+    },
+    "natural_language_summary": "The procedure requires arranging work by cognitive challenge levels and distinguishing simple from demanding performances. These created distinctions are then utilized to either choose or evaluate an intended level of challenge.",
+    "canonical_summary": "1. Arrange work by cognitive challenge. 2. Differentiate performance demands. 3. Use distinctions to choose or evaluate challenge levels.",
+    "ambiguities": [
+      {
+        "location": "Step 3 (choosing or evaluating)",
+        "description": "The disjunction 'choosing or evaluating' creates two different functional outcomes.",
+        "plausible_interpretations": [
+          "The user performs a selection task (choosing).",
+          "The user performs an assessment task (evaluating).",
+          "The user performs both tasks sequentially."
+        ],
+        "effect_on_extraction": "Prevents mapping to a single deterministic exit condition."
+      }
+    ]
+  },
+  "product_relevance_layer": {
+    "clarity_relevance_observations": [],
+    "edf_relevance_observations": [],
+    "research_only_observations": [
+      {
+        "value": "Content matches foundational concepts of educational taxonomy design.",
+        "support_level": "inferred",
+        "source_text": "Arrange kinds of work by level of cognitive challenge.",
+        "ambiguity": ""
+      }
+    ]
+  },
+  "confidence": {
+    "structural_layer": "high",
+    "primitive_layer": "high",
+    "constraint_layer": "high",
+    "representation_layer": "high",
+    "product_relevance_layer": "medium",
+    "overall": "high"
+  },
+  "notes": "The provided text contains a high level of implicit ambiguity regarding whether 'choosing' and 'evaluating' are exclusive actions or part of a unified feedback loop. In accordance with instrument version 1.1 instructions, these options have been preserved as a branch rather than collapsed."
+}

@@ -6,10 +6,18 @@ ECR-000001-P001
 blinded_artifact_id:
 BA-ECR-001
 
+instrument_version:
+ECR-000001-v1.1
+
+refinement_reason:
+P001 calibration showed models may collapse plausible procedural alternatives; v1.1 asks models to preserve ambiguity and mark evidence support level.
+
 standard_instructions:
 You are participating in a blinded procedural observation study.
 
 Your task is to recover procedural observations from the packet.
+
+Your objective is faithful extraction, not normalization.
 
 Do not evaluate the theory behind the study.
 
@@ -23,6 +31,14 @@ If recognition is unavoidable, record it only in the recognized_artifact field.
 
 Base your response only on the packet content and reasonable procedural implications of that content.
 
+If multiple procedural decompositions are equally reasonable, do not choose one simply to make the representation cleaner. Record the ambiguity explicitly.
+
+Prefer reporting multiple plausible interpretations over collapsing them into a single interpretation when the packet supports more than one reading.
+
+Do not introduce additional procedural steps solely because they are commonly associated with the recognized artifact.
+
+Do not use prior knowledge of a recognized artifact to fill in structure beyond what is reasonably supported by the packet.
+
 Do not invent unsupported procedural structure.
 
 Record uncertainty explicitly.
@@ -31,18 +47,39 @@ Return exactly one valid JSON object matching the supplied schema.
 
 Do not include markdown.
 
+Allowed support_level values:
+
+- explicit
+- strongly_implied
+- inferred
+
+Definitions:
+
+explicit:
+Directly stated in the packet.
+
+strongly_implied:
+Not directly stated, but required or strongly implied by the procedural content.
+
+inferred:
+A plausible interpretation added by the model, but not required by the text.
+
+For extracted observation arrays, use the preferred object format shown in the schema whenever support level, source text, or ambiguity should be preserved.
+
+Plain strings remain acceptable for concise observations, but object entries are preferred.
+
 blinded_procedural_content:
-A process begins when an unresolved situation or unanswered question is identified.
+A line of inquiry begins when a situation remains unresolved and the actor must determine what best explains it.
 
-One or more possible explanations are proposed without assuming that any are correct.
+Several possible explanations are put forward without treating any one of them as settled.
 
-Information is intentionally gathered to distinguish between the competing explanations.
+Additional information is gathered specifically to help separate the competing explanations.
 
-The gathered information is examined to determine how well each explanation accounts for the observations.
+That information is then checked against each explanation to see which one fits the observations best.
 
-When confidence is insufficient, additional information may be gathered or alternative explanations may be developed.
+If confidence remains insufficient, the actor may gather more information or reformulate the explanation set.
 
-This cycle continues until one explanation is sufficiently supported by the available evidence or additional investigation is no longer justified.
+The cycle continues until one explanation is supported strongly enough by what is known, or until further investigation is no longer justified.
 
 response_schema:
 {
@@ -50,13 +87,62 @@ response_schema:
   "blinded_artifact_id": "BA-ECR-001",
   "recognized_artifact": "",
   "structural_layer": {
-    "entry_conditions": [],
-    "exit_conditions": [],
-    "required_steps": [],
-    "optional_steps": [],
-    "loops": [],
-    "branches": [],
-    "termination_conditions": [],
+    "entry_conditions": [
+      {
+        "value": "",
+        "support_level": "",
+        "source_text": "",
+        "ambiguity": ""
+      }
+    ],
+    "exit_conditions": [
+      {
+        "value": "",
+        "support_level": "",
+        "source_text": "",
+        "ambiguity": ""
+      }
+    ],
+    "required_steps": [
+      {
+        "value": "",
+        "support_level": "",
+        "source_text": "",
+        "ambiguity": ""
+      }
+    ],
+    "optional_steps": [
+      {
+        "value": "",
+        "support_level": "",
+        "source_text": "",
+        "ambiguity": ""
+      }
+    ],
+    "loops": [
+      {
+        "value": "",
+        "support_level": "",
+        "source_text": "",
+        "ambiguity": ""
+      }
+    ],
+    "branches": [
+      {
+        "value": "",
+        "support_level": "",
+        "source_text": "",
+        "ambiguity": ""
+      }
+    ],
+    "termination_conditions": [
+      {
+        "value": "",
+        "support_level": "",
+        "source_text": "",
+        "ambiguity": ""
+      }
+    ],
     "control_flow_shape": ""
   },
   "primitive_layer": {
@@ -66,22 +152,85 @@ response_schema:
     "candidate_missing_primitives": []
   },
   "constraint_layer": {
-    "invariants": [],
-    "preconditions": [],
-    "postconditions": [],
-    "stopping_criteria": [],
-    "validity_conditions": []
+    "invariants": [
+      {
+        "value": "",
+        "support_level": "",
+        "source_text": "",
+        "ambiguity": ""
+      }
+    ],
+    "preconditions": [
+      {
+        "value": "",
+        "support_level": "",
+        "source_text": "",
+        "ambiguity": ""
+      }
+    ],
+    "postconditions": [
+      {
+        "value": "",
+        "support_level": "",
+        "source_text": "",
+        "ambiguity": ""
+      }
+    ],
+    "stopping_criteria": [
+      {
+        "value": "",
+        "support_level": "",
+        "source_text": "",
+        "ambiguity": ""
+      }
+    ],
+    "validity_conditions": [
+      {
+        "value": "",
+        "support_level": "",
+        "source_text": "",
+        "ambiguity": ""
+      }
+    ]
   },
   "representation_layer": {
     "procedural_ast": {},
     "natural_language_summary": "",
     "canonical_summary": "",
-    "ambiguities": []
+    "ambiguities": [
+      {
+        "location": "",
+        "description": "",
+        "plausible_interpretations": [],
+        "effect_on_extraction": ""
+      }
+    ]
   },
   "product_relevance_layer": {
-    "clarity_relevance_observations": [],
-    "edf_relevance_observations": [],
-    "research_only_observations": []
+    "clarity_relevance_observations": [
+      {
+        "value": "",
+        "support_level": "",
+        "source_text": "",
+        "ambiguity": ""
+      }
+    ],
+    "edf_relevance_observations": [
+      {
+        "value": "",
+        "support_level": "",
+        "source_text": "",
+        "ambiguity": ""
+      }
+    ],
+    "research_only_observations": [
+      {
+        "value": "",
+        "support_level": "",
+        "source_text": "",
+        "ambiguity": ""
+      }
+    ]
   },
   "confidence": {
     "structural_layer": "",

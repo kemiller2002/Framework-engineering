@@ -1,0 +1,86 @@
+{
+  "ecr_id": "ECR-000001",
+  "instrument_status": "conditionally_ready",
+  "comparator_versions": {
+    "v1_literal": "0/20/29/5",
+    "v2_semantic": "37/2/5/10",
+    "v3_dimensional": "25/18/6/5"
+  },
+  "ontology_status": {
+    "ontology_version": "0.2",
+    "validation_recommendation": "safe_for_limited_calibration_use",
+    "false_positives": 0,
+    "false_negatives": 1,
+    "unresolved_cases": 4,
+    "unresolved_dimensional_matches": 703
+  },
+  "hypothesis_readiness": [
+    {
+      "hypothesis": "H003 Multi-Model Convergence",
+      "ready_for_review": "Yes (limited)",
+      "evidence_available": "v1/v2/v3 comparators, v3 validation",
+      "blocking_issues": "Malformed GPT P001 response."
+    },
+    {
+      "hypothesis": "H012 Vocabulary Bias",
+      "ready_for_review": "Yes (limited)",
+      "evidence_available": "v2 flat semantic, v3 dimensional reduction",
+      "blocking_issues": "High unresolved dimensional item count."
+    },
+    {
+      "hypothesis": "H013 Recognition Bias",
+      "ready_for_review": "No",
+      "evidence_available": "v1 recognition rate 6/8, recognition threat flagged",
+      "blocking_issues": "Recognition remains high and unresolved."
+    },
+    {
+      "hypothesis": "H015 Measurement Instrument Reliability",
+      "ready_for_review": "Yes (limited)",
+      "evidence_available": "instrument metrics, comparator readiness, v3 validation",
+      "blocking_issues": "Malformed GPT P001 response."
+    },
+    {
+      "hypothesis": "H005 Procedural Grammar",
+      "ready_for_review": "No",
+      "evidence_available": "comparator and v3 dimensional outputs exist",
+      "blocking_issues": "Layer disagreement and unresolved dimensional items remain high."
+    },
+    {
+      "hypothesis": "H006 Control Flow",
+      "ready_for_review": "No",
+      "evidence_available": "structural agreement report",
+      "blocking_issues": "Control-flow shape remains disagreement-heavy."
+    },
+    {
+      "hypothesis": "H007 Constraint Preservation",
+      "ready_for_review": "Yes (limited)",
+      "evidence_available": "constraint agreement and v3 dimensional comparison",
+      "blocking_issues": "Constraint overlap is mixed and still needs manual review."
+    },
+    {
+      "hypothesis": "H008 Procedural AST Recovery",
+      "ready_for_review": "Yes (limited)",
+      "evidence_available": "representation agreement, AST presence",
+      "blocking_issues": "AST presence is stable, but canonical summary disagreement remains."
+    },
+    {
+      "hypothesis": "H009 Clarity Relevance",
+      "ready_for_review": "No",
+      "evidence_available": "product relevance observations",
+      "blocking_issues": "Product relevance remains speculative and should not drive review."
+    },
+    {
+      "hypothesis": "H010 EDF Relevance",
+      "ready_for_review": "No",
+      "evidence_available": "product relevance observations",
+      "blocking_issues": "Product relevance remains speculative and should not drive review."
+    }
+  ],
+  "recommended_next_action": "proceed_to_limited_hypothesis_review",
+  "warnings": [
+    "One malformed response file remains in the calibration set.",
+    "Recognition remains high and may still distort extraction behavior.",
+    "Unresolved dimensional matches are very high; sample unresolved items before ECR-000002.",
+    "Proceed only with limited review and without confidence updates."
+  ]
+}

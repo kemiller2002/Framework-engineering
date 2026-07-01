@@ -1,0 +1,1982 @@
+{
+  "summary": {
+    "ontology_version": "0.2",
+    "test_cases": 20,
+    "expected_passes": 15,
+    "false_positive_candidates": 0,
+    "false_negative_candidates": 1,
+    "unresolved_cases": 4,
+    "blocking": false,
+    "recommendation": "safe_for_limited_calibration_use"
+  },
+  "results": [
+    {
+      "case_id": "NV-001",
+      "expected_relationship": "related_but_distinct",
+      "phrase_a": {
+        "raw_phrase": "Stop investigation.",
+        "role": {
+          "key": "terminate",
+          "patterns": [
+            "stop"
+          ],
+          "match_type": "exact_pattern",
+          "match_confidence": "High"
+        },
+        "object": {
+          "key": "",
+          "patterns": [],
+          "match_type": "unresolved",
+          "match_confidence": "Reject"
+        },
+        "purpose": {
+          "key": "termination",
+          "patterns": [
+            "stop"
+          ],
+          "match_type": "exact_pattern",
+          "match_confidence": "High"
+        },
+        "stage": {
+          "key": "termination",
+          "patterns": [
+            "stop"
+          ],
+          "match_type": "exact_pattern",
+          "match_confidence": "High"
+        },
+        "control_flow": {
+          "key": "termination",
+          "patterns": [
+            "stop"
+          ],
+          "match_type": "exact_pattern",
+          "match_confidence": "High"
+        }
+      },
+      "phrase_b": {
+        "raw_phrase": "Accept hypothesis.",
+        "role": {
+          "key": "",
+          "patterns": [],
+          "match_type": "unresolved",
+          "match_confidence": "Reject"
+        },
+        "object": {
+          "key": "hypothesis",
+          "patterns": [
+            "hypothesis"
+          ],
+          "match_type": "exact_pattern",
+          "match_confidence": "High"
+        },
+        "purpose": {
+          "key": "",
+          "patterns": [],
+          "match_type": "unresolved",
+          "match_confidence": "Reject"
+        },
+        "stage": {
+          "key": "early_reasoning",
+          "patterns": [
+            "hypothesis"
+          ],
+          "match_type": "exact_pattern",
+          "match_confidence": "High"
+        },
+        "control_flow": {
+          "key": "",
+          "patterns": [],
+          "match_type": "unresolved",
+          "match_confidence": "Reject"
+        }
+      },
+      "comparison": {
+        "same_role": false,
+        "object_compatible": "",
+        "purpose_compatible": "",
+        "contradiction": false,
+        "shared_roles": [],
+        "shared_objects": [],
+        "shared_purposes": []
+      },
+      "result": "ontology_gap",
+      "flag": "ontology_gap",
+      "notes": "At least one role remained unresolved."
+    },
+    {
+      "case_id": "NV-002",
+      "expected_relationship": "related_but_distinct",
+      "phrase_a": {
+        "raw_phrase": "Generate alternatives.",
+        "role": {
+          "key": "generate",
+          "patterns": [
+            "generate"
+          ],
+          "match_type": "exact_pattern",
+          "match_confidence": "High"
+        },
+        "object": {
+          "key": "alternative",
+          "patterns": [
+            "alternatives",
+            "alternative"
+          ],
+          "match_type": "exact_pattern",
+          "match_confidence": "High"
+        },
+        "purpose": {
+          "key": "",
+          "patterns": [],
+          "match_type": "unresolved",
+          "match_confidence": "Reject"
+        },
+        "stage": {
+          "key": "early_reasoning",
+          "patterns": [
+            "generate"
+          ],
+          "match_type": "exact_pattern",
+          "match_confidence": "High"
+        },
+        "control_flow": {
+          "key": "",
+          "patterns": [],
+          "match_type": "unresolved",
+          "match_confidence": "Reject"
+        }
+      },
+      "phrase_b": {
+        "raw_phrase": "Prioritize alternatives.",
+        "role": {
+          "key": "prioritize",
+          "patterns": [
+            "prioritize"
+          ],
+          "match_type": "exact_pattern",
+          "match_confidence": "High"
+        },
+        "object": {
+          "key": "alternative",
+          "patterns": [
+            "alternatives",
+            "alternative"
+          ],
+          "match_type": "exact_pattern",
+          "match_confidence": "High"
+        },
+        "purpose": {
+          "key": "ordering",
+          "patterns": [
+            "prioritize"
+          ],
+          "match_type": "exact_pattern",
+          "match_confidence": "High"
+        },
+        "stage": {
+          "key": "decision_preparation",
+          "patterns": [
+            "prioritize"
+          ],
+          "match_type": "exact_pattern",
+          "match_confidence": "High"
+        },
+        "control_flow": {
+          "key": "branch",
+          "patterns": [
+            "or"
+          ],
+          "match_type": "exact_pattern",
+          "match_confidence": "High"
+        }
+      },
+      "comparison": {
+        "same_role": false,
+        "object_compatible": true,
+        "purpose_compatible": "",
+        "contradiction": false,
+        "shared_roles": [],
+        "shared_objects": [
+          "alternative"
+        ],
+        "shared_purposes": []
+      },
+      "result": "expected_pass",
+      "flag": null,
+      "notes": "Pair remained related but distinct."
+    },
+    {
+      "case_id": "NV-003",
+      "expected_relationship": "related_but_distinct",
+      "phrase_a": {
+        "raw_phrase": "Gather evidence.",
+        "role": {
+          "key": "observe",
+          "patterns": [
+            "gather",
+            "evidence"
+          ],
+          "match_type": "exact_pattern",
+          "match_confidence": "High"
+        },
+        "object": {
+          "key": "evidence",
+          "patterns": [
+            "evidence"
+          ],
+          "match_type": "exact_pattern",
+          "match_confidence": "High"
+        },
+        "purpose": {
+          "key": "evidence_support",
+          "patterns": [
+            "evidence"
+          ],
+          "match_type": "exact_pattern",
+          "match_confidence": "High"
+        },
+        "stage": {
+          "key": "evidence_collection",
+          "patterns": [
+            "gather"
+          ],
+          "match_type": "exact_pattern",
+          "match_confidence": "High"
+        },
+        "control_flow": {
+          "key": "",
+          "patterns": [],
+          "match_type": "unresolved",
+          "match_confidence": "Reject"
+        }
+      },
+      "phrase_b": {
+        "raw_phrase": "Evaluate evidence.",
+        "role": {
+          "key": "evaluate",
+          "patterns": [
+            "evaluate"
+          ],
+          "match_type": "exact_pattern",
+          "match_confidence": "High"
+        },
+        "object": {
+          "key": "evidence",
+          "patterns": [
+            "evidence"
+          ],
+          "match_type": "exact_pattern",
+          "match_confidence": "High"
+        },
+        "purpose": {
+          "key": "evidence_support",
+          "patterns": [
+            "evidence"
+          ],
+          "match_type": "exact_pattern",
+          "match_confidence": "High"
+        },
+        "stage": {
+          "key": "analysis",
+          "patterns": [
+            "evaluate"
+          ],
+          "match_type": "exact_pattern",
+          "match_confidence": "High"
+        },
+        "control_flow": {
+          "key": "",
+          "patterns": [],
+          "match_type": "unresolved",
+          "match_confidence": "Reject"
+        }
+      },
+      "comparison": {
+        "same_role": false,
+        "object_compatible": true,
+        "purpose_compatible": true,
+        "contradiction": false,
+        "shared_roles": [],
+        "shared_objects": [
+          "evidence"
+        ],
+        "shared_purposes": [
+          "evidence_support"
+        ]
+      },
+      "result": "expected_pass",
+      "flag": null,
+      "notes": "Pair remained related but distinct."
+    },
+    {
+      "case_id": "NV-004",
+      "expected_relationship": "related_but_distinct",
+      "phrase_a": {
+        "raw_phrase": "Compare competing explanations.",
+        "role": {
+          "key": "compare",
+          "patterns": [
+            "compare"
+          ],
+          "match_type": "exact_pattern",
+          "match_confidence": "High"
+        },
+        "object": {
+          "key": "explanation",
+          "patterns": [
+            "explanation"
+          ],
+          "match_type": "exact_pattern",
+          "match_confidence": "High"
+        },
+        "purpose": {
+          "key": "disambiguation",
+          "patterns": [
+            "compare"
+          ],
+          "match_type": "exact_pattern",
+          "match_confidence": "High"
+        },
+        "stage": {
+          "key": "analysis",
+          "patterns": [
+            "compare"
+          ],
+          "match_type": "exact_pattern",
+          "match_confidence": "High"
+        },
+        "control_flow": {
+          "key": "",
+          "patterns": [],
+          "match_type": "unresolved",
+          "match_confidence": "Reject"
+        }
+      },
+      "phrase_b": {
+        "raw_phrase": "Verify a conclusion.",
+        "role": {
+          "key": "verify",
+          "patterns": [
+            "verify"
+          ],
+          "match_type": "exact_pattern",
+          "match_confidence": "High"
+        },
+        "object": {
+          "key": "conclusion",
+          "patterns": [
+            "conclusion"
+          ],
+          "match_type": "exact_pattern",
+          "match_confidence": "High"
+        },
+        "purpose": {
+          "key": "validation",
+          "patterns": [
+            "verify"
+          ],
+          "match_type": "exact_pattern",
+          "match_confidence": "High"
+        },
+        "stage": {
+          "key": "verification",
+          "patterns": [
+            "verify"
+          ],
+          "match_type": "exact_pattern",
+          "match_confidence": "High"
+        },
+        "control_flow": {
+          "key": "",
+          "patterns": [],
+          "match_type": "unresolved",
+          "match_confidence": "Reject"
+        }
+      },
+      "comparison": {
+        "same_role": false,
+        "object_compatible": false,
+        "purpose_compatible": false,
+        "contradiction": false,
+        "shared_roles": [],
+        "shared_objects": [],
+        "shared_purposes": []
+      },
+      "result": "expected_pass",
+      "flag": null,
+      "notes": "Pair remained related but distinct."
+    },
+    {
+      "case_id": "NV-005",
+      "expected_relationship": "related_but_distinct",
+      "phrase_a": {
+        "raw_phrase": "Identify the problem.",
+        "role": {
+          "key": "identify",
+          "patterns": [
+            "identify"
+          ],
+          "match_type": "exact_pattern",
+          "match_confidence": "High"
+        },
+        "object": {
+          "key": "problem",
+          "patterns": [
+            "problem"
+          ],
+          "match_type": "exact_pattern",
+          "match_confidence": "High"
+        },
+        "purpose": {
+          "key": "",
+          "patterns": [],
+          "match_type": "unresolved",
+          "match_confidence": "Reject"
+        },
+        "stage": {
+          "key": "entry",
+          "patterns": [
+            "identify"
+          ],
+          "match_type": "exact_pattern",
+          "match_confidence": "High"
+        },
+        "control_flow": {
+          "key": "",
+          "patterns": [],
+          "match_type": "unresolved",
+          "match_confidence": "Reject"
+        }
+      },
+      "phrase_b": {
+        "raw_phrase": "Solve the problem.",
+        "role": {
+          "key": "",
+          "patterns": [],
+          "match_type": "unresolved",
+          "match_confidence": "Reject"
+        },
+        "object": {
+          "key": "problem",
+          "patterns": [
+            "problem"
+          ],
+          "match_type": "exact_pattern",
+          "match_confidence": "High"
+        },
+        "purpose": {
+          "key": "",
+          "patterns": [],
+          "match_type": "unresolved",
+          "match_confidence": "Reject"
+        },
+        "stage": {
+          "key": "",
+          "patterns": [],
+          "match_type": "unresolved",
+          "match_confidence": "Reject"
+        },
+        "control_flow": {
+          "key": "",
+          "patterns": [],
+          "match_type": "unresolved",
+          "match_confidence": "Reject"
+        }
+      },
+      "comparison": {
+        "same_role": false,
+        "object_compatible": true,
+        "purpose_compatible": "",
+        "contradiction": false,
+        "shared_roles": [],
+        "shared_objects": [
+          "problem"
+        ],
+        "shared_purposes": []
+      },
+      "result": "ontology_gap",
+      "flag": "ontology_gap",
+      "notes": "At least one role remained unresolved."
+    },
+    {
+      "case_id": "NV-006",
+      "expected_relationship": "related_but_distinct",
+      "phrase_a": {
+        "raw_phrase": "Reassess because confidence is insufficient.",
+        "role": {
+          "key": "reassess",
+          "patterns": [
+            "reassess"
+          ],
+          "match_type": "exact_pattern",
+          "match_confidence": "High"
+        },
+        "object": {
+          "key": "explanation",
+          "patterns": [
+            "cause"
+          ],
+          "match_type": "exact_pattern",
+          "match_confidence": "High"
+        },
+        "purpose": {
+          "key": "confidence_building",
+          "patterns": [
+            "confidence",
+            "sufficient"
+          ],
+          "match_type": "exact_pattern",
+          "match_confidence": "High"
+        },
+        "stage": {
+          "key": "analysis",
+          "patterns": [
+            "assess"
+          ],
+          "match_type": "exact_pattern",
+          "match_confidence": "High"
+        },
+        "control_flow": {
+          "key": "continuation",
+          "patterns": [
+            "reassess"
+          ],
+          "match_type": "exact_pattern",
+          "match_confidence": "High"
+        }
+      },
+      "phrase_b": {
+        "raw_phrase": "Reflect after completion.",
+        "role": {
+          "key": "reflect",
+          "patterns": [
+            "reflect"
+          ],
+          "match_type": "exact_pattern",
+          "match_confidence": "High"
+        },
+        "object": {
+          "key": "",
+          "patterns": [],
+          "match_type": "unresolved",
+          "match_confidence": "Reject"
+        },
+        "purpose": {
+          "key": "learning",
+          "patterns": [
+            "reflect"
+          ],
+          "match_type": "exact_pattern",
+          "match_confidence": "High"
+        },
+        "stage": {
+          "key": "reflection",
+          "patterns": [
+            "reflect"
+          ],
+          "match_type": "exact_pattern",
+          "match_confidence": "High"
+        },
+        "control_flow": {
+          "key": "sequence",
+          "patterns": [
+            "after"
+          ],
+          "match_type": "exact_pattern",
+          "match_confidence": "High"
+        }
+      },
+      "comparison": {
+        "same_role": false,
+        "object_compatible": "",
+        "purpose_compatible": false,
+        "contradiction": false,
+        "shared_roles": [],
+        "shared_objects": [],
+        "shared_purposes": []
+      },
+      "result": "expected_pass",
+      "flag": null,
+      "notes": "Pair remained related but distinct."
+    },
+    {
+      "case_id": "NV-007",
+      "expected_relationship": "related_but_distinct",
+      "phrase_a": {
+        "raw_phrase": "Coordinate team activity.",
+        "role": {
+          "key": "coordinate",
+          "patterns": [
+            "team activity",
+            "coordinate"
+          ],
+          "match_type": "exact_pattern",
+          "match_confidence": "High"
+        },
+        "object": {
+          "key": "team",
+          "patterns": [
+            "team"
+          ],
+          "match_type": "exact_pattern",
+          "match_confidence": "High"
+        },
+        "purpose": {
+          "key": "coordination",
+          "patterns": [
+            "coordinate"
+          ],
+          "match_type": "exact_pattern",
+          "match_confidence": "High"
+        },
+        "stage": {
+          "key": "",
+          "patterns": [],
+          "match_type": "unresolved",
+          "match_confidence": "Reject"
+        },
+        "control_flow": {
+          "key": "parallel_coordination",
+          "patterns": [
+            "coordinate"
+          ],
+          "match_type": "exact_pattern",
+          "match_confidence": "High"
+        }
+      },
+      "phrase_b": {
+        "raw_phrase": "Communicate findings.",
+        "role": {
+          "key": "communicate",
+          "patterns": [
+            "communicate"
+          ],
+          "match_type": "exact_pattern",
+          "match_confidence": "High"
+        },
+        "object": {
+          "key": "observation",
+          "patterns": [
+            "finding"
+          ],
+          "match_type": "exact_pattern",
+          "match_confidence": "High"
+        },
+        "purpose": {
+          "key": "communication",
+          "patterns": [
+            "communicate"
+          ],
+          "match_type": "exact_pattern",
+          "match_confidence": "High"
+        },
+        "stage": {
+          "key": "",
+          "patterns": [],
+          "match_type": "unresolved",
+          "match_confidence": "Reject"
+        },
+        "control_flow": {
+          "key": "",
+          "patterns": [],
+          "match_type": "unresolved",
+          "match_confidence": "Reject"
+        }
+      },
+      "comparison": {
+        "same_role": false,
+        "object_compatible": false,
+        "purpose_compatible": false,
+        "contradiction": false,
+        "shared_roles": [],
+        "shared_objects": [],
+        "shared_purposes": []
+      },
+      "result": "expected_pass",
+      "flag": null,
+      "notes": "Pair remained related but distinct."
+    },
+    {
+      "case_id": "NV-008",
+      "expected_relationship": "related_but_distinct",
+      "phrase_a": {
+        "raw_phrase": "Classify into levels.",
+        "role": {
+          "key": "classify",
+          "patterns": [
+            "classify"
+          ],
+          "match_type": "exact_pattern",
+          "match_confidence": "High"
+        },
+        "object": {
+          "key": "level",
+          "patterns": [
+            "levels",
+            "level"
+          ],
+          "match_type": "exact_pattern",
+          "match_confidence": "High"
+        },
+        "purpose": {
+          "key": "classification",
+          "patterns": [
+            "classify"
+          ],
+          "match_type": "exact_pattern",
+          "match_confidence": "High"
+        },
+        "stage": {
+          "key": "",
+          "patterns": [],
+          "match_type": "unresolved",
+          "match_confidence": "Reject"
+        },
+        "control_flow": {
+          "key": "",
+          "patterns": [],
+          "match_type": "unresolved",
+          "match_confidence": "Reject"
+        }
+      },
+      "phrase_b": {
+        "raw_phrase": "Move through procedural steps.",
+        "role": {
+          "key": "",
+          "patterns": [],
+          "match_type": "unresolved",
+          "match_confidence": "Reject"
+        },
+        "object": {
+          "key": "",
+          "patterns": [],
+          "match_type": "unresolved",
+          "match_confidence": "Reject"
+        },
+        "purpose": {
+          "key": "",
+          "patterns": [],
+          "match_type": "unresolved",
+          "match_confidence": "Reject"
+        },
+        "stage": {
+          "key": "",
+          "patterns": [],
+          "match_type": "unresolved",
+          "match_confidence": "Reject"
+        },
+        "control_flow": {
+          "key": "",
+          "patterns": [],
+          "match_type": "unresolved",
+          "match_confidence": "Reject"
+        }
+      },
+      "comparison": {
+        "same_role": false,
+        "object_compatible": "",
+        "purpose_compatible": "",
+        "contradiction": false,
+        "shared_roles": [],
+        "shared_objects": [],
+        "shared_purposes": []
+      },
+      "result": "ontology_gap",
+      "flag": "ontology_gap",
+      "notes": "At least one role remained unresolved."
+    },
+    {
+      "case_id": "NV-009",
+      "expected_relationship": "related_but_distinct",
+      "phrase_a": {
+        "raw_phrase": "Evidence is sufficient.",
+        "role": {
+          "key": "observe",
+          "patterns": [
+            "evidence"
+          ],
+          "match_type": "exact_pattern",
+          "match_confidence": "High"
+        },
+        "object": {
+          "key": "evidence",
+          "patterns": [
+            "evidence"
+          ],
+          "match_type": "exact_pattern",
+          "match_confidence": "High"
+        },
+        "purpose": {
+          "key": "confidence_building",
+          "patterns": [
+            "sufficient"
+          ],
+          "match_type": "exact_pattern",
+          "match_confidence": "High"
+        },
+        "stage": {
+          "key": "",
+          "patterns": [],
+          "match_type": "unresolved",
+          "match_confidence": "Reject"
+        },
+        "control_flow": {
+          "key": "",
+          "patterns": [],
+          "match_type": "unresolved",
+          "match_confidence": "Reject"
+        }
+      },
+      "phrase_b": {
+        "raw_phrase": "Further inquiry is not justified.",
+        "role": {
+          "key": "",
+          "patterns": [],
+          "match_type": "unresolved",
+          "match_confidence": "Reject"
+        },
+        "object": {
+          "key": "process",
+          "patterns": [
+            "inquiry"
+          ],
+          "match_type": "exact_pattern",
+          "match_confidence": "High"
+        },
+        "purpose": {
+          "key": "",
+          "patterns": [],
+          "match_type": "unresolved",
+          "match_confidence": "Reject"
+        },
+        "stage": {
+          "key": "",
+          "patterns": [],
+          "match_type": "unresolved",
+          "match_confidence": "Reject"
+        },
+        "control_flow": {
+          "key": "",
+          "patterns": [],
+          "match_type": "unresolved",
+          "match_confidence": "Reject"
+        }
+      },
+      "comparison": {
+        "same_role": false,
+        "object_compatible": false,
+        "purpose_compatible": "",
+        "contradiction": false,
+        "shared_roles": [],
+        "shared_objects": [],
+        "shared_purposes": []
+      },
+      "result": "ontology_gap",
+      "flag": "ontology_gap",
+      "notes": "At least one role remained unresolved."
+    },
+    {
+      "case_id": "NV-010",
+      "expected_relationship": "related_but_distinct",
+      "phrase_a": {
+        "raw_phrase": "Perform work.",
+        "role": {
+          "key": "act",
+          "patterns": [
+            "perform"
+          ],
+          "match_type": "exact_pattern",
+          "match_confidence": "High"
+        },
+        "object": {
+          "key": "work",
+          "patterns": [
+            "work"
+          ],
+          "match_type": "exact_pattern",
+          "match_confidence": "High"
+        },
+        "purpose": {
+          "key": "execution",
+          "patterns": [
+            "perform"
+          ],
+          "match_type": "exact_pattern",
+          "match_confidence": "High"
+        },
+        "stage": {
+          "key": "execution",
+          "patterns": [
+            "perform"
+          ],
+          "match_type": "exact_pattern",
+          "match_confidence": "High"
+        },
+        "control_flow": {
+          "key": "branch",
+          "patterns": [
+            "or"
+          ],
+          "match_type": "exact_pattern",
+          "match_confidence": "High"
+        }
+      },
+      "phrase_b": {
+        "raw_phrase": "Validate outcome.",
+        "role": {
+          "key": "verify",
+          "patterns": [
+            "validate"
+          ],
+          "match_type": "exact_pattern",
+          "match_confidence": "High"
+        },
+        "object": {
+          "key": "outcome",
+          "patterns": [
+            "outcome"
+          ],
+          "match_type": "exact_pattern",
+          "match_confidence": "High"
+        },
+        "purpose": {
+          "key": "validation",
+          "patterns": [
+            "validate"
+          ],
+          "match_type": "exact_pattern",
+          "match_confidence": "High"
+        },
+        "stage": {
+          "key": "verification",
+          "patterns": [
+            "validate"
+          ],
+          "match_type": "exact_pattern",
+          "match_confidence": "High"
+        },
+        "control_flow": {
+          "key": "",
+          "patterns": [],
+          "match_type": "unresolved",
+          "match_confidence": "Reject"
+        }
+      },
+      "comparison": {
+        "same_role": false,
+        "object_compatible": true,
+        "purpose_compatible": false,
+        "contradiction": false,
+        "shared_roles": [],
+        "shared_objects": [
+          "work",
+          "outcome"
+        ],
+        "shared_purposes": []
+      },
+      "result": "expected_pass",
+      "flag": null,
+      "notes": "Pair remained related but distinct."
+    },
+    {
+      "case_id": "NV-011",
+      "expected_relationship": "equivalent",
+      "phrase_a": {
+        "raw_phrase": "Unresolved question identified.",
+        "role": {
+          "key": "",
+          "patterns": [],
+          "match_type": "unresolved",
+          "match_confidence": "Reject"
+        },
+        "object": {
+          "key": "question",
+          "patterns": [
+            "question"
+          ],
+          "match_type": "exact_pattern",
+          "match_confidence": "High"
+        },
+        "purpose": {
+          "key": "",
+          "patterns": [],
+          "match_type": "unresolved",
+          "match_confidence": "Reject"
+        },
+        "stage": {
+          "key": "entry",
+          "patterns": [
+            "unresolved"
+          ],
+          "match_type": "exact_pattern",
+          "match_confidence": "High"
+        },
+        "control_flow": {
+          "key": "",
+          "patterns": [],
+          "match_type": "unresolved",
+          "match_confidence": "Reject"
+        }
+      },
+      "phrase_b": {
+        "raw_phrase": "Initial uncertainty recognized.",
+        "role": {
+          "key": "identify",
+          "patterns": [
+            "recognized"
+          ],
+          "match_type": "exact_pattern",
+          "match_confidence": "High"
+        },
+        "object": {
+          "key": "uncertainty",
+          "patterns": [
+            "uncertainty"
+          ],
+          "match_type": "exact_pattern",
+          "match_confidence": "High"
+        },
+        "purpose": {
+          "key": "",
+          "patterns": [],
+          "match_type": "unresolved",
+          "match_confidence": "Reject"
+        },
+        "stage": {
+          "key": "entry",
+          "patterns": [
+            "recognized",
+            "initial"
+          ],
+          "match_type": "exact_pattern",
+          "match_confidence": "High"
+        },
+        "control_flow": {
+          "key": "",
+          "patterns": [],
+          "match_type": "unresolved",
+          "match_confidence": "Reject"
+        }
+      },
+      "comparison": {
+        "same_role": "",
+        "object_compatible": true,
+        "purpose_compatible": "",
+        "contradiction": false,
+        "shared_roles": [],
+        "shared_objects": [
+          "question",
+          "uncertainty"
+        ],
+        "shared_purposes": []
+      },
+      "result": "false_negative_candidate",
+      "flag": "false_negative_candidate",
+      "notes": "Equivalent pair failed dimensional equivalence."
+    },
+    {
+      "case_id": "NV-012",
+      "expected_relationship": "equivalent",
+      "phrase_a": {
+        "raw_phrase": "Candidate explanation proposed.",
+        "role": {
+          "key": "generate",
+          "patterns": [
+            "candidate",
+            "propose"
+          ],
+          "match_type": "exact_pattern",
+          "match_confidence": "High"
+        },
+        "object": {
+          "key": "explanation",
+          "patterns": [
+            "explanation"
+          ],
+          "match_type": "exact_pattern",
+          "match_confidence": "High"
+        },
+        "purpose": {
+          "key": "exploration",
+          "patterns": [
+            "candidate"
+          ],
+          "match_type": "exact_pattern",
+          "match_confidence": "High"
+        },
+        "stage": {
+          "key": "early_reasoning",
+          "patterns": [
+            "candidate"
+          ],
+          "match_type": "exact_pattern",
+          "match_confidence": "High"
+        },
+        "control_flow": {
+          "key": "",
+          "patterns": [],
+          "match_type": "unresolved",
+          "match_confidence": "Reject"
+        }
+      },
+      "phrase_b": {
+        "raw_phrase": "Possible hypothesis generated.",
+        "role": {
+          "key": "generate",
+          "patterns": [
+            "possible",
+            "generate"
+          ],
+          "match_type": "exact_pattern",
+          "match_confidence": "High"
+        },
+        "object": {
+          "key": "hypothesis",
+          "patterns": [
+            "hypothesis"
+          ],
+          "match_type": "exact_pattern",
+          "match_confidence": "High"
+        },
+        "purpose": {
+          "key": "exploration",
+          "patterns": [
+            "possible"
+          ],
+          "match_type": "exact_pattern",
+          "match_confidence": "High"
+        },
+        "stage": {
+          "key": "early_reasoning",
+          "patterns": [
+            "possible",
+            "hypothesis",
+            "generate"
+          ],
+          "match_type": "exact_pattern",
+          "match_confidence": "High"
+        },
+        "control_flow": {
+          "key": "",
+          "patterns": [],
+          "match_type": "unresolved",
+          "match_confidence": "Reject"
+        }
+      },
+      "comparison": {
+        "same_role": true,
+        "object_compatible": true,
+        "purpose_compatible": true,
+        "contradiction": false,
+        "shared_roles": [
+          "generate"
+        ],
+        "shared_objects": [
+          "explanation",
+          "hypothesis"
+        ],
+        "shared_purposes": [
+          "exploration"
+        ]
+      },
+      "result": "expected_pass",
+      "flag": null,
+      "notes": "Equivalent pair stayed aligned dimensionally."
+    },
+    {
+      "case_id": "NV-013",
+      "expected_relationship": "equivalent",
+      "phrase_a": {
+        "raw_phrase": "Additional evidence is gathered.",
+        "role": {
+          "key": "observe",
+          "patterns": [
+            "evidence",
+            "gather"
+          ],
+          "match_type": "exact_pattern",
+          "match_confidence": "High"
+        },
+        "object": {
+          "key": "evidence",
+          "patterns": [
+            "evidence"
+          ],
+          "match_type": "exact_pattern",
+          "match_confidence": "High"
+        },
+        "purpose": {
+          "key": "evidence_support",
+          "patterns": [
+            "evidence"
+          ],
+          "match_type": "exact_pattern",
+          "match_confidence": "High"
+        },
+        "stage": {
+          "key": "evidence_collection",
+          "patterns": [
+            "gather"
+          ],
+          "match_type": "exact_pattern",
+          "match_confidence": "High"
+        },
+        "control_flow": {
+          "key": "",
+          "patterns": [],
+          "match_type": "unresolved",
+          "match_confidence": "Reject"
+        }
+      },
+      "phrase_b": {
+        "raw_phrase": "More information is collected.",
+        "role": {
+          "key": "observe",
+          "patterns": [
+            "information",
+            "collect"
+          ],
+          "match_type": "exact_pattern",
+          "match_confidence": "High"
+        },
+        "object": {
+          "key": "information",
+          "patterns": [
+            "information"
+          ],
+          "match_type": "exact_pattern",
+          "match_confidence": "High"
+        },
+        "purpose": {
+          "key": "evidence_support",
+          "patterns": [
+            "information"
+          ],
+          "match_type": "exact_pattern",
+          "match_confidence": "High"
+        },
+        "stage": {
+          "key": "evidence_collection",
+          "patterns": [
+            "collect"
+          ],
+          "match_type": "exact_pattern",
+          "match_confidence": "High"
+        },
+        "control_flow": {
+          "key": "branch",
+          "patterns": [
+            "or"
+          ],
+          "match_type": "exact_pattern",
+          "match_confidence": "High"
+        }
+      },
+      "comparison": {
+        "same_role": true,
+        "object_compatible": true,
+        "purpose_compatible": true,
+        "contradiction": false,
+        "shared_roles": [
+          "observe"
+        ],
+        "shared_objects": [
+          "evidence",
+          "information"
+        ],
+        "shared_purposes": [
+          "evidence_support"
+        ]
+      },
+      "result": "expected_pass",
+      "flag": null,
+      "notes": "Equivalent pair stayed aligned dimensionally."
+    },
+    {
+      "case_id": "NV-014",
+      "expected_relationship": "equivalent",
+      "phrase_a": {
+        "raw_phrase": "The process repeats when confidence is insufficient.",
+        "role": {
+          "key": "reassess",
+          "patterns": [
+            "repeat"
+          ],
+          "match_type": "exact_pattern",
+          "match_confidence": "High"
+        },
+        "object": {
+          "key": "process",
+          "patterns": [
+            "process"
+          ],
+          "match_type": "exact_pattern",
+          "match_confidence": "High"
+        },
+        "purpose": {
+          "key": "confidence_building",
+          "patterns": [
+            "confidence",
+            "sufficient"
+          ],
+          "match_type": "exact_pattern",
+          "match_confidence": "High"
+        },
+        "stage": {
+          "key": "",
+          "patterns": [],
+          "match_type": "unresolved",
+          "match_confidence": "Reject"
+        },
+        "control_flow": {
+          "key": "loop",
+          "patterns": [
+            "repeat"
+          ],
+          "match_type": "exact_pattern",
+          "match_confidence": "High"
+        }
+      },
+      "phrase_b": {
+        "raw_phrase": "The cycle continues until support is adequate.",
+        "role": {
+          "key": "reassess",
+          "patterns": [
+            "continue"
+          ],
+          "match_type": "exact_pattern",
+          "match_confidence": "High"
+        },
+        "object": {
+          "key": "evidence",
+          "patterns": [
+            "support"
+          ],
+          "match_type": "exact_pattern",
+          "match_confidence": "High"
+        },
+        "purpose": {
+          "key": "confidence_building",
+          "patterns": [
+            "adequate"
+          ],
+          "match_type": "exact_pattern",
+          "match_confidence": "High"
+        },
+        "stage": {
+          "key": "",
+          "patterns": [],
+          "match_type": "unresolved",
+          "match_confidence": "Reject"
+        },
+        "control_flow": {
+          "key": "continuation",
+          "patterns": [
+            "continues",
+            "continue"
+          ],
+          "match_type": "exact_pattern",
+          "match_confidence": "High"
+        }
+      },
+      "comparison": {
+        "same_role": true,
+        "object_compatible": false,
+        "purpose_compatible": true,
+        "contradiction": false,
+        "shared_roles": [
+          "reassess"
+        ],
+        "shared_objects": [],
+        "shared_purposes": [
+          "confidence_building"
+        ]
+      },
+      "result": "expected_pass",
+      "flag": null,
+      "notes": "Equivalent pair stayed aligned dimensionally."
+    },
+    {
+      "case_id": "NV-015",
+      "expected_relationship": "equivalent",
+      "phrase_a": {
+        "raw_phrase": "Tasks are assigned to team members.",
+        "role": {
+          "key": "allocate",
+          "patterns": [
+            "assign"
+          ],
+          "match_type": "exact_pattern",
+          "match_confidence": "High"
+        },
+        "object": {
+          "key": "task",
+          "patterns": [
+            "tasks",
+            "task"
+          ],
+          "match_type": "exact_pattern",
+          "match_confidence": "High"
+        },
+        "purpose": {
+          "key": "coordination",
+          "patterns": [
+            "assign"
+          ],
+          "match_type": "exact_pattern",
+          "match_confidence": "High"
+        },
+        "stage": {
+          "key": "",
+          "patterns": [],
+          "match_type": "unresolved",
+          "match_confidence": "Reject"
+        },
+        "control_flow": {
+          "key": "",
+          "patterns": [],
+          "match_type": "unresolved",
+          "match_confidence": "Reject"
+        }
+      },
+      "phrase_b": {
+        "raw_phrase": "Responsibilities are allocated.",
+        "role": {
+          "key": "allocate",
+          "patterns": [
+            "allocate"
+          ],
+          "match_type": "exact_pattern",
+          "match_confidence": "High"
+        },
+        "object": {
+          "key": "responsibility",
+          "patterns": [
+            "responsibilities"
+          ],
+          "match_type": "exact_pattern",
+          "match_confidence": "High"
+        },
+        "purpose": {
+          "key": "coordination",
+          "patterns": [
+            "allocate"
+          ],
+          "match_type": "exact_pattern",
+          "match_confidence": "High"
+        },
+        "stage": {
+          "key": "",
+          "patterns": [],
+          "match_type": "unresolved",
+          "match_confidence": "Reject"
+        },
+        "control_flow": {
+          "key": "",
+          "patterns": [],
+          "match_type": "unresolved",
+          "match_confidence": "Reject"
+        }
+      },
+      "comparison": {
+        "same_role": true,
+        "object_compatible": false,
+        "purpose_compatible": true,
+        "contradiction": false,
+        "shared_roles": [
+          "allocate"
+        ],
+        "shared_objects": [],
+        "shared_purposes": [
+          "coordination"
+        ]
+      },
+      "result": "expected_pass",
+      "flag": null,
+      "notes": "Equivalent pair stayed aligned dimensionally."
+    },
+    {
+      "case_id": "NV-016",
+      "expected_relationship": "equivalent",
+      "phrase_a": {
+        "raw_phrase": "Work is delivered as an increment.",
+        "role": {
+          "key": "act",
+          "patterns": [
+            "deliver"
+          ],
+          "match_type": "exact_pattern",
+          "match_confidence": "High"
+        },
+        "object": {
+          "key": "outcome",
+          "patterns": [
+            "increment"
+          ],
+          "match_type": "exact_pattern",
+          "match_confidence": "High"
+        },
+        "purpose": {
+          "key": "execution",
+          "patterns": [
+            "deliver"
+          ],
+          "match_type": "exact_pattern",
+          "match_confidence": "High"
+        },
+        "stage": {
+          "key": "execution",
+          "patterns": [
+            "deliver"
+          ],
+          "match_type": "exact_pattern",
+          "match_confidence": "High"
+        },
+        "control_flow": {
+          "key": "branch",
+          "patterns": [
+            "or"
+          ],
+          "match_type": "exact_pattern",
+          "match_confidence": "High"
+        }
+      },
+      "phrase_b": {
+        "raw_phrase": "A usable result is produced.",
+        "role": {
+          "key": "act",
+          "patterns": [
+            "produce"
+          ],
+          "match_type": "exact_pattern",
+          "match_confidence": "High"
+        },
+        "object": {
+          "key": "outcome",
+          "patterns": [
+            "usable result",
+            "result"
+          ],
+          "match_type": "exact_pattern",
+          "match_confidence": "High"
+        },
+        "purpose": {
+          "key": "execution",
+          "patterns": [
+            "produce"
+          ],
+          "match_type": "exact_pattern",
+          "match_confidence": "High"
+        },
+        "stage": {
+          "key": "execution",
+          "patterns": [
+            "produce"
+          ],
+          "match_type": "exact_pattern",
+          "match_confidence": "High"
+        },
+        "control_flow": {
+          "key": "",
+          "patterns": [],
+          "match_type": "unresolved",
+          "match_confidence": "Reject"
+        }
+      },
+      "comparison": {
+        "same_role": true,
+        "object_compatible": true,
+        "purpose_compatible": true,
+        "contradiction": false,
+        "shared_roles": [
+          "act"
+        ],
+        "shared_objects": [
+          "outcome"
+        ],
+        "shared_purposes": [
+          "execution"
+        ]
+      },
+      "result": "expected_pass",
+      "flag": null,
+      "notes": "Equivalent pair stayed aligned dimensionally."
+    },
+    {
+      "case_id": "NV-017",
+      "expected_relationship": "related_but_distinct",
+      "phrase_a": {
+        "raw_phrase": "Items are grouped by type.",
+        "role": {
+          "key": "classify",
+          "patterns": [
+            "group"
+          ],
+          "match_type": "exact_pattern",
+          "match_confidence": "High"
+        },
+        "object": {
+          "key": "category",
+          "patterns": [
+            "type"
+          ],
+          "match_type": "exact_pattern",
+          "match_confidence": "High"
+        },
+        "purpose": {
+          "key": "classification",
+          "patterns": [
+            "group"
+          ],
+          "match_type": "exact_pattern",
+          "match_confidence": "High"
+        },
+        "stage": {
+          "key": "",
+          "patterns": [],
+          "match_type": "unresolved",
+          "match_confidence": "Reject"
+        },
+        "control_flow": {
+          "key": "",
+          "patterns": [],
+          "match_type": "unresolved",
+          "match_confidence": "Reject"
+        }
+      },
+      "phrase_b": {
+        "raw_phrase": "Items are ranked by importance.",
+        "role": {
+          "key": "prioritize",
+          "patterns": [
+            "rank"
+          ],
+          "match_type": "exact_pattern",
+          "match_confidence": "High"
+        },
+        "object": {
+          "key": "",
+          "patterns": [],
+          "match_type": "unresolved",
+          "match_confidence": "Reject"
+        },
+        "purpose": {
+          "key": "ordering",
+          "patterns": [
+            "rank"
+          ],
+          "match_type": "exact_pattern",
+          "match_confidence": "High"
+        },
+        "stage": {
+          "key": "decision_preparation",
+          "patterns": [
+            "rank"
+          ],
+          "match_type": "exact_pattern",
+          "match_confidence": "High"
+        },
+        "control_flow": {
+          "key": "branch",
+          "patterns": [
+            "or"
+          ],
+          "match_type": "exact_pattern",
+          "match_confidence": "High"
+        }
+      },
+      "comparison": {
+        "same_role": false,
+        "object_compatible": "",
+        "purpose_compatible": false,
+        "contradiction": false,
+        "shared_roles": [],
+        "shared_objects": [],
+        "shared_purposes": []
+      },
+      "result": "expected_pass",
+      "flag": null,
+      "notes": "Pair remained related but distinct."
+    },
+    {
+      "case_id": "NV-018",
+      "expected_relationship": "opposite",
+      "phrase_a": {
+        "raw_phrase": "A loop continues until confidence is sufficient.",
+        "role": {
+          "key": "reassess",
+          "patterns": [
+            "continue"
+          ],
+          "match_type": "exact_pattern",
+          "match_confidence": "High"
+        },
+        "object": {
+          "key": "",
+          "patterns": [],
+          "match_type": "unresolved",
+          "match_confidence": "Reject"
+        },
+        "purpose": {
+          "key": "confidence_building",
+          "patterns": [
+            "confidence",
+            "sufficient"
+          ],
+          "match_type": "exact_pattern",
+          "match_confidence": "High"
+        },
+        "stage": {
+          "key": "",
+          "patterns": [],
+          "match_type": "unresolved",
+          "match_confidence": "Reject"
+        },
+        "control_flow": {
+          "key": "continuation",
+          "patterns": [
+            "continues",
+            "continue"
+          ],
+          "match_type": "exact_pattern",
+          "match_confidence": "High"
+        }
+      },
+      "phrase_b": {
+        "raw_phrase": "A loop continues forever.",
+        "role": {
+          "key": "reassess",
+          "patterns": [
+            "continue"
+          ],
+          "match_type": "exact_pattern",
+          "match_confidence": "High"
+        },
+        "object": {
+          "key": "",
+          "patterns": [],
+          "match_type": "unresolved",
+          "match_confidence": "Reject"
+        },
+        "purpose": {
+          "key": "",
+          "patterns": [],
+          "match_type": "unresolved",
+          "match_confidence": "Reject"
+        },
+        "stage": {
+          "key": "",
+          "patterns": [],
+          "match_type": "unresolved",
+          "match_confidence": "Reject"
+        },
+        "control_flow": {
+          "key": "continuation",
+          "patterns": [
+            "continues",
+            "continue"
+          ],
+          "match_type": "exact_pattern",
+          "match_confidence": "High"
+        }
+      },
+      "comparison": {
+        "same_role": true,
+        "object_compatible": "",
+        "purpose_compatible": "",
+        "contradiction": true,
+        "shared_roles": [
+          "reassess"
+        ],
+        "shared_objects": [],
+        "shared_purposes": []
+      },
+      "result": "expected_pass",
+      "flag": null,
+      "notes": "Opposite pair remained distinct or contradictory."
+    },
+    {
+      "case_id": "NV-019",
+      "expected_relationship": "opposite",
+      "phrase_a": {
+        "raw_phrase": "A decision is made.",
+        "role": {
+          "key": "",
+          "patterns": [],
+          "match_type": "unresolved",
+          "match_confidence": "Reject"
+        },
+        "object": {
+          "key": "decision",
+          "patterns": [
+            "decision"
+          ],
+          "match_type": "exact_pattern",
+          "match_confidence": "High"
+        },
+        "purpose": {
+          "key": "",
+          "patterns": [],
+          "match_type": "unresolved",
+          "match_confidence": "Reject"
+        },
+        "stage": {
+          "key": "",
+          "patterns": [],
+          "match_type": "unresolved",
+          "match_confidence": "Reject"
+        },
+        "control_flow": {
+          "key": "",
+          "patterns": [],
+          "match_type": "unresolved",
+          "match_confidence": "Reject"
+        }
+      },
+      "phrase_b": {
+        "raw_phrase": "A decision is deferred.",
+        "role": {
+          "key": "",
+          "patterns": [],
+          "match_type": "unresolved",
+          "match_confidence": "Reject"
+        },
+        "object": {
+          "key": "decision",
+          "patterns": [
+            "decision"
+          ],
+          "match_type": "exact_pattern",
+          "match_confidence": "High"
+        },
+        "purpose": {
+          "key": "",
+          "patterns": [],
+          "match_type": "unresolved",
+          "match_confidence": "Reject"
+        },
+        "stage": {
+          "key": "",
+          "patterns": [],
+          "match_type": "unresolved",
+          "match_confidence": "Reject"
+        },
+        "control_flow": {
+          "key": "",
+          "patterns": [],
+          "match_type": "unresolved",
+          "match_confidence": "Reject"
+        }
+      },
+      "comparison": {
+        "same_role": "",
+        "object_compatible": true,
+        "purpose_compatible": "",
+        "contradiction": false,
+        "shared_roles": [],
+        "shared_objects": [
+          "decision"
+        ],
+        "shared_purposes": []
+      },
+      "result": "expected_pass",
+      "flag": null,
+      "notes": "Opposite pair remained distinct or contradictory."
+    },
+    {
+      "case_id": "NV-020",
+      "expected_relationship": "unrelated",
+      "phrase_a": {
+        "raw_phrase": "The team aligns on next steps.",
+        "role": {
+          "key": "coordinate",
+          "patterns": [
+            "align"
+          ],
+          "match_type": "exact_pattern",
+          "match_confidence": "High"
+        },
+        "object": {
+          "key": "team",
+          "patterns": [
+            "team"
+          ],
+          "match_type": "exact_pattern",
+          "match_confidence": "High"
+        },
+        "purpose": {
+          "key": "coordination",
+          "patterns": [
+            "align"
+          ],
+          "match_type": "exact_pattern",
+          "match_confidence": "High"
+        },
+        "stage": {
+          "key": "",
+          "patterns": [],
+          "match_type": "unresolved",
+          "match_confidence": "Reject"
+        },
+        "control_flow": {
+          "key": "",
+          "patterns": [],
+          "match_type": "unresolved",
+          "match_confidence": "Reject"
+        }
+      },
+      "phrase_b": {
+        "raw_phrase": "The artifact is classified into categories.",
+        "role": {
+          "key": "act",
+          "patterns": [
+            "act"
+          ],
+          "match_type": "exact_pattern",
+          "match_confidence": "High"
+        },
+        "object": {
+          "key": "artifact",
+          "patterns": [
+            "artifact"
+          ],
+          "match_type": "exact_pattern",
+          "match_confidence": "High"
+        },
+        "purpose": {
+          "key": "",
+          "patterns": [],
+          "match_type": "unresolved",
+          "match_confidence": "Reject"
+        },
+        "stage": {
+          "key": "",
+          "patterns": [],
+          "match_type": "unresolved",
+          "match_confidence": "Reject"
+        },
+        "control_flow": {
+          "key": "branch",
+          "patterns": [
+            "or"
+          ],
+          "match_type": "exact_pattern",
+          "match_confidence": "High"
+        }
+      },
+      "comparison": {
+        "same_role": false,
+        "object_compatible": false,
+        "purpose_compatible": "",
+        "contradiction": false,
+        "shared_roles": [],
+        "shared_objects": [],
+        "shared_purposes": []
+      },
+      "result": "expected_pass",
+      "flag": null,
+      "notes": "Unrelated pair remained distinct."
+    }
+  ]
+}

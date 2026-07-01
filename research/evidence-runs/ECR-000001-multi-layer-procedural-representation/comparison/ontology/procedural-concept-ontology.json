@@ -1,0 +1,146 @@
+{
+  "ENTRY_PROBLEM_IDENTIFICATION": {
+    "label": "Problem or question identified",
+    "patterns": [
+      "unresolved situation",
+      "unanswered question",
+      "problem identified",
+      "question identified",
+      "initial uncertainty",
+      "unknown situation",
+      "issue identified",
+      "need identified",
+      "objective identified"
+    ]
+  },
+  "HYPOTHESIS_GENERATION": {
+    "label": "Candidate explanation or option generation",
+    "patterns": [
+      "possible explanation",
+      "candidate explanation",
+      "hypothesis",
+      "alternative",
+      "option generated",
+      "possible approach",
+      "candidate solution"
+    ]
+  },
+  "INFORMATION_GATHERING": {
+    "label": "Information or evidence gathered",
+    "patterns": [
+      "information gathered",
+      "evidence gathered",
+      "observations collected",
+      "data collected",
+      "measurement",
+      "feedback gathered",
+      "input collected"
+    ]
+  },
+  "EVIDENCE_EVALUATION": {
+    "label": "Evidence or option evaluated",
+    "patterns": [
+      "evaluate",
+      "assess",
+      "examined",
+      "determine how well",
+      "fit against evidence",
+      "evidence support",
+      "criteria"
+    ]
+  },
+  "COMPARISON": {
+    "label": "Alternatives compared or distinguished",
+    "patterns": [
+      "distinguish between",
+      "competing explanations",
+      "compare",
+      "contrast",
+      "differentiate",
+      "weigh alternatives"
+    ]
+  },
+  "CONFIDENCE_THRESHOLD": {
+    "label": "Confidence or sufficiency threshold",
+    "patterns": [
+      "confidence is insufficient",
+      "sufficiently supported",
+      "enough confidence",
+      "threshold",
+      "adequate support",
+      "support is sufficient"
+    ]
+  },
+  "REASSESSMENT_LOOP": {
+    "label": "Reassessment or continuation loop",
+    "patterns": [
+      "cycle continues",
+      "reassess",
+      "revisit",
+      "additional information",
+      "alternative explanations",
+      "continue investigation",
+      "iterate"
+    ]
+  },
+  "TERMINATION_OR_CLOSURE": {
+    "label": "Termination or closure condition",
+    "patterns": [
+      "no longer justified",
+      "stop",
+      "terminate",
+      "closure",
+      "exit",
+      "conclude",
+      "finalize",
+      "working conclusion"
+    ]
+  },
+  "COMMITMENT_DECISION": {
+    "label": "Decision or commitment",
+    "patterns": [
+      "decide",
+      "commit",
+      "selected",
+      "choose",
+      "working conclusion",
+      "selected option"
+    ]
+  },
+  "EXECUTION_CYCLE": {
+    "label": "Execution or action cycle",
+    "patterns": [
+      "execute",
+      "implement",
+      "perform work",
+      "deliver",
+      "increment",
+      "action",
+      "intervention"
+    ]
+  },
+  "COORDINATION": {
+    "label": "Coordination or alignment",
+    "patterns": [
+      "coordinate",
+      "align",
+      "synchronize",
+      "assign",
+      "allocate",
+      "team",
+      "responsibility"
+    ]
+  },
+  "HIERARCHICAL_CLASSIFICATION": {
+    "label": "Hierarchical classification",
+    "patterns": [
+      "hierarchy",
+      "level",
+      "category",
+      "classification",
+      "ordered levels",
+      "increasing complexity",
+      "taxonomy"
+    ]
+  }
+}

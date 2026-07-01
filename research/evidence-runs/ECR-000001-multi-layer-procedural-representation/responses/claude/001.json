@@ -1,0 +1,358 @@
+{
+  "packet_id": "ECR-000001-P001",
+  "blinded_artifact_id": "BA-ECR-001",
+  "recognized_artifact": "Diagnostic reasoning cycle / hypothetico-deductive inquiry loop",
+  "structural_layer": {
+    "entry_conditions": [
+      {
+        "value": "A situation exists that is unresolved and requires explanation",
+        "support_level": "explicit",
+        "source_text": "A line of inquiry begins when a situation remains unresolved and the actor must determine what best explains it.",
+        "ambiguity": "The nature of 'unresolved' is not specified — could mean factually ambiguous, causally unclear, or practically undetermined. Multiple readings are plausible."
+      }
+    ],
+    "exit_conditions": [
+      {
+        "value": "One explanation is supported strongly enough by available information",
+        "support_level": "explicit",
+        "source_text": "The cycle continues until one explanation is supported strongly enough by what is known",
+        "ambiguity": "Threshold for 'strongly enough' is not defined; subjective or context-dependent."
+      },
+      {
+        "value": "Further investigation is no longer justified",
+        "support_level": "explicit",
+        "source_text": "or until further investigation is no longer justified",
+        "ambiguity": "Reason for non-justification is unspecified — could be resource exhaustion, diminishing returns, external constraint, or irreversibility. These are procedurally distinct but the packet does not distinguish them."
+      }
+    ],
+    "required_steps": [
+      {
+        "value": "Generate a set of competing candidate explanations without prematurely settling on one",
+        "support_level": "explicit",
+        "source_text": "Several possible explanations are put forward without treating any one of them as settled.",
+        "ambiguity": "Whether this step requires a minimum number of candidates or can proceed with two is not specified."
+      },
+      {
+        "value": "Gather additional information targeted at discriminating between competing explanations",
+        "support_level": "explicit",
+        "source_text": "Additional information is gathered specifically to help separate the competing explanations.",
+        "ambiguity": "The mechanism or method of gathering is not described; could be observation, querying, experimentation, or other means."
+      },
+      {
+        "value": "Evaluate gathered information against each candidate explanation",
+        "support_level": "explicit",
+        "source_text": "That information is then checked against each explanation to see which one fits the observations best.",
+        "ambiguity": "Whether 'checked against each' means exhaustive pairwise comparison or a best-fit heuristic scan is ambiguous."
+      },
+      {
+        "value": "Assess whether confidence is sufficient to resolve the inquiry",
+        "support_level": "strongly_implied",
+        "source_text": "If confidence remains insufficient, the actor may gather more information or reformulate the explanation set.",
+        "ambiguity": "This assessment step is implied by the conditional branch but not stated as a discrete step."
+      }
+    ],
+    "optional_steps": [
+      {
+        "value": "Reformulate the set of candidate explanations",
+        "support_level": "explicit",
+        "source_text": "the actor may gather more information or reformulate the explanation set",
+        "ambiguity": "Whether reformulation replaces the prior set, augments it, or prunes it is not specified. These are procedurally distinct operations."
+      },
+      {
+        "value": "Gather additional information in a subsequent iteration",
+        "support_level": "explicit",
+        "source_text": "the actor may gather more information or reformulate the explanation set",
+        "ambiguity": "This is listed alongside reformulation as an 'or' branch — it is unclear whether both may occur simultaneously in one iteration or are mutually exclusive choices."
+      }
+    ],
+    "loops": [
+      {
+        "value": "The generate-gather-evaluate cycle repeats while confidence is insufficient and investigation remains justified",
+        "support_level": "explicit",
+        "source_text": "The cycle continues until one explanation is supported strongly enough by what is known, or until further investigation is no longer justified.",
+        "ambiguity": "The packet does not specify whether each loop iteration must regenerate all steps or may skip steps. It is also ambiguous whether the loop is strictly sequential or allows partial revisiting."
+      }
+    ],
+    "branches": [
+      {
+        "value": "On insufficient confidence: branch to (a) gather more information, or (b) reformulate explanations, or (c) both",
+        "support_level": "explicit",
+        "source_text": "the actor may gather more information or reformulate the explanation set",
+        "ambiguity": "The 'or' is inclusive or exclusive is unresolved. Three interpretations are plausible: exclusive choice, inclusive choice, or sequenced sub-options."
+      },
+      {
+        "value": "On sufficient confidence or unjustified further investigation: exit the loop",
+        "support_level": "explicit",
+        "source_text": "The cycle continues until one explanation is supported strongly enough by what is known, or until further investigation is no longer justified.",
+        "ambiguity": "These are two distinct exit triggers with potentially different procedural meanings (resolved vs. abandoned); the packet does not distinguish the resulting states."
+      }
+    ],
+    "termination_conditions": [
+      {
+        "value": "Sufficient evidential support for one explanation",
+        "support_level": "explicit",
+        "source_text": "until one explanation is supported strongly enough by what is known",
+        "ambiguity": "Threshold is unspecified and potentially actor-relative."
+      },
+      {
+        "value": "Investigation no longer justified",
+        "support_level": "explicit",
+        "source_text": "until further investigation is no longer justified",
+        "ambiguity": "Justification criterion is unspecified."
+      }
+    ],
+    "control_flow_shape": "Iterative conditional loop with branching on confidence assessment; enter on unresolved situation, iterate through candidate generation / targeted information gathering / fit evaluation, branch on insufficient confidence to gather-more or reformulate or both, exit on resolution or abandonment."
+  },
+  "primitive_layer": {
+    "primitive_sequence": [
+      "DETECT(unresolved situation)",
+      "GENERATE(candidate explanations, plurality, unsettled)",
+      "GATHER(targeted information, discriminatory purpose)",
+      "EVALUATE(information fit against each candidate)",
+      "ASSESS(confidence level)",
+      "BRANCH: if insufficient → GATHER_MORE | REFORMULATE | BOTH",
+      "LOOP back to GATHER or GENERATE",
+      "EXIT on sufficient confidence or unjustified continuation"
+    ],
+    "transitions": [
+      "DETECT → GENERATE",
+      "GENERATE → GATHER",
+      "GATHER → EVALUATE",
+      "EVALUATE → ASSESS",
+      "ASSESS(sufficient) → EXIT",
+      "ASSESS(insufficient, justified) → GATHER_MORE or REFORMULATE",
+      "GATHER_MORE → EVALUATE",
+      "REFORMULATE → GENERATE (or GATHER, ambiguous)",
+      "ASSESS(insufficient, unjustified) → EXIT"
+    ],
+    "dominant_primitive": "EVALUATE (iterative fit-checking of evidence against candidates is the core discriminating operation)",
+    "candidate_missing_primitives": [
+      "RANK or SCORE candidates (implied by 'fits best' but not stated as a discrete primitive)",
+      "PRUNE candidates (elimination of ruled-out explanations is plausible but not stated)",
+      "RECORD or LOG state across iterations (not mentioned; may or may not be present)"
+    ]
+  },
+  "constraint_layer": {
+    "invariants": [
+      {
+        "value": "Multiple candidate explanations must be maintained simultaneously; none may be pre-selected as settled during active inquiry",
+        "support_level": "explicit",
+        "source_text": "Several possible explanations are put forward without treating any one of them as settled.",
+        "ambiguity": "Whether this constraint applies only at the start or throughout each loop iteration is not stated."
+      },
+      {
+        "value": "Information gathering must be targeted at separating competing explanations, not general",
+        "support_level": "explicit",
+        "source_text": "Additional information is gathered specifically to help separate the competing explanations.",
+        "ambiguity": "Whether incidentally gathered non-discriminatory information may also be used is not addressed."
+      }
+    ],
+    "preconditions": [
+      {
+        "value": "Situation must be unresolved at loop entry",
+        "support_level": "explicit",
+        "source_text": "A line of inquiry begins when a situation remains unresolved",
+        "ambiguity": "None significant."
+      },
+      {
+        "value": "At least one (and implicitly more than one) candidate explanation must be available to begin gathering",
+        "support_level": "strongly_implied",
+        "source_text": "Several possible explanations are put forward",
+        "ambiguity": "Whether the procedure can proceed with a single candidate is not addressed; 'several' implies plurality."
+      }
+    ],
+    "postconditions": [
+      {
+        "value": "On resolved exit: one explanation is selected as sufficiently supported",
+        "support_level": "explicit",
+        "source_text": "until one explanation is supported strongly enough by what is known",
+        "ambiguity": "Whether competing explanations are explicitly rejected or merely deprioritized is not stated."
+      },
+      {
+        "value": "On abandoned exit: inquiry terminates without necessarily identifying a best explanation",
+        "support_level": "strongly_implied",
+        "source_text": "until further investigation is no longer justified",
+        "ambiguity": "The state of the explanation set at abandonment is not described."
+      }
+    ],
+    "stopping_criteria": [
+      {
+        "value": "Confidence in one explanation exceeds threshold",
+        "support_level": "explicit",
+        "source_text": "one explanation is supported strongly enough by what is known",
+        "ambiguity": "Threshold is actor-defined or context-dependent; not formalized."
+      },
+      {
+        "value": "Further investigation unjustified",
+        "support_level": "explicit",
+        "source_text": "further investigation is no longer justified",
+        "ambiguity": "Basis for justification not specified."
+      }
+    ],
+    "validity_conditions": [
+      {
+        "value": "The procedure requires that information gathered be checked against all current candidate explanations, not a subset",
+        "support_level": "explicit",
+        "source_text": "checked against each explanation",
+        "ambiguity": "Whether 'each' means exhaustive or representative coverage is ambiguous."
+      }
+    ]
+  },
+  "representation_layer": {
+    "procedural_ast": {
+      "type": "procedure",
+      "name": "iterative_explanatory_inquiry",
+      "entry": {
+        "type": "condition",
+        "predicate": "situation_unresolved"
+      },
+      "body": {
+        "type": "sequence",
+        "steps": [
+          {
+            "type": "action",
+            "name": "generate_candidate_explanations",
+            "constraint": "plurality_unsettled"
+          },
+          {
+            "type": "loop",
+            "condition": "NOT (confidence_sufficient OR investigation_unjustified)",
+            "body": {
+              "type": "sequence",
+              "steps": [
+                {
+                  "type": "action",
+                  "name": "gather_targeted_information",
+                  "purpose": "discriminate_between_candidates"
+                },
+                {
+                  "type": "action",
+                  "name": "evaluate_information_fit",
+                  "scope": "each_candidate"
+                },
+                {
+                  "type": "action",
+                  "name": "assess_confidence"
+                },
+                {
+                  "type": "branch",
+                  "condition": "confidence_insufficient",
+                  "options": [
+                    {
+                      "type": "action",
+                      "name": "gather_more_information"
+                    },
+                    {
+                      "type": "action",
+                      "name": "reformulate_explanation_set"
+                    }
+                  ],
+                  "ambiguity": "exclusive_or_inclusive_or_sequenced"
+                }
+              ]
+            }
+          }
+        ]
+      },
+      "exit": {
+        "type": "branch",
+        "conditions": [
+          {
+            "predicate": "confidence_sufficient",
+            "outcome": "one_explanation_selected"
+          },
+          {
+            "predicate": "investigation_unjustified",
+            "outcome": "inquiry_abandoned"
+          }
+        ]
+      }
+    },
+    "natural_language_summary": "The procedure describes an iterative inquiry that begins when a situation cannot be explained by what is already known. The actor first generates multiple candidate explanations without committing to any. Information is then gathered with the specific aim of distinguishing between them. That information is evaluated against each candidate. If confidence in any single explanation is still insufficient, the actor may gather more information, generate new or revised explanations, or both, and repeat. The loop continues until one explanation is adequately supported or further inquiry is no longer warranted.",
+    "canonical_summary": "Iterative hypothetico-deductive inquiry loop: enter on unresolved situation, generate plural unsettled candidates, repeatedly gather discriminatory evidence and evaluate fit against all candidates, branch on insufficient confidence to regather or reformulate, exit on sufficient support for one explanation or unjustified continuation.",
+    "ambiguities": [
+      {
+        "location": "optional branch: 'gather more information or reformulate'",
+        "description": "The logical relationship between the two options is unspecified.",
+        "plausible_interpretations": [
+          "Exclusive or: actor chooses one",
+          "Inclusive or: actor may do both in one iteration",
+          "Sequenced: reformulation triggers new gathering in the same iteration"
+        ],
+        "effect_on_extraction": "Affects whether REFORMULATE and GATHER_MORE are sibling branches or a nested sub-loop; changes the loop topology."
+      },
+      {
+        "location": "exit condition: 'investigation no longer justified'",
+        "description": "Basis for justification is unspecified.",
+        "plausible_interpretations": [
+          "Resource or cost constraint",
+          "Diminishing returns on evidence",
+          "External termination imposed by context",
+          "Logical impossibility of further discrimination"
+        ],
+        "effect_on_extraction": "Does not change control flow shape but affects what postcondition is recorded and whether the exit is treated as resolution or abandonment."
+      },
+      {
+        "location": "reformulate step: destination after reformulation",
+        "description": "After reformulating the explanation set, the next step is not stated.",
+        "plausible_interpretations": [
+          "Return to gathering (implies candidates are updated, information gathering continues)",
+          "Return to full loop start (re-evaluate prior evidence against new candidates)",
+          "Both equally plausible"
+        ],
+        "effect_on_extraction": "Changes loop back-edge target; meaningfully different procedural semantics."
+      },
+      {
+        "location": "evaluate step: 'fits the observations best'",
+        "description": "Whether 'best' implies an explicit ranking, scoring, or threshold comparison is not stated.",
+        "plausible_interpretations": [
+          "Ordinal ranking of all candidates",
+          "Binary pass/fail against a threshold",
+          "Comparative pairwise elimination"
+        ],
+        "effect_on_extraction": "Affects what primitive underlies the EVALUATE step."
+      }
+    ]
+  },
+  "product_relevance_layer": {
+    "clarity_relevance_observations": [
+      {
+        "value": "The procedure's emphasis on maintaining multiple unsettled candidates before committing mirrors best practice in structured analytical frameworks where premature closure is a documented failure mode.",
+        "support_level": "inferred",
+        "source_text": "Several possible explanations are put forward without treating any one of them as settled.",
+        "ambiguity": "Relevance to any specific product is inferred; not supported by packet content."
+      },
+      {
+        "value": "The iterative gather-evaluate cycle with a confidence-based exit is well-suited to representation as a stateful workflow with explicit state tracking of candidate support levels.",
+        "support_level": "inferred",
+        "source_text": "The cycle continues until one explanation is supported strongly enough by what is known",
+        "ambiguity": "Implementation inference only."
+      }
+    ],
+    "edf_relevance_observations": [
+      {
+        "value": "The procedure is a strong candidate for encoding as a reusable reasoning primitive in an evaluation or decision framework, given its well-defined loop structure and dual exit conditions.",
+        "support_level": "inferred",
+        "source_text": "The cycle continues until one explanation is supported strongly enough by what is known, or until further investigation is no longer justified.",
+        "ambiguity": "Inferred; no explicit EDF reference in packet."
+      }
+    ],
+    "research_only_observations": [
+      {
+        "value": "The refinement note (v1.1) indicates the prior calibration run (P001) showed model tendency to collapse ambiguous procedural alternatives into a single reading — this packet is explicitly designed to test preservation of ambiguity under extraction.",
+        "support_level": "explicit",
+        "source_text": "P001 calibration showed models may collapse plausible procedural alternatives; v1.1 asks models to preserve ambiguity and mark evidence support level.",
+        "ambiguity": "None — this is a meta-observation about the calibration study itself."
+      }
+    ]
+  },
+  "confidence": {
+    "structural_layer": "high — control flow is explicitly described with clear entry, loop, branch, and exit semantics; main uncertainty is in branch topology",
+    "primitive_layer": "medium-high — dominant primitives are clear; transitions at reformulate back-edge and branch exclusivity are genuinely ambiguous",
+    "constraint_layer": "high — invariants and stopping criteria are explicit; threshold values are deliberately unspecified in the source",
+    "representation_layer": "medium — AST and summary are well-grounded but four non-trivial ambiguities remain unresolved and are preserved rather than collapsed",
+    "product_relevance_layer": "low-medium — observations are inferred; packet provides no product context",
+    "overall": "medium-high — structural and constraint extraction is reliable; ambiguities are explicitly preserved per v1.1 instructions rather than resolved"
+  },
+  "notes": "Per v1.1 refinement instructions, ambiguities have been preserved as explicit alternatives rather than collapsed. Four ambiguities materially affect the procedural representation: (1) branch topology of the gather-more/reformulate option, (2) back-edge destination after reformulation, (3) semantics of 'fits best' in the evaluation step, and (4) basis for the unjustified-continuation exit. The recognized artifact (hypothetico-deductive inquiry / diagnostic reasoning cycle) is recorded but has not been used to introduce structure beyond what the packet explicitly or strongly implies."
+}

@@ -1,0 +1,13 @@
+{
+  "entry": { "patterns": ["identify", "recognized", "initial", "unresolved"], "description": "Entry into reasoning or action." },
+  "early_reasoning": { "patterns": ["candidate", "possible", "generate", "hypothesis"], "description": "Early reasoning and framing." },
+  "evidence_collection": { "patterns": ["gather", "collect", "measure", "obtain"], "description": "Collection of evidence or information." },
+  "analysis": { "patterns": ["evaluate", "assess", "compare", "differentiate"], "description": "Analytical assessment." },
+  "decision_preparation": { "patterns": ["prioritize", "rank", "order", "prepare"], "description": "Preparation for decision." },
+  "decision": { "patterns": ["decide", "choose", "select", "commit"], "description": "Decision or commitment stage." },
+  "execution": { "patterns": ["execute", "perform", "deliver", "produce"], "description": "Execution stage." },
+  "verification": { "patterns": ["verify", "validate", "confirm", "test"], "description": "Verification stage." },
+  "reflection": { "patterns": ["reflect", "review", "retrospective", "lessons"], "description": "Reflection or learning stage." },
+  "termination": { "patterns": ["stop", "terminate", "end", "abandon"], "description": "Termination stage." },
+  "unclear": { "patterns": [], "description": "No safe stage match." }
+}

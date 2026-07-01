@@ -1,0 +1,3322 @@
+[
+  {
+    "packet_id": "ECR-000001-P001",
+    "provider": "gpt",
+    "field": "structural_layer.entry_conditions",
+    "raw_items": [],
+    "literal_items": [],
+    "semantic_concepts": [],
+    "unresolved_items": []
+  },
+  {
+    "packet_id": "ECR-000001-P001",
+    "provider": "claude",
+    "field": "structural_layer.entry_conditions",
+    "raw_items": [
+      "A situation exists that is unresolved and requires explanation",
+      "A line of inquiry begins when a situation remains unresolved and the actor must determine what best explains it.",
+      "The nature of 'unresolved' is not specified — could mean factually ambiguous, causally unclear, or practically undetermined. Multiple readings are plausible."
+    ],
+    "literal_items": [
+      "a situation exists that is unresolved and requires explanation",
+      "a line of inquiry begins when a situation remains unresolved and the actor must determine what best explains it",
+      "the nature of unresolved is not specified could mean factually ambiguous causally unclear or practically undetermined multiple readings are plausible"
+    ],
+    "semantic_concepts": [
+      "ENTRY_PROBLEM_IDENTIFICATION"
+    ],
+    "unresolved_items": [
+      "The nature of 'unresolved' is not specified — could mean factually ambiguous, causally unclear, or practically undetermined. Multiple readings are plausible."
+    ]
+  },
+  {
+    "packet_id": "ECR-000001-P001",
+    "provider": "gemini",
+    "field": "structural_layer.entry_conditions",
+    "raw_items": [
+      "A situation remains unresolved and the actor must determine what best explains it.",
+      "A line of inquiry begins when a situation remains unresolved and the actor must determine what best explains it.",
+      "None. Directly states the initiating trigger."
+    ],
+    "literal_items": [
+      "a situation remains unresolved and the actor must determine what best explains it",
+      "a line of inquiry begins when a situation remains unresolved and the actor must determine what best explains it",
+      "none directly states the initiating trigger"
+    ],
+    "semantic_concepts": [
+      "ENTRY_PROBLEM_IDENTIFICATION"
+    ],
+    "unresolved_items": [
+      "None. Directly states the initiating trigger."
+    ]
+  },
+  {
+    "packet_id": "ECR-000001-P001",
+    "provider": "gpt",
+    "field": "structural_layer.exit_conditions",
+    "raw_items": [],
+    "literal_items": [],
+    "semantic_concepts": [],
+    "unresolved_items": []
+  },
+  {
+    "packet_id": "ECR-000001-P001",
+    "provider": "claude",
+    "field": "structural_layer.exit_conditions",
+    "raw_items": [
+      "One explanation is supported strongly enough by available information",
+      "The cycle continues until one explanation is supported strongly enough by what is known",
+      "Threshold for 'strongly enough' is not defined; subjective or context-dependent.",
+      "Further investigation is no longer justified",
+      "or until further investigation is no longer justified",
+      "Reason for non-justification is unspecified — could be resource exhaustion, diminishing returns, external constraint, or irreversibility. These are procedurally distinct but the packet does not distinguish them."
+    ],
+    "literal_items": [
+      "one explanation is supported strongly enough by available information",
+      "the cycle continues until one explanation is supported strongly enough by what is known",
+      "threshold for strongly enough is not defined subjective or context dependent",
+      "further investigation is no longer justified",
+      "or until further investigation is no longer justified",
+      "reason for non justification is unspecified could be resource exhaustion diminishing returns external constraint or irreversibility these are procedurally distinct but the packet does not distinguish them"
+    ],
+    "semantic_concepts": [
+      "REASSESSMENT_LOOP",
+      "CONFIDENCE_THRESHOLD",
+      "TERMINATION_OR_CLOSURE"
+    ],
+    "unresolved_items": [
+      "One explanation is supported strongly enough by available information",
+      "Reason for non-justification is unspecified — could be resource exhaustion, diminishing returns, external constraint, or irreversibility. These are procedurally distinct but the packet does not distinguish them."
+    ]
+  },
+  {
+    "packet_id": "ECR-000001-P001",
+    "provider": "gemini",
+    "field": "structural_layer.exit_conditions",
+    "raw_items": [
+      "One explanation is supported strongly enough by what is known.",
+      "The cycle continues until one explanation is supported strongly enough by what is known",
+      "Ambiguity exists regarding whether 'supported strongly enough' matches an objective benchmark or subjective actor confidence.",
+      "Further investigation is no longer justified.",
+      "or until further investigation is no longer justified.",
+      "The criteria for justification are unspecified, leaving it open to interpretation whether this is based on resource constraints, futility, or external factors."
+    ],
+    "literal_items": [
+      "one explanation is supported strongly enough by what is known",
+      "the cycle continues until one explanation is supported strongly enough by what is known",
+      "ambiguity exists regarding whether supported strongly enough matches an objective benchmark or subjective actor confidence",
+      "further investigation is no longer justified",
+      "or until further investigation is no longer justified",
+      "the criteria for justification are unspecified leaving it open to interpretation whether this is based on resource constraints futility or external factors"
+    ],
+    "semantic_concepts": [
+      "REASSESSMENT_LOOP",
+      "CONFIDENCE_THRESHOLD",
+      "TERMINATION_OR_CLOSURE",
+      "EVIDENCE_EVALUATION"
+    ],
+    "unresolved_items": [
+      "One explanation is supported strongly enough by what is known."
+    ]
+  },
+  {
+    "packet_id": "ECR-000001-P001",
+    "provider": "gpt",
+    "field": "structural_layer.required_steps",
+    "raw_items": [],
+    "literal_items": [],
+    "semantic_concepts": [],
+    "unresolved_items": []
+  },
+  {
+    "packet_id": "ECR-000001-P001",
+    "provider": "claude",
+    "field": "structural_layer.required_steps",
+    "raw_items": [
+      "Generate a set of competing candidate explanations without prematurely settling on one",
+      "Several possible explanations are put forward without treating any one of them as settled.",
+      "Whether this step requires a minimum number of candidates or can proceed with two is not specified.",
+      "Gather additional information targeted at discriminating between competing explanations",
+      "Additional information is gathered specifically to help separate the competing explanations.",
+      "The mechanism or method of gathering is not described; could be observation, querying, experimentation, or other means.",
+      "Evaluate gathered information against each candidate explanation",
+      "That information is then checked against each explanation to see which one fits the observations best.",
+      "Whether 'checked against each' means exhaustive pairwise comparison or a best-fit heuristic scan is ambiguous.",
+      "Assess whether confidence is sufficient to resolve the inquiry",
+      "If confidence remains insufficient, the actor may gather more information or reformulate the explanation set.",
+      "This assessment step is implied by the conditional branch but not stated as a discrete step."
+    ],
+    "literal_items": [
+      "generate a set of competing candidate explanations without prematurely settling on one",
+      "several possible explanations are put forward without treating any one of them as settled",
+      "whether this step requires a minimum number of candidates or can proceed with two is not specified",
+      "gather additional information targeted at discriminating between competing explanations",
+      "additional information is gathered specifically to help separate the competing explanations",
+      "the mechanism or method of gathering is not described could be observation querying experimentation or other means",
+      "evaluate gathered information against each candidate explanation",
+      "that information is then checked against each explanation to see which one fits the observations best",
+      "whether checked against each means exhaustive pairwise comparison or a best fit heuristic scan is ambiguous",
+      "assess whether confidence is sufficient to resolve the inquiry",
+      "if confidence remains insufficient the actor may gather more information or reformulate the explanation set",
+      "this assessment step is implied by the conditional branch but not stated as a discrete step"
+    ],
+    "semantic_concepts": [
+      "HYPOTHESIS_GENERATION",
+      "COMPARISON",
+      "REASSESSMENT_LOOP",
+      "INFORMATION_GATHERING",
+      "EVIDENCE_EVALUATION"
+    ],
+    "unresolved_items": [
+      "Whether this step requires a minimum number of candidates or can proceed with two is not specified.",
+      "The mechanism or method of gathering is not described; could be observation, querying, experimentation, or other means.",
+      "That information is then checked against each explanation to see which one fits the observations best.",
+      "Whether 'checked against each' means exhaustive pairwise comparison or a best-fit heuristic scan is ambiguous.",
+      "If confidence remains insufficient, the actor may gather more information or reformulate the explanation set."
+    ]
+  },
+  {
+    "packet_id": "ECR-000001-P001",
+    "provider": "gemini",
+    "field": "structural_layer.required_steps",
+    "raw_items": [
+      "Put forward several possible explanations without treating any one as settled.",
+      "Several possible explanations are put forward without treating any one of them as settled.",
+      "Gather additional information specifically to help separate the competing explanations.",
+      "Additional information is gathered specifically to help separate the competing explanations.",
+      "Check the gathered information against each explanation to evaluate the best fit.",
+      "That information is then checked against each explanation to see which one fits the observations best."
+    ],
+    "literal_items": [
+      "put forward several possible explanations without treating any one as settled",
+      "several possible explanations are put forward without treating any one of them as settled",
+      "gather additional information specifically to help separate the competing explanations",
+      "additional information is gathered specifically to help separate the competing explanations",
+      "check the gathered information against each explanation to evaluate the best fit",
+      "that information is then checked against each explanation to see which one fits the observations best"
+    ],
+    "semantic_concepts": [
+      "HYPOTHESIS_GENERATION",
+      "COMPARISON",
+      "REASSESSMENT_LOOP",
+      "INFORMATION_GATHERING",
+      "EVIDENCE_EVALUATION"
+    ],
+    "unresolved_items": [
+      "That information is then checked against each explanation to see which one fits the observations best."
+    ]
+  },
+  {
+    "packet_id": "ECR-000001-P001",
+    "provider": "gpt",
+    "field": "structural_layer.optional_steps",
+    "raw_items": [],
+    "literal_items": [],
+    "semantic_concepts": [],
+    "unresolved_items": []
+  },
+  {
+    "packet_id": "ECR-000001-P001",
+    "provider": "claude",
+    "field": "structural_layer.optional_steps",
+    "raw_items": [
+      "Reformulate the set of candidate explanations",
+      "the actor may gather more information or reformulate the explanation set",
+      "Whether reformulation replaces the prior set, augments it, or prunes it is not specified. These are procedurally distinct operations.",
+      "Gather additional information in a subsequent iteration",
+      "This is listed alongside reformulation as an 'or' branch — it is unclear whether both may occur simultaneously in one iteration or are mutually exclusive choices."
+    ],
+    "literal_items": [
+      "reformulate the set of candidate explanations",
+      "the actor may gather more information or reformulate the explanation set",
+      "whether reformulation replaces the prior set augments it or prunes it is not specified these are procedurally distinct operations",
+      "gather additional information in a subsequent iteration",
+      "this is listed alongside reformulation as an or branch it is unclear whether both may occur simultaneously in one iteration or are mutually exclusive choices"
+    ],
+    "semantic_concepts": [
+      "HYPOTHESIS_GENERATION",
+      "REASSESSMENT_LOOP"
+    ],
+    "unresolved_items": [
+      "the actor may gather more information or reformulate the explanation set",
+      "Whether reformulation replaces the prior set, augments it, or prunes it is not specified. These are procedurally distinct operations.",
+      "This is listed alongside reformulation as an 'or' branch — it is unclear whether both may occur simultaneously in one iteration or are mutually exclusive choices."
+    ]
+  },
+  {
+    "packet_id": "ECR-000001-P001",
+    "provider": "gemini",
+    "field": "structural_layer.optional_steps",
+    "raw_items": [
+      "Gather more information (during loop if confidence is insufficient).",
+      "If confidence remains insufficient, the actor may gather more information",
+      "Ambiguous if this acts as a replacement or supplement to reformulating the explanations.",
+      "Reformulate the explanation set (during loop if confidence is insufficient).",
+      "or reformulate the explanation set.",
+      "Ambiguous if this means adding new explanations, modifying existing ones, or discarding non-fitting ones."
+    ],
+    "literal_items": [
+      "gather more information during loop if confidence is insufficient",
+      "if confidence remains insufficient the actor may gather more information",
+      "ambiguous if this acts as a replacement or supplement to reformulating the explanations",
+      "reformulate the explanation set during loop if confidence is insufficient",
+      "or reformulate the explanation set",
+      "ambiguous if this means adding new explanations modifying existing ones or discarding non fitting ones"
+    ],
+    "semantic_concepts": [
+      "CONFIDENCE_THRESHOLD"
+    ],
+    "unresolved_items": [
+      "If confidence remains insufficient, the actor may gather more information",
+      "Ambiguous if this acts as a replacement or supplement to reformulating the explanations.",
+      "or reformulate the explanation set.",
+      "Ambiguous if this means adding new explanations, modifying existing ones, or discarding non-fitting ones."
+    ]
+  },
+  {
+    "packet_id": "ECR-000001-P001",
+    "provider": "gpt",
+    "field": "structural_layer.loops",
+    "raw_items": [],
+    "literal_items": [],
+    "semantic_concepts": [],
+    "unresolved_items": []
+  },
+  {
+    "packet_id": "ECR-000001-P001",
+    "provider": "claude",
+    "field": "structural_layer.loops",
+    "raw_items": [
+      "The generate-gather-evaluate cycle repeats while confidence is insufficient and investigation remains justified",
+      "The cycle continues until one explanation is supported strongly enough by what is known, or until further investigation is no longer justified.",
+      "The packet does not specify whether each loop iteration must regenerate all steps or may skip steps. It is also ambiguous whether the loop is strictly sequential or allows partial revisiting."
+    ],
+    "literal_items": [
+      "the generate gather evaluate cycle repeats while confidence is insufficient and investigation remains justified",
+      "the cycle continues until one explanation is supported strongly enough by what is known or until further investigation is no longer justified",
+      "the packet does not specify whether each loop iteration must regenerate all steps or may skip steps it is also ambiguous whether the loop is strictly sequential or allows partial revisiting"
+    ],
+    "semantic_concepts": [
+      "EVIDENCE_EVALUATION",
+      "CONFIDENCE_THRESHOLD",
+      "REASSESSMENT_LOOP",
+      "TERMINATION_OR_CLOSURE"
+    ],
+    "unresolved_items": []
+  },
+  {
+    "packet_id": "ECR-000001-P001",
+    "provider": "gemini",
+    "field": "structural_layer.loops",
+    "raw_items": [
+      "Cycle of gathering more info/reformulating explanation set and re-checking fit when confidence is insufficient.",
+      "If confidence remains insufficient, the actor may gather more information or reformulate the explanation set. The cycle continues until...",
+      "Plausible alternative structures: 1) The loop routes all the way back to evaluating original steps with new data. 2) The loop is an inner routine specifically mutating the explanation set or data pool before re-checking fit."
+    ],
+    "literal_items": [
+      "cycle of gathering more info reformulating explanation set and re checking fit when confidence is insufficient",
+      "if confidence remains insufficient the actor may gather more information or reformulate the explanation set the cycle continues until",
+      "plausible alternative structures 1 the loop routes all the way back to evaluating original steps with new data 2 the loop is an inner routine specifically mutating the explanation set or data pool before re checking fit"
+    ],
+    "semantic_concepts": [
+      "CONFIDENCE_THRESHOLD",
+      "REASSESSMENT_LOOP",
+      "HYPOTHESIS_GENERATION"
+    ],
+    "unresolved_items": []
+  },
+  {
+    "packet_id": "ECR-000001-P001",
+    "provider": "gpt",
+    "field": "structural_layer.branches",
+    "raw_items": [],
+    "literal_items": [],
+    "semantic_concepts": [],
+    "unresolved_items": []
+  },
+  {
+    "packet_id": "ECR-000001-P001",
+    "provider": "claude",
+    "field": "structural_layer.branches",
+    "raw_items": [
+      "On insufficient confidence: branch to (a) gather more information, or (b) reformulate explanations, or (c) both",
+      "the actor may gather more information or reformulate the explanation set",
+      "The 'or' is inclusive or exclusive is unresolved. Three interpretations are plausible: exclusive choice, inclusive choice, or sequenced sub-options.",
+      "On sufficient confidence or unjustified further investigation: exit the loop",
+      "The cycle continues until one explanation is supported strongly enough by what is known, or until further investigation is no longer justified.",
+      "These are two distinct exit triggers with potentially different procedural meanings (resolved vs. abandoned); the packet does not distinguish the resulting states."
+    ],
+    "literal_items": [
+      "on insufficient confidence branch to a gather more information or b reformulate explanations or c both",
+      "the actor may gather more information or reformulate the explanation set",
+      "the or is inclusive or exclusive is unresolved three interpretations are plausible exclusive choice inclusive choice or sequenced sub options",
+      "on sufficient confidence or unjustified further investigation exit the loop",
+      "the cycle continues until one explanation is supported strongly enough by what is known or until further investigation is no longer justified",
+      "these are two distinct exit triggers with potentially different procedural meanings resolved vs abandoned the packet does not distinguish the resulting states"
+    ],
+    "semantic_concepts": [
+      "TERMINATION_OR_CLOSURE",
+      "REASSESSMENT_LOOP"
+    ],
+    "unresolved_items": [
+      "On insufficient confidence: branch to (a) gather more information, or (b) reformulate explanations, or (c) both",
+      "the actor may gather more information or reformulate the explanation set",
+      "The 'or' is inclusive or exclusive is unresolved. Three interpretations are plausible: exclusive choice, inclusive choice, or sequenced sub-options."
+    ]
+  },
+  {
+    "packet_id": "ECR-000001-P001",
+    "provider": "gemini",
+    "field": "structural_layer.branches",
+    "raw_items": [
+      "Branch between gathering more information OR reformulating the explanation set.",
+      "the actor may gather more information or reformulate the explanation set.",
+      "It is ambiguous whether these are mutually exclusive options or if both can occur simultaneously, given the use of 'or'.",
+      "Branch between termination via finding a sufficient explanation OR via investigation no longer being justified.",
+      "until one explanation is supported strongly enough by what is known, or until further investigation is no longer justified."
+    ],
+    "literal_items": [
+      "branch between gathering more information or reformulating the explanation set",
+      "the actor may gather more information or reformulate the explanation set",
+      "it is ambiguous whether these are mutually exclusive options or if both can occur simultaneously given the use of or",
+      "branch between termination via finding a sufficient explanation or via investigation no longer being justified",
+      "until one explanation is supported strongly enough by what is known or until further investigation is no longer justified"
+    ],
+    "semantic_concepts": [
+      "TERMINATION_OR_CLOSURE"
+    ],
+    "unresolved_items": [
+      "Branch between gathering more information OR reformulating the explanation set.",
+      "the actor may gather more information or reformulate the explanation set.",
+      "It is ambiguous whether these are mutually exclusive options or if both can occur simultaneously, given the use of 'or'."
+    ]
+  },
+  {
+    "packet_id": "ECR-000001-P001",
+    "provider": "gpt",
+    "field": "structural_layer.termination_conditions",
+    "raw_items": [],
+    "literal_items": [],
+    "semantic_concepts": [],
+    "unresolved_items": []
+  },
+  {
+    "packet_id": "ECR-000001-P001",
+    "provider": "claude",
+    "field": "structural_layer.termination_conditions",
+    "raw_items": [
+      "Sufficient evidential support for one explanation",
+      "until one explanation is supported strongly enough by what is known",
+      "Threshold is unspecified and potentially actor-relative.",
+      "Investigation no longer justified",
+      "until further investigation is no longer justified",
+      "Justification criterion is unspecified."
+    ],
+    "literal_items": [
+      "sufficient evidential support for one explanation",
+      "until one explanation is supported strongly enough by what is known",
+      "threshold is unspecified and potentially actor relative",
+      "investigation no longer justified",
+      "until further investigation is no longer justified",
+      "justification criterion is unspecified"
+    ],
+    "semantic_concepts": [
+      "CONFIDENCE_THRESHOLD",
+      "TERMINATION_OR_CLOSURE"
+    ],
+    "unresolved_items": [
+      "Sufficient evidential support for one explanation",
+      "until one explanation is supported strongly enough by what is known",
+      "Justification criterion is unspecified."
+    ]
+  },
+  {
+    "packet_id": "ECR-000001-P001",
+    "provider": "gemini",
+    "field": "structural_layer.termination_conditions",
+    "raw_items": [
+      "One explanation achieves sufficient empirical or evidentiary support.",
+      "until one explanation is supported strongly enough by what is known",
+      "Further investigation loses justification.",
+      "or until further investigation is no longer justified."
+    ],
+    "literal_items": [
+      "one explanation achieves sufficient empirical or evidentiary support",
+      "until one explanation is supported strongly enough by what is known",
+      "further investigation loses justification",
+      "or until further investigation is no longer justified"
+    ],
+    "semantic_concepts": [
+      "TERMINATION_OR_CLOSURE"
+    ],
+    "unresolved_items": [
+      "One explanation achieves sufficient empirical or evidentiary support.",
+      "until one explanation is supported strongly enough by what is known",
+      "Further investigation loses justification."
+    ]
+  },
+  {
+    "packet_id": "ECR-000001-P001",
+    "provider": "gpt",
+    "field": "constraint_layer.invariants",
+    "raw_items": [],
+    "literal_items": [],
+    "semantic_concepts": [],
+    "unresolved_items": []
+  },
+  {
+    "packet_id": "ECR-000001-P001",
+    "provider": "claude",
+    "field": "constraint_layer.invariants",
+    "raw_items": [
+      "Multiple candidate explanations must be maintained simultaneously; none may be pre-selected as settled during active inquiry",
+      "Several possible explanations are put forward without treating any one of them as settled.",
+      "Whether this constraint applies only at the start or throughout each loop iteration is not stated.",
+      "Information gathering must be targeted at separating competing explanations, not general",
+      "Additional information is gathered specifically to help separate the competing explanations.",
+      "Whether incidentally gathered non-discriminatory information may also be used is not addressed."
+    ],
+    "literal_items": [
+      "multiple candidate explanations must be maintained simultaneously none may be pre selected as settled during active inquiry",
+      "several possible explanations are put forward without treating any one of them as settled",
+      "whether this constraint applies only at the start or throughout each loop iteration is not stated",
+      "information gathering must be targeted at separating competing explanations not general",
+      "additional information is gathered specifically to help separate the competing explanations",
+      "whether incidentally gathered non discriminatory information may also be used is not addressed"
+    ],
+    "semantic_concepts": [
+      "HYPOTHESIS_GENERATION",
+      "COMMITMENT_DECISION",
+      "COMPARISON",
+      "INFORMATION_GATHERING",
+      "REASSESSMENT_LOOP"
+    ],
+    "unresolved_items": [
+      "Whether this constraint applies only at the start or throughout each loop iteration is not stated."
+    ]
+  },
+  {
+    "packet_id": "ECR-000001-P001",
+    "provider": "gemini",
+    "field": "constraint_layer.invariants",
+    "raw_items": [
+      "No single explanation is treated as settled prior to evaluation.",
+      "without treating any one of them as settled."
+    ],
+    "literal_items": [
+      "no single explanation is treated as settled prior to evaluation",
+      "without treating any one of them as settled"
+    ],
+    "semantic_concepts": [],
+    "unresolved_items": [
+      "No single explanation is treated as settled prior to evaluation.",
+      "without treating any one of them as settled."
+    ]
+  },
+  {
+    "packet_id": "ECR-000001-P001",
+    "provider": "gpt",
+    "field": "constraint_layer.preconditions",
+    "raw_items": [],
+    "literal_items": [],
+    "semantic_concepts": [],
+    "unresolved_items": []
+  },
+  {
+    "packet_id": "ECR-000001-P001",
+    "provider": "claude",
+    "field": "constraint_layer.preconditions",
+    "raw_items": [
+      "Situation must be unresolved at loop entry",
+      "A line of inquiry begins when a situation remains unresolved",
+      "None significant.",
+      "At least one (and implicitly more than one) candidate explanation must be available to begin gathering",
+      "Several possible explanations are put forward",
+      "Whether the procedure can proceed with a single candidate is not addressed; 'several' implies plurality."
+    ],
+    "literal_items": [
+      "situation must be unresolved at loop entry",
+      "a line of inquiry begins when a situation remains unresolved",
+      "none significant",
+      "at least one and implicitly more than one candidate explanation must be available to begin gathering",
+      "several possible explanations are put forward",
+      "whether the procedure can proceed with a single candidate is not addressed several implies plurality"
+    ],
+    "semantic_concepts": [
+      "ENTRY_PROBLEM_IDENTIFICATION",
+      "HYPOTHESIS_GENERATION"
+    ],
+    "unresolved_items": [
+      "None significant.",
+      "Whether the procedure can proceed with a single candidate is not addressed; 'several' implies plurality."
+    ]
+  },
+  {
+    "packet_id": "ECR-000001-P001",
+    "provider": "gemini",
+    "field": "constraint_layer.preconditions",
+    "raw_items": [
+      "An unresolved situation exists.",
+      "when a situation remains unresolved",
+      "The actor has a requirement or motivation to explain the situation.",
+      "and the actor must determine what best explains it."
+    ],
+    "literal_items": [
+      "an unresolved situation exists",
+      "when a situation remains unresolved",
+      "the actor has a requirement or motivation to explain the situation",
+      "and the actor must determine what best explains it"
+    ],
+    "semantic_concepts": [
+      "ENTRY_PROBLEM_IDENTIFICATION"
+    ],
+    "unresolved_items": [
+      "The actor has a requirement or motivation to explain the situation.",
+      "and the actor must determine what best explains it."
+    ]
+  },
+  {
+    "packet_id": "ECR-000001-P001",
+    "provider": "gpt",
+    "field": "constraint_layer.postconditions",
+    "raw_items": [],
+    "literal_items": [],
+    "semantic_concepts": [],
+    "unresolved_items": []
+  },
+  {
+    "packet_id": "ECR-000001-P001",
+    "provider": "claude",
+    "field": "constraint_layer.postconditions",
+    "raw_items": [
+      "On resolved exit: one explanation is selected as sufficiently supported",
+      "until one explanation is supported strongly enough by what is known",
+      "Whether competing explanations are explicitly rejected or merely deprioritized is not stated.",
+      "On abandoned exit: inquiry terminates without necessarily identifying a best explanation",
+      "until further investigation is no longer justified",
+      "The state of the explanation set at abandonment is not described."
+    ],
+    "literal_items": [
+      "on resolved exit one explanation is selected as sufficiently supported",
+      "until one explanation is supported strongly enough by what is known",
+      "whether competing explanations are explicitly rejected or merely deprioritized is not stated",
+      "on abandoned exit inquiry terminates without necessarily identifying a best explanation",
+      "until further investigation is no longer justified",
+      "the state of the explanation set at abandonment is not described"
+    ],
+    "semantic_concepts": [
+      "CONFIDENCE_THRESHOLD",
+      "TERMINATION_OR_CLOSURE",
+      "COMMITMENT_DECISION",
+      "COMPARISON"
+    ],
+    "unresolved_items": [
+      "until one explanation is supported strongly enough by what is known",
+      "The state of the explanation set at abandonment is not described."
+    ]
+  },
+  {
+    "packet_id": "ECR-000001-P001",
+    "provider": "gemini",
+    "field": "constraint_layer.postconditions",
+    "raw_items": [
+      "An explanation is strongly supported by known information OR further investigation is deemed unjustified.",
+      "until one explanation is supported strongly enough by what is known, or until further investigation is no longer justified.",
+      "The postcondition contains an 'OR' split, meaning the final state may be resolution or abandonment."
+    ],
+    "literal_items": [
+      "an explanation is strongly supported by known information or further investigation is deemed unjustified",
+      "until one explanation is supported strongly enough by what is known or until further investigation is no longer justified",
+      "the postcondition contains an or split meaning the final state may be resolution or abandonment"
+    ],
+    "semantic_concepts": [
+      "TERMINATION_OR_CLOSURE"
+    ],
+    "unresolved_items": [
+      "An explanation is strongly supported by known information OR further investigation is deemed unjustified.",
+      "The postcondition contains an 'OR' split, meaning the final state may be resolution or abandonment."
+    ]
+  },
+  {
+    "packet_id": "ECR-000001-P001",
+    "provider": "gpt",
+    "field": "constraint_layer.stopping_criteria",
+    "raw_items": [],
+    "literal_items": [],
+    "semantic_concepts": [],
+    "unresolved_items": []
+  },
+  {
+    "packet_id": "ECR-000001-P001",
+    "provider": "claude",
+    "field": "constraint_layer.stopping_criteria",
+    "raw_items": [
+      "Confidence in one explanation exceeds threshold",
+      "one explanation is supported strongly enough by what is known",
+      "Threshold is actor-defined or context-dependent; not formalized.",
+      "Further investigation unjustified",
+      "further investigation is no longer justified",
+      "Basis for justification not specified."
+    ],
+    "literal_items": [
+      "confidence in one explanation exceeds threshold",
+      "one explanation is supported strongly enough by what is known",
+      "threshold is actor defined or context dependent not formalized",
+      "further investigation unjustified",
+      "further investigation is no longer justified",
+      "basis for justification not specified"
+    ],
+    "semantic_concepts": [
+      "CONFIDENCE_THRESHOLD",
+      "TERMINATION_OR_CLOSURE"
+    ],
+    "unresolved_items": [
+      "one explanation is supported strongly enough by what is known",
+      "Further investigation unjustified",
+      "Basis for justification not specified."
+    ]
+  },
+  {
+    "packet_id": "ECR-000001-P001",
+    "provider": "gemini",
+    "field": "constraint_layer.stopping_criteria",
+    "raw_items": [
+      "Confidence/Support threshold met for a single explanation.",
+      "until one explanation is supported strongly enough by what is known",
+      "Justification threshold dropped below baseline.",
+      "or until further investigation is no longer justified."
+    ],
+    "literal_items": [
+      "confidence support threshold met for a single explanation",
+      "until one explanation is supported strongly enough by what is known",
+      "justification threshold dropped below baseline",
+      "or until further investigation is no longer justified"
+    ],
+    "semantic_concepts": [
+      "CONFIDENCE_THRESHOLD",
+      "TERMINATION_OR_CLOSURE"
+    ],
+    "unresolved_items": [
+      "until one explanation is supported strongly enough by what is known"
+    ]
+  },
+  {
+    "packet_id": "ECR-000001-P001",
+    "provider": "gpt",
+    "field": "constraint_layer.validity_conditions",
+    "raw_items": [],
+    "literal_items": [],
+    "semantic_concepts": [],
+    "unresolved_items": []
+  },
+  {
+    "packet_id": "ECR-000001-P001",
+    "provider": "claude",
+    "field": "constraint_layer.validity_conditions",
+    "raw_items": [
+      "The procedure requires that information gathered be checked against all current candidate explanations, not a subset",
+      "checked against each explanation",
+      "Whether 'each' means exhaustive or representative coverage is ambiguous."
+    ],
+    "literal_items": [
+      "the procedure requires that information gathered be checked against all current candidate explanations not a subset",
+      "checked against each explanation",
+      "whether each means exhaustive or representative coverage is ambiguous"
+    ],
+    "semantic_concepts": [
+      "HYPOTHESIS_GENERATION",
+      "INFORMATION_GATHERING"
+    ],
+    "unresolved_items": [
+      "checked against each explanation",
+      "Whether 'each' means exhaustive or representative coverage is ambiguous."
+    ]
+  },
+  {
+    "packet_id": "ECR-000001-P001",
+    "provider": "gemini",
+    "field": "constraint_layer.validity_conditions",
+    "raw_items": [
+      "Gathered information must be capable of separating the competing explanations.",
+      "Additional information is gathered specifically to help separate the competing explanations.",
+      "If the information gathered fails to provide discriminatory weight, the step's functional intent is invalidated."
+    ],
+    "literal_items": [
+      "gathered information must be capable of separating the competing explanations",
+      "additional information is gathered specifically to help separate the competing explanations",
+      "if the information gathered fails to provide discriminatory weight the step s functional intent is invalidated"
+    ],
+    "semantic_concepts": [
+      "INFORMATION_GATHERING",
+      "COMPARISON",
+      "REASSESSMENT_LOOP"
+    ],
+    "unresolved_items": []
+  },
+  {
+    "packet_id": "ECR-000001-P001",
+    "provider": "gpt",
+    "field": "representation_layer.natural_language_summary",
+    "raw_items": [],
+    "literal_items": [],
+    "semantic_concepts": [],
+    "unresolved_items": []
+  },
+  {
+    "packet_id": "ECR-000001-P001",
+    "provider": "claude",
+    "field": "representation_layer.natural_language_summary",
+    "raw_items": [
+      "The procedure describes an iterative inquiry that begins when a situation cannot be explained by what is already known. The actor first generates multiple candidate explanations without committing to any. Information is then gathered with the specific aim of distinguishing between them. That information is evaluated against each candidate. If confidence in any single explanation is still insufficient, the actor may gather more information, generate new or revised explanations, or both, and repeat. The loop continues until one explanation is adequately supported or further inquiry is no longer warranted."
+    ],
+    "literal_items": [
+      "the procedure describes an iterative inquiry that begins when a situation cannot be explained by what is already known the actor first generates multiple candidate explanations without committing to any information is then gathered with the specific aim of distinguishing between them that information is evaluated against each candidate if confidence in any single explanation is still insufficient the actor may gather more information generate new or revised explanations or both and repeat the loop continues until one explanation is adequately supported or further inquiry is no longer warranted"
+    ],
+    "semantic_concepts": [
+      "HYPOTHESIS_GENERATION",
+      "INFORMATION_GATHERING",
+      "EVIDENCE_EVALUATION",
+      "CONFIDENCE_THRESHOLD",
+      "COMMITMENT_DECISION"
+    ],
+    "unresolved_items": []
+  },
+  {
+    "packet_id": "ECR-000001-P001",
+    "provider": "gemini",
+    "field": "representation_layer.natural_language_summary",
+    "raw_items": [
+      "The procedure describes an investigative cycle that triggers when a situation is unresolved. The actor proposes multiple neutral explanations and gathers targeted information to evaluate which explanation fits best. If the evaluation does not produce sufficient confidence, the actor loops back to either gather more information or adjust the pool of explanations. This process repeats iteratively until an explanation is satisfactorily supported or continuing becomes unjustified."
+    ],
+    "literal_items": [
+      "the procedure describes an investigative cycle that triggers when a situation is unresolved the actor proposes multiple neutral explanations and gathers targeted information to evaluate which explanation fits best if the evaluation does not produce sufficient confidence the actor loops back to either gather more information or adjust the pool of explanations this process repeats iteratively until an explanation is satisfactorily supported or continuing becomes unjustified"
+    ],
+    "semantic_concepts": [
+      "ENTRY_PROBLEM_IDENTIFICATION",
+      "EVIDENCE_EVALUATION"
+    ],
+    "unresolved_items": []
+  },
+  {
+    "packet_id": "ECR-000001-P001",
+    "provider": "gpt",
+    "field": "representation_layer.canonical_summary",
+    "raw_items": [],
+    "literal_items": [],
+    "semantic_concepts": [],
+    "unresolved_items": []
+  },
+  {
+    "packet_id": "ECR-000001-P001",
+    "provider": "claude",
+    "field": "representation_layer.canonical_summary",
+    "raw_items": [
+      "Iterative hypothetico-deductive inquiry loop: enter on unresolved situation, generate plural unsettled candidates, repeatedly gather discriminatory evidence and evaluate fit against all candidates, branch on insufficient confidence to regather or reformulate, exit on sufficient support for one explanation or unjustified continuation."
+    ],
+    "literal_items": [
+      "iterative hypothetico deductive inquiry loop enter on unresolved situation generate plural unsettled candidates repeatedly gather discriminatory evidence and evaluate fit against all candidates branch on insufficient confidence to regather or reformulate exit on sufficient support for one explanation or unjustified continuation"
+    ],
+    "semantic_concepts": [
+      "ENTRY_PROBLEM_IDENTIFICATION",
+      "EVIDENCE_EVALUATION",
+      "TERMINATION_OR_CLOSURE"
+    ],
+    "unresolved_items": []
+  },
+  {
+    "packet_id": "ECR-000001-P001",
+    "provider": "gemini",
+    "field": "representation_layer.canonical_summary",
+    "raw_items": [
+      "INITIATE when unresolved situation requires explanation. FORMULATE explanation pool neutrally. GATHER differentiating data. EVALUATE fit. WHILE confidence is insufficient AND investigation is justified, DO: EITHER gather more data OR reformulate explanation pool, THEN re-evaluate. TERMINATE when target confidence is met OR justification expires."
+    ],
+    "literal_items": [
+      "initiate when unresolved situation requires explanation formulate explanation pool neutrally gather differentiating data evaluate fit while confidence is insufficient and investigation is justified do either gather more data or reformulate explanation pool then re evaluate terminate when target confidence is met or justification expires"
+    ],
+    "semantic_concepts": [
+      "ENTRY_PROBLEM_IDENTIFICATION",
+      "EVIDENCE_EVALUATION",
+      "CONFIDENCE_THRESHOLD",
+      "TERMINATION_OR_CLOSURE"
+    ],
+    "unresolved_items": []
+  },
+  {
+    "packet_id": "ECR-000001-P001",
+    "provider": "gpt",
+    "field": "representation_layer.ambiguities",
+    "raw_items": [],
+    "literal_items": [],
+    "semantic_concepts": [],
+    "unresolved_items": []
+  },
+  {
+    "packet_id": "ECR-000001-P001",
+    "provider": "claude",
+    "field": "representation_layer.ambiguities",
+    "raw_items": [
+      "The logical relationship between the two options is unspecified.",
+      "Exclusive or: actor chooses one",
+      "Inclusive or: actor may do both in one iteration",
+      "Sequenced: reformulation triggers new gathering in the same iteration",
+      "Basis for justification is unspecified.",
+      "Resource or cost constraint",
+      "Diminishing returns on evidence",
+      "External termination imposed by context",
+      "Logical impossibility of further discrimination",
+      "After reformulating the explanation set, the next step is not stated.",
+      "Return to gathering (implies candidates are updated, information gathering continues)",
+      "Return to full loop start (re-evaluate prior evidence against new candidates)",
+      "Both equally plausible",
+      "Whether 'best' implies an explicit ranking, scoring, or threshold comparison is not stated.",
+      "Ordinal ranking of all candidates",
+      "Binary pass/fail against a threshold",
+      "Comparative pairwise elimination"
+    ],
+    "literal_items": [
+      "the logical relationship between the two options is unspecified",
+      "exclusive or actor chooses one",
+      "inclusive or actor may do both in one iteration",
+      "sequenced reformulation triggers new gathering in the same iteration",
+      "basis for justification is unspecified",
+      "resource or cost constraint",
+      "diminishing returns on evidence",
+      "external termination imposed by context",
+      "logical impossibility of further discrimination",
+      "after reformulating the explanation set the next step is not stated",
+      "return to gathering implies candidates are updated information gathering continues",
+      "return to full loop start re evaluate prior evidence against new candidates",
+      "both equally plausible",
+      "whether best implies an explicit ranking scoring or threshold comparison is not stated",
+      "ordinal ranking of all candidates",
+      "binary pass fail against a threshold",
+      "comparative pairwise elimination"
+    ],
+    "semantic_concepts": [
+      "COMMITMENT_DECISION",
+      "EVIDENCE_EVALUATION",
+      "CONFIDENCE_THRESHOLD"
+    ],
+    "unresolved_items": [
+      "The logical relationship between the two options is unspecified.",
+      "Inclusive or: actor may do both in one iteration",
+      "Sequenced: reformulation triggers new gathering in the same iteration",
+      "Basis for justification is unspecified.",
+      "Resource or cost constraint",
+      "Diminishing returns on evidence",
+      "External termination imposed by context",
+      "Logical impossibility of further discrimination",
+      "After reformulating the explanation set, the next step is not stated.",
+      "Return to gathering (implies candidates are updated, information gathering continues)",
+      "Both equally plausible",
+      "Ordinal ranking of all candidates",
+      "Comparative pairwise elimination"
+    ]
+  },
+  {
+    "packet_id": "ECR-000001-P001",
+    "provider": "gemini",
+    "field": "representation_layer.ambiguities",
+    "raw_items": [
+      "The use of 'or' creates ambiguity on execution constraints.",
+      "The actor chooses exactly one of the two paths per loop execution.",
+      "The actor may perform both actions within the same loop cycle.",
+      "The text jumps from 'If confidence remains insufficient... the cycle continues until...'",
+      "The step of checking fit happens implicitly inside the cycle right after gathering/reformulating.",
+      "The cycle only consists of gathering/reformulating, and the checking step exists outside the loop, implying a jump back up to an earlier sequence step."
+    ],
+    "literal_items": [
+      "the use of or creates ambiguity on execution constraints",
+      "the actor chooses exactly one of the two paths per loop execution",
+      "the actor may perform both actions within the same loop cycle",
+      "the text jumps from if confidence remains insufficient the cycle continues until",
+      "the step of checking fit happens implicitly inside the cycle right after gathering reformulating",
+      "the cycle only consists of gathering reformulating and the checking step exists outside the loop implying a jump back up to an earlier sequence step"
+    ],
+    "semantic_concepts": [
+      "COMMITMENT_DECISION",
+      "EXECUTION_CYCLE",
+      "REASSESSMENT_LOOP"
+    ],
+    "unresolved_items": [
+      "The use of 'or' creates ambiguity on execution constraints.",
+      "The step of checking fit happens implicitly inside the cycle right after gathering/reformulating.",
+      "The cycle only consists of gathering/reformulating, and the checking step exists outside the loop, implying a jump back up to an earlier sequence step."
+    ]
+  },
+  {
+    "packet_id": "ECR-000001-P001",
+    "provider": "gpt",
+    "field": "product_relevance_layer.clarity_relevance_observations",
+    "raw_items": [],
+    "literal_items": [],
+    "semantic_concepts": [],
+    "unresolved_items": []
+  },
+  {
+    "packet_id": "ECR-000001-P001",
+    "provider": "claude",
+    "field": "product_relevance_layer.clarity_relevance_observations",
+    "raw_items": [
+      "The procedure's emphasis on maintaining multiple unsettled candidates before committing mirrors best practice in structured analytical frameworks where premature closure is a documented failure mode.",
+      "Several possible explanations are put forward without treating any one of them as settled.",
+      "Relevance to any specific product is inferred; not supported by packet content.",
+      "The iterative gather-evaluate cycle with a confidence-based exit is well-suited to representation as a stateful workflow with explicit state tracking of candidate support levels.",
+      "The cycle continues until one explanation is supported strongly enough by what is known",
+      "Implementation inference only."
+    ],
+    "literal_items": [
+      "the procedure s emphasis on maintaining multiple unsettled candidates before committing mirrors best practice in structured analytical frameworks where premature closure is a documented failure mode",
+      "several possible explanations are put forward without treating any one of them as settled",
+      "relevance to any specific product is inferred not supported by packet content",
+      "the iterative gather evaluate cycle with a confidence based exit is well suited to representation as a stateful workflow with explicit state tracking of candidate support levels",
+      "the cycle continues until one explanation is supported strongly enough by what is known",
+      "implementation inference only"
+    ],
+    "semantic_concepts": [
+      "TERMINATION_OR_CLOSURE",
+      "COMMITMENT_DECISION",
+      "HYPOTHESIS_GENERATION",
+      "EVIDENCE_EVALUATION",
+      "HIERARCHICAL_CLASSIFICATION",
+      "REASSESSMENT_LOOP",
+      "EXECUTION_CYCLE"
+    ],
+    "unresolved_items": [
+      "Relevance to any specific product is inferred; not supported by packet content."
+    ]
+  },
+  {
+    "packet_id": "ECR-000001-P001",
+    "provider": "gemini",
+    "field": "product_relevance_layer.clarity_relevance_observations",
+    "raw_items": [
+      "The text maintains a high degree of operational abstraction, making it universally applicable to investigative domains.",
+      "A line of inquiry begins when a situation remains unresolved",
+      "Extrapolated from the deliberate omission of specific domain terms."
+    ],
+    "literal_items": [
+      "the text maintains a high degree of operational abstraction making it universally applicable to investigative domains",
+      "a line of inquiry begins when a situation remains unresolved",
+      "extrapolated from the deliberate omission of specific domain terms"
+    ],
+    "semantic_concepts": [
+      "EXECUTION_CYCLE",
+      "ENTRY_PROBLEM_IDENTIFICATION"
+    ],
+    "unresolved_items": [
+      "Extrapolated from the deliberate omission of specific domain terms."
+    ]
+  },
+  {
+    "packet_id": "ECR-000001-P001",
+    "provider": "gpt",
+    "field": "product_relevance_layer.edf_relevance_observations",
+    "raw_items": [],
+    "literal_items": [],
+    "semantic_concepts": [],
+    "unresolved_items": []
+  },
+  {
+    "packet_id": "ECR-000001-P001",
+    "provider": "claude",
+    "field": "product_relevance_layer.edf_relevance_observations",
+    "raw_items": [
+      "The procedure is a strong candidate for encoding as a reusable reasoning primitive in an evaluation or decision framework, given its well-defined loop structure and dual exit conditions.",
+      "The cycle continues until one explanation is supported strongly enough by what is known, or until further investigation is no longer justified.",
+      "Inferred; no explicit EDF reference in packet."
+    ],
+    "literal_items": [
+      "the procedure is a strong candidate for encoding as a reusable reasoning primitive in an evaluation or decision framework given its well defined loop structure and dual exit conditions",
+      "the cycle continues until one explanation is supported strongly enough by what is known or until further investigation is no longer justified",
+      "inferred no explicit edf reference in packet"
+    ],
+    "semantic_concepts": [
+      "TERMINATION_OR_CLOSURE",
+      "REASSESSMENT_LOOP"
+    ],
+    "unresolved_items": [
+      "Inferred; no explicit EDF reference in packet."
+    ]
+  },
+  {
+    "packet_id": "ECR-000001-P001",
+    "provider": "gemini",
+    "field": "product_relevance_layer.edf_relevance_observations",
+    "raw_items": [
+      "Preserving the precise exit criteria pairs is critical for downstream logic mappings.",
+      "until one explanation is supported strongly enough by what is known, or until further investigation is no longer justified.",
+      "Collapsing these into a single 'Done' flag loses the semantic distinction between success and abandonment."
+    ],
+    "literal_items": [
+      "preserving the precise exit criteria pairs is critical for downstream logic mappings",
+      "until one explanation is supported strongly enough by what is known or until further investigation is no longer justified",
+      "collapsing these into a single done flag loses the semantic distinction between success and abandonment"
+    ],
+    "semantic_concepts": [
+      "EVIDENCE_EVALUATION",
+      "TERMINATION_OR_CLOSURE"
+    ],
+    "unresolved_items": [
+      "Collapsing these into a single 'Done' flag loses the semantic distinction between success and abandonment."
+    ]
+  },
+  {
+    "packet_id": "ECR-000001-P001",
+    "provider": "gpt",
+    "field": "product_relevance_layer.research_only_observations",
+    "raw_items": [],
+    "literal_items": [],
+    "semantic_concepts": [],
+    "unresolved_items": []
+  },
+  {
+    "packet_id": "ECR-000001-P001",
+    "provider": "claude",
+    "field": "product_relevance_layer.research_only_observations",
+    "raw_items": [
+      "The refinement note (v1.1) indicates the prior calibration run (P001) showed model tendency to collapse ambiguous procedural alternatives into a single reading — this packet is explicitly designed to test preservation of ambiguity under extraction.",
+      "P001 calibration showed models may collapse plausible procedural alternatives; v1.1 asks models to preserve ambiguity and mark evidence support level.",
+      "None — this is a meta-observation about the calibration study itself."
+    ],
+    "literal_items": [
+      "the refinement note v1 1 indicates the prior calibration run p001 showed model tendency to collapse ambiguous procedural alternatives into a single reading this packet is explicitly designed to test preservation of ambiguity under extraction",
+      "p001 calibration showed models may collapse plausible procedural alternatives v1 1 asks models to preserve ambiguity and mark evidence support level",
+      "none this is a meta observation about the calibration study itself"
+    ],
+    "semantic_concepts": [
+      "HYPOTHESIS_GENERATION",
+      "EXECUTION_CYCLE",
+      "EVIDENCE_EVALUATION",
+      "HIERARCHICAL_CLASSIFICATION"
+    ],
+    "unresolved_items": [
+      "None — this is a meta-observation about the calibration study itself."
+    ]
+  },
+  {
+    "packet_id": "ECR-000001-P001",
+    "provider": "gemini",
+    "field": "product_relevance_layer.research_only_observations",
+    "raw_items": [
+      "This procedural profile serves as a textbook baseline for testing an agent's capability to handle multi-path looping structures without forcing normalization.",
+      "The cycle continues until...",
+      "Relies entirely on the evaluation meta-context of ECR-000001."
+    ],
+    "literal_items": [
+      "this procedural profile serves as a textbook baseline for testing an agent s capability to handle multi path looping structures without forcing normalization",
+      "the cycle continues until",
+      "relies entirely on the evaluation meta context of ecr 000001"
+    ],
+    "semantic_concepts": [
+      "REASSESSMENT_LOOP"
+    ],
+    "unresolved_items": [
+      "This procedural profile serves as a textbook baseline for testing an agent's capability to handle multi-path looping structures without forcing normalization.",
+      "Relies entirely on the evaluation meta-context of ECR-000001."
+    ]
+  },
+  {
+    "packet_id": "ECR-000001-P002",
+    "provider": "gpt",
+    "field": "structural_layer.entry_conditions",
+    "raw_items": [
+      "A new work cycle is ready to begin.",
+      "Define a near-term working target.",
+      "The existence of a work cycle is implied rather than explicitly stated."
+    ],
+    "literal_items": [
+      "a new work cycle is ready to begin",
+      "define a near term working target",
+      "the existence of a work cycle is implied rather than explicitly stated"
+    ],
+    "semantic_concepts": [],
+    "unresolved_items": [
+      "A new work cycle is ready to begin.",
+      "Define a near-term working target.",
+      "The existence of a work cycle is implied rather than explicitly stated."
+    ]
+  },
+  {
+    "packet_id": "ECR-000001-P002",
+    "provider": "claude",
+    "field": "structural_layer.entry_conditions",
+    "raw_items": [
+      "A near-term working target must be defined before the cycle begins",
+      "Define a near-term working target.",
+      "The scope or granularity of 'near-term' is unspecified; could range from hours to weeks",
+      "Available work must exist and be prioritized prior to commitment",
+      "Prioritize available work.",
+      "Whether prioritization is a precondition to the cycle or the first step within it is ambiguous"
+    ],
+    "literal_items": [
+      "a near term working target must be defined before the cycle begins",
+      "define a near term working target",
+      "the scope or granularity of near term is unspecified could range from hours to weeks",
+      "available work must exist and be prioritized prior to commitment",
+      "prioritize available work",
+      "whether prioritization is a precondition to the cycle or the first step within it is ambiguous"
+    ],
+    "semantic_concepts": [
+      "COMMITMENT_DECISION"
+    ],
+    "unresolved_items": [
+      "A near-term working target must be defined before the cycle begins",
+      "Define a near-term working target.",
+      "The scope or granularity of 'near-term' is unspecified; could range from hours to weeks",
+      "Prioritize available work.",
+      "Whether prioritization is a precondition to the cycle or the first step within it is ambiguous"
+    ]
+  },
+  {
+    "packet_id": "ECR-000001-P002",
+    "provider": "gemini",
+    "field": "structural_layer.entry_conditions",
+    "raw_items": [
+      "Availability of work items to prioritize.",
+      "Prioritize available work.",
+      "It is ambiguous whether a pool of work must already exist or if defining the near-term working target creates it."
+    ],
+    "literal_items": [
+      "availability of work items to prioritize",
+      "prioritize available work",
+      "it is ambiguous whether a pool of work must already exist or if defining the near term working target creates it"
+    ],
+    "semantic_concepts": [],
+    "unresolved_items": [
+      "Availability of work items to prioritize.",
+      "Prioritize available work.",
+      "It is ambiguous whether a pool of work must already exist or if defining the near-term working target creates it."
+    ]
+  },
+  {
+    "packet_id": "ECR-000001-P002",
+    "provider": "gpt",
+    "field": "structural_layer.exit_conditions",
+    "raw_items": [
+      "The current work cycle has been reflected upon and the next cycle has been reassessed.",
+      "Reflect on the cycle outcome and reassess the next cycle.",
+      "It is unclear whether reassessment immediately initiates another cycle or simply concludes the current one."
+    ],
+    "literal_items": [
+      "the current work cycle has been reflected upon and the next cycle has been reassessed",
+      "reflect on the cycle outcome and reassess the next cycle",
+      "it is unclear whether reassessment immediately initiates another cycle or simply concludes the current one"
+    ],
+    "semantic_concepts": [
+      "EVIDENCE_EVALUATION",
+      "REASSESSMENT_LOOP",
+      "TERMINATION_OR_CLOSURE"
+    ],
+    "unresolved_items": []
+  },
+  {
+    "packet_id": "ECR-000001-P002",
+    "provider": "claude",
+    "field": "structural_layer.exit_conditions",
+    "raw_items": [
+      "The cycle produces an immediately usable result",
+      "Carry out the work to produce an immediately usable result.",
+      "'Immediately usable' is undefined; could mean shippable, demonstrable, or merely functional",
+      "Reflection on the cycle outcome is completed",
+      "Reflect on the cycle outcome and reassess the next cycle.",
+      "Whether reflection is an exit condition or a transition step into the next cycle is unclear"
+    ],
+    "literal_items": [
+      "the cycle produces an immediately usable result",
+      "carry out the work to produce an immediately usable result",
+      "immediately usable is undefined could mean shippable demonstrable or merely functional",
+      "reflection on the cycle outcome is completed",
+      "reflect on the cycle outcome and reassess the next cycle",
+      "whether reflection is an exit condition or a transition step into the next cycle is unclear"
+    ],
+    "semantic_concepts": [
+      "EVIDENCE_EVALUATION",
+      "REASSESSMENT_LOOP",
+      "TERMINATION_OR_CLOSURE"
+    ],
+    "unresolved_items": [
+      "The cycle produces an immediately usable result",
+      "Carry out the work to produce an immediately usable result.",
+      "'Immediately usable' is undefined; could mean shippable, demonstrable, or merely functional",
+      "Reflection on the cycle outcome is completed"
+    ]
+  },
+  {
+    "packet_id": "ECR-000001-P002",
+    "provider": "gemini",
+    "field": "structural_layer.exit_conditions",
+    "raw_items": [
+      "Production of an immediately usable result and completion of reflection.",
+      "Carry out the work to produce an immediately usable result.\nReflect on the cycle outcome and reassess the next cycle.",
+      "Ambiguous whether 'reassess the next cycle' marks the exit condition of the current cycle or the entry condition of the next."
+    ],
+    "literal_items": [
+      "production of an immediately usable result and completion of reflection",
+      "carry out the work to produce an immediately usable result reflect on the cycle outcome and reassess the next cycle",
+      "ambiguous whether reassess the next cycle marks the exit condition of the current cycle or the entry condition of the next"
+    ],
+    "semantic_concepts": [
+      "EVIDENCE_EVALUATION",
+      "REASSESSMENT_LOOP",
+      "TERMINATION_OR_CLOSURE"
+    ],
+    "unresolved_items": [
+      "Production of an immediately usable result and completion of reflection."
+    ]
+  },
+  {
+    "packet_id": "ECR-000001-P002",
+    "provider": "gpt",
+    "field": "structural_layer.required_steps",
+    "raw_items": [
+      "Define a near-term working target.",
+      "Prioritize available work.",
+      "The prioritization method is unspecified.",
+      "Commit to what will be taken into the current work cycle.",
+      "Commitment may refer to selecting work items, making an explicit commitment, or both.",
+      "Carry out the work to produce an immediately usable result.",
+      "The nature of the result is unspecified.",
+      "Reflect on the cycle outcome and reassess the next cycle.",
+      "Reflection and reassessment may be sequential or combined."
+    ],
+    "literal_items": [
+      "define a near term working target",
+      "prioritize available work",
+      "the prioritization method is unspecified",
+      "commit to what will be taken into the current work cycle",
+      "commitment may refer to selecting work items making an explicit commitment or both",
+      "carry out the work to produce an immediately usable result",
+      "the nature of the result is unspecified",
+      "reflect on the cycle outcome and reassess the next cycle",
+      "reflection and reassessment may be sequential or combined"
+    ],
+    "semantic_concepts": [
+      "COMMITMENT_DECISION",
+      "EVIDENCE_EVALUATION",
+      "REASSESSMENT_LOOP"
+    ],
+    "unresolved_items": [
+      "Define a near-term working target.",
+      "Prioritize available work.",
+      "The prioritization method is unspecified.",
+      "Carry out the work to produce an immediately usable result.",
+      "The nature of the result is unspecified."
+    ]
+  },
+  {
+    "packet_id": "ECR-000001-P002",
+    "provider": "claude",
+    "field": "structural_layer.required_steps",
+    "raw_items": [
+      "Define a near-term working target",
+      "Define a near-term working target.",
+      "Prioritize available work",
+      "Prioritize available work.",
+      "Prioritization method or criteria are not specified",
+      "Commit to work to be taken into the current cycle",
+      "Commit to what will be taken into the current work cycle.",
+      "Whether 'commit' implies a formal agreement or informal selection is unspecified",
+      "Execute the work to produce an immediately usable result",
+      "Carry out the work to produce an immediately usable result.",
+      "The nature of the work and the definition of 'usable' are unspecified",
+      "Reflect on the cycle outcome and reassess the next cycle",
+      "Reflect on the cycle outcome and reassess the next cycle.",
+      "Whether 'reassess' feeds back into target definition or prioritization is ambiguous"
+    ],
+    "literal_items": [
+      "define a near term working target",
+      "prioritize available work",
+      "prioritization method or criteria are not specified",
+      "commit to work to be taken into the current cycle",
+      "commit to what will be taken into the current work cycle",
+      "whether commit implies a formal agreement or informal selection is unspecified",
+      "execute the work to produce an immediately usable result",
+      "carry out the work to produce an immediately usable result",
+      "the nature of the work and the definition of usable are unspecified",
+      "reflect on the cycle outcome and reassess the next cycle",
+      "whether reassess feeds back into target definition or prioritization is ambiguous"
+    ],
+    "semantic_concepts": [
+      "EVIDENCE_EVALUATION",
+      "COMMITMENT_DECISION",
+      "EXECUTION_CYCLE",
+      "REASSESSMENT_LOOP"
+    ],
+    "unresolved_items": [
+      "Define a near-term working target",
+      "Define a near-term working target.",
+      "Prioritize available work",
+      "Prioritize available work.",
+      "Carry out the work to produce an immediately usable result.",
+      "The nature of the work and the definition of 'usable' are unspecified"
+    ]
+  },
+  {
+    "packet_id": "ECR-000001-P002",
+    "provider": "gemini",
+    "field": "structural_layer.required_steps",
+    "raw_items": [
+      "Define a near-term working target.",
+      "Prioritize available work.",
+      "Commit to what will be taken into the current work cycle.",
+      "Carry out the work to produce an immediately usable result.",
+      "Reflect on the cycle outcome and reassess the next cycle."
+    ],
+    "literal_items": [
+      "define a near term working target",
+      "prioritize available work",
+      "commit to what will be taken into the current work cycle",
+      "carry out the work to produce an immediately usable result",
+      "reflect on the cycle outcome and reassess the next cycle"
+    ],
+    "semantic_concepts": [
+      "COMMITMENT_DECISION",
+      "EVIDENCE_EVALUATION",
+      "REASSESSMENT_LOOP"
+    ],
+    "unresolved_items": [
+      "Define a near-term working target.",
+      "Prioritize available work.",
+      "Carry out the work to produce an immediately usable result."
+    ]
+  },
+  {
+    "packet_id": "ECR-000001-P002",
+    "provider": "gpt",
+    "field": "structural_layer.optional_steps",
+    "raw_items": [],
+    "literal_items": [],
+    "semantic_concepts": [],
+    "unresolved_items": []
+  },
+  {
+    "packet_id": "ECR-000001-P002",
+    "provider": "claude",
+    "field": "structural_layer.optional_steps",
+    "raw_items": [],
+    "literal_items": [],
+    "semantic_concepts": [],
+    "unresolved_items": []
+  },
+  {
+    "packet_id": "ECR-000001-P002",
+    "provider": "gemini",
+    "field": "structural_layer.optional_steps",
+    "raw_items": [],
+    "literal_items": [],
+    "semantic_concepts": [],
+    "unresolved_items": []
+  },
+  {
+    "packet_id": "ECR-000001-P002",
+    "provider": "gpt",
+    "field": "structural_layer.loops",
+    "raw_items": [
+      "Repeat the cycle after reassessing the next cycle.",
+      "Reflect on the cycle outcome and reassess the next cycle.",
+      "The text implies iteration but does not explicitly state repetition."
+    ],
+    "literal_items": [
+      "repeat the cycle after reassessing the next cycle",
+      "reflect on the cycle outcome and reassess the next cycle",
+      "the text implies iteration but does not explicitly state repetition"
+    ],
+    "semantic_concepts": [
+      "EVIDENCE_EVALUATION",
+      "REASSESSMENT_LOOP"
+    ],
+    "unresolved_items": [
+      "The text implies iteration but does not explicitly state repetition."
+    ]
+  },
+  {
+    "packet_id": "ECR-000001-P002",
+    "provider": "claude",
+    "field": "structural_layer.loops",
+    "raw_items": [
+      "The full five-step sequence repeats; each cycle ends with reassessment that initiates the next cycle",
+      "Reflect on the cycle outcome and reassess the next cycle.",
+      "The packet does not explicitly state the loop repeats indefinitely; it could describe a single cycle"
+    ],
+    "literal_items": [
+      "the full five step sequence repeats each cycle ends with reassessment that initiates the next cycle",
+      "reflect on the cycle outcome and reassess the next cycle",
+      "the packet does not explicitly state the loop repeats indefinitely it could describe a single cycle"
+    ],
+    "semantic_concepts": [
+      "EVIDENCE_EVALUATION",
+      "REASSESSMENT_LOOP"
+    ],
+    "unresolved_items": [
+      "The packet does not explicitly state the loop repeats indefinitely; it could describe a single cycle"
+    ]
+  },
+  {
+    "packet_id": "ECR-000001-P002",
+    "provider": "gemini",
+    "field": "structural_layer.loops",
+    "raw_items": [
+      "The cycle repeats sequentially as indicated by 'reassess the next cycle'.",
+      "Reflect on the cycle outcome and reassess the next cycle.",
+      "The text implies a loop across cycles, but it is ambiguous whether the loop returns to step 1 (Define target) or step 2 (Prioritize available work) for the next iteration."
+    ],
+    "literal_items": [
+      "the cycle repeats sequentially as indicated by reassess the next cycle",
+      "reflect on the cycle outcome and reassess the next cycle",
+      "the text implies a loop across cycles but it is ambiguous whether the loop returns to step 1 define target or step 2 prioritize available work for the next iteration"
+    ],
+    "semantic_concepts": [
+      "EVIDENCE_EVALUATION",
+      "REASSESSMENT_LOOP"
+    ],
+    "unresolved_items": [
+      "The text implies a loop across cycles, but it is ambiguous whether the loop returns to step 1 (Define target) or step 2 (Prioritize available work) for the next iteration."
+    ]
+  },
+  {
+    "packet_id": "ECR-000001-P002",
+    "provider": "gpt",
+    "field": "structural_layer.branches",
+    "raw_items": [
+      "The packet does not specify decision branches beyond selecting work for the current cycle.",
+      "Prioritize available work. Commit to what will be taken into the current work cycle.",
+      "Selection may involve alternative prioritization outcomes, but no branching logic is defined."
+    ],
+    "literal_items": [
+      "the packet does not specify decision branches beyond selecting work for the current cycle",
+      "prioritize available work commit to what will be taken into the current work cycle",
+      "selection may involve alternative prioritization outcomes but no branching logic is defined"
+    ],
+    "semantic_concepts": [
+      "COMMITMENT_DECISION",
+      "HYPOTHESIS_GENERATION"
+    ],
+    "unresolved_items": [
+      "The packet does not specify decision branches beyond selecting work for the current cycle."
+    ]
+  },
+  {
+    "packet_id": "ECR-000001-P002",
+    "provider": "claude",
+    "field": "structural_layer.branches",
+    "raw_items": [
+      "Reassessment may alter the target or priority ordering for the next cycle",
+      "Reflect on the cycle outcome and reassess the next cycle.",
+      "The packet does not specify what outcomes of reassessment are possible or how they affect subsequent steps"
+    ],
+    "literal_items": [
+      "reassessment may alter the target or priority ordering for the next cycle",
+      "reflect on the cycle outcome and reassess the next cycle",
+      "the packet does not specify what outcomes of reassessment are possible or how they affect subsequent steps"
+    ],
+    "semantic_concepts": [
+      "EVIDENCE_EVALUATION",
+      "REASSESSMENT_LOOP"
+    ],
+    "unresolved_items": []
+  },
+  {
+    "packet_id": "ECR-000001-P002",
+    "provider": "gemini",
+    "field": "structural_layer.branches",
+    "raw_items": [],
+    "literal_items": [],
+    "semantic_concepts": [],
+    "unresolved_items": []
+  },
+  {
+    "packet_id": "ECR-000001-P002",
+    "provider": "gpt",
+    "field": "structural_layer.termination_conditions",
+    "raw_items": [
+      "End after completing reflection and reassessment for the current cycle.",
+      "Reflect on the cycle outcome and reassess the next cycle.",
+      "The process may instead continue indefinitely through repeated cycles."
+    ],
+    "literal_items": [
+      "end after completing reflection and reassessment for the current cycle",
+      "reflect on the cycle outcome and reassess the next cycle",
+      "the process may instead continue indefinitely through repeated cycles"
+    ],
+    "semantic_concepts": [
+      "EVIDENCE_EVALUATION",
+      "REASSESSMENT_LOOP"
+    ],
+    "unresolved_items": [
+      "The process may instead continue indefinitely through repeated cycles."
+    ]
+  },
+  {
+    "packet_id": "ECR-000001-P002",
+    "provider": "claude",
+    "field": "structural_layer.termination_conditions",
+    "raw_items": [
+      "No explicit termination condition is stated; the loop could be indefinite or externally terminated",
+      "The packet describes a repeating cycle with no stated end; termination may be implicit in context not provided"
+    ],
+    "literal_items": [
+      "no explicit termination condition is stated the loop could be indefinite or externally terminated",
+      "the packet describes a repeating cycle with no stated end termination may be implicit in context not provided"
+    ],
+    "semantic_concepts": [
+      "TERMINATION_OR_CLOSURE"
+    ],
+    "unresolved_items": [
+      "The packet describes a repeating cycle with no stated end; termination may be implicit in context not provided"
+    ]
+  },
+  {
+    "packet_id": "ECR-000001-P002",
+    "provider": "gemini",
+    "field": "structural_layer.termination_conditions",
+    "raw_items": [],
+    "literal_items": [],
+    "semantic_concepts": [],
+    "unresolved_items": []
+  },
+  {
+    "packet_id": "ECR-000001-P002",
+    "provider": "gpt",
+    "field": "constraint_layer.invariants",
+    "raw_items": [
+      "Work performed within the cycle is committed before execution.",
+      "Commit to what will be taken into the current work cycle. Carry out the work…",
+      "The form of commitment is unspecified.",
+      "Execution aims to produce an immediately usable result.",
+      "Carry out the work to produce an immediately usable result."
+    ],
+    "literal_items": [
+      "work performed within the cycle is committed before execution",
+      "commit to what will be taken into the current work cycle carry out the work",
+      "the form of commitment is unspecified",
+      "execution aims to produce an immediately usable result",
+      "carry out the work to produce an immediately usable result"
+    ],
+    "semantic_concepts": [
+      "COMMITMENT_DECISION"
+    ],
+    "unresolved_items": [
+      "Execution aims to produce an immediately usable result.",
+      "Carry out the work to produce an immediately usable result."
+    ]
+  },
+  {
+    "packet_id": "ECR-000001-P002",
+    "provider": "claude",
+    "field": "constraint_layer.invariants",
+    "raw_items": [
+      "Each cycle must produce an immediately usable result",
+      "Carry out the work to produce an immediately usable result.",
+      "'Immediately usable' is not defined; its invariance across all cycles is inferred",
+      "Work committed must come from the prioritized pool of available work",
+      "Prioritize available work. Commit to what will be taken into the current work cycle.",
+      "Whether ad-hoc additions to the committed set are prohibited is not stated"
+    ],
+    "literal_items": [
+      "each cycle must produce an immediately usable result",
+      "carry out the work to produce an immediately usable result",
+      "immediately usable is not defined its invariance across all cycles is inferred",
+      "work committed must come from the prioritized pool of available work",
+      "prioritize available work commit to what will be taken into the current work cycle",
+      "whether ad hoc additions to the committed set are prohibited is not stated"
+    ],
+    "semantic_concepts": [
+      "COMMITMENT_DECISION"
+    ],
+    "unresolved_items": [
+      "Each cycle must produce an immediately usable result",
+      "Carry out the work to produce an immediately usable result.",
+      "'Immediately usable' is not defined; its invariance across all cycles is inferred"
+    ]
+  },
+  {
+    "packet_id": "ECR-000001-P002",
+    "provider": "gemini",
+    "field": "constraint_layer.invariants",
+    "raw_items": [
+      "The work must target an immediately usable result.",
+      "Carry out the work to produce an immediately usable result."
+    ],
+    "literal_items": [
+      "the work must target an immediately usable result",
+      "carry out the work to produce an immediately usable result"
+    ],
+    "semantic_concepts": [],
+    "unresolved_items": [
+      "The work must target an immediately usable result.",
+      "Carry out the work to produce an immediately usable result."
+    ]
+  },
+  {
+    "packet_id": "ECR-000001-P002",
+    "provider": "gpt",
+    "field": "constraint_layer.preconditions",
+    "raw_items": [
+      "Available work exists to prioritize.",
+      "Prioritize available work.",
+      "The existence of available work is implied."
+    ],
+    "literal_items": [
+      "available work exists to prioritize",
+      "prioritize available work",
+      "the existence of available work is implied"
+    ],
+    "semantic_concepts": [],
+    "unresolved_items": [
+      "Available work exists to prioritize.",
+      "Prioritize available work.",
+      "The existence of available work is implied."
+    ]
+  },
+  {
+    "packet_id": "ECR-000001-P002",
+    "provider": "claude",
+    "field": "constraint_layer.preconditions",
+    "raw_items": [
+      "Available work must exist before prioritization can occur",
+      "Prioritize available work.",
+      "The source or composition of available work is not described"
+    ],
+    "literal_items": [
+      "available work must exist before prioritization can occur",
+      "prioritize available work",
+      "the source or composition of available work is not described"
+    ],
+    "semantic_concepts": [],
+    "unresolved_items": [
+      "Available work must exist before prioritization can occur",
+      "Prioritize available work.",
+      "The source or composition of available work is not described"
+    ]
+  },
+  {
+    "packet_id": "ECR-000001-P002",
+    "provider": "gemini",
+    "field": "constraint_layer.preconditions",
+    "raw_items": [
+      "Work must be available prior to prioritization.",
+      "Prioritize available work."
+    ],
+    "literal_items": [
+      "work must be available prior to prioritization",
+      "prioritize available work"
+    ],
+    "semantic_concepts": [],
+    "unresolved_items": [
+      "Work must be available prior to prioritization.",
+      "Prioritize available work."
+    ]
+  },
+  {
+    "packet_id": "ECR-000001-P002",
+    "provider": "gpt",
+    "field": "constraint_layer.postconditions",
+    "raw_items": [
+      "An immediately usable result has been produced.",
+      "Carry out the work to produce an immediately usable result.",
+      "The outcome has been reflected upon and the next cycle reassessed.",
+      "Reflect on the cycle outcome and reassess the next cycle."
+    ],
+    "literal_items": [
+      "an immediately usable result has been produced",
+      "carry out the work to produce an immediately usable result",
+      "the outcome has been reflected upon and the next cycle reassessed",
+      "reflect on the cycle outcome and reassess the next cycle"
+    ],
+    "semantic_concepts": [
+      "EVIDENCE_EVALUATION",
+      "REASSESSMENT_LOOP"
+    ],
+    "unresolved_items": [
+      "An immediately usable result has been produced.",
+      "Carry out the work to produce an immediately usable result."
+    ]
+  },
+  {
+    "packet_id": "ECR-000001-P002",
+    "provider": "claude",
+    "field": "constraint_layer.postconditions",
+    "raw_items": [
+      "An immediately usable result exists at cycle end",
+      "Carry out the work to produce an immediately usable result.",
+      "What constitutes 'usable' is undefined",
+      "The next cycle has been reassessed before the current cycle closes",
+      "Reflect on the cycle outcome and reassess the next cycle.",
+      "The depth or formality of reassessment is unspecified"
+    ],
+    "literal_items": [
+      "an immediately usable result exists at cycle end",
+      "carry out the work to produce an immediately usable result",
+      "what constitutes usable is undefined",
+      "the next cycle has been reassessed before the current cycle closes",
+      "reflect on the cycle outcome and reassess the next cycle",
+      "the depth or formality of reassessment is unspecified"
+    ],
+    "semantic_concepts": [
+      "EVIDENCE_EVALUATION",
+      "REASSESSMENT_LOOP"
+    ],
+    "unresolved_items": [
+      "An immediately usable result exists at cycle end",
+      "Carry out the work to produce an immediately usable result.",
+      "What constitutes 'usable' is undefined"
+    ]
+  },
+  {
+    "packet_id": "ECR-000001-P002",
+    "provider": "gemini",
+    "field": "constraint_layer.postconditions",
+    "raw_items": [
+      "An immediately usable result is produced.",
+      "Carry out the work to produce an immediately usable result."
+    ],
+    "literal_items": [
+      "an immediately usable result is produced",
+      "carry out the work to produce an immediately usable result"
+    ],
+    "semantic_concepts": [],
+    "unresolved_items": [
+      "An immediately usable result is produced.",
+      "Carry out the work to produce an immediately usable result."
+    ]
+  },
+  {
+    "packet_id": "ECR-000001-P002",
+    "provider": "gpt",
+    "field": "constraint_layer.stopping_criteria",
+    "raw_items": [
+      "Completion of the current cycle after reflection and reassessment.",
+      "Reflect on the cycle outcome and reassess the next cycle.",
+      "The procedure may instead continue into another iteration."
+    ],
+    "literal_items": [
+      "completion of the current cycle after reflection and reassessment",
+      "reflect on the cycle outcome and reassess the next cycle",
+      "the procedure may instead continue into another iteration"
+    ],
+    "semantic_concepts": [
+      "EVIDENCE_EVALUATION",
+      "REASSESSMENT_LOOP"
+    ],
+    "unresolved_items": [
+      "The procedure may instead continue into another iteration."
+    ]
+  },
+  {
+    "packet_id": "ECR-000001-P002",
+    "provider": "claude",
+    "field": "constraint_layer.stopping_criteria",
+    "raw_items": [
+      "No explicit stopping criterion present in the packet",
+      "Termination may be externally imposed or implied by context outside this packet"
+    ],
+    "literal_items": [
+      "no explicit stopping criterion present in the packet",
+      "termination may be externally imposed or implied by context outside this packet"
+    ],
+    "semantic_concepts": [
+      "TERMINATION_OR_CLOSURE"
+    ],
+    "unresolved_items": [
+      "Termination may be externally imposed or implied by context outside this packet"
+    ]
+  },
+  {
+    "packet_id": "ECR-000001-P002",
+    "provider": "gemini",
+    "field": "constraint_layer.stopping_criteria",
+    "raw_items": [
+      "Completion of execution and completion of reflection/reassessment.",
+      "Reflect on the cycle outcome and reassess the next cycle."
+    ],
+    "literal_items": [
+      "completion of execution and completion of reflection reassessment",
+      "reflect on the cycle outcome and reassess the next cycle"
+    ],
+    "semantic_concepts": [
+      "EVIDENCE_EVALUATION",
+      "REASSESSMENT_LOOP"
+    ],
+    "unresolved_items": []
+  },
+  {
+    "packet_id": "ECR-000001-P002",
+    "provider": "gpt",
+    "field": "constraint_layer.validity_conditions",
+    "raw_items": [
+      "The committed work is executed within the current work cycle.",
+      "Commit to what will be taken into the current work cycle. Carry out the work…",
+      "The execution yields an immediately usable result.",
+      "Carry out the work to produce an immediately usable result."
+    ],
+    "literal_items": [
+      "the committed work is executed within the current work cycle",
+      "commit to what will be taken into the current work cycle carry out the work",
+      "the execution yields an immediately usable result",
+      "carry out the work to produce an immediately usable result"
+    ],
+    "semantic_concepts": [
+      "COMMITMENT_DECISION",
+      "EXECUTION_CYCLE"
+    ],
+    "unresolved_items": [
+      "The execution yields an immediately usable result.",
+      "Carry out the work to produce an immediately usable result."
+    ]
+  },
+  {
+    "packet_id": "ECR-000001-P002",
+    "provider": "claude",
+    "field": "constraint_layer.validity_conditions",
+    "raw_items": [
+      "A cycle is valid only if it produces an immediately usable result",
+      "Carry out the work to produce an immediately usable result.",
+      "Whether a cycle with a partial result is considered valid is not addressed"
+    ],
+    "literal_items": [
+      "a cycle is valid only if it produces an immediately usable result",
+      "carry out the work to produce an immediately usable result",
+      "whether a cycle with a partial result is considered valid is not addressed"
+    ],
+    "semantic_concepts": [],
+    "unresolved_items": [
+      "A cycle is valid only if it produces an immediately usable result",
+      "Carry out the work to produce an immediately usable result.",
+      "Whether a cycle with a partial result is considered valid is not addressed"
+    ]
+  },
+  {
+    "packet_id": "ECR-000001-P002",
+    "provider": "gemini",
+    "field": "constraint_layer.validity_conditions",
+    "raw_items": [],
+    "literal_items": [],
+    "semantic_concepts": [],
+    "unresolved_items": []
+  },
+  {
+    "packet_id": "ECR-000001-P002",
+    "provider": "gpt",
+    "field": "representation_layer.natural_language_summary",
+    "raw_items": [
+      "The procedure defines a near-term target, prioritizes available work, commits a subset for the current work cycle, performs that work to obtain an immediately usable result, then reflects on the outcome and reassesses the next cycle."
+    ],
+    "literal_items": [
+      "the procedure defines a near term target prioritizes available work commits a subset for the current work cycle performs that work to obtain an immediately usable result then reflects on the outcome and reassesses the next cycle"
+    ],
+    "semantic_concepts": [
+      "EVIDENCE_EVALUATION",
+      "REASSESSMENT_LOOP",
+      "COMMITMENT_DECISION"
+    ],
+    "unresolved_items": []
+  },
+  {
+    "packet_id": "ECR-000001-P002",
+    "provider": "claude",
+    "field": "representation_layer.natural_language_summary",
+    "raw_items": [
+      "A repeating work cycle in which a near-term target is first defined, available work is prioritized, a subset of that work is committed to the current cycle, the work is executed until an immediately usable result is produced, and the cycle closes with reflection on the outcome and reassessment of the next cycle. The reassessment step feeds back into the start of the next cycle, creating an iterative loop of indefinite length."
+    ],
+    "literal_items": [
+      "a repeating work cycle in which a near term target is first defined available work is prioritized a subset of that work is committed to the current cycle the work is executed until an immediately usable result is produced and the cycle closes with reflection on the outcome and reassessment of the next cycle the reassessment step feeds back into the start of the next cycle creating an iterative loop of indefinite length"
+    ],
+    "semantic_concepts": [
+      "EVIDENCE_EVALUATION",
+      "REASSESSMENT_LOOP",
+      "COMMITMENT_DECISION",
+      "EXECUTION_CYCLE"
+    ],
+    "unresolved_items": []
+  },
+  {
+    "packet_id": "ECR-000001-P002",
+    "provider": "gemini",
+    "field": "representation_layer.natural_language_summary",
+    "raw_items": [
+      "The procedure details a cyclical workflow consisting of five discrete chronological steps: establishing a near-term objective, prioritizing current work options, committing specific items to the cycle, executing the tasks to achieve a usable output, and concluding with a retrospective assessment to prepare for the subsequent cycle."
+    ],
+    "literal_items": [
+      "the procedure details a cyclical workflow consisting of five discrete chronological steps establishing a near term objective prioritizing current work options committing specific items to the cycle executing the tasks to achieve a usable output and concluding with a retrospective assessment to prepare for the subsequent cycle"
+    ],
+    "semantic_concepts": [
+      "EVIDENCE_EVALUATION",
+      "COMMITMENT_DECISION"
+    ],
+    "unresolved_items": []
+  },
+  {
+    "packet_id": "ECR-000001-P002",
+    "provider": "gpt",
+    "field": "representation_layer.canonical_summary",
+    "raw_items": [
+      "Define → Prioritize → Commit → Execute → Reflect/Reassess → Possible repeat."
+    ],
+    "literal_items": [
+      "define prioritize commit execute reflect reassess possible repeat"
+    ],
+    "semantic_concepts": [
+      "EVIDENCE_EVALUATION",
+      "REASSESSMENT_LOOP",
+      "COMMITMENT_DECISION",
+      "EXECUTION_CYCLE"
+    ],
+    "unresolved_items": []
+  },
+  {
+    "packet_id": "ECR-000001-P002",
+    "provider": "claude",
+    "field": "representation_layer.canonical_summary",
+    "raw_items": [
+      "DEFINE target → PRIORITIZE work → COMMIT scope → EXECUTE to usable result → REFLECT and REASSESS → repeat"
+    ],
+    "literal_items": [
+      "define target prioritize work commit scope execute to usable result reflect and reassess repeat"
+    ],
+    "semantic_concepts": [
+      "EVIDENCE_EVALUATION",
+      "REASSESSMENT_LOOP",
+      "COMMITMENT_DECISION",
+      "EXECUTION_CYCLE"
+    ],
+    "unresolved_items": []
+  },
+  {
+    "packet_id": "ECR-000001-P002",
+    "provider": "gemini",
+    "field": "representation_layer.canonical_summary",
+    "raw_items": [
+      "1. Define target. 2. Prioritize work. 3. Commit to cycle. 4. Execute work. 5. Reflect and reassess."
+    ],
+    "literal_items": [
+      "1 define target 2 prioritize work 3 commit to cycle 4 execute work 5 reflect and reassess"
+    ],
+    "semantic_concepts": [
+      "EVIDENCE_EVALUATION",
+      "REASSESSMENT_LOOP",
+      "COMMITMENT_DECISION",
+      "EXECUTION_CYCLE"
+    ],
+    "unresolved_items": []
+  },
+  {
+    "packet_id": "ECR-000001-P002",
+    "provider": "gpt",
+    "field": "representation_layer.ambiguities",
+    "raw_items": [
+      "Whether reassessment automatically begins another cycle is not explicitly stated.",
+      "The procedure repeats indefinitely.",
+      "The packet describes only one cycle and stops after reassessment.",
+      "The nature of commitment is unspecified.",
+      "Selection of work items.",
+      "Formal commitment to execute selected work.",
+      "Both selection and explicit commitment.",
+      "Relationship between reflection and reassessment is unspecified.",
+      "Reflection followed by reassessment.",
+      "A combined reflective reassessment activity."
+    ],
+    "literal_items": [
+      "whether reassessment automatically begins another cycle is not explicitly stated",
+      "the procedure repeats indefinitely",
+      "the packet describes only one cycle and stops after reassessment",
+      "the nature of commitment is unspecified",
+      "selection of work items",
+      "formal commitment to execute selected work",
+      "both selection and explicit commitment",
+      "relationship between reflection and reassessment is unspecified",
+      "reflection followed by reassessment",
+      "a combined reflective reassessment activity"
+    ],
+    "semantic_concepts": [
+      "EVIDENCE_EVALUATION",
+      "REASSESSMENT_LOOP",
+      "TERMINATION_OR_CLOSURE",
+      "COMMITMENT_DECISION",
+      "EXECUTION_CYCLE"
+    ],
+    "unresolved_items": [
+      "The procedure repeats indefinitely.",
+      "Selection of work items."
+    ]
+  },
+  {
+    "packet_id": "ECR-000001-P002",
+    "provider": "claude",
+    "field": "representation_layer.ambiguities",
+    "raw_items": [
+      "Whether 'Define a near-term working target' and 'Prioritize available work' are strictly sequential or partially concurrent is not specified",
+      "Target definition scopes and precedes prioritization",
+      "Prioritization and target definition are co-determined in a single planning activity",
+      "The packet contains no explicit termination condition for the outer loop",
+      "The cycle repeats indefinitely until externally stopped",
+      "The cycle has an implied termination tied to a larger goal not described in this packet",
+      "'Reflect on the cycle outcome' and 'reassess the next cycle' may be one activity or two distinct activities",
+      "A single retrospective activity combining outcome review and next-cycle planning",
+      "Two separate activities: a backward-looking retrospective and a forward-looking planning update",
+      "Whether reflection and reassessment are the final step of the current cycle or the first step of the next is ambiguous",
+      "Reflect/reassess closes the current cycle",
+      "Reflect/reassess opens the next cycle"
+    ],
+    "literal_items": [
+      "whether define a near term working target and prioritize available work are strictly sequential or partially concurrent is not specified",
+      "target definition scopes and precedes prioritization",
+      "prioritization and target definition are co determined in a single planning activity",
+      "the packet contains no explicit termination condition for the outer loop",
+      "the cycle repeats indefinitely until externally stopped",
+      "the cycle has an implied termination tied to a larger goal not described in this packet",
+      "reflect on the cycle outcome and reassess the next cycle may be one activity or two distinct activities",
+      "a single retrospective activity combining outcome review and next cycle planning",
+      "two separate activities a backward looking retrospective and a forward looking planning update",
+      "whether reflection and reassessment are the final step of the current cycle or the first step of the next is ambiguous",
+      "reflect reassess closes the current cycle",
+      "reflect reassess opens the next cycle"
+    ],
+    "semantic_concepts": [
+      "TERMINATION_OR_CLOSURE",
+      "EVIDENCE_EVALUATION",
+      "REASSESSMENT_LOOP"
+    ],
+    "unresolved_items": [
+      "Whether 'Define a near-term working target' and 'Prioritize available work' are strictly sequential or partially concurrent is not specified",
+      "Target definition scopes and precedes prioritization",
+      "Prioritization and target definition are co-determined in a single planning activity",
+      "The packet contains no explicit termination condition for the outer loop",
+      "The cycle has an implied termination tied to a larger goal not described in this packet",
+      "A single retrospective activity combining outcome review and next-cycle planning",
+      "Two separate activities: a backward-looking retrospective and a forward-looking planning update"
+    ]
+  },
+  {
+    "packet_id": "ECR-000001-P002",
+    "provider": "gemini",
+    "field": "representation_layer.ambiguities",
+    "raw_items": [
+      "Unclear exactly where the loop point lands for the subsequent cycle.",
+      "Loop returns to Step 1 to redefine a new near-term working target.",
+      "Loop returns to Step 2 assuming the overarching target remains stable and only work items change.",
+      "The exact scope and definition of 'immediately usable' is left abstract.",
+      "Production-ready deployment.",
+      "Internal functional prototype ready for evaluation."
+    ],
+    "literal_items": [
+      "unclear exactly where the loop point lands for the subsequent cycle",
+      "loop returns to step 1 to redefine a new near term working target",
+      "loop returns to step 2 assuming the overarching target remains stable and only work items change",
+      "the exact scope and definition of immediately usable is left abstract",
+      "production ready deployment",
+      "internal functional prototype ready for evaluation"
+    ],
+    "semantic_concepts": [],
+    "unresolved_items": [
+      "Unclear exactly where the loop point lands for the subsequent cycle.",
+      "Loop returns to Step 1 to redefine a new near-term working target.",
+      "Loop returns to Step 2 assuming the overarching target remains stable and only work items change.",
+      "The exact scope and definition of 'immediately usable' is left abstract.",
+      "Production-ready deployment.",
+      "Internal functional prototype ready for evaluation."
+    ]
+  },
+  {
+    "packet_id": "ECR-000001-P002",
+    "provider": "gpt",
+    "field": "product_relevance_layer.clarity_relevance_observations",
+    "raw_items": [
+      "The ordered sequence is explicit and supports procedural extraction.",
+      "Entire procedural content.",
+      "Iteration remains implicit."
+    ],
+    "literal_items": [
+      "the ordered sequence is explicit and supports procedural extraction",
+      "entire procedural content",
+      "iteration remains implicit"
+    ],
+    "semantic_concepts": [
+      "EXECUTION_CYCLE"
+    ],
+    "unresolved_items": [
+      "Entire procedural content.",
+      "Iteration remains implicit."
+    ]
+  },
+  {
+    "packet_id": "ECR-000001-P002",
+    "provider": "claude",
+    "field": "product_relevance_layer.clarity_relevance_observations",
+    "raw_items": [
+      "The procedure is compact and communicable; each step maps to a single clear imperative, which supports clarity in tooling that must surface or guide iterative work",
+      "Define a near-term working target. Prioritize available work. Commit to what will be taken into the current work cycle. Carry out the work to produce an immediately usable result. Reflect on the cycle outcome and reassess the next cycle.",
+      "Relevance to a specific 'Clarity' product is not inferable from the packet alone"
+    ],
+    "literal_items": [
+      "the procedure is compact and communicable each step maps to a single clear imperative which supports clarity in tooling that must surface or guide iterative work",
+      "define a near term working target prioritize available work commit to what will be taken into the current work cycle carry out the work to produce an immediately usable result reflect on the cycle outcome and reassess the next cycle",
+      "relevance to a specific clarity product is not inferable from the packet alone"
+    ],
+    "semantic_concepts": [
+      "EVIDENCE_EVALUATION",
+      "REASSESSMENT_LOOP",
+      "COMMITMENT_DECISION"
+    ],
+    "unresolved_items": [
+      "The procedure is compact and communicable; each step maps to a single clear imperative, which supports clarity in tooling that must surface or guide iterative work",
+      "Relevance to a specific 'Clarity' product is not inferable from the packet alone"
+    ]
+  },
+  {
+    "packet_id": "ECR-000001-P002",
+    "provider": "gemini",
+    "field": "product_relevance_layer.clarity_relevance_observations",
+    "raw_items": [],
+    "literal_items": [],
+    "semantic_concepts": [],
+    "unresolved_items": []
+  },
+  {
+    "packet_id": "ECR-000001-P002",
+    "provider": "gpt",
+    "field": "product_relevance_layer.edf_relevance_observations",
+    "raw_items": [],
+    "literal_items": [],
+    "semantic_concepts": [],
+    "unresolved_items": []
+  },
+  {
+    "packet_id": "ECR-000001-P002",
+    "provider": "claude",
+    "field": "product_relevance_layer.edf_relevance_observations",
+    "raw_items": [
+      "The commitment step introduces a formal scope gate between prioritization and execution, which is structurally relevant to any execution-decision framework that models staged commitment",
+      "Commit to what will be taken into the current work cycle.",
+      "EDF interpretation is speculative without additional product context"
+    ],
+    "literal_items": [
+      "the commitment step introduces a formal scope gate between prioritization and execution which is structurally relevant to any execution decision framework that models staged commitment",
+      "commit to what will be taken into the current work cycle",
+      "edf interpretation is speculative without additional product context"
+    ],
+    "semantic_concepts": [
+      "COMMITMENT_DECISION"
+    ],
+    "unresolved_items": [
+      "EDF interpretation is speculative without additional product context"
+    ]
+  },
+  {
+    "packet_id": "ECR-000001-P002",
+    "provider": "gemini",
+    "field": "product_relevance_layer.edf_relevance_observations",
+    "raw_items": [],
+    "literal_items": [],
+    "semantic_concepts": [],
+    "unresolved_items": []
+  },
+  {
+    "packet_id": "ECR-000001-P002",
+    "provider": "gpt",
+    "field": "product_relevance_layer.research_only_observations",
+    "raw_items": [
+      "The packet explicitly instructs preservation of ambiguity and evidence support levels during extraction.",
+      "Prefer reporting multiple plausible interpretations… Record uncertainty explicitly."
+    ],
+    "literal_items": [
+      "the packet explicitly instructs preservation of ambiguity and evidence support levels during extraction",
+      "prefer reporting multiple plausible interpretations record uncertainty explicitly"
+    ],
+    "semantic_concepts": [
+      "EVIDENCE_EVALUATION",
+      "EXECUTION_CYCLE",
+      "HIERARCHICAL_CLASSIFICATION"
+    ],
+    "unresolved_items": [
+      "Prefer reporting multiple plausible interpretations… Record uncertainty explicitly."
+    ]
+  },
+  {
+    "packet_id": "ECR-000001-P002",
+    "provider": "claude",
+    "field": "product_relevance_layer.research_only_observations",
+    "raw_items": [
+      "The procedure's five-step form with embedded loop is a minimal iterative cycle; its compactness makes it a useful calibration artifact for procedural extraction studies testing loop detection and primitive sequencing",
+      "Research relevance is assessed from the study context, not the packet content"
+    ],
+    "literal_items": [
+      "the procedure s five step form with embedded loop is a minimal iterative cycle its compactness makes it a useful calibration artifact for procedural extraction studies testing loop detection and primitive sequencing",
+      "research relevance is assessed from the study context not the packet content"
+    ],
+    "semantic_concepts": [
+      "EXECUTION_CYCLE",
+      "EVIDENCE_EVALUATION"
+    ],
+    "unresolved_items": []
+  },
+  {
+    "packet_id": "ECR-000001-P002",
+    "provider": "gemini",
+    "field": "product_relevance_layer.research_only_observations",
+    "raw_items": [],
+    "literal_items": [],
+    "semantic_concepts": [],
+    "unresolved_items": []
+  },
+  {
+    "packet_id": "ECR-000001-P003",
+    "provider": "gpt",
+    "field": "structural_layer.entry_conditions",
+    "raw_items": [
+      "A set of kinds of work or performance is available for consideration.",
+      "Arrange kinds of work by level of cognitive challenge.",
+      "The source does not explicitly state the input form or completeness of the set."
+    ],
+    "literal_items": [
+      "a set of kinds of work or performance is available for consideration",
+      "arrange kinds of work by level of cognitive challenge",
+      "the source does not explicitly state the input form or completeness of the set"
+    ],
+    "semantic_concepts": [
+      "HIERARCHICAL_CLASSIFICATION"
+    ],
+    "unresolved_items": [
+      "A set of kinds of work or performance is available for consideration.",
+      "The source does not explicitly state the input form or completeness of the set."
+    ]
+  },
+  {
+    "packet_id": "ECR-000001-P003",
+    "provider": "claude",
+    "field": "structural_layer.entry_conditions",
+    "raw_items": [
+      "A set of tasks, objectives, or performance items exists and requires ordering or evaluation by cognitive demand.",
+      "Arrange kinds of work by level of cognitive challenge.",
+      "The nature of the input items is unspecified. Could be learning objectives, assessment items, job tasks, rubric criteria, or other performative units."
+    ],
+    "literal_items": [
+      "a set of tasks objectives or performance items exists and requires ordering or evaluation by cognitive demand",
+      "arrange kinds of work by level of cognitive challenge",
+      "the nature of the input items is unspecified could be learning objectives assessment items job tasks rubric criteria or other performative units"
+    ],
+    "semantic_concepts": [
+      "HIERARCHICAL_CLASSIFICATION",
+      "EVIDENCE_EVALUATION"
+    ],
+    "unresolved_items": [
+      "A set of tasks, objectives, or performance items exists and requires ordering or evaluation by cognitive demand."
+    ]
+  },
+  {
+    "packet_id": "ECR-000001-P003",
+    "provider": "gemini",
+    "field": "structural_layer.entry_conditions",
+    "raw_items": [
+      "Presence of diverse kinds of work requiring classification",
+      "Arrange kinds of work by level of cognitive challenge.",
+      "It is ambiguous whether the work items must pre-exist or if they are evaluated dynamically."
+    ],
+    "literal_items": [
+      "presence of diverse kinds of work requiring classification",
+      "arrange kinds of work by level of cognitive challenge",
+      "it is ambiguous whether the work items must pre exist or if they are evaluated dynamically"
+    ],
+    "semantic_concepts": [
+      "HIERARCHICAL_CLASSIFICATION",
+      "EVIDENCE_EVALUATION"
+    ],
+    "unresolved_items": []
+  },
+  {
+    "packet_id": "ECR-000001-P003",
+    "provider": "gpt",
+    "field": "structural_layer.exit_conditions",
+    "raw_items": [
+      "Distinctions among levels of cognitive challenge have been established and are available for selecting or evaluating an intended challenge level.",
+      "Use those distinctions when choosing or evaluating the intended level of challenge.",
+      "It is not explicit whether both choosing and evaluating must occur or whether either is sufficient."
+    ],
+    "literal_items": [
+      "distinctions among levels of cognitive challenge have been established and are available for selecting or evaluating an intended challenge level",
+      "use those distinctions when choosing or evaluating the intended level of challenge",
+      "it is not explicit whether both choosing and evaluating must occur or whether either is sufficient"
+    ],
+    "semantic_concepts": [
+      "HIERARCHICAL_CLASSIFICATION"
+    ],
+    "unresolved_items": [
+      "It is not explicit whether both choosing and evaluating must occur or whether either is sufficient."
+    ]
+  },
+  {
+    "packet_id": "ECR-000001-P003",
+    "provider": "claude",
+    "field": "structural_layer.exit_conditions",
+    "raw_items": [
+      "Items are arranged or labeled according to their assigned cognitive level.",
+      "Arrange kinds of work by level of cognitive challenge. Use those distinctions when choosing or evaluating the intended level of challenge.",
+      "Whether the output is a ranked ordering, a categorized grouping, or an annotated list is not specified."
+    ],
+    "literal_items": [
+      "items are arranged or labeled according to their assigned cognitive level",
+      "arrange kinds of work by level of cognitive challenge use those distinctions when choosing or evaluating the intended level of challenge",
+      "whether the output is a ranked ordering a categorized grouping or an annotated list is not specified"
+    ],
+    "semantic_concepts": [
+      "COORDINATION",
+      "HIERARCHICAL_CLASSIFICATION"
+    ],
+    "unresolved_items": [
+      "Whether the output is a ranked ordering, a categorized grouping, or an annotated list is not specified."
+    ]
+  },
+  {
+    "packet_id": "ECR-000001-P003",
+    "provider": "gemini",
+    "field": "structural_layer.exit_conditions",
+    "raw_items": [
+      "An intended level of challenge has been selected or evaluated using cognitive distinctions.",
+      "Use those distinctions when choosing or evaluating the intended level of challenge.",
+      "The text implies a conclusion after choice/evaluation, but explicit end states are not defined."
+    ],
+    "literal_items": [
+      "an intended level of challenge has been selected or evaluated using cognitive distinctions",
+      "use those distinctions when choosing or evaluating the intended level of challenge",
+      "the text implies a conclusion after choice evaluation but explicit end states are not defined"
+    ],
+    "semantic_concepts": [
+      "EVIDENCE_EVALUATION",
+      "COMMITMENT_DECISION",
+      "HIERARCHICAL_CLASSIFICATION"
+    ],
+    "unresolved_items": [
+      "The text implies a conclusion after choice/evaluation, but explicit end states are not defined."
+    ]
+  },
+  {
+    "packet_id": "ECR-000001-P003",
+    "provider": "gpt",
+    "field": "structural_layer.required_steps",
+    "raw_items": [
+      "Arrange kinds of work by level of cognitive challenge.",
+      "Differentiate simpler forms of performance from more demanding ones.",
+      "This may be a distinct step or a decomposition of the arranging activity.",
+      "Use the resulting distinctions when choosing or evaluating the intended level of challenge.",
+      "Use those distinctions when choosing or evaluating the intended level of challenge.",
+      "The procedure may require choosing, evaluating, or both depending on context."
+    ],
+    "literal_items": [
+      "arrange kinds of work by level of cognitive challenge",
+      "differentiate simpler forms of performance from more demanding ones",
+      "this may be a distinct step or a decomposition of the arranging activity",
+      "use the resulting distinctions when choosing or evaluating the intended level of challenge",
+      "use those distinctions when choosing or evaluating the intended level of challenge",
+      "the procedure may require choosing evaluating or both depending on context"
+    ],
+    "semantic_concepts": [
+      "HIERARCHICAL_CLASSIFICATION",
+      "COMPARISON"
+    ],
+    "unresolved_items": [
+      "This may be a distinct step or a decomposition of the arranging activity.",
+      "The procedure may require choosing, evaluating, or both depending on context."
+    ]
+  },
+  {
+    "packet_id": "ECR-000001-P003",
+    "provider": "claude",
+    "field": "structural_layer.required_steps",
+    "raw_items": [
+      "Establish or apply a taxonomy of cognitive levels that distinguishes simpler from more demanding performance.",
+      "Differentiate simpler forms of performance from more demanding ones.",
+      "Whether the taxonomy is pre-defined (imported) or constructed during the procedure is not stated.",
+      "Assign each item or kind of work to a cognitive level within the taxonomy.",
+      "Arrange kinds of work by level of cognitive challenge.",
+      "Assignment could be strict (one level per item) or fuzzy (ranges or overlapping levels).",
+      "Apply the level distinctions to select or evaluate items for an intended challenge target.",
+      "Use those distinctions when choosing or evaluating the intended level of challenge.",
+      "Whether this is a selection step (choosing new items) or an evaluation step (auditing existing items) or both is ambiguous."
+    ],
+    "literal_items": [
+      "establish or apply a taxonomy of cognitive levels that distinguishes simpler from more demanding performance",
+      "differentiate simpler forms of performance from more demanding ones",
+      "whether the taxonomy is pre defined imported or constructed during the procedure is not stated",
+      "assign each item or kind of work to a cognitive level within the taxonomy",
+      "arrange kinds of work by level of cognitive challenge",
+      "assignment could be strict one level per item or fuzzy ranges or overlapping levels",
+      "apply the level distinctions to select or evaluate items for an intended challenge target",
+      "use those distinctions when choosing or evaluating the intended level of challenge",
+      "whether this is a selection step choosing new items or an evaluation step auditing existing items or both is ambiguous"
+    ],
+    "semantic_concepts": [
+      "HIERARCHICAL_CLASSIFICATION",
+      "COMPARISON",
+      "COORDINATION",
+      "EVIDENCE_EVALUATION"
+    ],
+    "unresolved_items": [
+      "Whether this is a selection step (choosing new items) or an evaluation step (auditing existing items) or both is ambiguous."
+    ]
+  },
+  {
+    "packet_id": "ECR-000001-P003",
+    "provider": "gemini",
+    "field": "structural_layer.required_steps",
+    "raw_items": [
+      "Arrange kinds of work by level of cognitive challenge.",
+      "Does 'arrange' mean organizing an existing static list, or establishing a framework/scale for future arrangement?",
+      "Differentiate simpler forms of performance from more demanding ones.",
+      "It is unclear if this step is a mechanism for the arrangement in step 1, or a separate parallel action.",
+      "Use those distinctions when choosing or evaluating the intended level of challenge.",
+      "'Choosing' and 'evaluating' are presented as two options, creating an execution branch."
+    ],
+    "literal_items": [
+      "arrange kinds of work by level of cognitive challenge",
+      "does arrange mean organizing an existing static list or establishing a framework scale for future arrangement",
+      "differentiate simpler forms of performance from more demanding ones",
+      "it is unclear if this step is a mechanism for the arrangement in step 1 or a separate parallel action",
+      "use those distinctions when choosing or evaluating the intended level of challenge",
+      "choosing and evaluating are presented as two options creating an execution branch"
+    ],
+    "semantic_concepts": [
+      "HIERARCHICAL_CLASSIFICATION",
+      "COMPARISON",
+      "EXECUTION_CYCLE"
+    ],
+    "unresolved_items": [
+      "Does 'arrange' mean organizing an existing static list, or establishing a framework/scale for future arrangement?",
+      "'Choosing' and 'evaluating' are presented as two options, creating an execution branch."
+    ]
+  },
+  {
+    "packet_id": "ECR-000001-P003",
+    "provider": "gpt",
+    "field": "structural_layer.optional_steps",
+    "raw_items": [],
+    "literal_items": [],
+    "semantic_concepts": [],
+    "unresolved_items": []
+  },
+  {
+    "packet_id": "ECR-000001-P003",
+    "provider": "claude",
+    "field": "structural_layer.optional_steps",
+    "raw_items": [
+      "Revise or re-classify items whose assigned level is disputed or borderline.",
+      "Differentiate simpler forms of performance from more demanding ones.",
+      "Revision is a plausible procedural step but is not mentioned."
+    ],
+    "literal_items": [
+      "revise or re classify items whose assigned level is disputed or borderline",
+      "differentiate simpler forms of performance from more demanding ones",
+      "revision is a plausible procedural step but is not mentioned"
+    ],
+    "semantic_concepts": [
+      "COORDINATION",
+      "HIERARCHICAL_CLASSIFICATION",
+      "COMPARISON"
+    ],
+    "unresolved_items": [
+      "Revision is a plausible procedural step but is not mentioned."
+    ]
+  },
+  {
+    "packet_id": "ECR-000001-P003",
+    "provider": "gemini",
+    "field": "structural_layer.optional_steps",
+    "raw_items": [],
+    "literal_items": [],
+    "semantic_concepts": [],
+    "unresolved_items": []
+  },
+  {
+    "packet_id": "ECR-000001-P003",
+    "provider": "gpt",
+    "field": "structural_layer.loops",
+    "raw_items": [],
+    "literal_items": [],
+    "semantic_concepts": [],
+    "unresolved_items": []
+  },
+  {
+    "packet_id": "ECR-000001-P003",
+    "provider": "claude",
+    "field": "structural_layer.loops",
+    "raw_items": [
+      "Iterative re-evaluation of items may occur if initial classification is contested or if the intended challenge target changes.",
+      "Use those distinctions when choosing or evaluating the intended level of challenge.",
+      "No explicit loop is described; iteration is inferred from evaluation language."
+    ],
+    "literal_items": [
+      "iterative re evaluation of items may occur if initial classification is contested or if the intended challenge target changes",
+      "use those distinctions when choosing or evaluating the intended level of challenge",
+      "no explicit loop is described iteration is inferred from evaluation language"
+    ],
+    "semantic_concepts": [
+      "HIERARCHICAL_CLASSIFICATION"
+    ],
+    "unresolved_items": [
+      "No explicit loop is described; iteration is inferred from evaluation language."
+    ]
+  },
+  {
+    "packet_id": "ECR-000001-P003",
+    "provider": "gemini",
+    "field": "structural_layer.loops",
+    "raw_items": [],
+    "literal_items": [],
+    "semantic_concepts": [],
+    "unresolved_items": []
+  },
+  {
+    "packet_id": "ECR-000001-P003",
+    "provider": "gpt",
+    "field": "structural_layer.branches",
+    "raw_items": [
+      "Apply the distinctions for choosing an intended level of challenge or for evaluating an intended level of challenge.",
+      "Use those distinctions when choosing or evaluating the intended level of challenge.",
+      "The conjunction 'or' permits multiple plausible control flows: either activity alone or both in sequence."
+    ],
+    "literal_items": [
+      "apply the distinctions for choosing an intended level of challenge or for evaluating an intended level of challenge",
+      "use those distinctions when choosing or evaluating the intended level of challenge",
+      "the conjunction or permits multiple plausible control flows either activity alone or both in sequence"
+    ],
+    "semantic_concepts": [
+      "HIERARCHICAL_CLASSIFICATION"
+    ],
+    "unresolved_items": [
+      "The conjunction 'or' permits multiple plausible control flows: either activity alone or both in sequence."
+    ]
+  },
+  {
+    "packet_id": "ECR-000001-P003",
+    "provider": "claude",
+    "field": "structural_layer.branches",
+    "raw_items": [
+      "Branch A: Use taxonomy to choose new items targeting a desired cognitive level. Branch B: Use taxonomy to audit existing items against a desired cognitive level.",
+      "Use those distinctions when choosing or evaluating the intended level of challenge.",
+      "'Choosing' and 'evaluating' may be alternative uses or sequential steps. The packet does not resolve this."
+    ],
+    "literal_items": [
+      "branch a use taxonomy to choose new items targeting a desired cognitive level branch b use taxonomy to audit existing items against a desired cognitive level",
+      "use those distinctions when choosing or evaluating the intended level of challenge",
+      "choosing and evaluating may be alternative uses or sequential steps the packet does not resolve this"
+    ],
+    "semantic_concepts": [
+      "COMMITMENT_DECISION",
+      "HIERARCHICAL_CLASSIFICATION",
+      "HYPOTHESIS_GENERATION"
+    ],
+    "unresolved_items": []
+  },
+  {
+    "packet_id": "ECR-000001-P003",
+    "provider": "gemini",
+    "field": "structural_layer.branches",
+    "raw_items": [
+      "Choose the intended level of challenge OR evaluate the intended level of challenge.",
+      "choosing or evaluating the intended level of challenge.",
+      "The text does not clarify whether choosing and evaluating are mutually exclusive branches, sequential steps, or situational alternatives."
+    ],
+    "literal_items": [
+      "choose the intended level of challenge or evaluate the intended level of challenge",
+      "choosing or evaluating the intended level of challenge",
+      "the text does not clarify whether choosing and evaluating are mutually exclusive branches sequential steps or situational alternatives"
+    ],
+    "semantic_concepts": [
+      "EVIDENCE_EVALUATION",
+      "COMMITMENT_DECISION",
+      "HIERARCHICAL_CLASSIFICATION",
+      "HYPOTHESIS_GENERATION"
+    ],
+    "unresolved_items": []
+  },
+  {
+    "packet_id": "ECR-000001-P003",
+    "provider": "gpt",
+    "field": "structural_layer.termination_conditions",
+    "raw_items": [
+      "The distinctions have been applied to the intended level-of-challenge decision or assessment.",
+      "Use those distinctions when choosing or evaluating the intended level of challenge.",
+      "The stopping point is implied rather than explicitly stated."
+    ],
+    "literal_items": [
+      "the distinctions have been applied to the intended level of challenge decision or assessment",
+      "use those distinctions when choosing or evaluating the intended level of challenge",
+      "the stopping point is implied rather than explicitly stated"
+    ],
+    "semantic_concepts": [
+      "EVIDENCE_EVALUATION",
+      "HIERARCHICAL_CLASSIFICATION",
+      "TERMINATION_OR_CLOSURE"
+    ],
+    "unresolved_items": []
+  },
+  {
+    "packet_id": "ECR-000001-P003",
+    "provider": "claude",
+    "field": "structural_layer.termination_conditions",
+    "raw_items": [
+      "All items have been assigned a cognitive level and the intended challenge target has been chosen or evaluated.",
+      "Use those distinctions when choosing or evaluating the intended level of challenge.",
+      "No explicit termination signal is given."
+    ],
+    "literal_items": [
+      "all items have been assigned a cognitive level and the intended challenge target has been chosen or evaluated",
+      "use those distinctions when choosing or evaluating the intended level of challenge",
+      "no explicit termination signal is given"
+    ],
+    "semantic_concepts": [
+      "EVIDENCE_EVALUATION",
+      "COORDINATION",
+      "HIERARCHICAL_CLASSIFICATION"
+    ],
+    "unresolved_items": [
+      "No explicit termination signal is given."
+    ]
+  },
+  {
+    "packet_id": "ECR-000001-P003",
+    "provider": "gemini",
+    "field": "structural_layer.termination_conditions",
+    "raw_items": [],
+    "literal_items": [],
+    "semantic_concepts": [],
+    "unresolved_items": []
+  },
+  {
+    "packet_id": "ECR-000001-P003",
+    "provider": "gpt",
+    "field": "constraint_layer.invariants",
+    "raw_items": [
+      "Distinctions are based on level of cognitive challenge and on simpler versus more demanding performance.",
+      "Arrange kinds of work by level of cognitive challenge. Differentiate simpler forms of performance from more demanding ones."
+    ],
+    "literal_items": [
+      "distinctions are based on level of cognitive challenge and on simpler versus more demanding performance",
+      "arrange kinds of work by level of cognitive challenge differentiate simpler forms of performance from more demanding ones"
+    ],
+    "semantic_concepts": [
+      "HIERARCHICAL_CLASSIFICATION",
+      "COMPARISON"
+    ],
+    "unresolved_items": []
+  },
+  {
+    "packet_id": "ECR-000001-P003",
+    "provider": "claude",
+    "field": "constraint_layer.invariants",
+    "raw_items": [
+      "The taxonomy must distinguish at least two levels: simpler and more demanding.",
+      "Differentiate simpler forms of performance from more demanding ones.",
+      "The number of levels above two is unconstrained by the packet.",
+      "Level distinctions must be consistent across classification and selection/evaluation steps.",
+      "Use those distinctions when choosing or evaluating the intended level of challenge.",
+      "Consistency is implied by 'those distinctions' referring back to the same differentiation."
+    ],
+    "literal_items": [
+      "the taxonomy must distinguish at least two levels simpler and more demanding",
+      "differentiate simpler forms of performance from more demanding ones",
+      "the number of levels above two is unconstrained by the packet",
+      "level distinctions must be consistent across classification and selection evaluation steps",
+      "use those distinctions when choosing or evaluating the intended level of challenge",
+      "consistency is implied by those distinctions referring back to the same differentiation"
+    ],
+    "semantic_concepts": [
+      "HIERARCHICAL_CLASSIFICATION",
+      "COMPARISON"
+    ],
+    "unresolved_items": [
+      "Consistency is implied by 'those distinctions' referring back to the same differentiation."
+    ]
+  },
+  {
+    "packet_id": "ECR-000001-P003",
+    "provider": "gemini",
+    "field": "constraint_layer.invariants",
+    "raw_items": [],
+    "literal_items": [],
+    "semantic_concepts": [],
+    "unresolved_items": []
+  },
+  {
+    "packet_id": "ECR-000001-P003",
+    "provider": "gpt",
+    "field": "constraint_layer.preconditions",
+    "raw_items": [
+      "Kinds of work are available for comparison.",
+      "Arrange kinds of work…",
+      "The source does not explicitly state acquisition of the work types."
+    ],
+    "literal_items": [
+      "kinds of work are available for comparison",
+      "arrange kinds of work",
+      "the source does not explicitly state acquisition of the work types"
+    ],
+    "semantic_concepts": [],
+    "unresolved_items": [
+      "Kinds of work are available for comparison.",
+      "Arrange kinds of work…",
+      "The source does not explicitly state acquisition of the work types."
+    ]
+  },
+  {
+    "packet_id": "ECR-000001-P003",
+    "provider": "claude",
+    "field": "constraint_layer.preconditions",
+    "raw_items": [
+      "A set of items representing 'kinds of work' must exist prior to arrangement.",
+      "Arrange kinds of work by level of cognitive challenge.",
+      "What constitutes a 'kind of work' is not defined."
+    ],
+    "literal_items": [
+      "a set of items representing kinds of work must exist prior to arrangement",
+      "arrange kinds of work by level of cognitive challenge",
+      "what constitutes a kind of work is not defined"
+    ],
+    "semantic_concepts": [
+      "HIERARCHICAL_CLASSIFICATION"
+    ],
+    "unresolved_items": [
+      "A set of items representing 'kinds of work' must exist prior to arrangement.",
+      "What constitutes a 'kind of work' is not defined."
+    ]
+  },
+  {
+    "packet_id": "ECR-000001-P003",
+    "provider": "gemini",
+    "field": "constraint_layer.preconditions",
+    "raw_items": [
+      "Distinct kinds of work and forms of performance must exist to be evaluated.",
+      "Arrange kinds of work by level of cognitive challenge. Differentiate simpler forms of performance from more demanding ones."
+    ],
+    "literal_items": [
+      "distinct kinds of work and forms of performance must exist to be evaluated",
+      "arrange kinds of work by level of cognitive challenge differentiate simpler forms of performance from more demanding ones"
+    ],
+    "semantic_concepts": [
+      "EVIDENCE_EVALUATION",
+      "COMPARISON",
+      "HIERARCHICAL_CLASSIFICATION"
+    ],
+    "unresolved_items": []
+  },
+  {
+    "packet_id": "ECR-000001-P003",
+    "provider": "gpt",
+    "field": "constraint_layer.postconditions",
+    "raw_items": [
+      "Distinctions are available for use in choosing or evaluating challenge level.",
+      "Use those distinctions when choosing or evaluating the intended level of challenge."
+    ],
+    "literal_items": [
+      "distinctions are available for use in choosing or evaluating challenge level",
+      "use those distinctions when choosing or evaluating the intended level of challenge"
+    ],
+    "semantic_concepts": [
+      "HIERARCHICAL_CLASSIFICATION"
+    ],
+    "unresolved_items": []
+  },
+  {
+    "packet_id": "ECR-000001-P003",
+    "provider": "claude",
+    "field": "constraint_layer.postconditions",
+    "raw_items": [
+      "Items are arranged by cognitive level.",
+      "Arrange kinds of work by level of cognitive challenge.",
+      "Whether arrangement produces a strict ordering or a grouped categorization is unspecified.",
+      "A challenge target has been chosen or an existing set has been evaluated against one.",
+      "Use those distinctions when choosing or evaluating the intended level of challenge.",
+      "Both choosing and evaluating may be postconditions, or only one applies depending on branch taken."
+    ],
+    "literal_items": [
+      "items are arranged by cognitive level",
+      "arrange kinds of work by level of cognitive challenge",
+      "whether arrangement produces a strict ordering or a grouped categorization is unspecified",
+      "a challenge target has been chosen or an existing set has been evaluated against one",
+      "use those distinctions when choosing or evaluating the intended level of challenge",
+      "both choosing and evaluating may be postconditions or only one applies depending on branch taken"
+    ],
+    "semantic_concepts": [
+      "HIERARCHICAL_CLASSIFICATION",
+      "EVIDENCE_EVALUATION"
+    ],
+    "unresolved_items": [
+      "Whether arrangement produces a strict ordering or a grouped categorization is unspecified.",
+      "Both choosing and evaluating may be postconditions, or only one applies depending on branch taken."
+    ]
+  },
+  {
+    "packet_id": "ECR-000001-P003",
+    "provider": "gemini",
+    "field": "constraint_layer.postconditions",
+    "raw_items": [
+      "The intended level of challenge is either chosen or evaluated.",
+      "choosing or evaluating the intended level of challenge."
+    ],
+    "literal_items": [
+      "the intended level of challenge is either chosen or evaluated",
+      "choosing or evaluating the intended level of challenge"
+    ],
+    "semantic_concepts": [
+      "EVIDENCE_EVALUATION",
+      "HIERARCHICAL_CLASSIFICATION"
+    ],
+    "unresolved_items": []
+  },
+  {
+    "packet_id": "ECR-000001-P003",
+    "provider": "gpt",
+    "field": "constraint_layer.stopping_criteria",
+    "raw_items": [
+      "The distinctions have been used for the intended selection or evaluation activity.",
+      "Use those distinctions…",
+      "No explicit completion criterion is provided."
+    ],
+    "literal_items": [
+      "the distinctions have been used for the intended selection or evaluation activity",
+      "use those distinctions",
+      "no explicit completion criterion is provided"
+    ],
+    "semantic_concepts": [],
+    "unresolved_items": [
+      "The distinctions have been used for the intended selection or evaluation activity.",
+      "Use those distinctions…",
+      "No explicit completion criterion is provided."
+    ]
+  },
+  {
+    "packet_id": "ECR-000001-P003",
+    "provider": "claude",
+    "field": "constraint_layer.stopping_criteria",
+    "raw_items": [
+      "All relevant items classified and the target challenge level acted upon.",
+      "Use those distinctions when choosing or evaluating the intended level of challenge.",
+      "No explicit stopping signal; inferred from completion of stated steps."
+    ],
+    "literal_items": [
+      "all relevant items classified and the target challenge level acted upon",
+      "use those distinctions when choosing or evaluating the intended level of challenge",
+      "no explicit stopping signal inferred from completion of stated steps"
+    ],
+    "semantic_concepts": [
+      "HIERARCHICAL_CLASSIFICATION",
+      "TERMINATION_OR_CLOSURE"
+    ],
+    "unresolved_items": []
+  },
+  {
+    "packet_id": "ECR-000001-P003",
+    "provider": "gemini",
+    "field": "constraint_layer.stopping_criteria",
+    "raw_items": [],
+    "literal_items": [],
+    "semantic_concepts": [],
+    "unresolved_items": []
+  },
+  {
+    "packet_id": "ECR-000001-P003",
+    "provider": "gpt",
+    "field": "constraint_layer.validity_conditions",
+    "raw_items": [
+      "The arrangement and distinctions remain aligned with relative cognitive challenge.",
+      "Arrange kinds of work by level of cognitive challenge.",
+      "No validation procedure is specified."
+    ],
+    "literal_items": [
+      "the arrangement and distinctions remain aligned with relative cognitive challenge",
+      "arrange kinds of work by level of cognitive challenge",
+      "no validation procedure is specified"
+    ],
+    "semantic_concepts": [
+      "COORDINATION",
+      "HIERARCHICAL_CLASSIFICATION"
+    ],
+    "unresolved_items": [
+      "No validation procedure is specified."
+    ]
+  },
+  {
+    "packet_id": "ECR-000001-P003",
+    "provider": "claude",
+    "field": "constraint_layer.validity_conditions",
+    "raw_items": [
+      "The taxonomy used must produce a meaningful gradient from simpler to more demanding.",
+      "Differentiate simpler forms of performance from more demanding ones.",
+      "Validity criteria for the taxonomy itself are not specified."
+    ],
+    "literal_items": [
+      "the taxonomy used must produce a meaningful gradient from simpler to more demanding",
+      "differentiate simpler forms of performance from more demanding ones",
+      "validity criteria for the taxonomy itself are not specified"
+    ],
+    "semantic_concepts": [
+      "HIERARCHICAL_CLASSIFICATION",
+      "COMPARISON",
+      "EVIDENCE_EVALUATION"
+    ],
+    "unresolved_items": []
+  },
+  {
+    "packet_id": "ECR-000001-P003",
+    "provider": "gemini",
+    "field": "constraint_layer.validity_conditions",
+    "raw_items": [],
+    "literal_items": [],
+    "semantic_concepts": [],
+    "unresolved_items": []
+  },
+  {
+    "packet_id": "ECR-000001-P003",
+    "provider": "gpt",
+    "field": "representation_layer.natural_language_summary",
+    "raw_items": [
+      "Arrange work according to cognitive challenge, distinguish simpler from more demanding performance, and use those distinctions when selecting or assessing the intended challenge level."
+    ],
+    "literal_items": [
+      "arrange work according to cognitive challenge distinguish simpler from more demanding performance and use those distinctions when selecting or assessing the intended challenge level"
+    ],
+    "semantic_concepts": [
+      "EVIDENCE_EVALUATION",
+      "HIERARCHICAL_CLASSIFICATION"
+    ],
+    "unresolved_items": []
+  },
+  {
+    "packet_id": "ECR-000001-P003",
+    "provider": "claude",
+    "field": "representation_layer.natural_language_summary",
+    "raw_items": [
+      "The procedure involves classifying items representing kinds of work according to a cognitive demand taxonomy that distinguishes simpler from more demanding performance. Items are then arranged by level. The resulting level distinctions are applied either to select new items at a desired challenge level or to evaluate whether existing items meet an intended challenge target."
+    ],
+    "literal_items": [
+      "the procedure involves classifying items representing kinds of work according to a cognitive demand taxonomy that distinguishes simpler from more demanding performance items are then arranged by level the resulting level distinctions are applied either to select new items at a desired challenge level or to evaluate whether existing items meet an intended challenge target"
+    ],
+    "semantic_concepts": [
+      "EVIDENCE_EVALUATION",
+      "HIERARCHICAL_CLASSIFICATION"
+    ],
+    "unresolved_items": []
+  },
+  {
+    "packet_id": "ECR-000001-P003",
+    "provider": "gemini",
+    "field": "representation_layer.natural_language_summary",
+    "raw_items": [
+      "The procedure requires arranging work by cognitive challenge levels and distinguishing simple from demanding performances. These created distinctions are then utilized to either choose or evaluate an intended level of challenge."
+    ],
+    "literal_items": [
+      "the procedure requires arranging work by cognitive challenge levels and distinguishing simple from demanding performances these created distinctions are then utilized to either choose or evaluate an intended level of challenge"
+    ],
+    "semantic_concepts": [
+      "EVIDENCE_EVALUATION",
+      "COMMITMENT_DECISION",
+      "HIERARCHICAL_CLASSIFICATION"
+    ],
+    "unresolved_items": []
+  },
+  {
+    "packet_id": "ECR-000001-P003",
+    "provider": "gpt",
+    "field": "representation_layer.canonical_summary",
+    "raw_items": [
+      "Classify by cognitive challenge, differentiate performance levels, then apply the distinctions during challenge-level decisions."
+    ],
+    "literal_items": [
+      "classify by cognitive challenge differentiate performance levels then apply the distinctions during challenge level decisions"
+    ],
+    "semantic_concepts": [
+      "COMPARISON",
+      "HIERARCHICAL_CLASSIFICATION"
+    ],
+    "unresolved_items": []
+  },
+  {
+    "packet_id": "ECR-000001-P003",
+    "provider": "claude",
+    "field": "representation_layer.canonical_summary",
+    "raw_items": [
+      "Cognitive classification and level-based selection or audit of performative items using a demand taxonomy."
+    ],
+    "literal_items": [
+      "cognitive classification and level based selection or audit of performative items using a demand taxonomy"
+    ],
+    "semantic_concepts": [
+      "HIERARCHICAL_CLASSIFICATION"
+    ],
+    "unresolved_items": []
+  },
+  {
+    "packet_id": "ECR-000001-P003",
+    "provider": "gemini",
+    "field": "representation_layer.canonical_summary",
+    "raw_items": [
+      "1. Arrange work by cognitive challenge. 2. Differentiate performance demands. 3. Use distinctions to choose or evaluate challenge levels."
+    ],
+    "literal_items": [
+      "1 arrange work by cognitive challenge 2 differentiate performance demands 3 use distinctions to choose or evaluate challenge levels"
+    ],
+    "semantic_concepts": [
+      "EVIDENCE_EVALUATION",
+      "COMPARISON",
+      "COMMITMENT_DECISION",
+      "HIERARCHICAL_CLASSIFICATION"
+    ],
+    "unresolved_items": []
+  },
+  {
+    "packet_id": "ECR-000001-P003",
+    "provider": "gpt",
+    "field": "representation_layer.ambiguities",
+    "raw_items": [
+      "The text does not specify whether these are independent sequential steps or whether differentiation is the mechanism of arrangement.",
+      "Separate sequential operations",
+      "Differentiation is part of the arranging process",
+      "The wording permits choosing, evaluating, or potentially both.",
+      "Choose only",
+      "Evaluate only",
+      "Choose and evaluate"
+    ],
+    "literal_items": [
+      "the text does not specify whether these are independent sequential steps or whether differentiation is the mechanism of arrangement",
+      "separate sequential operations",
+      "differentiation is part of the arranging process",
+      "the wording permits choosing evaluating or potentially both",
+      "choose only",
+      "evaluate only",
+      "choose and evaluate"
+    ],
+    "semantic_concepts": [
+      "COMMITMENT_DECISION",
+      "EVIDENCE_EVALUATION"
+    ],
+    "unresolved_items": [
+      "The text does not specify whether these are independent sequential steps or whether differentiation is the mechanism of arrangement.",
+      "Separate sequential operations",
+      "Differentiation is part of the arranging process",
+      "The wording permits choosing, evaluating, or potentially both."
+    ]
+  },
+  {
+    "packet_id": "ECR-000001-P003",
+    "provider": "claude",
+    "field": "representation_layer.ambiguities",
+    "raw_items": [
+      "'Kinds of work' is unspecified. Could be learning objectives, tasks, assessment items, rubric criteria, or other units.",
+      "Educational learning objectives",
+      "Assessment or test items",
+      "Job or task descriptions",
+      "Rubric performance criteria",
+      "The packet uses both 'choosing' and 'evaluating' without clarifying whether these are alternatives or sequential.",
+      "They are mutually exclusive branches (design mode vs. audit mode)",
+      "They are sequential (choose then evaluate)",
+      "They are synonymous in this context",
+      "The taxonomy is referenced but not defined. Number of levels, labels, and granularity are all unspecified.",
+      "A recognized multi-level cognitive taxonomy is imported (e.g., six levels)",
+      "A bespoke two-level simpler/demanding binary is used",
+      "A continuum rather than discrete levels is used"
+    ],
+    "literal_items": [
+      "kinds of work is unspecified could be learning objectives tasks assessment items rubric criteria or other units",
+      "educational learning objectives",
+      "assessment or test items",
+      "job or task descriptions",
+      "rubric performance criteria",
+      "the packet uses both choosing and evaluating without clarifying whether these are alternatives or sequential",
+      "they are mutually exclusive branches design mode vs audit mode",
+      "they are sequential choose then evaluate",
+      "they are synonymous in this context",
+      "the taxonomy is referenced but not defined number of levels labels and granularity are all unspecified",
+      "a recognized multi level cognitive taxonomy is imported e g six levels",
+      "a bespoke two level simpler demanding binary is used",
+      "a continuum rather than discrete levels is used"
+    ],
+    "semantic_concepts": [
+      "EVIDENCE_EVALUATION",
+      "HYPOTHESIS_GENERATION",
+      "COMMITMENT_DECISION",
+      "HIERARCHICAL_CLASSIFICATION"
+    ],
+    "unresolved_items": [
+      "Educational learning objectives",
+      "Job or task descriptions",
+      "They are mutually exclusive branches (design mode vs. audit mode)",
+      "They are synonymous in this context"
+    ]
+  },
+  {
+    "packet_id": "ECR-000001-P003",
+    "provider": "gemini",
+    "field": "representation_layer.ambiguities",
+    "raw_items": [
+      "The disjunction 'choosing or evaluating' creates two different functional outcomes.",
+      "The user performs a selection task (choosing).",
+      "The user performs an assessment task (evaluating).",
+      "The user performs both tasks sequentially."
+    ],
+    "literal_items": [
+      "the disjunction choosing or evaluating creates two different functional outcomes",
+      "the user performs a selection task choosing",
+      "the user performs an assessment task evaluating",
+      "the user performs both tasks sequentially"
+    ],
+    "semantic_concepts": [
+      "EVIDENCE_EVALUATION"
+    ],
+    "unresolved_items": [
+      "The disjunction 'choosing or evaluating' creates two different functional outcomes.",
+      "The user performs a selection task (choosing).",
+      "The user performs both tasks sequentially."
+    ]
+  },
+  {
+    "packet_id": "ECR-000001-P003",
+    "provider": "gpt",
+    "field": "product_relevance_layer.clarity_relevance_observations",
+    "raw_items": [
+      "The procedure depends on distinctions among cognitive challenge levels being understandable enough to apply.",
+      "Use those distinctions…"
+    ],
+    "literal_items": [
+      "the procedure depends on distinctions among cognitive challenge levels being understandable enough to apply",
+      "use those distinctions"
+    ],
+    "semantic_concepts": [
+      "HIERARCHICAL_CLASSIFICATION"
+    ],
+    "unresolved_items": [
+      "Use those distinctions…"
+    ]
+  },
+  {
+    "packet_id": "ECR-000001-P003",
+    "provider": "claude",
+    "field": "product_relevance_layer.clarity_relevance_observations",
+    "raw_items": [
+      "This procedure could inform how clarity products sequence or tier instructional or evaluative content by cognitive demand.",
+      "Arrange kinds of work by level of cognitive challenge.",
+      "No explicit product context is given."
+    ],
+    "literal_items": [
+      "this procedure could inform how clarity products sequence or tier instructional or evaluative content by cognitive demand",
+      "arrange kinds of work by level of cognitive challenge",
+      "no explicit product context is given"
+    ],
+    "semantic_concepts": [
+      "HIERARCHICAL_CLASSIFICATION"
+    ],
+    "unresolved_items": [
+      "This procedure could inform how clarity products sequence or tier instructional or evaluative content by cognitive demand.",
+      "No explicit product context is given."
+    ]
+  },
+  {
+    "packet_id": "ECR-000001-P003",
+    "provider": "gemini",
+    "field": "product_relevance_layer.clarity_relevance_observations",
+    "raw_items": [],
+    "literal_items": [],
+    "semantic_concepts": [],
+    "unresolved_items": []
+  },
+  {
+    "packet_id": "ECR-000001-P003",
+    "provider": "gpt",
+    "field": "product_relevance_layer.edf_relevance_observations",
+    "raw_items": [],
+    "literal_items": [],
+    "semantic_concepts": [],
+    "unresolved_items": []
+  },
+  {
+    "packet_id": "ECR-000001-P003",
+    "provider": "claude",
+    "field": "product_relevance_layer.edf_relevance_observations",
+    "raw_items": [
+      "A cognitive demand taxonomy could serve as a structural layer in an evaluation or differentiation framework, providing a principled basis for level assignment.",
+      "Differentiate simpler forms of performance from more demanding ones.",
+      "EDF context is not stated in the packet."
+    ],
+    "literal_items": [
+      "a cognitive demand taxonomy could serve as a structural layer in an evaluation or differentiation framework providing a principled basis for level assignment",
+      "differentiate simpler forms of performance from more demanding ones",
+      "edf context is not stated in the packet"
+    ],
+    "semantic_concepts": [
+      "COORDINATION",
+      "HIERARCHICAL_CLASSIFICATION",
+      "COMPARISON"
+    ],
+    "unresolved_items": [
+      "EDF context is not stated in the packet."
+    ]
+  },
+  {
+    "packet_id": "ECR-000001-P003",
+    "provider": "gemini",
+    "field": "product_relevance_layer.edf_relevance_observations",
+    "raw_items": [],
+    "literal_items": [],
+    "semantic_concepts": [],
+    "unresolved_items": []
+  },
+  {
+    "packet_id": "ECR-000001-P003",
+    "provider": "gpt",
+    "field": "product_relevance_layer.research_only_observations",
+    "raw_items": [
+      "The packet emphasizes procedural extraction while preserving ambiguity rather than normalizing to a single decomposition.",
+      "Prefer reporting multiple plausible interpretations over collapsing them into a single interpretation when the packet supports more than one reading.",
+      "This observation concerns extraction instructions rather than the blinded procedural content."
+    ],
+    "literal_items": [
+      "the packet emphasizes procedural extraction while preserving ambiguity rather than normalizing to a single decomposition",
+      "prefer reporting multiple plausible interpretations over collapsing them into a single interpretation when the packet supports more than one reading",
+      "this observation concerns extraction instructions rather than the blinded procedural content"
+    ],
+    "semantic_concepts": [
+      "EXECUTION_CYCLE"
+    ],
+    "unresolved_items": [
+      "Prefer reporting multiple plausible interpretations over collapsing them into a single interpretation when the packet supports more than one reading."
+    ]
+  },
+  {
+    "packet_id": "ECR-000001-P003",
+    "provider": "claude",
+    "field": "product_relevance_layer.research_only_observations",
+    "raw_items": [
+      "The procedure's reliance on an unstated taxonomy introduces a significant degree of interpretive freedom that may require empirical validation of level assignments.",
+      "Differentiate simpler forms of performance from more demanding ones.",
+      "Research implications are inferred, not stated."
+    ],
+    "literal_items": [
+      "the procedure s reliance on an unstated taxonomy introduces a significant degree of interpretive freedom that may require empirical validation of level assignments",
+      "differentiate simpler forms of performance from more demanding ones",
+      "research implications are inferred not stated"
+    ],
+    "semantic_concepts": [
+      "COORDINATION",
+      "HIERARCHICAL_CLASSIFICATION",
+      "COMPARISON"
+    ],
+    "unresolved_items": [
+      "Research implications are inferred, not stated."
+    ]
+  },
+  {
+    "packet_id": "ECR-000001-P003",
+    "provider": "gemini",
+    "field": "product_relevance_layer.research_only_observations",
+    "raw_items": [
+      "Content matches foundational concepts of educational taxonomy design.",
+      "Arrange kinds of work by level of cognitive challenge."
+    ],
+    "literal_items": [
+      "content matches foundational concepts of educational taxonomy design",
+      "arrange kinds of work by level of cognitive challenge"
+    ],
+    "semantic_concepts": [
+      "HIERARCHICAL_CLASSIFICATION"
+    ],
+    "unresolved_items": []
+  }
+]

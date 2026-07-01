@@ -8,3 +8,10 @@ Summarize:
 - Unexpected behavior?
 - Recommended schema changes?
 - Should calibration be repeated?
+
+## P001 Preliminary Status
+
+Status:
+Pending reviewer decision.
+
+Do not mark calibration successful until P002 and P003 are complete.

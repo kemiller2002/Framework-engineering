@@ -1,0 +1,202 @@
+# Unresolved Semantic Matches
+
+- ECR-000001-P001 claude structural_layer.entry_conditions: The nature of 'unresolved' is not specified — could mean factually ambiguous, causally unclear, or practically undetermined. Multiple readings are plausible.
+- ECR-000001-P001 gemini structural_layer.entry_conditions: None. Directly states the initiating trigger.
+- ECR-000001-P001 claude structural_layer.exit_conditions: One explanation is supported strongly enough by available information
+- ECR-000001-P001 claude structural_layer.exit_conditions: Reason for non-justification is unspecified — could be resource exhaustion, diminishing returns, external constraint, or irreversibility. These are procedurally distinct but the packet does not distinguish them.
+- ECR-000001-P001 gemini structural_layer.exit_conditions: One explanation is supported strongly enough by what is known.
+- ECR-000001-P001 claude structural_layer.required_steps: Whether this step requires a minimum number of candidates or can proceed with two is not specified.
+- ECR-000001-P001 claude structural_layer.required_steps: The mechanism or method of gathering is not described; could be observation, querying, experimentation, or other means.
+- ECR-000001-P001 claude structural_layer.required_steps: That information is then checked against each explanation to see which one fits the observations best.
+- ECR-000001-P001 claude structural_layer.required_steps: Whether 'checked against each' means exhaustive pairwise comparison or a best-fit heuristic scan is ambiguous.
+- ECR-000001-P001 claude structural_layer.required_steps: If confidence remains insufficient, the actor may gather more information or reformulate the explanation set.
+- ECR-000001-P001 gemini structural_layer.required_steps: That information is then checked against each explanation to see which one fits the observations best.
+- ECR-000001-P001 claude structural_layer.optional_steps: the actor may gather more information or reformulate the explanation set
+- ECR-000001-P001 claude structural_layer.optional_steps: Whether reformulation replaces the prior set, augments it, or prunes it is not specified. These are procedurally distinct operations.
+- ECR-000001-P001 claude structural_layer.optional_steps: This is listed alongside reformulation as an 'or' branch — it is unclear whether both may occur simultaneously in one iteration or are mutually exclusive choices.
+- ECR-000001-P001 gemini structural_layer.optional_steps: If confidence remains insufficient, the actor may gather more information
+- ECR-000001-P001 gemini structural_layer.optional_steps: Ambiguous if this acts as a replacement or supplement to reformulating the explanations.
+- ECR-000001-P001 gemini structural_layer.optional_steps: or reformulate the explanation set.
+- ECR-000001-P001 gemini structural_layer.optional_steps: Ambiguous if this means adding new explanations, modifying existing ones, or discarding non-fitting ones.
+- ECR-000001-P001 claude structural_layer.branches: On insufficient confidence: branch to (a) gather more information, or (b) reformulate explanations, or (c) both
+- ECR-000001-P001 claude structural_layer.branches: the actor may gather more information or reformulate the explanation set
+- ECR-000001-P001 claude structural_layer.branches: The 'or' is inclusive or exclusive is unresolved. Three interpretations are plausible: exclusive choice, inclusive choice, or sequenced sub-options.
+- ECR-000001-P001 gemini structural_layer.branches: Branch between gathering more information OR reformulating the explanation set.
+- ECR-000001-P001 gemini structural_layer.branches: the actor may gather more information or reformulate the explanation set.
+- ECR-000001-P001 gemini structural_layer.branches: It is ambiguous whether these are mutually exclusive options or if both can occur simultaneously, given the use of 'or'.
+- ECR-000001-P001 claude structural_layer.termination_conditions: Sufficient evidential support for one explanation
+- ECR-000001-P001 claude structural_layer.termination_conditions: until one explanation is supported strongly enough by what is known
+- ECR-000001-P001 claude structural_layer.termination_conditions: Justification criterion is unspecified.
+- ECR-000001-P001 gemini structural_layer.termination_conditions: One explanation achieves sufficient empirical or evidentiary support.
+- ECR-000001-P001 gemini structural_layer.termination_conditions: until one explanation is supported strongly enough by what is known
+- ECR-000001-P001 gemini structural_layer.termination_conditions: Further investigation loses justification.
+- ECR-000001-P001 claude constraint_layer.invariants: Whether this constraint applies only at the start or throughout each loop iteration is not stated.
+- ECR-000001-P001 gemini constraint_layer.invariants: No single explanation is treated as settled prior to evaluation.
+- ECR-000001-P001 gemini constraint_layer.invariants: without treating any one of them as settled.
+- ECR-000001-P001 claude constraint_layer.preconditions: None significant.
+- ECR-000001-P001 claude constraint_layer.preconditions: Whether the procedure can proceed with a single candidate is not addressed; 'several' implies plurality.
+- ECR-000001-P001 gemini constraint_layer.preconditions: The actor has a requirement or motivation to explain the situation.
+- ECR-000001-P001 gemini constraint_layer.preconditions: and the actor must determine what best explains it.
+- ECR-000001-P001 claude constraint_layer.postconditions: until one explanation is supported strongly enough by what is known
+- ECR-000001-P001 claude constraint_layer.postconditions: The state of the explanation set at abandonment is not described.
+- ECR-000001-P001 gemini constraint_layer.postconditions: An explanation is strongly supported by known information OR further investigation is deemed unjustified.
+- ECR-000001-P001 gemini constraint_layer.postconditions: The postcondition contains an 'OR' split, meaning the final state may be resolution or abandonment.
+- ECR-000001-P001 claude constraint_layer.stopping_criteria: one explanation is supported strongly enough by what is known
+- ECR-000001-P001 claude constraint_layer.stopping_criteria: Further investigation unjustified
+- ECR-000001-P001 claude constraint_layer.stopping_criteria: Basis for justification not specified.
+- ECR-000001-P001 gemini constraint_layer.stopping_criteria: until one explanation is supported strongly enough by what is known
+- ECR-000001-P001 claude constraint_layer.validity_conditions: checked against each explanation
+- ECR-000001-P001 claude constraint_layer.validity_conditions: Whether 'each' means exhaustive or representative coverage is ambiguous.
+- ECR-000001-P001 claude representation_layer.ambiguities: The logical relationship between the two options is unspecified.
+- ECR-000001-P001 claude representation_layer.ambiguities: Inclusive or: actor may do both in one iteration
+- ECR-000001-P001 claude representation_layer.ambiguities: Sequenced: reformulation triggers new gathering in the same iteration
+- ECR-000001-P001 claude representation_layer.ambiguities: Basis for justification is unspecified.
+- ECR-000001-P001 claude representation_layer.ambiguities: Resource or cost constraint
+- ECR-000001-P001 claude representation_layer.ambiguities: Diminishing returns on evidence
+- ECR-000001-P001 claude representation_layer.ambiguities: External termination imposed by context
+- ECR-000001-P001 claude representation_layer.ambiguities: Logical impossibility of further discrimination
+- ECR-000001-P001 claude representation_layer.ambiguities: After reformulating the explanation set, the next step is not stated.
+- ECR-000001-P001 claude representation_layer.ambiguities: Return to gathering (implies candidates are updated, information gathering continues)
+- ECR-000001-P001 claude representation_layer.ambiguities: Both equally plausible
+- ECR-000001-P001 claude representation_layer.ambiguities: Ordinal ranking of all candidates
+- ECR-000001-P001 claude representation_layer.ambiguities: Comparative pairwise elimination
+- ECR-000001-P001 gemini representation_layer.ambiguities: The use of 'or' creates ambiguity on execution constraints.
+- ECR-000001-P001 gemini representation_layer.ambiguities: The step of checking fit happens implicitly inside the cycle right after gathering/reformulating.
+- ECR-000001-P001 gemini representation_layer.ambiguities: The cycle only consists of gathering/reformulating, and the checking step exists outside the loop, implying a jump back up to an earlier sequence step.
+- ECR-000001-P001 claude product_relevance_layer.clarity_relevance_observations: Relevance to any specific product is inferred; not supported by packet content.
+- ECR-000001-P001 gemini product_relevance_layer.clarity_relevance_observations: Extrapolated from the deliberate omission of specific domain terms.
+- ECR-000001-P001 claude product_relevance_layer.edf_relevance_observations: Inferred; no explicit EDF reference in packet.
+- ECR-000001-P001 gemini product_relevance_layer.edf_relevance_observations: Collapsing these into a single 'Done' flag loses the semantic distinction between success and abandonment.
+- ECR-000001-P001 claude product_relevance_layer.research_only_observations: None — this is a meta-observation about the calibration study itself.
+- ECR-000001-P001 gemini product_relevance_layer.research_only_observations: This procedural profile serves as a textbook baseline for testing an agent's capability to handle multi-path looping structures without forcing normalization.
+- ECR-000001-P001 gemini product_relevance_layer.research_only_observations: Relies entirely on the evaluation meta-context of ECR-000001.
+- ECR-000001-P002 gpt structural_layer.entry_conditions: A new work cycle is ready to begin.
+- ECR-000001-P002 gpt structural_layer.entry_conditions: Define a near-term working target.
+- ECR-000001-P002 gpt structural_layer.entry_conditions: The existence of a work cycle is implied rather than explicitly stated.
+- ECR-000001-P002 claude structural_layer.entry_conditions: A near-term working target must be defined before the cycle begins
+- ECR-000001-P002 claude structural_layer.entry_conditions: Define a near-term working target.
+- ECR-000001-P002 claude structural_layer.entry_conditions: The scope or granularity of 'near-term' is unspecified; could range from hours to weeks
+- ECR-000001-P002 claude structural_layer.entry_conditions: Prioritize available work.
+- ECR-000001-P002 claude structural_layer.entry_conditions: Whether prioritization is a precondition to the cycle or the first step within it is ambiguous
+- ECR-000001-P002 gemini structural_layer.entry_conditions: Availability of work items to prioritize.
+- ECR-000001-P002 gemini structural_layer.entry_conditions: Prioritize available work.
+- ECR-000001-P002 gemini structural_layer.entry_conditions: It is ambiguous whether a pool of work must already exist or if defining the near-term working target creates it.
+- ECR-000001-P002 claude structural_layer.exit_conditions: The cycle produces an immediately usable result
+- ECR-000001-P002 claude structural_layer.exit_conditions: Carry out the work to produce an immediately usable result.
+- ECR-000001-P002 claude structural_layer.exit_conditions: 'Immediately usable' is undefined; could mean shippable, demonstrable, or merely functional
+- ECR-000001-P002 claude structural_layer.exit_conditions: Reflection on the cycle outcome is completed
+- ECR-000001-P002 gemini structural_layer.exit_conditions: Production of an immediately usable result and completion of reflection.
+- ECR-000001-P002 gpt structural_layer.required_steps: Define a near-term working target.
+- ECR-000001-P002 gpt structural_layer.required_steps: Prioritize available work.
+- ECR-000001-P002 gpt structural_layer.required_steps: The prioritization method is unspecified.
+- ECR-000001-P002 gpt structural_layer.required_steps: Carry out the work to produce an immediately usable result.
+- ECR-000001-P002 gpt structural_layer.required_steps: The nature of the result is unspecified.
+- ECR-000001-P002 claude structural_layer.required_steps: Define a near-term working target
+- ECR-000001-P002 claude structural_layer.required_steps: Define a near-term working target.
+- ECR-000001-P002 claude structural_layer.required_steps: Prioritize available work
+- ECR-000001-P002 claude structural_layer.required_steps: Prioritize available work.
+- ECR-000001-P002 claude structural_layer.required_steps: Carry out the work to produce an immediately usable result.
+- ECR-000001-P002 claude structural_layer.required_steps: The nature of the work and the definition of 'usable' are unspecified
+- ECR-000001-P002 gemini structural_layer.required_steps: Define a near-term working target.
+- ECR-000001-P002 gemini structural_layer.required_steps: Prioritize available work.
+- ECR-000001-P002 gemini structural_layer.required_steps: Carry out the work to produce an immediately usable result.
+- ECR-000001-P002 gpt structural_layer.loops: The text implies iteration but does not explicitly state repetition.
+- ECR-000001-P002 claude structural_layer.loops: The packet does not explicitly state the loop repeats indefinitely; it could describe a single cycle
+- ECR-000001-P002 gemini structural_layer.loops: The text implies a loop across cycles, but it is ambiguous whether the loop returns to step 1 (Define target) or step 2 (Prioritize available work) for the next iteration.
+- ECR-000001-P002 gpt structural_layer.branches: The packet does not specify decision branches beyond selecting work for the current cycle.
+- ECR-000001-P002 gpt structural_layer.termination_conditions: The process may instead continue indefinitely through repeated cycles.
+- ECR-000001-P002 claude structural_layer.termination_conditions: The packet describes a repeating cycle with no stated end; termination may be implicit in context not provided
+- ECR-000001-P002 gpt constraint_layer.invariants: Execution aims to produce an immediately usable result.
+- ECR-000001-P002 gpt constraint_layer.invariants: Carry out the work to produce an immediately usable result.
+- ECR-000001-P002 claude constraint_layer.invariants: Each cycle must produce an immediately usable result
+- ECR-000001-P002 claude constraint_layer.invariants: Carry out the work to produce an immediately usable result.
+- ECR-000001-P002 claude constraint_layer.invariants: 'Immediately usable' is not defined; its invariance across all cycles is inferred
+- ECR-000001-P002 gemini constraint_layer.invariants: The work must target an immediately usable result.
+- ECR-000001-P002 gemini constraint_layer.invariants: Carry out the work to produce an immediately usable result.
+- ECR-000001-P002 gpt constraint_layer.preconditions: Available work exists to prioritize.
+- ECR-000001-P002 gpt constraint_layer.preconditions: Prioritize available work.
+- ECR-000001-P002 gpt constraint_layer.preconditions: The existence of available work is implied.
+- ECR-000001-P002 claude constraint_layer.preconditions: Available work must exist before prioritization can occur
+- ECR-000001-P002 claude constraint_layer.preconditions: Prioritize available work.
+- ECR-000001-P002 claude constraint_layer.preconditions: The source or composition of available work is not described
+- ECR-000001-P002 gemini constraint_layer.preconditions: Work must be available prior to prioritization.
+- ECR-000001-P002 gemini constraint_layer.preconditions: Prioritize available work.
+- ECR-000001-P002 gpt constraint_layer.postconditions: An immediately usable result has been produced.
+- ECR-000001-P002 gpt constraint_layer.postconditions: Carry out the work to produce an immediately usable result.
+- ECR-000001-P002 claude constraint_layer.postconditions: An immediately usable result exists at cycle end
+- ECR-000001-P002 claude constraint_layer.postconditions: Carry out the work to produce an immediately usable result.
+- ECR-000001-P002 claude constraint_layer.postconditions: What constitutes 'usable' is undefined
+- ECR-000001-P002 gemini constraint_layer.postconditions: An immediately usable result is produced.
+- ECR-000001-P002 gemini constraint_layer.postconditions: Carry out the work to produce an immediately usable result.
+- ECR-000001-P002 gpt constraint_layer.stopping_criteria: The procedure may instead continue into another iteration.
+- ECR-000001-P002 claude constraint_layer.stopping_criteria: Termination may be externally imposed or implied by context outside this packet
+- ECR-000001-P002 gpt constraint_layer.validity_conditions: The execution yields an immediately usable result.
+- ECR-000001-P002 gpt constraint_layer.validity_conditions: Carry out the work to produce an immediately usable result.
+- ECR-000001-P002 claude constraint_layer.validity_conditions: A cycle is valid only if it produces an immediately usable result
+- ECR-000001-P002 claude constraint_layer.validity_conditions: Carry out the work to produce an immediately usable result.
+- ECR-000001-P002 claude constraint_layer.validity_conditions: Whether a cycle with a partial result is considered valid is not addressed
+- ECR-000001-P002 gpt representation_layer.ambiguities: The procedure repeats indefinitely.
+- ECR-000001-P002 gpt representation_layer.ambiguities: Selection of work items.
+- ECR-000001-P002 claude representation_layer.ambiguities: Whether 'Define a near-term working target' and 'Prioritize available work' are strictly sequential or partially concurrent is not specified
+- ECR-000001-P002 claude representation_layer.ambiguities: Target definition scopes and precedes prioritization
+- ECR-000001-P002 claude representation_layer.ambiguities: Prioritization and target definition are co-determined in a single planning activity
+- ECR-000001-P002 claude representation_layer.ambiguities: The packet contains no explicit termination condition for the outer loop
+- ECR-000001-P002 claude representation_layer.ambiguities: The cycle has an implied termination tied to a larger goal not described in this packet
+- ECR-000001-P002 claude representation_layer.ambiguities: A single retrospective activity combining outcome review and next-cycle planning
+- ECR-000001-P002 claude representation_layer.ambiguities: Two separate activities: a backward-looking retrospective and a forward-looking planning update
+- ECR-000001-P002 gemini representation_layer.ambiguities: Unclear exactly where the loop point lands for the subsequent cycle.
+- ECR-000001-P002 gemini representation_layer.ambiguities: Loop returns to Step 1 to redefine a new near-term working target.
+- ECR-000001-P002 gemini representation_layer.ambiguities: Loop returns to Step 2 assuming the overarching target remains stable and only work items change.
+- ECR-000001-P002 gemini representation_layer.ambiguities: The exact scope and definition of 'immediately usable' is left abstract.
+- ECR-000001-P002 gemini representation_layer.ambiguities: Production-ready deployment.
+- ECR-000001-P002 gemini representation_layer.ambiguities: Internal functional prototype ready for evaluation.
+- ECR-000001-P002 gpt product_relevance_layer.clarity_relevance_observations: Entire procedural content.
+- ECR-000001-P002 gpt product_relevance_layer.clarity_relevance_observations: Iteration remains implicit.
+- ECR-000001-P002 claude product_relevance_layer.clarity_relevance_observations: The procedure is compact and communicable; each step maps to a single clear imperative, which supports clarity in tooling that must surface or guide iterative work
+- ECR-000001-P002 claude product_relevance_layer.clarity_relevance_observations: Relevance to a specific 'Clarity' product is not inferable from the packet alone
+- ECR-000001-P002 claude product_relevance_layer.edf_relevance_observations: EDF interpretation is speculative without additional product context
+- ECR-000001-P002 gpt product_relevance_layer.research_only_observations: Prefer reporting multiple plausible interpretations… Record uncertainty explicitly.
+- ECR-000001-P003 gpt structural_layer.entry_conditions: A set of kinds of work or performance is available for consideration.
+- ECR-000001-P003 gpt structural_layer.entry_conditions: The source does not explicitly state the input form or completeness of the set.
+- ECR-000001-P003 claude structural_layer.entry_conditions: A set of tasks, objectives, or performance items exists and requires ordering or evaluation by cognitive demand.
+- ECR-000001-P003 gpt structural_layer.exit_conditions: It is not explicit whether both choosing and evaluating must occur or whether either is sufficient.
+- ECR-000001-P003 claude structural_layer.exit_conditions: Whether the output is a ranked ordering, a categorized grouping, or an annotated list is not specified.
+- ECR-000001-P003 gemini structural_layer.exit_conditions: The text implies a conclusion after choice/evaluation, but explicit end states are not defined.
+- ECR-000001-P003 gpt structural_layer.required_steps: This may be a distinct step or a decomposition of the arranging activity.
+- ECR-000001-P003 gpt structural_layer.required_steps: The procedure may require choosing, evaluating, or both depending on context.
+- ECR-000001-P003 claude structural_layer.required_steps: Whether this is a selection step (choosing new items) or an evaluation step (auditing existing items) or both is ambiguous.
+- ECR-000001-P003 gemini structural_layer.required_steps: Does 'arrange' mean organizing an existing static list, or establishing a framework/scale for future arrangement?
+- ECR-000001-P003 gemini structural_layer.required_steps: 'Choosing' and 'evaluating' are presented as two options, creating an execution branch.
+- ECR-000001-P003 claude structural_layer.optional_steps: Revision is a plausible procedural step but is not mentioned.
+- ECR-000001-P003 claude structural_layer.loops: No explicit loop is described; iteration is inferred from evaluation language.
+- ECR-000001-P003 gpt structural_layer.branches: The conjunction 'or' permits multiple plausible control flows: either activity alone or both in sequence.
+- ECR-000001-P003 claude structural_layer.termination_conditions: No explicit termination signal is given.
+- ECR-000001-P003 claude constraint_layer.invariants: Consistency is implied by 'those distinctions' referring back to the same differentiation.
+- ECR-000001-P003 gpt constraint_layer.preconditions: Kinds of work are available for comparison.
+- ECR-000001-P003 gpt constraint_layer.preconditions: Arrange kinds of work…
+- ECR-000001-P003 gpt constraint_layer.preconditions: The source does not explicitly state acquisition of the work types.
+- ECR-000001-P003 claude constraint_layer.preconditions: A set of items representing 'kinds of work' must exist prior to arrangement.
+- ECR-000001-P003 claude constraint_layer.preconditions: What constitutes a 'kind of work' is not defined.
+- ECR-000001-P003 claude constraint_layer.postconditions: Whether arrangement produces a strict ordering or a grouped categorization is unspecified.
+- ECR-000001-P003 claude constraint_layer.postconditions: Both choosing and evaluating may be postconditions, or only one applies depending on branch taken.
+- ECR-000001-P003 gpt constraint_layer.stopping_criteria: The distinctions have been used for the intended selection or evaluation activity.
+- ECR-000001-P003 gpt constraint_layer.stopping_criteria: Use those distinctions…
+- ECR-000001-P003 gpt constraint_layer.stopping_criteria: No explicit completion criterion is provided.
+- ECR-000001-P003 gpt constraint_layer.validity_conditions: No validation procedure is specified.
+- ECR-000001-P003 gpt representation_layer.ambiguities: The text does not specify whether these are independent sequential steps or whether differentiation is the mechanism of arrangement.
+- ECR-000001-P003 gpt representation_layer.ambiguities: Separate sequential operations
+- ECR-000001-P003 gpt representation_layer.ambiguities: Differentiation is part of the arranging process
+- ECR-000001-P003 gpt representation_layer.ambiguities: The wording permits choosing, evaluating, or potentially both.
+- ECR-000001-P003 claude representation_layer.ambiguities: Educational learning objectives
+- ECR-000001-P003 claude representation_layer.ambiguities: Job or task descriptions
+- ECR-000001-P003 claude representation_layer.ambiguities: They are mutually exclusive branches (design mode vs. audit mode)
+- ECR-000001-P003 claude representation_layer.ambiguities: They are synonymous in this context
+- ECR-000001-P003 gemini representation_layer.ambiguities: The disjunction 'choosing or evaluating' creates two different functional outcomes.
+- ECR-000001-P003 gemini representation_layer.ambiguities: The user performs a selection task (choosing).
+- ECR-000001-P003 gemini representation_layer.ambiguities: The user performs both tasks sequentially.
+- ECR-000001-P003 gpt product_relevance_layer.clarity_relevance_observations: Use those distinctions…
+- ECR-000001-P003 claude product_relevance_layer.clarity_relevance_observations: This procedure could inform how clarity products sequence or tier instructional or evaluative content by cognitive demand.
+- ECR-000001-P003 claude product_relevance_layer.clarity_relevance_observations: No explicit product context is given.
+- ECR-000001-P003 claude product_relevance_layer.edf_relevance_observations: EDF context is not stated in the packet.
+- ECR-000001-P003 gpt product_relevance_layer.research_only_observations: Prefer reporting multiple plausible interpretations over collapsing them into a single interpretation when the packet supports more than one reading.
+- ECR-000001-P003 claude product_relevance_layer.research_only_observations: Research implications are inferred, not stated.

@@ -13,3 +13,4 @@
 - Product relevance queue
 - Infrastructure debt
 - Open decisions
+- ECR dashboard should summarize instrument health, comparator health, ontology health, and hypothesis-review readiness before any confidence updates
