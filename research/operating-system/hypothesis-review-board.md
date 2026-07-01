@@ -17,3 +17,9 @@
 | H013 Recognition Bias | Moderate |  |  | None | H003; H005; H015 | keep | Track recognition rate |
 | H014 Prompt Robustness | Low |  |  | H015 | H003; H006 | keep | Plan prompt-robustness run |
 | H015 Measurement Instrument Reliability | Moderate |  |  | None | H014; H013 | keep | Review schema compliance |
+
+## ECR-000001 Limited Review Pending
+
+- Ready for limited review: H003, H012, H015, H007, H008
+- Blocked/deferred: H013, H005, H006, H009, H010
+- Required before confidence update: human review of workspace findings

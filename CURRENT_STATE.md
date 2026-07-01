@@ -113,8 +113,8 @@ Framework Engineering currently has provisional evidence as a characterization a
 
 ## Current Phase
 
-ECR-000001 Dashboard / Limited Hypothesis Review Preparation
+ECR-000001 Limited Hypothesis Review
 
 ## Current Goal
 
-Determine whether ECR-000001 evidence is ready for limited hypothesis review or requires additional instrument refinement.
+Review ECR-000001 evidence without changing confidence automatically, resolve malformed response status, and decide whether ECR-000002 should proceed.
