@@ -258,6 +258,45 @@ Framework Engineering may need a standard characterization sheet, blind review p
 Status:
 Under development.
 
+### DI-FE-023
+
+Title: Recognition as Experimental Variable
+
+Observation:
+Recognition bias should be varied intentionally rather than treated only as a defect.
+
+Potential Implication:
+Canonical, paraphrased, and structural packet variants can help distinguish recognition-driven reconstruction from procedural extraction.
+
+Status:
+Accepted for ECR-000002.
+
+### DI-FE-024
+
+Title: Structural Recognition
+
+Observation:
+P001C structural paraphrase still triggered recognition across models, suggesting that recognition may occur from control-flow topology rather than canonical terminology alone.
+
+Potential Implication:
+Recognition bias should be treated as both lexical and structural.
+
+Status:
+Active test planned through P001D graph-only packet.
+
+### DI-FE-025
+
+Title: Procedural Fingerprints
+
+Observation:
+Graph-only representation reduced recognition for some models but not all, suggesting procedural topology may carry recognizable signatures.
+
+Potential Implication:
+Certain procedures may have control-flow fingerprints that survive abstraction and paraphrase.
+
+Status:
+Active test planned through ECR-000003.
+
 ### DI-FE-018
 
 Title: General Reasoning Grammar

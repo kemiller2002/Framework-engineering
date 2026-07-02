@@ -1,0 +1,162 @@
+{
+  "packet_id": "",
+  "artifact_family_id": "",
+  "recognition_condition": "",
+  "blinded_artifact_id": "",
+  "recognized_artifact": "",
+  "structural_layer": {
+    "entry_conditions": [
+      {
+        "value": "",
+        "support_level": "",
+        "source_text": "",
+        "ambiguity": ""
+      }
+    ],
+    "exit_conditions": [
+      {
+        "value": "",
+        "support_level": "",
+        "source_text": "",
+        "ambiguity": ""
+      }
+    ],
+    "required_steps": [
+      {
+        "value": "",
+        "support_level": "",
+        "source_text": "",
+        "ambiguity": ""
+      }
+    ],
+    "optional_steps": [
+      {
+        "value": "",
+        "support_level": "",
+        "source_text": "",
+        "ambiguity": ""
+      }
+    ],
+    "loops": [
+      {
+        "value": "",
+        "support_level": "",
+        "source_text": "",
+        "ambiguity": ""
+      }
+    ],
+    "branches": [
+      {
+        "value": "",
+        "support_level": "",
+        "source_text": "",
+        "ambiguity": ""
+      }
+    ],
+    "termination_conditions": [
+      {
+        "value": "",
+        "support_level": "",
+        "source_text": "",
+        "ambiguity": ""
+      }
+    ],
+    "control_flow_shape": ""
+  },
+  "primitive_layer": {
+    "primitive_sequence": [],
+    "transitions": [],
+    "dominant_primitive": "",
+    "candidate_missing_primitives": []
+  },
+  "constraint_layer": {
+    "invariants": [
+      {
+        "value": "",
+        "support_level": "",
+        "source_text": "",
+        "ambiguity": ""
+      }
+    ],
+    "preconditions": [
+      {
+        "value": "",
+        "support_level": "",
+        "source_text": "",
+        "ambiguity": ""
+      }
+    ],
+    "postconditions": [
+      {
+        "value": "",
+        "support_level": "",
+        "source_text": "",
+        "ambiguity": ""
+      }
+    ],
+    "stopping_criteria": [
+      {
+        "value": "",
+        "support_level": "",
+        "source_text": "",
+        "ambiguity": ""
+      }
+    ],
+    "validity_conditions": [
+      {
+        "value": "",
+        "support_level": "",
+        "source_text": "",
+        "ambiguity": ""
+      }
+    ]
+  },
+  "representation_layer": {
+    "procedural_ast": {},
+    "natural_language_summary": "",
+    "canonical_summary": "",
+    "ambiguities": [
+      {
+        "location": "",
+        "description": "",
+        "plausible_interpretations": [],
+        "effect_on_extraction": ""
+      }
+    ]
+  },
+  "product_relevance_layer": {
+    "clarity_relevance_observations": [
+      {
+        "value": "",
+        "support_level": "",
+        "source_text": "",
+        "ambiguity": ""
+      }
+    ],
+    "edf_relevance_observations": [
+      {
+        "value": "",
+        "support_level": "",
+        "source_text": "",
+        "ambiguity": ""
+      }
+    ],
+    "research_only_observations": [
+      {
+        "value": "",
+        "support_level": "",
+        "source_text": "",
+        "ambiguity": ""
+      }
+    ]
+  },
+  "confidence": {
+    "structural_layer": "",
+    "primitive_layer": "",
+    "constraint_layer": "",
+    "representation_layer": "",
+    "product_relevance_layer": "",
+    "overall": ""
+  },
+  "notes": ""
+}

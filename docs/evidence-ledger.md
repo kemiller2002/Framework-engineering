@@ -38,6 +38,8 @@ Purpose: Track claims about Framework Engineering and the current state of evide
 | Procedural frameworks may exhibit language-like structures recoverable as procedural ASTs | FE-012C revealed stable reasoning-shape agreement and primitive grammar convergence | FE-013 not yet run; programming-language analogy may bias analysis | Low | Under Investigation |
 | A research operating system organized around hypotheses and bundled evidence runs may improve evidence collection efficiency without increasing theory inflation | Need ECR-000001 and follow-on runs | Operating overhead may exceed benefit; multi-hypothesis runs may blur interpretation | Low | Under Investigation |
 | Hypothesis dependency tracking may reduce research drift and accelerate multi-hypothesis evidence runs | FE-012C revealed comparator and abstraction drift; research operating system introduced hypothesis tracking | Dependency model not yet tested in live evidence runs | Low | Under Investigation |
+| Recognition sensitivity testing is required before stronger claims about procedural extraction can be made | ECR-000001 showed high recognition and dashboard marked H013 not ready | ECR-000002 not yet run | Moderate | Active Test Planned |
+| Recognition may depend on control-flow topology rather than lexical cues alone | ECR-000002 P001D reduced recognition for GPT/Gemini but not Claude | Single graph-only packet; small sample; Claude-specific behavior unclear | Low | Active Test Planned |
 
 ## Notes
 

@@ -1,0 +1,318 @@
+{
+  "packet_id": "ECR-000002-P001D",
+  "artifact_family_id": "P001",
+  "recognition_condition": "graph_only",
+  "blinded_artifact_id": "BR-P001-GRAPH",
+  "recognized_artifact": "Differential diagnosis with iterative re-evaluation loop",
+  "structural_layer": {
+    "entry_conditions": [
+      {
+        "value": "A single starting state is present before any branching occurs.",
+        "support_level": "high",
+        "source_text": "START -> N1",
+        "ambiguity": "None. START feeds exactly one node."
+      }
+    ],
+    "exit_conditions": [
+      {
+        "value": "The graph terminates at END, reachable via two distinct paths: directly from N4 when an additional pass is not justified, or via N6 when one path remains strongest after re-sorting.",
+        "support_level": "high",
+        "source_text": "N4 -> END [additional pass no longer justified]; N6 -> END",
+        "ambiguity": "The two END references may be the same terminal node or two logically distinct exit conditions collapsed into a shared label. The packet does not clarify."
+      }
+    ],
+    "required_steps": [
+      {
+        "value": "N1: Expand one starting state into multiple possible paths.",
+        "support_level": "high",
+        "source_text": "N1 -> N2A; N1 -> N2B; N1 -> N2C; N1 expands one starting state into multiple possible paths.",
+        "ambiguity": "None regarding presence; the number of paths (3) is fixed by the graph but the packet does not state whether exactly 3 is invariant or illustrative."
+      },
+      {
+        "value": "N3: Introduce a new differentiating input after path-parallel processing.",
+        "support_level": "high",
+        "source_text": "N2A -> N3; N2B -> N3; N2C -> N3; N3 adds a new differentiating input.",
+        "ambiguity": "It is not specified whether N3 is a merge point (all paths must complete before N3 executes) or whether any single path reaching N3 is sufficient."
+      },
+      {
+        "value": "N4: Re-sort path fit after the new differentiating input appears.",
+        "support_level": "high",
+        "source_text": "N3 -> N4; N4 re-sorts path fit after the new input appears.",
+        "ambiguity": "The sorting criterion is not described beyond the node note."
+      }
+    ],
+    "optional_steps": [
+      {
+        "value": "N5: Reopen the graph when separation remains weak, sending control back to one or more of N2A, N2B, N2C.",
+        "support_level": "high",
+        "source_text": "N4 -> N5 [split remains low]; N5 -> N2A; N5 -> N2B; N5 -> N2C; N5 reopens the graph when separation remains weak.",
+        "ambiguity": "It is ambiguous whether N5 routes back to all three N2 nodes simultaneously or selects a subset. The graph lists all three edges without qualification."
+      },
+      {
+        "value": "N6: Close the graph when one path remains strongest after re-sorting.",
+        "support_level": "high",
+        "source_text": "N4 -> N6 [one path remains strongest]; N6 -> END; N6 closes the graph when one path remains strongest after re-sorting.",
+        "ambiguity": "N6 appears to be a thin close/confirmation step with no described internal action beyond routing to END. It may be a no-op wrapper or may perform a final action not described."
+      }
+    ],
+    "loops": [
+      {
+        "value": "A loop exists from N4 -> N5 -> {N2A | N2B | N2C} -> N3 -> N4, activated when split remains low.",
+        "support_level": "high",
+        "source_text": "N4 -> N5 [split remains low]; N5 -> N2A; N5 -> N2B; N5 -> N2C; N2A -> N3; N2B -> N3; N2C -> N3; N3 -> N4",
+        "ambiguity": "No explicit loop-count limit or convergence guarantee is stated. The stopping condition is inferred from the N4 exit edges: loop continues while split is low, exits when split resolves or an additional pass is not justified."
+      }
+    ],
+    "branches": [
+      {
+        "value": "N1 branches into three parallel or alternative paths: N2A, N2B, N2C.",
+        "support_level": "high",
+        "source_text": "N1 -> N2A; N1 -> N2B; N1 -> N2C",
+        "ambiguity": "Whether this is a parallel fan-out (all three activated) or a selective branch (one chosen) is not stated."
+      },
+      {
+        "value": "N4 branches into three exits: N5 (split remains low), N6 (one path remains strongest), END (additional pass no longer justified).",
+        "support_level": "high",
+        "source_text": "N4 -> N5 [split remains low]; N4 -> N6 [one path remains strongest]; N4 -> END [additional pass no longer justified]",
+        "ambiguity": "The conditions for N4 -> END vs N4 -> N6 are described differently but may overlap or be mutually exclusive. 'One path remains strongest' and 'additional pass no longer justified' could be the same condition expressed two ways, or distinct conditions."
+      },
+      {
+        "value": "N5 branches back to N2A, N2B, and/or N2C.",
+        "support_level": "high",
+        "source_text": "N5 -> N2A; N5 -> N2B; N5 -> N2C",
+        "ambiguity": "As noted, whether all three are re-entered or a subset is selected is unspecified."
+      }
+    ],
+    "termination_conditions": [
+      {
+        "value": "Termination via N4 -> END: an additional pass is no longer justified.",
+        "support_level": "high",
+        "source_text": "N4 -> END [additional pass no longer justified]",
+        "ambiguity": "The criterion for 'no longer justified' is not operationally defined in the packet."
+      },
+      {
+        "value": "Termination via N6 -> END: one path remains strongest after re-sorting.",
+        "support_level": "high",
+        "source_text": "N6 -> END",
+        "ambiguity": "Relationship between this termination and the N4 -> END termination is unclear; they may represent the same logical condition via different route choices."
+      }
+    ],
+    "control_flow_shape": "Fan-out from a single entry node into parallel or alternative paths, convergence through a differentiating-input node, re-sort branching with a conditional loop back to the fan-out layer, and dual exit paths depending on resolution strength."
+  },
+  "primitive_layer": {
+    "primitive_sequence": [
+      "INIT(START)",
+      "EXPAND(N1) -> [N2A, N2B, N2C]",
+      "PROCESS_PATHS(N2A | N2B | N2C)",
+      "INJECT(N3)",
+      "SORT(N4)",
+      "BRANCH(N4): low-split -> REOPEN(N5), strongest -> CLOSE(N6), no-justify -> END",
+      "REOPEN(N5) -> [N2A, N2B, N2C]  [loop back]",
+      "CLOSE(N6) -> END"
+    ],
+    "transitions": [
+      "INIT -> EXPAND",
+      "EXPAND -> PROCESS_PATHS",
+      "PROCESS_PATHS -> INJECT",
+      "INJECT -> SORT",
+      "SORT -> REOPEN (conditional: split low)",
+      "SORT -> CLOSE (conditional: one path strongest)",
+      "SORT -> END (conditional: additional pass unjustified)",
+      "REOPEN -> PROCESS_PATHS (loop)",
+      "CLOSE -> END"
+    ],
+    "dominant_primitive": "SORT/RANK with conditional loopback — the graph is organized around repeated evaluation of relative path strength and iterative re-entry until resolution.",
+    "candidate_missing_primitives": [
+      "A MERGE or SYNCHRONIZE primitive at N3 is implied if N2A/N2B/N2C are parallel rather than alternative, but is not explicitly represented.",
+      "A loop-count guard or convergence check is implied by the loop structure but has no corresponding node.",
+      "A SELECT primitive at N5 (choosing which N2 nodes to re-enter) may be missing if the loop does not re-enter all paths."
+    ]
+  },
+  "constraint_layer": {
+    "invariants": [
+      {
+        "value": "N3 must always be visited before N4 in any execution path.",
+        "support_level": "high",
+        "source_text": "N3 -> N4",
+        "ambiguity": "None within the graph as drawn."
+      },
+      {
+        "value": "N4 is the sole decision point governing loop continuation vs. termination.",
+        "support_level": "high",
+        "source_text": "N4 -> N5 [split remains low]; N4 -> N6 [one path remains strongest]; N4 -> END [additional pass no longer justified]",
+        "ambiguity": "None; all exit edges from the loop originate at N4."
+      }
+    ],
+    "preconditions": [
+      {
+        "value": "N3 requires that at least one of N2A, N2B, N2C has been processed.",
+        "support_level": "high",
+        "source_text": "N2A -> N3; N2B -> N3; N2C -> N3",
+        "ambiguity": "Whether all three must complete or any one is sufficient is not specified."
+      },
+      {
+        "value": "N4 requires that N3 has injected its differentiating input.",
+        "support_level": "high",
+        "source_text": "N3 -> N4; N3 adds a new differentiating input.",
+        "ambiguity": "None."
+      }
+    ],
+    "postconditions": [
+      {
+        "value": "Upon reaching END via N6, one path has been identified as strongest.",
+        "support_level": "high",
+        "source_text": "N4 -> N6 [one path remains strongest]; N6 -> END; N6 closes the graph when one path remains strongest after re-sorting.",
+        "ambiguity": "Whether 'strongest' implies a single unambiguous winner or merely a relative leader is not specified."
+      },
+      {
+        "value": "Upon reaching END via N4 directly, an additional pass has been evaluated and found unjustified.",
+        "support_level": "high",
+        "source_text": "N4 -> END [additional pass no longer justified]",
+        "ambiguity": "The output state at this exit (whether a path has been selected or not) is not described."
+      }
+    ],
+    "stopping_criteria": [
+      {
+        "value": "Loop exits when split is no longer low (N4 -> N6 or N4 -> END).",
+        "support_level": "high",
+        "source_text": "N4 -> N5 [split remains low]; N4 -> N6 [one path remains strongest]; N4 -> END [additional pass no longer justified]",
+        "ambiguity": "The threshold for 'low' split vs. 'strongest' is not operationalized."
+      }
+    ],
+    "validity_conditions": [
+      {
+        "value": "The graph assumes that re-entering N2A/N2B/N2C after N5 is meaningful, implying that additional processing in those nodes can change path-fit scores.",
+        "support_level": "medium",
+        "source_text": "N5 reopens the graph when separation remains weak.",
+        "ambiguity": "If path processing is deterministic and stateless, the loop would be infinite. Some state change between iterations is implied but not described."
+      }
+    ]
+  },
+  "representation_layer": {
+    "procedural_ast": {
+      "type": "sequence",
+      "children": [
+        { "type": "node", "id": "START" },
+        {
+          "type": "node",
+          "id": "N1",
+          "action": "expand_to_paths",
+          "outputs": ["N2A", "N2B", "N2C"]
+        },
+        {
+          "type": "loop",
+          "condition": "split_low_at_N4",
+          "body": {
+            "type": "sequence",
+            "children": [
+              {
+                "type": "branch",
+                "source": "N1_or_N5",
+                "targets": ["N2A", "N2B", "N2C"],
+                "ambiguity": "parallel vs. selective unresolved"
+              },
+              {
+                "type": "node",
+                "id": "N3",
+                "action": "inject_differentiating_input"
+              },
+              {
+                "type": "node",
+                "id": "N4",
+                "action": "re_sort_path_fit",
+                "exits": [
+                  { "condition": "split_remains_low", "target": "N5" },
+                  { "condition": "one_path_strongest", "target": "N6" },
+                  {
+                    "condition": "additional_pass_not_justified",
+                    "target": "END"
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "type": "conditional",
+          "branches": [
+            {
+              "condition": "one_path_strongest",
+              "body": { "type": "node", "id": "N6", "action": "close_graph" }
+            },
+            {
+              "condition": "additional_pass_not_justified",
+              "body": { "type": "node", "id": "END_direct" }
+            }
+          ]
+        },
+        { "type": "node", "id": "END" }
+      ]
+    },
+    "natural_language_summary": "The procedure begins from a single starting state, which is expanded into three candidate paths at N1. Each path undergoes some form of processing. A differentiating input is then introduced at N3. N4 re-evaluates the relative strength of the paths. If no path has clearly separated from the others, N5 reopens the candidate paths for another round of processing. This loop continues until either one path emerges as strongest (exiting via N6 to END) or an additional pass is deemed unjustified (exiting directly from N4 to END).",
+    "canonical_summary": "Fan-out, parallel or alternative path processing, differentiating-input injection, sort-and-branch, conditional loop-back, dual-condition termination.",
+    "ambiguities": [
+      {
+        "location": "N1 -> {N2A, N2B, N2C}",
+        "description": "Whether the three outgoing edges represent parallel fan-out (all activated simultaneously) or alternative selection (one chosen per execution) is not stated.",
+        "plausible_interpretations": [
+          "All three paths are explored in parallel and results merged at N3.",
+          "One path is selected at N1 based on some unstated criterion, and others are discarded."
+        ],
+        "effect_on_extraction": "Affects whether N3 is a synchronization/merge point or simply a sequential successor. Primitive and constraint layers would differ significantly."
+      },
+      {
+        "location": "N4 -> END vs. N4 -> N6 -> END",
+        "description": "Two of the three N4 exits lead to END. Their conditions ('additional pass no longer justified' vs. 'one path remains strongest') may be distinct or may be two framings of the same condition.",
+        "plausible_interpretations": [
+          "The two conditions are mutually exclusive and represent different resolution states (resolved vs. abandoned).",
+          "They are the same condition described from different angles, making one edge redundant."
+        ],
+        "effect_on_extraction": "If distinct, the graph has two semantically different terminal states. If identical, N6 is a redundant wrapper node."
+      },
+      {
+        "location": "N5 -> {N2A, N2B, N2C}",
+        "description": "Whether all three paths are re-entered after N5, or a subset is selected, is not specified.",
+        "plausible_interpretations": [
+          "All three paths are re-evaluated in the loop iteration.",
+          "Only paths not yet eliminated are re-entered, implying progressive pruning."
+        ],
+        "effect_on_extraction": "If pruning occurs, the loop has a convergence mechanism not represented in the graph. If all are always re-entered, the loop's differentiation mechanism must reside in N3 or the path nodes themselves."
+      }
+    ]
+  },
+  "product_relevance_layer": {
+    "clarity_relevance_observations": [
+      {
+        "value": "The graph encodes a structured iterative narrowing procedure with explicit loop and multi-exit branching, suggesting it could be represented as a step-by-step guided workflow.",
+        "support_level": "medium",
+        "source_text": "N4 re-sorts path fit after the new input appears; N5 reopens the graph when separation remains weak.",
+        "ambiguity": "Applicability to a specific product feature is inferred, not stated."
+      }
+    ],
+    "edf_relevance_observations": [
+      {
+        "value": "The procedure has a well-defined looping structure with conditional exit, making it a candidate for formalization in a decision-flow or evaluation-decision framework.",
+        "support_level": "medium",
+        "source_text": "N4 -> N5 [split remains low]; N4 -> N6 [one path remains strongest]; N4 -> END [additional pass no longer justified]",
+        "ambiguity": "No direct EDF language appears in the packet."
+      }
+    ],
+    "research_only_observations": [
+      {
+        "value": "The loop termination conditions are not operationally defined, which is a research-relevant gap: any implementation would require specifying thresholds for 'split remains low' and 'one path remains strongest'.",
+        "support_level": "high",
+        "source_text": "N4 -> N5 [split remains low]; N4 -> N6 [one path remains strongest]",
+        "ambiguity": "None regarding the observation itself; the gap is clearly present."
+      }
+    ]
+  },
+  "confidence": {
+    "structural_layer": "high",
+    "primitive_layer": "medium — primitive labels are inferred from node notes; the packet does not use primitive terminology",
+    "constraint_layer": "medium — invariants and postconditions are logically derived; few are explicitly stated",
+    "representation_layer": "medium — AST reflects one reasonable decomposition; parallel vs. selective ambiguity at N1 and N5 is unresolved",
+    "product_relevance_layer": "low — product context is entirely inferred; no product-specific language appears in the packet",
+    "overall": "medium-high — graph structure is clear and well-formed; ambiguities are bounded and explicitly recorded"
+  },
+  "notes": "Recognition was unavoidable given the graph structure and node annotations. The recognized artifact has been recorded in the recognized_artifact field only. No domain terminology has been imported into the structural, primitive, or constraint layers. All layer content is derived solely from the graph edges, edge labels, and node notes as supplied."
+}

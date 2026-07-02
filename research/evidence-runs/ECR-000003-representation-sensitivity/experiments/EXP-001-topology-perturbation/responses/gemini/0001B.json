@@ -1,0 +1,252 @@
+{
+  "packet_id": "ECR-000003-EXP001-P001B",
+  "experiment_id": "EXP-001",
+  "variant_id": "P001B",
+  "artifact_family_id": "P001",
+  "recognition_condition": "graph_only_renumbered",
+  "blinded_artifact_id": "BR-EXP001-P001",
+  "recognized_artifact": "",
+  "structural_layer": {
+    "entry_conditions": [
+      {
+        "value": "Execution starts at START node leading directly to A7.",
+        "support_level": "explicit",
+        "source_text": "START -> A7",
+        "ambiguity": "none"
+      }
+    ],
+    "exit_conditions": [
+      {
+        "value": "Execution reaches END node via X1 or V3.",
+        "support_level": "explicit",
+        "source_text": "X1 -> END [continuation not justified]\nV3 -> END",
+        "ambiguity": "none"
+      }
+    ],
+    "required_steps": [
+      {
+        "value": "Node A7: Expands one state into multiple paths.",
+        "support_level": "explicit",
+        "source_text": "- A7 expands one state into multiple paths.",
+        "ambiguity": "none"
+      },
+      {
+        "value": "Nodes K2, M9, R4: Parallel or alternate path elements branches out from A7 and converging into T6.",
+        "support_level": "explicit",
+        "source_text": "A7 -> K2\nA7 -> M9\nA7 -> R4\nK2 -> T6\nM9 -> T6\nR4 -> T6",
+        "ambiguity": "Whether K2, M9, and R4 execute concurrently, contextually, or as disjoint options is not specified by the graph structure."
+      },
+      {
+        "value": "Node T6: Adds a differentiating input.",
+        "support_level": "explicit",
+        "source_text": "- T6 adds a differentiating input.",
+        "ambiguity": "none"
+      },
+      {
+        "value": "Node X1: Re-sorts path fit after the new input appears.",
+        "support_level": "explicit",
+        "source_text": "- X1 re-sorts path fit after the new input appears.",
+        "ambiguity": "none"
+      }
+    ],
+    "optional_steps": [
+      {
+        "value": "Node Q8: Reopens continuation when separation remains weak.",
+        "support_level": "explicit",
+        "source_text": "- Q8 reopens continuation when separation remains weak.",
+        "ambiguity": "Executed conditionally based on X1 transition threshold."
+      },
+      {
+        "value": "Node V3: Closes the graph when one path remains strongest after re-sorting.",
+        "support_level": "explicit",
+        "source_text": "- V3 closes the graph when one path remains strongest after re-sorting.",
+        "ambiguity": "Executed conditionally based on X1 path selection."
+      }
+    ],
+    "loops": [
+      {
+        "value": "Loop from X1 through Q8 back to K2, M9, and R4.",
+        "support_level": "explicit",
+        "source_text": "X1 -> Q8 [threshold not met]\nQ8 -> K2\nQ8 -> M9\nQ8 -> R4",
+        "ambiguity": "none"
+      }
+    ],
+    "branches": [
+      {
+        "value": "Branching from A7 to K2, M9, R4.",
+        "support_level": "explicit",
+        "source_text": "A7 -> K2\nA7 -> M9\nA7 -> R4",
+        "ambiguity": "Exact branching semantics (parallel vs. exclusive OR) are unstated."
+      },
+      {
+        "value": "Conditional branching from X1 to Q8, V3, or END.",
+        "support_level": "explicit",
+        "source_text": "X1 -> Q8 [threshold not met]\nX1 -> V3 [one path selected]\nX1 -> END [continuation not justified]",
+        "ambiguity": "none"
+      }
+    ],
+    "termination_conditions": [
+      {
+        "value": "Continuation not justified at X1.",
+        "support_level": "explicit",
+        "source_text": "X1 -> END [continuation not justified]",
+        "ambiguity": "none"
+      },
+      {
+        "value": "One path remains strongest after re-sorting at V3.",
+        "support_level": "explicit",
+        "source_text": "V3 -> END",
+        "ambiguity": "none"
+      }
+    ],
+    "control_flow_shape": "Divergent-convergent block leading to a three-way conditional switch, with one branch forming a feedback loop back to the divergent paths."
+  },
+  "primitive_layer": {
+    "primitive_sequence": [
+      "START",
+      "A7",
+      "K2",
+      "M9",
+      "R4",
+      "T6",
+      "X1",
+      "Q8",
+      "V3",
+      "END"
+    ],
+    "transitions": [
+      { "from": "START", "to": "A7" },
+      { "from": "A7", "to": "K2" },
+      { "from": "A7", "to": "M9" },
+      { "from": "A7", "to": "R4" },
+      { "from": "K2", "to": "T6" },
+      { "from": "M9", "to": "T6" },
+      { "from": "R4", "to": "T6" },
+      { "from": "T6", "to": "X1" },
+      { "from": "X1", "to": "Q8", "condition": "threshold not met" },
+      { "from": "X1", "to": "V3", "condition": "one path selected" },
+      { "from": "X1", "to": "END", "condition": "continuation not justified" },
+      { "from": "Q8", "to": "K2" },
+      { "from": "Q8", "to": "M9" },
+      { "from": "Q8", "to": "R4" },
+      { "from": "V3", "to": "END" }
+    ],
+    "dominant_primitive": "Conditional branching and loop feedback based on state evaluations.",
+    "candidate_missing_primitives": []
+  },
+  "constraint_layer": {
+    "invariants": [],
+    "preconditions": [],
+    "postconditions": [],
+    "stopping_criteria": [
+      {
+        "value": "Continuation is not justified during path fit evaluation.",
+        "support_level": "explicit",
+        "source_text": "X1 -> END [continuation not justified]",
+        "ambiguity": "none"
+      },
+      {
+        "value": "One path becomes clearly strongest, allowing graph closure.",
+        "support_level": "explicit",
+        "source_text": "V3 -> END",
+        "ambiguity": "none"
+      }
+    ],
+    "validity_conditions": []
+  },
+  "representation_layer": {
+    "procedural_ast": {
+      "type": "Program",
+      "body": [
+        {
+          "type": "Step",
+          "id": "A7",
+          "description": "Expands one state into multiple paths"
+        },
+        {
+          "type": "Loop",
+          "body": [
+            {
+              "type": "ParallelOrBranchingBlock",
+              "branches": [
+                { "type": "Step", "id": "K2" },
+                { "type": "Step", "id": "M9" },
+                { "type": "Step", "id": "R4" }
+              ]
+            },
+            {
+              "type": "Step",
+              "id": "T6",
+              "description": "Adds a differentiating input"
+            },
+            {
+              "type": "Step",
+              "id": "X1",
+              "description": "Re-sorts path fit after the new input appears"
+            },
+            {
+              "type": "ConditionalSwitch",
+              "cases": [
+                {
+                  "condition": "threshold not met",
+                  "body": [
+                    {
+                      "type": "Step",
+                      "id": "Q8",
+                      "description": "Reopens continuation when separation remains weak"
+                    }
+                  ],
+                  "action": "continue_loop"
+                },
+                {
+                  "condition": "one path selected",
+                  "body": [
+                    {
+                      "type": "Step",
+                      "id": "V3",
+                      "description": "Closes the graph when one path remains strongest after re-sorting"
+                    }
+                  ],
+                  "action": "break_loop"
+                },
+                {
+                  "condition": "continuation not justified",
+                  "body": [],
+                  "action": "break_loop"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "natural_language_summary": "The procedure begins by expanding a single state into multiple paths via node A7. These paths are processed across elements K2, M9, and R4, which then converge at node T6 where a differentiating input is added. Node X1 evaluates the paths by re-sorting their fit given the new input. Depending on the evaluation at X1, the procedure branches three ways: if continuation is not justified, execution terminates directly; if one path is selected as the strongest, node V3 closes the process and it ends; if the threshold is not met due to weak separation, node Q8 reopens continuation and loops back to K2, M9, and R4 for further cycling.",
+    "canonical_summary": "START -> A7 -> [K2, M9, R4] -> T6 -> X1 -> {IF continuation not justified -> END | IF one path selected -> V3 -> END | IF threshold not met -> Q8 -> [K2, M9, R4]}",
+    "ambiguities": [
+      {
+        "location": "A7 -> K2 / M9 / R4",
+        "description": "Nature of parallel/multi-path execution.",
+        "plausible_interpretations": [
+          "The three target nodes are executed concurrently.",
+          "The system selects a subset or a single path based on internal conditions not explicitly listed."
+        ],
+        "effect_on_extraction": "Affects the structural categorization of the primitive sequence between A7 and T6."
+      }
+    ]
+  },
+  "recognition_analysis": {
+    "recognition_occurred": "no",
+    "recognition_basis": "",
+    "domain_terms_introduced": [],
+    "prior_knowledge_leakage_risk": ""
+  },
+  "confidence": {
+    "structural_layer": "high",
+    "primitive_layer": "high",
+    "constraint_layer": "high",
+    "representation_layer": "high",
+    "recognition_analysis": "high",
+    "overall": "high"
+  },
+  "notes": "The procedure maps out a classical dynamic refinement loop or beam-search-style evaluation graph with explicit termination and feedback conditions."
+}

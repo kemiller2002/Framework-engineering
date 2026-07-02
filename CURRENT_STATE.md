@@ -113,8 +113,8 @@ Framework Engineering currently has provisional evidence as a characterization a
 
 ## Current Phase
 
-ECR-000001 Limited Hypothesis Review
+ECR-000003 Representation Sensitivity Setup
 
 ## Current Goal
 
-Review ECR-000001 evidence without changing confidence automatically, resolve malformed response status, and decide whether ECR-000002 should proceed.
+Test whether recognition and recovered structure depend on topology, surface representation, or domain semantics.

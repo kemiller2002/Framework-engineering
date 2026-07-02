@@ -1,0 +1,344 @@
+{
+  "packet_id": "ECR-000003-EXP001-P001A",
+  "experiment_id": "EXP-001",
+  "variant_id": "P001A",
+  "artifact_family_id": "P001",
+  "recognition_condition": "graph_only_baseline",
+  "blinded_artifact_id": "BR-EXP001-P001",
+  "recognized_artifact": "Plausible recognition: beam search or iterative narrowing / candidate pruning procedure. Low-to-medium confidence. Graph structure (fan-out from single node, convergence, re-sort, loop-back, single-path exit) is consistent with several search or ranking procedures. Recognition not used to fill structure.",
+  "structural_layer": {
+    "entry_conditions": [
+      {
+        "value": "A single start state exists (START node); procedure initiates from START.",
+        "support_level": "direct",
+        "source_text": "START -> N1",
+        "ambiguity": "No conditions on what triggers START are specified in the packet."
+      }
+    ],
+    "exit_conditions": [
+      {
+        "value": "Procedure exits at END via N4 when continuation is not justified.",
+        "support_level": "direct",
+        "source_text": "N4 -> END [continuation not justified]",
+        "ambiguity": "The criterion for 'continuation not justified' is not operationally defined in the packet."
+      },
+      {
+        "value": "Procedure exits at END via N6 after one path is selected and closed.",
+        "support_level": "direct",
+        "source_text": "N6 -> END",
+        "ambiguity": "Whether N6 performs any additional operation before END is not specified."
+      }
+    ],
+    "required_steps": [
+      {
+        "value": "N1: Expand one state into multiple paths (N2A, N2B, N2C).",
+        "support_level": "direct",
+        "source_text": "N1 -> N2A; N1 -> N2B; N1 -> N2C; N1 expands one state into multiple paths.",
+        "ambiguity": "The number of paths is fixed at three in the graph but whether three is a hard constraint or an illustration is ambiguous."
+      },
+      {
+        "value": "N2A, N2B, N2C: Three parallel paths that all converge to N3.",
+        "support_level": "direct",
+        "source_text": "N2A -> N3; N2B -> N3; N2C -> N3",
+        "ambiguity": "The content or function of each N2 path is not differentiated in the packet; they may be identical in structure or distinct. Ambiguity about whether all three must be traversed or only one leads to N3."
+      },
+      {
+        "value": "N3: A differentiating input is added.",
+        "support_level": "direct",
+        "source_text": "N3 -> N4; N3 adds a differentiating input.",
+        "ambiguity": "What 'differentiating input' means operationally is not defined. Whether it is a data input, a signal, or a computed value is unknown."
+      },
+      {
+        "value": "N4: Re-sort path fit after the differentiating input.",
+        "support_level": "direct",
+        "source_text": "N4 re-sorts path fit after the new input appears.",
+        "ambiguity": "The sorting criterion is not specified. 'Path fit' is not defined in domain-neutral terms in the packet."
+      }
+    ],
+    "optional_steps": [
+      {
+        "value": "N5: Reopen continuation (loop back to N2A, N2B, N2C) when separation remains weak.",
+        "support_level": "direct",
+        "source_text": "N4 -> N5 [threshold not met]; N5 -> N2A; N5 -> N2B; N5 -> N2C; N5 reopens continuation when separation remains weak.",
+        "ambiguity": "N5 is conditional on threshold not being met; it is not traversed if threshold is met or if continuation is not justified. Whether N5 does anything beyond routing back is not stated."
+      },
+      {
+        "value": "N6: Close the graph when one path remains strongest after re-sorting.",
+        "support_level": "direct",
+        "source_text": "N4 -> N6 [one path selected]; N6 -> END; N6 closes the graph when one path remains strongest after re-sorting.",
+        "ambiguity": "Whether N6 performs an action (e.g., commit, record, emit result) or is purely a routing node is not stated."
+      }
+    ],
+    "loops": [
+      {
+        "value": "Loop from N4 -> N5 -> {N2A | N2B | N2C} -> N3 -> N4 when threshold is not met.",
+        "support_level": "direct",
+        "source_text": "N4 -> N5 [threshold not met]; N5 -> N2A; N5 -> N2B; N5 -> N2C",
+        "ambiguity": "Whether N5 routes to all three N2 nodes simultaneously or selects among them is ambiguous. Termination of the loop is governed by threshold or continuation justification, but no maximum iteration count is stated."
+      }
+    ],
+    "branches": [
+      {
+        "value": "N1 branches to three parallel paths: N2A, N2B, N2C.",
+        "support_level": "direct",
+        "source_text": "N1 -> N2A; N1 -> N2B; N1 -> N2C",
+        "ambiguity": "Whether this is a fork (all paths active) or a conditional branch (one chosen) is not stated. Node note says 'expands one state into multiple paths,' which leans toward fork, but is not conclusive."
+      },
+      {
+        "value": "N4 branches three ways: to N5 (threshold not met), to N6 (one path selected), to END (continuation not justified).",
+        "support_level": "direct",
+        "source_text": "N4 -> N5 [threshold not met]; N4 -> N6 [one path selected]; N4 -> END [continuation not justified]",
+        "ambiguity": "The mutual exclusivity of the three N4 exit conditions is implied but not guaranteed by the packet. Priority or ordering among conditions is not stated."
+      },
+      {
+        "value": "N5 branches back to N2A, N2B, N2C.",
+        "support_level": "direct",
+        "source_text": "N5 -> N2A; N5 -> N2B; N5 -> N2C",
+        "ambiguity": "Same fan-out ambiguity as N1: fork vs. select."
+      }
+    ],
+    "termination_conditions": [
+      {
+        "value": "Continuation not justified at N4 (early termination).",
+        "support_level": "direct",
+        "source_text": "N4 -> END [continuation not justified]",
+        "ambiguity": "Operational definition absent."
+      },
+      {
+        "value": "One path selected at N4 after re-sorting (successful termination via N6).",
+        "support_level": "direct",
+        "source_text": "N4 -> N6 [one path selected]; N6 -> END",
+        "ambiguity": "What 'one path selected' means as a condition (e.g., score threshold, rank gap) is not specified."
+      }
+    ],
+    "control_flow_shape": "Fan-out from single entry, convergence to a differentiating step, conditional multi-exit branching with a loop-back path and two terminal exits. Overall shape: expand -> converge -> discriminate -> (loop | select | terminate)."
+  },
+  "primitive_layer": {
+    "primitive_sequence": [
+      "START",
+      "EXPAND (N1: one-to-many)",
+      "PARALLEL_PATHS (N2A, N2B, N2C)",
+      "CONVERGE (all N2 -> N3)",
+      "DIFFERENTIATE (N3: add differentiating input)",
+      "SORT/RANK (N4: re-sort path fit)",
+      "BRANCH_THREE_WAY (N4 exit condition evaluation)",
+      "LOOP_BACK (N5: reopen, fan back to N2A/N2B/N2C) [conditional]",
+      "CLOSE/SELECT (N6) [conditional]",
+      "END"
+    ],
+    "transitions": [
+      "START -> EXPAND",
+      "EXPAND -> PARALLEL_PATHS",
+      "PARALLEL_PATHS -> CONVERGE",
+      "CONVERGE -> DIFFERENTIATE",
+      "DIFFERENTIATE -> SORT/RANK",
+      "SORT/RANK -> LOOP_BACK [if threshold not met]",
+      "SORT/RANK -> CLOSE/SELECT [if one path selected]",
+      "SORT/RANK -> END [if continuation not justified]",
+      "LOOP_BACK -> PARALLEL_PATHS",
+      "CLOSE/SELECT -> END"
+    ],
+    "dominant_primitive": "Iterative expand-converge-discriminate with conditional loop-back; the dominant primitive is a ranked elimination or narrowing loop.",
+    "candidate_missing_primitives": [
+      "An initialization or state-seeding primitive prior to N1 is not represented but may be implied.",
+      "A result-emission or commitment primitive at N6 or END is not explicit.",
+      "A maximum-iteration guard on the loop is absent from the packet."
+    ]
+  },
+  "constraint_layer": {
+    "invariants": [
+      {
+        "value": "All paths from N2A, N2B, N2C must converge to N3 before evaluation at N4.",
+        "support_level": "direct",
+        "source_text": "N2A -> N3; N2B -> N3; N2C -> N3",
+        "ambiguity": "Whether this convergence is strict (all must complete) or whether partial convergence is permissible is not stated."
+      },
+      {
+        "value": "N4 is the sole decision/sorting node; no sorting occurs elsewhere.",
+        "support_level": "inferred",
+        "source_text": "N4 re-sorts path fit after the new input appears.",
+        "ambiguity": "Inferred from graph structure; no contradicting evidence but not stated explicitly."
+      }
+    ],
+    "preconditions": [
+      {
+        "value": "N3 requires that N1 expansion and at least one N2 path have occurred.",
+        "support_level": "inferred",
+        "source_text": "N2A -> N3; N2B -> N3; N2C -> N3",
+        "ambiguity": "Whether all three N2 paths must be completed before N3 executes, or whether any single N2 path suffices, is ambiguous."
+      },
+      {
+        "value": "N4 requires that N3's differentiating input has been added.",
+        "support_level": "direct",
+        "source_text": "N3 -> N4; N4 re-sorts path fit after the new input appears.",
+        "ambiguity": "None beyond the definition of 'differentiating input'."
+      }
+    ],
+    "postconditions": [
+      {
+        "value": "After N4 exits to N6 and then END, one path has been selected as strongest.",
+        "support_level": "direct",
+        "source_text": "N4 -> N6 [one path selected]; N6 closes the graph when one path remains strongest after re-sorting.",
+        "ambiguity": "What state is left at END (output, side effect, record) is unspecified."
+      },
+      {
+        "value": "After N4 exits directly to END, the procedure terminates without selection.",
+        "support_level": "direct",
+        "source_text": "N4 -> END [continuation not justified]",
+        "ambiguity": "Whether this exit produces any output or is a null termination is not stated."
+      }
+    ],
+    "stopping_criteria": [
+      {
+        "value": "Threshold met at N4 with one path dominant (exit to N6).",
+        "support_level": "direct",
+        "source_text": "N4 -> N6 [one path selected]",
+        "ambiguity": "Threshold value and metric are undefined."
+      },
+      {
+        "value": "Continuation not justified at N4 (exit to END).",
+        "support_level": "direct",
+        "source_text": "N4 -> END [continuation not justified]",
+        "ambiguity": "Criterion is undefined."
+      }
+    ],
+    "validity_conditions": [
+      {
+        "value": "The procedure is valid only if N1 can expand into at least one path; a zero-path expansion would strand the graph.",
+        "support_level": "inferred",
+        "source_text": "N1 expands one state into multiple paths.",
+        "ambiguity": "The packet shows exactly three paths; whether fewer or more are valid is not addressed."
+      },
+      {
+        "value": "The loop via N5 must eventually terminate; an implicit validity condition is that the threshold or continuation criterion eventually resolves.",
+        "support_level": "inferred",
+        "source_text": "N4 -> N5 [threshold not met]; N5 reopens continuation when separation remains weak.",
+        "ambiguity": "No explicit loop guard or maximum iteration count is present. Infinite loop risk not addressed in packet."
+      }
+    ]
+  },
+  "representation_layer": {
+    "procedural_ast": {
+      "type": "procedure",
+      "entry": "START",
+      "body": [
+        {
+          "type": "step",
+          "id": "N1",
+          "operation": "expand_state",
+          "description": "Expand one state into multiple paths",
+          "outputs": ["N2A", "N2B", "N2C"]
+        },
+        {
+          "type": "parallel_or_fork",
+          "ambiguity": "fork_vs_select_unknown",
+          "paths": [{ "id": "N2A" }, { "id": "N2B" }, { "id": "N2C" }],
+          "convergence": "N3"
+        },
+        {
+          "type": "step",
+          "id": "N3",
+          "operation": "add_differentiating_input",
+          "description": "Add a differentiating input"
+        },
+        {
+          "type": "loop",
+          "condition": "threshold_not_met",
+          "loop_body": [
+            {
+              "type": "step",
+              "id": "N4",
+              "operation": "re_sort_path_fit",
+              "description": "Re-sort path fit after new input"
+            },
+            {
+              "type": "branch",
+              "conditions": [
+                {
+                  "label": "threshold_not_met",
+                  "target": "N5",
+                  "then": {
+                    "type": "step",
+                    "id": "N5",
+                    "operation": "reopen_continuation",
+                    "description": "Reopen continuation; fan back to N2A/N2B/N2C"
+                  }
+                },
+                {
+                  "label": "one_path_selected",
+                  "target": "N6",
+                  "then": {
+                    "type": "step",
+                    "id": "N6",
+                    "operation": "close_graph",
+                    "description": "Close when one path remains strongest"
+                  }
+                },
+                {
+                  "label": "continuation_not_justified",
+                  "target": "END"
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "exit": "END"
+    },
+    "natural_language_summary": "The procedure begins at a single start state. A node (N1) expands that state into multiple parallel paths (N2A, N2B, N2C). All paths converge at a node (N3) that introduces a differentiating input. A sorting/ranking node (N4) then re-evaluates path fit given that input. N4 has three possible exits: if separation is weak (threshold not met), control passes to N5 which loops back to reopen the multi-path stage; if one path is clearly strongest, control passes to N6 which closes the procedure; if continuation is not justified, the procedure ends immediately. The loop via N5 can repeat the expand-converge-differentiate-sort cycle until one of the two terminal conditions is met.",
+    "canonical_summary": "Expand one state to multiple paths; converge and add differentiating input; sort path fit; loop if threshold unmet; select single strongest path or terminate if continuation unjustified.",
+    "ambiguities": [
+      {
+        "location": "N1 and N5 fan-out",
+        "description": "It is unclear whether N1 (and N5) fork into all three N2 paths simultaneously (parallel expansion) or select one among them (conditional branch).",
+        "plausible_interpretations": [
+          "All three N2 paths are activated in parallel (fork/fan-out semantics).",
+          "One of the three N2 paths is chosen based on an unstated criterion (conditional branch semantics)."
+        ],
+        "effect_on_extraction": "Affects whether the procedure is parallel or sequential in the N2 stage; affects primitive classification and constraint on convergence at N3."
+      },
+      {
+        "location": "N4 three-way branch",
+        "description": "The mutual exclusivity and priority ordering of the three N4 exit conditions (threshold not met, one path selected, continuation not justified) are not defined.",
+        "plausible_interpretations": [
+          "Conditions are mutually exclusive and evaluated in some implicit priority order.",
+          "Conditions may overlap (e.g., 'continuation not justified' could subsume 'threshold not met' in some cases)."
+        ],
+        "effect_on_extraction": "Affects termination logic and whether the loop-back path and early-termination path are truly distinct."
+      },
+      {
+        "location": "N2A, N2B, N2C node content",
+        "description": "The packet provides no information about what N2A, N2B, and N2C do; they may be identical, symmetric, or differentiated.",
+        "plausible_interpretations": [
+          "All three N2 nodes perform the same operation on different path instances.",
+          "Each N2 node is a distinct operation or path type."
+        ],
+        "effect_on_extraction": "Affects whether N2 nodes are primitives or placeholders; cannot be resolved from packet."
+      },
+      {
+        "location": "Loop termination guarantee",
+        "description": "No maximum iteration count or guaranteed convergence property is stated for the N4->N5->N2->N3->N4 loop.",
+        "plausible_interpretations": [
+          "The loop is assumed to terminate by design of the differentiating input mechanism.",
+          "The loop may be unbounded and relies on external termination not shown in the packet."
+        ],
+        "effect_on_extraction": "Affects validity conditions and completeness of the structural model."
+      }
+    ]
+  },
+  "recognition_analysis": {
+    "recognition_occurred": "partial",
+    "recognition_basis": "The graph structure — single-state expansion to multiple candidate paths, convergence, addition of a discriminating signal, ranked re-evaluation, loop-back when separation is weak, and single-path closure — is structurally consistent with iterative candidate narrowing or search procedures (e.g., beam search, iterative deepening with pruning, or multi-hypothesis tracking). Recognition is tentative and pattern-based, not label-based.",
+    "domain_terms_introduced": [],
+    "prior_knowledge_leakage_risk": "Low. No domain terminology was introduced. Structural observations were derived solely from graph edges and node notes. The recognized pattern is broad enough that it maps to multiple procedure families; no specific domain structure was imported."
+  },
+  "confidence": {
+    "structural_layer": "high — graph edges and node notes are explicit and consistent",
+    "primitive_layer": "medium — primitive labels are inferred from node note descriptions; no canonical primitive vocabulary is provided in the packet",
+    "constraint_layer": "medium-low — several constraints are inferred from graph structure rather than stated; operational definitions of threshold, separation, and continuation criteria are absent",
+    "representation_layer": "medium — natural language summary is well-supported; AST reflects ambiguities faithfully but fork-vs-select ambiguity limits precision",
+    "recognition_analysis": "low-medium — recognition is pattern-based and tentative; multiple procedure families match the graph",
+    "overall": "medium — the graph is structurally clear and well-formed; confidence is limited by absent operational definitions and the fork-vs-select ambiguity at fan-out nodes"
+  },
+  "notes": "Packet provides graph form and node notes only. No domain terminology, no data types, no operational definitions of threshold or separation criteria. The fork-vs-select ambiguity at N1/N5 is the most consequential unresolved structural question. All extraction is grounded in packet content; no prior knowledge was used to fill structural gaps."
+}

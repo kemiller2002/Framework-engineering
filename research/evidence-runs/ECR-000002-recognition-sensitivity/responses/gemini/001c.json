@@ -1,0 +1,253 @@
+{
+  "packet_id": "ECR-000002-P001C",
+  "artifact_family_id": "P001",
+  "recognition_condition": "structural",
+  "blinded_artifact_id": "BR-P001",
+  "recognized_artifact": "Differential Diagnosis / Diagnostic Reasoning Loop",
+  "structural_layer": {
+    "entry_conditions": [
+      {
+        "value": "An unresolved state appears.",
+        "support_level": "explicit",
+        "source_text": "An unresolved state appears.",
+        "ambiguity": "None"
+      }
+    ],
+    "exit_conditions": [
+      {
+        "value": "One candidate is sufficiently supported.",
+        "support_level": "explicit",
+        "source_text": "The process ends when one candidate is sufficiently supported or continued inquiry is not justified.",
+        "ambiguity": "This is one of two alternative conditions that can cause the process to end."
+      },
+      {
+        "value": "Continued inquiry is not justified.",
+        "support_level": "explicit",
+        "source_text": "The process ends when one candidate is sufficiently supported or continued inquiry is not justified.",
+        "ambiguity": "This is one of two alternative conditions that can cause the process to end."
+      }
+    ],
+    "required_steps": [
+      {
+        "value": "Candidate states are produced.",
+        "support_level": "explicit",
+        "source_text": "Candidate states are produced.",
+        "ambiguity": "None"
+      },
+      {
+        "value": "Differentiating information is acquired.",
+        "support_level": "explicit",
+        "source_text": "Differentiating information is acquired.",
+        "ambiguity": "None"
+      },
+      {
+        "value": "Candidate states are assessed against the acquired information.",
+        "support_level": "explicit",
+        "source_text": "Candidate states are assessed against the acquired information.",
+        "ambiguity": "None"
+      }
+    ],
+    "optional_steps": [],
+    "loops": [
+      {
+        "value": "The process loops if confidence is insufficient.",
+        "support_level": "explicit",
+        "source_text": "The process loops if confidence is insufficient.",
+        "ambiguity": "It is ambiguous which exact sequence of steps are repeated within the loop (e.g., whether it loops back to producing new candidates, acquiring new info, or both)."
+      }
+    ],
+    "branches": [
+      {
+        "value": "Process loops (if confidence is insufficient) vs. process ends (when one candidate is supported or inquiry unjustified).",
+        "support_level": "explicit",
+        "source_text": "The process loops if confidence is insufficient. The process ends when one candidate is sufficiently supported or continued inquiry is not justified.",
+        "ambiguity": "None"
+      }
+    ],
+    "termination_conditions": [
+      {
+        "value": "One candidate is sufficiently supported.",
+        "support_level": "explicit",
+        "source_text": "The process ends when one candidate is sufficiently supported or continued inquiry is not justified.",
+        "ambiguity": "None"
+      },
+      {
+        "value": "Continued inquiry is not justified.",
+        "support_level": "explicit",
+        "source_text": "The process ends when one candidate is sufficiently supported or continued inquiry is not justified.",
+        "ambiguity": "None"
+      }
+    ],
+    "control_flow_shape": "Linear sequence followed by a conditional loop-back or termination, with a potential external asynchronous trigger to reopen."
+  },
+  "primitive_layer": {
+    "primitive_sequence": [
+      "Appear Unresolved State",
+      "Produce Candidate States",
+      "Acquire Differentiating Information",
+      "Assess Candidates",
+      "Evaluate Confidence",
+      "Terminate or Loop",
+      "Reopen (Conditional)"
+    ],
+    "transitions": [
+      {
+        "from": "Appear Unresolved State",
+        "to": "Produce Candidate States"
+      },
+      {
+        "from": "Produce Candidate States",
+        "to": "Acquire Differentiating Information"
+      },
+      {
+        "from": "Acquire Differentiating Information",
+        "to": "Assess Candidates"
+      },
+      {
+        "from": "Assess Candidates",
+        "to": "Evaluate Confidence"
+      },
+      {
+        "from": "Evaluate Confidence",
+        "to": "Produce Candidate States / Acquire Differentiating Information",
+        "condition": "Confidence is insufficient"
+      },
+      {
+        "from": "Evaluate Confidence",
+        "to": "Terminate",
+        "condition": "One candidate supported OR continued inquiry not justified"
+      },
+      {
+        "from": "Terminate",
+        "to": "Appear Unresolved State",
+        "condition": "Later conflicting information appears"
+      }
+    ],
+    "dominant_primitive": "Assess Candidates",
+    "candidate_missing_primitives": []
+  },
+  "constraint_layer": {
+    "invariants": [],
+    "preconditions": [
+      {
+        "value": "An unresolved state must exist to initiate the process.",
+        "support_level": "explicit",
+        "source_text": "An unresolved state appears.",
+        "ambiguity": "None"
+      }
+    ],
+    "postconditions": [
+      {
+        "value": "The process results in either a sufficiently supported candidate or a justification that continued inquiry is not warranted.",
+        "support_level": "explicit",
+        "source_text": "The process ends when one candidate is sufficiently supported or continued inquiry is not justified.",
+        "ambiguity": "None"
+      }
+    ],
+    "stopping_criteria": [
+      {
+        "value": "One candidate is sufficiently supported.",
+        "support_level": "explicit",
+        "source_text": "The process ends when one candidate is sufficiently supported or continued inquiry is not justified.",
+        "ambiguity": "None"
+      },
+      {
+        "value": "Continued inquiry is not justified.",
+        "support_level": "explicit",
+        "source_text": "The process ends when one candidate is sufficiently supported or continued inquiry is not justified.",
+        "ambiguity": "None"
+      }
+    ],
+    "validity_conditions": [
+      {
+        "value": "Lack of later conflicting information.",
+        "support_level": "explicit",
+        "source_text": "Later conflicting information can reopen the process.",
+        "ambiguity": "Implies that the finality of the termination is conditional on the absence of conflicting info."
+      }
+    ]
+  },
+  "representation_layer": {
+    "procedural_ast": {
+      "type": "Program",
+      "body": [
+        {
+          "type": "EntryCondition",
+          "description": "An unresolved state appears"
+        },
+        {
+          "type": "DoWhileLoop",
+          "body": [
+            {
+              "type": "Step",
+              "description": "Candidate states are produced"
+            },
+            {
+              "type": "Step",
+              "description": "Differentiating information is acquired"
+            },
+            {
+              "type": "Step",
+              "description": "Candidate states are assessed against the acquired information"
+            }
+          ],
+          "test": {
+            "type": "BinaryExpression",
+            "operator": "==",
+            "left": "confidence",
+            "right": "insufficient"
+          }
+        },
+        {
+          "type": "Termination",
+          "conditions": [
+            "one candidate is sufficiently supported",
+            "continued inquiry is not justified"
+          ]
+        },
+        {
+          "type": "AsynchronousTrigger",
+          "condition": "Later conflicting information appears",
+          "action": "Reopen the process"
+        }
+      ]
+    },
+    "natural_language_summary": "The procedure begins when an unresolved state emerges. Candidates for this state are produced, relevant differentiating details are gathered, and the candidates are assessed against this new data. If confidence remains low, this sequence repeats. The cycle concludes once a single candidate is strongly supported or if proceeding further is deemed unjustifiable. However, if conflicting data comes to light later on, the entire evaluation process can be triggered to reopen.",
+    "canonical_summary": "INITIATE upon unresolved state. LOOP: generate candidates, gather information, assess candidates. REPEAT loop if confidence is insufficient. TERMINATE when a candidate is supported or inquiry is unjustified. REOPEN if conflicting information occurs post-termination.",
+    "ambiguities": [
+      {
+        "location": "The process loops if confidence is insufficient.",
+        "description": "The exact scope of the loop is unclear.",
+        "plausible_interpretations": [
+          "The loop returns to the very first step ('Candidate states are produced') to generate alternative states.",
+          "The loop returns to the second step ('Differentiating information is acquired') to collect more data for the existing candidates.",
+          "The loop repeats both generation and acquisition steps."
+        ],
+        "effect_on_extraction": "Affects the precise layout of the control flow mapping and AST structure."
+      },
+      {
+        "location": "Later conflicting information can reopen the process.",
+        "description": "The exact point of re-entry upon reopening is unspecified.",
+        "plausible_interpretations": [
+          "Reopens at the beginning as a fresh 'unresolved state'.",
+          "Reopens the evaluation phase of the previously supported candidate."
+        ],
+        "effect_on_extraction": "Creates ambiguity regarding the target block of the transition arrow from the 'reopen' event."
+      }
+    ]
+  },
+  "product_relevance_layer": {
+    "clarity_relevance_observations": [],
+    "edf_relevance_observations": [],
+    "research_only_observations": []
+  },
+  "confidence": {
+    "structural_layer": "High",
+    "primitive_layer": "High",
+    "constraint_layer": "High",
+    "representation_layer": "High",
+    "product_relevance_layer": "High",
+    "overall": "High"
+  },
+  "notes": "The text outlines a classic iterative evaluation/diagnostic model. Structural layers and conditions are mapped directly to text segments to maintain strict fidelity without extrapolation."
+}

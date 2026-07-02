@@ -42,6 +42,8 @@ Evidence runs:
 
 - [ECR-000001 Multi-Layer Procedural Representation](evidence-runs/ECR-000001-multi-layer-procedural-representation/README.md)
 - [ECR-000001 Limited Review Workspace](evidence-runs/ECR-000001-multi-layer-procedural-representation/review/README.md)
+- [ECR-000002 Recognition Sensitivity](evidence-runs/ECR-000002-recognition-sensitivity/README.md)
+- [ECR-000003 Representation Sensitivity](evidence-runs/ECR-000003-representation-sensitivity/README.md)
 
 FE-013 manual execution:
 - Use `run-instructions.md` and `operator-checklist.md` in `research/experiments/FE-013-procedural-language-hypothesis/` for manual console execution across GPT-5, Claude, and Gemini.

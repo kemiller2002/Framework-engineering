@@ -1,0 +1,369 @@
+{
+  "packet_id": "ECR-000003-EXP001-P001B",
+  "experiment_id": "EXP-001",
+  "variant_id": "P001B",
+  "artifact_family_id": "P001",
+  "recognition_condition": "graph_only_renumbered",
+  "blinded_artifact_id": "BR-EXP001-P001",
+  "recognized_artifact": "no confident recognition; renumbered node labels prevent reliable identification; graph topology suggests a generate-and-test or parallel-path selection procedure with a re-evaluation loop, but this is not sufficient for confident artifact identification",
+  "structural_layer": {
+    "entry_conditions": [
+      {
+        "value": "Procedure begins at START and immediately transitions to node A7",
+        "support_level": "explicit",
+        "source_text": "START -> A7",
+        "ambiguity": "none"
+      }
+    ],
+    "exit_conditions": [
+      {
+        "value": "Procedure exits at END via V3 when one path remains strongest after re-sorting",
+        "support_level": "explicit",
+        "source_text": "V3 -> END; V3 closes the graph when one path remains strongest after re-sorting",
+        "ambiguity": "none"
+      },
+      {
+        "value": "Procedure exits at END directly from X1 when continuation is not justified",
+        "support_level": "explicit",
+        "source_text": "X1 -> END [continuation not justified]",
+        "ambiguity": "It is unclear whether this exit represents a failure mode, a success shortcut, or a pruning condition; the label 'continuation not justified' is procedurally underspecified"
+      },
+      {
+        "value": "Procedure may exit at END via X1 when threshold is not met (via Q8 path not taken)",
+        "support_level": "inferred",
+        "source_text": "X1 -> Q8 [threshold not met]; X1 -> END [continuation not justified]",
+        "ambiguity": "The relationship between 'threshold not met' and 'continuation not justified' is ambiguous; it is unclear whether these are mutually exclusive branches or related conditions"
+      }
+    ],
+    "required_steps": [
+      {
+        "value": "A7: expand one state into multiple parallel paths",
+        "support_level": "explicit",
+        "source_text": "A7 -> K2; A7 -> M9; A7 -> R4; A7 expands one state into multiple paths",
+        "ambiguity": "The number of paths (three: K2, M9, R4) is fixed in the packet, but it is unclear whether three is a structural constant or an instance-specific count"
+      },
+      {
+        "value": "K2, M9, R4: three parallel paths that all converge at T6",
+        "support_level": "explicit",
+        "source_text": "K2 -> T6; M9 -> T6; R4 -> T6",
+        "ambiguity": "No internal structure of K2, M9, or R4 is described; they may be atomic steps or sub-procedures; this is unresolvable from the packet"
+      },
+      {
+        "value": "T6: add a differentiating input after paths converge",
+        "support_level": "explicit",
+        "source_text": "T6 -> X1; T6 adds a differentiating input",
+        "ambiguity": "The nature of the differentiating input is unspecified; it is unclear what is being differentiated or how"
+      },
+      {
+        "value": "X1: re-sort path fit after new input from T6",
+        "support_level": "explicit",
+        "source_text": "X1 -> Q8 [threshold not met]; X1 -> V3 [one path selected]; X1 -> END [continuation not justified]; X1 re-sorts path fit after the new input appears",
+        "ambiguity": "The sorting criterion and threshold are not specified"
+      }
+    ],
+    "optional_steps": [
+      {
+        "value": "Q8: reopen continuation when separation remains weak; returns to K2, M9, or R4",
+        "support_level": "explicit",
+        "source_text": "Q8 -> K2; Q8 -> M9; Q8 -> R4; Q8 reopens continuation when separation remains weak",
+        "ambiguity": "It is ambiguous whether Q8 always returns to all three paths or selects a subset; the packet lists all three targets but does not specify selection logic"
+      }
+    ],
+    "loops": [
+      {
+        "value": "X1 -> Q8 -> {K2 | M9 | R4} -> T6 -> X1 forms a re-evaluation loop triggered when separation is weak",
+        "support_level": "explicit",
+        "source_text": "Q8 -> K2; Q8 -> M9; Q8 -> R4; K2 -> T6; M9 -> T6; R4 -> T6; T6 -> X1; Q8 reopens continuation when separation remains weak",
+        "ambiguity": "Loop termination is governed by X1 branching to V3 or END rather than Q8; it is unclear whether the loop has a maximum iteration count or can cycle indefinitely"
+      }
+    ],
+    "branches": [
+      {
+        "value": "A7 branches into three parallel paths: K2, M9, R4",
+        "support_level": "explicit",
+        "source_text": "A7 -> K2; A7 -> M9; A7 -> R4",
+        "ambiguity": "Whether these paths are pursued in parallel, sequentially, or speculatively is not specified"
+      },
+      {
+        "value": "X1 branches into three outcomes: Q8 (threshold not met), V3 (one path selected), END (continuation not justified)",
+        "support_level": "explicit",
+        "source_text": "X1 -> Q8 [threshold not met]; X1 -> V3 [one path selected]; X1 -> END [continuation not justified]",
+        "ambiguity": "Whether these three branches are mutually exclusive or whether multiple can be triggered simultaneously is unspecified; precedence is not defined"
+      },
+      {
+        "value": "Q8 branches back to one or more of K2, M9, R4",
+        "support_level": "explicit",
+        "source_text": "Q8 -> K2; Q8 -> M9; Q8 -> R4",
+        "ambiguity": "Selection logic for which path(s) Q8 returns to is not described"
+      }
+    ],
+    "termination_conditions": [
+      {
+        "value": "One path is selected at X1 and V3 is reached",
+        "support_level": "explicit",
+        "source_text": "X1 -> V3 [one path selected]; V3 -> END",
+        "ambiguity": "none"
+      },
+      {
+        "value": "Continuation is not justified at X1",
+        "support_level": "explicit",
+        "source_text": "X1 -> END [continuation not justified]",
+        "ambiguity": "The conditions under which continuation is 'not justified' are not defined; this may overlap with or be distinct from the 'threshold not met' condition"
+      }
+    ],
+    "control_flow_shape": "fan-out from single entry node to three parallel paths, convergence through a differentiating step, a three-way conditional branch with a re-evaluation loop back to the parallel paths, and two distinct terminal exits"
+  },
+  "primitive_layer": {
+    "primitive_sequence": [
+      "generate (A7: expand one input state into multiple candidate paths)",
+      "process (K2, M9, R4: traverse parallel candidate paths)",
+      "inject (T6: introduce differentiating input to distinguish paths)",
+      "evaluate (X1: re-sort and score path fit against threshold)",
+      "branch: select (X1 -> V3: one path is dominant)",
+      "branch: loop (X1 -> Q8: separation insufficient, reopen)",
+      "branch: terminate (X1 -> END: continuation not justified)",
+      "reopen (Q8: return to one or more candidate paths)",
+      "close (V3: seal selection and exit)"
+    ],
+    "transitions": [
+      { "from": "START", "to": "A7", "condition": "unconditional" },
+      { "from": "A7", "to": "K2", "condition": "fan-out, unconditional" },
+      { "from": "A7", "to": "M9", "condition": "fan-out, unconditional" },
+      { "from": "A7", "to": "R4", "condition": "fan-out, unconditional" },
+      { "from": "K2", "to": "T6", "condition": "unconditional" },
+      { "from": "M9", "to": "T6", "condition": "unconditional" },
+      { "from": "R4", "to": "T6", "condition": "unconditional" },
+      { "from": "T6", "to": "X1", "condition": "unconditional" },
+      { "from": "X1", "to": "Q8", "condition": "threshold not met" },
+      { "from": "X1", "to": "V3", "condition": "one path selected" },
+      { "from": "X1", "to": "END", "condition": "continuation not justified" },
+      {
+        "from": "Q8",
+        "to": "K2",
+        "condition": "reopen; selection logic unspecified"
+      },
+      {
+        "from": "Q8",
+        "to": "M9",
+        "condition": "reopen; selection logic unspecified"
+      },
+      {
+        "from": "Q8",
+        "to": "R4",
+        "condition": "reopen; selection logic unspecified"
+      },
+      { "from": "V3", "to": "END", "condition": "unconditional" }
+    ],
+    "dominant_primitive": "evaluate-and-select with iterative re-evaluation loop",
+    "candidate_missing_primitives": [
+      "scoring or ranking function at X1 (referenced by 're-sorts path fit' but not procedurally defined)",
+      "threshold definition for Q8 trigger vs. V3 trigger at X1",
+      "path selection logic at Q8 when returning to K2/M9/R4",
+      "internal structure of K2, M9, R4 (may be compound steps)"
+    ]
+  },
+  "constraint_layer": {
+    "invariants": [
+      {
+        "value": "All three paths K2, M9, R4 converge at T6 before evaluation at X1",
+        "support_level": "explicit",
+        "source_text": "K2 -> T6; M9 -> T6; R4 -> T6",
+        "ambiguity": "Whether convergence requires all three to complete or only one is not specified"
+      },
+      {
+        "value": "T6 must inject a differentiating input before X1 can evaluate",
+        "support_level": "explicit",
+        "source_text": "T6 adds a differentiating input; T6 -> X1",
+        "ambiguity": "none"
+      }
+    ],
+    "preconditions": [
+      {
+        "value": "A7 requires a single input state to expand",
+        "support_level": "inferred",
+        "source_text": "A7 expands one state into multiple paths",
+        "ambiguity": "What constitutes a valid input state is not defined"
+      },
+      {
+        "value": "X1 requires prior execution of T6 to have a differentiating input available for re-sorting",
+        "support_level": "inferred",
+        "source_text": "T6 adds a differentiating input; X1 re-sorts path fit after the new input appears",
+        "ambiguity": "none"
+      }
+    ],
+    "postconditions": [
+      {
+        "value": "After V3, exactly one path has been selected",
+        "support_level": "explicit",
+        "source_text": "X1 -> V3 [one path selected]; V3 closes the graph when one path remains strongest after re-sorting",
+        "ambiguity": "none"
+      },
+      {
+        "value": "After END via X1 directly, no path selection has been made; state is ambiguous",
+        "support_level": "inferred",
+        "source_text": "X1 -> END [continuation not justified]",
+        "ambiguity": "It is unclear whether this exit represents a null result, a failure, or a valid early termination"
+      }
+    ],
+    "stopping_criteria": [
+      {
+        "value": "One path is sufficiently dominant at X1 to trigger V3",
+        "support_level": "explicit",
+        "source_text": "X1 -> V3 [one path selected]; V3 closes the graph when one path remains strongest after re-sorting",
+        "ambiguity": "Dominance threshold is not quantified"
+      },
+      {
+        "value": "Continuation is determined not justified at X1",
+        "support_level": "explicit",
+        "source_text": "X1 -> END [continuation not justified]",
+        "ambiguity": "Criterion for 'not justified' is not defined; may be a third scoring outcome or an external interrupt"
+      }
+    ],
+    "validity_conditions": [
+      {
+        "value": "Loop through Q8 is only valid when separation among paths remains weak",
+        "support_level": "explicit",
+        "source_text": "Q8 reopens continuation when separation remains weak",
+        "ambiguity": "No upper bound on loop iterations is stated; validity of repeated looping is unclear"
+      },
+      {
+        "value": "The procedure is only valid if A7 produces at least one path",
+        "support_level": "inferred",
+        "source_text": "A7 expands one state into multiple paths",
+        "ambiguity": "The minimum required number of paths is not stated; zero-path case is not handled in the graph"
+      }
+    ]
+  },
+  "representation_layer": {
+    "procedural_ast": {
+      "type": "procedure",
+      "entry": "START",
+      "body": [
+        {
+          "type": "step",
+          "node": "A7",
+          "operation": "expand",
+          "description": "expand single input state into multiple candidate paths",
+          "outputs": ["K2", "M9", "R4"]
+        },
+        {
+          "type": "parallel_or_sequential_ambiguous",
+          "nodes": ["K2", "M9", "R4"],
+          "description": "traverse candidate paths; internal structure unspecified",
+          "convergence": "T6"
+        },
+        {
+          "type": "step",
+          "node": "T6",
+          "operation": "inject",
+          "description": "introduce differentiating input to paths"
+        },
+        {
+          "type": "loop",
+          "condition": "threshold not met at X1",
+          "body": [
+            {
+              "type": "step",
+              "node": "X1",
+              "operation": "evaluate",
+              "description": "re-sort path fit after differentiating input"
+            },
+            {
+              "type": "branch",
+              "node": "X1",
+              "cases": [
+                {
+                  "condition": "threshold not met",
+                  "target": "Q8"
+                },
+                {
+                  "condition": "one path selected",
+                  "target": "V3"
+                },
+                {
+                  "condition": "continuation not justified",
+                  "target": "END"
+                }
+              ]
+            },
+            {
+              "type": "step",
+              "node": "Q8",
+              "operation": "reopen",
+              "description": "return to one or more of K2, M9, R4; selection logic unspecified",
+              "targets": ["K2", "M9", "R4"]
+            }
+          ]
+        },
+        {
+          "type": "step",
+          "node": "V3",
+          "operation": "close",
+          "description": "seal selection; one path remains strongest"
+        }
+      ],
+      "exits": [
+        { "node": "V3", "condition": "one path selected and strongest" },
+        { "node": "X1", "condition": "continuation not justified" }
+      ]
+    },
+    "natural_language_summary": "The procedure begins by expanding a single input state into three candidate paths (K2, M9, R4). All three paths converge at a step that introduces a differentiating input (T6). A sorting and evaluation step (X1) then re-ranks the paths based on the new input. If one path is clearly dominant, the procedure closes through V3 and exits. If separation among paths remains weak, a re-evaluation node (Q8) reopens one or more of the candidate paths and the loop repeats. If continuation is determined to be unjustified, the procedure exits directly from X1 without selection. The loop has no stated upper bound.",
+    "canonical_summary": "fan-out to parallel candidates -> inject differentiating input -> evaluate and rank -> conditional: select-and-close | reopen-and-loop | terminate-without-selection",
+    "ambiguities": [
+      {
+        "location": "A7 fan-out",
+        "description": "Whether K2, M9, R4 are pursued in parallel, sequentially, or speculatively is not specified",
+        "plausible_interpretations": [
+          "true parallel execution of all three paths",
+          "sequential exploration of each path",
+          "speculative branching with pruning"
+        ],
+        "effect_on_extraction": "affects whether K2/M9/R4 are concurrent or ordered primitives; changes control flow shape"
+      },
+      {
+        "location": "X1 branches",
+        "description": "The relationship between 'threshold not met' (-> Q8) and 'continuation not justified' (-> END) is undefined; they may be mutually exclusive scoring outcomes or one may subsume the other",
+        "plausible_interpretations": [
+          "three mutually exclusive scoring tiers: dominant / weak-but-continuable / not-justified",
+          "two conditions: threshold met or not; 'not justified' is an override or external condition",
+          "'continuation not justified' is a catch-all for cases where looping would not help"
+        ],
+        "effect_on_extraction": "affects branching logic and termination semantics at X1"
+      },
+      {
+        "location": "Q8 return targets",
+        "description": "Q8 lists all three paths (K2, M9, R4) as targets but provides no selection logic",
+        "plausible_interpretations": [
+          "Q8 returns to all three paths (full re-expansion)",
+          "Q8 selects a subset of paths based on prior ranking",
+          "Q8 returns to only the highest-ranked remaining path"
+        ],
+        "effect_on_extraction": "affects whether the loop is a full restart or a pruned continuation"
+      },
+      {
+        "location": "K2, M9, R4 internal structure",
+        "description": "No internal steps are described for these nodes; they may be atomic or compound",
+        "plausible_interpretations": [
+          "K2/M9/R4 are atomic processing steps",
+          "K2/M9/R4 are sub-procedures with internal structure not represented in this packet"
+        ],
+        "effect_on_extraction": "affects primitive granularity and whether missing sub-procedures should be flagged"
+      }
+    ]
+  },
+  "recognition_analysis": {
+    "recognition_occurred": "no",
+    "recognition_basis": "Graph topology (fan-out, parallel paths, convergence, evaluate-and-select loop) is consistent with multiple known procedure families including hypothesis generation and testing, beam search, ensemble selection, and multi-hypothesis tracking. Node renumbering removes label-based recognition cues. No domain terminology is present in the packet. The combination of features is suggestive but not uniquely identifying.",
+    "domain_terms_introduced": [],
+    "prior_knowledge_leakage_risk": "low; no domain terms were introduced; structural observations are grounded solely in graph edges and node notes; the parallel-path-with-reeval topology is generic enough that no specific artifact was assumed"
+  },
+  "confidence": {
+    "structural_layer": "high; graph edges and node notes are explicit and consistent",
+    "primitive_layer": "medium; primitive sequence is readable from the graph but internal structure of K2/M9/R4 and Q8 selection logic are missing",
+    "constraint_layer": "medium-low; preconditions and validity conditions are largely inferred; threshold and stopping criteria values are absent",
+    "representation_layer": "medium; AST is structurally faithful but parallel-vs-sequential ambiguity at A7 and the three-way branch semantics at X1 reduce precision",
+    "recognition_analysis": "high; non-recognition is well-supported by absence of domain terms and renumbered labels",
+    "overall": "medium; packet is internally consistent and graph is fully traversable, but key procedural parameters (thresholds, selection logic, path execution model) are absent"
+  },
+  "notes": "The packet is well-formed and the graph is unambiguous at the edge level. The primary sources of extraction uncertainty are: (1) the execution model for the A7 fan-out (parallel vs. sequential vs. speculative); (2) the three-way branch semantics at X1, particularly the relationship between 'threshold not met' and 'continuation not justified'; (3) the selection logic at Q8 when returning to K2/M9/R4. These ambiguities are recorded explicitly rather than resolved arbitrarily. No domain terminology was introduced. Recognition was not achieved."
+}
