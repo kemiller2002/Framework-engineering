@@ -1,0 +1,1 @@
+ecr_id,experiment_id,packet_id,provider,artifact_family_id,variant_id,representation_condition,variant_order,recognition_value,recognized_artifact_raw,domain_terms_introduced,prior_knowledge_leakage_risk,notes

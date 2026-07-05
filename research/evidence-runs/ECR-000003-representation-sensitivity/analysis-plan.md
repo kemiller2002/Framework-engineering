@@ -4,12 +4,16 @@
 
 Compare:
 
+- classify `recognition_value` for each provider and variant
+- compare recognition persistence across providers
+- compare recognition persistence against structural stability
 - recognition rate across variants
 - `recognized_artifact` content
 - structural-layer stability
 - primitive-layer stability
 - graph-derived control-flow stability
 - domain terms introduced
+- identify whether recognition changes with renumbering, edge-order shuffle, or identity-node expansion
 
 ## EXP-002
 

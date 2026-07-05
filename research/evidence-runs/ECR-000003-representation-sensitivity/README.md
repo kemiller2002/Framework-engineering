@@ -52,4 +52,6 @@ Models do not update hypotheses directly.
 - `interpretation-rules.md`
 - `threats-to-validity.md`
 - `decision-log.md`
+- `metrics/`
+- `comparison/`
 - `experiments/`

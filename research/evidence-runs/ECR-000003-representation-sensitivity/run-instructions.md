@@ -18,6 +18,8 @@ Run `EXP-001` only.
 
 Run GPT, Claude, and Gemini across the four topology variants.
 
+After each model output, operator should record `recognition_value` using `metrics/recognition-scale.md` before reading detailed structure.
+
 Stop and review.
 
 ### Phase 2

@@ -118,3 +118,7 @@ ECR-000003 Representation Sensitivity Setup
 ## Current Goal
 
 Test whether recognition and recovered structure depend on topology, surface representation, or domain semantics.
+
+## Current Focus
+
+ECR-000003 EXP-001 Recognition Persistence

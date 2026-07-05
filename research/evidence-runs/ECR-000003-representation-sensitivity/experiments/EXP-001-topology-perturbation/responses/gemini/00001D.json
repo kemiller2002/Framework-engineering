@@ -1,0 +1,340 @@
+{
+  "packet_id": "ECR-000003-EXP001-P001D",
+  "experiment_id": "EXP-001",
+  "variant_id": "P001D",
+  "artifact_family_id": "P001",
+  "recognition_condition": "graph_only_identity_node_expanded",
+  "blinded_artifact_id": "BR-EXP001-P001",
+  "recognized_artifact": "Unknown",
+  "structural_layer": {
+    "entry_conditions": [
+      {
+        "value": "START node state reached.",
+        "support_level": "direct",
+        "source_text": "START -> N1",
+        "ambiguity": "None"
+      }
+    ],
+    "exit_conditions": [
+      {
+        "value": "END node state reached via N4 when continuation is not justified.",
+        "support_level": "direct",
+        "source_text": "N4 -> END [continuation not justified]",
+        "ambiguity": "None"
+      },
+      {
+        "value": "N6 closes the graph when one path remains strongest after re-sorting.",
+        "support_level": "direct",
+        "source_text": "N4 -> N6 [one path selected], N6 closes the graph when one path remains strongest after re-sorting.",
+        "ambiguity": "The graph form does not explicitly connect N6 to END, but the notes indicate N6 'closes the graph', implying an exit or termination state."
+      }
+    ],
+    "required_steps": [
+      {
+        "value": "Execute N1 to expand one state into multiple paths (N1a, N1b, N1c).",
+        "support_level": "direct",
+        "source_text": "N1 -> N1a, N1 -> N1b, N1 -> N1c, N1 expands one state into multiple paths.",
+        "ambiguity": "None"
+      },
+      {
+        "value": "Pass through N1a, N1b, N1c states to reach N2A, N2B, N2C.",
+        "support_level": "direct",
+        "source_text": "N1a -> N2A, N1b -> N2B, N1c -> N2C, N1a, N1b, N1c are pass-through states.",
+        "ambiguity": "None"
+      },
+      {
+        "value": "Execute N3 to add a differentiating input.",
+        "support_level": "direct",
+        "source_text": "N2A -> N3, N2B -> N3, N2C -> N3, N3 adds a differentiating input.",
+        "ambiguity": "None"
+      },
+      {
+        "value": "Execute N4 to re-sort path fit after the new input appears.",
+        "support_level": "direct",
+        "source_text": "N3 -> N4, N4 re-sorts path fit after the new input appears.",
+        "ambiguity": "None"
+      }
+    ],
+    "optional_steps": [
+      {
+        "value": "Execute loop path via N5 (and pass-through states N5a, N5b, N5c) to reopen continuation when separation remains weak.",
+        "support_level": "direct",
+        "source_text": "N4 -> N5 [threshold not met], N5 -> N5a, N5 -> N5b, N5 -> N5c, N5 reopens continuation when separation remains weak.",
+        "ambiguity": "None"
+      }
+    ],
+    "loops": [
+      {
+        "value": "Loop from N4 to N5, then to pass-through states N5a/N5b/N5c, returning back to N2A/N2B/N2C respectively, and converging back to N3 and N4.",
+        "support_level": "direct",
+        "source_text": "N4 -> N5 [threshold not met]\nN5 -> N5a\nN5a -> N2A\nN5 -> N5b\nN5b -> N2B\nN5 -> N5c\nN5c -> N2C",
+        "ambiguity": "None"
+      }
+    ],
+    "branches": [
+      {
+        "value": "Three parallel or alternative paths branch out from N1 via N1a, N1b, N1c leading to N2A, N2B, N2C.",
+        "support_level": "direct",
+        "source_text": "N1 -> N1a, N1 -> N1b, N1 -> N1c",
+        "ambiguity": "It is ambiguous whether these paths are executed concurrently or represent alternative conditional branches, though 'expands one state into multiple paths' suggests multi-path tracking."
+      },
+      {
+        "value": "Three-way conditional branch from N4 based on evaluation criteria: threshold not met (to N5), one path selected (to N6), or continuation not justified (to END).",
+        "support_level": "direct",
+        "source_text": "N4 -> N5 [threshold not met]\nN4 -> N6 [one path selected]\nN4 -> END [continuation not justified]",
+        "ambiguity": "None"
+      },
+      {
+        "value": "Three parallel or alternative loop paths branch out from N5 via N5a, N5b, N5c leading to N2A, N2B, N2C.",
+        "support_level": "direct",
+        "source_text": "N5 -> N5a, N5 -> N5b, N5 -> N5c",
+        "ambiguity": "Similar to N1, it is unclear if these are executed in parallel or as exclusive alternatives."
+      }
+    ],
+    "termination_conditions": [
+      {
+        "value": "Continuation not justified at N4, transitioning directly to END.",
+        "support_level": "direct",
+        "source_text": "N4 -> END [continuation not justified]",
+        "ambiguity": "None"
+      },
+      {
+        "value": "One path remains strongest after re-sorting at N4, leading to N6 which closes the graph.",
+        "support_level": "direct",
+        "source_text": "N4 -> N6 [one path selected], N6 closes the graph when one path remains strongest after re-sorting.",
+        "ambiguity": "N6 does not explicitly link to END, but serves as a terminal action node based on node notes."
+      }
+    ],
+    "control_flow_shape": "Divergent-convergent graph structure with an iterative feedback loop. It branches into 3 paths from N1, converges at N3/N4, and can loop back from N4 through N5 into three distinct parallel/alternative feedback entry points (N2A/B/C) before converging again."
+  },
+  "primitive_layer": {
+    "primitive_sequence": [
+      "START",
+      "N1",
+      "N1a / N1b / N1c",
+      "N2A / N2B / N2C",
+      "N3",
+      "N4",
+      "N5",
+      "N5a / N5b / N5c",
+      "N6",
+      "END"
+    ],
+    "transitions": [
+      { "from": "START", "to": "N1" },
+      { "from": "N1", "to": "N1a" },
+      { "from": "N1", "to": "N1b" },
+      { "from": "N1", "to": "N1c" },
+      { "from": "N1a", "to": "N2A" },
+      { "from": "N1b", "to": "N2B" },
+      { "from": "N1c", "to": "N2C" },
+      { "from": "N2A", "to": "N3" },
+      { "from": "N2B", "to": "N3" },
+      { "from": "N2C", "to": "N3" },
+      { "from": "N3", "to": "N4" },
+      { "from": "N4", "to": "N5" },
+      { "from": "N4", "to": "N6" },
+      { "from": "N4", "to": "END" },
+      { "from": "N5", "to": "N5a" },
+      { "from": "N5", "to": "N5b" },
+      { "from": "N5", "to": "N5c" },
+      { "from": "N5a", "to": "N2A" },
+      { "from": "N5b", "to": "N2B" },
+      { "from": "N5c", "to": "N2C" }
+    ],
+    "dominant_primitive": "N4 (Central evaluation and routing authority)",
+    "candidate_missing_primitives": [
+      {
+        "value": "An explicit transition from N6 to END.",
+        "support_level": "inferential",
+        "source_text": "N6 closes the graph when one path remains strongest after re-sorting.",
+        "ambiguity": "High"
+      }
+    ]
+  },
+  "constraint_layer": {
+    "invariants": [],
+    "preconditions": [
+      {
+        "value": "A single state must be available to expand.",
+        "support_level": "inferential",
+        "source_text": "N1 expands one state into multiple paths.",
+        "ambiguity": "Low"
+      }
+    ],
+    "postconditions": [
+      {
+        "value": "One path remains strongest when the graph closes at N6.",
+        "support_level": "direct",
+        "source_text": "N6 closes the graph when one path remains strongest after re-sorting.",
+        "ambiguity": "Low"
+      }
+    ],
+    "stopping_criteria": [
+      {
+        "value": "Continuation is not justified after path fit sorting.",
+        "support_level": "direct",
+        "source_text": "N4 -> END [continuation not justified]",
+        "ambiguity": "None"
+      },
+      {
+        "value": "One path is selected and remains strongest after re-sorting.",
+        "support_level": "direct",
+        "source_text": "N4 -> N6 [one path selected], N6 closes the graph when one path remains strongest after re-sorting.",
+        "ambiguity": "Low"
+      }
+    ],
+    "validity_conditions": [
+      {
+        "value": "Reopening continuation through N5 requires that separation remains weak.",
+        "support_level": "direct",
+        "source_text": "N5 reopens continuation when separation remains weak.",
+        "ambiguity": "None"
+      }
+    ]
+  },
+  "representation_layer": {
+    "procedural_ast": {
+      "type": "Program",
+      "body": [
+        {
+          "type": "ExpressionStatement",
+          "expression": {
+            "type": "CallExpression",
+            "callee": "START",
+            "arguments": []
+          }
+        },
+        {
+          "type": "Step",
+          "id": "N1",
+          "description": "Expands one state into multiple paths",
+          "branches": [
+            {
+              "path": "a",
+              "body": [
+                { "type": "PassThrough", "id": "N1a" },
+                { "type": "State", "id": "N2A" }
+              ]
+            },
+            {
+              "path": "b",
+              "body": [
+                { "type": "PassThrough", "id": "N1b" },
+                { "type": "State", "id": "N2B" }
+              ]
+            },
+            {
+              "path": "c",
+              "body": [
+                { "type": "PassThrough", "id": "N1c" },
+                { "type": "State", "id": "N2C" }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "Convergence",
+          "id": "N3",
+          "description": "Adds a differentiating input"
+        },
+        {
+          "type": "Loop",
+          "id": "EvaluationLoop",
+          "body": [
+            {
+              "type": "Step",
+              "id": "N4",
+              "description": "Re-sorts path fit after new input appears",
+              "conditional_branches": [
+                {
+                  "condition": "threshold not met",
+                  "action": {
+                    "type": "Step",
+                    "id": "N5",
+                    "description": "Reopens continuation when separation remains weak",
+                    "branches": [
+                      {
+                        "path": "a",
+                        "body": [
+                          { "type": "PassThrough", "id": "N5a" },
+                          { "type": "LoopBackTo", "target": "N2A" }
+                        ]
+                      },
+                      {
+                        "path": "b",
+                        "body": [
+                          { "type": "PassThrough", "id": "N5b" },
+                          { "type": "LoopBackTo", "target": "N2B" }
+                        ]
+                      },
+                      {
+                        "path": "c",
+                        "body": [
+                          { "type": "PassThrough", "id": "N5c" },
+                          { "type": "LoopBackTo", "target": "N2C" }
+                        ]
+                      }
+                    ]
+                  }
+                },
+                {
+                  "condition": "one path selected",
+                  "action": {
+                    "type": "TerminalStep",
+                    "id": "N6",
+                    "description": "Closes the graph when one path remains strongest after re-sorting"
+                  }
+                },
+                {
+                  "condition": "continuation not justified",
+                  "action": {
+                    "type": "EndStatement",
+                    "id": "END"
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "natural_language_summary": "The procedure begins at START and transitions to N1, where a single state is expanded into three distinct paths via pass-through states N1a, N1b, and N1c into states N2A, N2B, and N2C respectively. These three paths converge at N3, which adds a differentiating input. The sequence transitions to N4, where the path fit is re-sorted based on the new input. From N4, three outcomes are possible: if a threshold is not met due to weak separation, the process transitions to N5 to reopen continuation, sending the execution back through pass-through states (N5a, N5b, N5c) to N2A, N2B, and N2C to repeat the evaluation loop. If one path is selected because it remains strongest, execution transitions to N6, which closes the graph. If continuation is not justified, execution transitions directly to END.",
+    "canonical_summary": "START -> N1 -> [N1a->N2A, N1b->N2B, N1c->N2C] -> N3 -> N4. From N4: IF [threshold not met] -> N5 -> [N5a->N2A, N5b->N2B, N5c->N2C] (Loop); IF [one path selected] -> N6 (Close Graph); IF [continuation not justified] -> END.",
+    "ambiguities": [
+      {
+        "location": "N1 -> [N1a, N1b, N1c] and N5 -> [N5a, N5b, N5c]",
+        "description": "Execution concurrency / selection mechanism.",
+        "plausible_interpretations": [
+          "The paths are processed concurrently or tracking multiple parallel hypotheses.",
+          "The paths are mutually exclusive alternative routes chosen based on unstated conditions."
+        ],
+        "effect_on_extraction": "Affects the interpretation of whether the structural layer represents a parallel split or conditional routing."
+      },
+      {
+        "location": "N6",
+        "description": "Terminal status of N6.",
+        "plausible_interpretations": [
+          "N6 is a terminal node that implicitly terminates the entire operation sequence.",
+          "N6 requires a missing transition to explicitly reach the 'END' node."
+        ],
+        "effect_on_extraction": "Determines the precise exit condition and completeness of the primitive layer transition definitions."
+      }
+    ]
+  },
+  "recognition_analysis": {
+    "recognition_occurred": "No",
+    "recognition_basis": "The content contains abstract procedural codes (N1-N6) and algorithmic graph annotations which do not map uniquely to an unblinded real-world domain without external context.",
+    "domain_terms_introduced": [],
+    "prior_knowledge_leakage_risk": "None observed. Speculation on framework engineering or underlying algorithmic domains was withheld in compliance with instructions."
+  },
+  "confidence": {
+    "structural_layer": "High",
+    "primitive_layer": "High",
+    "constraint_layer": "High",
+    "representation_layer": "High",
+    "recognition_analysis": "High",
+    "overall": "High"
+  },
+  "notes": "All extractions conform strictly to the textual tokens provided in the packet. Structural definitions reflect the literal graph connections and node notes accurately."
+}

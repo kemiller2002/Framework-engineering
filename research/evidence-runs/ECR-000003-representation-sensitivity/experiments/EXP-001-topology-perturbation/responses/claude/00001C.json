@@ -1,0 +1,160 @@
+{
+  "packet_id": "ECR-000003-EXP001-P001C",
+  "experiment_id": "EXP-001",
+  "variant_id": "P001C",
+  "artifact_family_id": "P001",
+  "recognition_condition": "graph_only_edge_order_shuffled",
+  "blinded_artifact_id": "BR-EXP001-P001",
+  "recognized_artifact": "The graph structure and node notes are consistent with a multi-path selection or ranking procedure — possibly a scoring, sorting, or candidate-evaluation workflow where one option is selected after iterative re-ranking. No specific named artifact is confidently identified from graph topology alone.",
+  "structural_layer": {
+    "entry_conditions": [
+      {
+        "value": "Procedure begins at START node, which transitions unconditionally to N1.",
+        "support_level": "high",
+        "source_text": "START -> N1",
+        "ambiguity": "None. START is unambiguously the sole entry point."
+      }
+    ],
+    "exit_conditions": [
+      {
+        "value": "Procedure exits at END node, reachable from N6 or directly from N4.",
+        "support_level": "high",
+        "source_text": "N6 -> END; N4 -> END [continuation not justified]",
+        "ambiguity": "Two distinct paths lead to END. Whether these represent equivalent terminations or qualitatively different exit states is not specified by the graph alone."
+      }
+    ],
+    "required_steps": [
+      {
+        "value": "N1 is always executed after START.",
+        "support_level": "high",
+        "source_text": "START -> N1; N1 expands one state into multiple paths.",
+        "ambiguity": "None apparent."
+      },
+      {
+        "value": "N3 is always reached from any of N2A, N2B, or N2C.",
+        "support_level": "high",
+        "source_text": "N2A -> N3; N2B -> N3; N2C -> N3",
+        "ambiguity": "Whether all three N2x nodes are always activated or only a subset is not specified. N3 may be required only after at least one N2x completes."
+      },
+      {
+        "value": "N4 is always reached from N3.",
+        "support_level": "high",
+        "source_text": "N3 -> N4",
+        "ambiguity": "None apparent."
+      }
+    ],
+    "optional_steps": [
+      {
+        "value": "N5 is conditionally reached from N4 when a threshold is not met.",
+        "support_level": "high",
+        "source_text": "N4 -> N5 [threshold not met]",
+        "ambiguity": "The nature of the threshold is unspecified. Whether N5 can be reached more than once is unclear."
+      },
+      {
+        "value": "N6 is conditionally reached from N4 when one path is selected, or from N5 when separation remains weak after re-execution.",
+        "support_level": "high",
+        "source_text": "N4 -> N6 [one path selected]; N5 -> N2B; N5 -> N2C; N5 -> N2A",
+        "ambiguity": "N6 is not directly reachable from N5 per the graph; N5 feeds back into the N2x layer. Whether N6 is reachable after N5's re-expansion is only inferrable via the cycle through N2x -> N3 -> N4 -> N6."
+      }
+    ],
+    "loops": [
+      {
+        "value": "A loop exists from N4 -> N5 -> {N2A, N2B, N2C} -> N3 -> N4, forming a re-evaluation cycle.",
+        "support_level": "high",
+        "source_text": "N4 -> N5 [threshold not met]; N5 -> N2A; N5 -> N2B; N5 -> N2C; N2A -> N3; N2B -> N3; N2C -> N3; N3 -> N4",
+        "ambiguity": "The number of permitted loop iterations is unspecified. Whether all three N2x branches from N5 are always activated or selectively activated is ambiguous. The loop termination condition (threshold eventually met, or path selected) is implied but not formally stated."
+      }
+    ],
+    "branches": [
+      {
+        "value": "N1 branches into three parallel or alternative paths: N2A, N2B, N2C.",
+        "support_level": "high",
+        "source_text": "N1 -> N2A; N1 -> N2B; N1 -> N2C; N1 expands one state into multiple paths.",
+        "ambiguity": "Whether these paths are mutually exclusive, parallel, or a fan-out with all branches active simultaneously is not specified by the graph topology."
+      },
+      {
+        "value": "N4 branches into three alternatives: N5 (threshold not met), N6 (one path selected), END (continuation not justified).",
+        "support_level": "high",
+        "source_text": "N4 -> N5 [threshold not met]; N4 -> N6 [one path selected]; N4 -> END [continuation not justified]",
+        "ambiguity": "The mutual exclusivity of these branches is implied by the labels but not formally proven. Whether all three can be active simultaneously is not addressed."
+      },
+      {
+        "value": "N5 branches into three paths: N2A, N2B, N2C — mirroring N1's branching.",
+        "support_level": "high",
+        "source_text": "N5 -> N2A; N5 -> N2B; N5 -> N2C; N5 reopens continuation when separation remains weak.",
+        "ambiguity": "Same ambiguity as the N1 branching: whether all three are activated or a subset is chosen is unspecified."
+      }
+    ],
+    "termination_conditions": [
+      {
+        "value": "Termination via N6: one path has been identified as strongest after re-sorting at N4.",
+        "support_level": "high",
+        "source_text": "N4 -> N6 [one path selected]; N6 closes the graph when one path remains strongest after re-sorting; N6 -> END",
+        "ambiguity": "The definition of 'strongest' is not specified in the packet."
+      },
+      {
+        "value": "Termination via N4 -> END: continuation is not justified without traversing N6.",
+        "support_level": "high",
+        "source_text": "N4 -> END [continuation not justified]",
+        "ambiguity": "The condition distinguishing this exit from the N4 -> N6 exit is not formally defined beyond the edge label. The ordering or priority of the three N4 exits is ambiguous."
+      }
+    ],
+    "control_flow_shape": "Fan-out from a single entry into parallel or alternative paths (N2A/N2B/N2C), convergence at N3, evaluation at N4 with a conditional re-expansion loop through N5 back into the N2x layer, and a branching exit with two distinct termination paths (via N6 -> END or directly N4 -> END)."
+  },
+  "primitive_layer": {
+    "primitive_sequence": [
+      "START",
+      "N1 [expand/fan-out]",
+      "N2A | N2B | N2C [parallel or alternative processing paths]",
+      "N3 [converge/differentiate]",
+      "N4 [evaluate/re-sort]",
+      "BRANCH: if one path selected -> N6 -> END; if continuation not justified -> END; if threshold not met -> N5",
+      "N5 [re-expand/reopen]",
+      "N2A | N2B | N2C [re-enter processing paths]",
+      "N3 -> N4 [loop back]"
+    ],
+    "transitions": [
+      {"from": "START", "to": "N1", "condition": "unconditional"},
+      {"from": "N1", "to": "N2A", "condition": "unspecified branch condition"},
+      {"from": "N1", "to": "N2B", "condition": "unspecified branch condition"},
+      {"from": "N1", "to": "N2C", "condition": "unspecified branch condition"},
+      {"from": "N2A", "to": "N3", "condition": "unconditional"},
+      {"from": "N2B", "to": "N3", "condition": "unconditional"},
+      {"from": "N2C", "to": "N3", "condition": "unconditional"},
+      {"from": "N3", "to": "N4", "condition": "unconditional"},
+      {"from": "N4", "to": "N6", "condition": "one path selected"},
+      {"from": "N4", "to": "N5", "condition": "threshold not met"},
+      {"from": "N4", "to": "END", "condition": "continuation not justified"},
+      {"from": "N5", "to": "N2A", "condition": "unspecified branch condition"},
+      {"from": "N5", "to": "N2B", "condition": "unspecified branch condition"},
+      {"from": "N5", "to": "N2C", "condition": "unspecified branch condition"},
+      {"from": "N6", "to": "END", "condition": "unconditional"}
+    ],
+    "dominant_primitive": "conditional branching with re-evaluation loop",
+    "candidate_missing_primitives": [
+      "A merge or join primitive at N3 is implied if N2A/N2B/N2C are parallel — not labeled in the graph.",
+      "A selection or scoring primitive at N4 is implied by node note but has no explicit representation in graph edges.",
+      "A loop counter or guard primitive is implied by the bounded re-expansion through N5 but is absent from the graph."
+    ]
+  },
+  "constraint_layer": {
+    "invariants": [
+      {
+        "value": "N3 must always be reached via at least one N2x node.",
+        "support_level": "high",
+        "source_text": "N2A -> N3; N2B -> N3; N2C -> N3",
+        "ambiguity": "No direct path to N3 bypassing N2x nodes exists, so this appears invariant. However, whether all three must contribute or only one is required is ambiguous."
+      },
+      {
+        "value": "N4 is always preceded by N3.",
+        "support_level": "high",
+        "source_text": "N3 -> N4",
+        "ambiguity": "None. N3 -> N4 is the sole incoming edge to N4."
+      }
+    ],
+    "preconditions": [
+      {
+        "value": "N4 -> N6 transition requires that exactly one path has been identified as strongest.",
+        "support_level": "medium",
+        "source_text": "N4 -> N6 [one path selected]; N6 closes the graph when one path remains strongest after re-sorting",
+        "ambiguity": "What
