@@ -113,11 +113,11 @@ Framework Engineering currently has provisional evidence as a characterization a
 
 ## Current Phase
 
-EDR / Research Queue Operating System Setup
+Comparator v3.1 Implementation and Regression
 
 ## Current Goal
 
-Route completed evidence through Evidence Decision Records before hypothesis review and next-experiment selection.
+Resolve audited comparator defects, regenerate EXP-001 using calibrated reporting, and prepare Comparator v3.1 for human approval.
 
 ## Current Focus
 

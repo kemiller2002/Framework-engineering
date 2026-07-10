@@ -16,13 +16,29 @@ export function sanitizeJsonText(rawText) {
 }
 
 export function parseResponseText(rawText) {
-  const candidates = [sanitizeJsonText(rawText)];
-  for (const candidate of candidates) {
-    try {
-      return { ok: true, data: JSON.parse(candidate), text: candidate };
-    } catch (error) {
-      return { ok: false, error: error.message, text: candidate };
-    }
+  const strictCandidate = stripMarkdownCodeFence(rawText).trim();
+  try {
+    return { ok: true, data: JSON.parse(strictCandidate), text: strictCandidate, parse_mode: "strict", sanitization_applied: false };
+  } catch {
+    // continue to tolerant parse
   }
-  return { ok: false, error: "Unknown parse failure", text: "" };
+
+  const tolerantCandidate = sanitizeJsonText(rawText);
+  try {
+    return {
+      ok: true,
+      data: JSON.parse(tolerantCandidate),
+      text: tolerantCandidate,
+      parse_mode: "tolerant",
+      sanitization_applied: tolerantCandidate !== strictCandidate,
+    };
+  } catch (error) {
+    return {
+      ok: false,
+      error: error.message,
+      text: tolerantCandidate,
+      parse_mode: "failed",
+      sanitization_applied: tolerantCandidate !== strictCandidate,
+    };
+  }
 }

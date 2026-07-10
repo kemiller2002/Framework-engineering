@@ -1,4 +1,5 @@
 import path from "node:path";
+import crypto from "node:crypto";
 import { loadAndResolveConfig } from "./validation.js";
 import { loadExperimentData } from "./load-responses.js";
 import { compareStructure } from "./compare-structure.js";
@@ -13,6 +14,7 @@ import { summarizeAgreementCounts } from "./agreement-categories.js";
 export async function runComparisonEngine(configPath) {
   const config = await loadAndResolveConfig(configPath);
   const taxonomies = await loadTaxonomies(config);
+  const runId = crypto.randomUUID();
   const { records, warnings, dataQuality, packetFiles } = await loadExperimentData(config);
   const primaryRecords = records.filter((record) => record.status === "ok" && record.included_in_primary);
   const filteredDataQuality = [...dataQuality, ...warnings.filter(Boolean).map((item, index) => ({
@@ -39,7 +41,7 @@ export async function runComparisonEngine(configPath) {
       prior_knowledge_leakage_risk:
         record.response?.recognition_analysis?.prior_knowledge_leakage_risk ||
         classifyLeakageTerms(domainTerms),
-      notes: record.version_note || "",
+      notes: [record.version_note, record.parse_mode === "tolerant" ? "tolerant_parse" : ""].filter(Boolean).join("; "),
     };
   });
 
@@ -63,10 +65,10 @@ export async function runComparisonEngine(configPath) {
     notes: row.prior_knowledge_leakage_risk,
   }));
 
-  const structural = buildStructuralResults(primaryRecords, config, taxonomies);
-  const primitives = comparePrimitives(primaryRecords);
-  const constraints = compareConstraints(primaryRecords);
-  const representation = compareRepresentation(primaryRecords);
+  const structural = { ...buildStructuralResults(primaryRecords, config, taxonomies), run_id: runId };
+  const primitives = { ...comparePrimitives(primaryRecords, taxonomies), run_id: runId };
+  const constraints = { ...compareConstraints(primaryRecords, taxonomies), run_id: runId };
+  const representation = { ...compareRepresentation(primaryRecords), run_id: runId };
 
   const packetVersions = config.variants.map((variant) => ({
     packet_id: variant.packet_id,
@@ -86,6 +88,11 @@ export async function runComparisonEngine(configPath) {
     primaryRecords,
     warnings,
     dataQuality: filteredDataQuality,
+    runState: {
+      run_id: runId,
+      comparator_version: config.comparator_version || "3.1.0",
+      generated_at: new Date().toISOString(),
+    },
     recognitionRows,
     recognitionSummary,
     structural,
@@ -107,6 +114,11 @@ export async function runComparisonEngine(configPath) {
         ecr_id: config.ecr_id,
         experiment_id: config.experiment_id,
         title: config.title,
+      },
+      run_state: {
+        run_id: runId,
+        comparator_version: config.comparator_version || "3.1.0",
+        generated_at: new Date().toISOString(),
       },
       primary_record_count: primaryRecords.length,
       data_quality: filteredDataQuality,
@@ -146,8 +158,10 @@ function buildStructuralResults(primaryRecords, config, taxonomies) {
     providerComparisons.push({
       scope: `${provider} across variants`,
       literal: summarizeAgreementCounts(comparison.literal_counts),
+      backbone: comparison.backbone.category,
+      conceptual: summarizeAgreementCounts(comparison.conceptual_counts),
       dimensional: summarizeAgreementCounts(comparison.dimensional_counts),
-      notes: "Within-provider variant stability.",
+      notes: "Within-provider variant stability with backbone separated from wording variance.",
     });
   }
 
@@ -157,8 +171,10 @@ function buildStructuralResults(primaryRecords, config, taxonomies) {
     providerComparisons.push({
       scope: `${variant.packet_id} across providers`,
       literal: summarizeAgreementCounts(comparison.literal_counts),
+      backbone: comparison.backbone.category,
+      conceptual: summarizeAgreementCounts(comparison.conceptual_counts),
       dimensional: summarizeAgreementCounts(comparison.dimensional_counts),
-      notes: "Across-provider variant stability.",
+      notes: "Across-provider variant stability with backbone separated from wording variance.",
     });
   }
 
@@ -166,6 +182,8 @@ function buildStructuralResults(primaryRecords, config, taxonomies) {
   return {
     providerComparisons,
     literal_profile: summarizeAgreementCounts(tally(providerComparisons.map((item) => item.literal))),
+    backbone_profile: summarizeAgreementCounts(tally(providerComparisons.map((item) => item.backbone))),
+    conceptual_profile: summarizeAgreementCounts(tally(providerComparisons.map((item) => item.conceptual))),
     dimensional_profile: summarizeAgreementCounts(tally(providerComparisons.map((item) => item.dimensional))),
     overall,
   };
@@ -186,6 +204,13 @@ function buildObservations({ recognitionSummary, structural, leakageRows, dataQu
   observations.push({
     id: `OBS-${String(index).padStart(3, "0")}`,
     observation: `Structural stability profile is ${structural.dimensional_profile} dimensionally and ${structural.literal_profile} literally.`,
+    source: "structural-stability-report.md",
+    confidence: "medium",
+  });
+  index += 1;
+  observations.push({
+    id: `OBS-${String(index).padStart(3, "0")}`,
+    observation: `Structural backbone profile is ${structural.backbone_profile}; wording-sensitive literal profile is ${structural.literal_profile}.`,
     source: "structural-stability-report.md",
     confidence: "medium",
   });
@@ -227,6 +252,9 @@ function buildLargestDisagreements(structural, primitives, constraints, represen
   const notes = [];
   if (structural.literal_profile !== structural.dimensional_profile) {
     notes.push("Structural literal and dimensional profiles diverge.");
+  }
+  if (structural.backbone_profile !== structural.literal_profile) {
+    notes.push("Structural backbone stability is stronger than wording-sensitive literal agreement.");
   }
   for (const [field, result] of Object.entries(primitives)) {
     if (result?.category === "disagreement") {

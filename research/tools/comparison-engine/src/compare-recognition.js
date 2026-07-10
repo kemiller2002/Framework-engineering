@@ -19,26 +19,34 @@ export function classifyRecognition(rawText, namedPatterns = []) {
   const raw = String(rawText ?? "").trim();
   const normalized = normalizeText(raw);
   const named = namedPatterns.some((pattern) => normalized.includes(normalizeText(pattern)));
+  const saysUnknown = /\bunknown\b|\bunclear\b|\bcannot identify\b|\bnot confidently identified\b|\bunrecognized\b/.test(normalized);
+  const saysNoRecognition = /\bno recognition\b|\bno unavoidable recognition\b|\bno recognized artifact\b|\bno confident recognition\b/.test(normalized);
+  const saysNoSpecificNamedArtifact = /\bno specific named artifact\b|\bno specific named\b/.test(normalized);
+  const explicitNegatedRecognition = saysNoRecognition || saysNoSpecificNamedArtifact;
 
   if (!raw) {
     return "not_recognized";
   }
 
   const hasGenericFamily = genericFamilyIndicators.some((indicator) => normalized.includes(normalizeText(indicator)));
-  const saysUnknown = /\bunknown\b|\bunclear\b|\bcannot identify\b|\bno specific named artifact\b|\bnot confidently identified\b|\bunrecognized\b/.test(normalized);
-  const saysNoRecognition = /\bno recognition\b|\bno unavoidable recognition\b|\bno recognized artifact\b/.test(normalized);
+  if (normalized === "unrecognized") {
+    return "unknown";
+  }
+  if (explicitNegatedRecognition && (hasGenericFamily || named)) {
+    return "partial";
+  }
+  if (saysNoRecognition && !hasGenericFamily && !named) {
+    return "not_recognized";
+  }
+  if (saysUnknown) {
+    return "unknown";
+  }
 
   if (named) {
     return "recognized";
   }
   if (hasGenericFamily) {
     return "partial";
-  }
-  if (saysUnknown) {
-    return "unknown";
-  }
-  if (saysNoRecognition) {
-    return "not_recognized";
   }
   return "partial";
 }

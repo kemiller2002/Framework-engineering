@@ -20,3 +20,17 @@ test("related procedural family becomes partial", () => {
     "partial",
   );
 });
+
+test("broad-family resemblance with explicit recognition negation becomes partial", () => {
+  assert.equal(
+    classifyRecognition(
+      "No confident recognition. The shape resembles a differential-diagnosis-style procedure, but no specific named artifact is identified.",
+      ["differential diagnosis", "diagnosis"],
+    ),
+    "partial",
+  );
+});
+
+test("explicit 'unrecognized' becomes unknown", () => {
+  assert.equal(classifyRecognition("unrecognized"), "unknown");
+});

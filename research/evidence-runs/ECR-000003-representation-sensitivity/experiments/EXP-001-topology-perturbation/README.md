@@ -19,15 +19,19 @@ Run:
 
 Generated outputs:
 
-- `comparison/generated/exp-001-comparison-summary.md`
-- `comparison/generated/recognition-persistence-report.md`
-- `comparison/generated/structural-stability-report.md`
-- `comparison/generated/primitive-stability-report.md`
-- `comparison/generated/constraint-stability-report.md`
-- `comparison/generated/representation-stability-report.md`
-- `comparison/generated/domain-leakage-report.md`
-- `comparison/generated/data-quality-report.md`
-- `comparison/generated/observation-ledger.md`
-- `comparison/generated/edr-draft.md`
-- `comparison/generated/raw-comparison-data.json`
-- `comparison/recognition-persistence-results.csv`
+- `comparison/generated-v3.1/exp-001-comparison-summary.md`
+- `comparison/generated-v3.1/recognition-persistence-report.md`
+- `comparison/generated-v3.1/structural-stability-report.md`
+- `comparison/generated-v3.1/primitive-stability-report.md`
+- `comparison/generated-v3.1/constraint-stability-report.md`
+- `comparison/generated-v3.1/representation-stability-report.md`
+- `comparison/generated-v3.1/domain-leakage-report.md`
+- `comparison/generated-v3.1/data-quality-report.md`
+- `comparison/generated-v3.1/observation-ledger.md`
+- `comparison/generated-v3.1/edr-draft.md`
+- `comparison/generated-v3.1/raw-comparison-data.json`
+- `comparison/generated-v3.1/recognition-persistence-results.csv`
+
+Smoke / regression check:
+
+`npm run compare:smoke`

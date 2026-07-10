@@ -86,6 +86,7 @@ async function loadSingleResponse({ config, variant, provider, packetMeta }) {
         status: "malformed",
         source_path: relativeTo(config.experiment_root, candidatePath),
         source_kind: sourceKind,
+        parse_mode: parsed.parse_mode,
       }),
       warning: sourceKind === "legacy_mapped"
         ? `Legacy filename mapped for ${variant.packet_id} ${provider}: ${relativeTo(config.experiment_root, candidatePath)}`
@@ -108,20 +109,30 @@ async function loadSingleResponse({ config, variant, provider, packetMeta }) {
         source_kind: sourceKind,
       }),
       response: parsed.data,
+      parse_mode: parsed.parse_mode,
       version_status: versionStatus.status,
       version_note: versionStatus.note,
       included_in_primary: versionStatus.include,
     },
     warning: sourceKind === "legacy_mapped"
       ? `Legacy filename mapped for ${variant.packet_id} ${provider}: ${relativeTo(config.experiment_root, candidatePath)}`
-      : "",
-    data_quality: versionStatus.status !== "verified"
-      ? {
+      : parsed.parse_mode === "tolerant"
+        ? `Tolerant parsing used for ${variant.packet_id} ${provider}: ${relativeTo(config.experiment_root, candidatePath)}`
+        : "",
+    data_quality: versionStatus.status !== "verified" || parsed.parse_mode === "tolerant"
+      ? (versionStatus.status !== "verified"
+        ? {
           packet_id: variant.packet_id,
           provider,
           status: versionStatus.status,
           notes: versionStatus.note,
         }
+        : {
+            packet_id: variant.packet_id,
+            provider,
+            status: "tolerant_parse",
+            notes: "Smart-quote / tolerant JSON sanitization was required before parsing.",
+          })
       : null,
   };
 }
@@ -138,6 +149,7 @@ function baseRecord(config, variant, provider, packetMeta, details) {
     packet_file: packetMeta.file_path ? relativeTo(config.experiment_root, packetMeta.file_path) : "",
     ...details,
     response: null,
+    parse_mode: "not_applicable",
     version_status: "not_applicable",
     version_note: "",
     included_in_primary: details.status === "ok",

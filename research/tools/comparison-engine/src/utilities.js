@@ -1,4 +1,5 @@
 import { mkdir, readFile, writeFile } from "node:fs/promises";
+import crypto from "node:crypto";
 import path from "node:path";
 
 export async function loadJson(filePath) {
@@ -44,6 +45,10 @@ export function normalizeText(value) {
 
 export function normalizeWhitespace(value) {
   return String(value ?? "").replace(/\s+/g, " ").trim();
+}
+
+export function simplifyPassThroughLabels(value) {
+  return normalizeWhitespace(String(value ?? "").replace(/\b([A-Za-z]+\d+)[a-z]+\b/g, "$1"));
 }
 
 export function slugify(value) {
@@ -131,4 +136,8 @@ export function toSentence(value) {
 
 export function safeLower(value) {
   return String(value ?? "").toLowerCase().trim();
+}
+
+export function sha256Text(text) {
+  return crypto.createHash("sha256").update(text).digest("hex");
 }

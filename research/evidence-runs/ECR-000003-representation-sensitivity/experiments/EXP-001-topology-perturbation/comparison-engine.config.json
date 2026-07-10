@@ -5,7 +5,8 @@
   "experiment_root": ".",
   "response_root": "responses",
   "packet_root": "packets",
-  "output_root": "comparison/generated",
+  "output_root": "comparison/generated-v3.1",
+  "comparator_version": "3.1.0",
   "ontology_root": "../../../../tools/comparison-engine/ontology",
   "providers": ["gpt", "claude", "gemini"],
   "variants": [
@@ -67,7 +68,7 @@
   "edr_template": "../../edr/EDR-ECR-000003-EXP001-template.md",
   "output_files": {
     "summary": "exp-001-comparison-summary.md",
-    "recognition_csv": "../recognition-persistence-results.csv",
+    "recognition_csv": "recognition-persistence-results.csv",
     "recognition_report": "recognition-persistence-report.md",
     "structural_report": "structural-stability-report.md",
     "primitive_report": "primitive-stability-report.md",

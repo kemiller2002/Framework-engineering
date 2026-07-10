@@ -2,6 +2,7 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "compare": "node scripts/compare-exp-001.js"
+    "compare": "node scripts/compare-exp-001.js",
+    "compare:smoke": "node scripts/compare-exp-001.js --smoke"
   }
 }

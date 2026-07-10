@@ -1,4 +1,4 @@
-import { deepGet, normalizeText, normalizeWhitespace, toArray, unique } from "./utilities.js";
+import { deepGet, normalizeText, normalizeWhitespace, simplifyPassThroughLabels, toArray, unique } from "./utilities.js";
 
 const objectTextKeys = [
   "value",
@@ -19,17 +19,17 @@ export function normalizeScalar(value) {
 
 export function observationToText(item) {
   if (item === undefined || item === null) return "";
-  if (typeof item === "string") return normalizeWhitespace(item);
+  if (typeof item === "string") return simplifyPassThroughLabels(normalizeWhitespace(item));
   if (typeof item === "number" || typeof item === "boolean") return String(item);
   if (Array.isArray(item)) return item.map((entry) => observationToText(entry)).filter(Boolean).join(" | ");
   if (typeof item === "object") {
     for (const key of objectTextKeys) {
-      if (item[key]) return normalizeWhitespace(item[key]);
+      if (item[key]) return simplifyPassThroughLabels(normalizeWhitespace(item[key]));
     }
     if (item.from || item.to) {
       return normalizeTransition(item);
     }
-    return normalizeWhitespace(JSON.stringify(item));
+    return simplifyPassThroughLabels(normalizeWhitespace(JSON.stringify(item)));
   }
   return "";
 }
@@ -43,10 +43,10 @@ export function observationArrayToTexts(value) {
 }
 
 export function normalizeTransition(item) {
-  if (typeof item === "string") return normalizeWhitespace(item);
+  if (typeof item === "string") return simplifyPassThroughLabels(normalizeWhitespace(item));
   if (!item || typeof item !== "object") return "";
-  const from = normalizeWhitespace(item.from);
-  const to = normalizeWhitespace(item.to);
+  const from = simplifyPassThroughLabels(normalizeWhitespace(item.from));
+  const to = simplifyPassThroughLabels(normalizeWhitespace(item.to));
   const condition = normalizeWhitespace(item.condition);
   if (!from && !to) return "";
   return condition ? `${from}->${to} [${condition}]` : `${from}->${to}`;
@@ -85,4 +85,17 @@ export function normalizeConfidenceValue(value) {
   if (normalized.includes("medium")) return "medium";
   if (normalized.includes("low")) return "low";
   return normalized;
+}
+
+export function conceptualNormalizeText(value) {
+  return normalizeText(
+    simplifyPassThroughLabels(String(value ?? ""))
+      .replace(/\b(begin|begins|start|starts|starting|initiates|initiate|enter|enters)\b/gi, " entry ")
+      .replace(/\b(exit|exits|end|ends|terminate|terminates|termination|close|closes)\b/gi, " exit ")
+      .replace(/\b(loop|repeat|reopen|reassess|revisit)\b/gi, " loop ")
+      .replace(/\b(branch|branches|expand|expands|fan-out|fan out|multiple paths)\b/gi, " branch ")
+      .replace(/\b(converge|converges|merge|merges|reconverge|reconverges)\b/gi, " converge ")
+      .replace(/\b(re-sort|resort|re-sorts|sort|sorting|re-ranking|rerank)\b/gi, " resort ")
+      .replace(/\b(differentiating input|differentiate|differentiates)\b/gi, " differentiate "),
+  );
 }

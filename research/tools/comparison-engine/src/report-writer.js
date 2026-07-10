@@ -19,6 +19,7 @@ export async function writeOutputs(config, results) {
     writeText(path.join(config.output_root, outputs.data_quality_report || "data-quality-report.md"), buildDataQualityReport(results)),
     writeText(path.join(config.output_root, outputs.observation_ledger || "observation-ledger.md"), buildObservationLedger(results)),
     writeText(path.join(config.output_root, summaryName), buildSummaryReport(config, results)),
+    writeText(path.join(config.output_root, "run-state.json"), `${JSON.stringify(results.runState, null, 2)}\n`),
   ]);
 
   if (config.edr_template) {
@@ -72,6 +73,8 @@ function buildRecognitionReport(config, results) {
   return [
     "# Recognition Persistence Report",
     "",
+    `Run State: ${results.runState.run_id}`,
+    "",
     `Experiment: ${config.ecr_id} ${config.experiment_id} ${config.title}`,
     "",
     `| Provider | ${labels.get("P001A") || "Baseline"} | ${labels.get("P001B") || "Variant 2"} | ${labels.get("P001C") || "Variant 3"} | ${labels.get("P001D") || "Variant 4"} | Pattern |`,
@@ -86,16 +89,20 @@ function buildRecognitionReport(config, results) {
 
 function buildLayerReport(title, layer) {
   const rows = layer.providerComparisons
-    .map((item) => `| ${item.scope} | ${item.literal} | ${item.dimensional} | ${item.notes} |`)
+    .map((item) => `| ${item.scope} | ${item.backbone || ""} | ${item.literal} | ${item.conceptual || ""} | ${item.dimensional} | ${item.notes} |`)
     .join("\n");
   return [
     `# ${title}`,
     "",
-    "| Scope | Literal Agreement | Dimensional Agreement | Notes |",
-    "|---|---|---|---|",
+    `Run State: ${layer.run_id || ""}`,
+    "",
+    "| Scope | Backbone Stability | Literal Agreement | Conceptual Agreement | Dimensional Agreement | Notes |",
+    "|---|---|---|---|---|---|",
     rows,
     "",
+    `Overall backbone profile: ${layer.backbone_profile || ""}`,
     `Overall literal profile: ${layer.literal_profile}`,
+    `Overall conceptual profile: ${layer.conceptual_profile || ""}`,
     `Overall dimensional profile: ${layer.dimensional_profile}`,
     "",
   ].join("\n");
@@ -105,12 +112,16 @@ function buildPrimitiveReport(layer) {
   return [
     "# Primitive Stability Report",
     "",
-    "| Field | Category |",
-    "|---|---|",
-    `| primitive_sequence | ${layer.primitive_sequence.category} |`,
-    `| transitions | ${layer.transitions.category} |`,
-    `| dominant_primitive | ${layer.dominant_primitive.category} |`,
-    `| candidate_missing_primitives | ${layer.candidate_missing_primitives.category} |`,
+    "| Field | Status | Interpretation |",
+    "|---|---|---|",
+    `| primitive_sequence | ${layer.primitive_sequence.category} | wording-sensitive sequence comparison |`,
+    `| primitive_roles | ${layer.primitive_roles.category} | role-level primitive stability |`,
+    `| transitions | ${layer.transitions.category} | exact transition comparison |`,
+    `| transition_backbone | ${layer.transition_backbone.category} | simplified transition backbone stability |`,
+    `| dominant_primitive | ${layer.dominant_primitive.category} | wording-sensitive dominant primitive |`,
+    `| dominant_role | ${layer.dominant_role.category} | role-level dominant primitive |`,
+    `| candidate_missing_primitives | ${layer.candidate_missing_primitives.category} | advisory / review-oriented |`,
+    `| style_variance | ${layer.style_variance.category} | informational only |`,
     "",
   ].join("\n");
 }
@@ -124,6 +135,10 @@ function buildConstraintReport(layer) {
     "|---|---|",
     rows,
     "",
+    `Conceptual cross-field agreement: ${layer.conceptual.category}`,
+    `Dimensional conceptual agreement: ${layer.dimensional.category}`,
+    `Field-placement sensitivity: ${layer.field_placement_sensitivity}`,
+    "",
   ].join("\n");
 }
 
@@ -131,13 +146,13 @@ function buildRepresentationReport(layer) {
   return [
     "# Representation Stability Report",
     "",
-    "| Field | Category |",
-    "|---|---|",
-    `| procedural_ast_presence | ${layer.procedural_ast_presence.category} |`,
-    `| natural_language_summary | ${layer.natural_language_summary.category} |`,
-    `| canonical_summary | ${layer.canonical_summary.category} |`,
-    `| ambiguities | ${layer.ambiguities.category} |`,
-    `| notes | ${layer.notes.category} |`,
+    "| Field | Status | Score Role |",
+    "|---|---|---|",
+    `| procedural_ast_presence | ${layer.procedural_ast_presence.category} | score-bearing compliance signal |`,
+    `| natural_language_summary | ${layer.natural_language_summary.category} | informational only |`,
+    `| canonical_summary | ${layer.canonical_summary.category} | informational only |`,
+    `| ambiguities | ${layer.ambiguities.category} | informational only |`,
+    `| notes | ${layer.notes.category} | informational only |`,
     "",
   ].join("\n");
 }
@@ -165,6 +180,8 @@ function buildDataQualityReport(results) {
   return [
     "# Data Quality Report",
     "",
+    `Run State: ${results.runState.run_id}`,
+    "",
     "| Packet | Provider | Status | Notes |",
     "|---|---|---|---|",
     rows || "|  |  | no_issues_recorded |  |",
@@ -181,6 +198,8 @@ function buildObservationLedger(results) {
   return [
     "# Observation Ledger",
     "",
+    `Run State: ${results.runState.run_id}`,
+    "",
     "| Observation ID | Observation | Evidence Source | Observation Confidence |",
     "|---|---|---|---|",
     rows,
@@ -194,6 +213,8 @@ function buildSummaryReport(config, results) {
     : results.unresolved;
   return [
     `# ${config.experiment_id.toLowerCase()}-comparison-summary`.replace(/^# /, "# ").replace(/-/g, " ").replace(/\b\w/g, (m) => m.toUpperCase()),
+    "",
+    `Run State: ${results.runState.run_id}`,
     "",
     `Experiment: ${config.ecr_id} ${config.experiment_id} ${config.title}`,
     "",
@@ -218,7 +239,9 @@ function buildSummaryReport(config, results) {
     "",
     "## Structural Stability Summary",
     "",
+    `- Backbone profile: ${results.structural.backbone_profile}`,
     `- Literal profile: ${results.structural.literal_profile}`,
+    `- Conceptual profile: ${results.structural.conceptual_profile}`,
     `- Dimensional profile: ${results.structural.dimensional_profile}`,
     "",
     "## Provider-Specific Differences",
