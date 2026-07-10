@@ -1,0 +1,47 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "required": [
+    "ecr_id",
+    "experiment_id",
+    "title",
+    "experiment_root",
+    "response_root",
+    "packet_root",
+    "providers",
+    "variants",
+    "comparison_layers",
+    "output_root"
+  ],
+  "properties": {
+    "ecr_id": { "type": "string" },
+    "experiment_id": { "type": "string" },
+    "title": { "type": "string" },
+    "experiment_root": { "type": "string" },
+    "response_root": { "type": "string" },
+    "packet_root": { "type": "string" },
+    "output_root": { "type": "string" },
+    "providers": {
+      "type": "array",
+      "items": { "type": "string" },
+      "minItems": 1
+    },
+    "variants": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["packet_id", "variant_id", "variant_order"],
+        "properties": {
+          "packet_id": { "type": "string" },
+          "variant_id": { "type": "string" },
+          "variant_order": { "type": "integer" }
+        }
+      }
+    },
+    "comparison_layers": {
+      "type": "array",
+      "items": { "type": "string" }
+    }
+  }
+}

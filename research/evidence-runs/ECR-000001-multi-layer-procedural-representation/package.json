@@ -5,6 +5,7 @@
     "compare:ecr000001:v2": "node scripts/compare-ecr-000001-v2.js",
     "validate:normalizer": "node scripts/validate-semantic-normalizer.js",
     "compare:ecr000001:v3": "node scripts/compare-ecr-000001-v3.js",
+    "compare:ecr000001:shared": "node scripts/compare-ecr-000001-shared.js",
     "validate:normalizer:v3": "node scripts/validate-semantic-normalizer-v3.js",
     "dashboard:ecr000001": "node scripts/build-ecr-dashboard.js"
   }

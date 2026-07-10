@@ -1,0 +1,57 @@
+{
+  "ecr_id": "ECR-000001",
+  "experiment_id": "ECR-000001",
+  "title": "Multi-Layer Procedural Representation",
+  "experiment_root": ".",
+  "response_root": "responses",
+  "packet_root": "packets",
+  "output_root": "comparison/generated-shared",
+  "ontology_root": "../../tools/comparison-engine/ontology",
+  "providers": ["gpt", "claude", "gemini"],
+  "variants": [
+    {
+      "packet_id": "ECR-000001-P001",
+      "variant_id": "P001",
+      "variant_order": 1
+    },
+    {
+      "packet_id": "ECR-000001-P002",
+      "variant_id": "P002",
+      "variant_order": 2
+    },
+    {
+      "packet_id": "ECR-000001-P003",
+      "variant_id": "P003",
+      "variant_order": 3
+    }
+  ],
+  "variant_labels": {
+    "P001": "Scientific Method",
+    "P002": "Scrum Workflow",
+    "P003": "Bloom Taxonomy"
+  },
+  "comparison_layers": [
+    "recognition",
+    "structural",
+    "primitive",
+    "constraint",
+    "representation"
+  ],
+  "named_recognition_patterns": [
+    "scientific method",
+    "scrum",
+    "bloom taxonomy"
+  ],
+  "output_files": {
+    "summary": "ecr-000001-shared-summary.md",
+    "recognition_report": "recognition-summary.md",
+    "structural_report": "structural-stability-report.md",
+    "primitive_report": "primitive-stability-report.md",
+    "constraint_report": "constraint-stability-report.md",
+    "representation_report": "representation-stability-report.md",
+    "leakage_report": "domain-leakage-report.md",
+    "data_quality_report": "data-quality-report.md",
+    "observation_ledger": "observation-ledger.md",
+    "edr_draft": "edr-draft.md"
+  }
+}

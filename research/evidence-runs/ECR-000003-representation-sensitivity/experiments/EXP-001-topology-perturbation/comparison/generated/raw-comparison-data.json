@@ -1,0 +1,545 @@
+{
+  "config": {
+    "ecr_id": "ECR-000003",
+    "experiment_id": "EXP-001",
+    "title": "Topology Perturbation"
+  },
+  "primary_record_count": 12,
+  "data_quality": [],
+  "recognition_rows": [
+    {
+      "ecr_id": "ECR-000003",
+      "experiment_id": "EXP-001",
+      "packet_id": "ECR-000003-EXP001-P001A",
+      "provider": "gpt",
+      "variant_id": "P001A",
+      "variant_order": 1,
+      "variant_label": "Baseline",
+      "recognition_value": "not_recognized",
+      "recognized_artifact_raw": "",
+      "domain_terms_introduced": [],
+      "prior_knowledge_leakage_risk": "low",
+      "notes": ""
+    },
+    {
+      "ecr_id": "ECR-000003",
+      "experiment_id": "EXP-001",
+      "packet_id": "ECR-000003-EXP001-P001A",
+      "provider": "claude",
+      "variant_id": "P001A",
+      "variant_order": 1,
+      "variant_label": "Baseline",
+      "recognition_value": "partial",
+      "recognized_artifact_raw": "Plausible recognition: beam search or iterative narrowing / candidate pruning procedure. Low-to-medium confidence. Graph structure (fan-out from single node, convergence, re-sort, loop-back, single-path exit) is consistent with several search or ranking procedures. Recognition not used to fill structure.",
+      "domain_terms_introduced": [
+        "evidence"
+      ],
+      "prior_knowledge_leakage_risk": "Low. No domain terminology was introduced. Structural observations were derived solely from graph edges and node notes. The recognized pattern is broad enough that it maps to multiple procedure families; no specific domain structure was imported.",
+      "notes": ""
+    },
+    {
+      "ecr_id": "ECR-000003",
+      "experiment_id": "EXP-001",
+      "packet_id": "ECR-000003-EXP001-P001A",
+      "provider": "gemini",
+      "variant_id": "P001A",
+      "variant_order": 1,
+      "variant_label": "Baseline",
+      "recognition_value": "unknown",
+      "recognized_artifact_raw": "unrecognized",
+      "domain_terms_introduced": [],
+      "prior_knowledge_leakage_risk": "none",
+      "notes": ""
+    },
+    {
+      "ecr_id": "ECR-000003",
+      "experiment_id": "EXP-001",
+      "packet_id": "ECR-000003-EXP001-P001B",
+      "provider": "gpt",
+      "variant_id": "P001B",
+      "variant_order": 2,
+      "variant_label": "Renumbered",
+      "recognition_value": "not_recognized",
+      "recognized_artifact_raw": "",
+      "domain_terms_introduced": [],
+      "prior_knowledge_leakage_risk": "low",
+      "notes": ""
+    },
+    {
+      "ecr_id": "ECR-000003",
+      "experiment_id": "EXP-001",
+      "packet_id": "ECR-000003-EXP001-P001B",
+      "provider": "claude",
+      "variant_id": "P001B",
+      "variant_order": 2,
+      "variant_label": "Renumbered",
+      "recognition_value": "partial",
+      "recognized_artifact_raw": "no confident recognition; renumbered node labels prevent reliable identification; graph topology suggests a generate-and-test or parallel-path selection procedure with a re-evaluation loop, but this is not sufficient for confident artifact identification",
+      "domain_terms_introduced": [],
+      "prior_knowledge_leakage_risk": "low; no domain terms were introduced; structural observations are grounded solely in graph edges and node notes; the parallel-path-with-reeval topology is generic enough that no specific artifact was assumed",
+      "notes": ""
+    },
+    {
+      "ecr_id": "ECR-000003",
+      "experiment_id": "EXP-001",
+      "packet_id": "ECR-000003-EXP001-P001B",
+      "provider": "gemini",
+      "variant_id": "P001B",
+      "variant_order": 2,
+      "variant_label": "Renumbered",
+      "recognition_value": "not_recognized",
+      "recognized_artifact_raw": "",
+      "domain_terms_introduced": [],
+      "prior_knowledge_leakage_risk": "generic_procedural_language",
+      "notes": ""
+    },
+    {
+      "ecr_id": "ECR-000003",
+      "experiment_id": "EXP-001",
+      "packet_id": "ECR-000003-EXP001-P001C",
+      "provider": "gpt",
+      "variant_id": "P001C",
+      "variant_order": 3,
+      "variant_label": "Edge-Order Shuffled",
+      "recognition_value": "not_recognized",
+      "recognized_artifact_raw": "",
+      "domain_terms_introduced": [],
+      "prior_knowledge_leakage_risk": "low",
+      "notes": ""
+    },
+    {
+      "ecr_id": "ECR-000003",
+      "experiment_id": "EXP-001",
+      "packet_id": "ECR-000003-EXP001-P001C",
+      "provider": "claude",
+      "variant_id": "P001C",
+      "variant_order": 3,
+      "variant_label": "Edge-Order Shuffled",
+      "recognition_value": "recognized",
+      "recognized_artifact_raw": "No confident recognition. The abstract shape (expand one state into multiple candidate paths; introduce a differentiating input; re-sort candidate fit; loop while separation is weak; close when one candidate is strongest, or abandon when continuation is not justified) resembles a generic iterative candidate-discrimination / hypothesis-refinement loop (family that includes e.g. differential-diagnosis-style procedures or elimination-by-evidence loops). No domain terminology is present in the packet, so no specific named artifact is identified.",
+      "domain_terms_introduced": [
+        "diagnosis",
+        "evidence"
+      ],
+      "prior_knowledge_leakage_risk": "Low-to-moderate. The resemblance noted in recognized_artifact could bias interpretation toward diagnosis-style semantics; extraction was restricted to packet vocabulary (paths, differentiating input, re-sorting, separation) and no domain terminology was imported into any layer.",
+      "notes": ""
+    },
+    {
+      "ecr_id": "ECR-000003",
+      "experiment_id": "EXP-001",
+      "packet_id": "ECR-000003-EXP001-P001C",
+      "provider": "gemini",
+      "variant_id": "P001C",
+      "variant_order": 3,
+      "variant_label": "Edge-Order Shuffled",
+      "recognition_value": "unknown",
+      "recognized_artifact_raw": "unrecognized",
+      "domain_terms_introduced": [],
+      "prior_knowledge_leakage_risk": "none",
+      "notes": ""
+    },
+    {
+      "ecr_id": "ECR-000003",
+      "experiment_id": "EXP-001",
+      "packet_id": "ECR-000003-EXP001-P001D",
+      "provider": "gpt",
+      "variant_id": "P001D",
+      "variant_order": 4,
+      "variant_label": "Identity-Expanded",
+      "recognition_value": "not_recognized",
+      "recognized_artifact_raw": "",
+      "domain_terms_introduced": [],
+      "prior_knowledge_leakage_risk": "low",
+      "notes": "Packet version 1.1 verified."
+    },
+    {
+      "ecr_id": "ECR-000003",
+      "experiment_id": "EXP-001",
+      "packet_id": "ECR-000003-EXP001-P001D",
+      "provider": "claude",
+      "variant_id": "P001D",
+      "variant_order": 4,
+      "variant_label": "Identity-Expanded",
+      "recognition_value": "not_recognized",
+      "recognized_artifact_raw": "",
+      "domain_terms_introduced": [
+        "diagnosis",
+        "hypothesis testing"
+      ],
+      "prior_knowledge_leakage_risk": "low-to-moderate: the familiar 'generate-then-discriminate' shape creates a temptation to import domain framing (e.g., hypothesis testing or diagnosis vocabulary); this was avoided by keeping all labels at the packet's own level of abstraction (paths, differentiating input, fit, separation).",
+      "notes": "Packet version 1.1 verified."
+    },
+    {
+      "ecr_id": "ECR-000003",
+      "experiment_id": "EXP-001",
+      "packet_id": "ECR-000003-EXP001-P001D",
+      "provider": "gemini",
+      "variant_id": "P001D",
+      "variant_order": 4,
+      "variant_label": "Identity-Expanded",
+      "recognition_value": "not_recognized",
+      "recognized_artifact_raw": "",
+      "domain_terms_introduced": [],
+      "prior_knowledge_leakage_risk": "generic_procedural_language",
+      "notes": "Packet version 1.1 verified."
+    }
+  ],
+  "structural": {
+    "providerComparisons": [
+      {
+        "scope": "gpt across variants",
+        "literal": "disagreement-heavy",
+        "dimensional": "disagreement-heavy",
+        "notes": "Within-provider variant stability."
+      },
+      {
+        "scope": "claude across variants",
+        "literal": "disagreement-heavy",
+        "dimensional": "disagreement-heavy",
+        "notes": "Within-provider variant stability."
+      },
+      {
+        "scope": "gemini across variants",
+        "literal": "disagreement-heavy",
+        "dimensional": "disagreement-heavy",
+        "notes": "Within-provider variant stability."
+      },
+      {
+        "scope": "ECR-000003-EXP001-P001A across providers",
+        "literal": "disagreement-heavy",
+        "dimensional": "disagreement-heavy",
+        "notes": "Across-provider variant stability."
+      },
+      {
+        "scope": "ECR-000003-EXP001-P001B across providers",
+        "literal": "disagreement-heavy",
+        "dimensional": "disagreement-heavy",
+        "notes": "Across-provider variant stability."
+      },
+      {
+        "scope": "ECR-000003-EXP001-P001C across providers",
+        "literal": "disagreement-heavy",
+        "dimensional": "disagreement-heavy",
+        "notes": "Across-provider variant stability."
+      },
+      {
+        "scope": "ECR-000003-EXP001-P001D across providers",
+        "literal": "disagreement-heavy",
+        "dimensional": "disagreement-heavy",
+        "notes": "Across-provider variant stability."
+      }
+    ],
+    "literal_profile": "mostly_stable",
+    "dimensional_profile": "mostly_stable",
+    "overall": {
+      "field_results": [
+        {
+          "field": "structural_layer.entry_conditions",
+          "literal": {
+            "category": "disagreement",
+            "similarity": 0.015151515151515152,
+            "populated_count": 12
+          },
+          "dimensional": {
+            "category": "disagreement",
+            "similarity": 0.09545454545454543,
+            "populated_count": 12,
+            "shared_roles": []
+          }
+        },
+        {
+          "field": "structural_layer.exit_conditions",
+          "literal": {
+            "category": "disagreement",
+            "similarity": 0,
+            "populated_count": 12
+          },
+          "dimensional": {
+            "category": "disagreement",
+            "similarity": 0.41060606060606103,
+            "populated_count": 12,
+            "shared_roles": [
+              "sequence"
+            ]
+          }
+        },
+        {
+          "field": "structural_layer.required_steps",
+          "literal": {
+            "category": "disagreement",
+            "similarity": 0.015151515151515152,
+            "populated_count": 12
+          },
+          "dimensional": {
+            "category": "full_agreement",
+            "similarity": 1,
+            "populated_count": 12,
+            "shared_roles": [
+              "sequence"
+            ]
+          }
+        },
+        {
+          "field": "structural_layer.loops",
+          "literal": {
+            "category": "disagreement",
+            "similarity": 0,
+            "populated_count": 12
+          },
+          "dimensional": {
+            "category": "disagreement",
+            "similarity": 0.02727272727272727,
+            "populated_count": 12,
+            "shared_roles": [
+              "reassess"
+            ]
+          }
+        },
+        {
+          "field": "structural_layer.branches",
+          "literal": {
+            "category": "disagreement",
+            "similarity": 0.007575757575757576,
+            "populated_count": 12
+          },
+          "dimensional": {
+            "category": "disagreement",
+            "similarity": 0.3242424242424245,
+            "populated_count": 12,
+            "shared_roles": [
+              "decide",
+              "terminate"
+            ]
+          }
+        },
+        {
+          "field": "structural_layer.termination_conditions",
+          "literal": {
+            "category": "disagreement",
+            "similarity": 0,
+            "populated_count": 12
+          },
+          "dimensional": {
+            "category": "disagreement",
+            "similarity": 0.39545454545454567,
+            "populated_count": 12,
+            "shared_roles": [
+              "sequence",
+              "terminate"
+            ]
+          }
+        }
+      ],
+      "control_flow_shape": {
+        "category": "disagreement",
+        "similarity": 0,
+        "populated_count": 12
+      },
+      "literal_counts": {
+        "disagreement": 7
+      },
+      "dimensional_counts": {
+        "disagreement": 5,
+        "full_agreement": 1
+      }
+    }
+  },
+  "primitives": {
+    "primitive_sequence": {
+      "category": "disagreement",
+      "similarity": 0.14393939393939392,
+      "populated_count": 12
+    },
+    "transitions": {
+      "category": "disagreement",
+      "similarity": 0.0852813852813853,
+      "populated_count": 12
+    },
+    "dominant_primitive": {
+      "category": "disagreement",
+      "similarity": 0,
+      "populated_count": 12
+    },
+    "candidate_missing_primitives": {
+      "category": "disagreement",
+      "similarity": 0.008928571428571428,
+      "populated_count": 8
+    },
+    "counts": {
+      "disagreement": 4
+    }
+  },
+  "constraints": {
+    "field_results": [
+      {
+        "field": "constraint_layer.invariants",
+        "comparison": {
+          "category": "disagreement",
+          "similarity": 0,
+          "populated_count": 8
+        }
+      },
+      {
+        "field": "constraint_layer.preconditions",
+        "comparison": {
+          "category": "disagreement",
+          "similarity": 0,
+          "populated_count": 10
+        }
+      },
+      {
+        "field": "constraint_layer.postconditions",
+        "comparison": {
+          "category": "disagreement",
+          "similarity": 0,
+          "populated_count": 10
+        }
+      },
+      {
+        "field": "constraint_layer.stopping_criteria",
+        "comparison": {
+          "category": "disagreement",
+          "similarity": 0.030303030303030304,
+          "populated_count": 12
+        }
+      },
+      {
+        "field": "constraint_layer.validity_conditions",
+        "comparison": {
+          "category": "disagreement",
+          "similarity": 0,
+          "populated_count": 8
+        }
+      }
+    ],
+    "counts": {
+      "disagreement": 5
+    }
+  },
+  "representation": {
+    "procedural_ast_presence": {
+      "category": "full_agreement",
+      "similarity": 1,
+      "populated_count": 12
+    },
+    "natural_language_summary": {
+      "category": "disagreement",
+      "similarity": 0,
+      "populated_count": 12
+    },
+    "canonical_summary": {
+      "category": "disagreement",
+      "similarity": 0,
+      "populated_count": 12
+    },
+    "ambiguities": {
+      "category": "disagreement",
+      "similarity": 0,
+      "populated_count": 11
+    },
+    "notes": {
+      "category": "disagreement",
+      "similarity": 0,
+      "populated_count": 12
+    },
+    "counts": {
+      "full_agreement": 1,
+      "disagreement": 4
+    }
+  },
+  "leakage_rows": [
+    {
+      "packet_id": "ECR-000003-EXP001-P001A",
+      "provider": "gpt",
+      "domain_terms": [],
+      "classification": "generic_procedural_language",
+      "notes": "low"
+    },
+    {
+      "packet_id": "ECR-000003-EXP001-P001A",
+      "provider": "claude",
+      "domain_terms": [
+        "evidence"
+      ],
+      "classification": "possible_structural_inference",
+      "notes": "Low. No domain terminology was introduced. Structural observations were derived solely from graph edges and node notes. The recognized pattern is broad enough that it maps to multiple procedure families; no specific domain structure was imported."
+    },
+    {
+      "packet_id": "ECR-000003-EXP001-P001A",
+      "provider": "gemini",
+      "domain_terms": [],
+      "classification": "generic_procedural_language",
+      "notes": "none"
+    },
+    {
+      "packet_id": "ECR-000003-EXP001-P001B",
+      "provider": "gpt",
+      "domain_terms": [],
+      "classification": "generic_procedural_language",
+      "notes": "low"
+    },
+    {
+      "packet_id": "ECR-000003-EXP001-P001B",
+      "provider": "claude",
+      "domain_terms": [],
+      "classification": "generic_procedural_language",
+      "notes": "low; no domain terms were introduced; structural observations are grounded solely in graph edges and node notes; the parallel-path-with-reeval topology is generic enough that no specific artifact was assumed"
+    },
+    {
+      "packet_id": "ECR-000003-EXP001-P001B",
+      "provider": "gemini",
+      "domain_terms": [],
+      "classification": "generic_procedural_language",
+      "notes": "generic_procedural_language"
+    },
+    {
+      "packet_id": "ECR-000003-EXP001-P001C",
+      "provider": "gpt",
+      "domain_terms": [],
+      "classification": "generic_procedural_language",
+      "notes": "low"
+    },
+    {
+      "packet_id": "ECR-000003-EXP001-P001C",
+      "provider": "claude",
+      "domain_terms": [
+        "diagnosis",
+        "evidence"
+      ],
+      "classification": "likely_prior_knowledge_leakage",
+      "notes": "Low-to-moderate. The resemblance noted in recognized_artifact could bias interpretation toward diagnosis-style semantics; extraction was restricted to packet vocabulary (paths, differentiating input, re-sorting, separation) and no domain terminology was imported into any layer."
+    },
+    {
+      "packet_id": "ECR-000003-EXP001-P001C",
+      "provider": "gemini",
+      "domain_terms": [],
+      "classification": "generic_procedural_language",
+      "notes": "none"
+    },
+    {
+      "packet_id": "ECR-000003-EXP001-P001D",
+      "provider": "gpt",
+      "domain_terms": [],
+      "classification": "generic_procedural_language",
+      "notes": "low"
+    },
+    {
+      "packet_id": "ECR-000003-EXP001-P001D",
+      "provider": "claude",
+      "domain_terms": [
+        "diagnosis",
+        "hypothesis testing"
+      ],
+      "classification": "likely_prior_knowledge_leakage",
+      "notes": "low-to-moderate: the familiar 'generate-then-discriminate' shape creates a temptation to import domain framing (e.g., hypothesis testing or diagnosis vocabulary); this was avoided by keeping all labels at the packet's own level of abstraction (paths, differentiating input, fit, separation)."
+    },
+    {
+      "packet_id": "ECR-000003-EXP001-P001D",
+      "provider": "gemini",
+      "domain_terms": [],
+      "classification": "generic_procedural_language",
+      "notes": "generic_procedural_language"
+    }
+  ],
+  "warnings": []
+}

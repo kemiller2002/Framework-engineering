@@ -1,0 +1,9 @@
+ecr_id,experiment_id,packet_id,provider,variant_id,variant_order,recognition_value,recognized_artifact_raw,domain_terms_introduced,prior_knowledge_leakage_risk,notes
+ECR-000001,ECR-000001,ECR-000001-P001,claude,P001,1,partial,Diagnostic reasoning cycle / hypothetico-deductive inquiry loop,,generic_procedural_language,
+ECR-000001,ECR-000001,ECR-000001-P001,gemini,P001,1,recognized,Inference to the Best Explanation / Abductive Reasoning / Scientific Method Loop,,generic_procedural_language,
+ECR-000001,ECR-000001,ECR-000001-P002,gpt,P002,2,not_recognized,,,generic_procedural_language,
+ECR-000001,ECR-000001,ECR-000001-P002,claude,P002,2,recognized,"Scrum Sprint / iterative time-boxed development cycle (e.g., Scrum, Kanban sprint, or similar agile iteration)",,generic_procedural_language,
+ECR-000001,ECR-000001,ECR-000001-P002,gemini,P002,2,recognized,Scrum Sprint / Agile Iteration Cycle,,generic_procedural_language,
+ECR-000001,ECR-000001,ECR-000001-P003,gpt,P003,3,not_recognized,,,generic_procedural_language,
+ECR-000001,ECR-000001,ECR-000001-P003,claude,P003,3,partial,Bloom's Taxonomy (or a functionally equivalent cognitive demand classification framework),,generic_procedural_language,
+ECR-000001,ECR-000001,ECR-000001-P003,gemini,P003,3,partial,Bloom's Taxonomy / Webb's Depth of Knowledge (DOK),,generic_procedural_language,

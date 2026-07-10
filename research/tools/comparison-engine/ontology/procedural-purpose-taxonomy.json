@@ -1,0 +1,15 @@
+{
+  "exploration": { "patterns": ["possible", "candidate", "explore", "investigate"], "description": "Explore candidate explanations or options." },
+  "disambiguation": { "patterns": ["distinguish", "differentiate", "compare", "separate"], "description": "Reduce ambiguity between alternatives." },
+  "evidence_support": { "patterns": ["support", "evidence", "information", "data"], "description": "Build or test evidence support." },
+  "confidence_building": { "patterns": ["confidence", "adequate", "sufficient"], "description": "Increase confidence or adequacy of support." },
+  "selection": { "patterns": ["select", "choose", "commit", "decide"], "description": "Select or commit to an option or conclusion." },
+  "ordering": { "patterns": ["prioritize", "rank", "order"], "description": "Order items by value or importance." },
+  "execution": { "patterns": ["execute", "perform", "deliver", "produce"], "description": "Carry out work." },
+  "coordination": { "patterns": ["coordinate", "align", "assign", "allocate"], "description": "Coordinate people or resources." },
+  "learning": { "patterns": ["reflect", "review", "retrospective", "learn"], "description": "Learn from outcomes or process." },
+  "classification": { "patterns": ["classify", "categorize", "taxonomy", "group"], "description": "Organize by category or level." },
+  "termination": { "patterns": ["stop", "terminate", "end", "no longer justified"], "description": "Stop the process." },
+  "validation": { "patterns": ["verify", "validate", "confirm", "test"], "description": "Validate support or outcome." },
+  "communication": { "patterns": ["communicate", "report", "share", "inform"], "description": "Transfer information." }
+}

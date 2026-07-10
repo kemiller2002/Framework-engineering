@@ -1,0 +1,7 @@
+{
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "compare": "node scripts/compare-exp-001.js"
+  }
+}

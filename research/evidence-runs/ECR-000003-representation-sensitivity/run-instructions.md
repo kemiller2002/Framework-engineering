@@ -45,3 +45,15 @@ Run `EXP-003` only after `EXP-002` review.
 Example:
 
 `experiments/EXP-001-topology-perturbation/responses/gpt/ECR-000003-EXP001-P001A-gpt.json`
+
+## Comparison Step
+
+After all corrected `EXP-001` responses are present:
+
+1. Change into `experiments/EXP-001-topology-perturbation/`.
+2. Run `npm run compare`.
+3. Review `comparison/generated/data-quality-report.md` first.
+4. Review `comparison/generated/recognition-persistence-report.md`.
+5. Review `comparison/generated/structural-stability-report.md`.
+6. Complete the human sections of `comparison/generated/edr-draft.md`.
+7. Use the accepted EDR to decide whether `EXP-002` should proceed.

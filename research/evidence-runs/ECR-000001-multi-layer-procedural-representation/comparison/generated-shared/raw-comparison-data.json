@@ -1,0 +1,513 @@
+{
+  "config": {
+    "ecr_id": "ECR-000001",
+    "experiment_id": "ECR-000001",
+    "title": "Multi-Layer Procedural Representation"
+  },
+  "primary_record_count": 8,
+  "data_quality": [
+    {
+      "packet_id": "ECR-000001-P001",
+      "provider": "gpt",
+      "status": "missing",
+      "notes": "Expected canonical filename missing."
+    },
+    {
+      "packet_id": "",
+      "provider": "",
+      "status": "warning_1",
+      "notes": "Legacy filename mapped for ECR-000001-P001 claude: responses/claude/001.json"
+    },
+    {
+      "packet_id": "",
+      "provider": "",
+      "status": "warning_2",
+      "notes": "Legacy filename mapped for ECR-000001-P001 gemini: responses/gemini/001.json"
+    },
+    {
+      "packet_id": "",
+      "provider": "",
+      "status": "warning_3",
+      "notes": "Legacy filename mapped for ECR-000001-P002 gpt: responses/gpt/002.json"
+    },
+    {
+      "packet_id": "",
+      "provider": "",
+      "status": "warning_4",
+      "notes": "Legacy filename mapped for ECR-000001-P002 claude: responses/claude/002.json"
+    },
+    {
+      "packet_id": "",
+      "provider": "",
+      "status": "warning_5",
+      "notes": "Legacy filename mapped for ECR-000001-P002 gemini: responses/gemini/002.json"
+    },
+    {
+      "packet_id": "",
+      "provider": "",
+      "status": "warning_6",
+      "notes": "Legacy filename mapped for ECR-000001-P003 gpt: responses/gpt/003.json"
+    },
+    {
+      "packet_id": "",
+      "provider": "",
+      "status": "warning_7",
+      "notes": "Legacy filename mapped for ECR-000001-P003 claude: responses/claude/003.json"
+    },
+    {
+      "packet_id": "",
+      "provider": "",
+      "status": "warning_8",
+      "notes": "Legacy filename mapped for ECR-000001-P003 gemini: responses/gemini/003.json"
+    }
+  ],
+  "recognition_rows": [
+    {
+      "ecr_id": "ECR-000001",
+      "experiment_id": "ECR-000001",
+      "packet_id": "ECR-000001-P001",
+      "provider": "claude",
+      "variant_id": "P001",
+      "variant_order": 1,
+      "variant_label": "Scientific Method",
+      "recognition_value": "partial",
+      "recognized_artifact_raw": "Diagnostic reasoning cycle / hypothetico-deductive inquiry loop",
+      "domain_terms_introduced": [],
+      "prior_knowledge_leakage_risk": "generic_procedural_language",
+      "notes": ""
+    },
+    {
+      "ecr_id": "ECR-000001",
+      "experiment_id": "ECR-000001",
+      "packet_id": "ECR-000001-P001",
+      "provider": "gemini",
+      "variant_id": "P001",
+      "variant_order": 1,
+      "variant_label": "Scientific Method",
+      "recognition_value": "recognized",
+      "recognized_artifact_raw": "Inference to the Best Explanation / Abductive Reasoning / Scientific Method Loop",
+      "domain_terms_introduced": [],
+      "prior_knowledge_leakage_risk": "generic_procedural_language",
+      "notes": ""
+    },
+    {
+      "ecr_id": "ECR-000001",
+      "experiment_id": "ECR-000001",
+      "packet_id": "ECR-000001-P002",
+      "provider": "gpt",
+      "variant_id": "P002",
+      "variant_order": 2,
+      "variant_label": "Scrum Workflow",
+      "recognition_value": "not_recognized",
+      "recognized_artifact_raw": "",
+      "domain_terms_introduced": [],
+      "prior_knowledge_leakage_risk": "generic_procedural_language",
+      "notes": ""
+    },
+    {
+      "ecr_id": "ECR-000001",
+      "experiment_id": "ECR-000001",
+      "packet_id": "ECR-000001-P002",
+      "provider": "claude",
+      "variant_id": "P002",
+      "variant_order": 2,
+      "variant_label": "Scrum Workflow",
+      "recognition_value": "recognized",
+      "recognized_artifact_raw": "Scrum Sprint / iterative time-boxed development cycle (e.g., Scrum, Kanban sprint, or similar agile iteration)",
+      "domain_terms_introduced": [],
+      "prior_knowledge_leakage_risk": "generic_procedural_language",
+      "notes": ""
+    },
+    {
+      "ecr_id": "ECR-000001",
+      "experiment_id": "ECR-000001",
+      "packet_id": "ECR-000001-P002",
+      "provider": "gemini",
+      "variant_id": "P002",
+      "variant_order": 2,
+      "variant_label": "Scrum Workflow",
+      "recognition_value": "recognized",
+      "recognized_artifact_raw": "Scrum Sprint / Agile Iteration Cycle",
+      "domain_terms_introduced": [],
+      "prior_knowledge_leakage_risk": "generic_procedural_language",
+      "notes": ""
+    },
+    {
+      "ecr_id": "ECR-000001",
+      "experiment_id": "ECR-000001",
+      "packet_id": "ECR-000001-P003",
+      "provider": "gpt",
+      "variant_id": "P003",
+      "variant_order": 3,
+      "variant_label": "Bloom Taxonomy",
+      "recognition_value": "not_recognized",
+      "recognized_artifact_raw": "",
+      "domain_terms_introduced": [],
+      "prior_knowledge_leakage_risk": "generic_procedural_language",
+      "notes": ""
+    },
+    {
+      "ecr_id": "ECR-000001",
+      "experiment_id": "ECR-000001",
+      "packet_id": "ECR-000001-P003",
+      "provider": "claude",
+      "variant_id": "P003",
+      "variant_order": 3,
+      "variant_label": "Bloom Taxonomy",
+      "recognition_value": "partial",
+      "recognized_artifact_raw": "Bloom's Taxonomy (or a functionally equivalent cognitive demand classification framework)",
+      "domain_terms_introduced": [],
+      "prior_knowledge_leakage_risk": "generic_procedural_language",
+      "notes": ""
+    },
+    {
+      "ecr_id": "ECR-000001",
+      "experiment_id": "ECR-000001",
+      "packet_id": "ECR-000001-P003",
+      "provider": "gemini",
+      "variant_id": "P003",
+      "variant_order": 3,
+      "variant_label": "Bloom Taxonomy",
+      "recognition_value": "partial",
+      "recognized_artifact_raw": "Bloom's Taxonomy / Webb's Depth of Knowledge (DOK)",
+      "domain_terms_introduced": [],
+      "prior_knowledge_leakage_risk": "generic_procedural_language",
+      "notes": ""
+    }
+  ],
+  "structural": {
+    "providerComparisons": [
+      {
+        "scope": "gpt across variants",
+        "literal": "disagreement-heavy",
+        "dimensional": "disagreement-heavy",
+        "notes": "Within-provider variant stability."
+      },
+      {
+        "scope": "claude across variants",
+        "literal": "disagreement-heavy",
+        "dimensional": "disagreement-heavy",
+        "notes": "Within-provider variant stability."
+      },
+      {
+        "scope": "gemini across variants",
+        "literal": "disagreement-heavy",
+        "dimensional": "disagreement-heavy",
+        "notes": "Within-provider variant stability."
+      },
+      {
+        "scope": "ECR-000001-P001 across providers",
+        "literal": "disagreement-heavy",
+        "dimensional": "mixed",
+        "notes": "Across-provider variant stability."
+      },
+      {
+        "scope": "ECR-000001-P002 across providers",
+        "literal": "disagreement-heavy",
+        "dimensional": "mixed",
+        "notes": "Across-provider variant stability."
+      },
+      {
+        "scope": "ECR-000001-P003 across providers",
+        "literal": "disagreement-heavy",
+        "dimensional": "mixed",
+        "notes": "Across-provider variant stability."
+      }
+    ],
+    "literal_profile": "mostly_stable",
+    "dimensional_profile": "mostly_stable",
+    "overall": {
+      "field_results": [
+        {
+          "field": "structural_layer.entry_conditions",
+          "literal": {
+            "category": "disagreement",
+            "similarity": 0,
+            "populated_count": 8
+          },
+          "dimensional": {
+            "category": "disagreement",
+            "similarity": 0.08928571428571429,
+            "populated_count": 8,
+            "shared_roles": [
+              "generate"
+            ]
+          }
+        },
+        {
+          "field": "structural_layer.exit_conditions",
+          "literal": {
+            "category": "disagreement",
+            "similarity": 0,
+            "populated_count": 8
+          },
+          "dimensional": {
+            "category": "disagreement",
+            "similarity": 0.15,
+            "populated_count": 8,
+            "shared_roles": [
+              "decide",
+              "reflect",
+              "terminate"
+            ]
+          }
+        },
+        {
+          "field": "structural_layer.required_steps",
+          "literal": {
+            "category": "disagreement",
+            "similarity": 0.05952380952380952,
+            "populated_count": 8
+          },
+          "dimensional": {
+            "category": "disagreement",
+            "similarity": 0.36071428571428577,
+            "populated_count": 8,
+            "shared_roles": [
+              "act",
+              "compare",
+              "decide",
+              "evaluate",
+              "generate",
+              "observe",
+              "prioritize",
+              "reflect"
+            ]
+          }
+        },
+        {
+          "field": "structural_layer.loops",
+          "literal": {
+            "category": "disagreement",
+            "similarity": 0,
+            "populated_count": 6
+          },
+          "dimensional": {
+            "category": "disagreement",
+            "similarity": 0.20666666666666664,
+            "populated_count": 6,
+            "shared_roles": [
+              "reassess"
+            ]
+          }
+        },
+        {
+          "field": "structural_layer.branches",
+          "literal": {
+            "category": "disagreement",
+            "similarity": 0,
+            "populated_count": 7
+          },
+          "dimensional": {
+            "category": "disagreement",
+            "similarity": 0.18095238095238095,
+            "populated_count": 7,
+            "shared_roles": [
+              "decide",
+              "observe"
+            ]
+          }
+        },
+        {
+          "field": "structural_layer.termination_conditions",
+          "literal": {
+            "category": "disagreement",
+            "similarity": 0,
+            "populated_count": 6
+          },
+          "dimensional": {
+            "category": "disagreement",
+            "similarity": 0.22666666666666666,
+            "populated_count": 6,
+            "shared_roles": [
+              "evaluate",
+              "terminate"
+            ]
+          }
+        }
+      ],
+      "control_flow_shape": {
+        "category": "disagreement",
+        "similarity": 0,
+        "populated_count": 8
+      },
+      "literal_counts": {
+        "disagreement": 7
+      },
+      "dimensional_counts": {
+        "disagreement": 6
+      }
+    }
+  },
+  "primitives": {
+    "primitive_sequence": {
+      "category": "disagreement",
+      "similarity": 0,
+      "populated_count": 8
+    },
+    "transitions": {
+      "category": "disagreement",
+      "similarity": 0,
+      "populated_count": 6
+    },
+    "dominant_primitive": {
+      "category": "disagreement",
+      "similarity": 0,
+      "populated_count": 8
+    },
+    "candidate_missing_primitives": {
+      "category": "disagreement",
+      "similarity": 0,
+      "populated_count": 8
+    },
+    "counts": {
+      "disagreement": 4
+    }
+  },
+  "constraints": {
+    "field_results": [
+      {
+        "field": "constraint_layer.invariants",
+        "comparison": {
+          "category": "disagreement",
+          "similarity": 0,
+          "populated_count": 7
+        }
+      },
+      {
+        "field": "constraint_layer.preconditions",
+        "comparison": {
+          "category": "disagreement",
+          "similarity": 0,
+          "populated_count": 8
+        }
+      },
+      {
+        "field": "constraint_layer.postconditions",
+        "comparison": {
+          "category": "disagreement",
+          "similarity": 0,
+          "populated_count": 8
+        }
+      },
+      {
+        "field": "constraint_layer.stopping_criteria",
+        "comparison": {
+          "category": "disagreement",
+          "similarity": 0,
+          "populated_count": 7
+        }
+      },
+      {
+        "field": "constraint_layer.validity_conditions",
+        "comparison": {
+          "category": "disagreement",
+          "similarity": 0,
+          "populated_count": 6
+        }
+      }
+    ],
+    "counts": {
+      "disagreement": 5
+    }
+  },
+  "representation": {
+    "procedural_ast_presence": {
+      "category": "full_agreement",
+      "similarity": 1,
+      "populated_count": 8
+    },
+    "natural_language_summary": {
+      "category": "disagreement",
+      "similarity": 0,
+      "populated_count": 8
+    },
+    "canonical_summary": {
+      "category": "disagreement",
+      "similarity": 0,
+      "populated_count": 8
+    },
+    "ambiguities": {
+      "category": "disagreement",
+      "similarity": 0,
+      "populated_count": 8
+    },
+    "notes": {
+      "category": "disagreement",
+      "similarity": 0,
+      "populated_count": 8
+    },
+    "counts": {
+      "full_agreement": 1,
+      "disagreement": 4
+    }
+  },
+  "leakage_rows": [
+    {
+      "packet_id": "ECR-000001-P001",
+      "provider": "claude",
+      "domain_terms": [],
+      "classification": "generic_procedural_language",
+      "notes": "generic_procedural_language"
+    },
+    {
+      "packet_id": "ECR-000001-P001",
+      "provider": "gemini",
+      "domain_terms": [],
+      "classification": "generic_procedural_language",
+      "notes": "generic_procedural_language"
+    },
+    {
+      "packet_id": "ECR-000001-P002",
+      "provider": "gpt",
+      "domain_terms": [],
+      "classification": "generic_procedural_language",
+      "notes": "generic_procedural_language"
+    },
+    {
+      "packet_id": "ECR-000001-P002",
+      "provider": "claude",
+      "domain_terms": [],
+      "classification": "generic_procedural_language",
+      "notes": "generic_procedural_language"
+    },
+    {
+      "packet_id": "ECR-000001-P002",
+      "provider": "gemini",
+      "domain_terms": [],
+      "classification": "generic_procedural_language",
+      "notes": "generic_procedural_language"
+    },
+    {
+      "packet_id": "ECR-000001-P003",
+      "provider": "gpt",
+      "domain_terms": [],
+      "classification": "generic_procedural_language",
+      "notes": "generic_procedural_language"
+    },
+    {
+      "packet_id": "ECR-000001-P003",
+      "provider": "claude",
+      "domain_terms": [],
+      "classification": "generic_procedural_language",
+      "notes": "generic_procedural_language"
+    },
+    {
+      "packet_id": "ECR-000001-P003",
+      "provider": "gemini",
+      "domain_terms": [],
+      "classification": "generic_procedural_language",
+      "notes": "generic_procedural_language"
+    }
+  ],
+  "warnings": [
+    "Legacy filename mapped for ECR-000001-P001 claude: responses/claude/001.json",
+    "Legacy filename mapped for ECR-000001-P001 gemini: responses/gemini/001.json",
+    "Legacy filename mapped for ECR-000001-P002 gpt: responses/gpt/002.json",
+    "Legacy filename mapped for ECR-000001-P002 claude: responses/claude/002.json",
+    "Legacy filename mapped for ECR-000001-P002 gemini: responses/gemini/002.json",
+    "Legacy filename mapped for ECR-000001-P003 gpt: responses/gpt/003.json",
+    "Legacy filename mapped for ECR-000001-P003 claude: responses/claude/003.json",
+    "Legacy filename mapped for ECR-000001-P003 gemini: responses/gemini/003.json"
+  ]
+}
