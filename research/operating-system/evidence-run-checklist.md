@@ -17,8 +17,9 @@
 - raw outputs locked
 - observations recorded
 - interpretation recorded separately
-- confidence updates proposed
+- EDR drafted
+- EDR accepted before any confidence review
 - kill conditions checked
 - dependency graph reviewed
 - product relevance noted
-- next run proposed
+- research queue updated

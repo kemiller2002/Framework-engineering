@@ -1,0 +1,390 @@
+{
+  "packet_id": "ECR-000003-EXP001-P001D",
+  "experiment_id": "EXP-001",
+  "variant_id": "P001D",
+  "artifact_family_id": "P001",
+  "recognition_condition": "graph_only_identity_node_expanded",
+  "blinded_artifact_id": "BR-EXP001-P001",
+  "recognized_artifact": "",
+  "structural_layer": {
+    "entry_conditions": [
+      {
+        "value": "Procedure begins at START with a single transition into N1.",
+        "support_level": "explicit",
+        "source_text": "START -> N1",
+        "ambiguity": "No preconditions on the initial state are stated."
+      }
+    ],
+    "exit_conditions": [
+      {
+        "value": "Exit via N6 when one path remains strongest after re-sorting.",
+        "support_level": "explicit",
+        "source_text": "N4 -> N6 [one path selected]; N6 -> END; N6 closes the graph when one path remains strongest after re-sorting.",
+        "ambiguity": ""
+      },
+      {
+        "value": "Direct exit from N4 when continuation is not justified.",
+        "support_level": "explicit",
+        "source_text": "N4 -> END [continuation not justified]",
+        "ambiguity": "The packet does not state how 'continuation not justified' differs from 'one path selected'; the two terminal routes could represent success vs. abandonment, but this is not stated."
+      }
+    ],
+    "required_steps": [
+      {
+        "value": "N1: expansion of one state into multiple paths.",
+        "support_level": "explicit",
+        "source_text": "N1 expands one state into multiple paths.",
+        "ambiguity": ""
+      },
+      {
+        "value": "Traversal through the N2 layer (N2A, N2B, N2C) toward N3.",
+        "support_level": "explicit",
+        "source_text": "N2A -> N3; N2B -> N3; N2C -> N3",
+        "ambiguity": "Whether all three N2 nodes are traversed (parallel semantics) or only some subset per pass is not specified."
+      },
+      {
+        "value": "N3: introduction of a differentiating input.",
+        "support_level": "explicit",
+        "source_text": "N3 adds a differentiating input.",
+        "ambiguity": ""
+      },
+      {
+        "value": "N4: re-sorting of path fit after the new input appears.",
+        "support_level": "explicit",
+        "source_text": "N4 re-sorts path fit after the new input appears.",
+        "ambiguity": ""
+      }
+    ],
+    "optional_steps": [
+      {
+        "value": "N5 and its pass-through states (N5a, N5b, N5c): re-opening continuation, entered only when the threshold is not met.",
+        "support_level": "explicit",
+        "source_text": "N4 -> N5 [threshold not met]; N5 reopens continuation when separation remains weak.",
+        "ambiguity": ""
+      },
+      {
+        "value": "N6: closing step, entered only when one path is selected.",
+        "support_level": "explicit",
+        "source_text": "N4 -> N6 [one path selected]",
+        "ambiguity": ""
+      },
+      {
+        "value": "N1a, N1b, N1c and N5a, N5b, N5c are pass-through states with no stated transformation; each lies on exactly one branch.",
+        "support_level": "explicit",
+        "source_text": "N1a, N1b, N1c are pass-through states. N5a, N5b, N5c are pass-through states.",
+        "ambiguity": "Pass-through states are structurally traversed but functionally inert per the notes; whether they carry any implicit function is not stated."
+      }
+    ],
+    "loops": [
+      {
+        "value": "Iteration loop: N4 -> N5 -> {N5a|N5b|N5c} -> {N2A|N2B|N2C} -> N3 -> N4, taken when the threshold is not met and separation remains weak.",
+        "support_level": "explicit",
+        "source_text": "N4 -> N5 [threshold not met]; N5 -> N5a; N5a -> N2A; N5 -> N5b; N5b -> N2B; N5 -> N5c; N5c -> N2C; N5 reopens continuation when separation remains weak.",
+        "ambiguity": "No maximum iteration count or loop-limiting condition is stated; termination of the loop depends entirely on the N4 decision."
+      }
+    ],
+    "branches": [
+      {
+        "value": "Fan-out at N1: one state expands into three paths (via N1a, N1b, N1c to N2A, N2B, N2C).",
+        "support_level": "explicit",
+        "source_text": "N1 -> N1a; N1a -> N2A; N1 -> N1b; N1b -> N2B; N1 -> N1c; N1c -> N2C; N1 expands one state into multiple paths.",
+        "ambiguity": "The node note ('expands one state into multiple paths') suggests all branches are active rather than one being chosen, but concurrent-vs-sequential execution semantics are not specified."
+      },
+      {
+        "value": "Fan-in at N3: all three N2 nodes converge into N3.",
+        "support_level": "explicit",
+        "source_text": "N2A -> N3; N2B -> N3; N2C -> N3",
+        "ambiguity": ""
+      },
+      {
+        "value": "Three-way conditional branch at N4: loop back (threshold not met), close via N6 (one path selected), or terminate directly (continuation not justified).",
+        "support_level": "explicit",
+        "source_text": "N4 -> N5 [threshold not met]; N4 -> N6 [one path selected]; N4 -> END [continuation not justified]",
+        "ambiguity": "Whether the three conditions are mutually exclusive and exhaustive is implied by graph form but not stated."
+      },
+      {
+        "value": "Fan-out at N5 mirroring N1: three paths (via N5a, N5b, N5c) back into N2A, N2B, N2C.",
+        "support_level": "explicit",
+        "source_text": "N5 -> N5a; N5a -> N2A; N5 -> N5b; N5b -> N2B; N5 -> N5c; N5c -> N2C",
+        "ambiguity": "Whether all three paths are re-entered on each loop iteration or only paths still viable is not specified."
+      }
+    ],
+    "termination_conditions": [
+      {
+        "value": "One path remains strongest after re-sorting (close via N6, then END).",
+        "support_level": "explicit",
+        "source_text": "N6 closes the graph when one path remains strongest after re-sorting.",
+        "ambiguity": ""
+      },
+      {
+        "value": "Continuation is not justified (direct transition from N4 to END).",
+        "support_level": "explicit",
+        "source_text": "N4 -> END [continuation not justified]",
+        "ambiguity": "The criterion for judging continuation unjustified is not defined in the packet."
+      }
+    ],
+    "control_flow_shape": "Single entry; fan-out from one node into three parallel-looking branches through pass-through states; fan-in to a single differentiating node; evaluation node with a three-way conditional (loop-back, close-and-exit, direct exit); loop-back re-fans into the same three branches through a second set of pass-through states. Overall shape: expand -> converge -> differentiate -> evaluate, with an iterative refinement cycle and two distinct terminal routes."
+  },
+  "primitive_layer": {
+    "primitive_sequence": [
+      "initialize (START -> N1)",
+      "expand (N1: one state into multiple paths)",
+      "traverse/pass-through (N1a, N1b, N1c)",
+      "process-per-path (N2A, N2B, N2C; function of N2 nodes not stated)",
+      "converge (fan-in at N3)",
+      "differentiate (N3: add differentiating input)",
+      "evaluate/re-sort (N4: re-sort path fit)",
+      "branch-decide (N4: threshold-not-met vs one-path-selected vs continuation-not-justified)",
+      "reopen/iterate (N5, conditional)",
+      "traverse/pass-through (N5a, N5b, N5c, conditional)",
+      "close (N6, conditional)",
+      "terminate (END)"
+    ],
+    "transitions": [
+      "START -> N1",
+      "N1 -> N1a -> N2A",
+      "N1 -> N1b -> N2B",
+      "N1 -> N1c -> N2C",
+      "N2A -> N3",
+      "N2B -> N3",
+      "N2C -> N3",
+      "N3 -> N4",
+      "N4 -> N5 [threshold not met]",
+      "N4 -> N6 [one path selected]",
+      "N4 -> END [continuation not justified]",
+      "N6 -> END",
+      "N5 -> N5a -> N2A",
+      "N5 -> N5b -> N2B",
+      "N5 -> N5c -> N2C"
+    ],
+    "dominant_primitive": "evaluate/re-sort with conditional branching (N4), since it governs iteration, closure, and direct termination",
+    "candidate_missing_primitives": [
+      "No stated content or transformation for the N2 layer nodes (their per-path function is unlabeled).",
+      "No stated definition or value of the threshold used at N4.",
+      "No stated criterion for 'continuation not justified'.",
+      "No loop counter, iteration cap, or explicit non-termination safeguard.",
+      "No stated function for pass-through states beyond preserving topology."
+    ]
+  },
+  "constraint_layer": {
+    "invariants": [
+      {
+        "value": "Every route from expansion (N1 or N5) into the N2 layer passes through exactly one pass-through state.",
+        "support_level": "explicit",
+        "source_text": "N1 -> N1a; N1a -> N2A; ... N5 -> N5c; N5c -> N2C",
+        "ambiguity": ""
+      },
+      {
+        "value": "All paths converge at N3 before any evaluation at N4 occurs.",
+        "support_level": "explicit",
+        "source_text": "N2A -> N3; N2B -> N3; N2C -> N3; N3 -> N4",
+        "ambiguity": ""
+      },
+      {
+        "value": "The identity-node-expanded variant preserves the baseline graph topology.",
+        "support_level": "explicit",
+        "source_text": "refinement_reason: Corrected omitted terminal edge so the identity-node-expanded variant preserves the baseline graph topology.",
+        "ambiguity": "This is metadata about the packet variant rather than a runtime invariant of the procedure."
+      }
+    ],
+    "preconditions": [
+      {
+        "value": "N4's re-sorting requires the new differentiating input introduced at N3.",
+        "support_level": "explicit",
+        "source_text": "N3 adds a differentiating input. N4 re-sorts path fit after the new input appears.",
+        "ambiguity": ""
+      },
+      {
+        "value": "Entry to N5 requires the threshold at N4 not to be met and separation to remain weak.",
+        "support_level": "explicit",
+        "source_text": "N4 -> N5 [threshold not met]; N5 reopens continuation when separation remains weak.",
+        "ambiguity": "Whether 'threshold not met' and 'separation remains weak' are the same condition stated twice or two distinct conditions is not resolvable from the packet."
+      },
+      {
+        "value": "Entry to N6 requires one path to be selected as strongest after re-sorting.",
+        "support_level": "explicit",
+        "source_text": "N4 -> N6 [one path selected]; N6 closes the graph when one path remains strongest after re-sorting.",
+        "ambiguity": ""
+      }
+    ],
+    "postconditions": [
+      {
+        "value": "On the N6 exit route, exactly one path is the strongest at termination.",
+        "support_level": "explicit",
+        "source_text": "N6 closes the graph when one path remains strongest after re-sorting.",
+        "ambiguity": ""
+      },
+      {
+        "value": "On the direct N4 -> END route, no path selection is asserted.",
+        "support_level": "inferred",
+        "source_text": "N4 -> END [continuation not justified]",
+        "ambiguity": "Inferred from absence: the packet does not state any outcome for this route beyond termination."
+      }
+    ],
+    "stopping_criteria": [
+      {
+        "value": "One path remains strongest after re-sorting.",
+        "support_level": "explicit",
+        "source_text": "N6 closes the graph when one path remains strongest after re-sorting.",
+        "ambiguity": ""
+      },
+      {
+        "value": "Continuation is judged not justified.",
+        "support_level": "explicit",
+        "source_text": "N4 -> END [continuation not justified]",
+        "ambiguity": "Criterion undefined in packet."
+      }
+    ],
+    "validity_conditions": [
+      {
+        "value": "The three-way branch at N4 appears to be the only decision point; validity of a run depends on exactly one of its three conditions holding per visit.",
+        "support_level": "inferred",
+        "source_text": "N4 -> N5 [threshold not met]; N4 -> N6 [one path selected]; N4 -> END [continuation not justified]",
+        "ambiguity": "Mutual exclusivity and exhaustiveness of the three edge conditions are implied by graph convention, not stated."
+      }
+    ]
+  },
+  "representation_layer": {
+    "procedural_ast": {
+      "type": "procedure",
+      "entry": "START",
+      "body": [
+        {
+          "type": "step",
+          "id": "N1",
+          "role": "expand_one_state_into_multiple_paths"
+        },
+        {
+          "type": "fanout",
+          "from": "N1",
+          "branches": [
+            { "passthrough": "N1a", "target": "N2A" },
+            { "passthrough": "N1b", "target": "N2B" },
+            { "passthrough": "N1c", "target": "N2C" }
+          ],
+          "semantics": "unspecified (parallel vs sequential)"
+        },
+        {
+          "type": "fanin",
+          "sources": ["N2A", "N2B", "N2C"],
+          "target": "N3"
+        },
+        {
+          "type": "step",
+          "id": "N3",
+          "role": "add_differentiating_input"
+        },
+        {
+          "type": "step",
+          "id": "N4",
+          "role": "resort_path_fit_after_new_input"
+        },
+        {
+          "type": "decision",
+          "at": "N4",
+          "cases": [
+            {
+              "condition": "threshold not met",
+              "action": {
+                "type": "loop",
+                "via": "N5",
+                "role": "reopen_continuation_when_separation_remains_weak",
+                "fanout": [
+                  { "passthrough": "N5a", "target": "N2A" },
+                  { "passthrough": "N5b", "target": "N2B" },
+                  { "passthrough": "N5c", "target": "N2C" }
+                ],
+                "rejoin": "N3 -> N4"
+              }
+            },
+            {
+              "condition": "one path selected",
+              "action": {
+                "type": "sequence",
+                "steps": [
+                  {
+                    "type": "step",
+                    "id": "N6",
+                    "role": "close_when_one_path_remains_strongest"
+                  },
+                  { "type": "terminate", "target": "END" }
+                ]
+              }
+            },
+            {
+              "condition": "continuation not justified",
+              "action": { "type": "terminate", "target": "END" }
+            }
+          ]
+        }
+      ],
+      "exit": "END"
+    },
+    "natural_language_summary": "The procedure starts by expanding a single state into three paths, each routed through an inert pass-through state into its own processing node (N2A, N2B, N2C). All three paths converge at N3, which introduces a differentiating input. N4 then re-sorts how well the paths fit given that new input. From N4 there are three outcomes: if a threshold is not met and separation among paths remains weak, N5 reopens continuation and routes back through a second set of pass-through states into the same three processing nodes, repeating the differentiate-and-re-sort cycle; if one path stands out as strongest, N6 closes the procedure and it ends; if continuation is not justified, the procedure ends directly without the closing step.",
+    "canonical_summary": "expand(1->3 paths) -> per-path processing -> converge -> add differentiating input -> re-sort path fit -> {loop back through paths if separation weak | close with single strongest path | terminate if continuation unjustified}",
+    "ambiguities": [
+      {
+        "location": "N1 fan-out (and N5 fan-out)",
+        "description": "Execution semantics of the three-way expansion are unspecified.",
+        "plausible_interpretations": [
+          "All three paths are pursued concurrently (parallel expansion).",
+          "All three paths are pursued sequentially before convergence at N3.",
+          "On loop iterations, only still-viable paths are re-entered rather than all three."
+        ],
+        "effect_on_extraction": "The primitive 'expand' and the loop body are recorded without committing to parallel vs sequential semantics; required_steps note the subset ambiguity."
+      },
+      {
+        "location": "N4 edge conditions",
+        "description": "Relationship between 'threshold not met', 'separation remains weak', 'one path selected', and 'continuation not justified' is not fully defined.",
+        "plausible_interpretations": [
+          "'Threshold not met' and 'separation remains weak' are the same condition described at the edge and at the node respectively.",
+          "They are distinct: the edge condition triggers reaching N5, and N5 independently decides whether to reopen.",
+          "'Continuation not justified' is a third, disjoint state (e.g., abandonment), or alternatively a subset of threshold-not-met cases where further iteration is deemed pointless."
+        ],
+        "effect_on_extraction": "Preconditions and termination conditions record both phrasings without merging them; exit_conditions flag that success vs abandonment framing is not stated."
+      },
+      {
+        "location": "N2 layer",
+        "description": "The function performed at N2A, N2B, N2C is never described.",
+        "plausible_interpretations": [
+          "Each N2 node applies the same operation to a different path.",
+          "Each N2 node applies a path-specific operation."
+        ],
+        "effect_on_extraction": "N2 nodes are recorded as 'process-per-path' with function unlabeled; listed under candidate_missing_primitives."
+      },
+      {
+        "location": "Dual terminal routes (N4 -> END vs N6 -> END)",
+        "description": "Two distinct paths reach END, only one of which passes through the closing node N6.",
+        "plausible_interpretations": [
+          "N6 -> END is the successful-completion route and N4 -> END is an early-abandonment route.",
+          "Both are legitimate completions differing only in whether a closing action is performed."
+        ],
+        "effect_on_extraction": "Both routes recorded as separate exit and termination conditions without assigning success/failure labels."
+      },
+      {
+        "location": "Pass-through states (N1a-c, N5a-c)",
+        "description": "Pass-through states are declared inert, but their purpose is not stated.",
+        "plausible_interpretations": [
+          "They are identity nodes inserted purely as a variant manipulation (consistent with recognition_condition 'graph_only_identity_node_expanded' and the refinement_reason).",
+          "They carry an implicit routing or bookkeeping role not described."
+        ],
+        "effect_on_extraction": "Recorded as optional/inert traversal steps; not assigned any function."
+      }
+    ]
+  },
+  "recognition_analysis": {
+    "recognition_occurred": "no",
+    "recognition_basis": "The abstract shape (expand one state into multiple candidate paths, introduce a differentiating input, re-rank fit, iterate while separation is weak, commit when one candidate dominates, or abandon) resembles a generic iterative multi-candidate disambiguation/elimination pattern found in many domains. No specific named artifact could be identified from the graph alone, and no domain terminology is present in the packet to anchor a specific identification.",
+    "domain_terms_introduced": [],
+    "prior_knowledge_leakage_risk": "low-to-moderate: the familiar 'generate-then-discriminate' shape creates a temptation to import domain framing (e.g., hypothesis testing or diagnosis vocabulary); this was avoided by keeping all labels at the packet's own level of abstraction (paths, differentiating input, fit, separation)."
+  },
+  "confidence": {
+    "structural_layer": "high — the graph edges and node notes explicitly support nearly all recorded structure",
+    "primitive_layer": "medium — primitive roles for N1, N3, N4, N5, N6 are explicit, but N2 and pass-through functions are unlabeled",
+    "constraint_layer": "medium — stopping criteria and key preconditions are explicit; exclusivity/exhaustiveness of the N4 branch and the threshold definition are not",
+    "representation_layer": "medium-high — the AST reflects the graph directly, with ambiguities recorded rather than resolved",
+    "recognition_analysis": "medium — confidence that no specific artifact was identified is high, but resemblance to a generic pattern is inherently subjective",
+    "overall": "medium-high"
+  },
+  "notes": "Extraction is based solely on the packet's graph edges, node notes, and metadata. The refinement_reason indicates this variant expands identity (pass-through) nodes while preserving baseline topology; accordingly, pass-through states were treated as structurally present but functionally inert. No maximum-iteration safeguard exists in the packet; the loop's termination depends entirely on the N4 decision each cycle. Where the packet supported more than one reading (fan-out semantics, N4 condition relationships, terminal-route meaning), all readings were recorded in the ambiguities section rather than collapsed."
+}

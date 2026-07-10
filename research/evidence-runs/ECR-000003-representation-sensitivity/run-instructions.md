@@ -20,6 +20,14 @@ Run GPT, Claude, and Gemini across the four topology variants.
 
 After each model output, operator should record `recognition_value` using `metrics/recognition-scale.md` before reading detailed structure.
 
+Use `P001D` packet version `1.1`.
+
+Any prior `P001D` responses from version `1.0` are excluded from the corrected primary comparison.
+
+`P001D` must be rerun for GPT, Claude, and Gemini after the fix.
+
+`P001A`, `P001B`, and `P001C` do not need rerunning unless their responses are missing or invalid.
+
 Stop and review.
 
 ### Phase 2

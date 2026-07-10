@@ -22,6 +22,8 @@ Operating system:
 - [Research Operating Manual](operating-system/research-operating-manual.md)
 - [Research Constitution](operating-system/research-constitution.md)
 - [Research Dependency Graph](operating-system/research-dependency-graph.md)
+- [Evidence Decision Records](operating-system/edr/README.md)
+- [Research Queue](operating-system/research-queue/README.md)
 
 Product architecture:
 

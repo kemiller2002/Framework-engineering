@@ -11,6 +11,8 @@ The goal is to organize the program around hypotheses and evidence rather than i
 - `research-constitution.md`
 - `research-dependency-graph.md`
 - `dependency-graph-data.json`
+- `edr/`
+- `research-queue/`
 - `hypothesis-lifecycle.md`
 - `abstraction-governance.md`
 - `research-cadence.md`
@@ -28,4 +30,4 @@ The goal is to organize the program around hypotheses and evidence rather than i
 
 ## Operating Principle
 
-Every evidence run should test multiple hypotheses when practical, collect common measurements, define predictions in advance, update confidence after the run, and respect kill conditions.
+Every evidence run should test multiple hypotheses when practical, collect common measurements, define predictions in advance, route evidence through an Evidence Decision Record, and respect kill conditions.

@@ -39,3 +39,9 @@
 - Primary focus: H016, H017, H018
 - Supporting coverage: H013, H003, H015, H002
 - Required before confidence update: phase-gated manual execution, comparison, and human review
+
+## EDR Gate
+
+- No evidence run may update confidence directly.
+- Evidence must pass through an accepted Evidence Decision Record before hypothesis review.
+- Next experiments should be pulled from the research queue after EDR review.

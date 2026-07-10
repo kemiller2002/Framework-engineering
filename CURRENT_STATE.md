@@ -113,12 +113,12 @@ Framework Engineering currently has provisional evidence as a characterization a
 
 ## Current Phase
 
-ECR-000003 Representation Sensitivity Setup
+EDR / Research Queue Operating System Setup
 
 ## Current Goal
 
-Test whether recognition and recovered structure depend on topology, surface representation, or domain semantics.
+Route completed evidence through Evidence Decision Records before hypothesis review and next-experiment selection.
 
 ## Current Focus
 
-ECR-000003 EXP-001 Recognition Persistence
+ECR-000003 EXP-001 should produce an EDR before any confidence review or queue decision.

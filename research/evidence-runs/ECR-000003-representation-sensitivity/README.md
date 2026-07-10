@@ -30,6 +30,12 @@ Models do not update hypotheses directly.
 - `EXP-002`: cross-representation stability
 - `EXP-003`: isomorphic procedures
 
+## Current EXP-001 Note
+
+`P001D identity-node-expanded` is now packet version `1.1`.
+
+Any prior `P001D` responses collected from version `1.0` are preserved for auditability but excluded from the corrected primary comparison.
+
 ## Hypotheses In Scope
 
 - H016 Structural Recognition

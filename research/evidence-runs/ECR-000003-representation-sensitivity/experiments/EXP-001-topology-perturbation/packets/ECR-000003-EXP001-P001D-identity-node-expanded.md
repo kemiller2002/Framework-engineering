@@ -4,6 +4,8 @@ variant_id: P001D
 artifact_family_id: P001
 recognition_condition: graph_only_identity_node_expanded
 blinded_artifact_id: BR-EXP001-P001
+packet_version: 1.1
+refinement_reason: Corrected omitted terminal edge so the identity-node-expanded variant preserves the baseline graph topology.
 
 blinded_procedural_content:
 
@@ -23,6 +25,7 @@ N3 -> N4
 N4 -> N5 [threshold not met]
 N4 -> N6 [one path selected]
 N4 -> END [continuation not justified]
+N6 -> END
 N5 -> N5a
 N5a -> N2A
 N5 -> N5b

@@ -413,3 +413,16 @@ Clarity may be best understood as a belief-management system rather than a note-
 
 Status:
 Accepted as product architecture hypothesis.
+
+### DI-FE-027
+
+Title: Evidence Decision Records
+
+Observation:
+Evidence runs produce observations and measurements, but the research program still needs a reusable decision artifact that records what the evidence warrants next.
+
+Potential Implication:
+Framework Engineering may need Evidence Decision Records and a research queue so confidence review and next-experiment selection are separated from raw run output.
+
+Status:
+Accepted as research operating system component.
