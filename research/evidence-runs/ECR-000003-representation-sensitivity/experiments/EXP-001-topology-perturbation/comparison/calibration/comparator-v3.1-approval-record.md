@@ -29,18 +29,35 @@ None
 
 Approved Status:
 
-- not_approved
+- approved_for_ecr-000003_only
 
 Approved For:
 
-- None while status is not_approved
+- ECR-000003 EXP-001
+- ECR-000003 EXP-002
+- ECR-000003 EXP-003
+
+Future ECRs:
+
+Require:
+
+- experiment adapter review
+- schema compatibility review
+- ontology applicability review
+- no automatic assumption that ECR-000003 approval transfers
 
 Reviewer:
+Kevin Miller
 
 Date:
+2026-07-10
 
 Notes:
 
-- Codex prepared the record but did not mark the comparator approved automatically.
+- Comparator v3.1 is approved for limited research use within ECR-000003.
+- Approval does not validate Framework Engineering or any hypothesis.
+- Comparator v3.1 must remain frozen during EXP-002 and EXP-003 unless a demonstrable blocking instrument defect is identified.
+- New capabilities or improved scoring are not sufficient reasons to change the frozen instrument mid-ECR.
+- Any emergency fix must be versioned and documented as an instrument change.
 - Raw response hash verification: passed.
 - Run output root: /Users/kevinmiller/dev/Framework-engineering/research/evidence-runs/ECR-000003-representation-sensitivity/experiments/EXP-001-topology-perturbation/comparison/generated-v3.1.

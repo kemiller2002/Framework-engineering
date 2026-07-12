@@ -1,3 +1,8 @@
+Historical calibration artifact. This document describes Comparator v3.0 before the Comparator v3.1 implementation. Current instrument status is recorded in `comparator-v3.1-approval-record.md`, `comparator-v3.1-regression-report.md`, and the `generated-v3.1` outputs.
+
+Historical Status:
+Superseded as current-state guidance by Comparator v3.1 implementation and regression results.
+
 # Constraint Calibration Audit
 
 ## Scope

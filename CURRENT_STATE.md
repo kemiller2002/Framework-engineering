@@ -113,12 +113,17 @@ Framework Engineering currently has provisional evidence as a characterization a
 
 ## Current Phase
 
-Comparator v3.1 Implementation and Regression
+ECR-000003 EXP-001 Evidence Decision Review
 
 ## Current Goal
 
-Resolve audited comparator defects, regenerate EXP-001 using calibrated reporting, and prepare Comparator v3.1 for human approval.
+Complete and accept the EXP-001 Evidence Decision Record using frozen Comparator v3.1 evidence, then select the next highest-information experiment.
 
 ## Current Focus
 
-ECR-000003 EXP-001 should produce an EDR before any confidence review or queue decision.
+Comparator v3.1 is frozen for ECR-000003 after limited approval.
+
+EXP-001 next step:
+Human completion and acceptance of `EDR-ECR-000003-EXP001`.
+
+EXP-002 may not begin until the accepted EDR selects it or another experiment as the highest-information next action.

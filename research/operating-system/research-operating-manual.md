@@ -29,6 +29,8 @@ This manual defines how Framework Engineering research collects evidence, update
 12. Research informs product design only after repeated support.
 13. Failed hypotheses should be retired, not reworded indefinitely.
 14. Kill conditions must be respected.
+15. Once a comparator or measurement instrument is approved and frozen for an active ECR, it must remain frozen unless a documented blocking defect requires a versioned emergency change.
+16. A downstream experiment may not start until the accepted EDR for the prior experiment selects it or another action as the highest-information next step.
 
 ## EDR Flow
 

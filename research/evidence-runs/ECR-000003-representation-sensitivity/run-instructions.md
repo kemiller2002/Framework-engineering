@@ -55,5 +55,9 @@ After all corrected `EXP-001` responses are present:
 3. Review `comparison/generated-v3.1/data-quality-report.md` first.
 4. Review `comparison/generated-v3.1/recognition-persistence-report.md`.
 5. Review `comparison/generated-v3.1/structural-stability-report.md`.
-6. Complete the human sections of `comparison/generated-v3.1/edr-draft.md`.
-7. Use the accepted EDR to decide whether `EXP-002` should proceed.
+6. Treat Comparator v3.1 as frozen for `ECR-000003` after limited approval.
+7. Use `research/evidence-runs/ECR-000003-representation-sensitivity/edr/EDR-ECR-000003-EXP001.md` as the working EDR, with `comparison/generated-v3.1/edr-draft.md` as source material only.
+8. Complete and accept `EDR-ECR-000003-EXP001` before activating any later experiment.
+9. Use the accepted EDR to decide whether `EXP-002` should proceed.
+
+`EXP-002` may not begin until the accepted EDR selects it or another experiment as the highest-information next action.
