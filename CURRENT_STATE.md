@@ -113,17 +113,35 @@ Framework Engineering currently has provisional evidence as a characterization a
 
 ## Current Phase
 
-ECR-000003 EXP-001 Evidence Decision Review
+ECR-000003 Automated Analysis
+
+## Current Instrument
+
+Comparator v3.1.0 frozen
 
 ## Current Goal
 
-Complete and accept the EXP-001 Evidence Decision Record using frozen Comparator v3.1 evidence, then select the next highest-information experiment.
+Normalize all completed response files, run EXP-001 through EXP-003 comparisons, generate EDR drafts and cross-experiment reports, and prepare the ECR for human review.
 
 ## Current Focus
 
-Comparator v3.1 is frozen for ECR-000003 after limited approval.
+Immediate Next Command:
 
-EXP-001 next step:
-Human completion and acceptance of `EDR-ECR-000003-EXP001`.
+```bash
+cd research/evidence-runs/ECR-000003-representation-sensitivity
+npm run pipeline:dry
+```
 
-EXP-002 may not begin until the accepted EDR selects it or another experiment as the highest-information next action.
+After Dry Run:
+
+Review:
+
+- `pipeline/generated/environment-verification.md`
+- `pipeline/generated/dataset-completeness.md`
+- `response-filename-verification-report.md`
+
+Then Run:
+
+```bash
+npm run pipeline
+```

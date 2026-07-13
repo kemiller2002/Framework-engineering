@@ -2,8 +2,6 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "compare": "node scripts/compare-exp-001.js",
-    "compare:smoke": "node scripts/compare-exp-001.js --smoke",
     "compare:v3.1": "node -e \"import('./../../../../tools/comparison-engine/src/index.js').then(async ({ runComparisonEngine }) => { await runComparisonEngine('comparison-config.json'); }).catch((error) => { console.error(error); process.exit(1); });\""
   }
 }

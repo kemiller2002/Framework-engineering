@@ -1,0 +1,35 @@
+{
+  "ecr_id": "ECR-000003",
+  "experiment_id": "EXP-003",
+  "title": "Isomorphic Procedures",
+  "experiment_root": ".",
+  "response_root": "responses",
+  "packet_root": "packets",
+  "output_root": "comparison/generated-v3.1",
+  "comparator_version": "3.1.0",
+  "comparator_version_requirement": "3.1.0",
+  "schema_adapter": "ecr-000003-v3.1",
+  "ontology": "research/tools/comparison-engine/ontology",
+  "ontology_root": "../../../../tools/comparison-engine/ontology",
+  "providers": ["gpt", "claude", "gemini"],
+  "variants": [
+    { "packet_id": "ECR-000003-EXP003-P001A", "variant_id": "P001A", "variant_order": 1 },
+    { "packet_id": "ECR-000003-EXP003-P001B", "variant_id": "P001B", "variant_order": 2 },
+    { "packet_id": "ECR-000003-EXP003-P001C", "variant_id": "P001C", "variant_order": 3 }
+  ],
+  "variant_labels": {
+    "P001A": "Technical Troubleshooting",
+    "P001B": "Logistics Routing",
+    "P001C": "Policy Review"
+  },
+  "comparison_layers": ["recognition", "structural", "primitive", "constraint", "representation"],
+  "named_recognition_patterns": ["scientific method", "differential diagnosis", "diagnosis", "hypothesis testing"],
+  "terminology_watch": ["scientific method", "diagnosis", "differential diagnosis", "hypothesis testing", "abductive reasoning", "experiment", "evidence", "inquiry"],
+  "packet_versions": {
+    "ECR-000003-EXP003-P001A": "not_stated",
+    "ECR-000003-EXP003-P001B": "not_stated",
+    "ECR-000003-EXP003-P001C": "not_stated"
+  },
+  "excluded_paths": ["responses/pre-fix", "responses/excluded", "responses/archive", "archive", "comparison", "generated"],
+  "edr_template": "../../edr/EDR-ECR-000003-EXP001-template.md"
+}

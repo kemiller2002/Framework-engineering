@@ -1,0 +1,9 @@
+{
+  "name": "response-file-normalizer",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "normalize": "node src/normalize-response-files.js",
+    "test": "node --test"
+  }
+}

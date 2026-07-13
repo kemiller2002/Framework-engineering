@@ -1,0 +1,43 @@
+{
+  "ecr_id": "ECR-000003",
+  "experiment_id": "EXP-001",
+  "title": "Topology Perturbation",
+  "experiment_root": ".",
+  "response_root": "responses",
+  "packet_root": "packets",
+  "output_root": "comparison/generated-v3.1",
+  "comparator_version": "3.1.0",
+  "comparator_version_requirement": "3.1.0",
+  "schema_adapter": "ecr-000003-v3.1",
+  "ontology": "research/tools/comparison-engine/ontology",
+  "ontology_root": "../../../../tools/comparison-engine/ontology",
+  "providers": ["gpt", "claude", "gemini"],
+  "variants": [
+    { "packet_id": "ECR-000003-EXP001-P001A", "variant_id": "P001A", "variant_order": 1 },
+    { "packet_id": "ECR-000003-EXP001-P001B", "variant_id": "P001B", "variant_order": 2 },
+    { "packet_id": "ECR-000003-EXP001-P001C", "variant_id": "P001C", "variant_order": 3 },
+    { "packet_id": "ECR-000003-EXP001-P001D", "variant_id": "P001D", "variant_order": 4 }
+  ],
+  "variant_labels": {
+    "P001A": "Baseline",
+    "P001B": "Renumbered",
+    "P001C": "Edge-Order Shuffled",
+    "P001D": "Identity-Expanded"
+  },
+  "comparison_layers": ["recognition", "structural", "primitive", "constraint", "representation"],
+  "named_recognition_patterns": ["scientific method", "differential diagnosis", "diagnosis", "hypothesis testing"],
+  "terminology_watch": ["scientific method", "diagnosis", "differential diagnosis", "hypothesis testing", "abductive reasoning", "experiment", "evidence", "inquiry"],
+  "version_rules": {
+    "P001D": {
+      "required_packet_version": "1.1"
+    }
+  },
+  "packet_versions": {
+    "ECR-000003-EXP001-P001A": "not_stated",
+    "ECR-000003-EXP001-P001B": "not_stated",
+    "ECR-000003-EXP001-P001C": "not_stated",
+    "ECR-000003-EXP001-P001D": "1.1"
+  },
+  "excluded_paths": ["responses/pre-fix", "responses/excluded", "responses/archive", "archive", "comparison", "generated"],
+  "edr_template": "../../edr/EDR-ECR-000003-EXP001-template.md"
+}

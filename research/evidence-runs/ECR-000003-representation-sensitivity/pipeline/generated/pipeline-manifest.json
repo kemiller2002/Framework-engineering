@@ -1,0 +1,106 @@
+{
+  "pipeline_id": "2026-07-13T18-20-42-672Z",
+  "ecr_id": "ECR-000003",
+  "pipeline_version": "1.0.0",
+  "comparator_version": "3.1.0",
+  "started_at": "2026-07-13T18:20:42.672Z",
+  "completed_at": "2026-07-13T18:20:42.819Z",
+  "mode": "all-dry-run",
+  "normalization": {
+    "command": "node /Users/kevinmiller/dev/Framework-engineering/research/tools/response-file-normalizer/src/normalize-response-files.js --ecr-root /Users/kevinmiller/dev/Framework-engineering/research/evidence-runs/ECR-000003-representation-sensitivity --dry-run",
+    "status": "success",
+    "exitCode": 0,
+    "stdout": "",
+    "stderr": "",
+    "reports": [
+      "response-file-inventory.md",
+      "response-filename-normalization-log.md",
+      "response-dataset-readiness.md",
+      "response-filename-verification-report.md"
+    ]
+  },
+  "dataset": {
+    "experiments": [
+      {
+        "experiment": "EXP-001",
+        "packets": 4,
+        "providers": 3,
+        "expected": 12,
+        "present": 12,
+        "missing": 0,
+        "malformed": 4,
+        "conflicts": 0,
+        "unsafeMalformed": 0,
+        "status": "READY_WITH_WARNINGS"
+      },
+      {
+        "experiment": "EXP-002",
+        "packets": 4,
+        "providers": 3,
+        "expected": 12,
+        "present": 12,
+        "missing": 0,
+        "malformed": 4,
+        "conflicts": 0,
+        "unsafeMalformed": 0,
+        "status": "READY_WITH_WARNINGS"
+      },
+      {
+        "experiment": "EXP-003",
+        "packets": 3,
+        "providers": 3,
+        "expected": 9,
+        "present": 0,
+        "missing": 9,
+        "malformed": 0,
+        "conflicts": 0,
+        "unsafeMalformed": 0,
+        "status": "NOT_READY"
+      }
+    ],
+    "overallStatus": "NOT_READY",
+    "warnings": [
+      "EXP-003 missing 9 primary responses."
+    ]
+  },
+  "experiments": {
+    "EXP-001": {
+      "experiment": "EXP-001",
+      "status": "blocked",
+      "reason": "Blocking dataset failure."
+    },
+    "EXP-002": {
+      "experiment": "EXP-002",
+      "status": "blocked",
+      "reason": "Blocking dataset failure."
+    },
+    "EXP-003": {
+      "experiment": "EXP-003",
+      "status": "blocked",
+      "reason": "Blocking dataset failure."
+    }
+  },
+  "reports": [
+    "pipeline/generated/environment-verification.md",
+    "pipeline/generated/dataset-completeness.md",
+    "pipeline/generated/ecr-000003-comparison-summary.md",
+    "pipeline/generated/ecr-000003-observation-ledger.md",
+    "pipeline/generated/hypothesis-matrix-update-input.md",
+    "pipeline/generated/scientific-claims-review-input.md",
+    "pipeline/generated/threats-to-validity-update-input.md",
+    "pipeline/generated/edr-draft-index.md",
+    "pipeline/generated/ecr-000003-human-review-dashboard.md",
+    "pipeline/generated/ecr-000003-final-readiness-report.md"
+  ],
+  "edr_drafts": [
+    "edr/EDR-ECR-000003-EXP001.md",
+    "edr/EDR-ECR-000003-EXP002.md",
+    "edr/EDR-ECR-000003-EXP003.md",
+    "edr/EDR-ECR-000003-SUMMARY.md"
+  ],
+  "warnings": [],
+  "blocking_errors": [
+    "Dataset completeness not ready for full comparison."
+  ],
+  "status": "blocked"
+}

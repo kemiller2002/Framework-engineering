@@ -1,0 +1,18 @@
+{
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "verify": "node scripts/run-ecr-000003.js --verify-only",
+    "normalize:dry": "node scripts/run-ecr-000003.js --normalize --dry-run",
+    "normalize": "node scripts/run-ecr-000003.js --normalize --apply",
+    "compare:all": "node scripts/run-ecr-000003.js --compare-all",
+    "reports:all": "node scripts/run-ecr-000003.js --reports-all",
+    "pipeline:dry": "node scripts/run-ecr-000003.js --all --dry-run",
+    "pipeline": "node scripts/run-ecr-000003.js --all --apply",
+    "pipeline:force-reports": "node scripts/run-ecr-000003.js --compare-all --reports-all --force-reports",
+    "responses:verify": "node ../../tools/response-file-normalizer/src/normalize-response-files.js",
+    "responses:normalize": "node ../../tools/response-file-normalizer/src/normalize-response-files.js",
+    "responses:incoming": "node ../../tools/response-file-normalizer/src/normalize-response-files.js",
+    "test": "node --test test/*.test.js"
+  }
+}
