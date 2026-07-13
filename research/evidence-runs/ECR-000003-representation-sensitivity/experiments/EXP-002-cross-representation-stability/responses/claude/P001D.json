@@ -1,0 +1,481 @@
+{
+  "packet_id": "ECR-000003-EXP002-P001D",
+  "experiment_id": "EXP-002",
+  "variant_id": "P001D",
+  "artifact_family_id": "P001",
+  "recognition_condition": "transition_table",
+  "blinded_artifact_id": "BR-EXP002-P001",
+  "recognized_artifact": "no_confirmed_identification; weak structural resemblance only to a generic enumerate-then-narrow iterative decision loop. No prior-knowledge content was used to populate any other field.",
+  "structural_layer": {
+    "entry_conditions": [
+      {
+        "value": "Procedure begins in state 'start'.",
+        "support_level": "explicit",
+        "source_text": "| start | issue present | expand_paths |",
+        "ambiguity": "'start' is treated as the initial state only because it has no inbound transitions in the table; the packet does not label it as initial."
+      },
+      {
+        "value": "Transition out of 'start' is gated on the condition 'issue present'.",
+        "support_level": "explicit",
+        "source_text": "| start | issue present | expand_paths |",
+        "ambiguity": "Behavior when 'issue present' is false is undefined in the packet (no alternative outbound transition from 'start')."
+      }
+    ],
+    "exit_conditions": [
+      {
+        "value": "Reaching state 'end'.",
+        "support_level": "explicit",
+        "source_text": "| reassess_paths | continuation not justified | end | ; | selected_terminal | closure | end |",
+        "ambiguity": "'end' is treated as terminal only because it has no outbound transitions in the table; the packet does not label it as final."
+      },
+      {
+        "value": "Exit route 1: from 'reassess_paths' on 'continuation not justified' directly to 'end'.",
+        "support_level": "explicit",
+        "source_text": "| reassess_paths | continuation not justified | end |",
+        "ambiguity": "none within the packet"
+      },
+      {
+        "value": "Exit route 2: from 'reassess_paths' on 'one path selected' to 'selected_terminal', then on 'closure' to 'end'.",
+        "support_level": "explicit",
+        "source_text": "| reassess_paths | one path selected | selected_terminal | ; | selected_terminal | closure | end |",
+        "ambiguity": "Whether 'closure' is an actively performed action or an automatic/trivial transition is not stated."
+      }
+    ],
+    "required_steps": [
+      {
+        "value": "expand_paths",
+        "support_level": "explicit",
+        "source_text": "| start | issue present | expand_paths |",
+        "ambiguity": "Required only in the sense that it is the sole successor of 'start' and the sole successor of 'repeat_cycle'."
+      },
+      {
+        "value": "gather_input",
+        "support_level": "explicit",
+        "source_text": "| expand_paths | path_a listed | gather_input |",
+        "ambiguity": "It is the only successor state of 'expand_paths' under all three listed conditions."
+      },
+      {
+        "value": "reassess_paths",
+        "support_level": "explicit",
+        "source_text": "| gather_input | new differentiating input available | reassess_paths |",
+        "ambiguity": "Reachable only when 'new differentiating input available' holds; behavior otherwise is undefined."
+      }
+    ],
+    "optional_steps": [
+      {
+        "value": "repeat_cycle",
+        "support_level": "implied",
+        "source_text": "| reassess_paths | threshold not met | repeat_cycle |",
+        "ambiguity": "Optional in the sense of being conditionally entered (only on 'threshold not met'); the packet does not mark any step as optional."
+      },
+      {
+        "value": "selected_terminal",
+        "support_level": "implied",
+        "source_text": "| reassess_paths | one path selected | selected_terminal |",
+        "ambiguity": "Conditionally entered; bypassed entirely on the 'continuation not justified' exit route."
+      }
+    ],
+    "loops": [
+      {
+        "value": "Cycle: expand_paths -> gather_input -> reassess_paths -> repeat_cycle -> expand_paths",
+        "support_level": "explicit",
+        "source_text": "| reassess_paths | threshold not met | repeat_cycle | ; | repeat_cycle | continuation | expand_paths |",
+        "ambiguity": "No iteration bound, counter, or maximum is specified. Loop exit is governed solely by the non-'threshold not met' conditions at 'reassess_paths'."
+      }
+    ],
+    "branches": [
+      {
+        "value": "Three-condition fan-out from 'expand_paths' (path_a listed / path_b listed / path_c listed) all converging on 'gather_input'.",
+        "support_level": "explicit",
+        "source_text": "| expand_paths | path_a listed | gather_input | ; | expand_paths | path_b listed | gather_input | ; | expand_paths | path_c listed | gather_input |",
+        "ambiguity": "Because all three arcs share the same target, it is undetermined whether these are mutually exclusive alternatives, an enumeration requirement (all three listed), or a representation of an unordered set of listed items. This is a genuine multi-reading point; see representation_layer.ambiguities."
+      },
+      {
+        "value": "Three-way decision at 'reassess_paths': 'threshold not met' -> repeat_cycle; 'one path selected' -> selected_terminal; 'continuation not justified' -> end.",
+        "support_level": "explicit",
+        "source_text": "| reassess_paths | threshold not met | repeat_cycle | ; | reassess_paths | one path selected | selected_terminal | ; | reassess_paths | continuation not justified | end |",
+        "ambiguity": "Evaluation order/priority among the three conditions is unspecified, as is whether they are mutually exclusive or may co-occur."
+      }
+    ],
+    "termination_conditions": [
+      {
+        "value": "'continuation not justified' evaluated at 'reassess_paths' (termination without selection).",
+        "support_level": "explicit",
+        "source_text": "| reassess_paths | continuation not justified | end |",
+        "ambiguity": "The packet does not define what makes continuation justified or unjustified."
+      },
+      {
+        "value": "'one path selected' at 'reassess_paths' followed by 'closure' at 'selected_terminal' (termination with selection).",
+        "support_level": "explicit",
+        "source_text": "| reassess_paths | one path selected | selected_terminal | ; | selected_terminal | closure | end |",
+        "ambiguity": "'closure' is unconditional in effect (only outbound arc) but its content is undefined."
+      },
+      {
+        "value": "Possible implicit non-terminating/undefined states: 'gather_input' when new differentiating input is NOT available, and 'start' when 'issue present' is false.",
+        "support_level": "inferred",
+        "source_text": "| gather_input | new differentiating input available | reassess_paths | (no complementary row); | start | issue present | expand_paths | (no complementary row)",
+        "ambiguity": "The packet is silent on these cases; they may be stalls, implicit terminations, or simply out of scope. Not resolved here."
+      }
+    ],
+    "control_flow_shape": "Single-entry directed cyclic graph. Linear entry (start -> expand_paths), a convergent fan-out (expand_paths -> gather_input via three conditions), a linear step (gather_input -> reassess_paths), and a three-way decision hub (reassess_paths) that either (a) re-enters the cycle via a pass-through state (repeat_cycle -> expand_paths), (b) routes to a selection state (selected_terminal) that then closes to 'end', or (c) routes directly to 'end'. One cycle; one terminal state ('end') reachable by two distinct routes."
+  },
+  "primitive_layer": {
+    "primitive_sequence": [
+      "initiate_on_trigger",
+      "enumerate_options",
+      "collect_information",
+      "evaluate_against_threshold",
+      "branch_multiway",
+      "iterate_or_exit",
+      "commit_selection",
+      "terminate"
+    ],
+    "transitions": [
+      {
+        "from": "start",
+        "to": "expand_paths",
+        "condition": "issue present",
+        "primitive": "initiate_on_trigger",
+        "support_level": "explicit"
+      },
+      {
+        "from": "expand_paths",
+        "to": "gather_input",
+        "condition": "path_a listed",
+        "primitive": "enumerate_options",
+        "support_level": "explicit"
+      },
+      {
+        "from": "expand_paths",
+        "to": "gather_input",
+        "condition": "path_b listed",
+        "primitive": "enumerate_options",
+        "support_level": "explicit"
+      },
+      {
+        "from": "expand_paths",
+        "to": "gather_input",
+        "condition": "path_c listed",
+        "primitive": "enumerate_options",
+        "support_level": "explicit"
+      },
+      {
+        "from": "gather_input",
+        "to": "reassess_paths",
+        "condition": "new differentiating input available",
+        "primitive": "collect_information",
+        "support_level": "explicit"
+      },
+      {
+        "from": "reassess_paths",
+        "to": "repeat_cycle",
+        "condition": "threshold not met",
+        "primitive": "evaluate_against_threshold / iterate_or_exit",
+        "support_level": "explicit"
+      },
+      {
+        "from": "reassess_paths",
+        "to": "selected_terminal",
+        "condition": "one path selected",
+        "primitive": "commit_selection",
+        "support_level": "explicit"
+      },
+      {
+        "from": "reassess_paths",
+        "to": "end",
+        "condition": "continuation not justified",
+        "primitive": "terminate",
+        "support_level": "explicit"
+      },
+      {
+        "from": "repeat_cycle",
+        "to": "expand_paths",
+        "condition": "continuation",
+        "primitive": "iterate_or_exit",
+        "support_level": "explicit"
+      },
+      {
+        "from": "selected_terminal",
+        "to": "end",
+        "condition": "closure",
+        "primitive": "terminate",
+        "support_level": "explicit"
+      }
+    ],
+    "dominant_primitive": "evaluate_against_threshold (the 'reassess_paths' node is the sole multiway decision hub and governs every loop-continuation and every termination route)",
+    "candidate_missing_primitives": [
+      "handling for 'issue present' being false at 'start' (no complementary arc)",
+      "handling for 'new differentiating input available' being false at 'gather_input' (no complementary arc; possible stall)",
+      "any bound, counter, or exhaustion criterion on the expand/gather/reassess cycle",
+      "any definition or measurement primitive for the 'threshold' referenced at 'reassess_paths'",
+      "any priority/ordering rule among the three outbound conditions of 'reassess_paths'",
+      "any verification, validation, or rollback primitive following 'one path selected'",
+      "any state-carrying primitive explaining what persists across iterations (e.g., whether previously listed paths are retained, revised, or re-derived on re-entry to 'expand_paths')",
+      "any explicit semantics for 'repeat_cycle' beyond pass-through, and for 'closure' beyond pass-through"
+    ]
+  },
+  "constraint_layer": {
+    "invariants": [
+      {
+        "value": "Every path from 'start' that terminates does so at 'end'; 'end' is the unique sink in the table.",
+        "support_level": "implied",
+        "source_text": "no rows have 'end' as current_state",
+        "ambiguity": "Inferred from absence of outbound rows rather than from an explicit terminal marker."
+      },
+      {
+        "value": "'reassess_paths' is reachable only via 'gather_input'; 'gather_input' is reachable only via 'expand_paths'; 'expand_paths' is reachable only via 'start' or 'repeat_cycle'.",
+        "support_level": "explicit",
+        "source_text": "full transition table (inbound-edge enumeration)",
+        "ambiguity": "Holds only under a closed-world reading of the table (no unlisted transitions exist)."
+      },
+      {
+        "value": "Any iteration must pass through 'gather_input' before returning to 'reassess_paths' (i.e., no re-evaluation without an intervening information-gathering step).",
+        "support_level": "implied",
+        "source_text": "| repeat_cycle | continuation | expand_paths | ; | expand_paths | ... | gather_input | ; | gather_input | new differentiating input available | reassess_paths |",
+        "ambiguity": "Derived from graph topology, not stated as a rule."
+      }
+    ],
+    "preconditions": [
+      {
+        "value": "'issue present' must hold to leave 'start'.",
+        "support_level": "explicit",
+        "source_text": "| start | issue present | expand_paths |",
+        "ambiguity": "none within the packet"
+      },
+      {
+        "value": "At least one of {path_a listed, path_b listed, path_c listed} must hold to leave 'expand_paths'.",
+        "support_level": "implied",
+        "source_text": "three rows with current_state 'expand_paths'",
+        "ambiguity": "Under an alternative reading, ALL three must hold (conjunctive enumeration requirement) rather than at least one. The packet does not disambiguate."
+      },
+      {
+        "value": "'new differentiating input available' must hold to leave 'gather_input'.",
+        "support_level": "explicit",
+        "source_text": "| gather_input | new differentiating input available | reassess_paths |",
+        "ambiguity": "Implies information gathering must yield something differentiating before reassessment; the failure case is unspecified."
+      },
+      {
+        "value": "'continuation' must hold to leave 'repeat_cycle' back into 'expand_paths'.",
+        "support_level": "explicit",
+        "source_text": "| repeat_cycle | continuation | expand_paths |",
+        "ambiguity": "Relationship between 'continuation' here and 'continuation not justified' at 'reassess_paths' is unstated; they may or may not be complementary evaluations of the same predicate."
+      }
+    ],
+    "postconditions": [
+      {
+        "value": "On the selection route, exactly one path has been selected before 'selected_terminal' is entered.",
+        "support_level": "explicit",
+        "source_text": "| reassess_paths | one path selected | selected_terminal |",
+        "ambiguity": "'one' is taken literally from the condition text; multi-selection is not represented."
+      },
+      {
+        "value": "On the non-selection route, the procedure ends without any path having been selected.",
+        "support_level": "implied",
+        "source_text": "| reassess_paths | continuation not justified | end |",
+        "ambiguity": "The packet does not state what, if anything, is produced on this route."
+      },
+      {
+        "value": "'closure' occurs after selection and before 'end'.",
+        "support_level": "explicit",
+        "source_text": "| selected_terminal | closure | end |",
+        "ambiguity": "Content of 'closure' is undefined."
+      }
+    ],
+    "stopping_criteria": [
+      {
+        "value": "'one path selected' at 'reassess_paths' (leads to terminal selection state).",
+        "support_level": "explicit",
+        "source_text": "| reassess_paths | one path selected | selected_terminal |",
+        "ambiguity": "none within the packet"
+      },
+      {
+        "value": "'continuation not justified' at 'reassess_paths' (direct termination).",
+        "support_level": "explicit",
+        "source_text": "| reassess_paths | continuation not justified | end |",
+        "ambiguity": "Criteria for justification are not defined."
+      },
+      {
+        "value": "Negation: 'threshold not met' is the sole non-stopping outcome, and it forces continued iteration.",
+        "support_level": "implied",
+        "source_text": "| reassess_paths | threshold not met | repeat_cycle |",
+        "ambiguity": "Whether 'threshold met' is equivalent to 'one path selected' is not stated; they may be the same predicate expressed differently or two independent predicates."
+      }
+    ],
+    "validity_conditions": [
+      {
+        "value": "The table is closed-world: only the ten listed transitions are permitted.",
+        "support_level": "inferred",
+        "source_text": "packet presents a complete transition table with no default/else rows",
+        "ambiguity": "The packet does not state whether it is exhaustive; an open-world reading would leave unlisted condition cases undefined rather than forbidden."
+      },
+      {
+        "value": "Reassessment is valid only when it follows the acquisition of new differentiating input.",
+        "support_level": "implied",
+        "source_text": "| gather_input | new differentiating input available | reassess_paths |",
+        "ambiguity": "Stated as a transition guard, not as an explicit validity rule."
+      }
+    ]
+  },
+  "representation_layer": {
+    "procedural_ast": {
+      "type": "procedure",
+      "entry": "start",
+      "terminal": ["end"],
+      "body": [
+        {
+          "type": "guard",
+          "condition": "issue present",
+          "on_true": "goto expand_paths",
+          "on_false": "undefined_in_packet"
+        },
+        {
+          "type": "loop",
+          "id": "primary_cycle",
+          "bound": "unspecified",
+          "body": [
+            {
+              "type": "state",
+              "id": "expand_paths",
+              "outbound": {
+                "type": "fanout_convergent",
+                "reading_ambiguous": true,
+                "conditions": ["path_a listed", "path_b listed", "path_c listed"],
+                "common_target": "gather_input"
+              }
+            },
+            {
+              "type": "state",
+              "id": "gather_input",
+              "outbound": {
+                "type": "guard",
+                "condition": "new differentiating input available",
+                "on_true": "goto reassess_paths",
+                "on_false": "undefined_in_packet"
+              }
+            },
+            {
+              "type": "state",
+              "id": "reassess_paths",
+              "outbound": {
+                "type": "multiway_branch",
+                "evaluation_order": "unspecified",
+                "mutual_exclusivity": "unspecified",
+                "arms": [
+                  {
+                    "condition": "threshold not met",
+                    "target": "repeat_cycle",
+                    "effect": "continue_loop"
+                  },
+                  {
+                    "condition": "one path selected",
+                    "target": "selected_terminal",
+                    "effect": "exit_loop_with_selection"
+                  },
+                  {
+                    "condition": "continuation not justified",
+                    "target": "end",
+                    "effect": "exit_loop_without_selection"
+                  }
+                ]
+              }
+            },
+            {
+              "type": "state",
+              "id": "repeat_cycle",
+              "outbound": {
+                "type": "guard",
+                "condition": "continuation",
+                "on_true": "goto expand_paths (loop back-edge)",
+                "on_false": "undefined_in_packet"
+              }
+            }
+          ]
+        },
+        {
+          "type": "state",
+          "id": "selected_terminal",
+          "outbound": {
+            "type": "guard",
+            "condition": "closure",
+            "on_true": "goto end",
+            "on_false": "undefined_in_packet"
+          }
+        },
+        {
+          "type": "state",
+          "id": "end",
+          "outbound": []
+        }
+      ]
+    },
+    "natural_language_summary": "Given that an issue is present, the procedure moves from start to a state in which paths are expanded; three conditions (path_a listed, path_b listed, path_c listed) each lead from expansion to an input-gathering state. Once new differentiating input is available, the procedure reassesses the paths. Reassessment has three outcomes: if a threshold is not met, the procedure enters a repeat_cycle state and, on continuation, returns to path expansion; if one path is selected, the procedure moves to a selected_terminal state and then closes to end; if continuation is not justified, the procedure ends directly. The single cycle (expand_paths -> gather_input -> reassess_paths -> repeat_cycle -> expand_paths) has no stated bound.",
+    "canonical_summary": "Trigger-gated entry into an unbounded expand/gather/reassess loop, whose single multiway decision node either re-enters the loop, exits via a selection-commitment state, or exits directly without selection; both exits converge on one terminal state.",
+    "ambiguities": [
+      {
+        "location": "expand_paths outbound arcs (rows 2-4)",
+        "description": "Three distinct conditions all map to the same next_state, so the table alone does not determine the logical relation among them.",
+        "plausible_interpretations": [
+          "Disjunctive/mutually exclusive branch: any one of path_a/path_b/path_c being listed suffices to proceed.",
+          "Conjunctive enumeration requirement: expansion is complete only when all three paths are listed, and the three rows redundantly encode a single 'all listed' guard.",
+          "Set-membership/iteration encoding: 'path_x listed' represents an unordered set of enumerated items with cardinality three in this instance, not a fixed three-way branch (i.e., the count 3 may be incidental rather than structural).",
+          "Degenerate branch: the three conditions are structurally irrelevant to control flow since the target is identical, and the branching is representational rather than procedural."
+        ],
+        "effect_on_extraction": "Recorded as a convergent fan-out with unresolved logical relation. Structural layer lists it under branches; constraint layer states the precondition under both the 'at least one' and 'all three' readings without choosing between them. No single reading was adopted to simplify the AST."
+      },
+      {
+        "location": "reassess_paths outbound arcs (rows 6-8)",
+        "description": "Three conditions with different targets, but no stated evaluation order and no stated mutual exclusivity.",
+        "plausible_interpretations": [
+          "Mutually exclusive predicates evaluated in any order.",
+          "Priority-ordered guards evaluated top-to-bottom as listed in the table.",
+          "Potentially co-occurring predicates with unspecified tie-breaking (e.g., 'threshold not met' and 'continuation not justified' could both hold)."
+        ],
+        "effect_on_extraction": "AST marks evaluation_order and mutual_exclusivity as 'unspecified'. No arbitration rule was invented."
+      },
+      {
+        "location": "relation between 'continuation not justified' (reassess_paths) and 'continuation' (repeat_cycle)",
+        "description": "The two conditions use overlapping vocabulary but sit at different states.",
+        "plausible_interpretations": [
+          "They are complementary evaluations of one predicate, with repeat_cycle re-checking it before looping back.",
+          "They are independent predicates that happen to share a lexeme.",
+          "'continuation' at repeat_cycle is vacuous/unconditional, since it is the only outbound arc."
+        ],
+        "effect_on_extraction": "Both conditions recorded verbatim; no identity between them asserted."
+      },
+      {
+        "location": "gather_input (row 5) and start (row 1)",
+        "description": "Each state has a single guarded outbound arc with no complementary arc for the negative case.",
+        "plausible_interpretations": [
+          "The negative case is an implicit stall/wait state (remain until the condition holds).",
+          "The negative case is an implicit termination not shown in the table.",
+          "The negative case is simply out of scope for this packet."
+        ],
+        "effect_on_extraction": "Recorded as undefined_in_packet in the AST and as a possible implicit non-terminating state in termination_conditions. No default edge was added."
+      },
+      {
+        "location": "semantics of 'repeat_cycle', 'selected_terminal', and 'closure'",
+        "description": "These are pass-through nodes/conditions with exactly one outbound arc each; whether they denote actions or bookkeeping is not stated.",
+        "plausible_interpretations": [
+          "They denote substantive actions (e.g., a commitment step, a closing step) that the table abstracts away.",
+          "They are structural bookkeeping nodes with no procedural content, present only to mark loop back-edges and terminal routes."
+        ],
+        "effect_on_extraction": "Retained as states in both the structural layer and the AST; no action semantics attributed to them."
+      }
+    ]
+  },
+  "recognition_analysis": {
+    "recognition_occurred": "partial",
+    "recognition_basis": "The control-flow shape (trigger -> enumerate multiple candidate paths -> gather differentiating information -> reassess against a threshold -> either iterate, commit to one candidate, or stop) is a general enumerate-and-narrow pattern that resembles families of iterative narrowing procedures. Recognition was structural only, and no specific artifact identification is asserted. No recognized-artifact content was used to populate the structural, primitive, constraint, or representation layers.",
+    "domain_terms_introduced": [],
+    "prior_knowledge_leakage_risk": "low — all state names, condition names, and edges were taken verbatim from the packet; abstraction labels in the primitive layer (e.g., 'enumerate_options', 'evaluate_against_threshold') are derived directly from packet condition text ('path_x listed', 'threshold not met') and introduce no domain vocabulary. Residual risk is that the primitive labels themselves impose a slightly more purposive reading than the bare table warrants."
+  },
+  "confidence": {
+    "structural_layer": "high — the graph structure is fully determined by the ten rows; the only uncertainty is the logical relation among same-target arcs and the closed-world assumption.",
+    "primitive_layer": "medium — transitions are transcribed with high confidence, but primitive labels and 'dominant_primitive' involve interpretive abstraction over undefined state semantics.",
+    "constraint_layer": "medium — preconditions and stopping criteria follow directly from guards, but invariants and validity conditions rest on a closed-world reading the packet does not confirm.",
+    "representation_layer": "medium-high — the AST mirrors the table faithfully and marks unresolved points as unspecified; the loop-versus-fanout framing is one of several defensible framings.",
+    "recognition_analysis": "high — recognition status and its (non-)use in extraction are reported directly.",
+    "overall": "medium-high"
+  },
+  "notes": "Extraction is verbatim-anchored: every state, condition, and edge is taken from the ten table rows. Deliberate non-normalizations: (1) the three 'expand_paths' arcs were NOT collapsed into a single 'paths listed' guard despite that being the cleaner representation, because the packet does not establish whether the relation is disjunctive, conjunctive, or incidental; (2) 'repeat_cycle' and 'selected_terminal' were NOT elided as pass-through nodes despite adding no branching, because eliding them would discard packet-supported structure; (3) no default/else edges were added for the unguarded negative cases at 'start', 'gather_input', 'repeat_cycle', and 'selected_terminal'. The packet supplies no iteration bound, no threshold definition, no ordering among the three reassessment conditions, and no domain terminology; none of these were supplied from outside the packet. The count of three enumerated paths may be structural or incidental — this is not resolvable from the packet and is recorded as an open ambiguity."
+}
