@@ -27,3 +27,20 @@ test("generated EDR drafts do not include automatic hypothesis updates", async (
   assert.match(summary, /Do not complete interpretations, hypothesis direction, or final decision automatically\./);
   assert.match(exp001, /Human review required\./);
 });
+
+test("placeholder EDR behavior is explicit when evidence is incomplete", async () => {
+  await execFileAsync("node", ["scripts/run-ecr-000003.js", "--reports-all"], { cwd: ecrRoot });
+  const exp003Path = path.join(ecrRoot, "edr/EDR-ECR-000003-EXP003.md");
+  const text = await import("node:fs/promises").then(({ readFile }) => readFile(exp003Path, "utf8"));
+  assert.match(text, /PLACEHOLDER: Comparison evidence is incomplete\./);
+});
+
+test("review-board drafts are generated with observation and interpretation separated", async () => {
+  await execFileAsync("node", ["scripts/run-ecr-000003.js", "--reports-all"], { cwd: ecrRoot });
+  const reviewPath = path.join(ecrRoot, "review-board/EXP001-review.md");
+  const text = await import("node:fs/promises").then(({ readFile }) => readFile(reviewPath, "utf8"));
+  assert.match(text, /## Direct Observations/);
+  assert.match(text, /## Interpretation/);
+  assert.match(text, /Supported by evidence:/);
+  assert.match(text, /Reviewer inference:/);
+});

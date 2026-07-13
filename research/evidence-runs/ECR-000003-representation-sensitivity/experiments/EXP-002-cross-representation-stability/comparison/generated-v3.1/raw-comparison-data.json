@@ -1,0 +1,722 @@
+{
+  "config": {
+    "ecr_id": "ECR-000003",
+    "experiment_id": "EXP-002",
+    "title": "Cross Representation Stability"
+  },
+  "run_state": {
+    "run_id": "6c80a0ae-b59d-4f81-8853-35bae0b25a7e",
+    "comparator_version": "3.1.0",
+    "generated_at": "2026-07-13T19:11:51.202Z"
+  },
+  "primary_record_count": 12,
+  "data_quality": [
+    {
+      "packet_id": "",
+      "provider": "",
+      "status": "warning_1",
+      "notes": "Tolerant parsing used for ECR-000003-EXP002-P001A gpt: responses/gpt/ECR-000003-EXP002-P001A-gpt.json"
+    },
+    {
+      "packet_id": "",
+      "provider": "",
+      "status": "warning_2",
+      "notes": "Tolerant parsing used for ECR-000003-EXP002-P001B gpt: responses/gpt/ECR-000003-EXP002-P001B-gpt.json"
+    },
+    {
+      "packet_id": "",
+      "provider": "",
+      "status": "warning_3",
+      "notes": "Tolerant parsing used for ECR-000003-EXP002-P001C gpt: responses/gpt/ECR-000003-EXP002-P001C-gpt.json"
+    },
+    {
+      "packet_id": "",
+      "provider": "",
+      "status": "warning_4",
+      "notes": "Tolerant parsing used for ECR-000003-EXP002-P001D gpt: responses/gpt/ECR-000003-EXP002-P001D-gpt.json"
+    }
+  ],
+  "recognition_rows": [
+    {
+      "ecr_id": "ECR-000003",
+      "experiment_id": "EXP-002",
+      "packet_id": "ECR-000003-EXP002-P001A",
+      "provider": "gpt",
+      "variant_id": "P001A",
+      "variant_order": 1,
+      "variant_label": "Narrative",
+      "recognition_value": "partial",
+      "recognized_artifact_raw": "Iterative selection procedure with repeated information gathering; possibly recognizable as a general decision procedure, but no specific artifact identified.",
+      "domain_terms_introduced": [
+        "evidence"
+      ],
+      "prior_knowledge_leakage_risk": "low; no specific external framework or named artifact was used to complete missing structure.",
+      "notes": "tolerant_parse"
+    },
+    {
+      "ecr_id": "ECR-000003",
+      "experiment_id": "EXP-002",
+      "packet_id": "ECR-000003-EXP002-P001A",
+      "provider": "claude",
+      "variant_id": "P001A",
+      "variant_order": 1,
+      "variant_label": "Narrative",
+      "recognition_value": "recognized",
+      "recognized_artifact_raw": "Resembles a generic iterative disambiguation / hypothesis-discrimination loop (family includes differential diagnosis, generate-and-test troubleshooting, sequential evidence-gathering decision procedures). No single named artifact is uniquely identifiable from the packet.",
+      "domain_terms_introduced": [
+        "diagnosis",
+        "differential diagnosis",
+        "hypothesis testing",
+        "evidence"
+      ],
+      "prior_knowledge_leakage_risk": "Low-to-moderate: the family recognition could tempt insertion of elimination semantics, evidence-value criteria, or candidate-pruning steps not present in the packet; these were deliberately excluded and flagged as ambiguities instead.",
+      "notes": ""
+    },
+    {
+      "ecr_id": "ECR-000003",
+      "experiment_id": "EXP-002",
+      "packet_id": "ECR-000003-EXP002-P001A",
+      "provider": "gemini",
+      "variant_id": "P001A",
+      "variant_order": 1,
+      "variant_label": "Narrative",
+      "recognition_value": "recognized",
+      "recognized_artifact_raw": "Differential Diagnosis / Bayesian Troubleshooting Loop",
+      "domain_terms_introduced": [
+        "diagnosis",
+        "differential diagnosis",
+        "evidence"
+      ],
+      "prior_knowledge_leakage_risk": "Low. While external concepts like 'Hypotheses' and 'Evidence' map perfectly to 'paths' and 'input', the extracted fields preserve literal text constraints and structure explicitly defined in the narrative.",
+      "notes": ""
+    },
+    {
+      "ecr_id": "ECR-000003",
+      "experiment_id": "EXP-002",
+      "packet_id": "ECR-000003-EXP002-P001B",
+      "provider": "gpt",
+      "variant_id": "P001B",
+      "variant_order": 2,
+      "variant_label": "Bullets",
+      "recognition_value": "partial",
+      "recognized_artifact_raw": "Iterative decision procedure with repeated information gathering and reassessment (recognition unavoidable; no additional structure inferred).",
+      "domain_terms_introduced": [
+        "evidence"
+      ],
+      "prior_knowledge_leakage_risk": "Low. Extraction was limited to the packet text and explicit procedural implications without importing additional structure.",
+      "notes": "tolerant_parse"
+    },
+    {
+      "ecr_id": "ECR-000003",
+      "experiment_id": "EXP-002",
+      "packet_id": "ECR-000003-EXP002-P001B",
+      "provider": "claude",
+      "variant_id": "P001B",
+      "variant_order": 2,
+      "variant_label": "Bullets",
+      "recognition_value": "partial",
+      "recognized_artifact_raw": "The procedure is structurally consistent with a generic iterative hypothesis-discrimination loop (e.g., differential diagnosis, sequential hypothesis testing, or troubleshooting-by-elimination). Recognition is at the family level only; no specific named artifact is identifiable from the packet.",
+      "domain_terms_introduced": [
+        "diagnosis",
+        "differential diagnosis",
+        "hypothesis testing",
+        "evidence"
+      ],
+      "prior_knowledge_leakage_risk": "Low-to-moderate. Main risk points: (1) glossing 'paths' as hypotheses/candidates imports a diagnostic framing; (2) listing PRUNE_CANDIDATES and SELECT_CANDIDATE as candidate missing primitives is informed by knowledge of typical procedures in this family, though both were flagged as unsupported rather than asserted. No steps, conditions, or loop structure were added beyond packet text.",
+      "notes": ""
+    },
+    {
+      "ecr_id": "ECR-000003",
+      "experiment_id": "EXP-002",
+      "packet_id": "ECR-000003-EXP002-P001B",
+      "provider": "gemini",
+      "variant_id": "P001B",
+      "variant_order": 2,
+      "variant_label": "Bullets",
+      "recognition_value": "unknown",
+      "recognized_artifact_raw": "unknown",
+      "domain_terms_introduced": [],
+      "prior_knowledge_leakage_risk": "generic_procedural_language",
+      "notes": ""
+    },
+    {
+      "ecr_id": "ECR-000003",
+      "experiment_id": "EXP-002",
+      "packet_id": "ECR-000003-EXP002-P001C",
+      "provider": "gpt",
+      "variant_id": "P001C",
+      "variant_order": 3,
+      "variant_label": "Graph",
+      "recognition_value": "partial",
+      "recognized_artifact_raw": "A recognizable directed control-flow graph with branching, convergence, conditional branching, a feedback loop, and terminal states; no stronger identification recorded.",
+      "domain_terms_introduced": [],
+      "prior_knowledge_leakage_risk": "low; extraction limited to explicit graph structure and annotations.",
+      "notes": "tolerant_parse"
+    },
+    {
+      "ecr_id": "ECR-000003",
+      "experiment_id": "EXP-002",
+      "packet_id": "ECR-000003-EXP002-P001C",
+      "provider": "claude",
+      "variant_id": "P001C",
+      "variant_order": 3,
+      "variant_label": "Graph",
+      "recognition_value": "not_recognized",
+      "recognized_artifact_raw": "",
+      "domain_terms_introduced": [],
+      "prior_knowledge_leakage_risk": "low; the only interpretive vocabulary used ('dispatch', 'converge', 'evaluate', 'iterate') is generic control-flow terminology derived from graph shape and the three stated guards, not from any recognized source artifact",
+      "notes": ""
+    },
+    {
+      "ecr_id": "ECR-000003",
+      "experiment_id": "EXP-002",
+      "packet_id": "ECR-000003-EXP002-P001C",
+      "provider": "gemini",
+      "variant_id": "P001C",
+      "variant_order": 3,
+      "variant_label": "Graph",
+      "recognition_value": "unknown",
+      "recognized_artifact_raw": "unrecognized",
+      "domain_terms_introduced": [],
+      "prior_knowledge_leakage_risk": "generic_procedural_language",
+      "notes": ""
+    },
+    {
+      "ecr_id": "ECR-000003",
+      "experiment_id": "EXP-002",
+      "packet_id": "ECR-000003-EXP002-P001D",
+      "provider": "gpt",
+      "variant_id": "P001D",
+      "variant_order": 4,
+      "variant_label": "Transition Table",
+      "recognition_value": "partial",
+      "recognized_artifact_raw": "State transition table representing an iterative procedural state machine.",
+      "domain_terms_introduced": [],
+      "prior_knowledge_leakage_risk": "low",
+      "notes": "tolerant_parse"
+    },
+    {
+      "ecr_id": "ECR-000003",
+      "experiment_id": "EXP-002",
+      "packet_id": "ECR-000003-EXP002-P001D",
+      "provider": "claude",
+      "variant_id": "P001D",
+      "variant_order": 4,
+      "variant_label": "Transition Table",
+      "recognition_value": "partial",
+      "recognized_artifact_raw": "no_confirmed_identification; weak structural resemblance only to a generic enumerate-then-narrow iterative decision loop. No prior-knowledge content was used to populate any other field.",
+      "domain_terms_introduced": [],
+      "prior_knowledge_leakage_risk": "low — all state names, condition names, and edges were taken verbatim from the packet; abstraction labels in the primitive layer (e.g., 'enumerate_options', 'evaluate_against_threshold') are derived directly from packet condition text ('path_x listed', 'threshold not met') and introduce no domain vocabulary. Residual risk is that the primitive labels themselves impose a slightly more purposive reading than the bare table warrants.",
+      "notes": ""
+    },
+    {
+      "ecr_id": "ECR-000003",
+      "experiment_id": "EXP-002",
+      "packet_id": "ECR-000003-EXP002-P001D",
+      "provider": "gemini",
+      "variant_id": "P001D",
+      "variant_order": 4,
+      "variant_label": "Transition Table",
+      "recognition_value": "partial",
+      "recognized_artifact_raw": "workflow routing engine / decision path routing logic",
+      "domain_terms_introduced": [],
+      "prior_knowledge_leakage_risk": "Low. Extraction parameters are bound directly to the explicit explicit literal keys provided in the variant transition block table text.",
+      "notes": ""
+    }
+  ],
+  "structural": {
+    "providerComparisons": [
+      {
+        "scope": "gpt across variants",
+        "literal": "disagreement-heavy",
+        "backbone": "partial_agreement",
+        "conceptual": "disagreement-heavy",
+        "dimensional": "disagreement-heavy",
+        "notes": "Within-provider variant stability with backbone separated from wording variance."
+      },
+      {
+        "scope": "claude across variants",
+        "literal": "disagreement-heavy",
+        "backbone": "partial_agreement",
+        "conceptual": "disagreement-heavy",
+        "dimensional": "disagreement-heavy",
+        "notes": "Within-provider variant stability with backbone separated from wording variance."
+      },
+      {
+        "scope": "gemini across variants",
+        "literal": "disagreement-heavy",
+        "backbone": "partial_agreement",
+        "conceptual": "disagreement-heavy",
+        "dimensional": "disagreement-heavy",
+        "notes": "Within-provider variant stability with backbone separated from wording variance."
+      },
+      {
+        "scope": "ECR-000003-EXP002-P001A across providers",
+        "literal": "disagreement-heavy",
+        "backbone": "full_agreement",
+        "conceptual": "disagreement-heavy",
+        "dimensional": "mostly_stable",
+        "notes": "Across-provider variant stability with backbone separated from wording variance."
+      },
+      {
+        "scope": "ECR-000003-EXP002-P001B across providers",
+        "literal": "disagreement-heavy",
+        "backbone": "full_agreement",
+        "conceptual": "disagreement-heavy",
+        "dimensional": "mostly_stable",
+        "notes": "Across-provider variant stability with backbone separated from wording variance."
+      },
+      {
+        "scope": "ECR-000003-EXP002-P001C across providers",
+        "literal": "disagreement-heavy",
+        "backbone": "partial_agreement",
+        "conceptual": "disagreement-heavy",
+        "dimensional": "disagreement-heavy",
+        "notes": "Across-provider variant stability with backbone separated from wording variance."
+      },
+      {
+        "scope": "ECR-000003-EXP002-P001D across providers",
+        "literal": "disagreement-heavy",
+        "backbone": "partial_agreement",
+        "conceptual": "disagreement-heavy",
+        "dimensional": "mixed",
+        "notes": "Across-provider variant stability with backbone separated from wording variance."
+      }
+    ],
+    "literal_profile": "mostly_stable",
+    "backbone_profile": "mixed",
+    "conceptual_profile": "mostly_stable",
+    "dimensional_profile": "mostly_stable",
+    "overall": {
+      "field_results": [
+        {
+          "field": "structural_layer.entry_conditions",
+          "literal": {
+            "category": "disagreement",
+            "similarity": 0.015151515151515152,
+            "populated_count": 12
+          },
+          "conceptual": {
+            "category": "disagreement",
+            "similarity": 0.015151515151515152,
+            "populated_count": 12
+          },
+          "dimensional": {
+            "category": "disagreement",
+            "similarity": 0.21818181818181825,
+            "populated_count": 12,
+            "shared_roles": [
+              "communicate"
+            ]
+          }
+        },
+        {
+          "field": "structural_layer.exit_conditions",
+          "literal": {
+            "category": "disagreement",
+            "similarity": 0.007575757575757576,
+            "populated_count": 12
+          },
+          "conceptual": {
+            "category": "disagreement",
+            "similarity": 0.03787878787878788,
+            "populated_count": 12
+          },
+          "dimensional": {
+            "category": "partial_agreement",
+            "similarity": 0.48787878787878836,
+            "populated_count": 12,
+            "shared_roles": [
+              "decide",
+              "reassess",
+              "terminate"
+            ]
+          }
+        },
+        {
+          "field": "structural_layer.required_steps",
+          "literal": {
+            "category": "disagreement",
+            "similarity": 0.026515151515151516,
+            "populated_count": 12
+          },
+          "conceptual": {
+            "category": "disagreement",
+            "similarity": 0.05176767676767677,
+            "populated_count": 12
+          },
+          "dimensional": {
+            "category": "partial_agreement",
+            "similarity": 0.4772727272727273,
+            "populated_count": 12,
+            "shared_roles": [
+              "compare",
+              "generate",
+              "observe",
+              "reassess"
+            ]
+          }
+        },
+        {
+          "field": "structural_layer.loops",
+          "literal": {
+            "category": "disagreement",
+            "similarity": 0,
+            "populated_count": 12
+          },
+          "conceptual": {
+            "category": "disagreement",
+            "similarity": 0,
+            "populated_count": 12
+          },
+          "dimensional": {
+            "category": "disagreement",
+            "similarity": 0.21969696969696975,
+            "populated_count": 12,
+            "shared_roles": [
+              "observe",
+              "reassess"
+            ]
+          }
+        },
+        {
+          "field": "structural_layer.branches",
+          "literal": {
+            "category": "disagreement",
+            "similarity": 0,
+            "populated_count": 12
+          },
+          "conceptual": {
+            "category": "disagreement",
+            "similarity": 0,
+            "populated_count": 12
+          },
+          "dimensional": {
+            "category": "disagreement",
+            "similarity": 0.14696969696969697,
+            "populated_count": 12,
+            "shared_roles": [
+              "decide",
+              "evaluate",
+              "observe",
+              "reassess"
+            ]
+          }
+        },
+        {
+          "field": "structural_layer.termination_conditions",
+          "literal": {
+            "category": "disagreement",
+            "similarity": 0.03787878787878788,
+            "populated_count": 12
+          },
+          "conceptual": {
+            "category": "disagreement",
+            "similarity": 0.03787878787878788,
+            "populated_count": 12
+          },
+          "dimensional": {
+            "category": "partial_agreement",
+            "similarity": 0.4787878787878791,
+            "populated_count": 12,
+            "shared_roles": [
+              "decide",
+              "sequence",
+              "terminate"
+            ]
+          }
+        }
+      ],
+      "control_flow_shape": {
+        "category": "disagreement",
+        "similarity": 0,
+        "populated_count": 12
+      },
+      "backbone": {
+        "category": "partial_agreement",
+        "similarity": 0.9040404040404042,
+        "populated_count": 12
+      },
+      "literal_counts": {
+        "disagreement": 7
+      },
+      "conceptual_counts": {
+        "disagreement": 6
+      },
+      "dimensional_counts": {
+        "disagreement": 3,
+        "partial_agreement": 3
+      }
+    },
+    "run_id": "6c80a0ae-b59d-4f81-8853-35bae0b25a7e"
+  },
+  "primitives": {
+    "primitive_sequence": {
+      "category": "disagreement",
+      "similarity": 0.02498196248196248,
+      "populated_count": 12
+    },
+    "primitive_roles": {
+      "category": "partial_agreement",
+      "similarity": 0.6909090909090906,
+      "populated_count": 12,
+      "shared_roles": [
+        "decide",
+        "evaluate",
+        "generate",
+        "observe",
+        "reassess",
+        "terminate"
+      ]
+    },
+    "transitions": {
+      "category": "disagreement",
+      "similarity": 0.06060606060606061,
+      "populated_count": 12
+    },
+    "transition_backbone": {
+      "category": "disagreement",
+      "similarity": 0.06060606060606061,
+      "populated_count": 12
+    },
+    "dominant_primitive": {
+      "category": "disagreement",
+      "similarity": 0,
+      "populated_count": 12
+    },
+    "dominant_role": {
+      "category": "disagreement",
+      "similarity": 0.16666666666666663,
+      "populated_count": 12,
+      "shared_roles": [
+        "evaluate",
+        "observe"
+      ]
+    },
+    "candidate_missing_primitives": {
+      "category": "disagreement",
+      "similarity": 0,
+      "populated_count": 9
+    },
+    "style_variance": {
+      "category": "informational_only",
+      "similarity": 0,
+      "populated_count": 12
+    },
+    "counts": {
+      "disagreement": 4
+    },
+    "run_id": "6c80a0ae-b59d-4f81-8853-35bae0b25a7e"
+  },
+  "constraints": {
+    "field_results": [
+      {
+        "field": "constraint_layer.invariants",
+        "comparison": {
+          "category": "disagreement",
+          "similarity": 0,
+          "populated_count": 8
+        }
+      },
+      {
+        "field": "constraint_layer.preconditions",
+        "comparison": {
+          "category": "disagreement",
+          "similarity": 0.01818181818181818,
+          "populated_count": 11
+        }
+      },
+      {
+        "field": "constraint_layer.postconditions",
+        "comparison": {
+          "category": "disagreement",
+          "similarity": 0,
+          "populated_count": 11
+        }
+      },
+      {
+        "field": "constraint_layer.stopping_criteria",
+        "comparison": {
+          "category": "disagreement",
+          "similarity": 0.00505050505050505,
+          "populated_count": 12
+        }
+      },
+      {
+        "field": "constraint_layer.validity_conditions",
+        "comparison": {
+          "category": "disagreement",
+          "similarity": 0,
+          "populated_count": 9
+        }
+      }
+    ],
+    "conceptual": {
+      "category": "disagreement",
+      "similarity": 0.02032227032227033,
+      "populated_count": 12
+    },
+    "dimensional": {
+      "category": "full_agreement",
+      "similarity": 1,
+      "populated_count": 12,
+      "shared_roles": [
+        "communicate",
+        "compare",
+        "decide",
+        "evaluate",
+        "generate",
+        "observe",
+        "reassess",
+        "sequence",
+        "terminate"
+      ]
+    },
+    "field_placement_sensitivity": "high",
+    "counts": {
+      "disagreement": 5
+    },
+    "run_id": "6c80a0ae-b59d-4f81-8853-35bae0b25a7e"
+  },
+  "representation": {
+    "procedural_ast_presence": {
+      "category": "full_agreement",
+      "similarity": 1,
+      "populated_count": 12
+    },
+    "natural_language_summary": {
+      "category": "informational_only",
+      "similarity": 0.31049937401393174,
+      "populated_count": 12
+    },
+    "canonical_summary": {
+      "category": "informational_only",
+      "similarity": 0.13115120408761685,
+      "populated_count": 12
+    },
+    "ambiguities": {
+      "category": "informational_only",
+      "similarity": 0.12791341944145868,
+      "populated_count": 12
+    },
+    "notes": {
+      "category": "informational_only",
+      "similarity": 0,
+      "populated_count": 12
+    },
+    "counts": {
+      "full_agreement": 1
+    },
+    "run_id": "6c80a0ae-b59d-4f81-8853-35bae0b25a7e"
+  },
+  "leakage_rows": [
+    {
+      "packet_id": "ECR-000003-EXP002-P001A",
+      "provider": "gpt",
+      "domain_terms": [
+        "evidence"
+      ],
+      "classification": "possible_structural_inference",
+      "notes": "low; no specific external framework or named artifact was used to complete missing structure."
+    },
+    {
+      "packet_id": "ECR-000003-EXP002-P001A",
+      "provider": "claude",
+      "domain_terms": [
+        "diagnosis",
+        "differential diagnosis",
+        "hypothesis testing",
+        "evidence"
+      ],
+      "classification": "likely_prior_knowledge_leakage",
+      "notes": "Low-to-moderate: the family recognition could tempt insertion of elimination semantics, evidence-value criteria, or candidate-pruning steps not present in the packet; these were deliberately excluded and flagged as ambiguities instead."
+    },
+    {
+      "packet_id": "ECR-000003-EXP002-P001A",
+      "provider": "gemini",
+      "domain_terms": [
+        "diagnosis",
+        "differential diagnosis",
+        "evidence"
+      ],
+      "classification": "likely_prior_knowledge_leakage",
+      "notes": "Low. While external concepts like 'Hypotheses' and 'Evidence' map perfectly to 'paths' and 'input', the extracted fields preserve literal text constraints and structure explicitly defined in the narrative."
+    },
+    {
+      "packet_id": "ECR-000003-EXP002-P001B",
+      "provider": "gpt",
+      "domain_terms": [
+        "evidence"
+      ],
+      "classification": "possible_structural_inference",
+      "notes": "Low. Extraction was limited to the packet text and explicit procedural implications without importing additional structure."
+    },
+    {
+      "packet_id": "ECR-000003-EXP002-P001B",
+      "provider": "claude",
+      "domain_terms": [
+        "diagnosis",
+        "differential diagnosis",
+        "hypothesis testing",
+        "evidence"
+      ],
+      "classification": "likely_prior_knowledge_leakage",
+      "notes": "Low-to-moderate. Main risk points: (1) glossing 'paths' as hypotheses/candidates imports a diagnostic framing; (2) listing PRUNE_CANDIDATES and SELECT_CANDIDATE as candidate missing primitives is informed by knowledge of typical procedures in this family, though both were flagged as unsupported rather than asserted. No steps, conditions, or loop structure were added beyond packet text."
+    },
+    {
+      "packet_id": "ECR-000003-EXP002-P001B",
+      "provider": "gemini",
+      "domain_terms": [],
+      "classification": "generic_procedural_language",
+      "notes": "generic_procedural_language"
+    },
+    {
+      "packet_id": "ECR-000003-EXP002-P001C",
+      "provider": "gpt",
+      "domain_terms": [],
+      "classification": "generic_procedural_language",
+      "notes": "low; extraction limited to explicit graph structure and annotations."
+    },
+    {
+      "packet_id": "ECR-000003-EXP002-P001C",
+      "provider": "claude",
+      "domain_terms": [],
+      "classification": "generic_procedural_language",
+      "notes": "low; the only interpretive vocabulary used ('dispatch', 'converge', 'evaluate', 'iterate') is generic control-flow terminology derived from graph shape and the three stated guards, not from any recognized source artifact"
+    },
+    {
+      "packet_id": "ECR-000003-EXP002-P001C",
+      "provider": "gemini",
+      "domain_terms": [],
+      "classification": "generic_procedural_language",
+      "notes": "generic_procedural_language"
+    },
+    {
+      "packet_id": "ECR-000003-EXP002-P001D",
+      "provider": "gpt",
+      "domain_terms": [],
+      "classification": "generic_procedural_language",
+      "notes": "low"
+    },
+    {
+      "packet_id": "ECR-000003-EXP002-P001D",
+      "provider": "claude",
+      "domain_terms": [],
+      "classification": "generic_procedural_language",
+      "notes": "low — all state names, condition names, and edges were taken verbatim from the packet; abstraction labels in the primitive layer (e.g., 'enumerate_options', 'evaluate_against_threshold') are derived directly from packet condition text ('path_x listed', 'threshold not met') and introduce no domain vocabulary. Residual risk is that the primitive labels themselves impose a slightly more purposive reading than the bare table warrants."
+    },
+    {
+      "packet_id": "ECR-000003-EXP002-P001D",
+      "provider": "gemini",
+      "domain_terms": [],
+      "classification": "generic_procedural_language",
+      "notes": "Low. Extraction parameters are bound directly to the explicit explicit literal keys provided in the variant transition block table text."
+    }
+  ],
+  "warnings": [
+    "Tolerant parsing used for ECR-000003-EXP002-P001A gpt: responses/gpt/ECR-000003-EXP002-P001A-gpt.json",
+    "Tolerant parsing used for ECR-000003-EXP002-P001B gpt: responses/gpt/ECR-000003-EXP002-P001B-gpt.json",
+    "Tolerant parsing used for ECR-000003-EXP002-P001C gpt: responses/gpt/ECR-000003-EXP002-P001C-gpt.json",
+    "Tolerant parsing used for ECR-000003-EXP002-P001D gpt: responses/gpt/ECR-000003-EXP002-P001D-gpt.json"
+  ]
+}

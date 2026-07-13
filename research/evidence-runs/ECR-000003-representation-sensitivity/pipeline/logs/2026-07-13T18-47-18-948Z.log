@@ -1,0 +1,54 @@
+[2026-07-13T18:47:18.934Z] Node.js available: pass - v25.6.0
+[2026-07-13T18:47:18.934Z] Node.js version supported: pass - Require Node.js 18 or newer
+[2026-07-13T18:47:18.934Z] ECR root package.json exists: pass - package.json
+[2026-07-13T18:47:18.934Z] ECR root npm script verify: pass - verify
+[2026-07-13T18:47:18.934Z] ECR root npm script normalize:dry: pass - normalize:dry
+[2026-07-13T18:47:18.934Z] ECR root npm script normalize: pass - normalize
+[2026-07-13T18:47:18.934Z] ECR root npm script compare:all: pass - compare:all
+[2026-07-13T18:47:18.934Z] ECR root npm script reports:all: pass - reports:all
+[2026-07-13T18:47:18.934Z] ECR root npm script pipeline:dry: pass - pipeline:dry
+[2026-07-13T18:47:18.935Z] ECR root npm script pipeline: pass - pipeline
+[2026-07-13T18:47:18.935Z] ECR root npm script pipeline:force-reports: pass - pipeline:force-reports
+[2026-07-13T18:47:18.935Z] ECR root npm script test: pass - test
+[2026-07-13T18:47:18.935Z] response-file-normalizer exists: pass - research/tools/response-file-normalizer
+[2026-07-13T18:47:18.935Z] comparison-engine exists: pass - research/tools/comparison-engine
+[2026-07-13T18:47:18.935Z] Comparator VERSION equals 3.1.0: pass - Required 3.1.0
+[2026-07-13T18:47:18.935Z] EXP-001 directory exists: pass - experiments/EXP-001-topology-perturbation
+[2026-07-13T18:47:18.935Z] EXP-001 packets directory exists: pass - experiments/EXP-001-topology-perturbation/packets
+[2026-07-13T18:47:18.935Z] EXP-001 response directory exists: pass - experiments/EXP-001-topology-perturbation/responses
+[2026-07-13T18:47:18.935Z] EXP-001 comparison config exists: pass - experiments/EXP-001-topology-perturbation/comparison-config.json
+[2026-07-13T18:47:18.935Z] EXP-001 package.json exists: pass - experiments/EXP-001-topology-perturbation/package.json
+[2026-07-13T18:47:18.935Z] EXP-001 output directory writable: pass - experiments/EXP-001-topology-perturbation/comparison/generated-v3.1
+[2026-07-13T18:47:18.936Z] EXP-001 packet count: pass - 4 packets
+[2026-07-13T18:47:18.936Z] EXP-001 provider dir gpt: pass - experiments/EXP-001-topology-perturbation/responses/gpt
+[2026-07-13T18:47:18.936Z] EXP-001 provider dir claude: pass - experiments/EXP-001-topology-perturbation/responses/claude
+[2026-07-13T18:47:18.936Z] EXP-001 provider dir gemini: pass - experiments/EXP-001-topology-perturbation/responses/gemini
+[2026-07-13T18:47:18.936Z] EXP-002 directory exists: pass - experiments/EXP-002-cross-representation-stability
+[2026-07-13T18:47:18.936Z] EXP-002 packets directory exists: pass - experiments/EXP-002-cross-representation-stability/packets
+[2026-07-13T18:47:18.936Z] EXP-002 response directory exists: pass - experiments/EXP-002-cross-representation-stability/responses
+[2026-07-13T18:47:18.936Z] EXP-002 comparison config exists: pass - experiments/EXP-002-cross-representation-stability/comparison-config.json
+[2026-07-13T18:47:18.936Z] EXP-002 package.json exists: pass - experiments/EXP-002-cross-representation-stability/package.json
+[2026-07-13T18:47:18.936Z] EXP-002 output directory writable: pass - experiments/EXP-002-cross-representation-stability/comparison/generated-v3.1
+[2026-07-13T18:47:18.937Z] EXP-002 packet count: pass - 4 packets
+[2026-07-13T18:47:18.937Z] EXP-002 provider dir gpt: pass - experiments/EXP-002-cross-representation-stability/responses/gpt
+[2026-07-13T18:47:18.937Z] EXP-002 provider dir claude: pass - experiments/EXP-002-cross-representation-stability/responses/claude
+[2026-07-13T18:47:18.937Z] EXP-002 provider dir gemini: pass - experiments/EXP-002-cross-representation-stability/responses/gemini
+[2026-07-13T18:47:18.937Z] EXP-003 directory exists: pass - experiments/EXP-003-isomorphic-procedures
+[2026-07-13T18:47:18.937Z] EXP-003 packets directory exists: pass - experiments/EXP-003-isomorphic-procedures/packets
+[2026-07-13T18:47:18.937Z] EXP-003 response directory exists: pass - experiments/EXP-003-isomorphic-procedures/responses
+[2026-07-13T18:47:18.937Z] EXP-003 comparison config exists: pass - experiments/EXP-003-isomorphic-procedures/comparison-config.json
+[2026-07-13T18:47:18.937Z] EXP-003 package.json exists: pass - experiments/EXP-003-isomorphic-procedures/package.json
+[2026-07-13T18:47:18.937Z] EXP-003 output directory writable: pass - experiments/EXP-003-isomorphic-procedures/comparison/generated-v3.1
+[2026-07-13T18:47:18.937Z] EXP-003 packet count: pass - 3 packets
+[2026-07-13T18:47:18.937Z] EXP-003 provider dir gpt: pass - experiments/EXP-003-isomorphic-procedures/responses/gpt
+[2026-07-13T18:47:18.937Z] EXP-003 provider dir claude: pass - experiments/EXP-003-isomorphic-procedures/responses/claude
+[2026-07-13T18:47:18.937Z] EXP-003 provider dir gemini: pass - experiments/EXP-003-isomorphic-procedures/responses/gemini
+[2026-07-13T18:47:18.937Z] Comparator v3.1 approval record exists: pass - EXP-001 calibration approval record
+[2026-07-13T18:47:18.937Z] Comparator v3.1 freeze record exists: pass - EXP-001 calibration freeze record
+[2026-07-13T18:47:18.937Z] Pre-fix EXP-001 P001D remains excluded: pass - responses/pre-fix/p001d/00001D.json
+[2026-07-13T18:47:18.942Z] wrote dataset completeness report
+[2026-07-13T18:47:18.943Z] wrote pipeline/generated/experiment-results.json
+[2026-07-13T18:47:18.944Z] wrote ECR summary and observation ledger
+[2026-07-13T18:47:18.944Z] wrote hypothesis, claims, and threats review inputs
+[2026-07-13T18:47:18.945Z] wrote EDR draft index and status
+[2026-07-13T18:47:18.948Z] wrote pipeline manifest and implementation report

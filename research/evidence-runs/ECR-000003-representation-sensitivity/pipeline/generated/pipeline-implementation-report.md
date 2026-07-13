@@ -12,6 +12,8 @@
 | scripts/generate-hypothesis-update-input.js | Created | Hypothesis, claims, and threats review inputs. | complete |
 | scripts/generate-edr-index.js | Created | EDR draft generation and indexing. | complete |
 | scripts/write-pipeline-manifest.js | Created | Final manifest and implementation report writer. | complete |
+| review-board/*.md | Created | Experiment and ECR review workflow artifacts. | complete |
+| research/operating-system/review-board/*.md | Created | Reusable review-board templates and status checklist. | complete |
 | PIPELINE.md | Created | Operator guide for safe ECR execution. | complete |
 | test/*.test.js | Created | Pipeline regression and safety checks. | complete |
 | research/operating-system/research-memory-index.md | Updated | Link research memory to ECR automation outputs. | complete |

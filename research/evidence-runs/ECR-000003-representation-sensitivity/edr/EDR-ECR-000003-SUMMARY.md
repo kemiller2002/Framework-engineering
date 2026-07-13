@@ -15,5 +15,6 @@ draft / reviewed / accepted
 
 ## Observation
 
+- PLACEHOLDER: Comparison evidence is incomplete.
 - Reference EDR-ECR-000003-EXP001, EDR-ECR-000003-EXP002, and EDR-ECR-000003-EXP003.
 - Do not complete interpretations, hypothesis direction, or final decision automatically.

@@ -1,24 +1,12 @@
 {
-  "pipeline_id": "2026-07-13T18-20-42-672Z",
+  "pipeline_id": "2026-07-13T19-13-07-215Z",
   "ecr_id": "ECR-000003",
   "pipeline_version": "1.0.0",
   "comparator_version": "3.1.0",
-  "started_at": "2026-07-13T18:20:42.672Z",
-  "completed_at": "2026-07-13T18:20:42.819Z",
-  "mode": "all-dry-run",
-  "normalization": {
-    "command": "node /Users/kevinmiller/dev/Framework-engineering/research/tools/response-file-normalizer/src/normalize-response-files.js --ecr-root /Users/kevinmiller/dev/Framework-engineering/research/evidence-runs/ECR-000003-representation-sensitivity --dry-run",
-    "status": "success",
-    "exitCode": 0,
-    "stdout": "",
-    "stderr": "",
-    "reports": [
-      "response-file-inventory.md",
-      "response-filename-normalization-log.md",
-      "response-dataset-readiness.md",
-      "response-filename-verification-report.md"
-    ]
-  },
+  "started_at": "2026-07-13T19:13:07.215Z",
+  "completed_at": "2026-07-13T19:13:07.260Z",
+  "mode": "reports-all",
+  "normalization": {},
   "dataset": {
     "experiments": [
       {
@@ -55,31 +43,15 @@
         "malformed": 0,
         "conflicts": 0,
         "unsafeMalformed": 0,
-        "status": "NOT_READY"
+        "status": "BLOCKED"
       }
     ],
-    "overallStatus": "NOT_READY",
+    "overallStatus": "BLOCKED",
     "warnings": [
       "EXP-003 missing 9 primary responses."
     ]
   },
-  "experiments": {
-    "EXP-001": {
-      "experiment": "EXP-001",
-      "status": "blocked",
-      "reason": "Blocking dataset failure."
-    },
-    "EXP-002": {
-      "experiment": "EXP-002",
-      "status": "blocked",
-      "reason": "Blocking dataset failure."
-    },
-    "EXP-003": {
-      "experiment": "EXP-003",
-      "status": "blocked",
-      "reason": "Blocking dataset failure."
-    }
-  },
+  "experiments": {},
   "reports": [
     "pipeline/generated/environment-verification.md",
     "pipeline/generated/dataset-completeness.md",
@@ -98,9 +70,9 @@
     "edr/EDR-ECR-000003-EXP003.md",
     "edr/EDR-ECR-000003-SUMMARY.md"
   ],
-  "warnings": [],
-  "blocking_errors": [
-    "Dataset completeness not ready for full comparison."
+  "warnings": [
+    "EXP-003 missing 9 primary responses."
   ],
-  "status": "blocked"
+  "blocking_errors": [],
+  "status": "complete_with_warnings"
 }

@@ -62,21 +62,25 @@ async function main() {
 
   const datasetInfo = await calculateDatasetCompleteness(context, logger);
   manifest.dataset = datasetInfo;
-  if (datasetInfo.overallStatus === "NOT_READY") {
-    manifest.blocking_errors.push("Dataset completeness not ready for full comparison.");
-  }
+  manifest.warnings.push(...datasetInfo.warnings);
 
   const compareRequested = context.options.compareAll || context.options.all;
-  if (compareRequested && manifest.blocking_errors.length === 0) {
+  if (compareRequested) {
     const selected = context.options.experiment
       ? context.experiments.filter((experiment) => experiment.id === context.options.experiment)
       : context.experiments;
+    const eligible = datasetInfo.experiments.filter((item) => item.status !== "BLOCKED");
+    const blocked = datasetInfo.experiments.filter((item) => item.status === "BLOCKED");
+    if (eligible.length === 0) {
+      manifest.blocking_errors.push("Dataset completeness not ready for any comparison.");
+    }
     for (const experiment of selected) {
       manifest.experiments[experiment.id] = await runExperimentComparison(context, experiment, datasetInfo, logger);
     }
-  } else if (compareRequested) {
-    for (const experiment of context.experiments) {
-      manifest.experiments[experiment.id] = { experiment: experiment.id, status: "blocked", reason: "Blocking dataset failure." };
+    for (const item of blocked) {
+      if (!manifest.experiments[item.experiment]) {
+        manifest.experiments[item.experiment] = { experiment: item.experiment, status: "blocked", reason: "Dataset not ready for comparison.", evidenceReady: false };
+      }
     }
   }
 
@@ -104,6 +108,11 @@ async function main() {
     "edr/EDR-ECR-000003-EXP003.md",
     "edr/EDR-ECR-000003-SUMMARY.md"
   ];
+  const anyGenerated = Object.values(manifest.experiments).some((item) => item?.status === "generated");
+  const anyBlocked = Object.values(manifest.experiments).some((item) => item?.status === "blocked");
+  if (anyGenerated && anyBlocked) {
+    manifest.warnings.push("Partial execution completed: at least one experiment ran while another remained blocked.");
+  }
   manifest.status = manifest.blocking_errors.length > 0 ? "blocked" : (manifest.warnings.length > 0 ? "complete_with_warnings" : "complete");
   await finalize(manifest, rawBefore);
 }
@@ -159,7 +168,7 @@ async function calculateDatasetCompleteness(context, logger) {
     }
     const status = missing === 0 && conflicts === 0 && unsafeMalformed === 0
       ? (malformed === 0 ? "READY" : "READY_WITH_WARNINGS")
-      : "NOT_READY";
+      : "BLOCKED";
     experiments.push({
       experiment: experiment.id,
       packets: packets.length,
@@ -178,9 +187,9 @@ async function calculateDatasetCompleteness(context, logger) {
   }
   const overallStatus = experiments.every((item) => item.status === "READY")
     ? "READY"
-    : experiments.every((item) => item.status !== "NOT_READY")
+    : experiments.every((item) => item.status !== "BLOCKED")
       ? "READY_WITH_WARNINGS"
-      : "NOT_READY";
+      : "BLOCKED";
   await writeText(
     path.join(context.pipelineGeneratedDir, "dataset-completeness.md"),
     [
@@ -229,7 +238,7 @@ async function writeSupplementalReports(context, datasetInfo, experimentResults)
       "",
       "## Overall Status",
       "",
-      `- ${datasetInfo.overallStatus === "NOT_READY" ? "BLOCKED" : "READY_WITH_WARNINGS"}`,
+      `- ${deriveReadinessStatus(datasetInfo, experimentResults)}`,
       "",
       "## Dataset Readiness",
       "",
@@ -242,7 +251,7 @@ async function writeSupplementalReports(context, datasetInfo, experimentResults)
       ...context.experiments.map((experiment) => {
         const result = experimentResults.experiments[experiment.id];
         const item = datasetInfo.experiments.find((row) => row.experiment === experiment.id);
-        return `| ${experiment.id} | ${result?.status === "available" ? "yes" : "no"} | yes | missing=${item?.missing ?? 0}; malformed=${item?.malformed ?? 0} | required |`;
+        return `| ${experiment.id} | ${result?.evidence_ready ? "yes" : "no"} | ${result?.evidence_ready ? "yes" : "no"} | missing=${item?.missing ?? 0}; malformed=${item?.malformed ?? 0} | ${reviewWorkflowStatus(experiment.id, result)} |`;
       }),
       "",
       "## Comparator Status",
@@ -259,6 +268,9 @@ async function writeSupplementalReports(context, datasetInfo, experimentResults)
       "## Hypothesis Review Inputs",
       "",
       `- ${path.relative(context.ecrRoot, path.join(context.pipelineGeneratedDir, "hypothesis-matrix-update-input.md")).replaceAll(path.sep, "/")}`,
+      `- review-board/EXP001-review.md`,
+      `- review-board/EXP002-review.md`,
+      `- review-board/EXP003-review.md`,
       "",
       "## Claims Review Inputs",
       "",
@@ -270,14 +282,18 @@ async function writeSupplementalReports(context, datasetInfo, experimentResults)
       "",
       "## Blocking Issues",
       "",
-      ...datasetInfo.warnings.map((warning) => `- ${warning}`),
+      ...(datasetInfo.warnings.length > 0 ? datasetInfo.warnings.map((warning) => `- ${warning}`) : ["- None"]),
       "",
       "## Exact Next Human Actions",
       "",
       "- Review EXP-001 EDR: `edr/EDR-ECR-000003-EXP001.md`",
+      "- Review EXP-001 review: `review-board/EXP001-review.md`",
       "- Review EXP-002 EDR: `edr/EDR-ECR-000003-EXP002.md`",
+      "- Review EXP-002 review: `review-board/EXP002-review.md`",
       "- Review EXP-003 EDR: `edr/EDR-ECR-000003-EXP003.md`",
+      "- Review EXP-003 review: `review-board/EXP003-review.md`",
       "- Review ECR summary EDR: `edr/EDR-ECR-000003-SUMMARY.md`",
+      "- Review ECR summary review: `review-board/ECR-000003-summary-review.md`",
       "- Review hypothesis matrix input: `pipeline/generated/hypothesis-matrix-update-input.md`",
       "- Review scientific claims input: `pipeline/generated/scientific-claims-review-input.md`"
     ].join("\n")
@@ -290,7 +306,7 @@ async function writeSupplementalReports(context, datasetInfo, experimentResults)
       "",
       "## Overall Status",
       "",
-      `- ${datasetInfo.overallStatus === "NOT_READY" ? "BLOCKED" : datasetInfo.experiments.some((item) => item.malformed > 0) ? "READY_WITH_WARNINGS" : "READY_FOR_HUMAN_REVIEW"}`,
+      `- ${deriveReadinessStatus(datasetInfo, experimentResults)}`,
       "",
       "## Response Dataset",
       "",
@@ -304,7 +320,7 @@ async function writeSupplementalReports(context, datasetInfo, experimentResults)
       "|---|---|---|---|---|",
       ...context.experiments.map((experiment) => {
         const result = experimentResults.experiments[experiment.id];
-        const ready = result?.status === "available" ? "yes" : "no";
+        const ready = result?.evidence_ready ? "yes" : "no";
         return `| ${experiment.id} | ${result?.run_id || ""} | ${result?.comparator_version || COMPARATOR_VERSION} | ${ready} | ${result?.status || "unavailable"} |`;
       }),
       "",
@@ -338,6 +354,22 @@ async function writeSupplementalReports(context, datasetInfo, experimentResults)
       "Review and accept the three experiment EDRs, then complete the ECR-000003 summary EDR and hypothesis evidence matrix update."
     ].join("\n")
   );
+}
+
+function deriveReadinessStatus(datasetInfo, experimentResults) {
+  const anyReady = Object.values(experimentResults.experiments).some((result) => result?.evidence_ready);
+  const anyBlocked = datasetInfo.experiments.some((item) => item.status === "BLOCKED");
+  const allReady = datasetInfo.experiments.every((item) => item.status !== "BLOCKED")
+    && Object.values(experimentResults.experiments).every((result) => result?.evidence_ready);
+  if (allReady) return "READY_FOR_HUMAN_REVIEW";
+  if (anyReady && anyBlocked) return "PARTIAL_READY_FOR_HUMAN_REVIEW";
+  if (datasetInfo.experiments.some((item) => item.status === "READY_WITH_WARNINGS")) return "READY_WITH_WARNINGS";
+  return "BLOCKED";
+}
+
+function reviewWorkflowStatus(experimentId, result) {
+  if (!result?.evidence_ready) return "Deferred";
+  return "Draft";
 }
 
 async function finalize(manifest, rawBefore) {

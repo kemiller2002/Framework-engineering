@@ -1,15 +1,16 @@
 import path from "node:path";
-import { runComparisonEngine } from "../../../tools/comparison-engine/src/index.js";
-import { readJson, writeJson, writeText, relativeFrom } from "./utilities.js";
+import { spawnSync } from "node:child_process";
+import { exists, latestInputTimestamp, mtimeMs, readJson, writeJson, writeText, relativeFrom } from "./utilities.js";
 
 export async function runExperimentComparison(context, experiment, datasetInfo, logger) {
   const matching = datasetInfo.experiments.find((item) => item.experiment === experiment.id);
-  if (!matching || matching.missing > 0 || matching.conflicts > 0 || matching.unsafeMalformed > 0) {
+  if (!matching || matching.status === "BLOCKED") {
     return {
       experiment: experiment.id,
       status: "blocked",
       reason: "Dataset not ready for comparison.",
-      generated: []
+      generated: [],
+      evidenceReady: false
     };
   }
 
@@ -18,140 +19,207 @@ export async function runExperimentComparison(context, experiment, datasetInfo, 
       experiment: experiment.id,
       status: "skipped",
       reason: "Dry run only.",
-      generated: []
+      generated: [],
+      evidenceReady: false
     };
   }
 
-  logger.log(`running comparator for ${experiment.id} using ${relativeFrom(context.ecrRoot, experiment.configPath)}`);
-  const results = await runComparisonEngine(experiment.configPath);
-  const generated = await postProcessExperimentOutputs(context, experiment, results);
-  return {
-    experiment: experiment.id,
-    status: "generated",
-    reason: "",
-    generated,
-    runId: results.runState.run_id
-  };
-}
-
-async function postProcessExperimentOutputs(context, experiment, results) {
-  const generated = [];
-  const outputDir = experiment.outputRoot;
-  const rawPath = path.join(outputDir, "raw-comparison-data.json");
-  const runManifest = {
-    experiment: experiment.id,
-    run_id: results.runState.run_id,
-    comparator_version: results.runState.comparator_version,
-    ontology_version: "research/tools/comparison-engine/ontology",
-    generated_at: results.runState.generated_at,
-    primary_record_count: results.primaryRecords.length,
-    data_quality_count: results.dataQuality.length
-  };
-  await writeJson(path.join(outputDir, "run-manifest.json"), runManifest);
-  generated.push(path.join(outputDir, "run-manifest.json"));
-  await readJson(rawPath);
-
-  if (experiment.id === "EXP-001") {
-    await writeText(path.join(outputDir, "structural-backbone-report.md"), buildBackboneReport(experiment, results));
-    await writeText(path.join(outputDir, "structural-field-variance-report.md"), buildStructuralVarianceReport(results));
-    await writeText(path.join(outputDir, "constraint-concept-report.md"), buildConstraintConceptReport(results));
-    await writeText(path.join(outputDir, "representation-compliance-report.md"), buildRepresentationComplianceReport(results));
-    await writeText(path.join(outputDir, "representation-review-fields.md"), buildRepresentationReviewFields(results));
-    generated.push(
-      path.join(outputDir, "structural-backbone-report.md"),
-      path.join(outputDir, "structural-field-variance-report.md"),
-      path.join(outputDir, "constraint-concept-report.md"),
-      path.join(outputDir, "representation-compliance-report.md"),
-      path.join(outputDir, "representation-review-fields.md")
-    );
-  } else if (experiment.id === "EXP-002") {
-    await writeText(path.join(outputDir, "cross-representation-backbone-report.md"), buildBackboneReport(experiment, results));
-    await writeText(path.join(outputDir, "representation-format-effects.md"), buildRepresentationEffectsReport(results));
-    await writeText(path.join(outputDir, "constraint-concept-report.md"), buildConstraintConceptReport(results));
-    await writeText(path.join(outputDir, "representation-compliance-report.md"), buildRepresentationComplianceReport(results));
-    await writeText(path.join(outputDir, "provider-behavior-report.md"), buildProviderBehaviorReport(results));
-    generated.push(
-      path.join(outputDir, "cross-representation-backbone-report.md"),
-      path.join(outputDir, "representation-format-effects.md"),
-      path.join(outputDir, "constraint-concept-report.md"),
-      path.join(outputDir, "representation-compliance-report.md"),
-      path.join(outputDir, "provider-behavior-report.md")
-    );
-  } else if (experiment.id === "EXP-003") {
-    await writeText(path.join(outputDir, "isomorphic-backbone-report.md"), buildBackboneReport(experiment, results));
-    await writeText(path.join(outputDir, "domain-effect-report.md"), buildDomainEffectReport(results));
-    await writeText(path.join(outputDir, "recognition-by-domain-report.md"), buildRecognitionByDomain(results));
-    await writeText(path.join(outputDir, "constraint-concept-report.md"), buildConstraintConceptReport(results));
-    await writeText(path.join(outputDir, "representation-compliance-report.md"), buildRepresentationComplianceReport(results));
-    await writeText(path.join(outputDir, "provider-behavior-report.md"), buildProviderBehaviorReport(results));
-    generated.push(
-      path.join(outputDir, "isomorphic-backbone-report.md"),
-      path.join(outputDir, "domain-effect-report.md"),
-      path.join(outputDir, "recognition-by-domain-report.md"),
-      path.join(outputDir, "constraint-concept-report.md"),
-      path.join(outputDir, "representation-compliance-report.md"),
-      path.join(outputDir, "provider-behavior-report.md")
-    );
+  const command = "npm run compare:v3.1";
+  const startedAt = new Date().toISOString();
+  logger.log(`comparator command: ${command}`);
+  logger.log(`comparator cwd: ${experiment.root}`);
+  const result = spawnSync("npm", ["run", "compare:v3.1"], {
+    cwd: experiment.root,
+    encoding: "utf8",
+  });
+  const completedAt = new Date().toISOString();
+  logger.log(`comparator exit code: ${result.status ?? 1}`);
+  if (result.stdout) logger.log(`comparator stdout: ${truncate(result.stdout)}`);
+  if (result.stderr) logger.log(`comparator stderr: ${truncate(result.stderr)}`);
+  if (result.status !== 0) {
+    return {
+      experiment: experiment.id,
+      status: "failed",
+      reason: "Comparator subprocess failed.",
+      generated: [],
+      evidenceReady: false,
+      command,
+      cwd: experiment.root,
+      exitCode: result.status ?? 1,
+      startedAt,
+      completedAt
+    };
   }
 
-  return generated.map((filePath) => relativeFrom(context.ecrRoot, filePath));
+  await generateAdapterReports(experiment);
+  const verification = await verifyComparatorOutputs(context, experiment);
+  const generated = verification.generated;
+  logger.log(`generated reports: ${generated.join(", ") || "none"}`);
+  return {
+    experiment: experiment.id,
+    status: verification.ok ? "generated" : "failed",
+    reason: verification.ok ? "" : verification.issues.join("; "),
+    generated,
+    evidenceReady: verification.ok,
+    runId: verification.runId,
+    command,
+    cwd: experiment.root,
+    exitCode: result.status ?? 0,
+    startedAt,
+    completedAt,
+    issues: verification.issues
+  };
 }
 
-function buildBackboneReport(experiment, results) {
+async function generateAdapterReports(experiment) {
+  const outputDir = experiment.outputRoot;
+  const rawPath = path.join(outputDir, "raw-comparison-data.json");
+  if (!(await exists(rawPath))) {
+    return;
+  }
+  const raw = await readJson(rawPath);
+  const runState = raw.run_state || {};
+  if (experiment.id === "EXP-001") {
+    await writeText(path.join(outputDir, "exp-001-comparison-summary.md"), buildComparisonSummary(experiment, raw));
+    await writeText(path.join(outputDir, "structural-backbone-report.md"), buildBackboneReport(experiment, raw));
+    await writeText(path.join(outputDir, "structural-field-variance-report.md"), buildStructuralVarianceReport(raw));
+    await writeText(path.join(outputDir, "constraint-concept-report.md"), buildConstraintConceptReport(raw));
+    await writeText(path.join(outputDir, "representation-compliance-report.md"), buildRepresentationComplianceReport(raw));
+    await writeText(path.join(outputDir, "representation-review-fields.md"), buildRepresentationReviewFields(runState));
+  } else if (experiment.id === "EXP-002") {
+    await writeText(path.join(outputDir, "exp-002-comparison-summary.md"), buildComparisonSummary(experiment, raw));
+    await writeText(path.join(outputDir, "cross-representation-backbone-report.md"), buildBackboneReport(experiment, raw));
+    await writeText(path.join(outputDir, "representation-format-effects.md"), buildRepresentationEffectsReport(raw));
+    await writeText(path.join(outputDir, "constraint-concept-report.md"), buildConstraintConceptReport(raw));
+    await writeText(path.join(outputDir, "representation-compliance-report.md"), buildRepresentationComplianceReport(raw));
+    await writeText(path.join(outputDir, "provider-behavior-report.md"), buildProviderBehaviorReport(raw));
+  } else if (experiment.id === "EXP-003") {
+    await writeText(path.join(outputDir, "exp-003-comparison-summary.md"), buildComparisonSummary(experiment, raw));
+    await writeText(path.join(outputDir, "isomorphic-backbone-report.md"), buildBackboneReport(experiment, raw));
+    await writeText(path.join(outputDir, "domain-effect-report.md"), buildDomainEffectReport(raw));
+    await writeText(path.join(outputDir, "recognition-by-domain-report.md"), buildRecognitionByDomain(raw));
+    await writeText(path.join(outputDir, "constraint-concept-report.md"), buildConstraintConceptReport(raw));
+    await writeText(path.join(outputDir, "representation-compliance-report.md"), buildRepresentationComplianceReport(raw));
+    await writeText(path.join(outputDir, "provider-behavior-report.md"), buildProviderBehaviorReport(raw));
+  }
+}
+
+async function verifyComparatorOutputs(context, experiment) {
+  const outputDir = experiment.outputRoot;
+  const rawPath = path.join(outputDir, "raw-comparison-data.json");
+  const issues = [];
+  const generated = [];
+  const required = experiment.requiredReports.map((name) => path.join(outputDir, name));
+  for (const filePath of required) {
+    if (!(await exists(filePath))) {
+      issues.push(`missing output ${path.basename(filePath)}`);
+    } else {
+      generated.push(relativeFrom(context.ecrRoot, filePath));
+    }
+  }
+  if (!(await exists(rawPath))) {
+    return { ok: false, issues, generated, runId: "" };
+  }
+  const raw = await readJson(rawPath);
+  const runManifestPath = path.join(outputDir, "run-manifest.json");
+  const runManifest = {
+    experiment: experiment.id,
+    run_id: raw.run_state?.run_id || "",
+    comparator_version: raw.run_state?.comparator_version || "",
+    ontology_version: "research/tools/comparison-engine/ontology",
+    generated_at: raw.run_state?.generated_at || "",
+    primary_record_count: raw.primary_record_count || raw.recognition_rows?.length || 0,
+    data_quality_count: raw.data_quality?.length || 0
+  };
+  await writeJson(runManifestPath, runManifest);
+  if (!generated.includes(relativeFrom(context.ecrRoot, runManifestPath))) {
+    generated.unshift(relativeFrom(context.ecrRoot, runManifestPath));
+  }
+  if (runManifest.comparator_version !== "3.1.0") {
+    issues.push(`unexpected comparator version ${runManifest.comparator_version}`);
+  }
+  const latestInput = await latestInputTimestamp(experiment);
+  const outputTimestamp = await mtimeMs(rawPath);
+  if (outputTimestamp < latestInput) {
+    issues.push("stale comparator output");
+  }
+  return { ok: issues.length === 0, issues, generated, runId: runManifest.run_id };
+}
+
+function truncate(text) {
+  return text.length > 2000 ? `${text.slice(0, 2000)}...[truncated]` : text;
+}
+
+function buildComparisonSummary(experiment, raw) {
+  return [
+    `# ${experiment.id} Comparison Summary`,
+    "",
+    `Run ID: ${raw.run_state?.run_id || ""}`,
+    `Comparator Version: ${raw.run_state?.comparator_version || ""}`,
+    "",
+    `Primary record count: ${raw.primary_record_count || 0}`,
+    `Structural backbone: ${raw.structural?.backbone_profile || "unavailable"}`,
+    `Primitive stability: ${raw.primitives?.primitive_sequence?.category || "unavailable"}`,
+    `Constraint concept result: ${raw.constraints?.conceptual?.category || "unavailable"}`,
+    `Representation compliance: ${raw.representation?.procedural_ast_presence?.category || "unavailable"}`
+  ].join("\n");
+}
+
+function buildBackboneReport(experiment, raw) {
   return [
     `# ${experiment.id} Backbone Report`,
     "",
-    `Run ID: ${results.runState.run_id}`,
-    `Comparator Version: ${results.runState.comparator_version}`,
+    `Run ID: ${raw.run_state?.run_id || ""}`,
+    `Comparator Version: ${raw.run_state?.comparator_version || ""}`,
     "",
-    `Backbone profile: ${results.structural.backbone_profile}`,
-    `Literal profile: ${results.structural.literal_profile}`,
-    `Conceptual profile: ${results.structural.conceptual_profile}`,
-    `Dimensional profile: ${results.structural.dimensional_profile}`,
+    `Backbone profile: ${raw.structural?.backbone_profile || "unavailable"}`,
+    `Literal profile: ${raw.structural?.literal_profile || "unavailable"}`,
+    `Conceptual profile: ${raw.structural?.conceptual_profile || "unavailable"}`,
+    `Dimensional profile: ${raw.structural?.dimensional_profile || "unavailable"}`,
     "",
     "Provider comparisons:",
     "",
-    ...results.structural.providerComparisons.map((item) => `- ${item.scope}: backbone=${item.backbone}, literal=${item.literal}, conceptual=${item.conceptual}, dimensional=${item.dimensional}`)
+    ...((raw.structural?.providerComparisons || []).map((item) => `- ${item.scope}: backbone=${item.backbone}, literal=${item.literal}, conceptual=${item.conceptual}, dimensional=${item.dimensional}`))
   ].join("\n");
 }
 
-function buildStructuralVarianceReport(results) {
+function buildStructuralVarianceReport(raw) {
   return [
     "# Structural Field Variance Report",
     "",
-    `Run ID: ${results.runState.run_id}`,
+    `Run ID: ${raw.run_state?.run_id || ""}`,
     "",
-    ...results.largestDisagreements.map((line) => `- ${line}`)
+    ...((raw.structural?.providerComparisons || []).map((item) => `- ${item.scope}: literal=${item.literal}; dimensional=${item.dimensional}`))
   ].join("\n");
 }
 
-function buildConstraintConceptReport(results) {
+function buildConstraintConceptReport(raw) {
   return [
     "# Constraint Concept Report",
     "",
-    `Run ID: ${results.runState.run_id}`,
+    `Run ID: ${raw.run_state?.run_id || ""}`,
     "",
-    `Conceptual cross-field agreement: ${results.constraints.conceptual.category}`,
-    `Dimensional conceptual agreement: ${results.constraints.dimensional.category}`,
-    `Field-placement sensitivity: ${results.constraints.field_placement_sensitivity}`
+    `Conceptual cross-field agreement: ${raw.constraints?.conceptual?.category || "unavailable"}`,
+    `Dimensional conceptual agreement: ${raw.constraints?.dimensional?.category || "unavailable"}`,
+    `Field-placement sensitivity: ${raw.constraints?.field_placement_sensitivity || "unavailable"}`
   ].join("\n");
 }
 
-function buildRepresentationComplianceReport(results) {
+function buildRepresentationComplianceReport(raw) {
   return [
     "# Representation Compliance Report",
     "",
-    `Run ID: ${results.runState.run_id}`,
+    `Run ID: ${raw.run_state?.run_id || ""}`,
     "",
-    `procedural_ast_presence: ${results.representation.procedural_ast_presence.category}`,
-    `natural_language_summary: ${results.representation.natural_language_summary.category}`,
-    `canonical_summary: ${results.representation.canonical_summary.category}`,
-    `ambiguities: ${results.representation.ambiguities.category}`,
-    `notes: ${results.representation.notes.category}`
+    `procedural_ast_presence: ${raw.representation?.procedural_ast_presence?.category || "unavailable"}`,
+    `natural_language_summary: ${raw.representation?.natural_language_summary?.category || "unavailable"}`,
+    `canonical_summary: ${raw.representation?.canonical_summary?.category || "unavailable"}`,
+    `ambiguities: ${raw.representation?.ambiguities?.category || "unavailable"}`,
+    `notes: ${raw.representation?.notes?.category || "unavailable"}`
   ].join("\n");
 }
 
-function buildRepresentationReviewFields(results) {
+function buildRepresentationReviewFields(runState) {
   return [
     "# Representation Review Fields",
     "",
@@ -162,48 +230,47 @@ function buildRepresentationReviewFields(results) {
     "- ambiguities",
     "- notes",
     "",
-    `Run ID: ${results.runState.run_id}`
+    `Run ID: ${runState.run_id || ""}`
   ].join("\n");
 }
 
-function buildRepresentationEffectsReport(results) {
+function buildRepresentationEffectsReport(raw) {
   return [
     "# Representation Format Effects",
     "",
-    `Run ID: ${results.runState.run_id}`,
+    `Run ID: ${raw.run_state?.run_id || ""}`,
     "",
-    ...results.providerNotes.map((note) => `- ${note}`),
-    ...results.largestDisagreements.map((note) => `- ${note}`)
+    ...((raw.structural?.providerComparisons || []).map((item) => `- ${item.scope}: backbone=${item.backbone}; literal=${item.literal}`))
   ].join("\n");
 }
 
-function buildProviderBehaviorReport(results) {
+function buildProviderBehaviorReport(raw) {
   return [
     "# Provider Behavior Report",
     "",
-    `Run ID: ${results.runState.run_id}`,
+    `Run ID: ${raw.run_state?.run_id || ""}`,
     "",
-    ...results.recognitionSummary.map((entry) => `- ${entry.provider}: ${entry.pattern}`),
-    ...results.providerNotes.map((note) => `- ${note}`)
+    ...((raw.recognition_rows || []).map((row) => `- ${row.provider} ${row.packet_id}: ${row.recognition_value}`))
   ].join("\n");
 }
 
-function buildDomainEffectReport(results) {
+function buildDomainEffectReport(raw) {
   return [
     "# Domain Effect Report",
     "",
-    `Run ID: ${results.runState.run_id}`,
+    `Run ID: ${raw.run_state?.run_id || ""}`,
     "",
-    ...results.largestDisagreements.map((note) => `- ${note}`)
+    `Structural backbone profile: ${raw.structural?.backbone_profile || "unavailable"}`,
+    `Recognition rows: ${(raw.recognition_rows || []).length}`
   ].join("\n");
 }
 
-function buildRecognitionByDomain(results) {
+function buildRecognitionByDomain(raw) {
   return [
     "# Recognition By Domain Report",
     "",
-    `Run ID: ${results.runState.run_id}`,
+    `Run ID: ${raw.run_state?.run_id || ""}`,
     "",
-    ...results.recognitionRows.map((row) => `- ${row.packet_id} ${row.provider}: ${row.recognition_value}`)
+    ...((raw.recognition_rows || []).map((row) => `- ${row.packet_id} ${row.provider}: ${row.recognition_value}`))
   ].join("\n");
 }

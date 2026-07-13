@@ -1,0 +1,9 @@
+{
+  "experiment": "EXP-001",
+  "run_id": "401d669d-beb5-45ab-90f2-81318eb1eae3",
+  "comparator_version": "3.1.0",
+  "ontology_version": "research/tools/comparison-engine/ontology",
+  "generated_at": "2026-07-13T19:11:50.964Z",
+  "primary_record_count": 12,
+  "data_quality_count": 5
+}

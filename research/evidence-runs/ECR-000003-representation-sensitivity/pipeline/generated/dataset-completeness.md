@@ -6,7 +6,7 @@
 |---|---:|---:|---:|---:|---:|---:|---:|---|
 | EXP-001 | 4 | 3 | 12 | 12 | 0 | 4 | 0 | READY_WITH_WARNINGS |
 | EXP-002 | 4 | 3 | 12 | 12 | 0 | 4 | 0 | READY_WITH_WARNINGS |
-| EXP-003 | 3 | 3 | 9 | 0 | 9 | 0 | 0 | NOT_READY |
+| EXP-003 | 3 | 3 | 9 | 0 | 9 | 0 | 0 | BLOCKED |
 
 ## Missing Responses
 
@@ -27,6 +27,6 @@
 
 ## Overall Status
 
-- NOT_READY
+- BLOCKED
 
 Comparison may proceed only when all expected primary responses are present, no conflicting duplicates remain, no unsafe malformed response is required for the primary dataset, and packet-version rules pass.

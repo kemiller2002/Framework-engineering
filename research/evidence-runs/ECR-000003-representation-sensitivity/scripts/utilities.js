@@ -170,6 +170,11 @@ export async function exists(filePath) {
   }
 }
 
+export async function mtimeMs(filePath) {
+  const info = await stat(filePath);
+  return info.mtimeMs;
+}
+
 export function relativeFrom(root, target) {
   return path.relative(root, target).replaceAll(path.sep, "/");
 }
@@ -256,6 +261,18 @@ export async function snapshotRawResponseHashes(context) {
     }
   }
   return snapshot;
+}
+
+export async function latestInputTimestamp(experiment) {
+  const packetFiles = (await discoverFiles(experiment.packetRoot)).filter((file) => file.endsWith(".md"));
+  const responseFiles = (await discoverFiles(experiment.responseRoot)).filter((file) => file.endsWith(".json"));
+  const inputFiles = [experiment.configPath, experiment.packagePath, ...packetFiles, ...responseFiles];
+  let latest = 0;
+  for (const filePath of inputFiles) {
+    if (!(await exists(filePath))) continue;
+    latest = Math.max(latest, await mtimeMs(filePath));
+  }
+  return latest;
 }
 
 export function statusLine(check, status, details, blocking) {

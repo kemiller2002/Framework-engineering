@@ -5,9 +5,9 @@
     "title": "Topology Perturbation"
   },
   "run_state": {
-    "run_id": "179fa743-b92a-4f75-b4a2-492fa9eb7898",
+    "run_id": "401d669d-beb5-45ab-90f2-81318eb1eae3",
     "comparator_version": "3.1.0",
-    "generated_at": "2026-07-10T22:09:29.852Z"
+    "generated_at": "2026-07-13T19:11:50.964Z"
   },
   "primary_record_count": 12,
   "data_quality": [
@@ -433,7 +433,7 @@
         "full_agreement": 1
       }
     },
-    "run_id": "179fa743-b92a-4f75-b4a2-492fa9eb7898"
+    "run_id": "401d669d-beb5-45ab-90f2-81318eb1eae3"
   },
   "primitives": {
     "primitive_sequence": {
@@ -492,7 +492,7 @@
     "counts": {
       "disagreement": 4
     },
-    "run_id": "179fa743-b92a-4f75-b4a2-492fa9eb7898"
+    "run_id": "401d669d-beb5-45ab-90f2-81318eb1eae3"
   },
   "constraints": {
     "field_results": [
@@ -559,7 +559,7 @@
     "counts": {
       "disagreement": 5
     },
-    "run_id": "179fa743-b92a-4f75-b4a2-492fa9eb7898"
+    "run_id": "401d669d-beb5-45ab-90f2-81318eb1eae3"
   },
   "representation": {
     "procedural_ast_presence": {
@@ -590,7 +590,7 @@
     "counts": {
       "full_agreement": 1
     },
-    "run_id": "179fa743-b92a-4f75-b4a2-492fa9eb7898"
+    "run_id": "401d669d-beb5-45ab-90f2-81318eb1eae3"
   },
   "leakage_rows": [
     {

@@ -1,5 +1,5 @@
 import path from "node:path";
-import { exists, readJson, writeJson } from "./utilities.js";
+import { exists, latestInputTimestamp, mtimeMs, readJson, writeJson } from "./utilities.js";
 
 export async function collectExperimentResults(context, logger) {
   const output = {
@@ -31,7 +31,8 @@ export async function collectExperimentResults(context, logger) {
         representation_compliance: "",
         leakage_findings: 0,
         observation_count: 0,
-        unresolved_issues: ["Outputs not present."]
+        unresolved_issues: ["Outputs not present."],
+        evidence_ready: false
       };
       output.warnings.push(`${experiment.id} outputs not present.`);
       continue;
@@ -45,8 +46,21 @@ export async function collectExperimentResults(context, logger) {
           ontology_version: "research/tools/comparison-engine/ontology",
           primary_record_count: raw.primary_record_count || raw.recognition_rows?.length || 0
         };
+    const requiredMissing = experiment.requiredReports.filter(async () => false);
+    const missingReports = [];
+    for (const reportName of experiment.requiredReports) {
+      const reportPath = path.join(experiment.outputRoot, reportName);
+      if (!(await exists(reportPath))) {
+        missingReports.push(reportName);
+      }
+    }
+    const latestInput = await latestInputTimestamp(experiment);
+    const outputTimestamp = await mtimeMs(rawPath);
+    const stale = outputTimestamp < latestInput;
+    const versionOk = manifest.comparator_version === "3.1.0";
+    const verified = missingReports.length === 0 && versionOk && !stale;
     output.experiments[experiment.id] = {
-      status: "available",
+      status: verified ? "available" : "unverified_outputs",
       run_id: manifest.run_id,
       comparator_version: manifest.comparator_version,
       ontology_version: manifest.ontology_version || "research/tools/comparison-engine/ontology",
@@ -62,8 +76,17 @@ export async function collectExperimentResults(context, logger) {
       representation_compliance: raw.representation.procedural_ast_presence.category,
       leakage_findings: raw.leakage_rows.filter((row) => row.domain_terms.length > 0).length,
       observation_count: 0,
-      unresolved_issues: raw.data_quality.map((item) => `${item.packet_id || "dataset"}:${item.status}`)
+      unresolved_issues: [
+        ...raw.data_quality.map((item) => `${item.packet_id || "dataset"}:${item.status}`),
+        ...missingReports.map((name) => `missing_report:${name}`),
+        ...(stale ? ["stale_output"] : []),
+        ...(!versionOk ? [`unexpected_comparator:${manifest.comparator_version}`] : [])
+      ],
+      evidence_ready: verified
     };
+    if (!verified) {
+      output.warnings.push(`${experiment.id} outputs present but not verified for evidence use.`);
+    }
   }
 
   await writeJson(path.join(context.pipelineGeneratedDir, "experiment-results.json"), output);

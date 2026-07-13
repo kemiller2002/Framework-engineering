@@ -2,21 +2,21 @@
 
 ## Overall Status
 
-- BLOCKED
+- PARTIAL_READY_FOR_HUMAN_REVIEW
 
 ## Dataset Readiness
 
 - EXP-001: READY_WITH_WARNINGS
 - EXP-002: READY_WITH_WARNINGS
-- EXP-003: NOT_READY
+- EXP-003: BLOCKED
 
 ## Experiment Comparisons
 
 | Experiment | Comparison Complete | EDR Draft Ready | Data Issues | Human Review |
 |---|---|---|---|---|
-| EXP-001 | yes | yes | missing=0; malformed=4 | required |
-| EXP-002 | no | yes | missing=0; malformed=4 | required |
-| EXP-003 | no | yes | missing=9; malformed=0 | required |
+| EXP-001 | yes | yes | missing=0; malformed=4 | Draft |
+| EXP-002 | yes | yes | missing=0; malformed=4 | Draft |
+| EXP-003 | no | no | missing=9; malformed=0 | Deferred |
 
 ## Comparator Status
 
@@ -32,6 +32,9 @@
 ## Hypothesis Review Inputs
 
 - pipeline/generated/hypothesis-matrix-update-input.md
+- review-board/EXP001-review.md
+- review-board/EXP002-review.md
+- review-board/EXP003-review.md
 
 ## Claims Review Inputs
 
@@ -48,8 +51,12 @@
 ## Exact Next Human Actions
 
 - Review EXP-001 EDR: `edr/EDR-ECR-000003-EXP001.md`
+- Review EXP-001 review: `review-board/EXP001-review.md`
 - Review EXP-002 EDR: `edr/EDR-ECR-000003-EXP002.md`
+- Review EXP-002 review: `review-board/EXP002-review.md`
 - Review EXP-003 EDR: `edr/EDR-ECR-000003-EXP003.md`
+- Review EXP-003 review: `review-board/EXP003-review.md`
 - Review ECR summary EDR: `edr/EDR-ECR-000003-SUMMARY.md`
+- Review ECR summary review: `review-board/ECR-000003-summary-review.md`
 - Review hypothesis matrix input: `pipeline/generated/hypothesis-matrix-update-input.md`
 - Review scientific claims input: `pipeline/generated/scientific-claims-review-input.md`
