@@ -1,0 +1,209 @@
+{
+"packet_id": "ECR-000003-EXP002-P001B",
+"experiment_id": "EXP-002",
+"variant_id": "P001B",
+"artifact_family_id": "P001",
+"recognition_condition": "bullets",
+"blinded_artifact_id": "BR-EXP002-P001",
+"recognized_artifact": "unknown",
+"structural_layer": {
+"entry_conditions": [
+{
+"value": "An unresolved issue exists.",
+"support_level": "explicit",
+"source_text": "start from an unresolved issue",
+"ambiguity": "none"
+}
+],
+"exit_conditions": [
+{
+"value": "One path is selected or continuation is no longer justified.",
+"support_level": "explicit",
+"source_text": "end when one path is selected or continuation is no longer justified",
+"ambiguity": "none"
+}
+],
+"required_steps": [
+{
+"value": "Start from an unresolved issue",
+"support_level": "explicit",
+"source_text": "- start from an unresolved issue",
+"ambiguity": "none"
+},
+{
+"value": "Generate multiple possible paths",
+"support_level": "explicit",
+"source_text": "- generate multiple possible paths",
+"ambiguity": "none"
+},
+{
+"value": "Gather a differentiating input",
+"support_level": "explicit",
+"source_text": "- gather a differentiating input",
+"ambiguity": "none"
+},
+{
+"value": "Reassess the paths using that input",
+"support_level": "explicit",
+"source_text": "- reassess the paths using that input",
+"ambiguity": "none"
+}
+],
+"optional_steps": [],
+"loops": [
+{
+"value": "Repeat the gather and reassess cycle if separation remains weak.",
+"support_level": "explicit",
+"source_text": "- if separation remains weak, repeat the gather and reassess cycle",
+"ambiguity": "The exact threshold or definition of 'weak separation' is left up to implementation."
+}
+],
+"branches": [
+{
+"value": "If separation remains weak vs. if separation is strong/resolved.",
+"support_level": "explicit",
+"source_text": "- if separation remains weak, repeat the gather and reassess cycle",
+"ambiguity": "none"
+}
+],
+"termination_conditions": [
+{
+"value": "One path is selected.",
+"support_level": "explicit",
+"source_text": "end when one path is selected",
+"ambiguity": "none"
+},
+{
+"value": "Continuation is no longer justified.",
+"support_level": "explicit",
+"source_text": "or continuation is no longer justified",
+"ambiguity": "The criteria for what constitutes justification to halt is left unspecified."
+}
+],
+"control_flow_shape": "Linear initialization followed by a conditional loop (while/repeat-until structure) leading to a termination state."
+},
+"primitive_layer": {
+"primitive_sequence": [
+"initialize_issue",
+"generate_paths",
+"gather_input",
+"evaluate_paths",
+"conditional_loop",
+"terminate"
+],
+"transitions": [
+"initialize_issue -> generate_paths",
+"generate_paths -> gather_input",
+"gather_input -> evaluate_paths",
+"evaluate_paths -> conditional_loop",
+"conditional_loop (weak separation) -> gather_input",
+"conditional_loop (strong separation / no justification) -> terminate"
+],
+"dominant_primitive": "evaluate_paths",
+"candidate_missing_primitives": []
+},
+"constraint_layer": {
+"invariants": [],
+"preconditions": [
+{
+"value": "An unresolved issue is available.",
+"support_level": "explicit",
+"source_text": "start from an unresolved issue",
+"ambiguity": "none"
+}
+],
+"postconditions": [
+{
+"value": "A path is selected, or the process is stopped without justification to continue.",
+"support_level": "explicit",
+"source_text": "end when one path is selected or continuation is no longer justified",
+"ambiguity": "none"
+}
+],
+"stopping_criteria": [
+{
+"value": "Selection of a single path.",
+"support_level": "explicit",
+"source_text": "end when one path is selected",
+"ambiguity": "none"
+},
+{
+"value": "Continuation lacks justification.",
+"support_level": "explicit",
+"source_text": "or continuation is no longer justified",
+"ambiguity": "none"
+}
+],
+"validity_conditions": []
+},
+"representation_layer": {
+"procedural_ast": {
+"type": "Program",
+"body": [
+{
+"type": "ExpressionStatement",
+"expression": "Start(UnresolvedIssue)"
+},
+{
+"type": "ExpressionStatement",
+"expression": "GeneratePaths(Multiple)"
+},
+{
+"type": "DoWhileLoop",
+"body": [
+{
+"type": "ExpressionStatement",
+"expression": "GatherInput(Differentiating)"
+},
+{
+"type": "ExpressionStatement",
+"expression": "ReassessPaths(Input)"
+}
+],
+"test": "SeparationRemainsWeak && ContinuationIsJustified && !PathSelected"
+},
+{
+"type": "ExpressionStatement",
+"expression": "End()"
+}
+]
+},
+"natural_language_summary": "The procedure begins with an unresolved issue and branches out into multiple potential paths. A differentiating input is collected to assess and distinguish these paths. If the paths cannot be clearly distinguished (weak separation), the cycle of gathering input and reassessing is repeated. The process terminates when a single path is chosen or when continuing the process is no longer justified.",
+"canonical_summary": "Process initializes at an unresolved issue, generates a set of candidate paths, and enters an iterative loop where differentiating input is gathered and used to evaluate path separation. The loop repeats while path separation remains weak and execution remains justified, terminating upon path selection or loss of justification.",
+"ambiguities": [
+{
+"location": "Separation assessment",
+"description": "The exact definition of 'weak separation' is omitted.",
+"plausible_interpretations": [
+"Quantitative evaluation using statistical or distance metrics.",
+"Qualitative judgment based on subjective criteria."
+],
+"effect_on_extraction": "Minimal. The structural loop condition is explicit even if the metric itself is generic."
+},
+{
+"location": "Termination condition",
+"description": "The exact condition for when 'continuation is no longer justified' is omitted.",
+"plausible_interpretations": [
+"A maximum loop count or timeout has been reached.",
+"Resource depletion or absence of new potential inputs."
+],
+"effect_on_extraction": "Minimal. It safely limits infinite loop generation structurally."
+}
+]
+},
+"recognition_analysis": {
+"recognition_occurred": "false",
+"recognition_basis": "",
+"domain_terms_introduced": [],
+"prior_knowledge_leakage_risk": ""
+},
+"confidence": {
+"structural_layer": "high",
+"primitive_layer": "high",
+"constraint_layer": "high",
+"representation_layer": "high",
+"recognition_analysis": "high",
+"overall": "high"
+},
+"notes": "The provided text outlines a clean, generic diagnostic or decision-making heuristic modeled as an iterative selection process."
+}
