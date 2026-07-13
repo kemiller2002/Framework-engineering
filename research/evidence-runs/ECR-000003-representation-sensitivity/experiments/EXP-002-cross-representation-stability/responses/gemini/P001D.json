@@ -1,0 +1,206 @@
+{
+"packet_id": "ECR-000003-EXP002-P001D",
+"experiment_id": "EXP-002",
+"variant_id": "P001D",
+"artifact_family_id": "P001",
+"recognition_condition": "transition_table",
+"blinded_artifact_id": "BR-EXP002-P001",
+"recognized_artifact": "workflow routing engine / decision path routing logic",
+"structural_layer": {
+"entry_conditions": [
+{
+"value": "State is 'start' and 'issue present' condition is true.",
+"support_level": "direct",
+"source_text": "start | issue present | expand_paths",
+"ambiguity": "None"
+}
+],
+"exit_conditions": [
+{
+"value": "Transition to state 'end' via 'continuation not justified' condition from 'reassess_paths' state.",
+"support_level": "direct",
+"source_text": "reassess_paths | continuation not justified | end",
+"ambiguity": "None"
+},
+{
+"value": "Transition to state 'end' via 'closure' condition from 'selected_terminal' state.",
+"support_level": "direct",
+"source_text": "selected_terminal | closure | end",
+"ambiguity": "None"
+}
+],
+"required_steps": [
+{
+"value": "expand_paths",
+"support_level": "direct",
+"source_text": "expand_paths",
+"ambiguity": "None"
+},
+{
+"value": "gather_input",
+"support_level": "direct",
+"source_text": "gather_input",
+"ambiguity": "None"
+},
+{
+"value": "reassess_paths",
+"support_level": "direct",
+"source_text": "reassess_paths",
+"ambiguity": "None"
+}
+],
+"optional_steps": [
+{
+"value": "repeat_cycle",
+"support_level": "indirect",
+"source_text": "reassess_paths | threshold not met | repeat_cycle",
+"ambiguity": "Conditional step executed only if the routing threshold is not met."
+},
+{
+"value": "selected_terminal",
+"support_level": "indirect",
+"source_text": "reassess_paths | one path selected | selected_terminal",
+"ambiguity": "Conditional step executed only when exactly one destination path is selected."
+}
+],
+"loops": [
+{
+"value": "Loop from reassess_paths -> repeat_cycle -> expand_paths when threshold not met.",
+"support_level": "direct",
+"source_text": "reassess_paths | threshold not met | repeat_cycle\nrepeat_cycle | continuation | expand_paths",
+"ambiguity": "None"
+}
+],
+"branches": [
+{
+"value": "Branching from expand_paths based on path conditions (path_a listed, path_b listed, path_c listed).",
+"support_level": "direct",
+"source_text": "expand_paths | path_a listed | gather_input\nexpand_paths | path_b listed | gather_input\nexpand_paths | path_c listed | gather_input",
+"ambiguity": "It is unclear whether path_a, path_b, and path_c are evaluated concurrently, or sequentially, or if they represent exclusive branches, since they all lead to the same next state ('gather_input')."
+},
+{
+"value": "Branching from reassess_paths based on outcome criteria (threshold not met, one path selected, continuation not justified).",
+"support_level": "direct",
+"source_text": "reassess_paths | threshold not met | repeat_cycle\nreassess_paths | one path selected | selected_terminal\nreassess_paths | continuation not justified | end",
+"ambiguity": "Conditions are assumed to be mutually exclusive but the table does not state evaluation priority if multiple conditions are true."
+}
+],
+"termination_conditions": [
+{
+"value": "State reaches 'end'.",
+"support_level": "direct",
+"source_text": "next_state = end",
+"ambiguity": "None"
+}
+],
+"control_flow_shape": "Cyclic state machine with a 3-way conditional divergence node at reassess_paths and multi-conditional convergence at gather_input."
+},
+"primitive_layer": {
+"primitive_sequence": [
+"start",
+"expand_paths",
+"gather_input",
+"reassess_paths",
+"repeat_cycle",
+"selected_terminal",
+"end"
+],
+"transitions": [
+{"from": "start", "to": "expand_paths", "condition": "issue present"},
+{"from": "expand_paths", "to": "gather_input", "condition": "path_a listed"},
+{"from": "expand_paths", "to": "gather_input", "condition": "path_b listed"},
+{"from": "expand_paths", "to": "gather_input", "condition": "path_c listed"},
+{"from": "gather_input", "to": "reassess_paths", "condition": "new differentiating input available"},
+{"from": "reassess_paths", "to": "repeat_cycle", "condition": "threshold not met"},
+{"from": "reassess_paths", "to": "selected_terminal", "condition": "one path selected"},
+{"from": "reassess_paths", "to": "end", "condition": "continuation not justified"},
+{"from": "repeat_cycle", "to": "expand_paths", "condition": "continuation"},
+{"from": "selected_terminal", "to": "end", "condition": "closure"}
+],
+"dominant_primitive": "reassess_paths",
+"candidate_missing_primitives": [
+"error_handler",
+"fallback_path"
+]
+},
+"constraint_layer": {
+"invariants": [],
+"preconditions": [
+{
+"value": "An 'issue present' condition must trigger the initial transition out of 'start'.",
+"support_level": "direct",
+"source_text": "start | issue present | expand_paths",
+"ambiguity": "None"
+}
+],
+"postconditions": [
+{
+"value": "System must terminate in state 'end'.",
+"support_level": "direct",
+"source_text": "next_state | end",
+"ambiguity": "None"
+}
+],
+"stopping_criteria": [
+{
+"value": "Condition 'continuation not justified' met at state 'reassess_paths'.",
+"support_level": "direct",
+"source_text": "reassess_paths | continuation not justified | end",
+"ambiguity": "None"
+},
+{
+"value": "Condition 'closure' met at state 'selected_terminal'.",
+"support_level": "direct",
+"source_text": "selected_terminal | closure | end",
+"ambiguity": "None"
+}
+],
+"validity_conditions": []
+},
+"representation_layer": {
+"procedural_ast": {
+"type": "StateMachine",
+"states": ["start", "expand_paths", "gather_input", "reassess_paths", "repeat_cycle", "selected_terminal", "end"],
+"transitions": [
+{"source": "start", "condition": "issue present", "target": "expand_paths"},
+{"source": "expand_paths", "condition": "path_a listed", "target": "gather_input"},
+{"source": "expand_paths", "condition": "path_b listed", "target": "gather_input"},
+{"source": "expand_paths", "condition": "path_c listed", "target": "gather_input"},
+{"source": "gather_input", "condition": "new differentiating input available", "target": "reassess_paths"},
+{"source": "reassess_paths", "condition": "threshold not met", "target": "repeat_cycle"},
+{"source": "reassess_paths", "condition": "one path selected", "target": "selected_terminal"},
+{"source": "reassess_paths", "condition": "continuation not justified", "target": "end"},
+{"source": "repeat_cycle", "condition": "continuation", "target": "expand_paths"},
+{"source": "selected_terminal", "condition": "closure", "target": "end"}
+]
+},
+"natural_language_summary": "The procedure maps out a dynamic exploration and selection cycle. Starting from an issue detection, it branches out to list up to three paths (path_a, path_b, path_c). It then gathers new differentiating input before executing a reassessment. Depending on the threshold evaluation, the routine will either loop back via repeat_cycle to re-expand options, terminate due to a lack of justification, or isolate a single chosen terminal track to close out the task safely.",
+"canonical_summary": "An iterative state-machine topology tracking sequential path-expansion and input aggregation, executing conditional exit or loop routing based on differentiation thresholds.",
+"ambiguities": [
+{
+"location": "expand_paths state",
+"description": "Evaluation modality of listed paths (path_a, path_b, path_c).",
+"plausible_interpretations": [
+"The system evaluates path listings concurrently and merges data flows in gather_input.",
+"The system evaluates paths strictly sequentially or dynamically selects one distinct valid path attribute."
+],
+"effect_on_extraction": "Affects execution-sequence linearity modeling within structural_layer representation."
+}
+]
+},
+"recognition_analysis": {
+"recognition_occurred": "yes",
+"recognition_basis": "The state designations 'expand_paths', 'gather_input', 'reassess_paths', 'selected_terminal' strongly correlate with specialized routing methodologies found in modern instruction framework execution and pathway arbitration trees.",
+"domain_terms_introduced": [],
+"prior_knowledge_leakage_risk": "Low. Extraction parameters are bound directly to the explicit explicit literal keys provided in the variant transition block table text."
+},
+"confidence": {
+"structural_layer": "high",
+"primitive_layer": "high",
+"constraint_layer": "high",
+"representation_layer": "high",
+"recognition_analysis": "high",
+"overall": "high"
+},
+"notes": "Faithful extraction completed successfully using only the provided structural matrix details."
+}
