@@ -1,0 +1,255 @@
+{
+"packet_id": "ECR-000003-EXP002-P001C",
+"experiment_id": "EXP-002",
+"variant_id": "P001C",
+"artifact_family_id": "P001",
+"recognition_condition": "graph",
+"blinded_artifact_id": "BR-EXP002-P001",
+"recognized_artifact": "unrecognized",
+"structural_layer": {
+"entry_conditions": [
+{
+"value": "START node transition to N1",
+"support_level": "explicit",
+"source_text": "START -> N1",
+"ambiguity": "none"
+}
+],
+"exit_conditions": [
+{
+"value": "N4 -> END when continuation not justified",
+"support_level": "explicit",
+"source_text": "N4 -> END [continuation not justified]",
+"ambiguity": "none"
+},
+{
+"value": "N6 -> END",
+"support_level": "explicit",
+"source_text": "N6 -> END",
+"ambiguity": "none"
+}
+],
+"required_steps": [
+{
+"value": "N1",
+"support_level": "explicit",
+"source_text": "START -> N1",
+"ambiguity": "none"
+},
+{
+"value": "N3",
+"support_level": "explicit",
+"source_text": "N2A -> N3, N2B -> N3, N2C -> N3",
+"ambiguity": "none"
+},
+{
+"value": "N4",
+"support_level": "explicit",
+"source_text": "N3 -> N4",
+"ambiguity": "none"
+}
+],
+"optional_steps": [
+{
+"value": "N2A",
+"support_level": "explicit",
+"source_text": "N1 -> N2A",
+"ambiguity": "Part of a branching/parallel structure; it is required to execute at least one or more of N2A, N2B, N2C, but individual nodes are conditionally executed depending on the branch mechanics."
+},
+{
+"value": "N2B",
+"support_level": "explicit",
+"source_text": "N1 -> N2B",
+"ambiguity": "Part of a branching/parallel structure; it is required to execute at least one or more of N2A, N2B, N2C, but individual nodes are conditionally executed depending on the branch mechanics."
+},
+{
+"value": "N2C",
+"support_level": "explicit",
+"source_text": "N1 -> N2C",
+"ambiguity": "Part of a branching/parallel structure; it is required to execute at least one or more of N2A, N2B, N2C, but individual nodes are conditionally executed depending on the branch mechanics."
+},
+{
+"value": "N5",
+"support_level": "explicit",
+"source_text": "N4 -> N5 [threshold not met]",
+"ambiguity": "Conditional step based on the threshold not being met."
+},
+{
+"value": "N6",
+"support_level": "explicit",
+"source_text": "N4 -> N6 [one path selected]",
+"ambiguity": "Conditional step based on selection."
+}
+],
+"loops": [
+{
+"value": "Loop from N4 through N5 back to N2A, N2B, or N2C",
+"support_level": "explicit",
+"source_text": "N4 -> N5 [threshold not met]\nN5 -> N2A\nN5 -> N2B\nN5 -> N2C",
+"ambiguity": "It is unclear whether N5 routes back to all of N2A, N2B, and N2C concurrently, or conditionally splits back to one of them."
+}
+],
+"branches": [
+{
+"value": "Branching from N1 to N2A, N2B, N2C",
+"support_level": "explicit",
+"source_text": "N1 -> N2A\nN1 -> N2B\nN1 -> N2C",
+"ambiguity": "Unspecified whether this is a parallel split (AND) or a conditional selection (OR/XOR)."
+},
+{
+"value": "Multi-path branch from N4 to N5, N6, or END",
+"support_level": "explicit",
+"source_text": "N4 -> N5 [threshold not met]\nN4 -> N6 [one path selected]\nN4 -> END [continuation not justified]",
+"ambiguity": "The conditions imply mutually exclusive conditions, but the resolution mechanism is undefined."
+}
+],
+"termination_conditions": [
+{
+"value": "Continuation not justified at N4",
+"support_level": "explicit",
+"source_text": "N4 -> END [continuation not justified]",
+"ambiguity": "none"
+},
+{
+"value": "Reaching END post-N6 execution",
+"support_level": "explicit",
+"source_text": "N6 -> END",
+"ambiguity": "none"
+}
+],
+"control_flow_shape": "cyclic_directed_graph_with_conditional_branching"
+},
+"primitive_layer": {
+"primitive_sequence": ["START", "N1", "N2A", "N2B", "N2C", "N3", "N4", "N5", "N6", "END"],
+"transitions": [
+{"from": "START", "to": "N1"},
+{"from": "N1", "to": "N2A"},
+{"from": "N1", "to": "N2B"},
+{"from": "N1", "to": "N2C"},
+{"from": "N2A", "to": "N3"},
+{"from": "N2B", "to": "N3"},
+{"from": "N2C", "to": "N3"},
+{"from": "N3", "to": "N4"},
+{"from": "N4", "to": "N5", "condition": "threshold not met"},
+{"from": "N4", "to": "N6", "condition": "one path selected"},
+{"from": "N4", "to": "END", "condition": "continuation not justified"},
+{"from": "N5", "to": "N2A"},
+{"from": "N5", "to": "N2B"},
+{"from": "N5", "to": "N2C"},
+{"from": "N6", "to": "END"}
+],
+"dominant_primitive": "node_transitions",
+"candidate_missing_primitives": []
+},
+"constraint_layer": {
+"invariants": [],
+"preconditions": [],
+"postconditions": [],
+"stopping_criteria": [
+{
+"value": "continuation not justified",
+"support_level": "explicit",
+"source_text": "N4 -> END [continuation not justified]",
+"ambiguity": "none"
+}
+],
+"validity_conditions": [
+{
+"value": "threshold not met",
+"support_level": "explicit",
+"source_text": "N4 -> N5 [threshold not met]",
+"ambiguity": "The exact threshold metric is unspecified."
+},
+{
+"value": "one path selected",
+"support_level": "explicit",
+"source_text": "N4 -> N6 [one path selected]",
+"ambiguity": "The selection criteria are unspecified."
+}
+]
+},
+"representation_layer": {
+"procedural_ast": {
+"type": "Program",
+"body": [
+{
+"type": "Step",
+"id": "N1",
+"next": {
+"type": "Branch",
+"mechanism": "undefined",
+"paths": ["N2A", "N2B", "N2C"]
+}
+},
+{
+"type": "Merge",
+"sources": ["N2A", "N2B", "N2C"],
+"to": "N3"
+},
+{
+"type": "Step",
+"id": "N3",
+"next": "N4"
+},
+{
+"type": "ConditionalBranch",
+"source": "N4",
+"cases": [
+{
+"condition": "threshold not met",
+"target": {
+"type": "Step",
+"id": "N5",
+"next": {
+"type": "Branch",
+"mechanism": "undefined",
+"paths": ["N2A", "N2B", "N2C"]
+}
+}
+},
+{
+"condition": "one path selected",
+"target": {
+"type": "Step",
+"id": "N6",
+"next": "END"
+}
+},
+{
+"condition": "continuation not justified",
+"target": "END"
+}
+]
+}
+]
+},
+"natural_language_summary": "The procedure begins at START and enters N1. From N1, execution branches into N2A, N2B, and/or N2C. These paths converge into N3, which proceeds directly to N4. At N4, a three-way conditional choice is made: if the threshold is not met, the process goes to N5 and loops back to N2A, N2B, and/or N2C; if one path is selected, it executes N6 and terminates at END; if continuation is not justified, it terminates immediately from N4 to END.",
+"canonical_summary": "START -> N1 -> {N2A, N2B, N2C} -> N3 -> N4 -> If [threshold not met] -> N5 -> {N2A, N2B, N2C}; If [one path selected] -> N6 -> END; If [continuation not justified] -> END.",
+"ambiguities": [
+{
+"location": "N1 -> N2A / N2B / N2C and N5 -> N2A / N2B / N2C",
+"description": "Indeterminate branching and merging behavior.",
+"plausible_interpretations": [
+"Parallel execution (AND split/merge) where all three sub-paths run concurrently.",
+"Exclusive execution (XOR split/merge) where only one sub-path is chosen based on an unstated condition."
+],
+"effect_on_extraction": "The topological connection is clear, but the exact execution logic of the sub-paths remains structurally ambiguous."
+}
+]
+},
+"recognition_analysis": {
+"recognition_occurred": "false",
+"recognition_basis": "",
+"domain_terms_introduced": [],
+"prior_knowledge_leakage_risk": ""
+},
+"confidence": {
+"structural_layer": "high",
+"primitive_layer": "high",
+"constraint_layer": "high",
+"representation_layer": "high",
+"recognition_analysis": "high",
+"overall": "high"
+},
+"notes": "The extraction is performed faithfully based purely on the provided symbolic directed graph representation and its inline annotations."
+}
