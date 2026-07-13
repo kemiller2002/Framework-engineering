@@ -1,0 +1,258 @@
+{
+  "packet_id": "ECR-000003-EXP002-P001A",
+  "experiment_id": "EXP-002",
+  "variant_id": "P001A",
+  "artifact_family_id": "P001",
+  "recognition_condition": "narrative",
+  "blinded_artifact_id": "BR-EXP002-P001",
+  "recognized_artifact": "Resembles a generic iterative disambiguation / hypothesis-discrimination loop (family includes differential diagnosis, generate-and-test troubleshooting, sequential evidence-gathering decision procedures). No single named artifact is uniquely identifiable from the packet.",
+  "structural_layer": {
+    "entry_conditions": [
+      {
+        "value": "An unresolved issue exists and has been noticed/appeared",
+        "support_level": "explicit",
+        "source_text": "An unresolved issue appears.",
+        "ambiguity": "Whether 'appears' implies external arrival versus active detection is not specified."
+      }
+    ],
+    "exit_conditions": [
+      {
+        "value": "One path is selected",
+        "support_level": "explicit",
+        "source_text": "The process ends when one path is selected",
+        "ambiguity": ""
+      },
+      {
+        "value": "Further continuation is no longer justified",
+        "support_level": "explicit",
+        "source_text": "or further continuation is no longer justified.",
+        "ambiguity": "The justification criterion (cost, time, diminishing returns) is unspecified."
+      }
+    ],
+    "required_steps": [
+      {
+        "value": "Generate several possible paths",
+        "support_level": "explicit",
+        "source_text": "Several possible paths are generated.",
+        "ambiguity": "Whether generation happens once or can recur is not stated; packet reads as a single generation step."
+      },
+      {
+        "value": "Gather an additional input that helps distinguish among the paths",
+        "support_level": "explicit",
+        "source_text": "An additional input is gathered that helps distinguish among the paths.",
+        "ambiguity": "Selection criteria for which input to gather are unspecified."
+      },
+      {
+        "value": "Reassess the paths using the gathered input",
+        "support_level": "explicit",
+        "source_text": "The paths are reassessed using that input.",
+        "ambiguity": "The reassessment mechanism (elimination, ranking, scoring) is unspecified."
+      }
+    ],
+    "optional_steps": [
+      {
+        "value": "Repeat input gathering (occurs only when distinction remains too weak)",
+        "support_level": "explicit",
+        "source_text": "If the distinction remains too weak, the process loops and gathers more differentiating input.",
+        "ambiguity": "Conditional rather than optional in the strict sense; classified here because it does not occur on every execution."
+      }
+    ],
+    "loops": [
+      {
+        "value": "Loop over gather-input -> reassess, conditioned on insufficient distinction among paths",
+        "support_level": "explicit",
+        "source_text": "If the distinction remains too weak, the process loops and gathers more differentiating input.",
+        "ambiguity": "Loop re-entry point is stated as 'gathers more differentiating input'; whether path generation is ever revisited inside the loop is unsupported."
+      }
+    ],
+    "branches": [
+      {
+        "value": "After reassessment: (a) distinction sufficient -> proceed toward selection; (b) distinction too weak -> loop back to gather more input",
+        "support_level": "explicit",
+        "source_text": "If the distinction remains too weak, the process loops...",
+        "ambiguity": ""
+      },
+      {
+        "value": "Terminal branch: (a) select one path; (b) abandon because continuation is no longer justified",
+        "support_level": "explicit",
+        "source_text": "The process ends when one path is selected or further continuation is no longer justified.",
+        "ambiguity": "Where the 'no longer justified' check occurs (inside the loop, at each iteration, or as a separate monitor) is unspecified."
+      }
+    ],
+    "termination_conditions": [
+      {
+        "value": "Selection of exactly one path",
+        "support_level": "explicit",
+        "source_text": "The process ends when one path is selected",
+        "ambiguity": ""
+      },
+      {
+        "value": "Continuation judged no longer justified (abandonment/timeout-like condition)",
+        "support_level": "explicit",
+        "source_text": "or further continuation is no longer justified.",
+        "ambiguity": "No criterion given for the justification judgment."
+      }
+    ],
+    "control_flow_shape": "Linear prologue (issue appears -> generate paths) followed by a condition-controlled loop (gather input -> reassess -> test distinction), with two-way terminal branching (select one path OR abandon). Overall shape: sequence + post-test/while-style loop + disjunctive termination."
+  },
+  "primitive_layer": {
+    "primitive_sequence": [
+      "detect_condition",
+      "generate_candidates",
+      "acquire_information",
+      "evaluate_candidates",
+      "test_discrimination_threshold",
+      "loop_back_if_insufficient",
+      "select_candidate_or_abandon"
+    ],
+    "transitions": [
+      "detect_condition -> generate_candidates",
+      "generate_candidates -> acquire_information",
+      "acquire_information -> evaluate_candidates",
+      "evaluate_candidates -> test_discrimination_threshold",
+      "test_discrimination_threshold -> acquire_information (when distinction too weak)",
+      "test_discrimination_threshold -> select_candidate_or_abandon (when distinction sufficient or continuation unjustified)"
+    ],
+    "dominant_primitive": "acquire_information/evaluate_candidates cycle (iterative discrimination)",
+    "candidate_missing_primitives": [
+      "criteria for judging distinction strength",
+      "criteria for judging continuation justification",
+      "mechanism for path generation",
+      "possible candidate-set modification (pruning/adding paths) during reassessment — not stated either way"
+    ]
+  },
+  "constraint_layer": {
+    "invariants": [
+      {
+        "value": "A set of multiple candidate paths persists across loop iterations until termination",
+        "support_level": "inferred",
+        "source_text": "The paths are reassessed using that input. ... gathers more differentiating input.",
+        "ambiguity": "Whether the candidate set can shrink or grow during reassessment is unstated."
+      }
+    ],
+    "preconditions": [
+      {
+        "value": "Path generation requires an unresolved issue to exist",
+        "support_level": "explicit",
+        "source_text": "An unresolved issue appears. Several possible paths are generated.",
+        "ambiguity": ""
+      },
+      {
+        "value": "Reassessment requires a gathered distinguishing input",
+        "support_level": "explicit",
+        "source_text": "The paths are reassessed using that input.",
+        "ambiguity": ""
+      }
+    ],
+    "postconditions": [
+      {
+        "value": "On successful termination, exactly one path is selected",
+        "support_level": "explicit",
+        "source_text": "The process ends when one path is selected",
+        "ambiguity": ""
+      },
+      {
+        "value": "On abandonment, no path selection is guaranteed",
+        "support_level": "inferred",
+        "source_text": "or further continuation is no longer justified.",
+        "ambiguity": "Packet does not state the resulting state after abandonment."
+      }
+    ],
+    "stopping_criteria": [
+      {
+        "value": "Distinction among paths becomes strong enough to select one",
+        "support_level": "inferred",
+        "source_text": "If the distinction remains too weak, the process loops... The process ends when one path is selected",
+        "ambiguity": "Selection is stated; that it is triggered specifically by sufficient distinction is an inference from the loop condition's negation."
+      },
+      {
+        "value": "Judgment that further continuation is not justified",
+        "support_level": "explicit",
+        "source_text": "further continuation is no longer justified.",
+        "ambiguity": "No operationalization given."
+      }
+    ],
+    "validity_conditions": [
+      {
+        "value": "Gathered input must be capable of distinguishing among the candidate paths",
+        "support_level": "explicit",
+        "source_text": "An additional input is gathered that helps distinguish among the paths.",
+        "ambiguity": "Whether inputs failing this property are rejected or simply lead to another loop iteration is unstated."
+      }
+    ]
+  },
+  "representation_layer": {
+    "procedural_ast": {
+      "type": "sequence",
+      "body": [
+        {"type": "trigger", "name": "issue_appears"},
+        {"type": "step", "name": "generate_candidate_paths", "cardinality": "several"},
+        {
+          "type": "loop",
+          "loop_kind": "repeat_until",
+          "body": [
+            {"type": "step", "name": "gather_distinguishing_input"},
+            {"type": "step", "name": "reassess_paths", "uses": "gathered_input"}
+          ],
+          "until": {
+            "type": "disjunction",
+            "conditions": ["distinction_sufficient", "continuation_not_justified"]
+          }
+        },
+        {
+          "type": "branch",
+          "cases": [
+            {"condition": "distinction_sufficient", "action": "select_one_path"},
+            {"condition": "continuation_not_justified", "action": "terminate_without_selection"}
+          ]
+        }
+      ]
+    },
+    "natural_language_summary": "When an unresolved issue arises, multiple candidate paths are generated. The process then iteratively gathers inputs chosen for their ability to discriminate among the candidates and reassesses the candidate set with each input. If the candidates remain insufficiently distinguished, another round of input gathering occurs. The process terminates either by selecting a single path or by abandoning the effort when continuing is judged unjustified.",
+    "canonical_summary": "trigger(issue) -> generate(candidates) -> repeat[acquire(discriminating_input); reassess(candidates)] until (discriminated OR not_justified) -> select(one) OR abandon",
+    "ambiguities": [
+      {
+        "location": "Loop structure / termination check placement",
+        "description": "The packet does not state where the 'continuation no longer justified' check occurs relative to the loop.",
+        "plausible_interpretations": [
+          "The justification check is evaluated at each loop iteration alongside the distinction check",
+          "The justification check is an external/asynchronous condition that can end the process at any point"
+        ],
+        "effect_on_extraction": "AST places it in the loop's until-disjunction as one reading; the alternative would model it as an interrupt. Both are consistent with the packet."
+      },
+      {
+        "location": "Reassessment semantics",
+        "description": "Whether reassessment eliminates paths, re-ranks them, or modifies the candidate set is unstated.",
+        "plausible_interpretations": [
+          "Elimination of inconsistent paths",
+          "Re-scoring/re-ranking without elimination"
+        ],
+        "effect_on_extraction": "Primitive 'evaluate_candidates' kept mechanism-neutral."
+      },
+      {
+        "location": "Loop re-entry scope",
+        "description": "The loop is stated to gather 'more differentiating input'; whether reassessment is also repeated is implied but not explicit.",
+        "plausible_interpretations": [
+          "Loop body = gather + reassess (adopted)",
+          "Loop body = gather only, with reassessment as a single downstream step"
+        ],
+        "effect_on_extraction": "Adopted the gather+reassess reading as the more procedurally coherent one; alternative recorded here rather than collapsed silently."
+      }
+    ]
+  },
+  "recognition_analysis": {
+    "recognition_occurred": "partial",
+    "recognition_basis": "The generate-candidates / gather-discriminating-evidence / reassess / loop pattern matches a broad, well-known family of procedures (differential diagnosis, fault isolation, sequential hypothesis testing). No domain markers in the packet single out a specific named artifact.",
+    "domain_terms_introduced": [],
+    "prior_knowledge_leakage_risk": "Low-to-moderate: the family recognition could tempt insertion of elimination semantics, evidence-value criteria, or candidate-pruning steps not present in the packet; these were deliberately excluded and flagged as ambiguities instead."
+  },
+  "confidence": {
+    "structural_layer": "high",
+    "primitive_layer": "high",
+    "constraint_layer": "medium",
+    "representation_layer": "medium-high",
+    "recognition_analysis": "medium",
+    "overall": "medium-high"
+  },
+  "notes": "Packet is a narrative-form, fully abstracted procedure with six statements. All structural elements are directly supported except: (1) placement of the abandonment check, (2) reassessment mechanism, and (3) loop-body scope, each recorded as ambiguity rather than resolved. No domain terminology was introduced. The userPreferences note about functional programming was not applicable, as no executable code was requested; the procedural_ast is a declarative data representation only."
+}

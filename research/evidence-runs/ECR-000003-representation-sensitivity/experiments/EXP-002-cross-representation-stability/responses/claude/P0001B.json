@@ -1,0 +1,275 @@
+{
+  "packet_id": "ECR-000003-EXP002-P001B",
+  "experiment_id": "EXP-002",
+  "variant_id": "P001B",
+  "artifact_family_id": "P001",
+  "recognition_condition": "bullets",
+  "blinded_artifact_id": "BR-EXP002-P001",
+  "recognized_artifact": "The procedure is structurally consistent with a generic iterative hypothesis-discrimination loop (e.g., differential diagnosis, sequential hypothesis testing, or troubleshooting-by-elimination). Recognition is at the family level only; no specific named artifact is identifiable from the packet.",
+  "structural_layer": {
+    "entry_conditions": [
+      {
+        "value": "An unresolved issue exists and is taken as the starting state",
+        "support_level": "explicit",
+        "source_text": "start from an unresolved issue",
+        "ambiguity": "The packet does not specify what qualifies an issue as 'unresolved' or how the issue is delimited"
+      }
+    ],
+    "exit_conditions": [
+      {
+        "value": "One path is selected",
+        "support_level": "explicit",
+        "source_text": "end when one path is selected",
+        "ambiguity": "The packet does not state who or what performs selection, or what evidentiary threshold constitutes selection"
+      },
+      {
+        "value": "Continuation is no longer justified",
+        "support_level": "explicit",
+        "source_text": "or continuation is no longer justified",
+        "ambiguity": "Justification criterion is undefined (could be resource exhaustion, diminishing information gain, external constraint); packet does not disambiguate"
+      }
+    ],
+    "required_steps": [
+      {
+        "value": "Establish starting state from an unresolved issue",
+        "support_level": "explicit",
+        "source_text": "start from an unresolved issue",
+        "ambiguity": ""
+      },
+      {
+        "value": "Generate multiple possible paths",
+        "support_level": "explicit",
+        "source_text": "generate multiple possible paths",
+        "ambiguity": "'Paths' is not defined; could denote hypotheses, candidate solutions, or courses of action. Minimum cardinality is 'multiple' (>1) but no upper bound or generation method is given"
+      },
+      {
+        "value": "Gather a differentiating input",
+        "support_level": "explicit",
+        "source_text": "gather a differentiating input",
+        "ambiguity": "Singular 'a differentiating input' per cycle is implied by phrasing, but the packet does not forbid gathering several inputs per cycle"
+      },
+      {
+        "value": "Reassess the paths using that input",
+        "support_level": "explicit",
+        "source_text": "reassess the paths using that input",
+        "ambiguity": "Reassessment mechanics (scoring, elimination, reordering) are unspecified; whether reassessment may add or remove paths is unstated"
+      }
+    ],
+    "optional_steps": [],
+    "loops": [
+      {
+        "value": "Gather-then-reassess cycle repeats while separation between paths remains weak",
+        "support_level": "explicit",
+        "source_text": "if separation remains weak, repeat the gather and reassess cycle",
+        "ambiguity": "'Separation' and 'weak' are undefined; no threshold, metric, or maximum iteration count is given. Loop body explicitly includes only gather and reassess; path generation is not stated to re-enter the loop"
+      }
+    ],
+    "branches": [
+      {
+        "value": "Post-reassessment branch: if separation is weak, loop; otherwise proceed toward termination",
+        "support_level": "explicit",
+        "source_text": "if separation remains weak, repeat the gather and reassess cycle",
+        "ambiguity": "The non-weak branch is only implied by the loop condition and the exit conditions; the packet does not explicitly describe the path from 'separation adequate' to 'one path is selected'"
+      }
+    ],
+    "termination_conditions": [
+      {
+        "value": "Selection of a single path (success-style termination)",
+        "support_level": "explicit",
+        "source_text": "end when one path is selected",
+        "ambiguity": ""
+      },
+      {
+        "value": "Loss of justification for continuation (abandonment-style termination)",
+        "support_level": "explicit",
+        "source_text": "continuation is no longer justified",
+        "ambiguity": "Whether this check occurs per-cycle, continuously, or only at loop boundaries is unspecified"
+      }
+    ],
+    "control_flow_shape": "Linear initialization prefix (start, generate) followed by a condition-controlled repeat loop over (gather, reassess), with a disjunctive termination guard (selection OR unjustified continuation). Approximately: init -> generate -> do { gather; reassess } while (separation weak AND continuation justified) -> end"
+  },
+  "primitive_layer": {
+    "primitive_sequence": [
+      "INITIALIZE_STATE",
+      "ENUMERATE_CANDIDATES",
+      "ACQUIRE_INPUT",
+      "EVALUATE_CANDIDATES",
+      "TEST_CONDITION",
+      "LOOP_BACK_OR_EXIT",
+      "TERMINATE"
+    ],
+    "transitions": [
+      "INITIALIZE_STATE -> ENUMERATE_CANDIDATES",
+      "ENUMERATE_CANDIDATES -> ACQUIRE_INPUT",
+      "ACQUIRE_INPUT -> EVALUATE_CANDIDATES",
+      "EVALUATE_CANDIDATES -> TEST_CONDITION",
+      "TEST_CONDITION -> ACQUIRE_INPUT (when separation weak)",
+      "TEST_CONDITION -> TERMINATE (when one candidate selected)",
+      "TEST_CONDITION -> TERMINATE (when continuation no longer justified)"
+    ],
+    "dominant_primitive": "EVALUATE_CANDIDATES (iterated evaluation against newly acquired differentiating input is the functional core of the loop)",
+    "candidate_missing_primitives": [
+      "PRUNE_CANDIDATES (elimination of paths is plausible during reassessment but not stated)",
+      "SELECT_CANDIDATE as a distinct step (selection appears only in the exit condition, not as an explicit action)",
+      "CHECK_RESOURCE_OR_JUSTIFICATION as an explicit per-cycle check (implied by the second exit condition but not positioned in the sequence)",
+      "REGENERATE_CANDIDATES (no stated mechanism for adding new paths mid-process)"
+    ]
+  },
+  "constraint_layer": {
+    "invariants": [
+      {
+        "value": "A set of candidate paths exists throughout the loop and reassessment always operates on that set",
+        "support_level": "implied",
+        "source_text": "reassess the paths using that input",
+        "ambiguity": "Whether the set's membership is fixed after generation or mutable during reassessment is unstated"
+      }
+    ],
+    "preconditions": [
+      {
+        "value": "An unresolved issue must exist before path generation",
+        "support_level": "explicit",
+        "source_text": "start from an unresolved issue",
+        "ambiguity": ""
+      },
+      {
+        "value": "Multiple paths must exist before the gather step",
+        "support_level": "explicit",
+        "source_text": "generate multiple possible paths",
+        "ambiguity": ""
+      },
+      {
+        "value": "A gathered input must be differentiating (capable of distinguishing among paths)",
+        "support_level": "explicit",
+        "source_text": "gather a differentiating input",
+        "ambiguity": "No criterion is given for verifying that an input is in fact differentiating before use"
+      }
+    ],
+    "postconditions": [
+      {
+        "value": "On termination, either exactly one path is selected or the process has ended without selection due to unjustified continuation",
+        "support_level": "explicit",
+        "source_text": "end when one path is selected or continuation is no longer justified",
+        "ambiguity": "The packet does not state whether the second outcome yields any partial result (e.g., a ranked residual set)"
+      }
+    ],
+    "stopping_criteria": [
+      {
+        "value": "Separation among paths becomes strong enough that repetition is not triggered",
+        "support_level": "implied",
+        "source_text": "if separation remains weak, repeat the gather and reassess cycle",
+        "ambiguity": "Adequate separation is implied only as the negation of 'weak'; no positive threshold is defined"
+      },
+      {
+        "value": "One path selected",
+        "support_level": "explicit",
+        "source_text": "end when one path is selected",
+        "ambiguity": ""
+      },
+      {
+        "value": "Continuation no longer justified",
+        "support_level": "explicit",
+        "source_text": "continuation is no longer justified",
+        "ambiguity": "Justification basis undefined"
+      }
+    ],
+    "validity_conditions": [
+      {
+        "value": "Reassessment must use the most recently gathered input",
+        "support_level": "explicit",
+        "source_text": "reassess the paths using that input",
+        "ambiguity": "'That input' binds reassessment to the current cycle's input; whether prior inputs also remain in scope cumulatively is unstated"
+      }
+    ]
+  },
+  "representation_layer": {
+    "procedural_ast": {
+      "type": "procedure",
+      "body": [
+        {"type": "init", "op": "establish_state", "args": ["unresolved_issue"]},
+        {"type": "action", "op": "generate", "args": ["paths"], "cardinality": ">1"},
+        {
+          "type": "loop",
+          "kind": "post_or_pre_test_ambiguous",
+          "continue_condition": "separation_weak AND continuation_justified",
+          "body": [
+            {"type": "action", "op": "gather", "args": ["differentiating_input"]},
+            {"type": "action", "op": "reassess", "args": ["paths", "differentiating_input"]}
+          ]
+        },
+        {
+          "type": "terminate",
+          "condition": {"type": "or", "operands": ["one_path_selected", "continuation_not_justified"]}
+        }
+      ]
+    },
+    "natural_language_summary": "The procedure begins from an unresolved issue and generates more than one candidate path. It then enters a cycle of gathering an input intended to differentiate among the paths and reassessing the paths in light of that input. If the reassessment leaves the paths weakly separated, the gather-and-reassess cycle repeats. The procedure ends either when a single path has been selected or when continuing the process is no longer justified.",
+    "canonical_summary": "Initialize from problem state; enumerate multiple candidates; iteratively acquire discriminating evidence and re-evaluate candidates while discrimination is weak; terminate on single-candidate selection or loss of justification to continue.",
+    "ambiguities": [
+      {
+        "location": "loop condition ('if separation remains weak')",
+        "description": "No definition of separation, no threshold for weak vs. adequate, no iteration bound",
+        "plausible_interpretations": [
+          "Qualitative judgment by the executor each cycle",
+          "Implicit quantitative threshold on candidate scores",
+          "Elimination-based: loop until few enough candidates remain"
+        ],
+        "effect_on_extraction": "Loop guard recorded as an undefined predicate; primitive TEST_CONDITION left abstract"
+      },
+      {
+        "location": "exit condition ('continuation is no longer justified')",
+        "description": "Justification basis is unspecified (resources, information gain, external constraint)",
+        "plausible_interpretations": [
+          "Cost/effort budget exhausted",
+          "Diminishing returns from further inputs",
+          "Issue deprioritized or invalidated externally"
+        ],
+        "effect_on_extraction": "Recorded as a disjunctive termination condition with undefined predicate; not positioned as an explicit step in the sequence"
+      },
+      {
+        "location": "loop body scope",
+        "description": "Only gather and reassess are stated to repeat; whether path generation may recur (adding new paths mid-process) is unstated",
+        "plausible_interpretations": [
+          "Path set is fixed after initial generation",
+          "Reassessment may implicitly add or remove paths"
+        ],
+        "effect_on_extraction": "Loop body restricted to gather+reassess as stated; regeneration listed as a candidate missing primitive rather than an inferred step"
+      },
+      {
+        "location": "selection mechanism",
+        "description": "'One path is selected' appears only as an end condition, not as an explicit action; it is unclear whether selection is an outcome of reassessment or a distinct decision step",
+        "plausible_interpretations": [
+          "Selection emerges automatically when separation becomes strong",
+          "Selection is a discrete decision act following adequate separation"
+        ],
+        "effect_on_extraction": "SELECT_CANDIDATE not placed in the primitive sequence; noted as candidate missing primitive"
+      },
+      {
+        "location": "loop test placement",
+        "description": "Whether the separation test occurs before the first gather (pre-test) or only after a reassessment (post-test) is not determinable; the ordering of steps suggests at least one gather-reassess cycle always executes, but this is not explicit",
+        "plausible_interpretations": [
+          "Post-test loop (at least one cycle guaranteed)",
+          "Pre-test loop (cycle may be skipped if initial separation is already strong)"
+        ],
+        "effect_on_extraction": "Loop kind marked ambiguous in the AST"
+      }
+    ]
+  },
+  "recognition_analysis": {
+    "recognition_occurred": "partial",
+    "recognition_basis": "The generate-candidates / gather-discriminating-evidence / reassess / repeat-until-discriminated structure matches a widely known family of iterative hypothesis-discrimination procedures (differential diagnosis, fault isolation, sequential hypothesis testing). No packet content ties it to a specific named framework, domain, or source, so recognition remains at the structural-family level.",
+    "domain_terms_introduced": [
+      "candidate/candidates (used as a neutral gloss for 'paths' in summaries and primitives)",
+      "evidence/discriminating evidence (used in canonical_summary as a gloss for 'differentiating input')"
+    ],
+    "prior_knowledge_leakage_risk": "Low-to-moderate. Main risk points: (1) glossing 'paths' as hypotheses/candidates imports a diagnostic framing; (2) listing PRUNE_CANDIDATES and SELECT_CANDIDATE as candidate missing primitives is informed by knowledge of typical procedures in this family, though both were flagged as unsupported rather than asserted. No steps, conditions, or loop structure were added beyond packet text."
+  },
+  "confidence": {
+    "structural_layer": "high",
+    "primitive_layer": "medium-high",
+    "constraint_layer": "medium",
+    "representation_layer": "medium-high",
+    "recognition_analysis": "medium",
+    "overall": "medium-high"
+  },
+  "notes": "The packet is short and cleanly ordered, so the linear-prefix-plus-loop shape is well supported. All undefined predicates (weak separation, justified continuation) were preserved as abstract conditions rather than operationalized. Two decomposition choices were deliberately left open rather than collapsed: loop pre-test vs. post-test placement, and whether selection is an emergent outcome or a discrete step; both are recorded in the ambiguities list. Domain-neutral glosses ('candidates', 'evidence') were introduced only in summary/primitive fields and are disclosed in recognition_analysis."
+}
