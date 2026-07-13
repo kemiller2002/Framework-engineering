@@ -1,0 +1,216 @@
+{
+"packet_id": "ECR-000003-EXP002-P001A",
+"experiment_id": "EXP-002",
+"variant_id": "P001A",
+"artifact_family_id": "P001",
+"recognition_condition": "narrative",
+"blinded_artifact_id": "BR-EXP002-P001",
+"recognized_artifact": "Differential Diagnosis / Bayesian Troubleshooting Loop",
+"structural_layer": {
+"entry_conditions": [
+{
+"value": "An unresolved issue appears.",
+"support_level": "explicit",
+"source_text": "An unresolved issue appears.",
+"ambiguity": "none"
+}
+],
+"exit_conditions": [
+{
+"value": "One path is selected or further continuation is no longer justified.",
+"support_level": "explicit",
+"source_text": "The process ends when one path is selected or further continuation is no longer justified.",
+"ambiguity": "none"
+}
+],
+"required_steps": [
+{
+"value": "Several possible paths are generated.",
+"support_level": "explicit",
+"source_text": "Several possible paths are generated.",
+"ambiguity": "none"
+},
+{
+"value": "An additional input is gathered that helps distinguish among the paths.",
+"support_level": "explicit",
+"source_text": "An additional input is gathered that helps distinguish among the paths.",
+"ambiguity": "none"
+},
+{
+"value": "The paths are reassessed using that input.",
+"support_level": "explicit",
+"source_text": "The paths are reassessed using that input.",
+"ambiguity": "none"
+}
+],
+"optional_steps": [],
+"loops": [
+{
+"value": "If the distinction remains too weak, the process loops and gathers more differentiating input.",
+"support_level": "explicit",
+"source_text": "If the distinction remains too weak, the process loops and gathers more differentiating input.",
+"ambiguity": "Implicit ambiguity on where the loop returns to exactly (does it regenerate paths or only gather more input? The text says 'gathers more differentiating input' implying returning to the input-gathering step)."
+}
+],
+"branches": [
+{
+"value": "Distinction is weak vs Distinction is sufficient to select one path or end continuation.",
+"support_level": "implicit",
+"source_text": "If the distinction remains too weak, the process loops... The process ends when one path is selected or further continuation is no longer justified.",
+"ambiguity": "The precise threshold for 'too weak' vs 'justified' is left abstract."
+}
+],
+"termination_conditions": [
+{
+"value": "One path is selected.",
+"support_level": "explicit",
+"source_text": "The process ends when one path is selected",
+"ambiguity": "none"
+},
+{
+"value": "Further continuation is no longer justified.",
+"support_level": "explicit",
+"source_text": "or further continuation is no longer justified.",
+"ambiguity": "The criteria for justification lack explicit parameters in the narrative."
+}
+],
+"control_flow_shape": "Linear initialization followed by a conditional loop-back cycle with a dual-criterion termination exit."
+},
+"primitive_layer": {
+"primitive_sequence": [
+"Detect_Issue",
+"Generate_Hypotheses",
+"Gather_Evidence",
+"Evaluate_Hypotheses",
+"Evaluate_Stopping_Criteria"
+],
+"transitions": [
+{
+"from": "Detect_Issue",
+"to": "Generate_Hypotheses",
+"condition": "Always"
+},
+{
+"from": "Generate_Hypotheses",
+"to": "Gather_Evidence",
+"condition": "Always"
+},
+{
+"from": "Gather_Evidence",
+"to": "Evaluate_Hypotheses",
+"condition": "Always"
+},
+{
+"from": "Evaluate_Hypotheses",
+"to": "Gather_Evidence",
+"condition": "Distinction remains too weak"
+},
+{
+"from": "Evaluate_Hypotheses",
+"to": "Exit",
+"condition": "One path selected OR continuation unjustified"
+}
+],
+"dominant_primitive": "Evaluate_Hypotheses",
+"candidate_missing_primitives": []
+},
+"constraint_layer": {
+"invariants": [],
+"preconditions": [
+{
+"value": "An unresolved issue must exist.",
+"support_level": "explicit",
+"source_text": "An unresolved issue appears.",
+"ambiguity": "none"
+}
+],
+"postconditions": [
+{
+"value": "A path is selected or continuation is abandoned.",
+"support_level": "explicit",
+"source_text": "The process ends when one path is selected or further continuation is no longer justified.",
+"ambiguity": "none"
+}
+],
+"stopping_criteria": [
+{
+"value": "Selection of one specific path.",
+"support_level": "explicit",
+"source_text": "one path is selected",
+"ambiguity": "none"
+},
+{
+"value": "Lack of justification for continuing.",
+"support_level": "explicit",
+"source_text": "further continuation is no longer justified.",
+"ambiguity": "The evaluation metric for 'justified' is unspecified."
+}
+],
+"validity_conditions": []
+},
+"representation_layer": {
+"procedural_ast": {
+"type": "Program",
+"body": [
+{
+"type": "ExpressionStatement",
+"expression": "Initialize_Unresolved_Issue"
+},
+{
+"type": "ExpressionStatement",
+"expression": "Generate_Possible_Paths"
+},
+{
+"type": "DoWhileStatement",
+"body": {
+"type": "BlockStatement",
+"body": [
+{
+"type": "ExpressionStatement",
+"expression": "Gather_Additional_Distinguishing_Input"
+},
+{
+"type": "ExpressionStatement",
+"expression": "Reassess_Paths_With_Input"
+}
+]
+},
+"test": "Distinction_Is_Too_Weak AND Continuation_Is_Justified"
+}
+]
+},
+"natural_language_summary": "The procedure describes an iterative diagnostic/decision-making loop triggered by an unresolved issue. It generates multiple potential paths, collects differentiating data to evaluate those paths, reassesses them based on the new information, and loops back to gather more data if the path distinction remains inconclusive. It finishes when a path is chosen or continuation becomes unjustified.",
+"canonical_summary": "TRIGGER on unresolved issue; GENERATE candidate paths; DO [ GATHER distinguishing input; REASSESS paths ] WHILE distinction is weak AND continuation is justified; TERMINATE when path chosen or continuation unjustified.",
+"ambiguities": [
+{
+"location": "Loop return target",
+"description": "It is slightly ambiguous whether the loop returns back to the generation of paths or only to gathering more input.",
+"plausible_interpretations": [
+"Loop returns exclusively to gathering additional input for the existing paths.",
+"Loop allows generation/refinement of new paths based on the new input."
+],
+"effect_on_extraction": "Minor. The required step structure assumes the paths generated initially remain fixed during the input-gathering iteration."
+}
+]
+},
+"recognition_analysis": {
+"recognition_occurred": "yes",
+"recognition_basis": "The description matches standard diagnostic patterns, specific troubleshooting iterations, or clinical differential diagnosis loops where hypotheses are evaluated iteratively using diagnostic tests/inputs.",
+"domain_terms_introduced": [
+"Bayesian Troubleshooting Loop",
+"Differential Diagnosis",
+"Hypotheses",
+"Evidence"
+],
+"prior_knowledge_leakage_risk": "Low. While external concepts like 'Hypotheses' and 'Evidence' map perfectly to 'paths' and 'input', the extracted fields preserve literal text constraints and structure explicitly defined in the narrative."
+},
+"confidence": {
+"structural_layer": "high",
+"primitive_layer": "high",
+"constraint_layer": "high",
+"representation_layer": "high",
+"recognition_analysis": "high",
+"overall": "high"
+},
+"notes": "The extraction maps cleanly to a standard while-loop construct. Structural and semantic features are closely matched to the source narrative text to maintain faithful representation without arbitrary extensions."
+}
