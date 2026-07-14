@@ -1,0 +1,199 @@
+{
+"packet_id": "ECR-000003-EXP003-P001B",
+"experiment_id": "EXP-003",
+"variant_id": "P001B",
+"artifact_family_id": "P001",
+"recognition_condition": "domain_variant_logistics",
+"blinded_artifact_id": "BR-EXP003-P001",
+"recognized_artifact": "Dynamic Route Selection / Path Planning under Uncertainty",
+"structural_layer": {
+"entry_conditions": [
+{
+"value": "A delivery path is uncertain",
+"support_level": "explicit",
+"source_text": "A delivery path is uncertain.",
+"ambiguity": "None"
+}
+],
+"exit_conditions": [
+{
+"value": "A route is accepted or further search is not justified",
+"support_level": "explicit",
+"source_text": "The process ends when a route is accepted or further search is not justified.",
+"ambiguity": "None"
+}
+],
+"required_steps": [
+{
+"value": "Generate candidate routes",
+"support_level": "explicit",
+"source_text": "Candidate routes are generated.",
+"ambiguity": "None"
+},
+{
+"value": "Gather differentiating route information",
+"support_level": "explicit",
+"source_text": "Differentiating route information is gathered.",
+"ambiguity": "None"
+},
+{
+"value": "Assess candidate routes",
+"support_level": "explicit",
+"source_text": "Candidate routes are assessed.",
+"ambiguity": "None"
+}
+],
+"optional_steps": [],
+"loops": [
+{
+"value": "Repeat process if route confidence is insufficient",
+"support_level": "explicit",
+"source_text": "The process loops if route confidence is insufficient.",
+"ambiguity": "The exact entry point of the loop (whether it returns to candidate generation or information gathering) is unspecified."
+}
+],
+"branches": [
+{
+"value": "Branch based on route confidence",
+"support_level": "implicit",
+"source_text": "The process loops if route confidence is insufficient.",
+"ambiguity": "Implicit conditional branching based on the confidence assessment."
+}
+],
+"termination_conditions": [
+{
+"value": "Route is accepted",
+"support_level": "explicit",
+"source_text": "The process ends when a route is accepted or further search is not justified.",
+"ambiguity": "None"
+},
+{
+"value": "Further search is not justified",
+"support_level": "explicit",
+"source_text": "The process ends when a route is accepted or further search is not justified.",
+"ambiguity": "Criteria for 'justified' search are undefined."
+}
+],
+"control_flow_shape": "Iterative loop with a conditional exit gate"
+},
+"primitive_layer": {
+"primitive_sequence": [
+"generate_candidates",
+"gather_information",
+"assess_candidates"
+],
+"transitions": [
+{
+"from": "generate_candidates",
+"to": "gather_information"
+},
+{
+"from": "gather_information",
+"to": "assess_candidates"
+},
+{
+"from": "assess_candidates",
+"to": "generate_candidates",
+"condition": "route confidence is insufficient"
+},
+{
+"from": "assess_candidates",
+"to": "exit",
+"condition": "route is accepted OR further search is not justified"
+}
+],
+"dominant_primitive": "assess_candidates",
+"candidate_missing_primitives": []
+},
+"constraint_layer": {
+"invariants": [],
+"preconditions": [
+{
+"value": "Delivery path must be uncertain",
+"support_level": "explicit",
+"source_text": "A delivery path is uncertain.",
+"ambiguity": "None"
+}
+],
+"postconditions": [
+{
+"value": "A route is accepted OR further search is declared unjustified",
+"support_level": "explicit",
+"source_text": "The process ends when a route is accepted or further search is not justified.",
+"ambiguity": "None"
+}
+],
+"stopping_criteria": [
+{
+"value": "Route acceptance achieved",
+"support_level": "explicit",
+"source_text": "The process ends when a route is accepted...",
+"ambiguity": "None"
+},
+{
+"value": "Further search is not justified",
+"support_level": "explicit",
+"source_text": "...or further search is not justified.",
+"ambiguity": "The bounds or definitions of justification are left abstract."
+}
+],
+"validity_conditions": []
+},
+"representation_layer": {
+"procedural_ast": {
+"type": "Process",
+"body": [
+{
+"type": "Loop",
+"condition": "route_confidence < threshold AND search_justified == true",
+"body": [
+{
+"type": "Action",
+"name": "generate_candidate_routes"
+},
+{
+"type": "Action",
+"name": "gather_differentiating_route_info"
+},
+{
+"type": "Action",
+"name": "assess_candidate_routes"
+}
+]
+}
+]
+},
+"natural_language_summary": "An iterative process designed to resolve delivery path uncertainty. It begins with candidate route generation, followed by gathering differentiating route information, and evaluating these candidates. If confidence in the routes remains insufficient, the cycle repeats, ending only when a route is successfully accepted or when further search is no longer justified.",
+"canonical_summary": "Initialize routing loop under path uncertainty. Step 1: Generate candidates. Step 2: Gather distinguishing metrics. Step 3: Assess candidates. Evaluate loop criteria: if confidence is low and search continues to be justified, repeat; otherwise, terminate upon route selection or budget exhaustion.",
+"ambiguities": [
+{
+"location": "Loop Step",
+"description": "Unspecified loop-back target.",
+"plausible_interpretations": [
+"Loop returns to Step 1 (Candidate routes are generated).",
+"Loop returns to Step 2 (Differentiating information is gathered) using existing candidate routes."
+],
+"effect_on_extraction": "Affects structural flow modeling (whether candidate generation is rerun in subsequent iterations)."
+}
+]
+},
+"recognition_analysis": {
+"recognition_occurred": "yes",
+"recognition_basis": "The terms 'delivery path', 'candidate routes', 'route information', and 'route confidence' strongly identify a routing optimization/decision-making algorithm in logistics.",
+"domain_terms_introduced": [
+"delivery path",
+"candidate routes",
+"route confidence"
+],
+"prior_knowledge_leakage_risk": "Risk of imposing specific algorithmic steps (such as multi-criteria decision analysis, Dijkstra's algorithm, or heuristic searches) on what is presented as a highly abstracted procedural template."
+},
+"confidence": {
+"structural_layer": "high",
+"primitive_layer": "high",
+"constraint_layer": "high",
+"representation_layer": "medium-high",
+"recognition_analysis": "high",
+"overall": "high"
+},
+"notes": "The procedure maps naturally to a standard decision-theoretic search agent architecture modified for real-time logistics."
+}
