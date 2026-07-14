@@ -1,0 +1,392 @@
+{
+  "packet_id": "ECR-000003-EXP003-P001B",
+  "experiment_id": "EXP-003",
+  "variant_id": "P001B",
+  "artifact_family_id": "P001",
+  "recognition_condition": "domain_variant_logistics",
+  "blinded_artifact_id": "BR-EXP003-P001",
+  "recognized_artifact": "Resembles a generic candidate-generation-and-discrimination loop (hypothesis generate / test / evaluate / iterate-or-stop). Recognition is at the level of abstract control shape only; no specific named artifact is confidently identified, and no structure below has been imported from any suspected artifact.",
+  "structural_layer": {
+    "entry_conditions": [
+      {
+        "value": "The delivery path is not determined; the correct route is unknown at entry.",
+        "support_level": "explicit",
+        "source_text": "A delivery path is uncertain.",
+        "ambiguity": "The packet does not state whether uncertainty is binary (known/unknown) or graded (a confidence level), though the later mention of 'route confidence' suggests a graded quantity may exist. Both readings are supported."
+      },
+      {
+        "value": "Some prior object of reference (a delivery task or path-in-question) exists for candidates to be generated about.",
+        "support_level": "inferred",
+        "source_text": "A delivery path is uncertain. / Candidate routes are generated.",
+        "ambiguity": "Presupposed by the generation step; never stated as its own precondition."
+      }
+    ],
+    "exit_conditions": [
+      {
+        "value": "A route is accepted.",
+        "support_level": "explicit",
+        "source_text": "The process ends when a route is accepted or further search is not justified.",
+        "ambiguity": "Acceptance criteria are unspecified; the packet does not say whether acceptance is identical to 'sufficient route confidence' from the loop condition or a separate test."
+      },
+      {
+        "value": "Further search is not justified (exit without acceptance).",
+        "support_level": "explicit",
+        "source_text": "The process ends when a route is accepted or further search is not justified.",
+        "ambiguity": "The basis of justification (cost, time, exhausted candidates, diminishing returns) is not given. Whether this exit leaves the delivery path still uncertain is not stated."
+      }
+    ],
+    "required_steps": [
+      {
+        "value": "Generate candidate routes.",
+        "support_level": "explicit",
+        "source_text": "Candidate routes are generated.",
+        "ambiguity": "Unclear whether generation occurs only once at entry or is re-executed on each loop iteration. The packet's loop statement does not name the loop's re-entry point."
+      },
+      {
+        "value": "Gather information that differentiates among candidate routes.",
+        "support_level": "explicit",
+        "source_text": "Differentiating route information is gathered.",
+        "ambiguity": "The word 'differentiating' implies information is selected for its discriminating power, but the packet does not state whether that selection is itself a step, a criterion, or an incidental property of the gathered information."
+      },
+      {
+        "value": "Assess/evaluate the candidate routes.",
+        "support_level": "explicit",
+        "source_text": "Candidate routes are assessed.",
+        "ambiguity": "The packet does not state whether assessment ranks, scores, prunes, or merely re-weights candidates, nor whether assessment consumes the gathered information (though this is a reasonable implication of ordering)."
+      },
+      {
+        "value": "Test whether route confidence is sufficient.",
+        "support_level": "implied",
+        "source_text": "The process loops if route confidence is insufficient.",
+        "ambiguity": "The conditional presupposes an evaluation of confidence, but the packet does not list it as a distinct step; it may be the terminal part of the assessment step rather than a separate one. Both decompositions are equally supported."
+      }
+    ],
+    "optional_steps": [
+      {
+        "value": "None identified.",
+        "support_level": "not_supported",
+        "source_text": "",
+        "ambiguity": "The packet marks no step as optional or conditional-on-context. Re-generation of candidates on later iterations could be optional, but this is not stated."
+      }
+    ],
+    "loops": [
+      {
+        "value": "Iteration occurs when route confidence is insufficient.",
+        "support_level": "explicit",
+        "source_text": "The process loops if route confidence is insufficient.",
+        "ambiguity": "The loop's target is unspecified. At least three readings are equally supported: (a) loop back to candidate generation, re-opening the candidate set; (b) loop back to information gathering, holding the candidate set fixed; (c) loop over the whole body from generation through assessment. The packet does not disambiguate."
+      },
+      {
+        "value": "The loop is a repeat-until / bottom-tested form: the body runs at least once before the confidence test is reachable.",
+        "support_level": "inferred",
+        "source_text": "Candidate routes are generated. ... Candidate routes are assessed. The process loops if route confidence is insufficient.",
+        "ambiguity": "Follows from the ordering of the statements if the ordering is intended as sequence. If the statements are an unordered inventory of activities rather than a sequence, this inference does not hold."
+      }
+    ],
+    "branches": [
+      {
+        "value": "Branch on confidence: insufficient -> iterate; otherwise -> proceed toward termination.",
+        "support_level": "explicit",
+        "source_text": "The process loops if route confidence is insufficient.",
+        "ambiguity": "The negative arm ('sufficient confidence') is not stated; that it leads to acceptance/termination is an inference from the termination line, not a stated transition."
+      },
+      {
+        "value": "Branch at termination between two disjoint exits: acceptance, or abandonment of further search.",
+        "support_level": "explicit",
+        "source_text": "The process ends when a route is accepted or further search is not justified.",
+        "ambiguity": "Whether the 'not justified' test is evaluated every iteration, only when confidence is insufficient, or asynchronously, is not stated. It could be a second guard on the loop or an independent exit."
+      }
+    ],
+    "termination_conditions": [
+      {
+        "value": "Acceptance of a route.",
+        "support_level": "explicit",
+        "source_text": "The process ends when a route is accepted or further search is not justified.",
+        "ambiguity": "Relation to 'sufficient route confidence' is unspecified (identity vs. distinct further test)."
+      },
+      {
+        "value": "Judgment that further search is not justified.",
+        "support_level": "explicit",
+        "source_text": "The process ends when a route is accepted or further search is not justified.",
+        "ambiguity": "No justification metric is given. This exit may or may not yield an accepted route."
+      }
+    ],
+    "control_flow_shape": "Single-entry iterative loop with a body of generate -> gather -> assess, a confidence-based continuation guard, and a disjunctive two-condition exit (accept OR abandon). Loop-back target within the body is underdetermined by the packet."
+  },
+  "primitive_layer": {
+    "primitive_sequence": [
+      "recognize_uncertainty (entry state: target underdetermined)",
+      "generate_candidates (enumerate possible routes)",
+      "acquire_discriminating_information (gather data selected to separate candidates)",
+      "evaluate_candidates (assess candidates, presumably against gathered information)",
+      "test_sufficiency (compare confidence against an unstated threshold)",
+      "branch: iterate | terminate",
+      "terminate (accept, or abandon search)"
+    ],
+    "transitions": [
+      "recognize_uncertainty -> generate_candidates (sequential; explicit in ordering)",
+      "generate_candidates -> acquire_discriminating_information (sequential; explicit in ordering)",
+      "acquire_discriminating_information -> evaluate_candidates (sequential; explicit in ordering; the dependency of evaluation on the gathered information is implied, not stated)",
+      "evaluate_candidates -> test_sufficiency (implied; test_sufficiency may be a sub-part of evaluate_candidates rather than a successor)",
+      "test_sufficiency --[insufficient]--> loop-back to an underdetermined point in the body (generate_candidates OR acquire_discriminating_information OR the whole body)",
+      "test_sufficiency --[sufficient]--> terminate/accept (inferred; the packet never states the sufficient-confidence arm)",
+      "any-point --[further search not justified]--> terminate/abandon (placement of this guard in the flow is unspecified)"
+    ],
+    "dominant_primitive": "evaluate_candidates — the packet's center of gravity is discrimination among a candidate set; three of six statements (generation, differentiating information, assessment) exist to serve candidate evaluation, and the loop guard is stated in terms of confidence about candidates.",
+    "candidate_missing_primitives": [
+      "candidate pruning / elimination (assessment is stated but no disposal of rejected candidates is described)",
+      "explicit acceptance decision procedure (acceptance is named as an exit but never as an operation)",
+      "cost or budget accounting (implied by 'further search is not justified' but no cost primitive is present)",
+      "selection of which information to gather (the information is 'differentiating' but no selection primitive is named)",
+      "execution of the chosen route (the packet ends at acceptance; no downstream action is described)",
+      "handling of the empty-candidate-set case",
+      "definition or update of the confidence quantity being tested"
+    ]
+  },
+  "constraint_layer": {
+    "invariants": [
+      {
+        "value": "A candidate route set exists across iterations once generation has occurred.",
+        "support_level": "inferred",
+        "source_text": "Candidate routes are generated. ... Candidate routes are assessed.",
+        "ambiguity": "Persistence vs. regeneration of the set per iteration is not stated; under the loop-to-generation reading the set may be rebuilt rather than preserved."
+      },
+      {
+        "value": "Information gathered is discriminative with respect to the candidate set (it bears on distinguishing candidates rather than being arbitrary).",
+        "support_level": "explicit",
+        "source_text": "Differentiating route information is gathered.",
+        "ambiguity": "Stated as a property of the information; whether it is an enforced constraint or a description is unclear."
+      },
+      {
+        "value": "The uncertainty concerns one delivery path throughout; the target of the process does not change.",
+        "support_level": "inferred",
+        "source_text": "A delivery path is uncertain.",
+        "ambiguity": "Never stated. The packet is silent on whether the target can be revised mid-process."
+      }
+    ],
+    "preconditions": [
+      {
+        "value": "Uncertainty about the delivery path exists (entry precondition).",
+        "support_level": "explicit",
+        "source_text": "A delivery path is uncertain.",
+        "ambiguity": "None material."
+      },
+      {
+        "value": "Candidate routes must exist before differentiating information can be gathered and before assessment.",
+        "support_level": "inferred",
+        "source_text": "Candidate routes are generated. Differentiating route information is gathered. Candidate routes are assessed.",
+        "ambiguity": "Rests on reading the statement order as procedural order. If the packet lines are an unordered inventory, this precondition is not licensed."
+      },
+      {
+        "value": "A confidence measure over routes must be available for the loop guard to be evaluable.",
+        "support_level": "inferred",
+        "source_text": "The process loops if route confidence is insufficient.",
+        "ambiguity": "Nothing in the packet defines, produces, or updates this measure; its origin is unaccounted for."
+      }
+    ],
+    "postconditions": [
+      {
+        "value": "On the acceptance exit: a route has been accepted.",
+        "support_level": "explicit",
+        "source_text": "The process ends when a route is accepted...",
+        "ambiguity": "Whether the accepted route is guaranteed correct, or merely sufficiently supported, is not stated."
+      },
+      {
+        "value": "On the abandonment exit: the process has halted, possibly with the delivery path still uncertain.",
+        "support_level": "inferred",
+        "source_text": "...or further search is not justified.",
+        "ambiguity": "The packet does not say what state is left behind on this exit — whether a best-available route is carried out, or nothing is."
+      }
+    ],
+    "stopping_criteria": [
+      {
+        "value": "Route confidence is sufficient (negation of the loop guard).",
+        "support_level": "implied",
+        "source_text": "The process loops if route confidence is insufficient.",
+        "ambiguity": "Sufficiency threshold is unspecified. It is also unclear whether sufficient confidence alone stops the process or merely permits the acceptance test to be attempted."
+      },
+      {
+        "value": "A route is accepted.",
+        "support_level": "explicit",
+        "source_text": "The process ends when a route is accepted or further search is not justified.",
+        "ambiguity": "Possible duplicate of the confidence criterion; possible distinct criterion. Packet supports both."
+      },
+      {
+        "value": "Further search is not justified (search-cost / diminishing-returns cutoff).",
+        "support_level": "explicit",
+        "source_text": "The process ends when a route is accepted or further search is not justified.",
+        "ambiguity": "No metric, budget, or evaluator for 'justified' is provided."
+      }
+    ],
+    "validity_conditions": [
+      {
+        "value": "The process is valid only while a nonempty candidate set is available to assess.",
+        "support_level": "inferred",
+        "source_text": "Candidate routes are generated. ... Candidate routes are assessed.",
+        "ambiguity": "The empty-candidate case is not addressed by the packet; this condition is imported by procedural necessity, not stated."
+      },
+      {
+        "value": "Iteration is only valid where continued search remains justified; the two exit conditions are disjunctive, so the abandonment condition bounds the loop.",
+        "support_level": "implied",
+        "source_text": "The process loops if route confidence is insufficient. The process ends when a route is accepted or further search is not justified.",
+        "ambiguity": "The packet does not state that the justification test is evaluated inside the loop. If it is not, the loop has no stated termination guarantee under persistent low confidence."
+      }
+    ]
+  },
+  "representation_layer": {
+    "procedural_ast": {
+      "type": "procedure",
+      "entry": {
+        "type": "state",
+        "value": "delivery_path_uncertain",
+        "support": "explicit"
+      },
+      "body": {
+        "type": "loop",
+        "form": "repeat_until",
+        "guard": {
+          "type": "condition",
+          "value": "route_confidence_insufficient",
+          "on_true": "iterate",
+          "on_false": "exit_toward_termination (inferred, not stated)",
+          "support": "explicit_for_true_arm"
+        },
+        "loop_back_target": {
+          "type": "underdetermined",
+          "candidates": [
+            "generate_candidate_routes",
+            "gather_differentiating_information",
+            "whole_body"
+          ]
+        },
+        "steps": [
+          {
+            "type": "step",
+            "id": "s1",
+            "value": "generate_candidate_routes",
+            "support": "explicit",
+            "iteration_status": "unknown (once vs. per-iteration)"
+          },
+          {
+            "type": "step",
+            "id": "s2",
+            "value": "gather_differentiating_route_information",
+            "support": "explicit"
+          },
+          {
+            "type": "step",
+            "id": "s3",
+            "value": "assess_candidate_routes",
+            "support": "explicit"
+          },
+          {
+            "type": "step",
+            "id": "s4",
+            "value": "test_route_confidence_sufficiency",
+            "support": "implied",
+            "note": "may be a sub-node of s3 rather than a sibling"
+          }
+        ]
+      },
+      "exits": {
+        "type": "disjunction",
+        "operator": "OR",
+        "arms": [
+          {
+            "type": "exit",
+            "value": "route_accepted",
+            "support": "explicit"
+          },
+          {
+            "type": "exit",
+            "value": "further_search_not_justified",
+            "support": "explicit",
+            "placement_in_flow": "unspecified"
+          }
+        ]
+      },
+      "unresolved_nodes": [
+        "relation between route_accepted and sufficient route_confidence",
+        "evaluation point of the further_search_not_justified guard",
+        "origin and update rule of the confidence quantity"
+      ]
+    },
+    "natural_language_summary": "Starting from an uncertain delivery path, the procedure produces a set of candidate routes, gathers information chosen for its power to distinguish those candidates from one another, and then assesses the candidates. If confidence in a route remains insufficient, the procedure repeats; the packet does not say which step it repeats from. The procedure halts on either of two conditions: a route is accepted, or continued searching is judged unwarranted. The packet gives no thresholds, no metrics, no acceptance procedure, and no account of how confidence is computed or updated.",
+    "canonical_summary": "uncertain_target -> generate(candidates) -> acquire(discriminating_information) -> evaluate(candidates) -> [confidence_insufficient? -> loop(target underdetermined) : proceed] -> halt(accept OR abandon_search)",
+    "ambiguities": [
+      {
+        "location": "loop statement / 'The process loops if route confidence is insufficient.'",
+        "description": "The loop-back target is not named. The packet says the process loops but not to where.",
+        "plausible_interpretations": [
+          "Loop back to candidate generation: each iteration re-opens or expands the candidate set (generate-and-test with candidate revision).",
+          "Loop back to information gathering: the candidate set is fixed after the first pass and iterations only accumulate discriminating evidence.",
+          "Loop the entire body: generation, gathering, and assessment all re-run each iteration."
+        ],
+        "effect_on_extraction": "Loop node in the AST left with an explicit underdetermined target; the invariant 'candidate set persists across iterations' is marked inferred rather than asserted, because reading (a) would falsify it. No single reading has been selected."
+      },
+      {
+        "location": "termination statement vs. loop guard",
+        "description": "Relation between 'route confidence is sufficient' (the negation of the loop guard) and 'a route is accepted' (an exit condition) is not stated.",
+        "plausible_interpretations": [
+          "They are the same condition described twice: sufficient confidence IS acceptance.",
+          "They are distinct: sufficient confidence exits the loop, after which a separate acceptance decision occurs (and could conceivably fail).",
+          "Acceptance is a step not listed in the packet, gated by sufficient confidence."
+        ],
+        "effect_on_extraction": "Both 'sufficient confidence' and 'route accepted' recorded as separate stopping criteria with the redundancy flagged, rather than merged into one criterion."
+      },
+      {
+        "location": "'further search is not justified'",
+        "description": "This exit's evaluation point in the control flow is unspecified, as is its criterion.",
+        "plausible_interpretations": [
+          "A second guard checked each iteration alongside the confidence test, bounding the loop.",
+          "A guard checked only after confidence is found insufficient (i.e., 'should we keep going?').",
+          "An external/asynchronous cutoff not integrated into the loop at all."
+        ],
+        "effect_on_extraction": "Placement recorded as unspecified in the AST; the claim that the loop is guaranteed to terminate is downgraded to 'implied' since it depends on interpretation (a) or (b)."
+      },
+      {
+        "location": "packet as a whole — ordering",
+        "description": "The six statements are presented as separate declarative lines. Whether their order encodes procedural sequence or is merely an inventory of constituent activities is not stated.",
+        "plausible_interpretations": [
+          "The line order is the execution order (assumed by most of this extraction).",
+          "The lines are an unordered set of activities whose sequencing is defined elsewhere."
+        ],
+        "effect_on_extraction": "The sequential reading was adopted as the primary one because the final two lines explicitly reference control flow, which presupposes an ordering; but all order-dependent preconditions and transitions are marked as 'inferred' rather than 'explicit' to preserve the alternative."
+      },
+      {
+        "location": "'route confidence'",
+        "description": "A confidence quantity is tested but never produced, defined, or updated by any listed step.",
+        "plausible_interpretations": [
+          "Confidence is an output of the assessment step (most natural reading, but unstated).",
+          "Confidence is maintained externally to the listed steps.",
+          "Confidence is a qualitative judgment made at the branch point itself."
+        ],
+        "effect_on_extraction": "Listed under candidate_missing_primitives and as an unresolved AST node rather than being silently attached to the assessment step."
+      },
+      {
+        "location": "candidate generation, iteration status",
+        "description": "Whether generation is a one-time entry step or part of the repeated body cannot be determined.",
+        "plausible_interpretations": [
+          "One-time: candidates are fixed at entry.",
+          "Per-iteration: candidates are regenerated or extended each pass."
+        ],
+        "effect_on_extraction": "AST step s1 carries an explicit 'iteration_status: unknown' marker; downstream invariants weakened accordingly."
+      }
+    ]
+  },
+  "recognition_analysis": {
+    "recognition_occurred": "partial",
+    "recognition_basis": "The abstract control shape — generate candidates, gather discriminating evidence, evaluate, iterate while confidence is low, stop on acceptance or when further search is not worth its cost — is a widely instantiated pattern. It resembles a generic hypothesis-driven or abductive search loop, of which route-finding is one possible dressing. Recognition is shape-level only; nothing in the packet identifies a specific named artifact, and no artifact-specific structure has been imported. The generation, gathering, assessment, loop, and dual-exit elements were each read directly off the packet text and would have been extracted identically without any recognition.",
+    "domain_terms_introduced": [],
+    "prior_knowledge_leakage_risk": "low-to-moderate. Risk concentrates at exactly the points where the packet is silent — the loop-back target, the confidence update rule, and the relation between sufficiency and acceptance. Familiar instances of this pattern supply confident defaults for all three (e.g., 'loop back to information gathering; confidence is a posterior updated by evidence; sufficiency is acceptance'). Those defaults were deliberately withheld and recorded as ambiguities instead. Residual risk: the sequential reading of the six lines, and the assumption that assessment consumes the gathered information, are both mildly pattern-driven, though both are also reasonable implications of the packet's ordering."
+  },
+  "confidence": {
+    "structural_layer": "moderate-high for the presence and identity of the steps and exits; low for the loop's internal wiring and for the placement of the abandonment guard.",
+    "primitive_layer": "moderate. The primitive sequence follows the packet closely, but the decomposition of assessment vs. sufficiency-testing into one or two primitives is arbitrary between two equally supported readings, and the candidate_missing_primitives list is necessarily speculative about what a fuller specification would contain.",
+    "constraint_layer": "low-moderate. Almost all constraints are inferred rather than stated; the packet asserts no invariant, precondition, or postcondition in explicit constraint form, and the two stopping criteria may be redundant with each other.",
+    "representation_layer": "moderate. The AST preserves the packet's underdetermination rather than resolving it, which lowers cleanliness but is the intended behavior. The summaries are faithful and add no structure.",
+    "recognition_analysis": "moderate. Recognition of a shape is reported honestly; the assertion that no artifact-specific structure leaked cannot be fully verified from the inside, so it is stated with the leakage risk qualified rather than as a guarantee.",
+    "overall": "moderate. The packet is short, and its six statements are individually clear but jointly underspecify the control flow. High-confidence extraction is available for step identity and exit conditions; the loop topology, the confidence quantity, and the acceptance/sufficiency relation are genuinely underdetermined and are reported as such."
+  },
+  "notes": "The packet is six declarative statements. Every extracted element traces to one of them; nothing has been added to produce a complete or well-formed procedure. Three structural gaps are load-bearing and were left open rather than closed: (1) the loop's return point, (2) whether 'sufficient confidence' and 'accepted' are the same condition, (3) where the 'further search not justified' test is evaluated. Any of the three could be settled by a single additional sentence in the source, and settling them differently yields materially different procedures — so no default was chosen. The packet is written in a passive, agentless register throughout ('are generated', 'is gathered', 'are assessed'); no agent, no cost model, no evidence model, and no downstream execution of the accepted route appear anywhere in it, and none have been supplied here."
+}
