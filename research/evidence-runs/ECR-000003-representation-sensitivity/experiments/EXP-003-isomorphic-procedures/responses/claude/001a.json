@@ -1,0 +1,403 @@
+{
+  "packet_id": "ECR-000003-EXP003-P001A",
+  "experiment_id": "EXP-003",
+  "variant_id": "P001A",
+  "artifact_family_id": "P001",
+  "recognition_condition": "domain_variant_technical",
+  "blinded_artifact_id": "BR-EXP003-P001",
+  "recognized_artifact": "Generic iterative diagnostic / differential-diagnosis loop (hypothesis enumeration -> evidence collection -> hypothesis testing -> iterate or terminate), here instantiated in a technical fault-troubleshooting vocabulary. Recognition is at the level of procedural shape only; no specific named methodology is confidently identified.",
+  "structural_layer": {
+    "entry_conditions": [
+      {
+        "value": "A system exists and is in a fault state that has not been resolved.",
+        "support_level": "explicit",
+        "source_text": "A system has an unresolved fault.",
+        "ambiguity": "Unclear whether fault detection/declaration is a step of this procedure or a precondition established outside it. The packet states the condition but not its origin."
+      },
+      {
+        "value": "The fault is available as an object of diagnosis (i.e., diagnosis is initiated or justified at entry).",
+        "support_level": "inferred",
+        "source_text": "A system has an unresolved fault. / ...further diagnosis is not justified.",
+        "ambiguity": "Justification of diagnosis is only mentioned as a termination consideration; whether an equivalent justification test gates entry is not stated."
+      }
+    ],
+    "exit_conditions": [
+      {
+        "value": "A cause is accepted.",
+        "support_level": "explicit",
+        "source_text": "The process ends when a cause is accepted or further diagnosis is not justified.",
+        "ambiguity": "Acceptance criteria are not specified; the packet does not say what makes a cause acceptable, nor who or what performs acceptance."
+      },
+      {
+        "value": "Further diagnosis is judged not justified.",
+        "support_level": "explicit",
+        "source_text": "The process ends when a cause is accepted or further diagnosis is not justified.",
+        "ambiguity": "The justification criterion is entirely unspecified (cost, time, exhaustion of candidates, external decision). Also unclear whether this exit can be taken with the fault unresolved and no cause accepted; the packet implies it can but does not state the resulting state."
+      }
+    ],
+    "required_steps": [
+      {
+        "value": "Enumerate/list candidate causes.",
+        "support_level": "explicit",
+        "source_text": "Candidate causes are listed.",
+        "ambiguity": "Unclear whether this occurs once at initialization or is repeated per iteration; the loop scope is not specified."
+      },
+      {
+        "value": "Gather diagnostic signals.",
+        "support_level": "explicit",
+        "source_text": "Diagnostic signals are gathered.",
+        "ambiguity": "Unclear whether signal gathering is candidate-directed (informed by the candidate list) or independent. The adjacency of the two statements does not establish a dependency."
+      },
+      {
+        "value": "Test candidate causes against the gathered signals.",
+        "support_level": "explicit",
+        "source_text": "Candidate causes are tested against the signals.",
+        "ambiguity": "Unclear whether all candidates are tested per pass, one candidate per pass, or some selected subset. Also unclear whether testing produces elimination, ranking, or acceptance."
+      },
+      {
+        "value": "Evaluate whether the cause remains unresolved (loop/exit decision).",
+        "support_level": "implicit",
+        "source_text": "The process loops if the cause remains unresolved.",
+        "ambiguity": "The decision step is implied by the conditional loop but is not itself named as a step in the packet. It may be a distinct step or an outcome property of the testing step."
+      }
+    ],
+    "optional_steps": [
+      {
+        "value": "Revision or extension of the candidate cause list on subsequent iterations.",
+        "support_level": "unsupported",
+        "source_text": "Candidate causes are listed. / The process loops if the cause remains unresolved.",
+        "ambiguity": "Only plausible if the loop body includes candidate listing. The packet does not state the loop boundary, so this step is possible but not supported."
+      },
+      {
+        "value": "Assessment of whether further diagnosis is justified (as a separately executed step rather than a passive condition).",
+        "support_level": "implicit",
+        "source_text": "The process ends when a cause is accepted or further diagnosis is not justified.",
+        "ambiguity": "Could be an explicit evaluative step in the loop, or an external/contextual condition that is merely observed. The packet does not distinguish these."
+      }
+    ],
+    "loops": [
+      {
+        "value": "An iteration that repeats while the cause remains unresolved.",
+        "support_level": "explicit",
+        "source_text": "The process loops if the cause remains unresolved.",
+        "ambiguity": "Loop back-edge target is unspecified. It may return to (a) candidate listing, (b) signal gathering, or (c) testing only. All three are equally consistent with the packet."
+      },
+      {
+        "value": "Loop guard is a post-test condition (test-then-check, i.e., the loop body executes at least once).",
+        "support_level": "inferred",
+        "source_text": "Candidate causes are tested against the signals. / The process loops if the cause remains unresolved.",
+        "ambiguity": "The ordering of statements suggests a do-while shape, but a pre-test (while) shape is not excluded by the packet."
+      }
+    ],
+    "branches": [
+      {
+        "value": "Branch on resolution status: cause resolved/accepted -> exit; cause unresolved -> loop.",
+        "support_level": "explicit",
+        "source_text": "The process loops if the cause remains unresolved. / The process ends when a cause is accepted...",
+        "ambiguity": "The packet uses 'remains unresolved' and 'a cause is accepted' as separate expressions; whether these are strict complements is not stated."
+      },
+      {
+        "value": "Disjunctive exit branch: acceptance OR non-justification of further diagnosis.",
+        "support_level": "explicit",
+        "source_text": "The process ends when a cause is accepted or further diagnosis is not justified.",
+        "ambiguity": "Evaluation order/priority between the two disjuncts is not specified, nor whether the justification check is evaluated every iteration."
+      }
+    ],
+    "termination_conditions": [
+      {
+        "value": "Acceptance of a cause.",
+        "support_level": "explicit",
+        "source_text": "The process ends when a cause is accepted...",
+        "ambiguity": "No acceptance threshold, evidence standard, or arbiter is given."
+      },
+      {
+        "value": "Further diagnosis is not justified (non-success / abandonment termination).",
+        "support_level": "explicit",
+        "source_text": "...or further diagnosis is not justified.",
+        "ambiguity": "Criterion unspecified. Whether the fault remains unresolved on this exit is implied but not stated."
+      }
+    ],
+    "control_flow_shape": "Sequential initialization (fault present -> candidates listed -> signals gathered) feeding an iterative test/evaluate loop with a disjunctive two-condition exit. Best described as a bounded-by-judgment do-while (or while) loop; the exact loop boundary and guard placement are underdetermined by the packet."
+  },
+  "primitive_layer": {
+    "primitive_sequence": [
+      "recognize_unresolved_problem_state",
+      "enumerate_candidate_explanations",
+      "collect_evidence",
+      "evaluate_candidates_against_evidence",
+      "assess_resolution_status",
+      "branch_continue_or_terminate",
+      "iterate",
+      "terminate_on_acceptance_or_non_justification"
+    ],
+    "transitions": [
+      "recognize_unresolved_problem_state -> enumerate_candidate_explanations",
+      "enumerate_candidate_explanations -> collect_evidence",
+      "collect_evidence -> evaluate_candidates_against_evidence",
+      "evaluate_candidates_against_evidence -> assess_resolution_status",
+      "assess_resolution_status -> branch_continue_or_terminate",
+      "branch_continue_or_terminate -[unresolved]-> iterate",
+      "iterate -> (loop target underdetermined: enumerate_candidate_explanations | collect_evidence | evaluate_candidates_against_evidence)",
+      "branch_continue_or_terminate -[cause accepted]-> terminate_on_acceptance_or_non_justification",
+      "branch_continue_or_terminate -[further diagnosis not justified]-> terminate_on_acceptance_or_non_justification"
+    ],
+    "dominant_primitive": "evaluate_candidates_against_evidence (hypothesis testing against gathered signals) — it is the pivot the loop and both exits depend on",
+    "candidate_missing_primitives": [
+      "acceptance_criterion_application (acceptance is named but its rule is absent)",
+      "justification_or_cost_assessment (referenced only as a termination condition, never as an operation)",
+      "candidate_elimination_or_pruning (implied by 'testing' but never stated)",
+      "candidate_list_revision_between_iterations (would be required if the loop re-enters enumeration; not stated)",
+      "signal_selection_or_test_choice (which diagnostic signals to gather is never addressed)",
+      "remediation_or_repair_action (packet ends at cause acceptance; no action on the accepted cause is described)",
+      "verification_of_accepted_cause (no confirmation step follows acceptance)"
+    ]
+  },
+  "constraint_layer": {
+    "invariants": [
+      {
+        "value": "A set of candidate causes exists from the point of listing onward and is the domain over which testing occurs.",
+        "support_level": "inferred",
+        "source_text": "Candidate causes are listed. / Candidate causes are tested against the signals.",
+        "ambiguity": "Whether the set is fixed or mutable across iterations is not stated."
+      },
+      {
+        "value": "Testing is always relative to gathered signals (candidates are not accepted independently of evidence).",
+        "support_level": "explicit",
+        "source_text": "Candidate causes are tested against the signals.",
+        "ambiguity": "Does not exclude non-evidential termination, since the 'not justified' exit can end the process without evidential resolution."
+      },
+      {
+        "value": "The fault remains unresolved for the duration of every loop iteration.",
+        "support_level": "inferred",
+        "source_text": "The process loops if the cause remains unresolved.",
+        "ambiguity": "Follows from the loop guard only if the guard is strictly complementary to the exit conditions, which is not stated."
+      }
+    ],
+    "preconditions": [
+      {
+        "value": "An unresolved fault is present in the system.",
+        "support_level": "explicit",
+        "source_text": "A system has an unresolved fault.",
+        "ambiguity": "None significant at the level of the statement itself."
+      },
+      {
+        "value": "Candidate causes must be listed before they can be tested.",
+        "support_level": "inferred",
+        "source_text": "Candidate causes are listed. / Candidate causes are tested against the signals.",
+        "ambiguity": "Ordering is a reasonable procedural implication but is not asserted as a constraint."
+      },
+      {
+        "value": "Diagnostic signals must be gathered before testing against them.",
+        "support_level": "inferred",
+        "source_text": "Diagnostic signals are gathered. / Candidate causes are tested against the signals.",
+        "ambiguity": "Same as above; the dependency is implied by the phrase 'against the signals' but not stated as a requirement."
+      }
+    ],
+    "postconditions": [
+      {
+        "value": "On success exit: a cause has been accepted.",
+        "support_level": "explicit",
+        "source_text": "The process ends when a cause is accepted...",
+        "ambiguity": "Whether acceptance entails the fault being resolved, or only that a cause has been identified, is not stated."
+      },
+      {
+        "value": "On non-success exit: the process has ended without an accepted cause and the fault may remain unresolved.",
+        "support_level": "inferred",
+        "source_text": "...or further diagnosis is not justified.",
+        "ambiguity": "The packet does not describe the resulting state of the system on this exit; this is a reasonable but unstated implication."
+      }
+    ],
+    "stopping_criteria": [
+      {
+        "value": "Cause accepted.",
+        "support_level": "explicit",
+        "source_text": "The process ends when a cause is accepted or further diagnosis is not justified.",
+        "ambiguity": "Criterion for acceptance unspecified."
+      },
+      {
+        "value": "Further diagnosis not justified.",
+        "support_level": "explicit",
+        "source_text": "The process ends when a cause is accepted or further diagnosis is not justified.",
+        "ambiguity": "Criterion unspecified; introduces an external/judgmental stopping rule not derivable from the signals or candidates."
+      }
+    ],
+    "validity_conditions": [
+      {
+        "value": "The gathered signals must be capable of discriminating among the listed candidate causes for testing to be meaningful.",
+        "support_level": "inferred",
+        "source_text": "Candidate causes are tested against the signals.",
+        "ambiguity": "This is a procedural implication of the testing step; the packet asserts no discrimination requirement."
+      },
+      {
+        "value": "Loop termination requires that at least one of the two exit conditions eventually become true (no guaranteed-progress mechanism is stated).",
+        "support_level": "inferred",
+        "source_text": "The process loops if the cause remains unresolved. / The process ends when...",
+        "ambiguity": "The packet supplies no bound, counter, or progress guarantee; non-termination is not excluded by the packet text."
+      }
+    ]
+  },
+  "representation_layer": {
+    "procedural_ast": {
+      "type": "procedure",
+      "entry": {
+        "type": "precondition",
+        "condition": "system has unresolved fault",
+        "support": "explicit"
+      },
+      "body": [
+        {
+          "type": "step",
+          "id": "S1",
+          "op": "list_candidate_causes",
+          "support": "explicit",
+          "loop_membership": "underdetermined"
+        },
+        {
+          "type": "step",
+          "id": "S2",
+          "op": "gather_diagnostic_signals",
+          "support": "explicit",
+          "loop_membership": "underdetermined"
+        },
+        {
+          "type": "loop",
+          "id": "L1",
+          "guard": {
+            "condition": "cause remains unresolved",
+            "support": "explicit",
+            "placement": "post-test (do-while) inferred; pre-test not excluded"
+          },
+          "back_edge_target": ["S1", "S2", "S3"],
+          "back_edge_note": "target underdetermined; all three readings supported equally",
+          "body": [
+            {
+              "type": "step",
+              "id": "S3",
+              "op": "test_candidates_against_signals",
+              "support": "explicit"
+            },
+            {
+              "type": "decision",
+              "id": "D1",
+              "op": "assess_resolution_status",
+              "support": "implicit",
+              "branches": [
+                {
+                  "condition": "cause accepted",
+                  "target": "EXIT_ACCEPT",
+                  "support": "explicit"
+                },
+                {
+                  "condition": "further diagnosis not justified",
+                  "target": "EXIT_ABANDON",
+                  "support": "explicit"
+                },
+                {
+                  "condition": "cause remains unresolved (and diagnosis still justified)",
+                  "target": "L1.back_edge",
+                  "support": "explicit_for_unresolved; inferred_for_conjunction_with_justification"
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "exits": [
+        {
+          "id": "EXIT_ACCEPT",
+          "condition": "a cause is accepted",
+          "support": "explicit"
+        },
+        {
+          "id": "EXIT_ABANDON",
+          "condition": "further diagnosis is not justified",
+          "support": "explicit"
+        }
+      ]
+    },
+    "natural_language_summary": "The packet describes a diagnostic procedure that begins from an unresolved system fault. Candidate causes are enumerated and diagnostic signals are collected, and the candidates are then tested against those signals. If the cause is still not resolved, the procedure repeats; the point it repeats back to is not specified. The procedure terminates under either of two conditions: a cause is accepted, or continuing diagnosis is deemed unjustified. Acceptance criteria, justification criteria, the mutability of the candidate list, and the loop boundary are all left unspecified by the packet.",
+    "canonical_summary": "ENTER(unresolved_fault) -> ENUMERATE(candidates) -> COLLECT(signals) -> LOOP { TEST(candidates, signals) -> DECIDE } WHILE(cause_unresolved) -> EXIT(cause_accepted OR further_diagnosis_unjustified)",
+    "ambiguities": [
+      {
+        "location": "Loop back-edge target ('The process loops if the cause remains unresolved.')",
+        "description": "The packet states that the process loops but not what it loops back to.",
+        "plausible_interpretations": [
+          "Loop returns to candidate listing (candidate set is regenerated/revised each iteration).",
+          "Loop returns to signal gathering (candidate set is fixed; more evidence is collected each iteration).",
+          "Loop returns only to testing (both candidate set and signal set are fixed; only the test/evaluation is repeated, which would imply no new information per iteration)."
+        ],
+        "effect_on_extraction": "The loop body membership of steps S1 and S2 cannot be determined. Structural layer records all three; the AST lists all three as possible back-edge targets rather than selecting one."
+      },
+      {
+        "location": "Ordering/dependency between 'Candidate causes are listed' and 'Diagnostic signals are gathered'",
+        "description": "The two steps are stated adjacently but no dependency is asserted between them.",
+        "plausible_interpretations": [
+          "Candidate listing precedes and directs signal gathering (hypothesis-driven evidence collection).",
+          "Signal gathering is independent of the candidate list (evidence collected first or in parallel; listed order is presentational only).",
+          "The two are order-free and may be interleaved."
+        ],
+        "effect_on_extraction": "Sequential order is recorded as inferred, not explicit. No dependency constraint is asserted in the constraint layer beyond the reading that testing requires both to exist."
+      },
+      {
+        "location": "'a cause is accepted' vs 'the cause remains unresolved'",
+        "description": "The packet uses two different predicates for the continue and exit conditions and does not state whether they are strict complements.",
+        "plausible_interpretations": [
+          "Acceptance and resolution are the same condition, so the loop guard is the exact negation of the success exit.",
+          "Resolution and acceptance are distinct: a cause could be identified without being accepted, or accepted without the fault being resolved."
+        ],
+        "effect_on_extraction": "The branch structure is recorded with a decision node whose branch conditions are not asserted to be mutually exclusive or exhaustive."
+      },
+      {
+        "location": "'further diagnosis is not justified'",
+        "description": "A termination condition is introduced with no stated criterion, evaluator, or evaluation frequency.",
+        "plausible_interpretations": [
+          "An explicit evaluative step executed each iteration inside the loop.",
+          "An externally imposed / contextual condition observed rather than computed by the procedure.",
+          "An exhaustion condition (all candidates eliminated) expressed in cost-benefit language."
+        ],
+        "effect_on_extraction": "Recorded as both an explicit termination condition and an implicit optional step; no criterion is invented."
+      },
+      {
+        "location": "Scope of testing ('Candidate causes are tested against the signals.')",
+        "description": "Whether all candidates, one candidate, or a selected subset are tested per pass is unstated, as is the output type of a test.",
+        "plausible_interpretations": [
+          "All listed candidates are tested against all signals each pass (batch evaluation).",
+          "Candidates are tested one at a time, with the loop iterating over candidates.",
+          "Testing produces elimination/pruning; the surviving set carries forward.",
+          "Testing produces a ranking or likelihood ordering rather than a binary verdict."
+        ],
+        "effect_on_extraction": "The testing step is left as a single unelaborated primitive; no sub-loop over candidates is asserted, and elimination is listed only as a candidate missing primitive."
+      },
+      {
+        "location": "Termination guarantee",
+        "description": "No bound, counter, exhaustion rule, or progress guarantee is present in the packet.",
+        "plausible_interpretations": [
+          "Termination is guaranteed by candidate exhaustion (unstated).",
+          "Termination is guaranteed only by the judgment-based 'not justified' exit.",
+          "Termination is not guaranteed by the procedure as stated."
+        ],
+        "effect_on_extraction": "Recorded as a validity condition with explicit uncertainty; no bound is invented."
+      }
+    ]
+  },
+  "recognition_analysis": {
+    "recognition_occurred": "partial",
+    "recognition_basis": "The control-flow shape (unresolved problem state -> enumerate candidate explanations -> gather evidence -> test candidates against evidence -> iterate while unresolved -> stop on acceptance or on cost/justification grounds) is a widely instantiated abductive/differential-diagnosis loop. Recognition is of the abstract shape and of the fact that the surface vocabulary is a technical-fault instantiation of it. No specific named methodology or source artifact is confidently identified. Recognition was not used to add structure: all extracted elements trace to packet sentences, and every gap the recognized shape would normally fill (elimination rules, acceptance thresholds, candidate revision, remediation, verification) has been left in candidate_missing_primitives or marked unsupported rather than filled in.",
+    "domain_terms_introduced": [
+      "hypothesis / hypothesis testing (used only in recognized_artifact and recognition_basis as shape-level descriptors, not in the structural or constraint layers)",
+      "evidence (used in primitive names as a domain-neutral generalization of 'diagnostic signals' present in the packet)",
+      "do-while / while (control-flow vocabulary, not domain vocabulary)",
+      "pruning / elimination (introduced only as a candidate MISSING primitive, explicitly flagged as not present in the packet)"
+    ],
+    "prior_knowledge_leakage_risk": "moderate — the recognized shape is highly conventional, which creates pressure to import a canonical elimination/confirmation structure and a candidate-exhaustion stopping rule. This was resisted: the loop boundary was left underdetermined rather than defaulted to the canonical 'regenerate candidates each pass' reading, and no acceptance threshold or elimination semantics were asserted. Residual risk is concentrated in the primitive_sequence, where the sequential ordering of enumerate/collect/evaluate is partly a convention of the recognized shape rather than an explicit packet claim."
+  },
+  "confidence": {
+    "structural_layer": "high for the presence of steps, the loop, and both termination conditions; low for loop boundary, guard placement, and step ordering dependencies",
+    "primitive_layer": "medium — primitives map cleanly to packet sentences, but transitions encode a sequential ordering that the packet only weakly supports, and the back-edge target is genuinely undetermined",
+    "constraint_layer": "low-to-medium — the packet states almost no constraints explicitly; most entries here are inferred procedural implications and are labelled as such",
+    "representation_layer": "medium — the AST faithfully preserves the recorded ambiguities rather than resolving them, but any AST necessarily imposes more definiteness than the packet provides",
+    "recognition_analysis": "medium — the shape is recognized with confidence; the specific source artifact is not, and the disclaimed leakage is a self-assessment",
+    "overall": "medium"
+  },
+  "notes": "The packet is extremely sparse: six declarative sentences, each contributing at most one procedural element. Consequently the ratio of inferred-to-explicit content in the constraint layer is high and is flagged throughout. Three points deserve emphasis. (1) The single largest underdetermination is the loop back-edge target; three readings are equally supported and none was selected. (2) The packet describes a procedure that ends at cause acceptance — it contains no repair, remediation, or verification step. This absence is recorded rather than filled, even though the recognized shape would ordinarily continue past acceptance. (3) The 'further diagnosis is not justified' exit is the only element that appeals to a criterion wholly outside the candidate/signal machinery, and the packet supplies no content for it; it has been preserved as an explicit but empty termination condition rather than being reconstructed as a candidate-exhaustion rule. No evaluation of the underlying theory, framework, or procedure was performed, and no redesign, critique, or extension is offered. Passive-voice phrasing throughout the packet ('are listed', 'are gathered', 'are tested') leaves every agent unspecified; no agent was inferred."
+}
