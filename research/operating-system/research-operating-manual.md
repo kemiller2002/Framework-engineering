@@ -42,6 +42,18 @@ ECR or experiment
 -> Research Queue
 -> next highest-information experiment
 
+## Response Normalization Gate
+
+Before official comparison:
+
+1. Collect responses.
+2. Normalize responses into canonical paths.
+3. Verify dataset completeness.
+4. Generate normalization certificates.
+5. Run Comparator v3.1 only against certified datasets.
+
+Official comparison must refuse missing, blocked, invalidated, or stale certificates.
+
 ## Required Operating References
 
 - `research-constitution.md`

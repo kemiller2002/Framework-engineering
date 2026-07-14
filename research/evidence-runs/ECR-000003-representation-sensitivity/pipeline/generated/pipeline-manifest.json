@@ -1,11 +1,11 @@
 {
-  "pipeline_id": "2026-07-13T21-15-59-382Z",
+  "pipeline_id": "2026-07-14T13-06-18-300Z",
   "ecr_id": "ECR-000003",
   "pipeline_version": "1.0.0",
   "comparator_version": "3.1.0",
-  "started_at": "2026-07-13T21:15:59.382Z",
-  "completed_at": "2026-07-13T21:15:59.439Z",
-  "mode": "reports-all",
+  "started_at": "2026-07-14T13:06:18.300Z",
+  "completed_at": "2026-07-14T13:06:18.802Z",
+  "mode": "compare-all",
   "normalization": {},
   "dataset": {
     "experiments": [
@@ -16,10 +16,10 @@
         "expected": 12,
         "present": 12,
         "missing": 0,
-        "malformed": 4,
+        "malformed": 0,
         "conflicts": 0,
         "unsafeMalformed": 0,
-        "status": "READY_WITH_WARNINGS"
+        "status": "READY"
       },
       {
         "experiment": "EXP-002",
@@ -28,18 +28,18 @@
         "expected": 12,
         "present": 12,
         "missing": 0,
-        "malformed": 4,
+        "malformed": 0,
         "conflicts": 0,
         "unsafeMalformed": 0,
-        "status": "READY_WITH_WARNINGS"
+        "status": "READY"
       },
       {
         "experiment": "EXP-003",
         "packets": 3,
         "providers": 3,
         "expected": 9,
-        "present": 0,
-        "missing": 9,
+        "present": 8,
+        "missing": 1,
         "malformed": 0,
         "conflicts": 0,
         "unsafeMalformed": 0,
@@ -48,10 +48,76 @@
     ],
     "overallStatus": "BLOCKED",
     "warnings": [
-      "EXP-003 missing 9 primary responses."
+      "EXP-003 missing 1 primary responses."
     ]
   },
-  "experiments": {},
+  "experiments": {
+    "EXP-001": {
+      "experiment": "EXP-001",
+      "status": "generated",
+      "reason": "",
+      "generated": [
+        "experiments/EXP-001-topology-perturbation/comparison/generated-v3.1/run-manifest.json",
+        "experiments/EXP-001-topology-perturbation/comparison/generated-v3.1/exp-001-comparison-summary.md",
+        "experiments/EXP-001-topology-perturbation/comparison/generated-v3.1/data-quality-report.md",
+        "experiments/EXP-001-topology-perturbation/comparison/generated-v3.1/recognition-persistence-report.md",
+        "experiments/EXP-001-topology-perturbation/comparison/generated-v3.1/structural-backbone-report.md",
+        "experiments/EXP-001-topology-perturbation/comparison/generated-v3.1/structural-field-variance-report.md",
+        "experiments/EXP-001-topology-perturbation/comparison/generated-v3.1/primitive-stability-report.md",
+        "experiments/EXP-001-topology-perturbation/comparison/generated-v3.1/constraint-concept-report.md",
+        "experiments/EXP-001-topology-perturbation/comparison/generated-v3.1/representation-compliance-report.md",
+        "experiments/EXP-001-topology-perturbation/comparison/generated-v3.1/representation-review-fields.md",
+        "experiments/EXP-001-topology-perturbation/comparison/generated-v3.1/domain-leakage-report.md",
+        "experiments/EXP-001-topology-perturbation/comparison/generated-v3.1/observation-ledger.md",
+        "experiments/EXP-001-topology-perturbation/comparison/generated-v3.1/raw-comparison-data.json",
+        "experiments/EXP-001-topology-perturbation/comparison/generated-v3.1/edr-draft.md"
+      ],
+      "evidenceReady": true,
+      "runId": "99c5ce29-06bf-4313-9c43-380e6fbbbe15",
+      "command": "npm run compare:v3.1",
+      "cwd": "/Users/kevinmiller/dev/Framework-engineering/research/evidence-runs/ECR-000003-representation-sensitivity/experiments/EXP-001-topology-perturbation",
+      "exitCode": 0,
+      "startedAt": "2026-07-14T13:06:18.338Z",
+      "completedAt": "2026-07-14T13:06:18.569Z",
+      "issues": []
+    },
+    "EXP-002": {
+      "experiment": "EXP-002",
+      "status": "generated",
+      "reason": "",
+      "generated": [
+        "experiments/EXP-002-cross-representation-stability/comparison/generated-v3.1/run-manifest.json",
+        "experiments/EXP-002-cross-representation-stability/comparison/generated-v3.1/exp-002-comparison-summary.md",
+        "experiments/EXP-002-cross-representation-stability/comparison/generated-v3.1/data-quality-report.md",
+        "experiments/EXP-002-cross-representation-stability/comparison/generated-v3.1/recognition-persistence-report.md",
+        "experiments/EXP-002-cross-representation-stability/comparison/generated-v3.1/cross-representation-backbone-report.md",
+        "experiments/EXP-002-cross-representation-stability/comparison/generated-v3.1/representation-format-effects.md",
+        "experiments/EXP-002-cross-representation-stability/comparison/generated-v3.1/primitive-stability-report.md",
+        "experiments/EXP-002-cross-representation-stability/comparison/generated-v3.1/constraint-concept-report.md",
+        "experiments/EXP-002-cross-representation-stability/comparison/generated-v3.1/representation-compliance-report.md",
+        "experiments/EXP-002-cross-representation-stability/comparison/generated-v3.1/provider-behavior-report.md",
+        "experiments/EXP-002-cross-representation-stability/comparison/generated-v3.1/domain-leakage-report.md",
+        "experiments/EXP-002-cross-representation-stability/comparison/generated-v3.1/observation-ledger.md",
+        "experiments/EXP-002-cross-representation-stability/comparison/generated-v3.1/raw-comparison-data.json",
+        "experiments/EXP-002-cross-representation-stability/comparison/generated-v3.1/edr-draft.md"
+      ],
+      "evidenceReady": true,
+      "runId": "283803c9-3229-47be-9115-ec7ac1181809",
+      "command": "npm run compare:v3.1",
+      "cwd": "/Users/kevinmiller/dev/Framework-engineering/research/evidence-runs/ECR-000003-representation-sensitivity/experiments/EXP-002-cross-representation-stability",
+      "exitCode": 0,
+      "startedAt": "2026-07-14T13:06:18.572Z",
+      "completedAt": "2026-07-14T13:06:18.791Z",
+      "issues": []
+    },
+    "EXP-003": {
+      "experiment": "EXP-003",
+      "status": "blocked",
+      "reason": "Dataset not ready for comparison.",
+      "generated": [],
+      "evidenceReady": false
+    }
+  },
   "reports": [
     "pipeline/generated/environment-verification.md",
     "pipeline/generated/dataset-completeness.md",
@@ -71,7 +137,8 @@
     "edr/EDR-ECR-000003-SUMMARY.md"
   ],
   "warnings": [
-    "EXP-003 missing 9 primary responses."
+    "EXP-003 missing 1 primary responses.",
+    "Partial execution completed: at least one experiment ran while another remained blocked."
   ],
   "blocking_errors": [],
   "status": "complete_with_warnings"

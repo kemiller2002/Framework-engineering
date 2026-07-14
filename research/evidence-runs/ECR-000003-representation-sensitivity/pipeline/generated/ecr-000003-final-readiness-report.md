@@ -8,16 +8,16 @@
 
 | Experiment | Expected | Present | Malformed | Excluded | Status |
 |---|---:|---:|---:|---:|---|
-| EXP-001 | 12 | 12 | 4 | 0 | READY_WITH_WARNINGS |
-| EXP-002 | 12 | 12 | 4 | 0 | READY_WITH_WARNINGS |
-| EXP-003 | 9 | 0 | 0 | 0 | BLOCKED |
+| EXP-001 | 12 | 12 | 0 | 0 | READY |
+| EXP-002 | 12 | 12 | 0 | 0 | READY |
+| EXP-003 | 9 | 8 | 0 | 0 | BLOCKED |
 
 ## Comparison Outputs
 
 | Experiment | Run ID | Comparator | Reports Complete | Status |
 |---|---|---|---|---|
-| EXP-001 | 401d669d-beb5-45ab-90f2-81318eb1eae3 | 3.1.0 | yes | available |
-| EXP-002 | 6c80a0ae-b59d-4f81-8853-35bae0b25a7e | 3.1.0 | yes | available |
+| EXP-001 | 99c5ce29-06bf-4313-9c43-380e6fbbbe15 | 3.1.0 | yes | available |
+| EXP-002 | 283803c9-3229-47be-9115-ec7ac1181809 | 3.1.0 | yes | available |
 | EXP-003 |  | 3.1.0 | no | missing_outputs |
 
 ## EDR Drafts

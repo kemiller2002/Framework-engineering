@@ -11,8 +11,8 @@ import { loadJson, readOptional, tally } from "./utilities.js";
 import { writeOutputs } from "./report-writer.js";
 import { summarizeAgreementCounts } from "./agreement-categories.js";
 
-export async function runComparisonEngine(configPath) {
-  const config = await loadAndResolveConfig(configPath);
+export async function runComparisonEngine(configPath, options = {}) {
+  const config = await loadAndResolveConfig(configPath, options);
   const taxonomies = await loadTaxonomies(config);
   const runId = crypto.randomUUID();
   const { records, warnings, dataQuality, packetFiles } = await loadExperimentData(config);

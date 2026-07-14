@@ -6,17 +6,17 @@
 
 ## Dataset Readiness
 
-- EXP-001: READY_WITH_WARNINGS
-- EXP-002: READY_WITH_WARNINGS
+- EXP-001: READY
+- EXP-002: READY
 - EXP-003: BLOCKED
 
 ## Experiment Comparisons
 
 | Experiment | Comparison Complete | EDR Draft Ready | Data Issues | Human Review |
 |---|---|---|---|---|
-| EXP-001 | yes | yes | missing=0; malformed=4 | Draft |
-| EXP-002 | yes | yes | missing=0; malformed=4 | Draft |
-| EXP-003 | no | no | missing=9; malformed=0 | Deferred |
+| EXP-001 | yes | yes | missing=0; malformed=0 | Draft |
+| EXP-002 | yes | yes | missing=0; malformed=0 | Draft |
+| EXP-003 | no | no | missing=1; malformed=0 | Deferred |
 
 ## Comparator Status
 
@@ -46,7 +46,7 @@
 
 ## Blocking Issues
 
-- EXP-003 missing 9 primary responses.
+- EXP-003 missing 1 primary responses.
 - Next action: `npm run collect:exp003`
 - Collection progress path: `collection-dashboard/collection-status.json`
 

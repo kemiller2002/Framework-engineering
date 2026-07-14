@@ -1,12 +1,21 @@
-import { mkdir, readFile, rename, stat, writeFile } from "node:fs/promises";
+import { mkdir, readdir, stat, writeFile } from "node:fs/promises";
 import path from "node:path";
-import { spawnSync } from "node:child_process";
 import { discoverFiles } from "./discover-files.js";
 import { extractMetadata } from "./extract-metadata.js";
 import { detectProvider } from "./detect-provider.js";
 import { detectDuplicates } from "./detect-duplicates.js";
-import { hashBuffer, hashFile } from "./hash-file.js";
-import { writeReports } from "./write-reports.js";
+import { hashFile } from "./hash-file.js";
+import { canonicalResponsePath, comparisonConfigPath, normalizationDir } from "./canonical-path.js";
+import { buildExpectedDataset } from "./build-expected-dataset.js";
+import { validatePacketIdentity } from "./validate-packet-identity.js";
+import { validatePacketVersion } from "./validate-packet-version.js";
+import { buildDatasetManifest } from "./build-dataset-manifest.js";
+import { buildNormalizationCertificate } from "./build-normalization-certificate.js";
+import { verifyNormalizationCertificate } from "./verify-normalization-certificate.js";
+import { safeMove } from "./safe-move.js";
+import { loadJson, sha256Text } from "../../comparison-engine/src/utilities.js";
+
+const NORMALIZER_VERSION = "1.0.0";
 
 const args = parseArgs(process.argv.slice(2));
 
@@ -17,675 +26,525 @@ main().catch((error) => {
 
 async function main() {
   const ecrRoot = path.resolve(args.ecrRoot);
-  const timestamp = new Date().toISOString();
-  const packetMap = await loadPacketMap(ecrRoot);
-  const configPresence = await loadConfigPresence(ecrRoot);
-  const discoveredPaths = await discoverFiles(ecrRoot);
-  const discoveredRows = [];
-  const responseCandidates = [];
-  const zipArtifacts = [];
+  const runId = new Date().toISOString().replace(/[:.]/g, "-");
+  const expected = await buildExpectedDataset(ecrRoot, args.experiment);
+  const allCandidates = await discoverCandidates(ecrRoot, expected.experiments, args);
+  const logsDir = path.join(ecrRoot, "normalization", "logs");
+  await mkdir(logsDir, { recursive: true });
+  const auditPath = path.join(logsDir, `${runId}.jsonl`);
+  const experimentResults = [];
 
-  for (const filePath of discoveredPaths) {
-    const relativePath = path.relative(ecrRoot, filePath).replaceAll(path.sep, "/");
-    const kind = classifyPath(relativePath);
-    if (kind === "zip") {
-      zipArtifacts.push({ filePath, relativePath });
-      discoveredRows.push({
-        currentPath: relativePath,
-        experiment: experimentLabelFromPath(relativePath),
-        packetId: "",
-        variantId: "",
-        provider: "",
-        parseStatus: "zip",
-        canonicalTarget: "",
-        action: "archive",
-      });
-      continue;
-    }
-    if (kind === "non_response") {
-      discoveredRows.push({
-        currentPath: relativePath,
-        experiment: experimentLabelFromPath(relativePath),
-        packetId: "",
-        variantId: "",
-        provider: "",
-        parseStatus: "n/a",
-        canonicalTarget: "",
-        action: "not_a_response",
-      });
-      continue;
-    }
-    const candidate = await inspectResponseCandidate(ecrRoot, filePath, relativePath, packetMap);
-    responseCandidates.push(candidate);
-    discoveredRows.push({
-      currentPath: relativePath,
-      experiment: candidate.experiment,
-      packetId: candidate.packetId,
-      variantId: candidate.variantId,
-      provider: candidate.provider,
-      parseStatus: candidate.parseStatus,
-      canonicalTarget: candidate.canonicalTarget ? path.relative(ecrRoot, candidate.canonicalTarget).replaceAll(path.sep, "/") : "",
-      action: candidate.action,
-    });
-  }
-
-  const duplicates = detectDuplicates(responseCandidates);
-  applyDuplicateStatuses(responseCandidates, duplicates);
-  const zipAudit = await inspectZipArtifacts(ecrRoot, zipArtifacts, responseCandidates);
-  const logRows = [];
-
-  if (args.apply) {
-    for (const candidate of responseCandidates) {
-      if (
-        candidate.action === "rename"
-        || candidate.action === "move_and_rename"
-        || (candidate.action === "malformed_but_identity_clear" && candidate.canonicalTarget && path.resolve(candidate.filePath) !== path.resolve(candidate.canonicalTarget))
-      ) {
-        const row = await applyMove(candidate, ecrRoot, timestamp);
-        logRows.push(row);
-      } else if (candidate.action === "already_canonical" || candidate.action === "exclude" || candidate.action === "ambiguous" || candidate.action === "duplicate_candidate" || candidate.action === "malformed_but_identity_clear") {
-        logRows.push(baseLogRow(candidate, ecrRoot, timestamp, candidate.action, candidate.action === "ambiguous" ? "needs_review" : "recorded"));
-      }
-    }
-    for (const zip of zipAudit) {
-      const row = await archiveZip(ecrRoot, zip, timestamp);
-      logRows.push(row);
-    }
-    await ensureIncomingStructure(ecrRoot);
-    await ensureZipReadme(ecrRoot, zipAudit);
-  } else {
-    for (const candidate of responseCandidates) {
-      logRows.push(baseLogRow(candidate, ecrRoot, timestamp, candidate.action, "dry_run"));
-    }
-    for (const zip of zipAudit) {
-      logRows.push({
-        timestamp,
-        originalPath: zip.relativePath,
-        canonicalPath: "archive/mobile-response-zips/" + path.basename(zip.relativePath),
-        experiment: zip.experiment,
-        packet: "",
-        provider: "",
-        hashBefore: zip.sha256,
-        hashAfter: "",
-        action: "archive",
-        status: "dry_run",
-      });
+  for (const experimentInfo of expected.experiments) {
+    const classified = await classifyExperimentCandidates(ecrRoot, experimentInfo, allCandidates, args, auditPath);
+    const manifest = await buildDatasetManifest(experimentInfo, classified, NORMALIZER_VERSION);
+    const certificate = buildNormalizationCertificate(experimentInfo, manifest, { invalidated: args.invalidateCertificates });
+    const report = buildNormalizationReport(experimentInfo, manifest, certificate, classified);
+    experimentResults.push({ experimentInfo, classified, manifest, certificate, report });
+    if (!args.dryRun || args.certificateOnly || args.verifyOnly || args.forceRecertificate) {
+      await writeExperimentArtifacts(experimentInfo, manifest, certificate, report);
     }
   }
 
-  const refreshedCandidates = args.apply
-    ? await refreshCandidates(ecrRoot, packetMap)
-    : responseCandidates;
+  await writeIndexAndSummary(ecrRoot, experimentResults);
+  await writeLegacyRootReports(ecrRoot, experimentResults, allCandidates);
+  await writeImplementationReport(ecrRoot, experimentResults, allCandidates.length);
 
-  const readiness = buildReadiness(ecrRoot, refreshedCandidates, packetMap, zipAudit);
-  const summaryRows = buildSummaryRows(readiness, refreshedCandidates, duplicates);
-  const verification = buildVerification(ecrRoot, readiness, refreshedCandidates, duplicates, zipAudit, configPresence, args, logRows);
-
-  await writeReports(ecrRoot, {
-    summaryRows,
-    discoveredRows,
-    logRows,
-    readiness,
-    verification,
-  });
+  if (args.verifyOnly) {
+    for (const result of experimentResults) {
+      const verification = await verifyNormalizationCertificate({
+        ecrRoot,
+        experimentId: result.experimentInfo.experiment_id,
+        normalizerVersion: NORMALIZER_VERSION,
+      });
+      await appendAuditLine(auditPath, {
+        action: "verify_certificate",
+        experiment: result.experimentInfo.experiment_id,
+        status: verification.status,
+        result: verification.ok ? "verified" : "failed",
+      });
+    }
+  }
 }
 
 function parseArgs(argv) {
   const args = {
     ecrRoot: "",
-    apply: false,
-    dryRun: true,
     experiment: "",
+    allExperiments: false,
+    dryRun: true,
+    apply: false,
+    verifyOnly: false,
+    certificateOnly: false,
+    invalidateCertificates: false,
     incomingOnly: false,
+    forceRecertificate: false,
   };
   for (let index = 0; index < argv.length; index += 1) {
     const value = argv[index];
-    if (value === "--ecr-root") {
-      args.ecrRoot = argv[index + 1];
-      index += 1;
-    } else if (value === "--apply") {
+    if (value === "--ecr-root") args.ecrRoot = argv[++index] || "";
+    else if (value === "--experiment") args.experiment = argv[++index] || "";
+    else if (value === "--all-experiments") args.allExperiments = true;
+    else if (value === "--dry-run") args.dryRun = true;
+    else if (value === "--apply") {
       args.apply = true;
       args.dryRun = false;
-    } else if (value === "--dry-run") {
-      args.dryRun = true;
-    } else if (value === "--experiment") {
-      args.experiment = normalizeExperiment(argv[index + 1]);
-      index += 1;
-    } else if (value === "--incoming-only") {
-      args.incomingOnly = true;
-    }
+    } else if (value === "--verify-only") args.verifyOnly = true;
+    else if (value === "--certificate-only") args.certificateOnly = true;
+    else if (value === "--invalidate-certificates") args.invalidateCertificates = true;
+    else if (value === "--incoming-only") args.incomingOnly = true;
+    else if (value === "--force-recertificate") args.forceRecertificate = true;
   }
-  if (!args.ecrRoot) {
-    throw new Error("--ecr-root is required");
-  }
+  if (!args.ecrRoot) throw new Error("--ecr-root is required");
   return args;
 }
 
-function normalizeExperiment(value) {
-  return String(value || "").replaceAll("-", "").toUpperCase();
-}
-
-async function loadPacketMap(ecrRoot) {
-  const experimentsRoot = path.join(ecrRoot, "experiments");
-  const map = new Map();
-  for (const experimentName of ["EXP-001-topology-perturbation", "EXP-002-cross-representation-stability", "EXP-003-isomorphic-procedures"]) {
-    const experimentDir = path.join(experimentsRoot, experimentName);
-    let files = [];
-    try {
-      files = (await discoverFiles(path.join(experimentDir, "packets"))).filter((file) => file.endsWith(".md"));
-    } catch {
-      files = [];
-    }
-    for (const filePath of files) {
-      const fileName = path.basename(filePath, ".md");
-      const packetId = fileName.split("-").slice(0, 4).join("-");
-      const tail = fileName.slice(packetId.length + 1);
-      map.set(packetId, {
-        packetId,
-        experiment: packetId.match(/EXP(\d{3})/)?.[0] || "",
-        experimentDir,
-        filePath,
-        label: tail,
-        packetVersion: await readPacketVersion(filePath),
-      });
-    }
-  }
-  return map;
-}
-
-async function readPacketVersion(filePath) {
-  const text = await readFile(filePath, "utf8");
-  const match = text.match(/packet_version:\s*([^\n]+)/i);
-  return match ? match[1].trim() : "not_stated";
-}
-
-async function loadConfigPresence(ecrRoot) {
-  const result = new Map();
-  for (const dir of [
-    "experiments/EXP-001-topology-perturbation",
-    "experiments/EXP-002-cross-representation-stability",
-    "experiments/EXP-003-isomorphic-procedures",
-  ]) {
-    const full = path.join(ecrRoot, dir, "comparison-engine.config.json");
-    try {
-      await stat(full);
-      result.set(dir, true);
-    } catch {
-      result.set(dir, false);
-    }
-  }
-  return result;
-}
-
-function classifyPath(relativePath) {
-  const lower = relativePath.toLowerCase();
-  if (lower.endsWith(".zip")) {
-    return "zip";
-  }
-  if (!lower.endsWith(".json")) {
-    return "non_response";
-  }
-  if (lower.includes("/packets/") || lower.includes("/comparison/") || lower.includes("/generated") || lower.includes("/calibration/")) {
-    return "non_response";
-  }
-  if (lower.endsWith("comparison-engine.config.json") || lower.endsWith("package.json") || lower.endsWith("shared-response-schema.json")) {
-    return "non_response";
-  }
-  if (lower.includes("/responses/") || lower.includes("/incoming-responses/")) {
-    return "response";
-  }
-  return "non_response";
-}
-
-async function inspectResponseCandidate(ecrRoot, filePath, relativePath, packetMap) {
-  const extracted = await extractMetadata(filePath);
-  const provider = detectProvider(relativePath);
-  const packetId = normalizePacketId(extracted.metadata.packet_id);
-  const experiment = normalizeExperimentId(packetId, extracted.metadata.experiment_id);
-  const variantId = normalizeVariantId(extracted.metadata.variant_id, packetId);
-  const isPreFix = relativePath.includes("/responses/pre-fix/");
-  const packetRecord = packetMap.get(packetId);
-  const canonicalTarget = packetId && provider && packetRecord
-    ? path.join(packetRecord.experimentDir, "responses", provider, `${packetId}-${provider}.json`)
-    : "";
-  const parseStatus = extracted.parseStatus === "strict"
-    ? "strict"
-    : packetId && experiment && variantId ? "malformed" : "malformed_identity_ambiguous";
-  let action = "ambiguous";
-  let primaryEligible = true;
-
-  if (isPreFix) {
-    action = "exclude";
-    primaryEligible = false;
-  } else if (!packetId || !experiment || !variantId || !provider || !canonicalTarget) {
-    action = "ambiguous";
-    primaryEligible = false;
-  } else if (path.resolve(filePath) === path.resolve(canonicalTarget)) {
-    action = extracted.parseStatus === "strict" ? "already_canonical" : "malformed_but_identity_clear";
-  } else if (path.dirname(filePath) === path.dirname(canonicalTarget)) {
-    action = extracted.parseStatus === "strict" ? "rename" : "malformed_but_identity_clear";
-  } else {
-    action = extracted.parseStatus === "strict" ? "move_and_rename" : "malformed_but_identity_clear";
-  }
-
-  return {
-    filePath,
-    relativePath,
-    provider,
-    packetId,
-    experiment,
-    variantId,
-    packetVersion: extracted.metadata.packet_version || packetRecord?.packetVersion || "not_stated",
-    parseStatus,
-    action,
-    canonicalTarget,
-    primaryEligible,
-    parsedJson: extracted.parsed,
-    sha256: await hashFile(filePath),
-  };
-}
-
-function normalizePacketId(value) {
-  if (!value) {
-    return "";
-  }
-  const normalized = value.replace(/\s+/g, "").toUpperCase();
-  const match = normalized.match(/ECR-000003-EXP0?0?(\d{2,3})-P0*([0-9]{3}[A-Z])/);
-  if (!match) {
-    return normalized;
-  }
-  return `ECR-000003-EXP${match[1].padStart(3, "0")}-P${match[2]}`;
-}
-
-function normalizeExperimentId(packetId, experimentId) {
-  const fromPacket = packetId.match(/EXP(\d{3})/)?.[0];
-  if (fromPacket) {
-    return fromPacket;
-  }
-  const clean = String(experimentId || "").toUpperCase().replaceAll("-", "");
-  const match = clean.match(/EXP0?0?(\d{2,3})/);
-  return match ? `EXP${match[1].padStart(3, "0")}` : "";
-}
-
-function normalizeVariantId(variantId, packetId) {
-  if (variantId) {
-    const clean = variantId.toUpperCase().replace(/\s+/g, "");
-    const match = clean.match(/P0*([0-9]{3}[A-Z])/);
-    if (match) {
-      return `P${match[1]}`;
-    }
-    return clean;
-  }
-  const packetMatch = packetId.match(/-P([0-9]{3}[A-Z])$/);
-  return packetMatch ? `P${packetMatch[1]}` : "";
-}
-
-function applyDuplicateStatuses(candidates, duplicates) {
-  for (const duplicate of duplicates) {
-    for (const candidate of duplicate.items) {
-      candidate.duplicateClassification = duplicate.classification;
-      candidate.action = "duplicate_candidate";
-      candidate.primaryEligible = false;
-    }
-  }
-}
-
-async function inspectZipArtifacts(ecrRoot, zipArtifacts, candidates) {
-  const primaryByTarget = new Map(candidates.filter((candidate) => candidate.canonicalTarget).map((candidate) => [candidate.canonicalTarget, candidate]));
-  const results = [];
-  for (const zip of zipArtifacts) {
-    const list = spawnSync("unzip", ["-Z1", zip.filePath], { encoding: "utf8" });
-    const entries = list.status === 0
-      ? list.stdout.split(/\r?\n/).filter(Boolean).filter((name) => !name.endsWith("/"))
-      : [];
-    const entryAudit = [];
-    for (const entry of entries) {
-      if (!entry.toLowerCase().endsWith(".json")) {
-        continue;
-      }
-      const content = spawnSync("unzip", ["-p", zip.filePath, entry], { encoding: "buffer" }).stdout;
-      const text = content.toString("utf8");
-      const packetMatch = text.match(/[“"]packet_id[”"]\s*:\s*[“"]([^"”]+)[”"]/i);
-      const packetId = normalizePacketId(packetMatch?.[1] || "");
-      const provider = detectProvider(entry);
-      const target = packetId && provider
-        ? path.join(ecrRoot, "experiments", "EXP-001-topology-perturbation", "responses", provider, `${packetId}-${provider}.json`)
-        : "";
-      const archiveHash = hashBuffer(content);
-      const duplicateOf = target && primaryByTarget.get(target)?.sha256 === archiveHash ? target : "";
-      entryAudit.push({ entry, packetId, provider, duplicateOf, sha256: archiveHash });
-    }
-    results.push({
-      ...zip,
-      experiment: experimentLabelFromPath(zip.relativePath),
-      sha256: await hashFile(zip.filePath),
-      entries: entryAudit,
-    });
-  }
-  return results;
-}
-
-async function applyMove(candidate, ecrRoot, timestamp) {
-  const before = await hashFile(candidate.filePath);
-  await mkdir(path.dirname(candidate.canonicalTarget), { recursive: true });
-  await rename(candidate.filePath, candidate.canonicalTarget);
-  const after = await hashFile(candidate.canonicalTarget);
-  return {
-    timestamp,
-    originalPath: candidate.relativePath,
-    canonicalPath: path.relative(ecrRoot, candidate.canonicalTarget).replaceAll(path.sep, "/"),
-    experiment: candidate.experiment,
-    packet: candidate.packetId,
-    provider: candidate.provider,
-    hashBefore: before,
-    hashAfter: after,
-    action: candidate.action,
-    status: before === after ? "success" : "hash_mismatch",
-  };
-}
-
-function baseLogRow(candidate, ecrRoot, timestamp, action, status) {
-  return {
-    timestamp,
-    originalPath: candidate.relativePath,
-    canonicalPath: candidate.canonicalTarget ? path.relative(ecrRoot, candidate.canonicalTarget).replaceAll(path.sep, "/") : "",
-    experiment: candidate.experiment,
-    packet: candidate.packetId,
-    provider: candidate.provider,
-    hashBefore: candidate.sha256,
-    hashAfter: candidate.action === "already_canonical" ? candidate.sha256 : "",
-    action,
-    status,
-  };
-}
-
-async function archiveZip(ecrRoot, zip, timestamp) {
-  const archiveDir = path.join(ecrRoot, "archive", "mobile-response-zips");
-  await mkdir(archiveDir, { recursive: true });
-  const target = path.join(archiveDir, path.basename(zip.filePath));
-  await rename(zip.filePath, target);
-  return {
-    timestamp,
-    originalPath: zip.relativePath,
-    canonicalPath: path.relative(ecrRoot, target).replaceAll(path.sep, "/"),
-    experiment: zip.experiment,
-    packet: "",
-    provider: "",
-    hashBefore: zip.sha256,
-    hashAfter: await hashFile(target),
-    action: "archive",
-    status: "success",
-  };
-}
-
-async function ensureIncomingStructure(ecrRoot) {
-  for (const relativeDir of [
-    "incoming-responses/gpt",
-    "incoming-responses/claude",
-    "incoming-responses/gemini",
-  ]) {
-    const fullDir = path.join(ecrRoot, relativeDir);
-    await mkdir(fullDir, { recursive: true });
-    await writeFile(path.join(fullDir, ".gitkeep"), "", "utf8");
-  }
-}
-
-async function ensureZipReadme(ecrRoot, zipAudit) {
-  const archiveDir = path.join(ecrRoot, "archive", "mobile-response-zips");
-  await mkdir(archiveDir, { recursive: true });
-  const lines = [
-    "# Mobile Response ZIP Archive",
-    "",
-    "- ZIP files came from mobile response collection.",
-    "- Canonical extracted responses live in experiment response directories.",
-    "- ZIPs are retained for auditability.",
-    "- ZIP contents are not used directly by comparators.",
-    "",
-    "## Archived Files",
-    "",
-    ...zipAudit.flatMap((zip) => [
-      `- ${path.basename(zip.filePath)}: ${zip.entries.length} JSON response entries inspected.`,
-    ]),
-  ];
-  await writeFile(path.join(archiveDir, "README.md"), `${lines.join("\n")}\n`, "utf8");
-}
-
-async function refreshCandidates(ecrRoot, packetMap) {
-  const paths = await discoverFiles(ecrRoot);
+async function discoverCandidates(ecrRoot, experiments, args) {
+  const files = await discoverFiles(ecrRoot);
   const candidates = [];
-  for (const filePath of paths) {
+  for (const filePath of files) {
     const relativePath = path.relative(ecrRoot, filePath).replaceAll(path.sep, "/");
-    if (classifyPath(relativePath) === "response") {
-      candidates.push(await inspectResponseCandidate(ecrRoot, filePath, relativePath, packetMap));
-    }
+    if (!isCandidateResponsePath(relativePath, args)) continue;
+    const provider = detectProvider(relativePath);
+    if (!provider) continue;
+    const ext = path.extname(filePath).toLowerCase();
+    if (![".json", ".md", ".txt"].includes(ext)) continue;
+    const extracted = await extractMetadata(filePath);
+    const packetId = normalizePacketId(extracted.metadata.packet_id);
+    const experimentId = normalizeExperimentId(packetId, extracted.metadata.experiment_id);
+    const variantId = normalizeVariantId(extracted.metadata.variant_id, packetId);
+    const experimentInfo = experiments.find((item) => item.experiment_id === experimentId) || findExperimentFromPath(experiments, relativePath);
+    candidates.push({
+      filePath,
+      relativePath,
+      provider,
+      metadata: {
+        ...extracted.metadata,
+        packet_id: packetId,
+        experiment_id: experimentId,
+        variant_id: variantId,
+      },
+      parseStatus: extracted.parseStatus,
+      parseSeverity: extracted.parseSeverity,
+      repairs: extracted.repairs || [],
+      parsedJson: extracted.parsed,
+      sha256: await hashFile(filePath),
+      experimentInfo,
+    });
   }
   return candidates;
 }
 
-function buildReadiness(ecrRoot, candidates, packetMap, zipAudit) {
-  const canonical = candidates.filter((candidate) =>
-    candidate.canonicalTarget
-    && path.resolve(candidate.filePath) === path.resolve(candidate.canonicalTarget)
-    && (candidate.action === "already_canonical" || candidate.action === "malformed_but_identity_clear"),
+function isCandidateResponsePath(relativePath, args) {
+  const lower = relativePath.toLowerCase();
+  if (lower.includes("/packets/") || lower.includes("/comparison/") || lower.includes("/generated") || lower.includes("/fixtures/") || lower.includes("/edr/")) return false;
+  if (lower.includes("__macosx") || lower.endsWith(".gitkeep") || lower.endsWith("collection-status.json")) return false;
+  if (lower.includes("/responses/pre-fix/")) return true;
+  if (lower.endsWith(".zip")) return false;
+  if (args.incomingOnly) {
+    return lower.includes("/incoming-responses/") || lower.includes("/incoming/");
+  }
+  return (
+    lower.includes("/incoming-responses/")
+    || lower.includes("/collection-dashboard/")
+    || lower.includes("/responses/")
+    || lower.includes("/incoming/")
+    || lower.includes("/downloads/")
+    || lower.includes("/archive/mobile-response-zips/")
   );
-  const byKey = new Map(canonical.map((candidate) => [`${candidate.packetId}:${candidate.provider}`, candidate]));
-  const exp1Rows = [];
-  const exp2Rows = [];
-  const exp3Rows = [];
+}
 
-  for (const [packetId, record] of [...packetMap.entries()].sort()) {
-    if (record.experiment === "EXP001") {
-      exp1Rows.push({
-        packet: packetId,
-        gpt: byKey.has(`${packetId}:gpt`) ? "present" : "missing",
-        claude: byKey.has(`${packetId}:claude`) ? "present" : "missing",
-        gemini: byKey.has(`${packetId}:gemini`) ? "present" : "missing",
-        packetVersion: packetId.endsWith("P001D") ? record.packetVersion : "not_stated",
-        status: providerStatus(packetId, byKey),
-      });
-    } else if (record.experiment === "EXP002") {
-      exp2Rows.push({
-        packet: packetId,
-        condition: record.label,
-        gpt: byKey.has(`${packetId}:gpt`) ? "present" : "missing",
-        claude: byKey.has(`${packetId}:claude`) ? "present" : "missing",
-        gemini: byKey.has(`${packetId}:gemini`) ? "present" : "missing",
-        status: providerStatus(packetId, byKey),
-      });
-    } else if (record.experiment === "EXP003") {
-      exp3Rows.push({
-        packet: packetId,
-        domain: record.label,
-        gpt: byKey.has(`${packetId}:gpt`) ? "present" : "missing",
-        claude: byKey.has(`${packetId}:claude`) ? "present" : "missing",
-        gemini: byKey.has(`${packetId}:gemini`) ? "present" : "missing",
-        status: providerStatus(packetId, byKey),
+async function classifyExperimentCandidates(ecrRoot, experimentInfo, allCandidates, args, auditPath) {
+  const packetMap = new Map(experimentInfo.packets.map((packet) => [packet.packet_id, packet]));
+  const expectedKeys = new Set(experimentInfo.expected_tasks.map((task) => `${task.packet_id}:${task.provider}`));
+  const candidates = allCandidates.filter((item) => {
+    if (item.experimentInfo?.experiment_id === experimentInfo.experiment_id) return true;
+    return item.metadata.packet_id && packetMap.has(item.metadata.packet_id);
+  });
+
+  const classified = [];
+  for (const candidate of candidates) {
+    const expectedPacket = packetMap.get(candidate.metadata.packet_id);
+    const identity = expectedPacket ? validatePacketIdentity(candidate, expectedPacket) : { status: "ambiguous", warnings: [], mismatches: ["unknown packet_id"] };
+    const version = expectedPacket ? validatePacketVersion(candidate, experimentInfo, expectedPacket) : { status: "version_unclear", packet_version: "", warning: "unknown packet version", blocking: true };
+    const canonicalTarget = expectedPacket ? canonicalResponsePath(experimentInfo.experiment_dir, candidate.provider, expectedPacket.packet_id) : "";
+    let primaryDatasetStatus = "ambiguous";
+    let blockingIssues = [];
+    let warnings = [...identity.warnings];
+    if (identity.status === "mismatch") {
+      primaryDatasetStatus = "mismatch";
+      blockingIssues = identity.mismatches;
+    } else if (identity.status === "ambiguous" || identity.status === "not_parseable") {
+      primaryDatasetStatus = candidate.parseSeverity === "unsafe" ? "malformed" : "ambiguous";
+      blockingIssues = identity.mismatches;
+    } else if (version.blocking) {
+      primaryDatasetStatus = "excluded";
+      blockingIssues = version.warning ? [version.warning] : [];
+    } else if (candidate.parseSeverity === "unsafe") {
+      primaryDatasetStatus = "malformed";
+      blockingIssues = ["unsafe malformed response"];
+    } else {
+      primaryDatasetStatus = "primary";
+      if (candidate.parseStatus === "tolerant") warnings.push(`tolerant parse: ${candidate.repairs.join(", ")}`);
+    }
+    const entry = {
+      experiment_id: experimentInfo.experiment_id,
+      packet_id: candidate.metadata.packet_id || "",
+      provider: candidate.provider,
+      sourcePath: candidate.filePath,
+      sourceRelativePath: candidate.relativePath,
+      canonicalTarget,
+      canonicalRelativePath: canonicalTarget ? path.relative(experimentInfo.experiment_dir, canonicalTarget).replaceAll(path.sep, "/") : "",
+      parse_mode: candidate.parseStatus,
+      parse_severity: candidate.parseSeverity,
+      repairs: candidate.repairs,
+      packet_version: version.packet_version,
+      version_status: version.status,
+      metadata_status: identity.status,
+      primaryDatasetStatus,
+      duplicate_classification: "",
+      sha256: candidate.sha256,
+      byte_size: (await stat(candidate.filePath)).size,
+      warnings,
+      blockingIssues,
+      original_file_name: path.basename(candidate.filePath),
+    };
+    classified.push(entry);
+  }
+
+  const existingPrimary = await discoverExistingCanonical(experimentInfo);
+  classified.push(...existingPrimary.filter((entry) => !classified.some((item) => item.sourcePath === entry.sourcePath)));
+
+  const duplicates = detectDuplicates(classified.map((item) => ({
+    canonicalTarget: item.canonicalTarget,
+    primaryEligible: item.primaryDatasetStatus === "primary",
+    sha256: item.sha256,
+    parsedJson: null,
+    ...item,
+  })));
+  for (const duplicate of duplicates) {
+    for (const item of duplicate.items.slice(1)) {
+      item.duplicate_classification = duplicate.classification;
+      item.primaryDatasetStatus = duplicate.classification === "conflicting_duplicate" ? "duplicate_conflicting" : "duplicate";
+      item.blockingIssues.push(`duplicate detected: ${duplicate.classification}`);
+    }
+  }
+
+  for (const item of classified) {
+    if (!item.sourcePath || !item.canonicalTarget) continue;
+    if (args.apply && item.primaryDatasetStatus === "primary" && path.resolve(item.sourcePath) !== path.resolve(item.canonicalTarget)) {
+      const move = await safeMove(item.sourcePath, item.canonicalTarget);
+      item.sha256 = move.hashAfter;
+      item.sourcePath = item.canonicalTarget;
+      item.sourceRelativePath = path.relative(ecrRoot, item.canonicalTarget).replaceAll(path.sep, "/");
+      await appendAuditLine(auditPath, {
+        action: "safe_move",
+        experiment: experimentInfo.experiment_id,
+        packet: item.packet_id,
+        provider: item.provider,
+        source_path: item.sourceRelativePath,
+        target_path: item.canonicalRelativePath,
+        hash_before: move.hashBefore,
+        hash_after: move.hashAfter,
+        result: "moved",
       });
     }
   }
 
-  const malformed = candidates.filter((candidate) => candidate.parseStatus.startsWith("malformed")).length;
-  const duplicates = candidates.filter((candidate) => candidate.action === "duplicate_candidate");
-  const ambiguous = candidates.filter((candidate) => candidate.action === "ambiguous");
-  const missing = [...exp1Rows, ...exp2Rows, ...exp3Rows].filter((row) => row.status !== "ready").length;
-  const overallStatus = exp1Rows.every((row) => row.status === "ready")
-    && exp2Rows.every((row) => row.status === "ready")
-    && exp3Rows.every((row) => row.status === "ready")
-    && malformed === 0
-    && ambiguous.length === 0
-    ? "READY"
-    : exp1Rows.every((row) => row.status === "ready") && exp2Rows.every((row) => row.status === "ready") && malformed === 0
-      ? "READY_WITH_WARNINGS"
-      : "NOT_READY";
+  for (const expectedTask of experimentInfo.expected_tasks) {
+    const key = `${expectedTask.packet_id}:${expectedTask.provider}`;
+    if (!expectedKeys.has(key)) continue;
+    const hasPrimary = classified.some((item) => item.packet_id === expectedTask.packet_id && item.provider === expectedTask.provider && item.primaryDatasetStatus === "primary");
+    if (!hasPrimary) {
+      classified.push({
+        experiment_id: experimentInfo.experiment_id,
+        packet_id: expectedTask.packet_id,
+        provider: expectedTask.provider,
+        sourcePath: "",
+        sourceRelativePath: "",
+        canonicalTarget: canonicalResponsePath(experimentInfo.experiment_dir, expectedTask.provider, expectedTask.packet_id),
+        canonicalRelativePath: path.relative(experimentInfo.experiment_dir, canonicalResponsePath(experimentInfo.experiment_dir, expectedTask.provider, expectedTask.packet_id)).replaceAll(path.sep, "/"),
+        parse_mode: "missing",
+        parse_severity: "unsafe",
+        repairs: [],
+        packet_version: expectedTask.packet_version,
+        version_status: "missing",
+        metadata_status: "missing",
+        primaryDatasetStatus: "missing",
+        duplicate_classification: "",
+        sha256: "",
+        byte_size: 0,
+        warnings: [],
+        blockingIssues: ["required response missing"],
+        original_file_name: "",
+      });
+    }
+  }
 
-  return {
-    exp1: { rows: exp1Rows },
-    exp2: { rows: exp2Rows },
-    exp3: { rows: exp3Rows },
-    overall: {
-      status: overallStatus,
-      metrics: {
-        "Expected primary responses": exp1Rows.length * 3 + exp2Rows.length * 3 + exp3Rows.length * 3,
-        "Present canonical responses": canonical.length,
-        "Missing responses": countMissing([...exp1Rows, ...exp2Rows, ...exp3Rows]),
-        "Malformed responses": malformed,
-        "Exact duplicates": duplicates.filter((item) => item.duplicateClassification === "exact_duplicate").length,
-        "Semantic duplicates": duplicates.filter((item) => item.duplicateClassification === "semantic_duplicate").length,
-        "Conflicting duplicates": duplicates.filter((item) => item.duplicateClassification === "conflicting_duplicate").length,
-        "Ambiguous provider files": ambiguous.length,
-        "Archived ZIP files": zipAudit.length,
-      },
-    },
-  };
+  return classified.sort((a, b) => `${a.packet_id}:${a.provider}:${a.sourceRelativePath}`.localeCompare(`${b.packet_id}:${b.provider}:${b.sourceRelativePath}`));
 }
 
-function providerStatus(packetId, byKey) {
-  const providers = ["gpt", "claude", "gemini"];
-  return providers.every((provider) => byKey.has(`${packetId}:${provider}`)) ? "ready" : "missing";
+async function discoverExistingCanonical(experimentInfo) {
+  const rows = [];
+  for (const provider of experimentInfo.providers) {
+    const providerDir = path.join(experimentInfo.experiment_dir, "responses", provider);
+    let entries = [];
+    try {
+      entries = await readdir(providerDir);
+    } catch {
+      entries = [];
+    }
+    for (const name of entries) {
+      if (!name.endsWith(".json")) continue;
+      const packetId = name.replace(`-${provider}.json`, "");
+      if (!experimentInfo.packets.some((packet) => packet.packet_id === packetId)) continue;
+      const filePath = path.join(providerDir, name);
+      const extracted = await extractMetadata(filePath);
+      rows.push({
+        experiment_id: experimentInfo.experiment_id,
+        packet_id: packetId,
+        provider,
+        sourcePath: filePath,
+        sourceRelativePath: path.relative(experimentInfo.experiment_dir, filePath).replaceAll(path.sep, "/"),
+        canonicalTarget: filePath,
+        canonicalRelativePath: path.relative(experimentInfo.experiment_dir, filePath).replaceAll(path.sep, "/"),
+        parse_mode: extracted.parseStatus,
+        parse_severity: extracted.parseSeverity,
+        repairs: extracted.repairs || [],
+        packet_version: extracted.metadata.packet_version || experimentInfo.packet_versions?.[packetId] || "not_stated",
+        version_status: "ok",
+        metadata_status: "exact_match",
+        primaryDatasetStatus: extracted.parseSeverity === "unsafe" ? "malformed" : "primary",
+        duplicate_classification: "",
+        sha256: await hashFile(filePath),
+        byte_size: (await stat(filePath)).size,
+        warnings: extracted.parseStatus === "tolerant" ? [`tolerant parse: ${(extracted.repairs || []).join(", ")}`] : [],
+        blockingIssues: extracted.parseSeverity === "unsafe" ? ["unsafe malformed response"] : [],
+        original_file_name: name,
+      });
+    }
+  }
+  return rows;
 }
 
-function countMissing(rows) {
-  return rows.reduce((count, row) => count + ["gpt", "claude", "gemini"].filter((provider) => row[provider] === "missing").length, 0);
+async function writeExperimentArtifacts(experimentInfo, manifest, certificate, report) {
+  const dir = normalizationDir(experimentInfo.experiment_dir);
+  await mkdir(dir, { recursive: true });
+  await writeFile(path.join(dir, "dataset-manifest.json"), `${JSON.stringify(manifest, null, 2)}\n`, "utf8");
+  await writeFile(path.join(dir, "normalization-certificate.json"), `${JSON.stringify(certificate, null, 2)}\n`, "utf8");
+  await writeFile(path.join(dir, "normalization-report.md"), `${report}\n`, "utf8");
 }
 
-function buildSummaryRows(readiness, candidates, duplicates) {
-  const malformedByExperiment = (experiment) => candidates.filter((candidate) => candidate.experiment === experiment && candidate.parseStatus.startsWith("malformed")).length;
-  const foundByExperiment = (experiment) => candidates.filter((candidate) => candidate.experiment === experiment).length;
-  const canonicalByExperiment = (experiment) => candidates.filter((candidate) =>
-    candidate.experiment === experiment
-    && candidate.canonicalTarget
-    && path.resolve(candidate.filePath) === path.resolve(candidate.canonicalTarget)
-    && (candidate.action === "already_canonical" || candidate.action === "malformed_but_identity_clear"),
-  ).length;
-  const missingByRows = (rows) => rows.reduce((count, row) => count + ["gpt", "claude", "gemini"].filter((provider) => row[provider] === "missing").length, 0);
-  const duplicateByExperiment = (experiment) => duplicates.filter((duplicate) => duplicate.items.some((item) => item.experiment === experiment)).length;
+async function writeIndexAndSummary(ecrRoot, experimentResults) {
+  const dir = path.join(ecrRoot, "normalization");
+  await mkdir(dir, { recursive: true });
+  const index = [
+    "# Certificate Index",
+    "",
+    "| Experiment | Expected | Canonical | Warnings | Blockers | Dataset Hash | Status | Certificate |",
+    "|---|---:|---:|---:|---:|---|---|---|",
+    ...experimentResults.map(({ experimentInfo, certificate }) => `| ${experimentInfo.experiment_id} | ${certificate.expected_response_count} | ${certificate.canonical_response_count} | ${certificate.warning_count} | ${certificate.blocking_issues.length} | ${certificate.dataset_hash} | ${certificate.status} | experiments/${path.basename(experimentInfo.experiment_dir)}/normalization/normalization-certificate.json |`)
+  ].join("\n");
+  await writeFile(path.join(dir, "CERTIFICATE-INDEX.md"), `${index}\n`, "utf8");
 
+  const totalExpected = experimentResults.reduce((sum, item) => sum + item.certificate.expected_response_count, 0);
+  const totalCanonical = experimentResults.reduce((sum, item) => sum + item.certificate.canonical_response_count, 0);
+  const warnings = experimentResults.reduce((sum, item) => sum + item.certificate.warning_count, 0);
+  const blockers = experimentResults.reduce((sum, item) => sum + item.certificate.blocking_issues.length, 0);
+  const summary = [
+    "# ECR-000003 Normalization Summary",
+    "",
+    `- Expected responses: ${totalExpected}`,
+    `- Canonical responses: ${totalCanonical}`,
+    `- Warnings: ${warnings}`,
+    `- Blockers: ${blockers}`,
+    "",
+    "## Experiment Statuses",
+    "",
+    ...experimentResults.map(({ experimentInfo, certificate }) => `- ${experimentInfo.experiment_id}: ${certificate.status}`),
+    "",
+    "## Exact Next Commands",
+    "",
+    "```bash",
+    "npm run normalize:dry",
+    "npm run normalize",
+    "npm run normalize:verify",
+    "npm run normalize:certify",
+    "npm run pipeline",
+    "```"
+  ].join("\n");
+  await writeFile(path.join(dir, "ECR-000003-normalization-summary.md"), `${summary}\n`, "utf8");
+}
+
+async function writeLegacyRootReports(ecrRoot, experimentResults, allCandidates) {
+  const inventory = [
+    "# ECR-000003 Response File Inventory",
+    "",
+    "| Experiment | Expected Responses | Found Candidates | Canonical Primary Responses | Missing | Duplicate Candidates | Malformed |",
+    "|---|---:|---:|---:|---:|---:|---:|",
+    ...experimentResults.map(({ experimentInfo, certificate, manifest }) => {
+      const found = allCandidates.filter((item) => item.experimentInfo?.experiment_id === experimentInfo.experiment_id || item.metadata.experiment_id === experimentInfo.experiment_id).length;
+      return `| ${experimentInfo.experiment_id} | ${certificate.expected_response_count} | ${found} | ${certificate.canonical_response_count} | ${certificate.missing_count} | ${certificate.duplicate_counts.exact_duplicate + certificate.duplicate_counts.semantic_duplicate + certificate.duplicate_counts.conflicting_duplicate} | ${certificate.unsafe_malformed_count} |`;
+    })
+  ].join("\n");
+  await writeFile(path.join(ecrRoot, "response-file-inventory.md"), `${inventory}\n`, "utf8");
+
+  const log = [
+    "# ECR-000003 Response Filename Normalization Log",
+    "",
+    "See `normalization/logs/` for machine-readable audit lines.",
+    "",
+    ...experimentResults.flatMap(({ experimentInfo, classified }) =>
+      classified
+        .filter((item) => item.sourceRelativePath && item.sourceRelativePath !== item.canonicalRelativePath && item.primaryDatasetStatus === "primary")
+        .map((item) => `- ${experimentInfo.experiment_id}: ${item.sourceRelativePath} -> ${item.canonicalRelativePath}`))
+  ];
+  await writeFile(path.join(ecrRoot, "response-filename-normalization-log.md"), `${log.join("\n")}\n`, "utf8");
+
+  const readiness = [
+    "# ECR-000003 Response Dataset Readiness",
+    "",
+    ...experimentResults.flatMap(({ experimentInfo, certificate }) => [
+      `## ${experimentInfo.experiment_id}`,
+      "",
+      `- Expected: ${certificate.expected_response_count}`,
+      `- Canonical: ${certificate.canonical_response_count}`,
+      `- Missing: ${certificate.missing_count}`,
+      `- Status: ${certificate.status}`,
+      ""
+    ]),
+    "## Overall",
+    "",
+    `- ${experimentResults.every((item) => ["READY", "READY_WITH_WARNINGS"].includes(item.certificate.status)) ? "READY_WITH_WARNINGS" : "BLOCKED"}`
+  ].join("\n");
+  await writeFile(path.join(ecrRoot, "response-dataset-readiness.md"), `${readiness}\n`, "utf8");
+
+  const verification = [
+    "# ECR-000003 Response Filename Verification Report",
+    "",
+    "## Overall Status",
+    "",
+    `- ${experimentResults.every((item) => ["READY", "READY_WITH_WARNINGS"].includes(item.certificate.status)) ? "READY_WITH_WARNINGS" : "BLOCKED"}`,
+    "",
+    "## Experiment Summary",
+    "",
+    "| Experiment | Expected | Canonical | Missing | Malformed | Conflicts | Status |",
+    "|---|---:|---:|---:|---:|---:|---|",
+    ...experimentResults.map(({ experimentInfo, certificate }) => `| ${experimentInfo.experiment_id} | ${certificate.expected_response_count} | ${certificate.canonical_response_count} | ${certificate.missing_count} | ${certificate.unsafe_malformed_count} | ${certificate.duplicate_counts.conflicting_duplicate} | ${certificate.status} |`),
+    "",
+    "## Exact Next Commands",
+    "",
+    "```bash",
+    "npm run normalize:dry",
+    "npm run normalize",
+    "npm run normalize:verify",
+    "npm run normalize:certify",
+    "npm run pipeline",
+    "```"
+  ].join("\n");
+  await writeFile(path.join(ecrRoot, "response-filename-verification-report.md"), `${verification}\n`, "utf8");
+}
+
+async function writeImplementationReport(ecrRoot, experimentResults, discoveredCandidates) {
+  const report = [
+    "# Normalization Gate Implementation Report",
+    "",
+    `- Component status: implemented`,
+    `- Discovered candidates: ${discoveredCandidates}`,
+    ...experimentResults.flatMap(({ experimentInfo, certificate }) => [
+      `- ${experimentInfo.experiment_id} expected: ${certificate.expected_response_count}`,
+      `- ${experimentInfo.experiment_id} canonical: ${certificate.canonical_response_count}`,
+      `- ${experimentInfo.experiment_id} status: ${certificate.status}`,
+    ]),
+    "- Comparator gate behavior: official comparison requires READY or READY_WITH_WARNINGS certificate with matching dataset and config hashes.",
+    "- Limitations: ZIP introspection is not implemented; archive ZIPs are inventoried but not unpacked.",
+    "",
+    "## Exact Next Commands",
+    "",
+    "```bash",
+    "npm run normalize:dry",
+    "npm run normalize",
+    "npm run normalize:verify",
+    "npm run normalize:certify",
+    "npm run pipeline",
+    "```"
+  ].join("\n");
+  const dir = path.join(ecrRoot, "normalization");
+  await mkdir(dir, { recursive: true });
+  await writeFile(path.join(dir, "normalization-gate-implementation-report.md"), `${report}\n`, "utf8");
+}
+
+function buildNormalizationReport(experimentInfo, manifest, certificate, classified) {
+  const moves = classified.filter((item) => item.sourceRelativePath && item.sourceRelativePath !== item.canonicalRelativePath && item.primaryDatasetStatus === "primary");
+  const tolerant = classified.filter((item) => item.parse_mode === "tolerant");
+  const blockers = classified.filter((item) => item.blockingIssues.length > 0);
   return [
-    {
-      experiment: "EXP-001",
-      expected: 12,
-      found: foundByExperiment("EXP001"),
-      canonical: canonicalByExperiment("EXP001"),
-      missing: missingByRows(readiness.exp1.rows),
-      duplicates: duplicateByExperiment("EXP001"),
-      malformed: malformedByExperiment("EXP001"),
-    },
-    {
-      experiment: "EXP-002",
-      expected: 12,
-      found: foundByExperiment("EXP002"),
-      canonical: canonicalByExperiment("EXP002"),
-      missing: missingByRows(readiness.exp2.rows),
-      duplicates: duplicateByExperiment("EXP002"),
-      malformed: malformedByExperiment("EXP002"),
-    },
-    {
-      experiment: "EXP-003",
-      expected: 9,
-      found: foundByExperiment("EXP003"),
-      canonical: canonicalByExperiment("EXP003"),
-      missing: missingByRows(readiness.exp3.rows),
-      duplicates: duplicateByExperiment("EXP003"),
-      malformed: malformedByExperiment("EXP003"),
-    },
-  ];
+    `# ${experimentInfo.experiment_id} Normalization Report`,
+    "",
+    `- Expected responses: ${certificate.expected_response_count}`,
+    `- Canonical responses: ${certificate.canonical_response_count}`,
+    `- Status: ${certificate.status}`,
+    `- Dataset hash: ${certificate.dataset_hash}`,
+    "",
+    "## Canonical Responses",
+    "",
+    ...manifest.primary_responses.map((item) => `- ${item.packet_id} ${item.provider}: ${item.canonicalRelativePath}`),
+    "",
+    "## Moves",
+    "",
+    ...(moves.length ? moves.map((item) => `- ${item.sourceRelativePath} -> ${item.canonicalRelativePath}`) : ["- None"]),
+    "",
+    "## Tolerant Parsing Events",
+    "",
+    ...(tolerant.length ? tolerant.map((item) => `- ${item.packet_id} ${item.provider}: ${item.repairs.join(", ")}`) : ["- None"]),
+    "",
+    "## Duplicate Handling",
+    "",
+    ...(manifest.duplicate_responses.length ? manifest.duplicate_responses.map((item) => `- ${item.packet_id} ${item.provider}: ${item.duplicate_classification}`) : ["- None"]),
+    "",
+    "## Malformed or Ambiguous Files",
+    "",
+    ...(manifest.malformed_responses.length || manifest.ambiguous_responses.length
+      ? [...manifest.malformed_responses, ...manifest.ambiguous_responses].map((item) => `- ${item.packet_id || "(unknown)"} ${item.provider || ""}: ${item.primaryDatasetStatus}`)
+      : ["- None"]),
+    "",
+    "## Packet Version Issues",
+    "",
+    ...(certificate.packet_version_issues.length ? certificate.packet_version_issues.map((item) => `- ${item}`) : ["- None"]),
+    "",
+    "## Blockers",
+    "",
+    ...(blockers.length ? blockers.flatMap((item) => item.blockingIssues.map((issue) => `- ${item.packet_id || "(missing)"} ${item.provider}: ${issue}`)) : ["- None"]),
+    "",
+    "## Exact Next Command",
+    "",
+    "```bash",
+    certificate.ready_for_comparison ? "npm run pipeline" : "npm run normalize:verify",
+    "```"
+  ].join("\n");
 }
 
-function buildVerification(ecrRoot, readiness, candidates, duplicates, zipAudit, configPresence, args, logRows) {
-  const renamedFiles = logRows
-    .filter((row) => ["rename", "malformed_but_identity_clear"].includes(row.action) && row.originalPath !== row.canonicalPath && row.status !== "dry_run")
-    .map((row) => `${row.originalPath} -> ${row.canonicalPath}`);
-  const movedFiles = logRows
-    .filter((row) => row.action === "move_and_rename" && row.status !== "dry_run")
-    .map((row) => `${row.originalPath} -> ${row.canonicalPath}`);
-  const ambiguousFiles = candidates
-    .filter((candidate) => candidate.action === "ambiguous")
-    .map((candidate) => `${candidate.relativePath} (${candidate.action})`);
-  const duplicateFiles = duplicates.map((duplicate) => `${path.relative(ecrRoot, duplicate.canonicalTarget).replaceAll(path.sep, "/")} => ${duplicate.classification}`);
-  const archivedZips = logRows
-    .filter((row) => row.action === "archive")
-    .map((row) => `${row.originalPath} -> ${row.canonicalPath}`);
-  const packetVersionIssues = [
-    "EXP-001 P001D primary responses correspond to packet version 1.1; pre-fix response remains excluded under responses/pre-fix/p001d/00001D.json.",
-  ];
-  const experiments = [
-    experimentRow("EXP-001", 12, readiness.exp1.rows, candidates),
-    experimentRow("EXP-002", 12, readiness.exp2.rows, candidates),
-    experimentRow("EXP-003", 9, readiness.exp3.rows, candidates),
-  ];
-  const comparatorDiscovery = [
-    comparatorRow("EXP-001", configPresence.get("experiments/EXP-001-topology-perturbation"), readiness.exp1.rows),
-    comparatorRow("EXP-002", configPresence.get("experiments/EXP-002-cross-representation-stability"), readiness.exp2.rows),
-    comparatorRow("EXP-003", configPresence.get("experiments/EXP-003-isomorphic-procedures"), readiness.exp3.rows),
-  ];
-
-  return {
-    overallStatus: readiness.overall.status,
-    experiments,
-    renamedFiles,
-    movedFiles,
-    duplicateFiles,
-    ambiguousFiles,
-    archivedZips,
-    packetVersionIssues,
-    comparatorDiscovery,
-    remainingHumanActions: [
-      readiness.exp3.rows.some((row) => row.status !== "ready")
-        ? "Collect missing EXP-003 responses before comparison."
-        : "EXP-003 is complete.",
-      candidates.some((candidate) => candidate.parseStatus.startsWith("malformed"))
-        ? "Review malformed-but-identity-clear responses before strict-parser-dependent workflows."
-        : "No malformed primary responses remain.",
-      ambiguousFiles.length > 0
-        ? "Resolve ambiguous files before promoting them into a primary dataset."
-        : "No ambiguous primary candidates remain.",
-      "Review response-filename-verification-report.md before running any new comparator pass.",
-    ],
-    commands: [
-      "cd /Users/kevinmiller/dev/Framework-engineering/research/evidence-runs/ECR-000003-representation-sensitivity",
-      "npm run responses:verify -- --ecr-root . --dry-run",
-      "npm run responses:normalize -- --ecr-root . --apply",
-      "cd experiments/EXP-001-topology-perturbation && npm run compare",
-      "node --input-type=module -e \"import { runComparisonEngine } from '../../../../tools/comparison-engine/src/index.js'; await runComparisonEngine('comparison-engine.config.json');\" # from EXP-002-cross-representation-stability",
-      "node --input-type=module -e \"import { runComparisonEngine } from '../../../../tools/comparison-engine/src/index.js'; await runComparisonEngine('comparison-engine.config.json');\" # from EXP-003-isomorphic-procedures",
-    ],
-  };
+async function appendAuditLine(filePath, row) {
+  await mkdir(path.dirname(filePath), { recursive: true });
+  await writeFile(filePath, `${JSON.stringify({ timestamp: new Date().toISOString(), ...row })}\n`, { flag: "a" });
 }
 
-function experimentRow(experiment, expected, rows, candidates) {
-  const canonical = candidates.filter((candidate) =>
-    candidate.experiment === experiment.replace("-", "")
-    && candidate.canonicalTarget
-    && path.resolve(candidate.filePath) === path.resolve(candidate.canonicalTarget)
-    && (candidate.action === "already_canonical" || candidate.action === "malformed_but_identity_clear"),
-  ).length;
-  const malformed = candidates.filter((candidate) => candidate.experiment === experiment.replace("-", "") && candidate.parseStatus.startsWith("malformed")).length;
-  const conflicts = candidates.filter((candidate) => candidate.experiment === experiment.replace("-", "") && candidate.duplicateClassification === "conflicting_duplicate").length;
-  const missing = countMissing(rows);
-  return {
-    experiment,
-    expected,
-    canonical,
-    missing,
-    malformed,
-    conflicts,
-    status: missing === 0 && conflicts === 0
-      ? (malformed === 0 ? "READY" : "READY_WITH_WARNINGS")
-      : "NOT_READY",
-  };
+function findExperimentFromPath(experiments, relativePath) {
+  return experiments.find((item) => relativePath.includes(path.basename(item.experiment_dir)));
 }
 
-function comparatorRow(experiment, present, rows) {
-  return {
-    experiment,
-    configPresent: present ? "yes" : "no",
-    discovered: rows.reduce((count, row) => count + ["gpt", "claude", "gemini"].filter((provider) => row[provider] === "present").length, 0),
-    missing: countMissing(rows),
-    status: present && rows.every((row) => row.status === "ready") ? "ready" : "incomplete",
-  };
+function normalizePacketId(value) {
+  if (!value) return "";
+  return value.replace(/\s+/g, "").toUpperCase();
 }
 
-function experimentLabelFromPath(relativePath) {
-  const match = relativePath.match(/EXP-\d{3}[^/]*/);
-  return match ? match[0].slice(0, 7) : "";
+function normalizeExperimentId(packetId, experimentId) {
+  const fromPacket = packetId.match(/EXP-\d{3}/)?.[0];
+  if (fromPacket) return fromPacket;
+  const match = String(experimentId || "").toUpperCase().match(/EXP-?\d{3}/);
+  return match ? match[0].replace("EXP", "EXP-").replace(/EXP--/, "EXP-") : "";
+}
+
+function normalizeVariantId(variantId, packetId) {
+  if (variantId) return String(variantId).toUpperCase();
+  return packetId.match(/P\d{3}[A-Z]$/)?.[0] || "";
 }

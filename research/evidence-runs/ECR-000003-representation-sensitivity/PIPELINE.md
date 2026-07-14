@@ -49,11 +49,13 @@ node scripts/run-ecr-000003.js --experiment EXP-002 --compare-all
 1. `npm run collect:exp003`
 2. `npm run normalize:dry`
 3. `npm run normalize`
-4. `npm run pipeline:dry`
-5. Review normalization and completeness reports.
-6. `npm run pipeline`
-7. Review final readiness report.
-8. Complete EDRs manually.
+4. `npm run normalize:verify`
+5. `npm run normalize:certify`
+6. `npm run pipeline:dry`
+7. Review normalization and completeness reports.
+8. `npm run pipeline`
+9. Review final readiness report.
+10. Complete EDRs manually.
 
 ## Phone Upload Workflow
 
@@ -72,9 +74,10 @@ Use response collection before normalization:
 1. Collect responses.
 2. Normalize responses.
 3. Verify dataset.
-4. Run Comparator v3.1.
-5. Generate reports.
-6. Review EDRs.
+4. Generate normalization certificates.
+5. Run Comparator v3.1.
+6. Generate reports.
+7. Review EDRs.
 
 ## Important Guardrails
 

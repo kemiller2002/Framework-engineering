@@ -7,9 +7,9 @@
 
 ## Dataset Completeness
 
-- EXP-001: expected 12, present 12, malformed 4, status READY_WITH_WARNINGS.
-- EXP-002: expected 12, present 12, malformed 4, status READY_WITH_WARNINGS.
-- EXP-003: expected 9, present 0, malformed 0, status BLOCKED.
+- EXP-001: expected 12, present 12, malformed 0, status READY.
+- EXP-002: expected 12, present 12, malformed 0, status READY.
+- EXP-003: expected 9, present 8, malformed 0, status BLOCKED.
 
 ## Comparator Version
 
@@ -17,7 +17,7 @@
 
 ## EXP-001 Topology Perturbation
 
-- run_id: 401d669d-beb5-45ab-90f2-81318eb1eae3
+- run_id: 99c5ce29-06bf-4313-9c43-380e6fbbbe15
 - included_records: 12
 - malformed_records: 0
 - tolerant_parsing_events: 5
@@ -25,7 +25,7 @@
 
 ## EXP-002 Cross-Representation Stability
 
-- run_id: 6c80a0ae-b59d-4f81-8853-35bae0b25a7e
+- run_id: 283803c9-3229-47be-9115-ec7ac1181809
 - included_records: 12
 - malformed_records: 0
 - tolerant_parsing_events: 4

@@ -4,6 +4,8 @@
 
 This package provides a reusable comparison engine for Framework Engineering research runs and experiments.
 
+Official comparison now requires a verified normalization certificate for the target experiment. Missing, blocked, invalidated, or stale certificates must prevent official output generation.
+
 It extracts the dimensional comparison approach proven in the ECR-000001 Comparator v3 stack and moves it into shared modules so future evidence runs do not require cloned one-off comparators.
 
 ## Architecture

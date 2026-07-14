@@ -5,9 +5,9 @@
     "title": "Cross Representation Stability"
   },
   "run_state": {
-    "run_id": "6c80a0ae-b59d-4f81-8853-35bae0b25a7e",
+    "run_id": "283803c9-3229-47be-9115-ec7ac1181809",
     "comparator_version": "3.1.0",
-    "generated_at": "2026-07-13T19:11:51.202Z"
+    "generated_at": "2026-07-14T13:06:18.785Z"
   },
   "primary_record_count": 12,
   "data_quality": [
@@ -448,7 +448,7 @@
         "partial_agreement": 3
       }
     },
-    "run_id": "6c80a0ae-b59d-4f81-8853-35bae0b25a7e"
+    "run_id": "283803c9-3229-47be-9115-ec7ac1181809"
   },
   "primitives": {
     "primitive_sequence": {
@@ -506,7 +506,7 @@
     "counts": {
       "disagreement": 4
     },
-    "run_id": "6c80a0ae-b59d-4f81-8853-35bae0b25a7e"
+    "run_id": "283803c9-3229-47be-9115-ec7ac1181809"
   },
   "constraints": {
     "field_results": [
@@ -576,7 +576,7 @@
     "counts": {
       "disagreement": 5
     },
-    "run_id": "6c80a0ae-b59d-4f81-8853-35bae0b25a7e"
+    "run_id": "283803c9-3229-47be-9115-ec7ac1181809"
   },
   "representation": {
     "procedural_ast_presence": {
@@ -607,7 +607,7 @@
     "counts": {
       "full_agreement": 1
     },
-    "run_id": "6c80a0ae-b59d-4f81-8853-35bae0b25a7e"
+    "run_id": "283803c9-3229-47be-9115-ec7ac1181809"
   },
   "leakage_rows": [
     {

@@ -4,18 +4,16 @@
 
 | Experiment | Packets | Providers | Expected | Canonical Present | Missing | Malformed | Conflicting | Status |
 |---|---:|---:|---:|---:|---:|---:|---:|---|
-| EXP-001 | 4 | 3 | 12 | 12 | 0 | 4 | 0 | READY_WITH_WARNINGS |
-| EXP-002 | 4 | 3 | 12 | 12 | 0 | 4 | 0 | READY_WITH_WARNINGS |
-| EXP-003 | 3 | 3 | 9 | 0 | 9 | 0 | 0 | BLOCKED |
+| EXP-001 | 4 | 3 | 12 | 12 | 0 | 0 | 0 | READY |
+| EXP-002 | 4 | 3 | 12 | 12 | 0 | 0 | 0 | READY |
+| EXP-003 | 3 | 3 | 9 | 8 | 1 | 0 | 0 | BLOCKED |
 
 ## Missing Responses
 
-- EXP-003 missing 9 primary responses.
+- EXP-003 missing 1 primary responses.
 
 ## Malformed Responses
 
-- EXP-001: 4
-- EXP-002: 4
 
 ## Duplicate Responses
 

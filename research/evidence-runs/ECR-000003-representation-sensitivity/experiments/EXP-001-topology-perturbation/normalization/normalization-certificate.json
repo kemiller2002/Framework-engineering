@@ -1,0 +1,36 @@
+{
+  "certificate_version": "1.0.0",
+  "normalizer_version": "1.0.0",
+  "ecr_id": "ECR-000003",
+  "experiment_id": "EXP-001",
+  "generated_at": "2026-07-14T13:06:06.571Z",
+  "expected_response_count": 12,
+  "canonical_response_count": 12,
+  "strict_parse_count": 8,
+  "tolerant_parse_count": 4,
+  "unsafe_malformed_count": 0,
+  "missing_count": 0,
+  "duplicate_counts": {
+    "exact_duplicate": 0,
+    "semantic_duplicate": 0,
+    "conflicting_duplicate": 0
+  },
+  "ambiguous_count": 0,
+  "excluded_count": 0,
+  "warning_count": 4,
+  "packet_version_issues": [],
+  "dataset_hash": "9d8624e9f2f7e1381f078312be342e697ea29767cdde8983f74424eb3f3c6b3a",
+  "config_hash": "c069a3e21b96d2290e2a81f8b6085fe416984f06b909d6cf2f167c0610997c2d",
+  "ready_for_comparison": true,
+  "status": "READY_WITH_WARNINGS",
+  "blocking_issues": [],
+  "warnings": [
+    "tolerant parse: normalized_smart_quotes",
+    "tolerant parse: normalized_smart_quotes",
+    "tolerant parse: normalized_smart_quotes",
+    "tolerant parse: normalized_smart_quotes"
+  ],
+  "allowed_comparator_versions": [
+    "3.1.0"
+  ]
+}
