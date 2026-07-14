@@ -1,10 +1,10 @@
 {
-  "pipeline_id": "2026-07-13T19-13-07-215Z",
+  "pipeline_id": "2026-07-13T21-15-59-382Z",
   "ecr_id": "ECR-000003",
   "pipeline_version": "1.0.0",
   "comparator_version": "3.1.0",
-  "started_at": "2026-07-13T19:13:07.215Z",
-  "completed_at": "2026-07-13T19:13:07.260Z",
+  "started_at": "2026-07-13T21:15:59.382Z",
+  "completed_at": "2026-07-13T21:15:59.439Z",
   "mode": "reports-all",
   "normalization": {},
   "dataset": {

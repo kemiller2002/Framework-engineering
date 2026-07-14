@@ -46,12 +46,14 @@ node scripts/run-ecr-000003.js --experiment EXP-002 --compare-all
 
 ## Safe Recommended Sequence
 
-1. `npm run verify`
-2. `npm run pipeline:dry`
-3. Review normalization and completeness reports.
-4. `npm run pipeline`
-5. Review final readiness report.
-6. Complete EDRs manually.
+1. `npm run collect:exp003`
+2. `npm run normalize:dry`
+3. `npm run normalize`
+4. `npm run pipeline:dry`
+5. Review normalization and completeness reports.
+6. `npm run pipeline`
+7. Review final readiness report.
+8. Complete EDRs manually.
 
 ## Phone Upload Workflow
 
@@ -62,6 +64,17 @@ node scripts/run-ecr-000003.js --experiment EXP-002 --compare-all
 2. Response metadata must include `packet_id`.
 3. Run `npm run normalize`.
 4. Run `npm run pipeline`.
+
+## Collection First
+
+Use response collection before normalization:
+
+1. Collect responses.
+2. Normalize responses.
+3. Verify dataset.
+4. Run Comparator v3.1.
+5. Generate reports.
+6. Review EDRs.
 
 ## Important Guardrails
 

@@ -283,6 +283,12 @@ async function writeSupplementalReports(context, datasetInfo, experimentResults)
       "## Blocking Issues",
       "",
       ...(datasetInfo.warnings.length > 0 ? datasetInfo.warnings.map((warning) => `- ${warning}`) : ["- None"]),
+      ...(datasetInfo.experiments.some((item) => item.experiment === "EXP-003" && item.status === "BLOCKED")
+        ? [
+            "- Next action: `npm run collect:exp003`",
+            "- Collection progress path: `collection-dashboard/collection-status.json`"
+          ]
+        : []),
       "",
       "## Exact Next Human Actions",
       "",
@@ -295,7 +301,13 @@ async function writeSupplementalReports(context, datasetInfo, experimentResults)
       "- Review ECR summary EDR: `edr/EDR-ECR-000003-SUMMARY.md`",
       "- Review ECR summary review: `review-board/ECR-000003-summary-review.md`",
       "- Review hypothesis matrix input: `pipeline/generated/hypothesis-matrix-update-input.md`",
-      "- Review scientific claims input: `pipeline/generated/scientific-claims-review-input.md`"
+      "- Review scientific claims input: `pipeline/generated/scientific-claims-review-input.md`",
+      ...(datasetInfo.experiments.some((item) => item.experiment === "EXP-003" && item.status === "BLOCKED")
+        ? [
+            "- Collect remaining EXP-003 responses: `npm run collect:exp003`",
+            "- Inspect collection progress: `collection-dashboard/collection-status.json`"
+          ]
+        : [])
     ].join("\n")
   );
 

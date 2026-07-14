@@ -113,7 +113,7 @@ Framework Engineering currently has provisional evidence as a characterization a
 
 ## Current Phase
 
-ECR-000003 Automated Analysis
+ECR-000003 EXP-003 Response Collection
 
 ## Current Instrument
 
@@ -121,27 +121,21 @@ Comparator v3.1.0 frozen
 
 ## Current Goal
 
-Normalize all completed response files, run EXP-001 through EXP-003 comparisons, generate EDR drafts and cross-experiment reports, and prepare the ECR for human review.
+Collect the nine EXP-003 model responses through the mobile Research Collection Dashboard, normalize them, and run Comparator v3.1.
 
 ## Current Focus
 
-Immediate Next Command:
+Immediate Command:
 
 ```bash
-cd research/evidence-runs/ECR-000003-representation-sensitivity
-npm run pipeline:dry
+cd /Users/kevinmiller/dev/Framework-engineering/research/evidence-runs/ECR-000003-representation-sensitivity
+npm run collect:exp003
 ```
 
-After Dry Run:
-
-Review:
-
-- `pipeline/generated/environment-verification.md`
-- `pipeline/generated/dataset-completeness.md`
-- `response-filename-verification-report.md`
-
-Then Run:
+After Collection:
 
 ```bash
+npm run normalize:dry
+npm run normalize
 npm run pipeline
 ```

@@ -1,0 +1,15 @@
+{
+  "sessions": [
+    {
+      "session_id": "cdd98895-825f-48c8-b0eb-10225389fcc9",
+      "started_at": "2026-07-13T22:58:33.843Z",
+      "experiment": "EXP-003"
+    }
+  ],
+  "task_overrides": {},
+  "progress_summary": {
+    "total": 9,
+    "complete": 0,
+    "remaining": 9
+  }
+}

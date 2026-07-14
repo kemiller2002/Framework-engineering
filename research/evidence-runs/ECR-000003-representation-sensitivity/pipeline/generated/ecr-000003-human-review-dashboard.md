@@ -47,6 +47,8 @@
 ## Blocking Issues
 
 - EXP-003 missing 9 primary responses.
+- Next action: `npm run collect:exp003`
+- Collection progress path: `collection-dashboard/collection-status.json`
 
 ## Exact Next Human Actions
 
@@ -60,3 +62,5 @@
 - Review ECR summary review: `review-board/ECR-000003-summary-review.md`
 - Review hypothesis matrix input: `pipeline/generated/hypothesis-matrix-update-input.md`
 - Review scientific claims input: `pipeline/generated/scientific-claims-review-input.md`
+- Collect remaining EXP-003 responses: `npm run collect:exp003`
+- Inspect collection progress: `collection-dashboard/collection-status.json`

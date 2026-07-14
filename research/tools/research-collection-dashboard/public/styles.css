@@ -1,0 +1,93 @@
+body {
+  margin: 0;
+  font-family: Georgia, "Times New Roman", serif;
+  background: linear-gradient(180deg, #f4efe5 0%, #e4ddcf 100%);
+  color: #1f1d18;
+}
+
+#app {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 16px;
+}
+
+.panel {
+  background: rgba(255, 252, 246, 0.92);
+  border: 1px solid #b3a48b;
+  border-radius: 12px;
+  padding: 16px;
+  margin-bottom: 16px;
+  box-shadow: 0 8px 24px rgba(68, 52, 24, 0.08);
+}
+
+textarea, pre {
+  width: 100%;
+  box-sizing: border-box;
+  border: 1px solid #9b8d75;
+  border-radius: 8px;
+  padding: 12px;
+  background: #fffdf8;
+  color: #1f1d18;
+  font: 14px/1.4 ui-monospace, SFMono-Regular, Menlo, monospace;
+}
+
+.prompt {
+  min-height: 320px;
+}
+
+.response {
+  min-height: 240px;
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+button {
+  border: 0;
+  border-radius: 999px;
+  padding: 10px 14px;
+  background: #2f5d50;
+  color: #fff;
+  font-weight: 600;
+}
+
+button:hover {
+  background: #244a40;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th, td {
+  border: 1px solid #c5b79f;
+  padding: 8px;
+  text-align: left;
+}
+
+.warning {
+  color: #7a3b00;
+}
+
+.diagnostics {
+  font-size: 14px;
+}
+
+@media (max-width: 640px) {
+  #app {
+    padding: 12px;
+  }
+
+  .panel {
+    padding: 12px;
+  }
+
+  button {
+    flex: 1 1 140px;
+  }
+}

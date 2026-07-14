@@ -2,6 +2,8 @@
   "private": true,
   "type": "module",
   "scripts": {
+    "collect": "node ../../tools/research-collection-dashboard/src/server.js --ecr-root . --experiment EXP-003 --port 4310 --host 0.0.0.0",
+    "collect:exp003": "node ../../tools/research-collection-dashboard/src/server.js --ecr-root . --experiment EXP-003 --port 4310 --host 0.0.0.0",
     "verify": "node scripts/run-ecr-000003.js --verify-only",
     "normalize:dry": "node scripts/run-ecr-000003.js --normalize --dry-run",
     "normalize": "node scripts/run-ecr-000003.js --normalize --apply",
