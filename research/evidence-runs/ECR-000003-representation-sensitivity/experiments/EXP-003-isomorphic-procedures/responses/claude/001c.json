@@ -1,0 +1,442 @@
+{
+  "packet_id": "ECR-000003-EXP003-P001C",
+  "experiment_id": "EXP-003",
+  "variant_id": "P001C",
+  "artifact_family_id": "P001",
+  "recognition_condition": "domain_variant_policy",
+  "blinded_artifact_id": "BR-EXP003-P001",
+  "recognized_artifact": "Not confidently identified. The packet matches a generic generate-evaluate-iterate loop (candidate generation, evidence gathering, assessment against an acceptability threshold, bounded iteration). This is structurally consistent with a family of iterative refinement / hypothesis-test procedures instantiated in a policy-interpretation domain, but the packet alone does not license naming a specific source artifact.",
+  "structural_layer": {
+    "entry_conditions": [
+      {
+        "value": "A policy position is in an uncertain state (uncertainty about the correct interpretation exists).",
+        "support_level": "explicit",
+        "source_text": "A policy position is uncertain.",
+        "ambiguity": "Unclear whether uncertainty is a detected trigger, a standing precondition, or an input state supplied from outside the procedure."
+      },
+      {
+        "value": "The uncertainty is deemed worth reviewing at all (implied by the later possibility that 'further review is not justified').",
+        "support_level": "inferred",
+        "source_text": "The process ends when an interpretation is accepted or further review is not justified.",
+        "ambiguity": "The packet only mentions justification of review at exit; whether the same test also gates entry is not stated."
+      }
+    ],
+    "exit_conditions": [
+      {
+        "value": "An interpretation is accepted.",
+        "support_level": "explicit",
+        "source_text": "The process ends when an interpretation is accepted or further review is not justified.",
+        "ambiguity": "The acceptance act is named but no accepting agent, threshold, or artifact is specified."
+      },
+      {
+        "value": "Further review is judged not justified (exhaustion / cost-benefit exit without acceptance).",
+        "support_level": "explicit",
+        "source_text": "The process ends when an interpretation is accepted or further review is not justified.",
+        "ambiguity": "Unclear whether this exit leaves the policy position unresolved, resolved by default, or escalated; the packet is silent on the post-state."
+      }
+    ],
+    "required_steps": [
+      {
+        "value": "Generate candidate interpretations.",
+        "support_level": "explicit",
+        "source_text": "Candidate interpretations are generated.",
+        "ambiguity": "Cardinality unspecified (one per pass vs. a set per pass)."
+      },
+      {
+        "value": "Gather relevant review inputs.",
+        "support_level": "explicit",
+        "source_text": "Relevant review inputs are gathered.",
+        "ambiguity": "'Relevant' is undefined; relevance may be relative to the generated candidates or determined independently. Ordering relative to generation is asserted by sequence only."
+      },
+      {
+        "value": "Assess interpretations.",
+        "support_level": "explicit",
+        "source_text": "Interpretations are assessed.",
+        "ambiguity": "Unclear whether assessment uses the gathered inputs as its basis; adjacency suggests it, but the packet does not state the dependency."
+      },
+      {
+        "value": "Test acceptability sufficiency (the decision that governs loop vs. exit).",
+        "support_level": "implied",
+        "source_text": "The process loops if acceptability remains insufficient.",
+        "ambiguity": "Could be a distinct step or an inseparable part of assessment; the packet supports both readings."
+      }
+    ],
+    "optional_steps": [
+      {
+        "value": "None identifiable. No step in the packet is marked as skippable or conditional on anything other than the loop condition.",
+        "support_level": "explicit",
+        "source_text": "(absence of any optionality marker across all six packet lines)",
+        "ambiguity": "Optionality may exist in the unblinded artifact but is not recoverable here."
+      }
+    ],
+    "loops": [
+      {
+        "value": "Iteration loop: if acceptability remains insufficient, control returns to an earlier step and the cycle repeats.",
+        "support_level": "explicit",
+        "source_text": "The process loops if acceptability remains insufficient.",
+        "ambiguity": "Loop-back target is unspecified. At least three readings are supported: (a) back to generation of new candidates, (b) back to gathering of additional review inputs, (c) back to a joint generation+gathering stage. The packet does not disambiguate."
+      },
+      {
+        "value": "Loop is bounded, not unbounded: at least one exit ('further review is not justified') can terminate iteration without success.",
+        "support_level": "implied",
+        "source_text": "The process ends when an interpretation is accepted or further review is not justified.",
+        "ambiguity": "No iteration count, budget, or convergence measure is given; the bound is qualitative."
+      }
+    ],
+    "branches": [
+      {
+        "value": "Post-assessment branch: acceptable -> exit; insufficient -> loop; not-worth-continuing -> exit without acceptance.",
+        "support_level": "implied",
+        "source_text": "The process loops if acceptability remains insufficient. The process ends when an interpretation is accepted or further review is not justified.",
+        "ambiguity": "Unclear whether this is a two-way branch (accept / continue) with a separate justification test nested inside 'continue', or a three-way branch evaluated at one point. Both decompositions are equally reasonable on the packet text."
+      }
+    ],
+    "termination_conditions": [
+      {
+        "value": "Acceptance of an interpretation (success termination).",
+        "support_level": "explicit",
+        "source_text": "The process ends when an interpretation is accepted or further review is not justified.",
+        "ambiguity": "Acceptance criterion not defined beyond 'acceptability'."
+      },
+      {
+        "value": "Judgment that further review is not justified (non-success termination).",
+        "support_level": "explicit",
+        "source_text": "The process ends when an interpretation is accepted or further review is not justified.",
+        "ambiguity": "Basis of the justification judgment (cost, diminishing returns, authority, time) is not given."
+      }
+    ],
+    "control_flow_shape": "Single-entry iterative loop with a terminal disjunctive exit: entry on uncertainty -> generate -> gather -> assess -> decision point -> {exit on acceptance | exit on review-not-justified | loop back to an earlier (unspecified) step}. Shape is a do-while / repeat-until with two distinct exit reasons; loop-back target is underdetermined."
+  },
+  "primitive_layer": {
+    "primitive_sequence": [
+      {
+        "index": 1,
+        "primitive": "detect_uncertainty_state",
+        "source_text": "A policy position is uncertain.",
+        "support_level": "explicit",
+        "note": "May be a state description rather than an executed action."
+      },
+      {
+        "index": 2,
+        "primitive": "generate_candidates",
+        "source_text": "Candidate interpretations are generated.",
+        "support_level": "explicit"
+      },
+      {
+        "index": 3,
+        "primitive": "gather_inputs",
+        "source_text": "Relevant review inputs are gathered.",
+        "support_level": "explicit"
+      },
+      {
+        "index": 4,
+        "primitive": "evaluate_candidates",
+        "source_text": "Interpretations are assessed.",
+        "support_level": "explicit"
+      },
+      {
+        "index": 5,
+        "primitive": "test_threshold (acceptability sufficient?)",
+        "source_text": "The process loops if acceptability remains insufficient.",
+        "support_level": "implied",
+        "note": "May be fused with primitive 4."
+      },
+      {
+        "index": 6,
+        "primitive": "iterate_or_terminate",
+        "source_text": "The process loops if acceptability remains insufficient. The process ends when an interpretation is accepted or further review is not justified.",
+        "support_level": "explicit"
+      }
+    ],
+    "transitions": [
+      {
+        "from": "detect_uncertainty_state",
+        "to": "generate_candidates",
+        "condition": "unconditional (sequence order in packet)",
+        "support_level": "implied"
+      },
+      {
+        "from": "generate_candidates",
+        "to": "gather_inputs",
+        "condition": "unconditional (sequence order in packet)",
+        "support_level": "implied",
+        "note": "Order could be reversed or concurrent; packet sequence is the only evidence."
+      },
+      {
+        "from": "gather_inputs",
+        "to": "evaluate_candidates",
+        "condition": "unconditional (sequence order in packet)",
+        "support_level": "implied"
+      },
+      {
+        "from": "evaluate_candidates",
+        "to": "test_threshold",
+        "condition": "unconditional",
+        "support_level": "implied"
+      },
+      {
+        "from": "test_threshold",
+        "to": "generate_candidates OR gather_inputs (target unspecified)",
+        "condition": "acceptability remains insufficient AND further review is justified",
+        "support_level": "explicit_condition_ambiguous_target"
+      },
+      {
+        "from": "test_threshold",
+        "to": "TERMINATE(accepted)",
+        "condition": "an interpretation is accepted",
+        "support_level": "explicit"
+      },
+      {
+        "from": "test_threshold",
+        "to": "TERMINATE(review_not_justified)",
+        "condition": "further review is not justified",
+        "support_level": "explicit"
+      }
+    ],
+    "dominant_primitive": "evaluate_candidates (assessment against an acceptability threshold) — it is the primitive the loop condition and both exits are defined in terms of.",
+    "candidate_missing_primitives": [
+      "definition or supply of the acceptability criterion/threshold used in assessment",
+      "explicit selection/acceptance action distinguishing the accepted interpretation from the rest",
+      "the judgment procedure by which 'further review is not justified' is determined (budget, diminishing returns, authority)",
+      "specification of who or what performs each step (agent/role assignment)",
+      "handling of the post-state when termination occurs without acceptance",
+      "any recording, publication, or application of the accepted interpretation"
+    ]
+  },
+  "constraint_layer": {
+    "invariants": [
+      {
+        "value": "At least one candidate interpretation exists in the working set from the first generation step until termination.",
+        "support_level": "inferred",
+        "source_text": "Candidate interpretations are generated. ... Interpretations are assessed.",
+        "ambiguity": "The packet does not state that generation always yields a non-empty set; a zero-candidate pass is not excluded."
+      },
+      {
+        "value": "Every loop iteration passes through assessment (assessment is the only source of the loop condition).",
+        "support_level": "implied",
+        "source_text": "Interpretations are assessed. The process loops if acceptability remains insufficient.",
+        "ambiguity": "Depends on the loop-back target; if the loop returns to a point after assessment this would not hold, but no such reading is supported."
+      }
+    ],
+    "preconditions": [
+      {
+        "value": "An uncertain policy position exists.",
+        "support_level": "explicit",
+        "source_text": "A policy position is uncertain.",
+        "ambiguity": "Whether uncertainty must be recognized/declared, or merely obtain, is unstated."
+      },
+      {
+        "value": "Review inputs are available to be gathered and are classifiable as relevant.",
+        "support_level": "implied",
+        "source_text": "Relevant review inputs are gathered.",
+        "ambiguity": "No relevance criterion or source inventory is given."
+      }
+    ],
+    "postconditions": [
+      {
+        "value": "On success: one interpretation holds the status 'accepted'.",
+        "support_level": "explicit",
+        "source_text": "The process ends when an interpretation is accepted...",
+        "ambiguity": "Singularity of the accepted interpretation is assumed from the singular phrasing; multiple acceptances are not explicitly excluded."
+      },
+      {
+        "value": "On non-success: the process is stopped with no interpretation accepted; the policy position's residual state is unspecified.",
+        "support_level": "implied",
+        "source_text": "...or further review is not justified.",
+        "ambiguity": "Whether uncertainty persists, is escalated, or defaults is entirely unstated."
+      }
+    ],
+    "stopping_criteria": [
+      {
+        "value": "Acceptability of an interpretation reaches sufficiency (acceptance).",
+        "support_level": "explicit",
+        "source_text": "The process loops if acceptability remains insufficient. The process ends when an interpretation is accepted...",
+        "ambiguity": "'Sufficient acceptability' and 'accepted' are treated here as the same criterion; the packet may intend acceptance as a separate discretionary act."
+      },
+      {
+        "value": "Continued review is judged unjustified.",
+        "support_level": "explicit",
+        "source_text": "...or further review is not justified.",
+        "ambiguity": "No metric, budget, or authority is named."
+      }
+    ],
+    "validity_conditions": [
+      {
+        "value": "Assessment must be capable of discriminating sufficient from insufficient acceptability, otherwise the loop cannot terminate on the success branch.",
+        "support_level": "inferred",
+        "source_text": "Interpretations are assessed. The process loops if acceptability remains insufficient.",
+        "ambiguity": "Derived from control-flow necessity, not stated in the packet."
+      },
+      {
+        "value": "The 'not justified' exit must be reachable, otherwise the procedure risks non-termination when acceptability is never reached.",
+        "support_level": "inferred",
+        "source_text": "The process ends when an interpretation is accepted or further review is not justified.",
+        "ambiguity": "Reachability conditions are not specified in the packet."
+      }
+    ]
+  },
+  "representation_layer": {
+    "procedural_ast": {
+      "type": "procedure",
+      "entry": {
+        "type": "precondition",
+        "value": "policy_position.state == uncertain",
+        "support_level": "explicit"
+      },
+      "body": {
+        "type": "loop",
+        "loop_kind": "repeat_until",
+        "loop_back_target": "AMBIGUOUS: one of [generate_candidates, gather_inputs, generate_candidates+gather_inputs]",
+        "body_sequence": [
+          {
+            "type": "step",
+            "id": "s1",
+            "name": "generate_candidate_interpretations",
+            "support_level": "explicit"
+          },
+          {
+            "type": "step",
+            "id": "s2",
+            "name": "gather_relevant_review_inputs",
+            "support_level": "explicit"
+          },
+          {
+            "type": "step",
+            "id": "s3",
+            "name": "assess_interpretations",
+            "support_level": "explicit",
+            "uses": "AMBIGUOUS: dependency on s2 outputs is adjacent but not stated"
+          },
+          {
+            "type": "branch",
+            "id": "b1",
+            "decompositions": [
+              {
+                "reading": "three_way",
+                "cases": [
+                  {
+                    "condition": "interpretation_accepted",
+                    "action": "terminate(success)"
+                  },
+                  {
+                    "condition": "acceptability_insufficient AND further_review_justified",
+                    "action": "loop_back"
+                  },
+                  {
+                    "condition": "further_review_not_justified",
+                    "action": "terminate(no_acceptance)"
+                  }
+                ]
+              },
+              {
+                "reading": "nested_two_way",
+                "outer": {
+                  "condition": "acceptability_sufficient",
+                  "then": "terminate(success)",
+                  "else": {
+                    "condition": "further_review_justified",
+                    "then": "loop_back",
+                    "else": "terminate(no_acceptance)"
+                  }
+                }
+              }
+            ],
+            "note": "Both decompositions are equally supported by the packet; neither is selected."
+          }
+        ]
+      },
+      "exits": [
+        {
+          "id": "e1",
+          "kind": "success",
+          "condition": "an interpretation is accepted"
+        },
+        {
+          "id": "e2",
+          "kind": "non_success",
+          "condition": "further review is not justified"
+        }
+      ]
+    },
+    "natural_language_summary": "The procedure begins from a state in which a policy position is uncertain. Candidate interpretations are produced, review inputs judged relevant are collected, and the interpretations are assessed. If acceptability is still insufficient, the procedure repeats from an earlier point (the packet does not say which). The procedure halts under either of two conditions: an interpretation is accepted, or continuing the review is judged not to be justified. Beyond this, the packet supplies no agents, thresholds, criteria of relevance, iteration bounds, or post-termination effects.",
+    "canonical_summary": "ENTRY: uncertainty(policy_position). REPEAT { generate(candidates); gather(relevant_inputs); assess(candidates); } UNTIL accepted(candidate) OR NOT justified(further_review). Loop-back target unspecified; branch arity ambiguous.",
+    "ambiguities": [
+      {
+        "location": "loop back-edge target ('The process loops...')",
+        "description": "The packet states that the process loops but not to which step control returns.",
+        "plausible_interpretations": [
+          "Loop returns to candidate generation (new/revised interpretations each pass).",
+          "Loop returns to input gathering (same candidates, more evidence each pass).",
+          "Loop returns to a combined generate-and-gather stage (both refreshed each pass)."
+        ],
+        "effect_on_extraction": "The loop body boundary, and therefore which steps are per-iteration versus once-only, cannot be fixed. All three readings are retained rather than collapsed."
+      },
+      {
+        "location": "relationship between 'acceptability remains insufficient' and 'an interpretation is accepted'",
+        "description": "It is unclear whether acceptance is simply the complement of insufficiency (a threshold crossing) or a separate discretionary act following sufficient assessment.",
+        "plausible_interpretations": [
+          "Acceptance == acceptability reaching sufficiency (one criterion, one decision point).",
+          "Acceptance is a distinct approval step gated by, but not identical to, sufficient acceptability."
+        ],
+        "effect_on_extraction": "Determines whether a separate 'accept' primitive exists. Listed under candidate_missing_primitives rather than asserted."
+      },
+      {
+        "location": "branch structure at the decision point",
+        "description": "Three outcomes (accept, loop, stop-unjustified) may be a single three-way branch or nested two-way branches.",
+        "plausible_interpretations": [
+          "Single three-way branch evaluated at one point.",
+          "Two-way accept/continue branch with a nested justification test on the continue arm."
+        ],
+        "effect_on_extraction": "Both decompositions recorded in the AST; neither selected."
+      },
+      {
+        "location": "ordering of generation and gathering",
+        "description": "The packet lists generation before gathering, but does not assert a dependency or forbid concurrency/reversal.",
+        "plausible_interpretations": [
+          "Strict sequence: candidates first, then inputs relevant to them.",
+          "Inputs gathered independently of candidates; listed order is incidental.",
+          "Steps concurrent or interleaved."
+        ],
+        "effect_on_extraction": "Transitions between these steps are marked 'implied (sequence order only)' rather than explicit."
+      },
+      {
+        "location": "'A policy position is uncertain.'",
+        "description": "Unclear whether this is an executed detection step or a static entry precondition.",
+        "plausible_interpretations": [
+          "Entry precondition / input state.",
+          "An actual first step in which uncertainty is detected or declared."
+        ],
+        "effect_on_extraction": "Recorded both as an entry condition and as a low-commitment first primitive with a caveat."
+      },
+      {
+        "location": "post-state after the 'not justified' exit",
+        "description": "The packet says the process ends but not what becomes of the policy position.",
+        "plausible_interpretations": [
+          "Uncertainty persists unresolved.",
+          "A default or status-quo interpretation stands.",
+          "The matter is escalated outside this procedure."
+        ],
+        "effect_on_extraction": "Postcondition for the non-success exit is recorded as unspecified."
+      }
+    ]
+  },
+  "recognition_analysis": {
+    "recognition_occurred": "partial",
+    "recognition_basis": "The control-flow signature (generate candidates -> gather evidence -> evaluate against a threshold -> iterate or exit, with a cost/justification stopping rule) is a common iterative-refinement pattern. This produced a family-level sense of familiarity but not identification of a specific named artifact. No structure was imported from that familiarity: every element recorded traces to a packet line or is marked implied/inferred with its derivation stated.",
+    "domain_terms_introduced": [
+      "threshold (used to describe the acceptability test; the packet says 'acceptability remains insufficient' but names no threshold)",
+      "evidence (used once as a gloss for 'review inputs'; the packet does not use this word)",
+      "convergence / iteration budget (named only to state that the packet supplies none)"
+    ],
+    "prior_knowledge_leakage_risk": "moderate — the main risk is over-specifying the loop-back target to the familiar 'regenerate candidates' pattern, and asserting that assessment consumes the gathered inputs. Both were explicitly held open as ambiguities rather than resolved."
+  },
+  "confidence": {
+    "structural_layer": "medium-high for step identity and exit conditions; low for loop-back target and branch arity",
+    "primitive_layer": "medium — the six primitives are directly readable, but their granularity (especially whether the threshold test is separable from assessment) is uncertain",
+    "constraint_layer": "low-medium — the packet states almost no explicit constraints; most entries here are inferred from control-flow necessity",
+    "representation_layer": "medium — summaries are faithful, but the AST necessarily carries unresolved alternatives",
+    "recognition_analysis": "medium — recognition is reported honestly as family-level and unconfirmed",
+    "overall": "medium — high fidelity to a thin packet; most residual uncertainty is in the packet itself, not in the extraction"
+  },
+  "notes": "The packet is six declarative sentences in the passive voice, with no agents, no thresholds, no cardinalities, and no iteration bounds. Consequently the recoverable procedure is a skeleton: a linear three-step body under a repeat-until loop with a two-reason exit. Four decisions were deliberately left open rather than resolved for cleanliness: (1) the loop-back target, (2) whether acceptance is identical to sufficient acceptability, (3) the branch arity at the decision point, (4) whether the opening sentence is a step or a precondition. Nothing in the structural, primitive, or constraint layers introduces policy-domain machinery beyond the packet's own wording ('policy position', 'interpretations', 'review inputs', 'acceptability', 'review not justified')."
+}
