@@ -20,6 +20,19 @@ List only observations directly supported by comparator outputs.
 - dataset weaknesses:
 - provider-specific concerns:
 
+## Explainability Questions
+
+- Is the disagreement lexical or structural?
+- Does the difference alter the backbone?
+- Is one response compressed or expanded?
+- Did a model add unsupported structure?
+- Did recognition affect extraction?
+- Did domain vocabulary affect the result?
+- Is the difference scientifically relevant?
+- Does it expose a comparator limitation?
+- Should it affect hypothesis review?
+- Is additional evidence required?
+
 ## Interpretation
 
 Supported by evidence:

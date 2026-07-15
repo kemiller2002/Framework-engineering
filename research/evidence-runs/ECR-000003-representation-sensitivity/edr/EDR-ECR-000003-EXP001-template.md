@@ -44,6 +44,36 @@ What question were we trying to answer about recognition persistence under graph
 
 - 
 
+## Explainability Review
+
+### Highest-Priority Differences
+
+- 
+
+### Low-Significance Differences
+
+- 
+
+### Material Backbone Differences
+
+- 
+
+### Unresolved Classifications
+
+- 
+
+### Compression / Elaboration Findings
+
+- 
+
+### Recognition / Structure Relationship
+
+- 
+
+### Domain Leakage Impact
+
+- 
+
 ## Surprise Index
 
 low / medium / high

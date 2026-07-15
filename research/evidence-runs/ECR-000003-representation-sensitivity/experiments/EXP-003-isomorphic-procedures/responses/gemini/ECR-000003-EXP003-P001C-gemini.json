@@ -1,0 +1,204 @@
+{
+  "packet_id": "ECR-000003-EXP003-P001C",
+  "experiment_id": "EXP-003",
+  "variant_id": "P001C",
+  "artifact_family_id": "P001",
+  "recognition_condition": "domain_variant_policy",
+  "blinded_artifact_id": "BR-EXP003-P001",
+  "recognized_artifact": "Policy Interpretation and Review Process",
+  "structural_layer": {
+    "entry_conditions": [
+      {
+        "value": "A policy position is uncertain.",
+        "support_level": "direct",
+        "source_text": "A policy position is uncertain.",
+        "ambiguity": "low"
+      }
+    ],
+    "exit_conditions": [
+      {
+        "value": "An interpretation is accepted.",
+        "support_level": "direct",
+        "source_text": "The process ends when an interpretation is accepted or further review is not justified.",
+        "ambiguity": "low"
+      },
+      {
+        "value": "Further review is not justified.",
+        "support_level": "direct",
+        "source_text": "The process ends when an interpretation is accepted or further review is not justified.",
+        "ambiguity": "low"
+      }
+    ],
+    "required_steps": [
+      {
+        "value": "Candidate interpretations are generated.",
+        "support_level": "direct",
+        "source_text": "Candidate interpretations are generated.",
+        "ambiguity": "low"
+      },
+      {
+        "value": "Relevant review inputs are gathered.",
+        "support_level": "direct",
+        "source_text": "Relevant review inputs are gathered.",
+        "ambiguity": "low"
+      },
+      {
+        "value": "Interpretations are assessed.",
+        "support_level": "direct",
+        "source_text": "Interpretations are assessed.",
+        "ambiguity": "low"
+      }
+    ],
+    "optional_steps": [],
+    "loops": [
+      {
+        "value": "The process loops back to earlier assessment/generation steps if acceptability of the interpretation remains insufficient.",
+        "support_level": "deduced",
+        "source_text": "The process loops if acceptability remains insufficient.",
+        "ambiguity": "medium"
+      }
+    ],
+    "branches": [],
+    "termination_conditions": [
+      {
+        "value": "An interpretation is accepted or further review is not justified.",
+        "support_level": "direct",
+        "source_text": "The process ends when an interpretation is accepted or further review is not justified.",
+        "ambiguity": "low"
+      }
+    ],
+    "control_flow_shape": "Sequential start with a conditional loop back to generation/assessment, leading to alternative termination conditions."
+  },
+  "primitive_layer": {
+    "primitive_sequence": [
+      "Generate candidate interpretations",
+      "Gather relevant review inputs",
+      "Assess interpretations",
+      "Evaluate acceptability (loop decision)",
+      "Terminate process"
+    ],
+    "transitions": [
+      {
+        "from": "Generate candidate interpretations",
+        "to": "Gather relevant review inputs"
+      },
+      {
+        "from": "Gather relevant review inputs",
+        "to": "Assess interpretations"
+      },
+      {
+        "from": "Assess interpretations",
+        "to": "Evaluate acceptability (loop decision)"
+      },
+      {
+        "from": "Evaluate acceptability (loop decision)",
+        "to": "Generate candidate interpretations",
+        "condition": "acceptability remains insufficient and further review is justified"
+      },
+      {
+        "from": "Evaluate acceptability (loop decision)",
+        "to": "Terminate process",
+        "condition": "interpretation is accepted or further review is not justified"
+      }
+    ],
+    "dominant_primitive": "Assess interpretations",
+    "candidate_missing_primitives": []
+  },
+  "constraint_layer": {
+    "invariants": [],
+    "preconditions": [
+      {
+        "value": "Uncertainty of policy position must exist.",
+        "support_level": "direct",
+        "source_text": "A policy position is uncertain.",
+        "ambiguity": "low"
+      }
+    ],
+    "postconditions": [
+      {
+        "value": "An interpretation is accepted or further review is deemed not justified.",
+        "support_level": "direct",
+        "source_text": "The process ends when an interpretation is accepted or further review is not justified.",
+        "ambiguity": "low"
+      }
+    ],
+    "stopping_criteria": [
+      {
+        "value": "Acceptance of interpretation OR decision that further review is not justified.",
+        "support_level": "direct",
+        "source_text": "The process ends when an interpretation is accepted or further review is not justified.",
+        "ambiguity": "low"
+      }
+    ],
+    "validity_conditions": []
+  },
+  "representation_layer": {
+    "procedural_ast": {
+      "type": "Procedure",
+      "name": "Policy Interpretation",
+      "body": [
+        {
+          "type": "Condition",
+          "name": "Entry",
+          "expression": "Policy position is uncertain"
+        },
+        {
+          "type": "Loop",
+          "condition": "Acceptability is insufficient and further review is justified",
+          "body": [
+            {
+              "type": "Action",
+              "name": "Generate candidate interpretations"
+            },
+            {
+              "type": "Action",
+              "name": "Gather relevant review inputs"
+            },
+            {
+              "type": "Action",
+              "name": "Assess interpretations"
+            }
+          ]
+        },
+        {
+          "type": "Condition",
+          "name": "Termination",
+          "expression": "Interpretation is accepted OR further review is not justified"
+        }
+      ]
+    },
+    "natural_language_summary": "The procedure is designed to resolve policy uncertainty by generating interpretations and gathering relevant inputs to assess them. If the assessment indicates insufficient acceptability, the process loops back to repeat these steps, ending only when an interpretation is successfully accepted or when continued review is no longer justified.",
+    "canonical_summary": "Identify policy uncertainty -> Generate candidate interpretations -> Gather review inputs -> Assess interpretations -> (Loop if insufficient acceptability) -> Terminate upon acceptance or lack of justification for further review.",
+    "ambiguities": [
+      {
+        "location": "The process loops if acceptability remains insufficient.",
+        "description": "It is not explicitly stated which exact point of the procedure the loop returns to (e.g., does it regenerate candidates, regather inputs, or only reassess?).",
+        "plausible_interpretations": [
+          "Loop returns to generating candidate interpretations.",
+          "Loop returns to gathering inputs based on existing candidates.",
+          "Loop returns only to assessing current interpretations."
+        ],
+        "effect_on_extraction": "Affects the formal transition targets of the loop structure within the primitive layer."
+      }
+    ]
+  },
+  "recognition_analysis": {
+    "recognition_occurred": "yes",
+    "recognition_basis": "The procedure describes a classic policy analysis or exception handling workflow, particularly matching systems of compliance or statutory interpretation.",
+    "domain_terms_introduced": [
+      "policy analysis",
+      "compliance workflow",
+      "statutory interpretation"
+    ],
+    "prior_knowledge_leakage_risk": "Low. The extracted structure is maintained strictly within the bounds of the provided 6 steps without borrowing external governance framework details."
+  },
+  "confidence": {
+    "structural_layer": "high",
+    "primitive_layer": "high",
+    "constraint_layer": "high",
+    "representation_layer": "high",
+    "recognition_analysis": "high",
+    "overall": "high"
+  },
+  "notes": "The extraction is parsed purely from the explicit 6 sentences in the blinded procedural content."
+}

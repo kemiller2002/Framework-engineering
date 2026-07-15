@@ -69,6 +69,36 @@ What question were we trying to answer about recognition persistence under graph
 - dataset : warning_3 (Tolerant parsing used for ECR-000003-EXP002-P001C gpt: responses/gpt/ECR-000003-EXP002-P001C-gpt.json)
 - dataset : warning_4 (Tolerant parsing used for ECR-000003-EXP002-P001D gpt: responses/gpt/ECR-000003-EXP002-P001D-gpt.json)
 
+## Explainability Review
+
+### Highest-Priority Differences
+
+- 
+
+### Low-Significance Differences
+
+- 
+
+### Material Backbone Differences
+
+- 
+
+### Unresolved Classifications
+
+- 
+
+### Compression / Elaboration Findings
+
+- 
+
+### Recognition / Structure Relationship
+
+- 
+
+### Domain Leakage Impact
+
+- 
+
 ## Surprise Index
 
 low / medium / high

@@ -6,11 +6,10 @@
 |---|---:|---:|---:|---:|---:|---:|---:|---|
 | EXP-001 | 4 | 3 | 12 | 12 | 0 | 0 | 0 | READY |
 | EXP-002 | 4 | 3 | 12 | 12 | 0 | 0 | 0 | READY |
-| EXP-003 | 3 | 3 | 9 | 8 | 1 | 0 | 0 | BLOCKED |
+| EXP-003 | 3 | 3 | 9 | 9 | 0 | 0 | 0 | READY |
 
 ## Missing Responses
 
-- EXP-003 missing 1 primary responses.
 
 ## Malformed Responses
 
@@ -25,6 +24,6 @@
 
 ## Overall Status
 
-- BLOCKED
+- READY
 
 Comparison may proceed only when all expected primary responses are present, no conflicting duplicates remain, no unsafe malformed response is required for the primary dataset, and packet-version rules pass.

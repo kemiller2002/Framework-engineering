@@ -9,8 +9,8 @@
 - EXP-002 canonical: 12
 - EXP-002 status: READY_WITH_WARNINGS
 - EXP-003 expected: 9
-- EXP-003 canonical: 8
-- EXP-003 status: BLOCKED
+- EXP-003 canonical: 9
+- EXP-003 status: READY_WITH_WARNINGS
 - Comparator gate behavior: official comparison requires READY or READY_WITH_WARNINGS certificate with matching dataset and config hashes.
 - Limitations: ZIP introspection is not implemented; archive ZIPs are inventoried but not unpacked.
 

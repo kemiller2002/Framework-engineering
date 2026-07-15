@@ -3,13 +3,13 @@
 ## Run Status
 
 - Comparator version: 3.1.0
-- Dataset status: BLOCKED
+- Dataset status: READY
 
 ## Dataset Completeness
 
 - EXP-001: expected 12, present 12, malformed 0, status READY.
 - EXP-002: expected 12, present 12, malformed 0, status READY.
-- EXP-003: expected 9, present 8, malformed 0, status BLOCKED.
+- EXP-003: expected 9, present 9, malformed 0, status READY.
 
 ## Comparator Version
 
@@ -17,7 +17,7 @@
 
 ## EXP-001 Topology Perturbation
 
-- run_id: 99c5ce29-06bf-4313-9c43-380e6fbbbe15
+- run_id: e2a2ed75-2dbc-46b4-a20d-742ea34a0393
 - included_records: 12
 - malformed_records: 0
 - tolerant_parsing_events: 5
@@ -25,7 +25,7 @@
 
 ## EXP-002 Cross-Representation Stability
 
-- run_id: 283803c9-3229-47be-9115-ec7ac1181809
+- run_id: f443d0d6-9763-45e1-911e-e014ab1856f2
 - included_records: 12
 - malformed_records: 0
 - tolerant_parsing_events: 4
@@ -33,7 +33,11 @@
 
 ## EXP-003 Procedural Isomorphism
 
-- Outputs not available.
+- run_id: 831e1fe8-ab35-4464-a66d-7dba12db6cc5
+- included_records: 9
+- malformed_records: 0
+- tolerant_parsing_events: 3
+- structural_backbone_result: mostly_stable
 
 ## Recognition Across Experiments
 
@@ -49,31 +53,36 @@
 - EXP-002 ECR-000003-EXP002-P001B gpt: partial
 - EXP-002 ECR-000003-EXP002-P001B claude: partial
 - EXP-002 ECR-000003-EXP002-P001B gemini: unknown
-- EXP-003: unavailable
+- EXP-003 ECR-000003-EXP003-P001A gpt: partial
+- EXP-003 ECR-000003-EXP003-P001A claude: partial
+- EXP-003 ECR-000003-EXP003-P001A gemini: recognized
+- EXP-003 ECR-000003-EXP003-P001B gpt: partial
+- EXP-003 ECR-000003-EXP003-P001B claude: partial
+- EXP-003 ECR-000003-EXP003-P001B gemini: partial
 
 ## Structural Backbone Across Experiments
 
 - EXP-001: mixed
 - EXP-002: mixed
-- EXP-003: unavailable
+- EXP-003: mostly_stable
 
 ## Primitive Stability Across Experiments
 
 - EXP-001: disagreement
 - EXP-002: disagreement
-- EXP-003: unavailable
+- EXP-003: disagreement
 
 ## Constraint Findings
 
 - EXP-001: disagreement
 - EXP-002: disagreement
-- EXP-003: unavailable
+- EXP-003: disagreement
 
 ## Representation Compliance
 
 - EXP-001: full_agreement
 - EXP-002: full_agreement
-- EXP-003: unavailable
+- EXP-003: full_agreement
 
 ## Provider-Specific Patterns
 
@@ -83,7 +92,7 @@
 
 - EXP-001: 3 leakage findings
 - EXP-002: 5 leakage findings
-- EXP-003: 0 leakage findings
+- EXP-003: 5 leakage findings
 
 ## Instrument Limitations
 

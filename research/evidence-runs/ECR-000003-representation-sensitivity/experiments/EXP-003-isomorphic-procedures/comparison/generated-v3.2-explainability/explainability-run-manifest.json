@@ -1,0 +1,28 @@
+{
+  "explainability_version": "3.2.0-explainability",
+  "official_comparator_version": "3.1.0",
+  "source_run_id": "831e1fe8-ab35-4464-a66d-7dba12db6cc5",
+  "source_dataset_hash": "8b201a821fc0ecc06c87ad051f549f4af1952b9f34e06f2fefd373b3279b2953",
+  "source_config_hash": "7eb2283001a6cfa519fedc74ccdee5e115c6b43d836e8a7023fec8b759a6001b",
+  "source_response_hash": "542219c020ead9e70b941e89f49d21207a2bc7874b7c31e3d3e546e4ce849c41",
+  "generated_timestamp": "2026-07-14T15:56:24.112Z",
+  "pairwise_comparison_count": 18,
+  "difference_count": 551,
+  "high_priority_count": 15,
+  "blocking_count": 0,
+  "output_files": [
+    "explainability-run-manifest.json",
+    "difference-summary.md",
+    "pairwise-differences.json",
+    "primitive-difference-explanations.md",
+    "transition-difference-explanations.md",
+    "structural-difference-explanations.md",
+    "constraint-difference-explanations.md",
+    "recognition-difference-explanations.md",
+    "domain-leakage-impact.md",
+    "compression-elaboration-report.md",
+    "human-review-priority.md",
+    "explainability-observation-ledger.md",
+    "edr-explainability-input.md"
+  ]
+}

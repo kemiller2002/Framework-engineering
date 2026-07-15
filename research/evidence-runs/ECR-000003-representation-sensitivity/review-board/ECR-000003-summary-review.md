@@ -15,7 +15,7 @@ Draft
 
 - EXP001: available for review
 - EXP002: available for review
-- EXP003: not accepted
+- EXP003: available for review
 
 ## Observations That Survived Review
 

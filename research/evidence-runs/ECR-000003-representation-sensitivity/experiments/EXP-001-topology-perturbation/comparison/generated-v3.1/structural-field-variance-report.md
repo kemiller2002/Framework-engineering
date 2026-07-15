@@ -1,6 +1,6 @@
 # Structural Field Variance Report
 
-Run ID: 99c5ce29-06bf-4313-9c43-380e6fbbbe15
+Run ID: e2a2ed75-2dbc-46b4-a20d-742ea34a0393
 
 - gpt across variants: literal=disagreement-heavy; dimensional=disagreement-heavy
 - claude across variants: literal=disagreement-heavy; dimensional=disagreement-heavy

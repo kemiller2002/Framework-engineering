@@ -17,10 +17,10 @@
 ## EXP-003
 
 - Expected: 9
-- Canonical: 8
-- Missing: 1
-- Status: BLOCKED
+- Canonical: 9
+- Missing: 0
+- Status: READY_WITH_WARNINGS
 
 ## Overall
 
-- BLOCKED
+- READY_WITH_WARNINGS

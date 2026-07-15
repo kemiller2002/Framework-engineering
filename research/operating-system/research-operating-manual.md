@@ -54,6 +54,16 @@ Before official comparison:
 
 Official comparison must refuse missing, blocked, invalidated, or stale certificates.
 
+## Explainability Layer
+
+Comparator v3.1 and Comparator 3.2 serve different functions.
+
+- Comparator v3.1 records the official measurement result.
+- Comparator 3.2 explains why differences appeared and which ones matter.
+
+Comparator 3.2 must consume official v3.1 outputs.
+It must not overwrite those outputs or update hypotheses automatically.
+
 ## Required Operating References
 
 - `research-constitution.md`

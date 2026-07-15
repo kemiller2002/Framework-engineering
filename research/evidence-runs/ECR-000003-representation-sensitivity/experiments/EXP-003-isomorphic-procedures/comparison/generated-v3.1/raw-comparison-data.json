@@ -1,0 +1,628 @@
+{
+  "config": {
+    "ecr_id": "ECR-000003",
+    "experiment_id": "EXP-003",
+    "title": "Isomorphic Procedures"
+  },
+  "run_state": {
+    "run_id": "831e1fe8-ab35-4464-a66d-7dba12db6cc5",
+    "comparator_version": "3.1.0",
+    "generated_at": "2026-07-14T15:54:42.575Z"
+  },
+  "primary_record_count": 9,
+  "data_quality": [
+    {
+      "packet_id": "",
+      "provider": "",
+      "status": "warning_1",
+      "notes": "Tolerant parsing used for ECR-000003-EXP003-P001A gpt: responses/gpt/ECR-000003-EXP003-P001A-gpt.json"
+    },
+    {
+      "packet_id": "",
+      "provider": "",
+      "status": "warning_2",
+      "notes": "Tolerant parsing used for ECR-000003-EXP003-P001B gpt: responses/gpt/ECR-000003-EXP003-P001B-gpt.json"
+    },
+    {
+      "packet_id": "",
+      "provider": "",
+      "status": "warning_3",
+      "notes": "Tolerant parsing used for ECR-000003-EXP003-P001C gpt: responses/gpt/ECR-000003-EXP003-P001C-gpt.json"
+    }
+  ],
+  "recognition_rows": [
+    {
+      "ecr_id": "ECR-000003",
+      "experiment_id": "EXP-003",
+      "packet_id": "ECR-000003-EXP003-P001A",
+      "provider": "gpt",
+      "variant_id": "P001A",
+      "variant_order": 1,
+      "variant_label": "Technical Troubleshooting",
+      "recognition_value": "partial",
+      "recognized_artifact_raw": "Possible recognition: iterative diagnostic troubleshooting procedure (recorded due to recognition condition; no additional structure inferred from recognition).",
+      "domain_terms_introduced": [
+        "diagnosis",
+        "evidence"
+      ],
+      "prior_knowledge_leakage_risk": "low; recognized artifact recorded only, with no additional procedural structure inferred from prior knowledge.",
+      "notes": "tolerant_parse"
+    },
+    {
+      "ecr_id": "ECR-000003",
+      "experiment_id": "EXP-003",
+      "packet_id": "ECR-000003-EXP003-P001A",
+      "provider": "claude",
+      "variant_id": "P001A",
+      "variant_order": 1,
+      "variant_label": "Technical Troubleshooting",
+      "recognition_value": "partial",
+      "recognized_artifact_raw": "Generic iterative diagnostic / differential-diagnosis loop (hypothesis enumeration -> evidence collection -> hypothesis testing -> iterate or terminate), here instantiated in a technical fault-troubleshooting vocabulary. Recognition is at the level of procedural shape only; no specific named methodology is confidently identified.",
+      "domain_terms_introduced": [
+        "diagnosis",
+        "hypothesis testing",
+        "evidence"
+      ],
+      "prior_knowledge_leakage_risk": "moderate — the recognized shape is highly conventional, which creates pressure to import a canonical elimination/confirmation structure and a candidate-exhaustion stopping rule. This was resisted: the loop boundary was left underdetermined rather than defaulted to the canonical 'regenerate candidates each pass' reading, and no acceptance threshold or elimination semantics were asserted. Residual risk is concentrated in the primitive_sequence, where the sequential ordering of enumerate/collect/evaluate is partly a convention of the recognized shape rather than an explicit packet claim.",
+      "notes": ""
+    },
+    {
+      "ecr_id": "ECR-000003",
+      "experiment_id": "EXP-003",
+      "packet_id": "ECR-000003-EXP003-P001A",
+      "provider": "gemini",
+      "variant_id": "P001A",
+      "variant_order": 1,
+      "variant_label": "Technical Troubleshooting",
+      "recognition_value": "recognized",
+      "recognized_artifact_raw": "Root cause analysis / Fault diagnosis loop",
+      "domain_terms_introduced": [
+        "diagnosis"
+      ],
+      "prior_knowledge_leakage_risk": "Risk of assuming specific diagnostic frameworks (like Bayesian inference, decision trees, or hardware line-replaceable unit isolation procedures) which are not explicitly detailed in the text.",
+      "notes": ""
+    },
+    {
+      "ecr_id": "ECR-000003",
+      "experiment_id": "EXP-003",
+      "packet_id": "ECR-000003-EXP003-P001B",
+      "provider": "gpt",
+      "variant_id": "P001B",
+      "variant_order": 2,
+      "variant_label": "Logistics Routing",
+      "recognition_value": "partial",
+      "recognized_artifact_raw": "Iterative route-selection procedure for delivery logistics (recognition unavoidable; generic only)",
+      "domain_terms_introduced": [],
+      "prior_knowledge_leakage_risk": "low; extraction is limited to generic identification without adding unsupported structure.",
+      "notes": "tolerant_parse"
+    },
+    {
+      "ecr_id": "ECR-000003",
+      "experiment_id": "EXP-003",
+      "packet_id": "ECR-000003-EXP003-P001B",
+      "provider": "claude",
+      "variant_id": "P001B",
+      "variant_order": 2,
+      "variant_label": "Logistics Routing",
+      "recognition_value": "partial",
+      "recognized_artifact_raw": "Resembles a generic candidate-generation-and-discrimination loop (hypothesis generate / test / evaluate / iterate-or-stop). Recognition is at the level of abstract control shape only; no specific named artifact is confidently identified, and no structure below has been imported from any suspected artifact.",
+      "domain_terms_introduced": [
+        "evidence"
+      ],
+      "prior_knowledge_leakage_risk": "low-to-moderate. Risk concentrates at exactly the points where the packet is silent — the loop-back target, the confidence update rule, and the relation between sufficiency and acceptance. Familiar instances of this pattern supply confident defaults for all three (e.g., 'loop back to information gathering; confidence is a posterior updated by evidence; sufficiency is acceptance'). Those defaults were deliberately withheld and recorded as ambiguities instead. Residual risk: the sequential reading of the six lines, and the assumption that assessment consumes the gathered information, are both mildly pattern-driven, though both are also reasonable implications of the packet's ordering.",
+      "notes": ""
+    },
+    {
+      "ecr_id": "ECR-000003",
+      "experiment_id": "EXP-003",
+      "packet_id": "ECR-000003-EXP003-P001B",
+      "provider": "gemini",
+      "variant_id": "P001B",
+      "variant_order": 2,
+      "variant_label": "Logistics Routing",
+      "recognition_value": "partial",
+      "recognized_artifact_raw": "Dynamic Route Selection / Path Planning under Uncertainty",
+      "domain_terms_introduced": [],
+      "prior_knowledge_leakage_risk": "Risk of imposing specific algorithmic steps (such as multi-criteria decision analysis, Dijkstra's algorithm, or heuristic searches) on what is presented as a highly abstracted procedural template.",
+      "notes": ""
+    },
+    {
+      "ecr_id": "ECR-000003",
+      "experiment_id": "EXP-003",
+      "packet_id": "ECR-000003-EXP003-P001C",
+      "provider": "gpt",
+      "variant_id": "P001C",
+      "variant_order": 3,
+      "variant_label": "Policy Review",
+      "recognition_value": "partial",
+      "recognized_artifact_raw": "Possible policy interpretation/review procedure; recognition noted only because recognition_condition indicates it is unavoidable.",
+      "domain_terms_introduced": [],
+      "prior_knowledge_leakage_risk": "low",
+      "notes": "tolerant_parse"
+    },
+    {
+      "ecr_id": "ECR-000003",
+      "experiment_id": "EXP-003",
+      "packet_id": "ECR-000003-EXP003-P001C",
+      "provider": "claude",
+      "variant_id": "P001C",
+      "variant_order": 3,
+      "variant_label": "Policy Review",
+      "recognition_value": "unknown",
+      "recognized_artifact_raw": "Not confidently identified. The packet matches a generic generate-evaluate-iterate loop (candidate generation, evidence gathering, assessment against an acceptability threshold, bounded iteration). This is structurally consistent with a family of iterative refinement / hypothesis-test procedures instantiated in a policy-interpretation domain, but the packet alone does not license naming a specific source artifact.",
+      "domain_terms_introduced": [
+        "evidence"
+      ],
+      "prior_knowledge_leakage_risk": "moderate — the main risk is over-specifying the loop-back target to the familiar 'regenerate candidates' pattern, and asserting that assessment consumes the gathered inputs. Both were explicitly held open as ambiguities rather than resolved.",
+      "notes": ""
+    },
+    {
+      "ecr_id": "ECR-000003",
+      "experiment_id": "EXP-003",
+      "packet_id": "ECR-000003-EXP003-P001C",
+      "provider": "gemini",
+      "variant_id": "P001C",
+      "variant_order": 3,
+      "variant_label": "Policy Review",
+      "recognition_value": "partial",
+      "recognized_artifact_raw": "Policy Interpretation and Review Process",
+      "domain_terms_introduced": [],
+      "prior_knowledge_leakage_risk": "Low. The extracted structure is maintained strictly within the bounds of the provided 6 steps without borrowing external governance framework details.",
+      "notes": ""
+    }
+  ],
+  "structural": {
+    "providerComparisons": [
+      {
+        "scope": "gpt across variants",
+        "literal": "disagreement-heavy",
+        "backbone": "full_agreement",
+        "conceptual": "disagreement-heavy",
+        "dimensional": "disagreement-heavy",
+        "notes": "Within-provider variant stability with backbone separated from wording variance."
+      },
+      {
+        "scope": "claude across variants",
+        "literal": "disagreement-heavy",
+        "backbone": "full_agreement",
+        "conceptual": "disagreement-heavy",
+        "dimensional": "disagreement-heavy",
+        "notes": "Within-provider variant stability with backbone separated from wording variance."
+      },
+      {
+        "scope": "gemini across variants",
+        "literal": "disagreement-heavy",
+        "backbone": "partial_agreement",
+        "conceptual": "disagreement-heavy",
+        "dimensional": "disagreement-heavy",
+        "notes": "Within-provider variant stability with backbone separated from wording variance."
+      },
+      {
+        "scope": "ECR-000003-EXP003-P001A across providers",
+        "literal": "disagreement-heavy",
+        "backbone": "full_agreement",
+        "conceptual": "disagreement-heavy",
+        "dimensional": "mostly_stable",
+        "notes": "Across-provider variant stability with backbone separated from wording variance."
+      },
+      {
+        "scope": "ECR-000003-EXP003-P001B across providers",
+        "literal": "disagreement-heavy",
+        "backbone": "full_agreement",
+        "conceptual": "disagreement-heavy",
+        "dimensional": "mixed",
+        "notes": "Across-provider variant stability with backbone separated from wording variance."
+      },
+      {
+        "scope": "ECR-000003-EXP003-P001C across providers",
+        "literal": "disagreement-heavy",
+        "backbone": "partial_agreement",
+        "conceptual": "disagreement-heavy",
+        "dimensional": "mostly_stable",
+        "notes": "Across-provider variant stability with backbone separated from wording variance."
+      }
+    ],
+    "literal_profile": "mostly_stable",
+    "backbone_profile": "mostly_stable",
+    "conceptual_profile": "mostly_stable",
+    "dimensional_profile": "mostly_stable",
+    "overall": {
+      "field_results": [
+        {
+          "field": "structural_layer.entry_conditions",
+          "literal": {
+            "category": "disagreement",
+            "similarity": 0.05555555555555555,
+            "populated_count": 9
+          },
+          "conceptual": {
+            "category": "disagreement",
+            "similarity": 0.08333333333333333,
+            "populated_count": 9
+          },
+          "dimensional": {
+            "category": "disagreement",
+            "similarity": 0.13333333333333333,
+            "populated_count": 9,
+            "shared_roles": [
+              "act"
+            ]
+          }
+        },
+        {
+          "field": "structural_layer.exit_conditions",
+          "literal": {
+            "category": "disagreement",
+            "similarity": 0.125,
+            "populated_count": 9
+          },
+          "conceptual": {
+            "category": "disagreement",
+            "similarity": 0.125,
+            "populated_count": 9
+          },
+          "dimensional": {
+            "category": "disagreement",
+            "similarity": 0.16666666666666666,
+            "populated_count": 9,
+            "shared_roles": [
+              "explain",
+              "interpret",
+              "reflect"
+            ]
+          }
+        },
+        {
+          "field": "structural_layer.required_steps",
+          "literal": {
+            "category": "disagreement",
+            "similarity": 0.06018518518518518,
+            "populated_count": 9
+          },
+          "conceptual": {
+            "category": "disagreement",
+            "similarity": 0.0949074074074074,
+            "populated_count": 9
+          },
+          "dimensional": {
+            "category": "full_agreement",
+            "similarity": 1,
+            "populated_count": 9,
+            "shared_roles": [
+              "evaluate",
+              "generate",
+              "observe"
+            ]
+          }
+        },
+        {
+          "field": "structural_layer.loops",
+          "literal": {
+            "category": "disagreement",
+            "similarity": 0,
+            "populated_count": 9
+          },
+          "conceptual": {
+            "category": "disagreement",
+            "similarity": 0,
+            "populated_count": 9
+          },
+          "dimensional": {
+            "category": "disagreement",
+            "similarity": 0.25833333333333336,
+            "populated_count": 9,
+            "shared_roles": [
+              "explain",
+              "reassess"
+            ]
+          }
+        },
+        {
+          "field": "structural_layer.branches",
+          "literal": {
+            "category": "disagreement",
+            "similarity": 0,
+            "populated_count": 8
+          },
+          "conceptual": {
+            "category": "disagreement",
+            "similarity": 0,
+            "populated_count": 8
+          },
+          "dimensional": {
+            "category": "disagreement",
+            "similarity": 0.3285714285714286,
+            "populated_count": 8,
+            "shared_roles": [
+              "explain",
+              "reassess",
+              "terminate"
+            ]
+          }
+        },
+        {
+          "field": "structural_layer.termination_conditions",
+          "literal": {
+            "category": "disagreement",
+            "similarity": 0.027777777777777776,
+            "populated_count": 9
+          },
+          "conceptual": {
+            "category": "disagreement",
+            "similarity": 0.041666666666666664,
+            "populated_count": 9
+          },
+          "dimensional": {
+            "category": "disagreement",
+            "similarity": 0.16666666666666666,
+            "populated_count": 9,
+            "shared_roles": [
+              "explain",
+              "interpret",
+              "reflect"
+            ]
+          }
+        }
+      ],
+      "control_flow_shape": {
+        "category": "disagreement",
+        "similarity": 0,
+        "populated_count": 9
+      },
+      "backbone": {
+        "category": "partial_agreement",
+        "similarity": 0.9111111111111112,
+        "populated_count": 9
+      },
+      "literal_counts": {
+        "disagreement": 7
+      },
+      "conceptual_counts": {
+        "disagreement": 6
+      },
+      "dimensional_counts": {
+        "disagreement": 5,
+        "full_agreement": 1
+      }
+    },
+    "run_id": "831e1fe8-ab35-4464-a66d-7dba12db6cc5"
+  },
+  "primitives": {
+    "primitive_sequence": {
+      "category": "disagreement",
+      "similarity": 0.015873015873015872,
+      "populated_count": 9
+    },
+    "primitive_roles": {
+      "category": "full_agreement",
+      "similarity": 1,
+      "populated_count": 9,
+      "shared_roles": [
+        "evaluate",
+        "generate",
+        "observe",
+        "terminate"
+      ]
+    },
+    "transitions": {
+      "category": "disagreement",
+      "similarity": 0.007936507936507936,
+      "populated_count": 9
+    },
+    "transition_backbone": {
+      "category": "disagreement",
+      "similarity": 0.007936507936507936,
+      "populated_count": 9
+    },
+    "dominant_primitive": {
+      "category": "disagreement",
+      "similarity": 0,
+      "populated_count": 9
+    },
+    "dominant_role": {
+      "category": "disagreement",
+      "similarity": 0.37777777777777766,
+      "populated_count": 9,
+      "shared_roles": [
+        "evaluate"
+      ]
+    },
+    "candidate_missing_primitives": {
+      "category": "disagreement",
+      "similarity": 0,
+      "populated_count": 7
+    },
+    "style_variance": {
+      "category": "informational_only",
+      "similarity": 0,
+      "populated_count": 9
+    },
+    "counts": {
+      "disagreement": 4
+    },
+    "run_id": "831e1fe8-ab35-4464-a66d-7dba12db6cc5"
+  },
+  "constraints": {
+    "field_results": [
+      {
+        "field": "constraint_layer.invariants",
+        "comparison": {
+          "category": "disagreement",
+          "similarity": 0,
+          "populated_count": 6
+        }
+      },
+      {
+        "field": "constraint_layer.preconditions",
+        "comparison": {
+          "category": "disagreement",
+          "similarity": 0,
+          "populated_count": 9
+        }
+      },
+      {
+        "field": "constraint_layer.postconditions",
+        "comparison": {
+          "category": "disagreement",
+          "similarity": 0,
+          "populated_count": 9
+        }
+      },
+      {
+        "field": "constraint_layer.stopping_criteria",
+        "comparison": {
+          "category": "disagreement",
+          "similarity": 0.027777777777777776,
+          "populated_count": 9
+        }
+      },
+      {
+        "field": "constraint_layer.validity_conditions",
+        "comparison": {
+          "category": "disagreement",
+          "similarity": 0,
+          "populated_count": 6
+        }
+      }
+    ],
+    "conceptual": {
+      "category": "disagreement",
+      "similarity": 0.011574074074074073,
+      "populated_count": 9
+    },
+    "dimensional": {
+      "category": "partial_agreement",
+      "similarity": 0.6222222222222223,
+      "populated_count": 9,
+      "shared_roles": [
+        "act",
+        "evaluate",
+        "explain",
+        "generate",
+        "interpret",
+        "observe",
+        "reflect",
+        "terminate"
+      ]
+    },
+    "field_placement_sensitivity": "high",
+    "counts": {
+      "disagreement": 5
+    },
+    "run_id": "831e1fe8-ab35-4464-a66d-7dba12db6cc5"
+  },
+  "representation": {
+    "procedural_ast_presence": {
+      "category": "full_agreement",
+      "similarity": 1,
+      "populated_count": 9
+    },
+    "natural_language_summary": {
+      "category": "informational_only",
+      "similarity": 0.33512793686690157,
+      "populated_count": 9
+    },
+    "canonical_summary": {
+      "category": "informational_only",
+      "similarity": 0.26610699944796057,
+      "populated_count": 9
+    },
+    "ambiguities": {
+      "category": "informational_only",
+      "similarity": 0.15121316977660265,
+      "populated_count": 9
+    },
+    "notes": {
+      "category": "informational_only",
+      "similarity": 0,
+      "populated_count": 9
+    },
+    "counts": {
+      "full_agreement": 1
+    },
+    "run_id": "831e1fe8-ab35-4464-a66d-7dba12db6cc5"
+  },
+  "leakage_rows": [
+    {
+      "packet_id": "ECR-000003-EXP003-P001A",
+      "provider": "gpt",
+      "domain_terms": [
+        "diagnosis",
+        "evidence"
+      ],
+      "classification": "likely_prior_knowledge_leakage",
+      "notes": "low; recognized artifact recorded only, with no additional procedural structure inferred from prior knowledge."
+    },
+    {
+      "packet_id": "ECR-000003-EXP003-P001A",
+      "provider": "claude",
+      "domain_terms": [
+        "diagnosis",
+        "hypothesis testing",
+        "evidence"
+      ],
+      "classification": "likely_prior_knowledge_leakage",
+      "notes": "moderate — the recognized shape is highly conventional, which creates pressure to import a canonical elimination/confirmation structure and a candidate-exhaustion stopping rule. This was resisted: the loop boundary was left underdetermined rather than defaulted to the canonical 'regenerate candidates each pass' reading, and no acceptance threshold or elimination semantics were asserted. Residual risk is concentrated in the primitive_sequence, where the sequential ordering of enumerate/collect/evaluate is partly a convention of the recognized shape rather than an explicit packet claim."
+    },
+    {
+      "packet_id": "ECR-000003-EXP003-P001A",
+      "provider": "gemini",
+      "domain_terms": [
+        "diagnosis"
+      ],
+      "classification": "likely_prior_knowledge_leakage",
+      "notes": "Risk of assuming specific diagnostic frameworks (like Bayesian inference, decision trees, or hardware line-replaceable unit isolation procedures) which are not explicitly detailed in the text."
+    },
+    {
+      "packet_id": "ECR-000003-EXP003-P001B",
+      "provider": "gpt",
+      "domain_terms": [],
+      "classification": "generic_procedural_language",
+      "notes": "low; extraction is limited to generic identification without adding unsupported structure."
+    },
+    {
+      "packet_id": "ECR-000003-EXP003-P001B",
+      "provider": "claude",
+      "domain_terms": [
+        "evidence"
+      ],
+      "classification": "possible_structural_inference",
+      "notes": "low-to-moderate. Risk concentrates at exactly the points where the packet is silent — the loop-back target, the confidence update rule, and the relation between sufficiency and acceptance. Familiar instances of this pattern supply confident defaults for all three (e.g., 'loop back to information gathering; confidence is a posterior updated by evidence; sufficiency is acceptance'). Those defaults were deliberately withheld and recorded as ambiguities instead. Residual risk: the sequential reading of the six lines, and the assumption that assessment consumes the gathered information, are both mildly pattern-driven, though both are also reasonable implications of the packet's ordering."
+    },
+    {
+      "packet_id": "ECR-000003-EXP003-P001B",
+      "provider": "gemini",
+      "domain_terms": [],
+      "classification": "generic_procedural_language",
+      "notes": "Risk of imposing specific algorithmic steps (such as multi-criteria decision analysis, Dijkstra's algorithm, or heuristic searches) on what is presented as a highly abstracted procedural template."
+    },
+    {
+      "packet_id": "ECR-000003-EXP003-P001C",
+      "provider": "gpt",
+      "domain_terms": [],
+      "classification": "generic_procedural_language",
+      "notes": "low"
+    },
+    {
+      "packet_id": "ECR-000003-EXP003-P001C",
+      "provider": "claude",
+      "domain_terms": [
+        "evidence"
+      ],
+      "classification": "possible_structural_inference",
+      "notes": "moderate — the main risk is over-specifying the loop-back target to the familiar 'regenerate candidates' pattern, and asserting that assessment consumes the gathered inputs. Both were explicitly held open as ambiguities rather than resolved."
+    },
+    {
+      "packet_id": "ECR-000003-EXP003-P001C",
+      "provider": "gemini",
+      "domain_terms": [],
+      "classification": "generic_procedural_language",
+      "notes": "Low. The extracted structure is maintained strictly within the bounds of the provided 6 steps without borrowing external governance framework details."
+    }
+  ],
+  "warnings": [
+    "Tolerant parsing used for ECR-000003-EXP003-P001A gpt: responses/gpt/ECR-000003-EXP003-P001A-gpt.json",
+    "Tolerant parsing used for ECR-000003-EXP003-P001B gpt: responses/gpt/ECR-000003-EXP003-P001B-gpt.json",
+    "Tolerant parsing used for ECR-000003-EXP003-P001C gpt: responses/gpt/ECR-000003-EXP003-P001C-gpt.json"
+  ]
+}

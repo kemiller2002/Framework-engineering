@@ -3,6 +3,8 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "test": "node --test"
+    "test": "node --test",
+    "explain": "node src/explainability/index.js",
+    "test:explainability": "node --test test/explainability/*.test.js"
   }
 }

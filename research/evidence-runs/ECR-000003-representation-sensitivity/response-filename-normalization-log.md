@@ -33,4 +33,5 @@ See `normalization/logs/` for machine-readable audit lines.
 - EXP-003: experiments/EXP-003-isomorphic-procedures/responses/gemini/ECR-000003-EXP003-P001B-gemini.json -> responses/gemini/ECR-000003-EXP003-P001B-gemini.json
 - EXP-003: experiments/EXP-003-isomorphic-procedures/responses/gpt/ECR-000003-EXP003-P001B-gpt.json -> responses/gpt/ECR-000003-EXP003-P001B-gpt.json
 - EXP-003: experiments/EXP-003-isomorphic-procedures/responses/claude/ECR-000003-EXP003-P001C-claude.json -> responses/claude/ECR-000003-EXP003-P001C-claude.json
+- EXP-003: experiments/EXP-003-isomorphic-procedures/responses/gemini/ECR-000003-EXP003-P001C-gemini.json -> responses/gemini/ECR-000003-EXP003-P001C-gemini.json
 - EXP-003: experiments/EXP-003-isomorphic-procedures/responses/gpt/ECR-000003-EXP003-P001C-gpt.json -> responses/gpt/ECR-000003-EXP003-P001C-gpt.json

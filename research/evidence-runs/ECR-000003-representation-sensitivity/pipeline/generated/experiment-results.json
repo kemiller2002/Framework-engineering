@@ -4,7 +4,7 @@
   "experiments": {
     "EXP-001": {
       "status": "available",
-      "run_id": "99c5ce29-06bf-4313-9c43-380e6fbbbe15",
+      "run_id": "e2a2ed75-2dbc-46b4-a20d-742ea34a0393",
       "comparator_version": "3.1.0",
       "ontology_version": "research/tools/comparison-engine/ontology",
       "expected_records": 12,
@@ -91,7 +91,7 @@
     },
     "EXP-002": {
       "status": "available",
-      "run_id": "283803c9-3229-47be-9115-ec7ac1181809",
+      "run_id": "f443d0d6-9763-45e1-911e-e014ab1856f2",
       "comparator_version": "3.1.0",
       "ontology_version": "research/tools/comparison-engine/ontology",
       "expected_records": 12,
@@ -176,30 +176,76 @@
       "evidence_ready": true
     },
     "EXP-003": {
-      "status": "missing_outputs",
-      "run_id": "",
+      "status": "available",
+      "run_id": "831e1fe8-ab35-4464-a66d-7dba12db6cc5",
       "comparator_version": "3.1.0",
       "ontology_version": "research/tools/comparison-engine/ontology",
-      "expected_records": 0,
-      "included_records": 0,
+      "expected_records": 9,
+      "included_records": 9,
       "excluded_records": 0,
       "malformed_records": 0,
-      "tolerant_parsing_events": 0,
-      "recognition_results": [],
-      "structural_backbone_result": "",
-      "primitive_headline": "",
-      "constraint_concept_result": "",
-      "representation_compliance": "",
-      "leakage_findings": 0,
+      "tolerant_parsing_events": 3,
+      "recognition_results": [
+        {
+          "packet_id": "ECR-000003-EXP003-P001A",
+          "provider": "gpt",
+          "recognition_value": "partial"
+        },
+        {
+          "packet_id": "ECR-000003-EXP003-P001A",
+          "provider": "claude",
+          "recognition_value": "partial"
+        },
+        {
+          "packet_id": "ECR-000003-EXP003-P001A",
+          "provider": "gemini",
+          "recognition_value": "recognized"
+        },
+        {
+          "packet_id": "ECR-000003-EXP003-P001B",
+          "provider": "gpt",
+          "recognition_value": "partial"
+        },
+        {
+          "packet_id": "ECR-000003-EXP003-P001B",
+          "provider": "claude",
+          "recognition_value": "partial"
+        },
+        {
+          "packet_id": "ECR-000003-EXP003-P001B",
+          "provider": "gemini",
+          "recognition_value": "partial"
+        },
+        {
+          "packet_id": "ECR-000003-EXP003-P001C",
+          "provider": "gpt",
+          "recognition_value": "partial"
+        },
+        {
+          "packet_id": "ECR-000003-EXP003-P001C",
+          "provider": "claude",
+          "recognition_value": "unknown"
+        },
+        {
+          "packet_id": "ECR-000003-EXP003-P001C",
+          "provider": "gemini",
+          "recognition_value": "partial"
+        }
+      ],
+      "structural_backbone_result": "mostly_stable",
+      "primitive_headline": "disagreement",
+      "constraint_concept_result": "disagreement",
+      "representation_compliance": "full_agreement",
+      "leakage_findings": 5,
       "observation_count": 0,
       "unresolved_issues": [
-        "Outputs not present."
+        "dataset:warning_1",
+        "dataset:warning_2",
+        "dataset:warning_3"
       ],
-      "evidence_ready": false
+      "evidence_ready": true
     }
   },
-  "warnings": [
-    "EXP-003 outputs not present."
-  ],
+  "warnings": [],
   "blocking_issues": []
 }

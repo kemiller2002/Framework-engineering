@@ -2,13 +2,13 @@
 
 ## Overall Status
 
-- PARTIAL_READY_FOR_HUMAN_REVIEW
+- READY_FOR_HUMAN_REVIEW
 
 ## Dataset Readiness
 
 - EXP-001: READY
 - EXP-002: READY
-- EXP-003: BLOCKED
+- EXP-003: READY
 
 ## Experiment Comparisons
 
@@ -16,7 +16,7 @@
 |---|---|---|---|---|
 | EXP-001 | yes | yes | missing=0; malformed=0 | Draft |
 | EXP-002 | yes | yes | missing=0; malformed=0 | Draft |
-| EXP-003 | no | no | missing=1; malformed=0 | Deferred |
+| EXP-003 | yes | yes | missing=0; malformed=0 | Draft |
 
 ## Comparator Status
 
@@ -46,9 +46,7 @@
 
 ## Blocking Issues
 
-- EXP-003 missing 1 primary responses.
-- Next action: `npm run collect:exp003`
-- Collection progress path: `collection-dashboard/collection-status.json`
+- None
 
 ## Exact Next Human Actions
 
@@ -62,5 +60,3 @@
 - Review ECR summary review: `review-board/ECR-000003-summary-review.md`
 - Review hypothesis matrix input: `pipeline/generated/hypothesis-matrix-update-input.md`
 - Review scientific claims input: `pipeline/generated/scientific-claims-review-input.md`
-- Collect remaining EXP-003 responses: `npm run collect:exp003`
-- Inspect collection progress: `collection-dashboard/collection-status.json`

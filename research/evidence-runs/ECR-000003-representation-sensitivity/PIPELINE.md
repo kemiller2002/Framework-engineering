@@ -26,6 +26,13 @@ Run comparisons only:
 npm run compare:all
 ```
 
+Run explainability only:
+
+```bash
+npm run explain:all
+npm run reports:explainability
+```
+
 Generate summary reports only:
 
 ```bash
@@ -54,8 +61,10 @@ node scripts/run-ecr-000003.js --experiment EXP-002 --compare-all
 6. `npm run pipeline:dry`
 7. Review normalization and completeness reports.
 8. `npm run pipeline`
-9. Review final readiness report.
-10. Complete EDRs manually.
+9. `npm run explain:all`
+10. `npm run reports:explainability`
+11. Review final readiness report.
+12. Complete EDRs manually.
 
 ## Phone Upload Workflow
 
@@ -76,8 +85,9 @@ Use response collection before normalization:
 3. Verify dataset.
 4. Generate normalization certificates.
 5. Run Comparator v3.1.
-6. Generate reports.
-7. Review EDRs.
+6. Run Comparator 3.2 explainability.
+7. Generate ECR-level explainability reports.
+8. Review EDRs.
 
 ## Important Guardrails
 
@@ -86,3 +96,4 @@ Use response collection before normalization:
 * EDRs require human completion.
 * Pipeline success does not equal hypothesis validation.
 * Comparator v3.1 remains frozen for ECR-000003.
+* Comparator 3.2 explanations do not rescore or replace v3.1.

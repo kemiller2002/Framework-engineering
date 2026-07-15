@@ -2,7 +2,7 @@
 
 ## Overall Status
 
-- BLOCKED
+- READY_WITH_WARNINGS
 
 ## Experiment Summary
 
@@ -10,7 +10,7 @@
 |---|---:|---:|---:|---:|---:|---|
 | EXP-001 | 12 | 12 | 0 | 0 | 0 | READY_WITH_WARNINGS |
 | EXP-002 | 12 | 12 | 0 | 0 | 0 | READY_WITH_WARNINGS |
-| EXP-003 | 9 | 8 | 1 | 1 | 0 | BLOCKED |
+| EXP-003 | 9 | 9 | 0 | 0 | 0 | READY_WITH_WARNINGS |
 
 ## Exact Next Commands
 

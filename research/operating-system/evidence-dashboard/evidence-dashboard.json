@@ -1,0 +1,101 @@
+{
+  "current_research_state": "ECR-000003 complete; synthesis and formal review in progress.",
+  "completed_ecrs": [
+    {
+      "id": "ECR-000003",
+      "title": "Representation Sensitivity",
+      "status": "complete_under_review"
+    }
+  ],
+  "active_hypotheses": [
+    {
+      "id": "H002",
+      "name": "Representation Independence",
+      "direction": "mixed",
+      "evidence_strength": "weak",
+      "latest_evidence": "ECR-000003 Findings",
+      "next_test": "Negative non-isomorphic controls"
+    },
+    {
+      "id": "H003",
+      "name": "Multi-Model Convergence",
+      "direction": "slightly_supported",
+      "evidence_strength": "weak",
+      "latest_evidence": "Hypothesis Review Board",
+      "next_test": "Human baseline extraction"
+    },
+    {
+      "id": "H013",
+      "name": "Recognition Bias",
+      "direction": "mixed",
+      "evidence_strength": "moderate",
+      "latest_evidence": "Hypothesis Review Board",
+      "next_test": "Recognition-control replication"
+    },
+    {
+      "id": "H015",
+      "name": "Measurement Instrument Reliability",
+      "direction": "slightly_supported",
+      "evidence_strength": "moderate",
+      "latest_evidence": "Hypothesis Review Board",
+      "next_test": "Human baseline extraction"
+    },
+    {
+      "id": "H016",
+      "name": "Structural Recognition",
+      "direction": "waiting",
+      "evidence_strength": "insufficient",
+      "latest_evidence": "Hypothesis Review Board",
+      "next_test": "Recognition-control replication"
+    },
+    {
+      "id": "H017",
+      "name": "Procedural Compression",
+      "direction": "mixed",
+      "evidence_strength": "weak",
+      "latest_evidence": "Hypothesis Review Board",
+      "next_test": "Negative non-isomorphic controls"
+    },
+    {
+      "id": "H018",
+      "name": "Procedural Isomorphism",
+      "direction": "slightly_supported",
+      "evidence_strength": "weak",
+      "latest_evidence": "Hypothesis Review Board",
+      "next_test": "Negative non-isomorphic controls"
+    }
+  ],
+  "current_claims": {
+    "candidate_supported": [
+      "Structural backbone may remain more stable than primitive sequence in some settings.",
+      "Recognition and watched terminology do not always force structural divergence.",
+      "Provider-specific differences remain material in ECR-000003."
+    ],
+    "unsupported": [
+      "Framework Engineering is proven.",
+      "Universal procedural grammar is proven.",
+      "Clarity, EDF, or HelixNote are validated by ECR-000003."
+    ]
+  },
+  "instrument_status": {
+    "official_comparator": "3.1.0",
+    "official_comparator_state": "frozen_for_ecr_000003",
+    "explainability_layer": "3.2.0"
+  },
+  "material_threats": [
+    "no human baseline",
+    "recognition leakage",
+    "representation-format effects",
+    "provider-specific response style",
+    "false structural equivalence risk"
+  ],
+  "unresolved_uncertainty": [
+    "whether negative non-isomorphic controls sharply reduce apparent stability",
+    "whether human experts recover similar structures",
+    "whether recognition pressure is primarily lexical or structural"
+  ],
+  "next_research_action": {
+    "recommendation": "Negative Non-Isomorphic Controls",
+    "rationale": "Highest current risk is false structural equivalence."
+  }
+}

@@ -66,6 +66,26 @@ The engine supports:
 - malformed / missing response reporting
 - Markdown report generation
 - machine-readable JSON output
+- explainability post-processing against official Comparator v3.1 results
+
+## Explainability Layer
+
+Comparator v3.1 remains the frozen official measurement instrument for ECR-000003.
+
+Comparator 3.2 is a separate explainability layer. It consumes:
+
+- official Comparator v3.1 outputs
+- normalized responses
+- a valid normalization certificate
+
+It produces difference explanations, compression and elaboration analysis, review-priority guidance, and EDR review inputs without changing official v3.1 classifications.
+
+Commands:
+
+```bash
+npm run explain
+npm run test:explainability
+```
 
 ## Adding A New ECR Or Experiment
 

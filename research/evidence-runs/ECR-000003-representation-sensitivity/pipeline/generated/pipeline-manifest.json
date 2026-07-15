@@ -1,10 +1,10 @@
 {
-  "pipeline_id": "2026-07-14T13-06-18-300Z",
+  "pipeline_id": "2026-07-14T15-54-41-814Z",
   "ecr_id": "ECR-000003",
   "pipeline_version": "1.0.0",
   "comparator_version": "3.1.0",
-  "started_at": "2026-07-14T13:06:18.300Z",
-  "completed_at": "2026-07-14T13:06:18.802Z",
+  "started_at": "2026-07-14T15:54:41.814Z",
+  "completed_at": "2026-07-14T15:54:42.596Z",
   "mode": "compare-all",
   "normalization": {},
   "dataset": {
@@ -38,18 +38,16 @@
         "packets": 3,
         "providers": 3,
         "expected": 9,
-        "present": 8,
-        "missing": 1,
+        "present": 9,
+        "missing": 0,
         "malformed": 0,
         "conflicts": 0,
         "unsafeMalformed": 0,
-        "status": "BLOCKED"
+        "status": "READY"
       }
     ],
-    "overallStatus": "BLOCKED",
-    "warnings": [
-      "EXP-003 missing 1 primary responses."
-    ]
+    "overallStatus": "READY",
+    "warnings": []
   },
   "experiments": {
     "EXP-001": {
@@ -73,12 +71,12 @@
         "experiments/EXP-001-topology-perturbation/comparison/generated-v3.1/edr-draft.md"
       ],
       "evidenceReady": true,
-      "runId": "99c5ce29-06bf-4313-9c43-380e6fbbbe15",
+      "runId": "e2a2ed75-2dbc-46b4-a20d-742ea34a0393",
       "command": "npm run compare:v3.1",
       "cwd": "/Users/kevinmiller/dev/Framework-engineering/research/evidence-runs/ECR-000003-representation-sensitivity/experiments/EXP-001-topology-perturbation",
       "exitCode": 0,
-      "startedAt": "2026-07-14T13:06:18.338Z",
-      "completedAt": "2026-07-14T13:06:18.569Z",
+      "startedAt": "2026-07-14T15:54:41.864Z",
+      "completedAt": "2026-07-14T15:54:42.114Z",
       "issues": []
     },
     "EXP-002": {
@@ -102,20 +100,42 @@
         "experiments/EXP-002-cross-representation-stability/comparison/generated-v3.1/edr-draft.md"
       ],
       "evidenceReady": true,
-      "runId": "283803c9-3229-47be-9115-ec7ac1181809",
+      "runId": "f443d0d6-9763-45e1-911e-e014ab1856f2",
       "command": "npm run compare:v3.1",
       "cwd": "/Users/kevinmiller/dev/Framework-engineering/research/evidence-runs/ECR-000003-representation-sensitivity/experiments/EXP-002-cross-representation-stability",
       "exitCode": 0,
-      "startedAt": "2026-07-14T13:06:18.572Z",
-      "completedAt": "2026-07-14T13:06:18.791Z",
+      "startedAt": "2026-07-14T15:54:42.117Z",
+      "completedAt": "2026-07-14T15:54:42.352Z",
       "issues": []
     },
     "EXP-003": {
       "experiment": "EXP-003",
-      "status": "blocked",
-      "reason": "Dataset not ready for comparison.",
-      "generated": [],
-      "evidenceReady": false
+      "status": "generated",
+      "reason": "",
+      "generated": [
+        "experiments/EXP-003-isomorphic-procedures/comparison/generated-v3.1/run-manifest.json",
+        "experiments/EXP-003-isomorphic-procedures/comparison/generated-v3.1/exp-003-comparison-summary.md",
+        "experiments/EXP-003-isomorphic-procedures/comparison/generated-v3.1/data-quality-report.md",
+        "experiments/EXP-003-isomorphic-procedures/comparison/generated-v3.1/isomorphic-backbone-report.md",
+        "experiments/EXP-003-isomorphic-procedures/comparison/generated-v3.1/domain-effect-report.md",
+        "experiments/EXP-003-isomorphic-procedures/comparison/generated-v3.1/recognition-by-domain-report.md",
+        "experiments/EXP-003-isomorphic-procedures/comparison/generated-v3.1/primitive-stability-report.md",
+        "experiments/EXP-003-isomorphic-procedures/comparison/generated-v3.1/constraint-concept-report.md",
+        "experiments/EXP-003-isomorphic-procedures/comparison/generated-v3.1/representation-compliance-report.md",
+        "experiments/EXP-003-isomorphic-procedures/comparison/generated-v3.1/provider-behavior-report.md",
+        "experiments/EXP-003-isomorphic-procedures/comparison/generated-v3.1/domain-leakage-report.md",
+        "experiments/EXP-003-isomorphic-procedures/comparison/generated-v3.1/observation-ledger.md",
+        "experiments/EXP-003-isomorphic-procedures/comparison/generated-v3.1/raw-comparison-data.json",
+        "experiments/EXP-003-isomorphic-procedures/comparison/generated-v3.1/edr-draft.md"
+      ],
+      "evidenceReady": true,
+      "runId": "831e1fe8-ab35-4464-a66d-7dba12db6cc5",
+      "command": "npm run compare:v3.1",
+      "cwd": "/Users/kevinmiller/dev/Framework-engineering/research/evidence-runs/ECR-000003-representation-sensitivity/experiments/EXP-003-isomorphic-procedures",
+      "exitCode": 0,
+      "startedAt": "2026-07-14T15:54:42.355Z",
+      "completedAt": "2026-07-14T15:54:42.583Z",
+      "issues": []
     }
   },
   "reports": [
@@ -136,10 +156,7 @@
     "edr/EDR-ECR-000003-EXP003.md",
     "edr/EDR-ECR-000003-SUMMARY.md"
   ],
-  "warnings": [
-    "EXP-003 missing 1 primary responses.",
-    "Partial execution completed: at least one experiment ran while another remained blocked."
-  ],
+  "warnings": [],
   "blocking_errors": [],
-  "status": "complete_with_warnings"
+  "status": "complete"
 }

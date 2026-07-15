@@ -8,3 +8,5 @@
 - Hypothesis updates justified
 - Remaining uncertainty documented
 - Follow-up experiments identified
+- Explainability differences reviewed
+- Product claims separated from research claims

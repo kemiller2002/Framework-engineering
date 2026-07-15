@@ -87,9 +87,85 @@ function tolerantParse(rawText) {
     text = noTrailingComma;
     repairs.push("removed_trailing_commas");
   }
+  const correctedClosers = repairMismatchedClosers(text);
+  if (correctedClosers !== text) {
+    text = correctedClosers;
+    repairs.push("corrected_mismatched_closer");
+  }
+  const trimmedTrailingClosers = trimExtraneousTrailingClosers(text);
+  if (trimmedTrailingClosers !== text) {
+    text = trimmedTrailingClosers;
+    repairs.push("trimmed_extraneous_trailing_closer");
+  }
   try {
     return { parsed: JSON.parse(text), repairs };
   } catch {
     return { parsed: null, repairs };
   }
+}
+
+function trimExtraneousTrailingClosers(text) {
+  let candidate = text;
+  while (candidate.endsWith("}") || candidate.endsWith("]")) {
+    try {
+      JSON.parse(candidate);
+      return candidate;
+    } catch {
+      candidate = candidate.slice(0, -1).trimEnd();
+    }
+  }
+  return text;
+}
+
+function repairMismatchedClosers(text) {
+  const chars = [...text];
+  const stack = [];
+  let inString = false;
+  let escaping = false;
+
+  for (let index = 0; index < chars.length; index += 1) {
+    const char = chars[index];
+
+    if (inString) {
+      if (escaping) {
+        escaping = false;
+        continue;
+      }
+      if (char === "\\") {
+        escaping = true;
+        continue;
+      }
+      if (char === "\"") {
+        inString = false;
+      }
+      continue;
+    }
+
+    if (char === "\"") {
+      inString = true;
+      continue;
+    }
+
+    if (char === "{") {
+      stack.push("}");
+      continue;
+    }
+    if (char === "[") {
+      stack.push("]");
+      continue;
+    }
+
+    if (char === "}" || char === "]") {
+      const expected = stack.at(-1);
+      if (!expected) continue;
+      if (char === expected) {
+        stack.pop();
+        continue;
+      }
+      chars[index] = expected;
+      stack.pop();
+    }
+  }
+
+  return chars.join("");
 }

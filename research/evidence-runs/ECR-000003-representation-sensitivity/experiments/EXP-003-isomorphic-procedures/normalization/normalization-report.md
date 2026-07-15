@@ -1,9 +1,9 @@
 # EXP-003 Normalization Report
 
 - Expected responses: 9
-- Canonical responses: 8
-- Status: BLOCKED
-- Dataset hash: a93956fdc1a5f1090e2b19737c4d25911fc97a60e5f1192e871c4e26344326c5
+- Canonical responses: 9
+- Status: READY_WITH_WARNINGS
+- Dataset hash: 8b201a821fc0ecc06c87ad051f549f4af1952b9f34e06f2fefd373b3279b2953
 
 ## Canonical Responses
 
@@ -14,6 +14,7 @@
 - ECR-000003-EXP003-P001B gemini: responses/gemini/ECR-000003-EXP003-P001B-gemini.json
 - ECR-000003-EXP003-P001B gpt: responses/gpt/ECR-000003-EXP003-P001B-gpt.json
 - ECR-000003-EXP003-P001C claude: responses/claude/ECR-000003-EXP003-P001C-claude.json
+- ECR-000003-EXP003-P001C gemini: responses/gemini/ECR-000003-EXP003-P001C-gemini.json
 - ECR-000003-EXP003-P001C gpt: responses/gpt/ECR-000003-EXP003-P001C-gpt.json
 
 ## Moves
@@ -25,6 +26,7 @@
 - experiments/EXP-003-isomorphic-procedures/responses/gemini/ECR-000003-EXP003-P001B-gemini.json -> responses/gemini/ECR-000003-EXP003-P001B-gemini.json
 - experiments/EXP-003-isomorphic-procedures/responses/gpt/ECR-000003-EXP003-P001B-gpt.json -> responses/gpt/ECR-000003-EXP003-P001B-gpt.json
 - experiments/EXP-003-isomorphic-procedures/responses/claude/ECR-000003-EXP003-P001C-claude.json -> responses/claude/ECR-000003-EXP003-P001C-claude.json
+- experiments/EXP-003-isomorphic-procedures/responses/gemini/ECR-000003-EXP003-P001C-gemini.json -> responses/gemini/ECR-000003-EXP003-P001C-gemini.json
 - experiments/EXP-003-isomorphic-procedures/responses/gpt/ECR-000003-EXP003-P001C-gpt.json -> responses/gpt/ECR-000003-EXP003-P001C-gpt.json
 
 ## Tolerant Parsing Events
@@ -39,7 +41,7 @@
 
 ## Malformed or Ambiguous Files
 
-- ECR-000003-EXP003-P001C gemini: malformed
+- None
 
 ## Packet Version Issues
 
@@ -47,11 +49,10 @@
 
 ## Blockers
 
-- ECR-000003-EXP003-P001C gemini: required response missing
-- ECR-000003-EXP003-P001C gemini: response not parseable
+- None
 
 ## Exact Next Command
 
 ```bash
-npm run normalize:verify
+npm run pipeline
 ```

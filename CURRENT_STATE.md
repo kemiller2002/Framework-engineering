@@ -113,31 +113,33 @@ Framework Engineering currently has provisional evidence as a characterization a
 
 ## Current Phase
 
-ECR-000003 Response Normalization and Certification
+ECR-000003 Hypothesis Review and Research Synthesis
 
 ## Current Instrument
 
 Comparator v3.1.0 frozen
 
+## Current Explainability Layer
+
+Comparator 3.2.0
+
 ## Current Goal
 
-Normalize all completed responses, issue verified dataset certificates, and run Comparator v3.1 only against certified datasets.
+Review the evidence, finalize findings, freeze Comparator v3.1, build the Evidence Dashboard, prepare the research draft, and select the next highest-information experiment.
 
 ## Current Focus
 
-Immediate Command:
+Immediate Human Action:
 
 ```bash
-cd /Users/kevinmiller/dev/Framework-engineering/research/evidence-runs/ECR-000003-representation-sensitivity
-npm run normalize:dry
+Review research/evidence-runs/ECR-000003-representation-sensitivity/review-board/HYPOTHESIS-REVIEW-BOARD.md
 ```
 
-Recommended Operator Workflow:
+Then:
 
 ```bash
-npm run normalize:dry
-npm run normalize
-npm run normalize:verify
-npm run normalize:certify
-npm run pipeline
+Review research/evidence-runs/ECR-000003-representation-sensitivity/ECR-000003-FINDINGS.md
+Review research/operating-system/evidence-dashboard/index.md
+Review research/papers/framework-engineering-procedural-recovery-draft.md
+Approve the next research decision
 ```

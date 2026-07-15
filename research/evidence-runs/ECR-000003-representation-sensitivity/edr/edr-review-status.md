@@ -4,5 +4,5 @@
 |---|---|---|
 | EDR-ECR-000003-EXP001 | pending | None |
 | EDR-ECR-000003-EXP002 | pending | None |
-| EDR-ECR-000003-EXP003 | pending | Comparison outputs unavailable |
-| EDR-ECR-000003-SUMMARY | pending | EXP-003 outputs unavailable |
+| EDR-ECR-000003-EXP003 | pending | None |
+| EDR-ECR-000003-SUMMARY | pending | None |
