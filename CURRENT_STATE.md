@@ -113,7 +113,7 @@ Framework Engineering currently has provisional evidence as a characterization a
 
 ## Current Phase
 
-ECR-000003 Hypothesis Review and Research Synthesis
+ECR-000003 Hypothesis Review Board
 
 ## Current Instrument
 
@@ -125,21 +125,20 @@ Comparator 3.2.0
 
 ## Current Goal
 
-Review the evidence, finalize findings, freeze Comparator v3.1, build the Evidence Dashboard, prepare the research draft, and select the next highest-information experiment.
+Review each active hypothesis against accepted ECR-000003 evidence, assess kill conditions, approve qualitative updates, and select the next highest-information research action.
 
 ## Current Focus
 
 Immediate Human Action:
 
 ```bash
-Review research/evidence-runs/ECR-000003-representation-sensitivity/review-board/HYPOTHESIS-REVIEW-BOARD.md
+Review research/evidence-runs/ECR-000003-representation-sensitivity/review-board/HYPOTHESIS-REVIEW-BOARD-PACKET.md
 ```
 
 Then:
 
 ```bash
-Review research/evidence-runs/ECR-000003-representation-sensitivity/ECR-000003-FINDINGS.md
-Review research/operating-system/evidence-dashboard/index.md
-Review research/papers/framework-engineering-procedural-recovery-draft.md
-Approve the next research decision
+Review research/evidence-runs/ECR-000003-representation-sensitivity/review-board/hypotheses/
+Review research/evidence-runs/ECR-000003-representation-sensitivity/review-board/HYPOTHESIS-REVIEW-BOARD-SUMMARY.md
+Review research/evidence-runs/ECR-000003-representation-sensitivity/review-board/HYPOTHESIS-REVIEW-BOARD-DECISION.md
 ```

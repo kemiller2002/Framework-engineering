@@ -2,34 +2,51 @@
 
 ## Current Research State
 
-ECR-000003 complete; synthesis and formal review in progress.
+ECR-000003 evidence collection is complete. Formal hypothesis review is now active.
+
+## Current Phase
+
+`ECR-000003 Hypothesis Review Board`
+
+## Immediate Human Action
+
+Open:
+
+- `research/evidence-runs/ECR-000003-representation-sensitivity/review-board/HYPOTHESIS-REVIEW-BOARD-PACKET.md`
+
+Then review:
+
+- `research/evidence-runs/ECR-000003-representation-sensitivity/review-board/hypotheses/`
+- `research/evidence-runs/ECR-000003-representation-sensitivity/review-board/HYPOTHESIS-REVIEW-BOARD-SUMMARY.md`
+- `research/evidence-runs/ECR-000003-representation-sensitivity/review-board/HYPOTHESIS-REVIEW-BOARD-DECISION.md`
 
 ## Completed ECRs
 
 - ECR-000003 Representation Sensitivity
 
-## Active Hypotheses
+## Board-Proposed Hypothesis Posture
 
-| Hypothesis | Direction | Evidence Strength | Latest Evidence | Next Test |
+| Hypothesis | Proposed Direction | Proposed Strength | Recommendation | Next Evidence |
 |---|---|---|---|---|
-| H002 Representation Independence | mixed | weak | ECR-000003 Findings | Negative non-isomorphic controls |
-| H003 Multi-Model Convergence | slightly_supported | weak | Hypothesis Review Board | Human baseline extraction |
-| H013 Recognition Bias | mixed | moderate | Hypothesis Review Board | Recognition-control replication |
-| H015 Measurement Instrument Reliability | slightly_supported | moderate | Hypothesis Review Board | Human baseline extraction |
-| H016 Structural Recognition | waiting | insufficient | Hypothesis Review Board | Recognition-control replication |
-| H017 Procedural Compression | mixed | weak | Hypothesis Review Board | Negative non-isomorphic controls |
-| H018 Procedural Isomorphism | slightly_supported | weak | Hypothesis Review Board | Negative non-isomorphic controls |
+| H002 Representation Independence | slightly_supported | weak | retain | Negative non-isomorphic controls |
+| H003 Multi-Model Convergence | slightly_supported | weak | retain | Human baseline extraction |
+| H013 Recognition Bias | mixed | moderate | split | Recognition-control replication |
+| H015 Measurement Instrument Reliability | supported | moderate | retain | Human baseline extraction |
+| H016 Structural Recognition | waiting | insufficient | defer | Recognition-control replication |
+| H017 Procedural Compression | slightly_supported | weak | retain | Negative non-isomorphic controls |
+| H018 Procedural Isomorphism | slightly_supported | weak | retain | Negative non-isomorphic controls |
 
 ## Current Claims
 
-- Structural backbone may remain more stable than primitive sequence in some settings.
-- Recognition and watched terminology do not always force structural divergence.
-- Provider-specific differences remain material in ECR-000003.
+- Backbone-level stability appears stronger than primitive or constraint stability in some ECR-000003 settings.
+- Recognition pressure remains present, but its structural effect is mixed rather than uniform.
+- Instrument findings are currently stronger than broad theory claims.
 
 ## Instrument Status
 
-- Official comparator: 3.1.0
-- Explainability layer: 3.2.0
+- Official comparator: `3.1.0`
+- Comparator state: frozen for accepted ECR-000003 outputs
+- Explainability layer: `3.2.0`
 
 ## Material Threats
 
@@ -45,20 +62,19 @@ ECR-000003 complete; synthesis and formal review in progress.
 - whether human experts recover similar structures
 - whether recognition pressure is primarily lexical or structural
 
-## Next Research Action
+## Next Research Action Candidate
 
-- Negative Non-Isomorphic Controls
+- Negative non-isomorphic controls
 
 ## What May Be Said Publicly
 
 - evidence is consistent with limited backbone stability under some transformations
-- candidate methodological findings are stronger than broad theoretical claims
-- the measurement instrument supported formal evidence review in ECR-000003
+- methodological findings are currently stronger than broad theory claims
+- ECR-000003 is ready for human hypothesis review
 
 ## What Must Not Be Claimed
 
 - Framework Engineering is proven
 - universal procedural grammar is proven
 - Clarity, EDF, or HelixNote are validated
-- recognition is required for structural recovery
-
+- any hypothesis is accepted before human board approval
