@@ -1,0 +1,161 @@
+{
+  "registry_version": "0.1",
+  "name": "Framework Engineering Evidence Registry",
+  "governance": {
+    "entry_policy": "Only accepted evidence enters the registry.",
+    "immutability": "Evidence records are never deleted; they may be superseded by newer evidence.",
+    "traceability": "Theory statements, hypotheses, and claims should reference Evidence IDs.",
+    "granularity": "Prefer individual observations over whole experiments as the registry matures."
+  },
+  "evidence": [
+    {
+      "evidence_id": "EV-000001",
+      "status": "accepted",
+      "source": "ECR-000001",
+      "experiment": "Multi-Layer Procedural Representation",
+      "supports": [
+        "H016"
+      ],
+      "challenges": [],
+      "confidence_impact": {
+        "from": "preliminary",
+        "to": "moderate"
+      },
+      "type": "experimental",
+      "summary": "Initial evidence for recoverable procedural structure.",
+      "open_questions": [
+        "Can independent researchers reproduce the observations?"
+      ],
+      "linked_theory_sections": [
+        "Structural Recognition"
+      ],
+      "notes": ""
+    },
+    {
+      "evidence_id": "EV-000002",
+      "status": "accepted",
+      "source": "ECR-000003",
+      "experiment": "EXP-001 Representation Perturbation",
+      "supports": [
+        "H002",
+        "H016"
+      ],
+      "challenges": [],
+      "confidence_impact": {
+        "from": "moderate",
+        "to": "moderate"
+      },
+      "type": "experimental",
+      "summary": "Procedural backbone remained comparatively stable under representation perturbation.",
+      "open_questions": [
+        "Separate semantic familiarity from structural recovery."
+      ],
+      "linked_theory_sections": [
+        "Representation Independence",
+        "Structural Recognition"
+      ],
+      "notes": ""
+    },
+    {
+      "evidence_id": "EV-000003",
+      "status": "accepted",
+      "source": "ECR-000003",
+      "experiment": "EXP-002 Cross Representation Stability",
+      "supports": [
+        "H002",
+        "H015"
+      ],
+      "challenges": [],
+      "confidence_impact": {
+        "from": "moderate",
+        "to": "moderate"
+      },
+      "type": "experimental",
+      "summary": "Cross-representation recovery exceeded lexical agreement.",
+      "open_questions": [
+        "Establish a human baseline."
+      ],
+      "linked_theory_sections": [
+        "Measurement",
+        "Representation"
+      ],
+      "notes": ""
+    },
+    {
+      "evidence_id": "EV-000004",
+      "status": "accepted",
+      "source": "ECR-000003",
+      "experiment": "EXP-003 Procedural Isomorphism",
+      "supports": [
+        "H017",
+        "H018"
+      ],
+      "challenges": [],
+      "confidence_impact": {
+        "from": "slight",
+        "to": "moderate"
+      },
+      "type": "experimental",
+      "summary": "Cross-domain procedural similarities were observed.",
+      "open_questions": [
+        "Run stronger negative controls."
+      ],
+      "linked_theory_sections": [
+        "Procedural Isomorphism"
+      ],
+      "notes": ""
+    },
+    {
+      "evidence_id": "EV-000005",
+      "status": "accepted",
+      "source": "ECR-000003",
+      "experiment": "Hypothesis Review Board",
+      "supports": [
+        "H002",
+        "H003",
+        "H013",
+        "H015",
+        "H016",
+        "H017",
+        "H018"
+      ],
+      "challenges": [],
+      "confidence_impact": {
+        "from": "mixed",
+        "to": "qualitatively strengthened"
+      },
+      "type": "review",
+      "summary": "Review Board proposed qualitative updates to active hypotheses.",
+      "open_questions": [
+        "Complete final human approval."
+      ],
+      "linked_theory_sections": [
+        "Theory Governance"
+      ],
+      "notes": ""
+    },
+    {
+      "evidence_id": "EV-000006",
+      "status": "accepted",
+      "source": "ECR-000003",
+      "experiment": "Instrument Certification",
+      "supports": [
+        "H015"
+      ],
+      "challenges": [],
+      "confidence_impact": {
+        "from": "moderate",
+        "to": "moderate"
+      },
+      "type": "measurement",
+      "summary": "Frozen comparator and canonical normalization improved reproducibility.",
+      "open_questions": [
+        "Independent operator replication."
+      ],
+      "linked_theory_sections": [
+        "Measurement"
+      ],
+      "notes": ""
+    }
+  ]
+}

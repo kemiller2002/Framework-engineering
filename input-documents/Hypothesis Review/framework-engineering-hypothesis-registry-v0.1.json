@@ -1,0 +1,640 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "registry_id": "FE-HYPOTHESIS-REGISTRY",
+  "registry_version": "0.1.0",
+  "title": "Framework Engineering Hypothesis Registry",
+  "status": "draft",
+  "canonical_format": "json",
+  "last_updated": "2026-07-17",
+  "governance": {
+    "owner": "Framework Engineering Research Program",
+    "review_board": "Hypothesis Review Board (HRB)",
+    "entry_policy": "Every active, retained, weakened, split, rejected, or superseded hypothesis must have a permanent record.",
+    "immutability_policy": "Hypothesis records are not deleted. Status changes and revisions are appended to history.",
+    "evidence_policy": "Supporting and challenging evidence must reference permanent Evidence IDs.",
+    "confidence_policy": "Confidence labels are qualitative unless a separately governed quantitative model is adopted.",
+    "canonical_source_policy": "This JSON file is the canonical machine-readable hypothesis registry. Narrative hypothesis documents may supplement but must not contradict it."
+  },
+  "confidence_scale": [
+    "speculative",
+    "preliminary",
+    "slight",
+    "moderate",
+    "strong",
+    "very_strong"
+  ],
+  "status_values": [
+    "proposed",
+    "active",
+    "retained",
+    "weakened",
+    "split_candidate",
+    "rejected",
+    "superseded",
+    "retired"
+  ],
+  "hypotheses": [
+    {
+      "id": "FE-001",
+      "short_id": "H001",
+      "title": "Framework Engineering",
+      "statement": "Frameworks can be studied as engineered knowledge artifacts with identifiable structure, constraints, operations, and measurable properties.",
+      "status": "active",
+      "confidence": "preliminary",
+      "theory_version": "0.2",
+      "supports": [],
+      "challenges": [],
+      "derived_from": [],
+      "supersedes": [],
+      "dependencies": [
+        "FE-002",
+        "FE-004",
+        "FE-006"
+      ],
+      "alternative_explanations": [
+        "Observed regularities may reflect common writing conventions rather than engineering-like structure.",
+        "The construct may be useful descriptively without constituting a distinct engineering discipline."
+      ],
+      "kill_conditions": [
+        "Repeated studies fail to identify stable, reproducible structural properties across frameworks.",
+        "Proposed measurements do not outperform ordinary qualitative description."
+      ],
+      "next_experiment": "Independent replication using a blinded external corpus.",
+      "review": {
+        "last_review": "ECR-000003 Hypothesis Review Board",
+        "decision": "retain",
+        "rationale": "The overall research program remains plausible, but the discipline-level claim is not yet validated."
+      },
+      "history": [
+        {
+          "event": "created",
+          "source": "Theory of Framework Engineering v0.1"
+        },
+        {
+          "event": "retained",
+          "source": "ECR-000003 Hypothesis Review Board"
+        }
+      ]
+    },
+    {
+      "id": "FE-002",
+      "short_id": "H002",
+      "title": "Representation Independence",
+      "statement": "At least some framework structure remains recoverable across materially different representations of the same underlying procedure.",
+      "status": "retained",
+      "confidence": "moderate",
+      "theory_version": "0.2",
+      "supports": [
+        "EV-000002",
+        "EV-000003"
+      ],
+      "challenges": [],
+      "derived_from": [
+        "FE-001"
+      ],
+      "supersedes": [],
+      "dependencies": [
+        "FE-004",
+        "FE-006"
+      ],
+      "alternative_explanations": [
+        "Models may rely on semantic familiarity or memorized framework patterns.",
+        "Normalization may artificially increase apparent structural agreement."
+      ],
+      "kill_conditions": [
+        "Structural recovery falls to chance or lexical-baseline levels under unfamiliar or adversarial representations.",
+        "Independent evaluators cannot reproduce cross-representation agreement."
+      ],
+      "next_experiment": "Separate structural recovery from semantic familiarity using novel or synthetic frameworks.",
+      "review": {
+        "last_review": "ECR-000003 Hypothesis Review Board",
+        "decision": "retain",
+        "rationale": "Evidence is consistent with representation-independent structure, but semantic familiarity has not been isolated."
+      },
+      "history": [
+        {
+          "event": "created",
+          "source": "Theory of Framework Engineering v0.1"
+        },
+        {
+          "event": "confidence_increased",
+          "from": "preliminary",
+          "to": "moderate",
+          "source": "ECR-000003"
+        }
+      ]
+    },
+    {
+      "id": "FE-003",
+      "short_id": "H003",
+      "title": "Framework Composition",
+      "statement": "Frameworks can be decomposed into reusable structural components and composed from lower-level cognitive and procedural elements.",
+      "status": "retained",
+      "confidence": "slight",
+      "theory_version": "0.2",
+      "supports": [
+        "EV-000005"
+      ],
+      "challenges": [],
+      "derived_from": [
+        "FE-001"
+      ],
+      "supersedes": [],
+      "dependencies": [
+        "FE-004",
+        "FE-006",
+        "FE-007"
+      ],
+      "alternative_explanations": [
+        "Apparent components may be analyst-imposed abstractions.",
+        "Decomposition may vary too much across evaluators to support a stable composition model."
+      ],
+      "kill_conditions": [
+        "Independent decompositions show persistently low agreement.",
+        "Proposed components fail to recombine into recognizable procedural behavior."
+      ],
+      "next_experiment": "Independent decomposition and recomposition study across multiple framework families.",
+      "review": {
+        "last_review": "ECR-000003 Hypothesis Review Board",
+        "decision": "retain",
+        "rationale": "Composition remains plausible but is less directly tested than representation independence or structural recognition."
+      },
+      "history": [
+        {
+          "event": "created",
+          "source": "Theory of Framework Engineering v0.1"
+        },
+        {
+          "event": "retained",
+          "source": "ECR-000003 Hypothesis Review Board"
+        }
+      ]
+    },
+    {
+      "id": "FE-004",
+      "short_id": "H004",
+      "title": "Primitive Cognitive Operations",
+      "statement": "Framework procedures can be described using a bounded or extensible taxonomy of primitive cognitive operations.",
+      "status": "active",
+      "confidence": "preliminary",
+      "theory_version": "0.2",
+      "supports": [],
+      "challenges": [],
+      "derived_from": [
+        "FE-001"
+      ],
+      "supersedes": [],
+      "dependencies": [],
+      "alternative_explanations": [
+        "Primitive operations may be artifacts of the chosen coding scheme.",
+        "The operation set may be open-ended and unsuitable as a stable taxonomy."
+      ],
+      "kill_conditions": [
+        "No coding scheme yields acceptable inter-rater reliability.",
+        "The primitive set grows without convergence as corpus size increases."
+      ],
+      "next_experiment": "Taxonomy convergence and inter-rater reliability study.",
+      "review": {
+        "last_review": "ECR-000003 Hypothesis Review Board",
+        "decision": "not formally reviewed",
+        "rationale": "Retained as an active foundational hypothesis pending direct testing."
+      },
+      "history": [
+        {
+          "event": "created",
+          "source": "Theory of Framework Engineering v0.1"
+        }
+      ]
+    },
+    {
+      "id": "FE-005",
+      "short_id": "H005",
+      "title": "Predictive Framework Engineering",
+      "statement": "Measured structural properties of frameworks can eventually predict aspects of framework behavior, usability, transfer, failure, or fit.",
+      "status": "active",
+      "confidence": "speculative",
+      "theory_version": "0.2",
+      "supports": [],
+      "challenges": [],
+      "derived_from": [
+        "FE-001",
+        "FE-003",
+        "FE-004"
+      ],
+      "supersedes": [],
+      "dependencies": [
+        "FE-002",
+        "FE-003",
+        "FE-004",
+        "FE-006"
+      ],
+      "alternative_explanations": [
+        "Framework outcomes may be dominated by context, facilitation, or user skill.",
+        "Structural measures may describe artifacts without predicting real-world behavior."
+      ],
+      "kill_conditions": [
+        "Structural measures repeatedly fail to predict predefined outcomes above baseline.",
+        "Predictive effects disappear under external validation."
+      ],
+      "next_experiment": "Define one narrow behavioral outcome and preregister a predictive test.",
+      "review": {
+        "last_review": "ECR-000003 Hypothesis Review Board",
+        "decision": "retain as speculative",
+        "rationale": "No current evidence supports a predictive claim."
+      },
+      "history": [
+        {
+          "event": "created",
+          "source": "Theory of Framework Engineering v0.1"
+        }
+      ]
+    },
+    {
+      "id": "FE-006",
+      "short_id": "H006",
+      "title": "Primitive Grammar",
+      "statement": "Primitive cognitive operations can be related through a grammar that constrains valid or meaningful framework procedures.",
+      "status": "active",
+      "confidence": "speculative",
+      "theory_version": "0.2",
+      "supports": [],
+      "challenges": [],
+      "derived_from": [
+        "FE-004"
+      ],
+      "supersedes": [],
+      "dependencies": [
+        "FE-004"
+      ],
+      "alternative_explanations": [
+        "Observed sequencing may be domain-specific rather than grammatical.",
+        "A graph or workflow model may be sufficient without a grammar."
+      ],
+      "kill_conditions": [
+        "No stable sequencing or composition constraints emerge across frameworks.",
+        "A simpler non-grammatical model explains the data equally well."
+      ],
+      "next_experiment": "Compare grammar-based and graph-only models on held-out framework procedures.",
+      "review": {
+        "last_review": "ECR-000003 Hypothesis Review Board",
+        "decision": "not formally reviewed",
+        "rationale": "Remains a theoretical extension requiring direct evidence."
+      },
+      "history": [
+        {
+          "event": "created",
+          "source": "Theory of Framework Engineering v0.1"
+        }
+      ]
+    },
+    {
+      "id": "FE-007",
+      "short_id": "H007",
+      "title": "Artifact Taxonomy",
+      "statement": "Knowledge artifacts can be classified into reproducible types based on structural and procedural properties.",
+      "status": "active",
+      "confidence": "preliminary",
+      "theory_version": "0.2",
+      "supports": [],
+      "challenges": [],
+      "derived_from": [
+        "FE-001"
+      ],
+      "supersedes": [],
+      "dependencies": [
+        "FE-004",
+        "FE-008"
+      ],
+      "alternative_explanations": [
+        "Artifact categories may be conventional labels rather than natural structural classes.",
+        "Hybrid artifacts may prevent stable classification."
+      ],
+      "kill_conditions": [
+        "Independent classification produces persistently low agreement.",
+        "Proposed categories do not improve explanation, measurement, or prediction."
+      ],
+      "next_experiment": "Blind classification study using the FE-008 reference corpus.",
+      "review": {
+        "last_review": "ECR-000003 Hypothesis Review Board",
+        "decision": "not formally reviewed",
+        "rationale": "Active but not yet directly supported by accepted evidence."
+      },
+      "history": [
+        {
+          "event": "created",
+          "source": "Theory of Framework Engineering v0.1"
+        }
+      ]
+    },
+    {
+      "id": "FE-008",
+      "short_id": "H008",
+      "title": "Artifact Boundaries",
+      "statement": "Operational boundaries between frameworks and adjacent artifact types can be defined and applied consistently.",
+      "status": "active",
+      "confidence": "preliminary",
+      "theory_version": "0.2",
+      "supports": [],
+      "challenges": [],
+      "derived_from": [
+        "FE-007"
+      ],
+      "supersedes": [],
+      "dependencies": [
+        "FE-007"
+      ],
+      "alternative_explanations": [
+        "Boundaries may be inherently fuzzy and context-dependent.",
+        "Prototype-based classification may be more appropriate than necessary-and-sufficient criteria."
+      ],
+      "kill_conditions": [
+        "Boundary rules cannot achieve acceptable inter-rater agreement.",
+        "Boundary distinctions provide no analytical benefit."
+      ],
+      "next_experiment": "Boundary-case adjudication study with mixed artifact types.",
+      "review": {
+        "last_review": "ECR-000003 Hypothesis Review Board",
+        "decision": "not formally reviewed",
+        "rationale": "Active foundational hypothesis pending direct boundary testing."
+      },
+      "history": [
+        {
+          "event": "created",
+          "source": "Theory of Framework Engineering v0.1"
+        }
+      ]
+    },
+    {
+      "id": "FE-008A",
+      "short_id": "H008A",
+      "title": "Identity-Capability Principle",
+      "statement": "An artifact's identity should be distinguished from the capabilities it enables or supports.",
+      "status": "active",
+      "confidence": "preliminary",
+      "theory_version": "0.2",
+      "supports": [],
+      "challenges": [],
+      "derived_from": [
+        "FE-008"
+      ],
+      "supersedes": [],
+      "dependencies": [
+        "FE-007",
+        "FE-008"
+      ],
+      "alternative_explanations": [
+        "Artifact identity may be partly constituted by intended capability.",
+        "The distinction may be analytically useful but not empirically discrete."
+      ],
+      "kill_conditions": [
+        "Independent evaluators cannot distinguish identity claims from capability claims.",
+        "The distinction does not improve classification or boundary decisions."
+      ],
+      "next_experiment": "Evaluate identity-versus-capability judgments across ambiguous artifacts.",
+      "review": {
+        "last_review": "ECR-000003 Hypothesis Review Board",
+        "decision": "not formally reviewed",
+        "rationale": "Active refinement of the artifact-boundary hypothesis."
+      },
+      "history": [
+        {
+          "event": "created",
+          "source": "Theory of Framework Engineering v0.1"
+        }
+      ]
+    },
+    {
+      "id": "FE-013",
+      "short_id": "H013",
+      "title": "Recognition Bias",
+      "statement": "Recognition or familiarity with a named framework can influence procedural extraction and structural interpretation.",
+      "status": "retained",
+      "confidence": "moderate",
+      "theory_version": "0.2",
+      "supports": [
+        "EV-000005"
+      ],
+      "challenges": [],
+      "derived_from": [
+        "FE-002"
+      ],
+      "supersedes": [],
+      "dependencies": [],
+      "alternative_explanations": [
+        "Differences attributed to recognition may instead reflect artifact clarity or corpus quality.",
+        "Recognition may improve accuracy rather than introduce bias."
+      ],
+      "kill_conditions": [
+        "Blinded and recognized conditions produce no meaningful differences across adequately powered studies.",
+        "Observed differences are fully explained by artifact quality."
+      ],
+      "next_experiment": "Randomized blinded-versus-recognized extraction study.",
+      "review": {
+        "last_review": "ECR-000003 Hypothesis Review Board",
+        "decision": "retain",
+        "rationale": "Recognition remains a credible threat to validity and must be experimentally isolated."
+      },
+      "history": [
+        {
+          "event": "created",
+          "source": "ECR calibration work"
+        },
+        {
+          "event": "retained",
+          "source": "ECR-000003 Hypothesis Review Board"
+        }
+      ]
+    },
+    {
+      "id": "FE-015",
+      "short_id": "H015",
+      "title": "Measurement Reproducibility",
+      "statement": "A frozen comparator, canonical normalization, and complete audit trail can produce reproducible Framework Engineering measurements.",
+      "status": "retained",
+      "confidence": "moderate",
+      "theory_version": "0.2",
+      "supports": [
+        "EV-000003",
+        "EV-000006"
+      ],
+      "challenges": [],
+      "derived_from": [
+        "FE-001"
+      ],
+      "supersedes": [],
+      "dependencies": [],
+      "alternative_explanations": [
+        "Reproducibility may reflect deterministic tooling rather than valid measurement.",
+        "Results may not reproduce across operators, environments, or corpora."
+      ],
+      "kill_conditions": [
+        "Identical inputs and versions do not produce identical outputs.",
+        "Independent operators cannot reproduce outputs from the audit record.",
+        "Material results depend on undocumented manual intervention."
+      ],
+      "next_experiment": "Independent operator replication using the frozen comparator and archived packet.",
+      "review": {
+        "last_review": "ECR-000003 Hypothesis Review Board",
+        "decision": "retain",
+        "rationale": "This is currently among the strongest-supported hypotheses because it concerns the research instrument rather than the broader theory."
+      },
+      "history": [
+        {
+          "event": "created",
+          "source": "Measurement program"
+        },
+        {
+          "event": "confidence_increased",
+          "from": "preliminary",
+          "to": "moderate",
+          "source": "ECR-000003"
+        }
+      ]
+    },
+    {
+      "id": "FE-016",
+      "short_id": "H016",
+      "title": "Structural Recognition",
+      "statement": "Procedural structure can be recovered from framework artifacts with meaningful consistency beyond surface wording alone.",
+      "status": "retained",
+      "confidence": "moderate",
+      "theory_version": "0.2",
+      "supports": [
+        "EV-000001",
+        "EV-000002"
+      ],
+      "challenges": [],
+      "derived_from": [
+        "FE-002",
+        "FE-004"
+      ],
+      "supersedes": [],
+      "dependencies": [
+        "FE-004"
+      ],
+      "alternative_explanations": [
+        "Models may infer expected structure from semantic familiarity.",
+        "Comparator assumptions may favor the target decomposition."
+      ],
+      "kill_conditions": [
+        "Recovery does not exceed lexical or chance baselines under blinded unfamiliar conditions.",
+        "Independent evaluators fail to reproduce the structural result."
+      ],
+      "next_experiment": "Use synthetic, renamed, or novel artifacts to isolate structure from recognition.",
+      "review": {
+        "last_review": "ECR-000003 Hypothesis Review Board",
+        "decision": "retain",
+        "rationale": "The phenomenon appears present, but competing explanations have not yet been isolated."
+      },
+      "history": [
+        {
+          "event": "created",
+          "source": "ECR-000001"
+        },
+        {
+          "event": "confidence_increased",
+          "from": "preliminary",
+          "to": "moderate",
+          "source": "ECR-000003"
+        }
+      ]
+    },
+    {
+      "id": "FE-017",
+      "short_id": "H017",
+      "title": "Procedural Compression",
+      "statement": "Frameworks compress larger sets of procedural judgments into smaller reusable representations.",
+      "status": "retained",
+      "confidence": "slight",
+      "theory_version": "0.2",
+      "supports": [
+        "EV-000004",
+        "EV-000005"
+      ],
+      "challenges": [],
+      "derived_from": [
+        "FE-003",
+        "FE-004"
+      ],
+      "supersedes": [],
+      "dependencies": [
+        "FE-003",
+        "FE-004"
+      ],
+      "alternative_explanations": [
+        "Apparent compression may simply be abstraction or summarization.",
+        "Compression may not preserve enough information to support reliable execution."
+      ],
+      "kill_conditions": [
+        "Expanded procedures cannot be reconstructed with useful fidelity.",
+        "Compression measures fail to distinguish frameworks from ordinary summaries."
+      ],
+      "next_experiment": "Measure reconstruction fidelity from compressed and non-compressed procedural artifacts.",
+      "review": {
+        "last_review": "ECR-000003 Hypothesis Review Board",
+        "decision": "retain",
+        "rationale": "Evidence is suggestive but the construct needs a formal operational definition."
+      },
+      "history": [
+        {
+          "event": "created",
+          "source": "Theory refinement"
+        },
+        {
+          "event": "retained",
+          "source": "ECR-000003 Hypothesis Review Board"
+        }
+      ]
+    },
+    {
+      "id": "FE-018",
+      "short_id": "H018",
+      "title": "Procedural Isomorphism",
+      "statement": "Different frameworks may share equivalent or near-equivalent procedural structures despite differing domains, terminology, or presentation.",
+      "status": "retained",
+      "confidence": "moderate",
+      "theory_version": "0.2",
+      "supports": [
+        "EV-000004",
+        "EV-000005"
+      ],
+      "challenges": [],
+      "derived_from": [
+        "FE-002",
+        "FE-003",
+        "FE-004"
+      ],
+      "supersedes": [],
+      "dependencies": [
+        "FE-002",
+        "FE-004"
+      ],
+      "alternative_explanations": [
+        "Similarities may result from coarse coding.",
+        "Common procedural motifs may be too generic to establish meaningful isomorphism."
+      ],
+      "kill_conditions": [
+        "Similarity disappears under finer-grained constraint analysis.",
+        "Matched structures do not survive independent coding or negative controls."
+      ],
+      "next_experiment": "Run preregistered positive and negative control comparisons across domains.",
+      "review": {
+        "last_review": "ECR-000003 Hypothesis Review Board",
+        "decision": "retain",
+        "rationale": "Cross-domain similarities were observed, but stronger controls are required."
+      },
+      "history": [
+        {
+          "event": "created",
+          "source": "Theory refinement"
+        },
+        {
+          "event": "confidence_increased",
+          "from": "slight",
+          "to": "moderate",
+          "source": "ECR-000003"
+        }
+      ]
+    }
+  ]
+}
