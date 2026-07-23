@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "record": {
+    "id": "FE-EVAL-GRAPH-2026-07-23",
+    "version": "1.0",
+    "status": "current-evaluated-subgraph",
+    "created": "2026-07-23T14:05:00-04:00",
+    "repositoryBaseline": "214c08f",
+    "scope": "Major conclusion path only; omitted edges are unknown, not absent."
+  },
+  "nodes": [
+    {"id":"GOV-DRAFTS","type":"governance","status":"draft","paths":["CONSTITUTION.md","RESEARCH_CHARTER.md","FRAMEWORK-ENGINEERING-PRINCIPLES.md"]},
+    {"id":"FE-008-012B","type":"evidence-family","status":"internal-provisional","paths":["research/experiments"]},
+    {"id":"FE-THEORY-0.1","type":"theory","status":"provisional","path":"research/theory/theory-of-framework-engineering-v0.1.md"},
+    {"id":"ECR-000003","type":"evidence-run","status":"completed-pending-board","path":"research/evidence-runs/ECR-000003-representation-sensitivity"},
+    {"id":"ECR-000003-HRB-PROPOSAL","type":"review","status":"proposal_only","path":"research/evidence-runs/ECR-000003-representation-sensitivity/review-board/HYPOTHESIS-REVIEW-BOARD-SUMMARY.md"},
+    {"id":"ECR-000003-HRB-DECISION","type":"decision","status":"blank_human_decision_required","path":"research/evidence-runs/ECR-000003-representation-sensitivity/review-board/HYPOTHESIS-REVIEW-BOARD-DECISION.md"},
+    {"id":"FE-EVAL-REP-2026-07-23","type":"evaluation","status":"current-provisional","path":"research/evaluations/FE-EVAL-2026-07-23/RP-2026-07-23-framework-engineering-evaluation.md"}
+  ],
+  "edges": [
+    {"from":"GOV-DRAFTS","to":"FE-008-012B","relation":"motivates"},
+    {"from":"FE-008-012B","to":"FE-THEORY-0.1","relation":"supports-with-limitations"},
+    {"from":"FE-THEORY-0.1","to":"ECR-000003","relation":"hypotheses-tested-by"},
+    {"from":"ECR-000003","to":"ECR-000003-HRB-PROPOSAL","relation":"synthesized-into"},
+    {"from":"ECR-000003-HRB-PROPOSAL","to":"ECR-000003-HRB-DECISION","relation":"awaits-acceptance"},
+    {"from":"FE-THEORY-0.1","to":"FE-EVAL-REP-2026-07-23","relation":"evaluated-by"},
+    {"from":"ECR-000003","to":"FE-EVAL-REP-2026-07-23","relation":"evidence-for"},
+    {"from":"ECR-000003-HRB-DECISION","to":"FE-EVAL-REP-2026-07-23","relation":"constrains-authority"}
+  ]
+}
+
